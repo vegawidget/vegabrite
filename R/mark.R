@@ -1,7 +1,8 @@
-.add_encoding <- function(spec, .enc, ...){
+
+.add_mark <- function(spec, .mark = NULL, ...){
 
   if (is_composite(spec)) {
-    stop("Can't add encoding to composite spec; add encoding prior to combining specs")
+    stop("Can't add mark to composite spec; add prior to combining specs")
   }
   if (hasName(spec, "spec")) {
     inner_spec <- TRUE
@@ -11,8 +12,13 @@
     inner_spec <- FALSE
   }
 
-  if (!hasName(spec,"encoding")) spec$encoding <- list()
-  spec[["encoding"]][[.enc]] <- list(...)
+  def <- list(...)
+  if (length(def) == 0){
+    spec[["mark"]] <- .mark
+  } else {
+    if (!is.null(.mark)) def$type <- .mark
+    spec[["mark"]] <- def
+  }
 
   if (inner_spec) {
     outer_spec[["spec"]] <- spec
@@ -20,5 +26,3 @@
   }
   return(spec)
 }
-
-

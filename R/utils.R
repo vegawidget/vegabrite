@@ -1,10 +1,3 @@
-# capitalize <- function(x){
-#   first <- substring(x, first = 1L, last = 1L)
-#   rest <- substring(x, first = 2L, last = nchar(x))
-#   paste0(toupper(first),rest)
-# }
-
-#create_function(fn_name, args, dots = FALSE)
 
 is_composite <- function(spec){
 
@@ -17,4 +10,20 @@ is_composite <- function(spec){
 }
 
 
+pass_call <- function(func, exclude = list(), add = list(), env = parent.frame()){
+  ## Get all args passed
+  mc <- match.call(definition = sys.function(1),
+                   call = sys.call(1))
+  exclude_ix <- match(exclude,names(mc))
+  exclude_ix <- exclude_ix[!is.na(exclude_ix)]
+  if (length(exclude_ix) > 0) {
+    mc <- mc[-exclude_ix]
+  }
+  for (new_arg in names(add)) {
+    if (new_arg == "") stop("Must pass named arguments only")
+    mc[new_arg] <- add[new_arg]
+  }
+  mc[[1]] <- func
+  eval(mc, env)
+}
 
