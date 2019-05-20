@@ -3,7 +3,7 @@
 \name{add_data}
 \alias{add_data}
 \alias{vl_add_data}
-\title{add_data}
+\title{vl_add_data}
 \usage{
 vl_add_data(spec, format = NULL, name = NULL, url = NULL,
   values = NULL, sequence = NULL, sphere = NULL, graticule = NULL)

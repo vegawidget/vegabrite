@@ -1,6 +1,6 @@
-library("vlbuildr")
+library("vlmetabuildr")
 
-schema_file <- system.file("schema.json", package = "vlapir")
+schema_file <- Sys.glob(file.path(system.file("schema/vega-lite", package = "vegawidget"),"*.json"))
 VL_SCHEMA <- jsonlite::read_json(schema_file)
 
 encoding_options <- props(VL_SCHEMA, list("$ref" = "#/definitions/Encoding"))
@@ -15,7 +15,9 @@ mark_funcs <- c(
 )
 
 encoding_funcs <- purrr::map_chr(names(encoding_options), create_encoder, schema = VL_SCHEMA)
+encoding_objs <- purrr::map_chr(names(encoding_options), create_encode_object, schema = VL_SCHEMA)
 
-r_api <- c(encoding_funcs, mark_funcs, data_funcs)
+
+r_api <- c(encoding_funcs, encoding_objs, mark_funcs, data_funcs)
 r_file_path <- file.path(rprojroot::find_package_root_file(), "R","zzz_autogen_api.R")
 cat(r_api, file = r_file_path)
