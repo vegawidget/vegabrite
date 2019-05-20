@@ -16,9 +16,12 @@ This is an example showing current capabilities:
 
 ``` r
 library(vlbuildr)
+library(vegawidget)
 vl_chart() %>%
    vl_add_data(values = mtcars) %>%
    vl_mark_point() %>%
    vl_encode_x(field = "wt", type = "quantitative") %>%
    vl_encode_y(field = "mpg", type = "quantitative")
 ```
+
+![](README-example-1.png)
