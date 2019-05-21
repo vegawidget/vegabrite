@@ -5,8 +5,8 @@
 \title{vl_encode_href}
 \usage{
 vl_encode_href(spec, aggregate = NULL, bin = NULL, condition = NULL,
-  field = NULL, format = NULL, formatType = NULL, timeUnit = NULL,
-  title = NULL, type = NULL, value = NULL)
+  field = NULL, legend = NULL, scale = NULL, sort = NULL,
+  timeUnit = NULL, title = NULL, type = NULL, value = NULL)
 }
 \arguments{
 \item{spec}{A vega-lite spec}
@@ -20,13 +20,13 @@ __Default value:__ `undefined` (None) (type = Aggregate)}
 
 - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 
-- If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+- To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
 
 __Default value:__ `false` (type = Varies)}
 
-\item{condition}{One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
+\item{condition}{One or more value definition(s) with a selection predicate.
 
-__Note:__ A field definition's `condition` property can only contain [conditional value definitions](https://vega.github.io/vega-lite/docs/condition.html#value)
+__Note:__ A field definition's `condition` property can only contain [value definitions](https://vega.github.io/vega-lite/docs/encoding.html#value-def)
 since Vega-Lite only allows at most one encoded field per encoding channel. (type = Varies) OR A field definition or one or more value definition(s) with a selection predicate. (type = Varies)}
 
 \item{field}{__Required.__ A string defining the name of the field from which to pull a data value
@@ -38,20 +38,31 @@ See more details about escaping in the [field documentation](https://vega.github
 
 __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)}
 
-\item{format}{The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+\item{legend}{An object defining properties of the legend.
+If `null`, the legend for the encoding channel will be removed.
 
-- If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
-- If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
+__Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied. (type = Varies)}
 
-See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
+\item{scale}{An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
 
-__Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format. (type = string)}
+If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
 
-\item{formatType}{The format type for labels (`"number"` or `"time"`).
+__Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied. (type = Varies)}
 
-__Default value:__
-- `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
-- `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`. (type = string)}
+\item{sort}{Sort order for the encoded field.
+
+For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+
+For discrete fields, `sort` can be one of the following:
+- `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+- [A sort-by-encoding definition](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding) for sorting by another encoding channel. (This type of sort definition is not available for `row` and `column` channels.)
+- [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+- [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+- `null` indicating no sort.
+
+__Default value:__ `"ascending"`
+
+__Note:__ `null` is not supported for `row` and `column`. (type = Sort)}
 
 \item{timeUnit}{Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
@@ -79,9 +90,9 @@ __Note:__
 - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
-- Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)}
+- Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = string)}
 
-\item{value}{A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = string OR number OR boolean)}
+\item{value}{A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = string)}
 }
 \value{
 A modified spec

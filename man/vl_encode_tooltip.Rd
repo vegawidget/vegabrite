@@ -5,8 +5,8 @@
 \title{vl_encode_tooltip}
 \usage{
 vl_encode_tooltip(spec, aggregate = NULL, bin = NULL,
-  condition = NULL, field = NULL, format = NULL, formatType = NULL,
-  timeUnit = NULL, title = NULL, type = NULL, value = NULL)
+  condition = NULL, field = NULL, format = NULL, timeUnit = NULL,
+  title = NULL, type = NULL, value = NULL)
 }
 \arguments{
 \item{spec}{A vega-lite spec}
@@ -20,13 +20,13 @@ __Default value:__ `undefined` (None) (type = Aggregate)}
 
 - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 
-- If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+- To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
 
 __Default value:__ `false` (type = Varies)}
 
-\item{condition}{One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
+\item{condition}{One or more value definition(s) with a selection predicate.
 
-__Note:__ A field definition's `condition` property can only contain [conditional value definitions](https://vega.github.io/vega-lite/docs/condition.html#value)
+__Note:__ A field definition's `condition` property can only contain [value definitions](https://vega.github.io/vega-lite/docs/encoding.html#value-def)
 since Vega-Lite only allows at most one encoded field per encoding channel. (type = Varies) OR A field definition or one or more value definition(s) with a selection predicate. (type = Varies)}
 
 \item{field}{__Required.__ A string defining the name of the field from which to pull a data value
@@ -38,20 +38,7 @@ See more details about escaping in the [field documentation](https://vega.github
 
 __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)}
 
-\item{format}{The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
-
-- If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
-- If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
-
-See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
-
-__Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format. (type = string)}
-
-\item{formatType}{The format type for labels (`"number"` or `"time"`).
-
-__Default value:__
-- `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
-- `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`. (type = string)}
+\item{format}{The [formatting pattern](https://vega.github.io/vega-lite/docs/format.html) for a text field. If not defined, this will be determined automatically. (type = string)}
 
 \item{timeUnit}{Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).

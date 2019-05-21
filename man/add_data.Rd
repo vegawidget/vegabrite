@@ -6,7 +6,7 @@
 \title{vl_add_data}
 \usage{
 vl_add_data(spec, format = NULL, name = NULL, url = NULL,
-  values = NULL, sequence = NULL, sphere = NULL, graticule = NULL)
+  values = NULL)
 }
 \arguments{
 \item{spec}{A vega-lite spec}
@@ -20,12 +20,6 @@ to ensure the loaded data is correctly parsed. (type = string)}
 
 \item{values}{The full data set, included inline. This can be an array of objects or primitive values, an object, or a string.
 Arrays of primitive values are ingested as objects with a `data` property. Strings are parsed according to the specified format type. (type = InlineDataset)}
-
-\item{sequence}{Generate a sequence of numbers. (type = SequenceParams)}
-
-\item{sphere}{Generate sphere GeoJSON data for the full globe. (type = Varies)}
-
-\item{graticule}{Generate graticule GeoJSON data for geographic reference lines. (type = Varies)}
 }
 \value{
 A modified spec

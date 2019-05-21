@@ -40,8 +40,8 @@
 #'   vl_add_data(values = mtcars) %>%
 #'   vl_mark_point() %>%
 #'   vl_encode(
-#'     x = vl_x(field = "wt", type = "quantitative"),
-#'     y = vl_y(field = "mpg", type = "quantitative")
+#'     x = vl_X(field = "wt", type = "quantitative"),
+#'     y = vl_Y(field = "mpg", type = "quantitative")
 #'   )
 vl_encode <- function(spec, ...){
   inputs <- list(...)

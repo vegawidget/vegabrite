@@ -1851,10 +1851,9 @@ vl_encode_yError2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL, 
   rlang::exec(.add_encoding, !!!args_out)
 }
  
-#' vl_color
+#' vl_Color
 #' 
-#' Add encoding for color to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for color encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1931,17 +1930,16 @@ vl_encode_yError2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL, 
 #' @export
 #' @md
 #' @seealso [vl_encode_color()]
-vl_color <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
+vl_Color <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_detail
+#' vl_Detail
 #' 
-#' Add encoding for detail to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for detail encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1990,17 +1988,16 @@ vl_color <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NUL
 #' @export
 #' @md
 #' @seealso [vl_encode_detail()]
-vl_detail <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+vl_Detail <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_fill
+#' vl_Fill
 #' 
-#' Add encoding for fill to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for fill encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2077,17 +2074,16 @@ vl_detail <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NUL
 #' @export
 #' @md
 #' @seealso [vl_encode_fill()]
-vl_fill <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
+vl_Fill <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_fillOpacity
+#' vl_FillOpacity
 #' 
-#' Add encoding for fillOpacity to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for fillOpacity encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2164,17 +2160,16 @@ vl_fill <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL
 #' @export
 #' @md
 #' @seealso [vl_encode_fillOpacity()]
-vl_fillOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
+vl_FillOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_href
+#' vl_Href
 #' 
-#' Add encoding for href to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for href encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2251,17 +2246,16 @@ vl_fillOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field
 #' @export
 #' @md
 #' @seealso [vl_encode_href()]
-vl_href <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
+vl_Href <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_key
+#' vl_Key
 #' 
-#' Add encoding for key to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for key encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2310,17 +2304,16 @@ vl_href <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL
 #' @export
 #' @md
 #' @seealso [vl_encode_key()]
-vl_key <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+vl_Key <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_latitude
+#' vl_Latitude
 #' 
-#' Add encoding for latitude to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for latitude encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2369,17 +2362,16 @@ vl_key <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, 
 #' @export
 #' @md
 #' @seealso [vl_encode_latitude()]
-vl_latitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+vl_Latitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_latitude2
+#' vl_Latitude2
 #' 
-#' Add encoding for latitude2 to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for latitude2 encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2416,17 +2408,16 @@ vl_latitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = N
 #' @export
 #' @md
 #' @seealso [vl_encode_latitude2()]
-vl_latitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL) {
+vl_Latitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_longitude
+#' vl_Longitude
 #' 
-#' Add encoding for longitude to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for longitude encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2475,17 +2466,16 @@ vl_latitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = 
 #' @export
 #' @md
 #' @seealso [vl_encode_longitude()]
-vl_longitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+vl_Longitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_longitude2
+#' vl_Longitude2
 #' 
-#' Add encoding for longitude2 to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for longitude2 encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2522,17 +2512,16 @@ vl_longitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = 
 #' @export
 #' @md
 #' @seealso [vl_encode_longitude2()]
-vl_longitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL) {
+vl_Longitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_opacity
+#' vl_Opacity
 #' 
-#' Add encoding for opacity to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for opacity encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2609,17 +2598,16 @@ vl_longitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit =
 #' @export
 #' @md
 #' @seealso [vl_encode_opacity()]
-vl_opacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
+vl_Opacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_order
+#' vl_Order
 #' 
-#' Add encoding for order to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for order encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2670,17 +2658,16 @@ vl_opacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = N
 #' @export
 #' @md
 #' @seealso [vl_encode_order()]
-vl_order <- function(aggregate = NULL, bin = NULL, field = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
+vl_Order <- function(aggregate = NULL, bin = NULL, field = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_shape
+#' vl_Shape
 #' 
-#' Add encoding for shape to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for shape encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2757,17 +2744,16 @@ vl_order <- function(aggregate = NULL, bin = NULL, field = NULL, sort = NULL, ti
 #' @export
 #' @md
 #' @seealso [vl_encode_shape()]
-vl_shape <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
+vl_Shape <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_size
+#' vl_Size
 #' 
-#' Add encoding for size to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for size encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2844,17 +2830,16 @@ vl_shape <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NUL
 #' @export
 #' @md
 #' @seealso [vl_encode_size()]
-vl_size <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
+vl_Size <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_stroke
+#' vl_Stroke
 #' 
-#' Add encoding for stroke to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for stroke encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2931,17 +2916,16 @@ vl_size <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL
 #' @export
 #' @md
 #' @seealso [vl_encode_stroke()]
-vl_stroke <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
+vl_Stroke <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_strokeOpacity
+#' vl_StrokeOpacity
 #' 
-#' Add encoding for strokeOpacity to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for strokeOpacity encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3018,17 +3002,16 @@ vl_stroke <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NU
 #' @export
 #' @md
 #' @seealso [vl_encode_strokeOpacity()]
-vl_strokeOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
+vl_StrokeOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_strokeWidth
+#' vl_StrokeWidth
 #' 
-#' Add encoding for strokeWidth to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for strokeWidth encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3105,17 +3088,16 @@ vl_strokeOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, fie
 #' @export
 #' @md
 #' @seealso [vl_encode_strokeWidth()]
-vl_strokeWidth <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
+vl_StrokeWidth <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_text
+#' vl_Text
 #' 
-#' Add encoding for text to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for text encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3170,17 +3152,16 @@ vl_strokeWidth <- function(aggregate = NULL, bin = NULL, condition = NULL, field
 #' @export
 #' @md
 #' @seealso [vl_encode_text()]
-vl_text <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
+vl_Text <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_tooltip
+#' vl_Tooltip
 #' 
-#' Add encoding for tooltip to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for tooltip encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3235,17 +3216,16 @@ vl_text <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL
 #' @export
 #' @md
 #' @seealso [vl_encode_tooltip()]
-vl_tooltip <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
+vl_Tooltip <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_x
+#' vl_X
 #' 
-#' Add encoding for x to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for x encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3335,17 +3315,16 @@ vl_tooltip <- function(aggregate = NULL, bin = NULL, condition = NULL, field = N
 #' @export
 #' @md
 #' @seealso [vl_encode_x()]
-vl_x <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
+vl_X <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_x2
+#' vl_X2
 #' 
-#' Add encoding for x2 to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for x2 encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3383,17 +3362,16 @@ vl_x <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute
 #' @export
 #' @md
 #' @seealso [vl_encode_x2()]
-vl_x2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
+vl_X2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_xError
+#' vl_XError
 #' 
-#' Add encoding for xError to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for xError encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3431,17 +3409,16 @@ vl_x2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, t
 #' @export
 #' @md
 #' @seealso [vl_encode_xError()]
-vl_xError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
+vl_XError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_xError2
+#' vl_XError2
 #' 
-#' Add encoding for xError2 to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for xError2 encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3479,17 +3456,16 @@ vl_xError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NUL
 #' @export
 #' @md
 #' @seealso [vl_encode_xError2()]
-vl_xError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
+vl_XError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_y
+#' vl_Y
 #' 
-#' Add encoding for y to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for y encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3579,17 +3555,16 @@ vl_xError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NU
 #' @export
 #' @md
 #' @seealso [vl_encode_y()]
-vl_y <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
+vl_Y <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_y2
+#' vl_Y2
 #' 
-#' Add encoding for y2 to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for y2 encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3627,17 +3602,16 @@ vl_y <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute
 #' @export
 #' @md
 #' @seealso [vl_encode_y2()]
-vl_y2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
+vl_Y2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_yError
+#' vl_YError
 #' 
-#' Add encoding for yError to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for yError encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3675,17 +3649,16 @@ vl_y2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, t
 #' @export
 #' @md
 #' @seealso [vl_encode_yError()]
-vl_yError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
+vl_YError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
  
-#' vl_yError2
+#' vl_YError2
 #' 
-#' Add encoding for yError2 to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' Create spec for yError2 encoding.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3723,7 +3696,7 @@ vl_yError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NUL
 #' @export
 #' @md
 #' @seealso [vl_encode_yError2()]
-vl_yError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
+vl_YError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
@@ -4058,4 +4031,529 @@ vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = N
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   rlang::exec(.add_data, !!!args_out)
+}
+ 
+#' vl_transform_filter
+#' 
+#' Add FilterTransform to a vega-lite spec.
+#' @param spec A vega-lite spec
+#' @param filter The `filter` property must be one of the predicate definitions:
+#' 
+#' 1) an [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string,
+#' where `datum` can be used to refer to the current data object
+#' 
+#' 2) one of the field predicates: [`equal`](https://vega.github.io/vega-lite/docs/filter.html#equal-predicate),
+#' [`lt`](https://vega.github.io/vega-lite/docs/filter.html#lt-predicate),
+#' [`lte`](https://vega.github.io/vega-lite/docs/filter.html#lte-predicate),
+#' [`gt`](https://vega.github.io/vega-lite/docs/filter.html#gt-predicate),
+#' [`gte`](https://vega.github.io/vega-lite/docs/filter.html#gte-predicate),
+#' [`range`](https://vega.github.io/vega-lite/docs/filter.html#range-predicate),
+#' [`oneOf`](https://vega.github.io/vega-lite/docs/filter.html#one-of-predicate),
+#' or [`valid`](https://vega.github.io/vega-lite/docs/filter.html#valid-predicate),
+#' 
+#' 3) a [selection predicate](https://vega.github.io/vega-lite/docs/filter.html#selection-predicate)
+#' 
+#' 4) a logical operand that combines (1), (2), or (3). (type = LogicalOperand<Predicate>)
+#' @return A modified spec
+#' @export
+vl_transform_filter <- function(spec, filter = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.trans = 'filter'))
+  rlang::exec(.add_transform, !!!args_out)
+}
+ 
+#' vl_transform_calculate
+#' 
+#' Add CalculateTransform to a vega-lite spec.
+#' @param spec A vega-lite spec
+#' @param as The field for storing the computed formula value. (type = string)
+#' @param calculate A [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string. Use the variable `datum` to refer to the current data object. (type = string)
+#' @return A modified spec
+#' @export
+vl_transform_calculate <- function(spec, as = NULL, calculate = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.trans = 'calculate'))
+  rlang::exec(.add_transform, !!!args_out)
+}
+ 
+#' vl_transform_lookup
+#' 
+#' Add LookupTransform to a vega-lite spec.
+#' @param spec A vega-lite spec
+#' @param as The field or fields for storing the computed formula value.
+#' If `from.fields` is specified, the transform will use the same names for `as`.
+#' If `from.fields` is not specified, `as` has to be a string and we put the whole object into the data under the specified name. (type = Varies)
+#' @param default The default value to use if lookup fails.
+#' 
+#' __Default value:__ `null` (type = string)
+#' @param from Secondary data reference. (type = LookupData)
+#' @param lookup Key in primary data source. (type = string)
+#' @return A modified spec
+#' @export
+vl_transform_lookup <- function(spec, as = NULL, default = NULL, from = NULL, lookup = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.trans = 'lookup'))
+  rlang::exec(.add_transform, !!!args_out)
+}
+ 
+#' vl_transform_bin
+#' 
+#' Add BinTransform to a vega-lite spec.
+#' @param spec A vega-lite spec
+#' @param as The output fields at which to write the start and end bin values. (type = Varies)
+#' @param bin An object indicating bin properties, or simply `true` for using default bin parameters. (type = Varies)
+#' @param field The data field to bin. (type = string)
+#' @return A modified spec
+#' @export
+vl_transform_bin <- function(spec, as = NULL, bin = NULL, field = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.trans = 'bin'))
+  rlang::exec(.add_transform, !!!args_out)
+}
+ 
+#' vl_transform_timeunit
+#' 
+#' Add TimeUnitTransform to a vega-lite spec.
+#' @param spec A vega-lite spec
+#' @param as The output field to write the timeUnit value. (type = string)
+#' @param field The data field to apply time unit. (type = string)
+#' @param timeUnit The timeUnit. (type = TimeUnit)
+#' @return A modified spec
+#' @export
+vl_transform_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.trans = 'timeunit'))
+  rlang::exec(.add_transform, !!!args_out)
+}
+ 
+#' vl_transform_impute
+#' 
+#' Add ImputeTransform to a vega-lite spec.
+#' @param spec A vega-lite spec
+#' @param frame A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
+#' 
+#' __Default value:__:  `[null, null]` indicating that the window includes all objects. (type = array)
+#' @param groupby An optional array of fields by which to group the values.
+#' Imputation will then be performed on a per-group basis. (type = array)
+#' @param impute The data field for which the missing values should be imputed. (type = string)
+#' @param key A key field that uniquely identifies data objects within a group.
+#' Missing key values (those occurring in the data but not in the current group) will be imputed. (type = string)
+#' @param keyvals Defines the key values that should be considered for imputation.
+#' An array of key values or an object defining a [number sequence](https://vega.github.io/vega-lite/docs/impute.html#sequence-def).
+#' 
+#' If provided, this will be used in addition to the key values observed within the input data.  If not provided, the values will be derived from all unique values of the `key` field. For `impute` in `encoding`, the key field is the x-field if the y-field is imputed, or vice versa.
+#' 
+#' If there is no impute grouping, this property _must_ be specified. (type = Varies)
+#' @param method The imputation method to use for the field value of imputed data objects.
+#' One of `value`, `mean`, `median`, `max` or `min`.
+#' 
+#' __Default value:__  `"value"` (type = ImputeMethod)
+#' @param value The field value to use when the imputation `method` is `"value"`. (type = Varies)
+#' @return A modified spec
+#' @export
+vl_transform_impute <- function(spec, frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.trans = 'impute'))
+  rlang::exec(.add_transform, !!!args_out)
+}
+ 
+#' vl_transform_aggregate
+#' 
+#' Add AggregateTransform to a vega-lite spec.
+#' @param spec A vega-lite spec
+#' @param aggregate Array of objects that define fields to aggregate. (type = array)
+#' @param groupby The data fields to group by. If not specified, a single group containing all data objects will be used. (type = array)
+#' @return A modified spec
+#' @export
+vl_transform_aggregate <- function(spec, aggregate = NULL, groupby = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.trans = 'aggregate'))
+  rlang::exec(.add_transform, !!!args_out)
+}
+ 
+#' vl_transform_window
+#' 
+#' Add WindowTransform to a vega-lite spec.
+#' @param spec A vega-lite spec
+#' @param frame A frame specification as a two-element array indicating how the sliding window should proceed. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. The default value is `[null, 0]`, indicating that the sliding window includes the current object and all preceding objects. The value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object. Finally, `[null, null]` indicates that the window frame should always include all data objects. If you this frame and want to assign the same value to add objects, you can use the simpler [join aggregate transform](https://vega.github.io/vega-lite/docs/joinaggregate.html). The only operators affected are the aggregation operations and the `first_value`, `last_value`, and `nth_value` window operations. The other window operations are not affected by this.
+#' 
+#' __Default value:__:  `[null, 0]` (includes the current object and all preceding objects) (type = array)
+#' @param groupby The data fields for partitioning the data objects into separate windows. If unspecified, all data points will be in a single window. (type = array)
+#' @param ignorePeers Indicates if the sliding window frame should ignore peer values (data that are considered identical by the sort criteria). The default is false, causing the window frame to expand to include all peer values. If set to true, the window frame will be defined by offset values only. This setting only affects those operations that depend on the window frame, namely aggregation operations and the first_value, last_value, and nth_value window operations.
+#' 
+#' __Default value:__ `false` (type = boolean)
+#' @param sort A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered “peer” values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to `true`). (type = array)
+#' @param window The definition of the fields in the window, and what calculations to use. (type = array)
+#' @return A modified spec
+#' @export
+vl_transform_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.trans = 'window'))
+  rlang::exec(.add_transform, !!!args_out)
+}
+ 
+#' vl_transform_joinaggregate
+#' 
+#' Add JoinAggregateTransform to a vega-lite spec.
+#' @param spec A vega-lite spec
+#' @param groupby The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group. (type = array)
+#' @param joinaggregate The definition of the fields in the join aggregate, and what calculations to use. (type = array)
+#' @return A modified spec
+#' @export
+vl_transform_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.trans = 'joinaggregate'))
+  rlang::exec(.add_transform, !!!args_out)
+}
+ 
+#' vl_transform_stack
+#' 
+#' Add StackTransform to a vega-lite spec.
+#' @param spec A vega-lite spec
+#' @param as Output field names. This can be either a string or an array of strings with
+#' two elements denoting the name for the fields for stack start and stack end
+#' respectively.
+#' If a single string(eg."val") is provided, the end field will be "val_end". (type = Varies)
+#' @param groupby The data fields to group by. (type = array)
+#' @param offset Mode for stacking marks.
+#' __Default value:__ `"zero"` (type = string)
+#' @param sort Field that determines the order of leaves in the stacked charts. (type = array)
+#' @param stack The field which is stacked. (type = string)
+#' @return A modified spec
+#' @export
+vl_transform_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.trans = 'stack'))
+  rlang::exec(.add_transform, !!!args_out)
+}
+ 
+#' vl_transform_flatten
+#' 
+#' Add FlattenTransform to a vega-lite spec.
+#' @param spec A vega-lite spec
+#' @param as The output field names for extracted array values.
+#' 
+#' __Default value:__ The field name of the corresponding array field (type = array)
+#' @param flatten An array of one or more data fields containing arrays to flatten.
+#' If multiple fields are specified, their array values should have a parallel structure, ideally with the same length.
+#' If the lengths of parallel arrays do not match,
+#' the longest array will be used with `null` values added for missing entries. (type = array)
+#' @return A modified spec
+#' @export
+vl_transform_flatten <- function(spec, as = NULL, flatten = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.trans = 'flatten'))
+  rlang::exec(.add_transform, !!!args_out)
+}
+ 
+#' vl_transform_fold
+#' 
+#' Add FoldTransform to a vega-lite spec.
+#' @param spec A vega-lite spec
+#' @param as The output field names for the key and value properties produced by the fold transform.
+#' __Default value:__ `["key", "value"]` (type = array)
+#' @param fold An array of data fields indicating the properties to fold. (type = array)
+#' @return A modified spec
+#' @export
+vl_transform_fold <- function(spec, as = NULL, fold = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.trans = 'fold'))
+  rlang::exec(.add_transform, !!!args_out)
+}
+ 
+#' vl_transform_sample
+#' 
+#' Add SampleTransform to a vega-lite spec.
+#' @param spec A vega-lite spec
+#' @param sample The maximum number of data objects to include in the sample.
+#' 
+#' __Default value:__ `1000` (type = number)
+#' @return A modified spec
+#' @export
+vl_transform_sample <- function(spec, sample = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.trans = 'sample'))
+  rlang::exec(.add_transform, !!!args_out)
+}
+ 
+#' vl_FilterTransform
+#' 
+#' Create spec for FilterTransform.
+#' @param filter The `filter` property must be one of the predicate definitions:
+#' 
+#' 1) an [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string,
+#' where `datum` can be used to refer to the current data object
+#' 
+#' 2) one of the field predicates: [`equal`](https://vega.github.io/vega-lite/docs/filter.html#equal-predicate),
+#' [`lt`](https://vega.github.io/vega-lite/docs/filter.html#lt-predicate),
+#' [`lte`](https://vega.github.io/vega-lite/docs/filter.html#lte-predicate),
+#' [`gt`](https://vega.github.io/vega-lite/docs/filter.html#gt-predicate),
+#' [`gte`](https://vega.github.io/vega-lite/docs/filter.html#gte-predicate),
+#' [`range`](https://vega.github.io/vega-lite/docs/filter.html#range-predicate),
+#' [`oneOf`](https://vega.github.io/vega-lite/docs/filter.html#one-of-predicate),
+#' or [`valid`](https://vega.github.io/vega-lite/docs/filter.html#valid-predicate),
+#' 
+#' 3) a [selection predicate](https://vega.github.io/vega-lite/docs/filter.html#selection-predicate)
+#' 
+#' 4) a logical operand that combines (1), (2), or (3). (type = LogicalOperand<Predicate>)
+#' @return A modified spec
+#' @export
+#' @md
+vl_FilterTransform <- function(filter = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ 
+#' vl_CalculateTransform
+#' 
+#' Create spec for CalculateTransform.
+#' @param as The field for storing the computed formula value. (type = string)
+#' @param calculate A [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string. Use the variable `datum` to refer to the current data object. (type = string)
+#' @return A modified spec
+#' @export
+#' @md
+vl_CalculateTransform <- function(as = NULL, calculate = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ 
+#' vl_LookupTransform
+#' 
+#' Create spec for LookupTransform.
+#' @param as The field or fields for storing the computed formula value.
+#' If `from.fields` is specified, the transform will use the same names for `as`.
+#' If `from.fields` is not specified, `as` has to be a string and we put the whole object into the data under the specified name. (type = Varies)
+#' @param default The default value to use if lookup fails.
+#' 
+#' __Default value:__ `null` (type = string)
+#' @param from Secondary data reference. (type = LookupData)
+#' @param lookup Key in primary data source. (type = string)
+#' @return A modified spec
+#' @export
+#' @md
+vl_LookupTransform <- function(as = NULL, default = NULL, from = NULL, lookup = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ 
+#' vl_BinTransform
+#' 
+#' Create spec for BinTransform.
+#' @param as The output fields at which to write the start and end bin values. (type = Varies)
+#' @param bin An object indicating bin properties, or simply `true` for using default bin parameters. (type = Varies)
+#' @param field The data field to bin. (type = string)
+#' @return A modified spec
+#' @export
+#' @md
+vl_BinTransform <- function(as = NULL, bin = NULL, field = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ 
+#' vl_TimeUnitTransform
+#' 
+#' Create spec for TimeUnitTransform.
+#' @param as The output field to write the timeUnit value. (type = string)
+#' @param field The data field to apply time unit. (type = string)
+#' @param timeUnit The timeUnit. (type = TimeUnit)
+#' @return A modified spec
+#' @export
+#' @md
+vl_TimeUnitTransform <- function(as = NULL, field = NULL, timeUnit = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ 
+#' vl_ImputeTransform
+#' 
+#' Create spec for ImputeTransform.
+#' @param frame A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
+#' 
+#' __Default value:__:  `[null, null]` indicating that the window includes all objects. (type = array)
+#' @param groupby An optional array of fields by which to group the values.
+#' Imputation will then be performed on a per-group basis. (type = array)
+#' @param impute The data field for which the missing values should be imputed. (type = string)
+#' @param key A key field that uniquely identifies data objects within a group.
+#' Missing key values (those occurring in the data but not in the current group) will be imputed. (type = string)
+#' @param keyvals Defines the key values that should be considered for imputation.
+#' An array of key values or an object defining a [number sequence](https://vega.github.io/vega-lite/docs/impute.html#sequence-def).
+#' 
+#' If provided, this will be used in addition to the key values observed within the input data.  If not provided, the values will be derived from all unique values of the `key` field. For `impute` in `encoding`, the key field is the x-field if the y-field is imputed, or vice versa.
+#' 
+#' If there is no impute grouping, this property _must_ be specified. (type = Varies)
+#' @param method The imputation method to use for the field value of imputed data objects.
+#' One of `value`, `mean`, `median`, `max` or `min`.
+#' 
+#' __Default value:__  `"value"` (type = ImputeMethod)
+#' @param value The field value to use when the imputation `method` is `"value"`. (type = Varies)
+#' @return A modified spec
+#' @export
+#' @md
+vl_ImputeTransform <- function(frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ 
+#' vl_AggregateTransform
+#' 
+#' Create spec for AggregateTransform.
+#' @param aggregate Array of objects that define fields to aggregate. (type = array)
+#' @param groupby The data fields to group by. If not specified, a single group containing all data objects will be used. (type = array)
+#' @return A modified spec
+#' @export
+#' @md
+vl_AggregateTransform <- function(aggregate = NULL, groupby = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ 
+#' vl_WindowTransform
+#' 
+#' Create spec for WindowTransform.
+#' @param frame A frame specification as a two-element array indicating how the sliding window should proceed. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. The default value is `[null, 0]`, indicating that the sliding window includes the current object and all preceding objects. The value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object. Finally, `[null, null]` indicates that the window frame should always include all data objects. If you this frame and want to assign the same value to add objects, you can use the simpler [join aggregate transform](https://vega.github.io/vega-lite/docs/joinaggregate.html). The only operators affected are the aggregation operations and the `first_value`, `last_value`, and `nth_value` window operations. The other window operations are not affected by this.
+#' 
+#' __Default value:__:  `[null, 0]` (includes the current object and all preceding objects) (type = array)
+#' @param groupby The data fields for partitioning the data objects into separate windows. If unspecified, all data points will be in a single window. (type = array)
+#' @param ignorePeers Indicates if the sliding window frame should ignore peer values (data that are considered identical by the sort criteria). The default is false, causing the window frame to expand to include all peer values. If set to true, the window frame will be defined by offset values only. This setting only affects those operations that depend on the window frame, namely aggregation operations and the first_value, last_value, and nth_value window operations.
+#' 
+#' __Default value:__ `false` (type = boolean)
+#' @param sort A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered “peer” values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to `true`). (type = array)
+#' @param window The definition of the fields in the window, and what calculations to use. (type = array)
+#' @return A modified spec
+#' @export
+#' @md
+vl_WindowTransform <- function(frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ 
+#' vl_JoinAggregateTransform
+#' 
+#' Create spec for JoinAggregateTransform.
+#' @param groupby The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group. (type = array)
+#' @param joinaggregate The definition of the fields in the join aggregate, and what calculations to use. (type = array)
+#' @return A modified spec
+#' @export
+#' @md
+vl_JoinAggregateTransform <- function(groupby = NULL, joinaggregate = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ 
+#' vl_StackTransform
+#' 
+#' Create spec for StackTransform.
+#' @param as Output field names. This can be either a string or an array of strings with
+#' two elements denoting the name for the fields for stack start and stack end
+#' respectively.
+#' If a single string(eg."val") is provided, the end field will be "val_end". (type = Varies)
+#' @param groupby The data fields to group by. (type = array)
+#' @param offset Mode for stacking marks.
+#' __Default value:__ `"zero"` (type = string)
+#' @param sort Field that determines the order of leaves in the stacked charts. (type = array)
+#' @param stack The field which is stacked. (type = string)
+#' @return A modified spec
+#' @export
+#' @md
+vl_StackTransform <- function(as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ 
+#' vl_FlattenTransform
+#' 
+#' Create spec for FlattenTransform.
+#' @param as The output field names for extracted array values.
+#' 
+#' __Default value:__ The field name of the corresponding array field (type = array)
+#' @param flatten An array of one or more data fields containing arrays to flatten.
+#' If multiple fields are specified, their array values should have a parallel structure, ideally with the same length.
+#' If the lengths of parallel arrays do not match,
+#' the longest array will be used with `null` values added for missing entries. (type = array)
+#' @return A modified spec
+#' @export
+#' @md
+vl_FlattenTransform <- function(as = NULL, flatten = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ 
+#' vl_FoldTransform
+#' 
+#' Create spec for FoldTransform.
+#' @param as The output field names for the key and value properties produced by the fold transform.
+#' __Default value:__ `["key", "value"]` (type = array)
+#' @param fold An array of data fields indicating the properties to fold. (type = array)
+#' @return A modified spec
+#' @export
+#' @md
+vl_FoldTransform <- function(as = NULL, fold = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ 
+#' vl_SampleTransform
+#' 
+#' Create spec for SampleTransform.
+#' @param sample The maximum number of data objects to include in the sample.
+#' 
+#' __Default value:__ `1000` (type = number)
+#' @return A modified spec
+#' @export
+#' @md
+vl_SampleTransform <- function(sample = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
 }
