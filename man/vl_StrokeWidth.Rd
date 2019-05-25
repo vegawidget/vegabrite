@@ -98,8 +98,5 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 A modified spec
 }
 \description{
-Create spec for strokeWidth encoding.
-}
-\seealso{
-\code{\link[=vl_encode_strokeWidth]{vl_encode_strokeWidth()}}
+Create spec for StrokeWidth.
 }

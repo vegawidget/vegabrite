@@ -66,8 +66,5 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 A modified spec
 }
 \description{
-Create spec for order encoding.
-}
-\seealso{
-\code{\link[=vl_encode_order]{vl_encode_order()}}
+Create spec for Order.
 }

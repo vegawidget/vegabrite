@@ -62,8 +62,5 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 A modified spec
 }
 \description{
-Create spec for latitude encoding.
-}
-\seealso{
-\code{\link[=vl_encode_latitude]{vl_encode_latitude()}}
+Create spec for Latitude.
 }

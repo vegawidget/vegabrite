@@ -98,8 +98,5 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 A modified spec
 }
 \description{
-Create spec for strokeOpacity encoding.
-}
-\seealso{
-\code{\link[=vl_encode_strokeOpacity]{vl_encode_strokeOpacity()}}
+Create spec for StrokeOpacity.
 }

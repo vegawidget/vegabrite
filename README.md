@@ -32,7 +32,7 @@ knitr::include_graphics("README-example-1.png")
 ``` r
 vl_chart() %>%
     vl_add_data(url = "https://vega.github.io/vega-editor/app/data/stocks.csv") %>%
-    vl_transform_filter("datum.symbol==='GOOG'") %>%
+    vl_filter("datum.symbol==='GOOG'") %>%
     vl_encode_x(field = "date", type = "temporal") %>%
     vl_encode_y(field = "price", type = "quantitative") %>%
     vl_mark_line() %>%

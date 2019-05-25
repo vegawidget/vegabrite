@@ -8,57 +8,57 @@ vl_encode_longitude(spec, aggregate = NULL, bin = NULL, field = NULL,
   timeUnit = NULL, title = NULL, type = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec}
+\item{spec}{A vega-lite spec.}
 
 \item{aggregate}{Aggregation function for the field
-(e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+(e.g., \code{mean}, \code{sum}, \code{median}, \code{min}, \code{max}, \code{count}).
 
-__Default value:__ `undefined` (None) (type = Aggregate)}
+\strong{Default value:} \code{undefined} (None) (type = Aggregate)}
 
-\item{bin}{A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+\item{bin}{A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y} channel are binned before they are imported into Vega-Lite (\code{"binned"}).
+\itemize{
+\item If \code{true}, default \href{https://vega.github.io/vega-lite/docs/bin.html}{binning parameters} will be applied.
+\item To indicate that the data for the \code{x} (or \code{y}) channel are already binned, you can set the \code{bin} property of the \code{x} (or \code{y}) channel to \code{"binned"} and map the bin-start field to \code{x} (or \code{y}) and the bin-end field to \code{x2} (or \code{y2}). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's \href{https://vega.github.io/vega-lite/docs/axis.html#ticks}{tickMinStep} property.
+}
 
-- If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+\strong{Default value:} \code{false} (type = Varies)}
 
-- To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+\item{field}{\strong{Required.} A string defining the name of the field from which to pull a data value
+or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{repeat} operator.
 
-__Default value:__ `false` (type = Varies)}
+\strong{Note:} Dots (\code{.}) and brackets (\code{[} and \code{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \code{"field": "foo['bar']"}).
+If field names contain dots or brackets but are not nested, you can use \code{\\} to escape dots and brackets (e.g., \code{"a\\.b"} and \code{"a\\[0\\]"}).
+See more details about escaping in the \href{https://vega.github.io/vega-lite/docs/field.html}{field documentation}.
 
-\item{field}{__Required.__ A string defining the name of the field from which to pull a data value
-or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+\strong{Note:} \code{field} is not required if \code{aggregate} is \code{count}. (type = Field)}
 
-__Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo['bar']"`).
-If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\[0\\]"`).
-See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+\item{timeUnit}{Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field.
+or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}.
 
-__Note:__ `field` is not required if `aggregate` is `count`. (type = Field)}
+\strong{Default value:} \code{undefined} (None) (type = TimeUnit)}
 
-\item{timeUnit}{Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
-or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+\item{title}{A title for the field. If \code{null}, the title will be removed.
 
-__Default value:__ `undefined` (None) (type = TimeUnit)}
+\strong{Default value:}  derived from the field's name and transformation function (\code{aggregate}, \code{bin} and \code{timeUnit}).  If the field has an aggregate function, the function is displayed as part of the title (e.g., \code{"Sum of Profit"}). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., \code{"Profit (binned)"}, \code{"Transaction Date (year-month)"}).  Otherwise, the title is simply the field name.
 
-\item{title}{A title for the field. If `null`, the title will be removed.
+\strong{Notes}:
+\enumerate{
+\item You can customize the default field title format by providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{fieldTitle} property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config} or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{fieldTitle function via the compile function's options}.
+\item If both field definition's \code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used. (type = string OR null)
+}}
 
-__Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+\item{type}{The encoded field's type of measurement (\code{"quantitative"}, \code{"temporal"}, \code{"ordinal"}, or \code{"nominal"}).
+It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io/vega-lite/docs/geoshape.html}{'geoshape'}.
 
-__Notes__:
-
-1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
-
-2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)}
-
-\item{type}{The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
-It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
-
-
-__Note:__
-
-- Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
-- Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
-- When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
-- When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
-- When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
-- Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = string)}
+\strong{Note:}
+\itemize{
+\item Data values for a temporal field can be either a date-time string (e.g., \code{"2015-03-07 12:32:17"}, \code{"17:01"}, \code{"2015-03-16"}. \code{"2015"}) or a timestamp number (e.g., \code{1552199579097}).
+\item Data \code{type} describes the semantics of the data rather than the primitive data types (\code{number}, \code{string}, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+\item When using with \href{https://vega.github.io/vega-lite/docs/bin.html}{bin}, the \code{type} property can be either \code{"quantitative"} (for using a linear bin scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{"ordinal" (for using an ordinal bin scale)}.
+\item When using with \href{https://vega.github.io/vega-lite/docs/timeunit.html}{timeUnit}, the \code{type} property can be either \code{"temporal"} (for using a temporal scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{"ordinal" (for using an ordinal scale)}.
+\item When using with \href{https://vega.github.io/vega-lite/docs/aggregate.html}{aggregate}, the \code{type} property refers to the post-aggregation data type. For example, we can calculate count \code{distinct} of a categorical field \code{"cat"} using \code{{"aggregate": "distinct", "field": "cat", "type": "quantitative"}}. The \code{"type"} of the aggregate output is \code{"quantitative"}.
+\item Secondary channels (e.g., \code{x2}, \code{y2}, \code{xError}, \code{yError}) do not have \code{type} as they have exactly the same type as their primary channels (e.g., \code{x}, \code{y}). (type = string)
+}}
 }
 \value{
 A modified spec

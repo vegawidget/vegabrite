@@ -62,8 +62,5 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 A modified spec
 }
 \description{
-Create spec for key encoding.
-}
-\seealso{
-\code{\link[=vl_encode_key]{vl_encode_key()}}
+Create spec for Key.
 }

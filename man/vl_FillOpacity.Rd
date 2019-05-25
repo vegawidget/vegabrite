@@ -98,8 +98,5 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 A modified spec
 }
 \description{
-Create spec for fillOpacity encoding.
-}
-\seealso{
-\code{\link[=vl_encode_fillOpacity]{vl_encode_fillOpacity()}}
+Create spec for FillOpacity.
 }

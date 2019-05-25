@@ -15,11 +15,11 @@ vl_add_data(spec, format = NULL, name = NULL, url = NULL,
 
 \item{name}{Provide a placeholder name and bind data at runtime. (type = string)}
 
-\item{url}{An URL from which to load the data set. Use the `format.type` property
+\item{url}{An URL from which to load the data set. Use the \code{format.type} property
 to ensure the loaded data is correctly parsed. (type = string)}
 
 \item{values}{The full data set, included inline. This can be an array of objects or primitive values, an object, or a string.
-Arrays of primitive values are ingested as objects with a `data` property. Strings are parsed according to the specified format type. (type = InlineDataset)}
+Arrays of primitive values are ingested as objects with a \code{data} property. Strings are parsed according to the specified format type. (type = InlineDataset)}
 }
 \value{
 A modified spec

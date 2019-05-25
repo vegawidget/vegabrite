@@ -21,6 +21,58 @@
   return(spec)
 }
 
+.add_param_to_encoding <- function(spec, .enc, param, value){
+  
+  if (is_composite(spec)) {
+    stop("Can't add encoding to composite spec; add encoding prior to combining specs")
+  }
+  if (hasName(spec, "spec")) {
+    inner_spec <- TRUE
+    outer_spec <- spec
+    spec <- outer_spec[["spec"]]
+  } else {
+    inner_spec <- FALSE
+  }
+  
+  if (!hasName(spec,"encoding") || !hasName(spec[["encoding"]], .enc)) {
+    stop("Error in adding ", param, " to ", .enc, 
+         "\nCould not find ",.enc," encoding in spec.",
+         "\nAdd encoding first before adding, ", param, ".")
+  }
+  
+  spec[["encoding"]][[.enc]][[param]] <- value
+  
+  if (inner_spec) {
+    outer_spec[["spec"]] <- spec
+    spec <- outer_spec
+  }
+  return(spec)
+}
+
+.add_sort_to_encoding <- function(spec, .enc, value){
+  
+  .add_param_to_encoding(spec, .enc, "sort", value)
+}
+
+.add_sort_obj_to_encoding <- function(spec, .enc, ...) {
+  
+  .add_sort_to_encoding(spec, .enc, list(...))
+ 
+}
+
+.add_axis_to_encoding <- function(spec, .enc, ...){
+  axis_params <- list(...)
+  if (hasName(axis_params,"remove") && axis_params[["remove"]]) {
+    .add_param_to_encoding(spec, .enc, "axis", NA)
+  } else {
+    axis_params[["remove"]] <- NULL
+    .add_param_to_encoding(spec, .enc, "axis", axis_params)
+  }
+}
+
+.add_scale_to_encoding <- function(spec, .enc, ...){
+  .add_param_to_encoding(spec, .enc, "scale", list(...))
+}
 
 #' vl_encoding
 #'

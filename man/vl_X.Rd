@@ -114,8 +114,5 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 A modified spec
 }
 \description{
-Create spec for x encoding.
-}
-\seealso{
-\code{\link[=vl_encode_x]{vl_encode_x()}}
+Create spec for X.
 }

@@ -278,200 +278,208 @@ vl_mark_geoshape(spec, align = NULL, angle = NULL, baseline = NULL,
 \arguments{
 \item{spec}{A vega-lite spec}
 
-\item{align}{The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`. (type = Align)}
+\item{align}{The horizontal alignment of the text. One of \code{"left"}, \code{"right"}, \code{"center"}. (type = Align)}
 
 \item{angle}{The rotation angle of the text, in degrees. (type = number)}
 
-\item{baseline}{The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+\item{baseline}{The vertical alignment of the text. One of \code{"top"}, \code{"middle"}, \code{"bottom"}.
 
-__Default value:__ `"middle"` (type = TextBaseline)}
+\strong{Default value:} \code{"middle"} (type = TextBaseline)}
 
 \item{binSpacing}{Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
 
-__Default value:__ `1` (type = number)}
+\strong{Default value:} \code{1} (type = number)}
 
 \item{clip}{Whether a mark be clipped to the enclosing group’s width and height. (type = boolean)}
 
-\item{color}{Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+\item{color}{Default color.  Note that \code{fill} and \code{stroke} have higher precedence than \code{color} and will override \code{color}.
 
-__Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+\strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
 
-__Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config). (type = string)}
+\strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. (type = string)}
 
 \item{cornerRadius}{The radius in pixels of rounded rectangle corners.
 
-__Default value:__ `0` (type = number)}
+\strong{Default value:} \code{0} (type = number)}
 
-\item{cursor}{The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used. (type = Cursor)}
+\item{cursor}{The mouse cursor used over the mark. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values}{CSS cursor type} can be used. (type = Cursor)}
 
-\item{dir}{The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+\item{dir}{The direction of the text. One of \code{"ltr"} (left-to-right) or \code{"rtl"} (right-to-left). This property determines on which side is truncated in response to the limit parameter.
 
-__Default value:__ `"ltr"` (type = Dir)}
+\strong{Default value:} \code{"ltr"} (type = Dir)}
 
-\item{dx}{The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property. (type = number)}
+\item{dx}{The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the \emph{angle} property. (type = number)}
 
-\item{dy}{The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property. (type = number)}
+\item{dy}{The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the \emph{angle} property. (type = number)}
 
 \item{ellipsis}{The ellipsis string for text truncated in response to the limit parameter.
 
-__Default value:__ `"…"` (type = string)}
+\strong{Default value:} \code{"…"} (type = string)}
 
-\item{fill}{Default Fill Color.  This has higher precedence than `config.color`
+\item{fill}{Default Fill Color.  This has higher precedence than \code{config.color}
 
-__Default value:__ (None) (type = Color)}
+\strong{Default value:} (None) (type = Color)}
 
-\item{fillOpacity}{The fill opacity (value between [0,1]).
+\item{fillOpacity}{The fill opacity (value between \link{0,1}).
 
-__Default value:__ `1` (type = number)}
+\strong{Default value:} \code{1} (type = number)}
 
 \item{filled}{Whether the mark's color should be used as fill color instead of stroke color.
 
-__Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+\strong{Default value:} \code{false} for \code{point}, \code{line} and \code{rule}; otherwise, \code{true}.
 
-__Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config). (type = boolean)}
+\strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. (type = boolean)}
 
-\item{font}{The typeface to set the text in (e.g., `"Helvetica Neue"`). (type = string)}
+\item{font}{The typeface to set the text in (e.g., \code{"Helvetica Neue"}). (type = string)}
 
 \item{fontSize}{The font size, in pixels. (type = number)}
 
-\item{fontStyle}{The font style (e.g., `"italic"`). (type = FontStyle)}
+\item{fontStyle}{The font style (e.g., \code{"italic"}). (type = FontStyle)}
 
 \item{fontWeight}{The font weight.
-This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`). (type = FontWeight)}
+This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}). (type = FontWeight)}
 
 \item{href}{A URL to load upon mouse click. If defined, the mark acts as a hyperlink. (type = string)}
 
 \item{interpolate}{The line interpolation method to use for line and area marks. One of the following:
-- `"linear"`: piecewise linear segments, as in a polyline.
-- `"linear-closed"`: close the linear segments to form a polygon.
-- `"step"`: alternate between horizontal and vertical segments, as in a step function.
-- `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
-- `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
-- `"basis"`: a B-spline, with control point duplication on the ends.
-- `"basis-open"`: an open B-spline; may not intersect the start or end.
-- `"basis-closed"`: a closed B-spline, as in a loop.
-- `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
-- `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
-- `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
-- `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
-- `"monotone"`: cubic interpolation that preserves monotonicity in y. (type = Interpolate)}
+\itemize{
+\item \code{"linear"}: piecewise linear segments, as in a polyline.
+\item \code{"linear-closed"}: close the linear segments to form a polygon.
+\item \code{"step"}: alternate between horizontal and vertical segments, as in a step function.
+\item \code{"step-before"}: alternate between vertical and horizontal segments, as in a step function.
+\item \code{"step-after"}: alternate between horizontal and vertical segments, as in a step function.
+\item \code{"basis"}: a B-spline, with control point duplication on the ends.
+\item \code{"basis-open"}: an open B-spline; may not intersect the start or end.
+\item \code{"basis-closed"}: a closed B-spline, as in a loop.
+\item \code{"cardinal"}: a Cardinal spline, with control point duplication on the ends.
+\item \code{"cardinal-open"}: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+\item \code{"cardinal-closed"}: a closed Cardinal spline, as in a loop.
+\item \code{"bundle"}: equivalent to basis, except the tension parameter is used to straighten the spline.
+\item \code{"monotone"}: cubic interpolation that preserves monotonicity in y. (type = Interpolate)
+}}
 
 \item{limit}{The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
 
-__Default value:__ `0`, indicating no limit (type = number)}
+\strong{Default value:} \code{0}, indicating no limit (type = number)}
 
 \item{line}{A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
+\itemize{
+\item If this value is an empty object (\code{{}}) or \code{true}, lines with default properties will be used.
+\item If this value is \code{false}, no lines would be automatically added to area marks.
+}
 
-- If this value is an empty object (`{}`) or `true`, lines with default properties will be used.
+\strong{Default value:} \code{false}. (type = Varies)}
 
-- If this value is `false`, no lines would be automatically added to area marks.
+\item{opacity}{The overall opacity (value between \link{0,1}).
 
-__Default value:__ `false`. (type = Varies)}
+\strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick}, \code{circle}, or \code{square} marks or layered \code{bar} charts and \code{1} otherwise. (type = number)}
 
-\item{opacity}{The overall opacity (value between [0,1]).
-
-__Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise. (type = number)}
-
-\item{order}{For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources. (type = null OR boolean)}
+\item{order}{For line and trail marks, this \code{order} property can be set to \code{null} or \code{false} to make the lines use the original order in the data sources. (type = null OR boolean)}
 
 \item{orient}{The orientation of a non-stacked bar, tick, area, and line charts.
 The value is either horizontal (default) or vertical.
-- For bar, rule and tick, this determines whether the size of the bar and tick
+\itemize{
+\item For bar, rule and tick, this determines whether the size of the bar and tick
 should be applied to x or y dimension.
-- For area, this property determines the orient property of the Vega output.
-- For line and trail marks, this property determines the sort order of the points in the line
-if `config.sortLineBy` is not specified.
+\item For area, this property determines the orient property of the Vega output.
+\item For line and trail marks, this property determines the sort order of the points in the line
+if \code{config.sortLineBy} is not specified.
 For stacked charts, this is always determined by the orientation of the stack;
-therefore explicitly specified value will be ignored. (type = Orientation)}
+therefore explicitly specified value will be ignored. (type = Orientation)
+}}
 
 \item{point}{A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+\itemize{
+\item If this property is \code{"transparent"}, transparent points will be used (for enhancing tooltips and selections).
+\item If this property is an empty object (\code{{}}) or \code{true}, filled points with default properties will be used.
+\item If this property is \code{false}, no points would be automatically added to line or area marks.
+}
 
-- If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+\strong{Default value:} \code{false}. (type = Varies)}
 
-- If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
-
-- If this property is `false`, no points would be automatically added to line or area marks.
-
-__Default value:__ `false`. (type = Varies)}
-
-\item{radius}{Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties. (type = number)}
+\item{radius}{Polar coordinate radial offset, in pixels, of the text label from the origin determined by the \code{x} and \code{y} properties. (type = number)}
 
 \item{shape}{Shape of the point marks. Supported values include:
-- plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
-- the line symbol `"stroke"`
-- centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
-- a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+\itemize{
+\item plotting shapes: \code{"circle"}, \code{"square"}, \code{"cross"}, \code{"diamond"}, \code{"triangle-up"}, \code{"triangle-down"}, \code{"triangle-right"}, or \code{"triangle-left"}.
+\item the line symbol \code{"stroke"}
+\item centered directional shapes \code{"arrow"}, \code{"wedge"}, or \code{"triangle"}
+\item a custom \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path string} (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+}
 
-__Default value:__ `"circle"` (type = string)}
+\strong{Default value:} \code{"circle"} (type = string)}
 
 \item{size}{Default size for marks.
-- For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
-- For `bar`, this represents the band size of the bar, in pixels.
-- For `text`, this represents the font size, in pixels.
+\itemize{
+\item For \code{point}/\code{circle}/\code{square}, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+\item For \code{bar}, this represents the band size of the bar, in pixels.
+\item For \code{text}, this represents the font size, in pixels.
+}
 
-__Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks. (type = number)}
+\strong{Default value:} \code{30} for point, circle, square marks; \code{rangeStep} - 1 for bar marks with discrete dimensions; \code{5} for bar marks with continuous dimensions; \code{11} for text marks. (type = number)}
 
-\item{stroke}{Default Stroke Color.  This has higher precedence than `config.color`
+\item{stroke}{Default Stroke Color.  This has higher precedence than \code{config.color}
 
-__Default value:__ (None) (type = Color)}
+\strong{Default value:} (None) (type = Color)}
 
-\item{strokeCap}{The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+\item{strokeCap}{The stroke cap for line ending style. One of \code{"butt"}, \code{"round"}, or \code{"square"}.
 
-__Default value:__ `"square"` (type = StrokeCap)}
+\strong{Default value:} \code{"square"} (type = StrokeCap)}
 
 \item{strokeDash}{An array of alternating stroke, space lengths for creating dashed or dotted lines. (type = array)}
 
 \item{strokeDashOffset}{The offset (in pixels) into which to begin drawing with the stroke dash array. (type = number)}
 
-\item{strokeJoin}{The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+\item{strokeJoin}{The stroke line join method. One of \code{"miter"}, \code{"round"} or \code{"bevel"}.
 
-__Default value:__ `"miter"` (type = StrokeJoin)}
+\strong{Default value:} \code{"miter"} (type = StrokeJoin)}
 
 \item{strokeMiterLimit}{The miter limit at which to bevel a line join. (type = number)}
 
-\item{strokeOpacity}{The stroke opacity (value between [0,1]).
+\item{strokeOpacity}{The stroke opacity (value between \link{0,1}).
 
-__Default value:__ `1` (type = number)}
+\strong{Default value:} \code{1} (type = number)}
 
 \item{strokeWidth}{The stroke width, in pixels. (type = number)}
 
-\item{style}{A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the [style configuration](https://vega.github.io/vega-lite/docs/mark.html#style-config). If style is an array, later styles will override earlier styles. Any [mark properties](https://vega.github.io/vega-lite/docs/encoding.html#mark-prop) explicitly defined within the `encoding` will override a style default.
+\item{style}{A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style configuration}. If style is an array, later styles will override earlier styles. Any \href{https://vega.github.io/vega-lite/docs/encoding.html#mark-prop}{mark properties} explicitly defined within the \code{encoding} will override a style default.
 
-__Default value:__ The mark's name.  For example, a bar mark will have style `"bar"` by default.
-__Note:__ Any specified style will augment the default style. For example, a bar mark with `"style": "foo"` will receive from `config.style.bar` and `config.style.foo` (the specified style `"foo"` has higher precedence). (type = Varies)}
+\strong{Default value:} The mark's name.  For example, a bar mark will have style \code{"bar"} by default.
+\strong{Note:} Any specified style will augment the default style. For example, a bar mark with \code{"style": "foo"} will receive from \code{config.style.bar} and \code{config.style.foo} (the specified style \code{"foo"} has higher precedence). (type = Varies)}
 
 \item{tension}{Depending on the interpolation type, sets the tension parameter (for line and area marks). (type = number)}
 
-\item{text}{Placeholder text if the `text` channel is not specified (type = string)}
+\item{text}{Placeholder text if the \code{text} channel is not specified (type = string)}
 
-\item{theta}{Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north". (type = number)}
+\item{theta}{Polar coordinate angle, in radians, of the text label from the origin determined by the \code{x} and \code{y} properties. Values for \code{theta} follow the same convention of \code{arc} mark \code{startAngle} and \code{endAngle} properties: angles are measured in radians, with \code{0} indicating "north". (type = number)}
 
 \item{thickness}{Thickness of the tick mark.
 
-__Default value:__  `1` (type = number)}
+\strong{Default value:}  \code{1} (type = number)}
 
 \item{tooltip}{The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
-
-- If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
-- If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
-- If set to `null`, then no tooltip will be used. (type = Varies)}
+\itemize{
+\item If \code{tooltip} is \code{{"content": "encoding"}}, then all fields from \code{encoding} will be used.
+\item If \code{tooltip} is \code{{"content": "data"}}, then all fields that appear in the highlighted data point will be used.
+\item If set to \code{null}, then no tooltip will be used. (type = Varies)
+}}
 
 \item{type}{The mark type. This could a primitive mark type
-(one of `"bar"`, `"circle"`, `"square"`, `"tick"`, `"line"`,
-`"area"`, `"point"`, `"geoshape"`, `"rule"`, and `"text"`)
-or a composite mark type (`"boxplot"`, `"errorband"`, `"errorbar"`). (type = Mark)}
+(one of \code{"bar"}, \code{"circle"}, \code{"square"}, \code{"tick"}, \code{"line"},
+\code{"area"}, \code{"point"}, \code{"geoshape"}, \code{"rule"}, and \code{"text"})
+or a composite mark type (\code{"boxplot"}, \code{"errorband"}, \code{"errorbar"}). (type = Mark)}
 
-\item{x}{X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`. (type = number)}
+\item{x}{X coordinates of the marks, or width of horizontal \code{"bar"} and \code{"area"} without \code{x2}. (type = number)}
 
-\item{x2}{X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`. (type = number)}
+\item{x2}{X2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}. (type = number)}
 
 \item{x2Offset}{Offset for x2-position. (type = number)}
 
 \item{xOffset}{Offset for x-position. (type = number)}
 
-\item{y}{Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2` (type = number)}
+\item{y}{Y coordinates of the marks, or height of vertical \code{"bar"} and \code{"area"} without \code{y2} (type = number)}
 
-\item{y2}{Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`. (type = number)}
+\item{y2}{Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}. (type = number)}
 
 \item{y2Offset}{Offset for y2-position. (type = number)}
 

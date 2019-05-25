@@ -1,8 +1,7 @@
-
 #' vl_encode_color
 #' 
 #' Add encoding for color to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -83,12 +82,10 @@ vl_encode_color <- function(spec, aggregate = NULL, bin = NULL, condition = NULL
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'color'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_detail
+} #' vl_encode_detail
 #' 
 #' Add encoding for detail to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -141,12 +138,10 @@ vl_encode_detail <- function(spec, aggregate = NULL, bin = NULL, field = NULL, t
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'detail'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_fill
+} #' vl_encode_fill
 #' 
 #' Add encoding for fill to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -227,12 +222,10 @@ vl_encode_fill <- function(spec, aggregate = NULL, bin = NULL, condition = NULL,
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'fill'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_fillOpacity
+} #' vl_encode_fillOpacity
 #' 
 #' Add encoding for fillOpacity to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -313,12 +306,10 @@ vl_encode_fillOpacity <- function(spec, aggregate = NULL, bin = NULL, condition 
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'fillOpacity'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_href
+} #' vl_encode_href
 #' 
 #' Add encoding for href to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -399,12 +390,10 @@ vl_encode_href <- function(spec, aggregate = NULL, bin = NULL, condition = NULL,
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'href'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_key
+} #' vl_encode_key
 #' 
 #' Add encoding for key to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -457,12 +446,10 @@ vl_encode_key <- function(spec, aggregate = NULL, bin = NULL, field = NULL, time
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'key'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_latitude
+} #' vl_encode_latitude
 #' 
 #' Add encoding for latitude to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -515,12 +502,10 @@ vl_encode_latitude <- function(spec, aggregate = NULL, bin = NULL, field = NULL,
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'latitude'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_latitude2
+} #' vl_encode_latitude2
 #' 
 #' Add encoding for latitude2 to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -561,12 +546,10 @@ vl_encode_latitude2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'latitude2'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_longitude
+} #' vl_encode_longitude
 #' 
 #' Add encoding for longitude to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -619,12 +602,10 @@ vl_encode_longitude <- function(spec, aggregate = NULL, bin = NULL, field = NULL
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'longitude'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_longitude2
+} #' vl_encode_longitude2
 #' 
 #' Add encoding for longitude2 to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -665,12 +646,10 @@ vl_encode_longitude2 <- function(spec, aggregate = NULL, bin = NULL, field = NUL
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'longitude2'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_opacity
+} #' vl_encode_opacity
 #' 
 #' Add encoding for opacity to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -751,12 +730,10 @@ vl_encode_opacity <- function(spec, aggregate = NULL, bin = NULL, condition = NU
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'opacity'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_order
+} #' vl_encode_order
 #' 
 #' Add encoding for order to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -811,12 +788,10 @@ vl_encode_order <- function(spec, aggregate = NULL, bin = NULL, field = NULL, so
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'order'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_shape
+} #' vl_encode_shape
 #' 
 #' Add encoding for shape to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -897,12 +872,10 @@ vl_encode_shape <- function(spec, aggregate = NULL, bin = NULL, condition = NULL
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'shape'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_size
+} #' vl_encode_size
 #' 
 #' Add encoding for size to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -983,12 +956,10 @@ vl_encode_size <- function(spec, aggregate = NULL, bin = NULL, condition = NULL,
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'size'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_stroke
+} #' vl_encode_stroke
 #' 
 #' Add encoding for stroke to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1069,12 +1040,10 @@ vl_encode_stroke <- function(spec, aggregate = NULL, bin = NULL, condition = NUL
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'stroke'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_strokeOpacity
+} #' vl_encode_strokeOpacity
 #' 
 #' Add encoding for strokeOpacity to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1155,12 +1124,10 @@ vl_encode_strokeOpacity <- function(spec, aggregate = NULL, bin = NULL, conditio
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'strokeOpacity'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_strokeWidth
+} #' vl_encode_strokeWidth
 #' 
 #' Add encoding for strokeWidth to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1241,12 +1208,10 @@ vl_encode_strokeWidth <- function(spec, aggregate = NULL, bin = NULL, condition 
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'strokeWidth'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_text
+} #' vl_encode_text
 #' 
 #' Add encoding for text to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1305,12 +1270,10 @@ vl_encode_text <- function(spec, aggregate = NULL, bin = NULL, condition = NULL,
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'text'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_tooltip
+} #' vl_encode_tooltip
 #' 
 #' Add encoding for tooltip to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1369,12 +1332,10 @@ vl_encode_tooltip <- function(spec, aggregate = NULL, bin = NULL, condition = NU
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'tooltip'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_x
+} #' vl_encode_x
 #' 
 #' Add encoding for x to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1468,12 +1429,10 @@ vl_encode_x <- function(spec, aggregate = NULL, axis = NULL, bin = NULL, field =
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'x'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_x2
+} #' vl_encode_x2
 #' 
 #' Add encoding for x2 to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1515,12 +1474,10 @@ vl_encode_x2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL, timeU
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'x2'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_xError
+} #' vl_encode_xError
 #' 
 #' Add encoding for xError to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1562,12 +1519,10 @@ vl_encode_xError <- function(spec, aggregate = NULL, bin = NULL, field = NULL, t
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'xError'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_xError2
+} #' vl_encode_xError2
 #' 
 #' Add encoding for xError2 to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1609,12 +1564,10 @@ vl_encode_xError2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL, 
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'xError2'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_y
+} #' vl_encode_y
 #' 
 #' Add encoding for y to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1708,12 +1661,10 @@ vl_encode_y <- function(spec, aggregate = NULL, axis = NULL, bin = NULL, field =
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'y'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_y2
+} #' vl_encode_y2
 #' 
 #' Add encoding for y2 to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1755,12 +1706,10 @@ vl_encode_y2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL, timeU
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'y2'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_yError
+} #' vl_encode_yError
 #' 
 #' Add encoding for yError to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1802,12 +1751,10 @@ vl_encode_yError <- function(spec, aggregate = NULL, bin = NULL, field = NULL, t
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'yError'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_encode_yError2
+} #' vl_encode_yError2
 #' 
 #' Add encoding for yError2 to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1849,11 +1796,9 @@ vl_encode_yError2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL, 
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'yError2'))
   rlang::exec(.add_encoding, !!!args_out)
-}
- 
-#' vl_Color
+} #' vl_Color
 #' 
-#' Create spec for color encoding.
+#' Create spec for Color.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1928,18 +1873,14 @@ vl_encode_yError2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL, 
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = string OR null)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_color()]
 vl_Color <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Detail
+} #' vl_Detail
 #' 
-#' Create spec for detail encoding.
+#' Create spec for Detail.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1986,18 +1927,14 @@ vl_Color <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NUL
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_detail()]
 vl_Detail <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Fill
+} #' vl_Fill
 #' 
-#' Create spec for fill encoding.
+#' Create spec for Fill.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2072,18 +2009,14 @@ vl_Detail <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NUL
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = string OR null)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_fill()]
 vl_Fill <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_FillOpacity
+} #' vl_FillOpacity
 #' 
-#' Create spec for fillOpacity encoding.
+#' Create spec for FillOpacity.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2158,18 +2091,14 @@ vl_Fill <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_fillOpacity()]
 vl_FillOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Href
+} #' vl_Href
 #' 
-#' Create spec for href encoding.
+#' Create spec for Href.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2244,18 +2173,14 @@ vl_FillOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = string)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_href()]
 vl_Href <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Key
+} #' vl_Key
 #' 
-#' Create spec for key encoding.
+#' Create spec for Key.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2302,18 +2227,14 @@ vl_Href <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_key()]
 vl_Key <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Latitude
+} #' vl_Latitude
 #' 
-#' Create spec for latitude encoding.
+#' Create spec for Latitude.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2360,18 +2281,14 @@ vl_Key <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, 
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = string)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_latitude()]
 vl_Latitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Latitude2
+} #' vl_Latitude2
 #' 
-#' Create spec for latitude2 encoding.
+#' Create spec for Latitude2.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2406,18 +2323,14 @@ vl_Latitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = N
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_latitude2()]
 vl_Latitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Longitude
+} #' vl_Longitude
 #' 
-#' Create spec for longitude encoding.
+#' Create spec for Longitude.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2464,18 +2377,14 @@ vl_Latitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = 
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = string)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_longitude()]
 vl_Longitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Longitude2
+} #' vl_Longitude2
 #' 
-#' Create spec for longitude2 encoding.
+#' Create spec for Longitude2.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2510,18 +2419,14 @@ vl_Longitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_longitude2()]
 vl_Longitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Opacity
+} #' vl_Opacity
 #' 
-#' Create spec for opacity encoding.
+#' Create spec for Opacity.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2596,18 +2501,14 @@ vl_Longitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit =
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_opacity()]
 vl_Opacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Order
+} #' vl_Order
 #' 
-#' Create spec for order encoding.
+#' Create spec for Order.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2656,18 +2557,14 @@ vl_Opacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = N
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_order()]
 vl_Order <- function(aggregate = NULL, bin = NULL, field = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Shape
+} #' vl_Shape
 #' 
-#' Create spec for shape encoding.
+#' Create spec for Shape.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2742,18 +2639,14 @@ vl_Order <- function(aggregate = NULL, bin = NULL, field = NULL, sort = NULL, ti
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = string)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_shape()]
 vl_Shape <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Size
+} #' vl_Size
 #' 
-#' Create spec for size encoding.
+#' Create spec for Size.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2828,18 +2721,14 @@ vl_Shape <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NUL
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_size()]
 vl_Size <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Stroke
+} #' vl_Stroke
 #' 
-#' Create spec for stroke encoding.
+#' Create spec for Stroke.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2914,18 +2803,14 @@ vl_Size <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = string OR null)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_stroke()]
 vl_Stroke <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_StrokeOpacity
+} #' vl_StrokeOpacity
 #' 
-#' Create spec for strokeOpacity encoding.
+#' Create spec for StrokeOpacity.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3000,18 +2885,14 @@ vl_Stroke <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NU
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_strokeOpacity()]
 vl_StrokeOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_StrokeWidth
+} #' vl_StrokeWidth
 #' 
-#' Create spec for strokeWidth encoding.
+#' Create spec for StrokeWidth.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3086,18 +2967,14 @@ vl_StrokeOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, fie
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_strokeWidth()]
 vl_StrokeWidth <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Text
+} #' vl_Text
 #' 
-#' Create spec for text encoding.
+#' Create spec for Text.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3150,18 +3027,14 @@ vl_StrokeWidth <- function(aggregate = NULL, bin = NULL, condition = NULL, field
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = string OR number OR boolean)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_text()]
 vl_Text <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Tooltip
+} #' vl_Tooltip
 #' 
-#' Create spec for tooltip encoding.
+#' Create spec for Tooltip.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3214,18 +3087,14 @@ vl_Text <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = string OR number OR boolean)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_tooltip()]
 vl_Tooltip <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_X
+} #' vl_X
 #' 
-#' Create spec for x encoding.
+#' Create spec for X.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3313,18 +3182,14 @@ vl_Tooltip <- function(aggregate = NULL, bin = NULL, condition = NULL, field = N
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = Varies)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_x()]
 vl_X <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_X2
+} #' vl_X2
 #' 
-#' Create spec for x2 encoding.
+#' Create spec for X2.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3360,18 +3225,14 @@ vl_X <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = Varies)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_x2()]
 vl_X2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_XError
+} #' vl_XError
 #' 
-#' Create spec for xError encoding.
+#' Create spec for XError.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3407,18 +3268,14 @@ vl_X2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, t
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_xError()]
 vl_XError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_XError2
+} #' vl_XError2
 #' 
-#' Create spec for xError2 encoding.
+#' Create spec for XError2.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3454,18 +3311,14 @@ vl_XError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NUL
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_xError2()]
 vl_XError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Y
+} #' vl_Y
 #' 
-#' Create spec for y encoding.
+#' Create spec for Y.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3553,18 +3406,14 @@ vl_XError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NU
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = Varies)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_y()]
 vl_Y <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_Y2
+} #' vl_Y2
 #' 
-#' Create spec for y2 encoding.
+#' Create spec for Y2.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3600,18 +3449,14 @@ vl_Y <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = Varies)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_y2()]
 vl_Y2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_YError
+} #' vl_YError
 #' 
-#' Create spec for yError encoding.
+#' Create spec for YError.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3647,18 +3492,14 @@ vl_Y2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, t
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_yError()]
 vl_YError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_YError2
+} #' vl_YError2
 #' 
-#' Create spec for yError2 encoding.
+#' Create spec for YError2.
 #' @param aggregate Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3694,15 +3535,896 @@ vl_YError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NUL
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
-#' @md
-#' @seealso [vl_encode_yError2()]
 vl_YError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
+} #' vl_bin_color
+#' 
+#' Add bin transform to color encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_color <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'color'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_detail
+#' 
+#' Add bin transform to detail encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_detail <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'detail'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_fill
+#' 
+#' Add bin transform to fill encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_fill <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'fill'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_fillOpacity
+#' 
+#' Add bin transform to fillOpacity encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_fillOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'fillOpacity'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_href
+#' 
+#' Add bin transform to href encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_href <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'href'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_key
+#' 
+#' Add bin transform to key encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_key <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'key'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_latitude
+#' 
+#' Add bin transform to latitude encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_latitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'latitude'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_latitude2
+#' 
+#' Add bin transform to latitude2 encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_latitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'latitude2'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_longitude
+#' 
+#' Add bin transform to longitude encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_longitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'longitude'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_longitude2
+#' 
+#' Add bin transform to longitude2 encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_longitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'longitude2'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_opacity
+#' 
+#' Add bin transform to opacity encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_opacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'opacity'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_order
+#' 
+#' Add bin transform to order encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_order <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'order'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_shape
+#' 
+#' Add bin transform to shape encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_shape <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'shape'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_size
+#' 
+#' Add bin transform to size encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_size <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'size'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_stroke
+#' 
+#' Add bin transform to stroke encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_stroke <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'stroke'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_strokeOpacity
+#' 
+#' Add bin transform to strokeOpacity encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_strokeOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_strokeWidth
+#' 
+#' Add bin transform to strokeWidth encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_strokeWidth <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'strokeWidth'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_text
+#' 
+#' Add bin transform to text encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_text <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'text'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_tooltip
+#' 
+#' Add bin transform to tooltip encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_tooltip <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'tooltip'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_x
+#' 
+#' Add bin transform to x encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_x <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'x'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_x2
+#' 
+#' Add bin transform to x2 encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_x2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'x2'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_xError
+#' 
+#' Add bin transform to xError encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_xError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'xError'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_xError2
+#' 
+#' Add bin transform to xError2 encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_xError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'xError2'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_y
+#' 
+#' Add bin transform to y encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_y <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'y'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_y2
+#' 
+#' Add bin transform to y2 encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_y2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'y2'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_yError
+#' 
+#' Add bin transform to yError encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_yError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'yError'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_yError2
+#' 
+#' Add bin transform to yError2 encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'yError2'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_stack_x
+#' 
+#' Add stack transform to x encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param stack one of 'zero', 'center', 'normalize', NA
+#' @return A modified spec
+#' @export
+vl_stack_x <- function(spec, stack = c('zero', 'center', 'normalize', NA)) {
+  args_out <- list(spec = spec, .enc = 'x', stack = match.arg(stack))
+  rlang::exec(.add_stack_to_encoding, !!!args_out)
+} #' vl_stack_y
+#' 
+#' Add stack transform to y encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param stack one of 'zero', 'center', 'normalize', NA
+#' @return A modified spec
+#' @export
+vl_stack_y <- function(spec, stack = c('zero', 'center', 'normalize', NA)) {
+  args_out <- list(spec = spec, .enc = 'y', stack = match.arg(stack))
+  rlang::exec(.add_stack_to_encoding, !!!args_out)
+} 
 #' vl_mark
 #' 
 #' Add a mark to a vega-lite spec.
@@ -4012,9 +4734,8 @@ vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, baseline = NULL, 
   args_out <- c(args_out, list(.mark = 'geoshape'))
   rlang::exec(.add_mark, !!!args_out)
 }
- 
-#' vl_add_data
-#' 
+ #' vl_add_data
+#'
 #' Add data to a vega-lite spec.
 #' @param spec A vega-lite spec
 #' @param format An object that specifies the format for parsing the data. (type = DataFormat)
@@ -4031,9 +4752,7 @@ vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = N
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   rlang::exec(.add_data, !!!args_out)
-}
- 
-#' vl_transform_filter
+} #' vl_transform_filter
 #' 
 #' Add FilterTransform to a vega-lite spec.
 #' @param spec A vega-lite spec
@@ -4056,15 +4775,13 @@ vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = N
 #' 4) a logical operand that combines (1), (2), or (3). (type = LogicalOperand<Predicate>)
 #' @return A modified spec
 #' @export
-vl_transform_filter <- function(spec, filter = NULL) {
+vl_filter <- function(spec, filter = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'filter'))
   rlang::exec(.add_transform, !!!args_out)
-}
- 
-#' vl_transform_calculate
+} #' vl_transform_calculate
 #' 
 #' Add CalculateTransform to a vega-lite spec.
 #' @param spec A vega-lite spec
@@ -4072,15 +4789,13 @@ vl_transform_filter <- function(spec, filter = NULL) {
 #' @param calculate A [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string. Use the variable `datum` to refer to the current data object. (type = string)
 #' @return A modified spec
 #' @export
-vl_transform_calculate <- function(spec, as = NULL, calculate = NULL) {
+vl_calculate <- function(spec, as = NULL, calculate = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'calculate'))
   rlang::exec(.add_transform, !!!args_out)
-}
- 
-#' vl_transform_lookup
+} #' vl_transform_lookup
 #' 
 #' Add LookupTransform to a vega-lite spec.
 #' @param spec A vega-lite spec
@@ -4094,15 +4809,13 @@ vl_transform_calculate <- function(spec, as = NULL, calculate = NULL) {
 #' @param lookup Key in primary data source. (type = string)
 #' @return A modified spec
 #' @export
-vl_transform_lookup <- function(spec, as = NULL, default = NULL, from = NULL, lookup = NULL) {
+vl_lookup <- function(spec, as = NULL, default = NULL, from = NULL, lookup = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'lookup'))
   rlang::exec(.add_transform, !!!args_out)
-}
- 
-#' vl_transform_bin
+} #' vl_transform_bin
 #' 
 #' Add BinTransform to a vega-lite spec.
 #' @param spec A vega-lite spec
@@ -4111,15 +4824,13 @@ vl_transform_lookup <- function(spec, as = NULL, default = NULL, from = NULL, lo
 #' @param field The data field to bin. (type = string)
 #' @return A modified spec
 #' @export
-vl_transform_bin <- function(spec, as = NULL, bin = NULL, field = NULL) {
+vl_bin <- function(spec, as = NULL, bin = NULL, field = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'bin'))
   rlang::exec(.add_transform, !!!args_out)
-}
- 
-#' vl_transform_timeunit
+} #' vl_transform_timeunit
 #' 
 #' Add TimeUnitTransform to a vega-lite spec.
 #' @param spec A vega-lite spec
@@ -4128,15 +4839,13 @@ vl_transform_bin <- function(spec, as = NULL, bin = NULL, field = NULL) {
 #' @param timeUnit The timeUnit. (type = TimeUnit)
 #' @return A modified spec
 #' @export
-vl_transform_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL) {
+vl_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'timeunit'))
   rlang::exec(.add_transform, !!!args_out)
-}
- 
-#' vl_transform_impute
+} #' vl_transform_impute
 #' 
 #' Add ImputeTransform to a vega-lite spec.
 #' @param spec A vega-lite spec
@@ -4161,15 +4870,13 @@ vl_transform_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL
 #' @param value The field value to use when the imputation `method` is `"value"`. (type = Varies)
 #' @return A modified spec
 #' @export
-vl_transform_impute <- function(spec, frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL) {
+vl_impute <- function(spec, frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'impute'))
   rlang::exec(.add_transform, !!!args_out)
-}
- 
-#' vl_transform_aggregate
+} #' vl_transform_aggregate
 #' 
 #' Add AggregateTransform to a vega-lite spec.
 #' @param spec A vega-lite spec
@@ -4177,15 +4884,13 @@ vl_transform_impute <- function(spec, frame = NULL, groupby = NULL, impute = NUL
 #' @param groupby The data fields to group by. If not specified, a single group containing all data objects will be used. (type = array)
 #' @return A modified spec
 #' @export
-vl_transform_aggregate <- function(spec, aggregate = NULL, groupby = NULL) {
+vl_aggregate <- function(spec, aggregate = NULL, groupby = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'aggregate'))
   rlang::exec(.add_transform, !!!args_out)
-}
- 
-#' vl_transform_window
+} #' vl_transform_window
 #' 
 #' Add WindowTransform to a vega-lite spec.
 #' @param spec A vega-lite spec
@@ -4200,15 +4905,13 @@ vl_transform_aggregate <- function(spec, aggregate = NULL, groupby = NULL) {
 #' @param window The definition of the fields in the window, and what calculations to use. (type = array)
 #' @return A modified spec
 #' @export
-vl_transform_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL) {
+vl_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'window'))
   rlang::exec(.add_transform, !!!args_out)
-}
- 
-#' vl_transform_joinaggregate
+} #' vl_transform_joinaggregate
 #' 
 #' Add JoinAggregateTransform to a vega-lite spec.
 #' @param spec A vega-lite spec
@@ -4216,15 +4919,13 @@ vl_transform_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers 
 #' @param joinaggregate The definition of the fields in the join aggregate, and what calculations to use. (type = array)
 #' @return A modified spec
 #' @export
-vl_transform_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL) {
+vl_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'joinaggregate'))
   rlang::exec(.add_transform, !!!args_out)
-}
- 
-#' vl_transform_stack
+} #' vl_transform_stack
 #' 
 #' Add StackTransform to a vega-lite spec.
 #' @param spec A vega-lite spec
@@ -4239,15 +4940,13 @@ vl_transform_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NUL
 #' @param stack The field which is stacked. (type = string)
 #' @return A modified spec
 #' @export
-vl_transform_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL) {
+vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'stack'))
   rlang::exec(.add_transform, !!!args_out)
-}
- 
-#' vl_transform_flatten
+} #' vl_transform_flatten
 #' 
 #' Add FlattenTransform to a vega-lite spec.
 #' @param spec A vega-lite spec
@@ -4260,15 +4959,13 @@ vl_transform_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, s
 #' the longest array will be used with `null` values added for missing entries. (type = array)
 #' @return A modified spec
 #' @export
-vl_transform_flatten <- function(spec, as = NULL, flatten = NULL) {
+vl_flatten <- function(spec, as = NULL, flatten = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'flatten'))
   rlang::exec(.add_transform, !!!args_out)
-}
- 
-#' vl_transform_fold
+} #' vl_transform_fold
 #' 
 #' Add FoldTransform to a vega-lite spec.
 #' @param spec A vega-lite spec
@@ -4277,15 +4974,13 @@ vl_transform_flatten <- function(spec, as = NULL, flatten = NULL) {
 #' @param fold An array of data fields indicating the properties to fold. (type = array)
 #' @return A modified spec
 #' @export
-vl_transform_fold <- function(spec, as = NULL, fold = NULL) {
+vl_fold <- function(spec, as = NULL, fold = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'fold'))
   rlang::exec(.add_transform, !!!args_out)
-}
- 
-#' vl_transform_sample
+} #' vl_transform_sample
 #' 
 #' Add SampleTransform to a vega-lite spec.
 #' @param spec A vega-lite spec
@@ -4294,15 +4989,13 @@ vl_transform_fold <- function(spec, as = NULL, fold = NULL) {
 #' __Default value:__ `1000` (type = number)
 #' @return A modified spec
 #' @export
-vl_transform_sample <- function(spec, sample = NULL) {
+vl_sample <- function(spec, sample = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'sample'))
   rlang::exec(.add_transform, !!!args_out)
-}
- 
-#' vl_FilterTransform
+} #' vl_FilterTransform
 #' 
 #' Create spec for FilterTransform.
 #' @param filter The `filter` property must be one of the predicate definitions:
@@ -4324,30 +5017,24 @@ vl_transform_sample <- function(spec, sample = NULL) {
 #' 4) a logical operand that combines (1), (2), or (3). (type = LogicalOperand<Predicate>)
 #' @return A modified spec
 #' @export
-#' @md
 vl_FilterTransform <- function(filter = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_CalculateTransform
+} #' vl_CalculateTransform
 #' 
 #' Create spec for CalculateTransform.
 #' @param as The field for storing the computed formula value. (type = string)
 #' @param calculate A [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string. Use the variable `datum` to refer to the current data object. (type = string)
 #' @return A modified spec
 #' @export
-#' @md
 vl_CalculateTransform <- function(as = NULL, calculate = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_LookupTransform
+} #' vl_LookupTransform
 #' 
 #' Create spec for LookupTransform.
 #' @param as The field or fields for storing the computed formula value.
@@ -4360,15 +5047,12 @@ vl_CalculateTransform <- function(as = NULL, calculate = NULL) {
 #' @param lookup Key in primary data source. (type = string)
 #' @return A modified spec
 #' @export
-#' @md
 vl_LookupTransform <- function(as = NULL, default = NULL, from = NULL, lookup = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_BinTransform
+} #' vl_BinTransform
 #' 
 #' Create spec for BinTransform.
 #' @param as The output fields at which to write the start and end bin values. (type = Varies)
@@ -4376,15 +5060,12 @@ vl_LookupTransform <- function(as = NULL, default = NULL, from = NULL, lookup = 
 #' @param field The data field to bin. (type = string)
 #' @return A modified spec
 #' @export
-#' @md
 vl_BinTransform <- function(as = NULL, bin = NULL, field = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_TimeUnitTransform
+} #' vl_TimeUnitTransform
 #' 
 #' Create spec for TimeUnitTransform.
 #' @param as The output field to write the timeUnit value. (type = string)
@@ -4392,15 +5073,12 @@ vl_BinTransform <- function(as = NULL, bin = NULL, field = NULL) {
 #' @param timeUnit The timeUnit. (type = TimeUnit)
 #' @return A modified spec
 #' @export
-#' @md
 vl_TimeUnitTransform <- function(as = NULL, field = NULL, timeUnit = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_ImputeTransform
+} #' vl_ImputeTransform
 #' 
 #' Create spec for ImputeTransform.
 #' @param frame A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
@@ -4424,30 +5102,24 @@ vl_TimeUnitTransform <- function(as = NULL, field = NULL, timeUnit = NULL) {
 #' @param value The field value to use when the imputation `method` is `"value"`. (type = Varies)
 #' @return A modified spec
 #' @export
-#' @md
 vl_ImputeTransform <- function(frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_AggregateTransform
+} #' vl_AggregateTransform
 #' 
 #' Create spec for AggregateTransform.
 #' @param aggregate Array of objects that define fields to aggregate. (type = array)
 #' @param groupby The data fields to group by. If not specified, a single group containing all data objects will be used. (type = array)
 #' @return A modified spec
 #' @export
-#' @md
 vl_AggregateTransform <- function(aggregate = NULL, groupby = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_WindowTransform
+} #' vl_WindowTransform
 #' 
 #' Create spec for WindowTransform.
 #' @param frame A frame specification as a two-element array indicating how the sliding window should proceed. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. The default value is `[null, 0]`, indicating that the sliding window includes the current object and all preceding objects. The value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object. Finally, `[null, null]` indicates that the window frame should always include all data objects. If you this frame and want to assign the same value to add objects, you can use the simpler [join aggregate transform](https://vega.github.io/vega-lite/docs/joinaggregate.html). The only operators affected are the aggregation operations and the `first_value`, `last_value`, and `nth_value` window operations. The other window operations are not affected by this.
@@ -4461,30 +5133,24 @@ vl_AggregateTransform <- function(aggregate = NULL, groupby = NULL) {
 #' @param window The definition of the fields in the window, and what calculations to use. (type = array)
 #' @return A modified spec
 #' @export
-#' @md
 vl_WindowTransform <- function(frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_JoinAggregateTransform
+} #' vl_JoinAggregateTransform
 #' 
 #' Create spec for JoinAggregateTransform.
 #' @param groupby The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group. (type = array)
 #' @param joinaggregate The definition of the fields in the join aggregate, and what calculations to use. (type = array)
 #' @return A modified spec
 #' @export
-#' @md
 vl_JoinAggregateTransform <- function(groupby = NULL, joinaggregate = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_StackTransform
+} #' vl_StackTransform
 #' 
 #' Create spec for StackTransform.
 #' @param as Output field names. This can be either a string or an array of strings with
@@ -4498,15 +5164,12 @@ vl_JoinAggregateTransform <- function(groupby = NULL, joinaggregate = NULL) {
 #' @param stack The field which is stacked. (type = string)
 #' @return A modified spec
 #' @export
-#' @md
 vl_StackTransform <- function(as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_FlattenTransform
+} #' vl_FlattenTransform
 #' 
 #' Create spec for FlattenTransform.
 #' @param as The output field names for extracted array values.
@@ -4518,15 +5181,12 @@ vl_StackTransform <- function(as = NULL, groupby = NULL, offset = NULL, sort = N
 #' the longest array will be used with `null` values added for missing entries. (type = array)
 #' @return A modified spec
 #' @export
-#' @md
 vl_FlattenTransform <- function(as = NULL, flatten = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_FoldTransform
+} #' vl_FoldTransform
 #' 
 #' Create spec for FoldTransform.
 #' @param as The output field names for the key and value properties produced by the fold transform.
@@ -4534,15 +5194,12 @@ vl_FlattenTransform <- function(as = NULL, flatten = NULL) {
 #' @param fold An array of data fields indicating the properties to fold. (type = array)
 #' @return A modified spec
 #' @export
-#' @md
 vl_FoldTransform <- function(as = NULL, fold = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-}
- 
-#' vl_SampleTransform
+} #' vl_SampleTransform
 #' 
 #' Create spec for SampleTransform.
 #' @param sample The maximum number of data objects to include in the sample.
@@ -4550,10 +5207,2533 @@ vl_FoldTransform <- function(as = NULL, fold = NULL) {
 #' __Default value:__ `1000` (type = number)
 #' @return A modified spec
 #' @export
-#' @md
 vl_SampleTransform <- function(sample = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
+} #' vl_sort_color
+#' 
+#' Sort color encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' this encoding), a list with a custom ordering, or NA to specify no sorting
+#' @return A modified spec
+#' @seealso [vl_sort_color_by_field()] to sort by another field, 
+#' [vl_sort_color_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_color <- function(spec, value) {
+  args_out <- list(spec = spec, .enc = 'color', value = value)
+  rlang::exec(.add_sort_to_encoding, !!!args_out)
+} #' vl_sort_fill
+#' 
+#' Sort fill encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' this encoding), a list with a custom ordering, or NA to specify no sorting
+#' @return A modified spec
+#' @seealso [vl_sort_fill_by_field()] to sort by another field, 
+#' [vl_sort_fill_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_fill <- function(spec, value) {
+  args_out <- list(spec = spec, .enc = 'fill', value = value)
+  rlang::exec(.add_sort_to_encoding, !!!args_out)
+} #' vl_sort_fillOpacity
+#' 
+#' Sort fillOpacity encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' this encoding), a list with a custom ordering, or NA to specify no sorting
+#' @return A modified spec
+#' @seealso [vl_sort_fillOpacity_by_field()] to sort by another field, 
+#' [vl_sort_fillOpacity_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_fillOpacity <- function(spec, value) {
+  args_out <- list(spec = spec, .enc = 'fillOpacity', value = value)
+  rlang::exec(.add_sort_to_encoding, !!!args_out)
+} #' vl_sort_href
+#' 
+#' Sort href encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' this encoding), a list with a custom ordering, or NA to specify no sorting
+#' @return A modified spec
+#' @seealso [vl_sort_href_by_field()] to sort by another field, 
+#' [vl_sort_href_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_href <- function(spec, value) {
+  args_out <- list(spec = spec, .enc = 'href', value = value)
+  rlang::exec(.add_sort_to_encoding, !!!args_out)
+} #' vl_sort_opacity
+#' 
+#' Sort opacity encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' this encoding), a list with a custom ordering, or NA to specify no sorting
+#' @return A modified spec
+#' @seealso [vl_sort_opacity_by_field()] to sort by another field, 
+#' [vl_sort_opacity_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_opacity <- function(spec, value) {
+  args_out <- list(spec = spec, .enc = 'opacity', value = value)
+  rlang::exec(.add_sort_to_encoding, !!!args_out)
+} #' vl_sort_order
+#' 
+#' Sort order encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' this encoding), a list with a custom ordering, or NA to specify no sorting
+#' @return A modified spec
+#' @seealso [vl_sort_order_by_field()] to sort by another field, 
+#' [vl_sort_order_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_order <- function(spec, value) {
+  args_out <- list(spec = spec, .enc = 'order', value = value)
+  rlang::exec(.add_sort_to_encoding, !!!args_out)
+} #' vl_sort_shape
+#' 
+#' Sort shape encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' this encoding), a list with a custom ordering, or NA to specify no sorting
+#' @return A modified spec
+#' @seealso [vl_sort_shape_by_field()] to sort by another field, 
+#' [vl_sort_shape_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_shape <- function(spec, value) {
+  args_out <- list(spec = spec, .enc = 'shape', value = value)
+  rlang::exec(.add_sort_to_encoding, !!!args_out)
+} #' vl_sort_size
+#' 
+#' Sort size encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' this encoding), a list with a custom ordering, or NA to specify no sorting
+#' @return A modified spec
+#' @seealso [vl_sort_size_by_field()] to sort by another field, 
+#' [vl_sort_size_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_size <- function(spec, value) {
+  args_out <- list(spec = spec, .enc = 'size', value = value)
+  rlang::exec(.add_sort_to_encoding, !!!args_out)
+} #' vl_sort_stroke
+#' 
+#' Sort stroke encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' this encoding), a list with a custom ordering, or NA to specify no sorting
+#' @return A modified spec
+#' @seealso [vl_sort_stroke_by_field()] to sort by another field, 
+#' [vl_sort_stroke_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_stroke <- function(spec, value) {
+  args_out <- list(spec = spec, .enc = 'stroke', value = value)
+  rlang::exec(.add_sort_to_encoding, !!!args_out)
+} #' vl_sort_strokeOpacity
+#' 
+#' Sort strokeOpacity encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' this encoding), a list with a custom ordering, or NA to specify no sorting
+#' @return A modified spec
+#' @seealso [vl_sort_strokeOpacity_by_field()] to sort by another field, 
+#' [vl_sort_strokeOpacity_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_strokeOpacity <- function(spec, value) {
+  args_out <- list(spec = spec, .enc = 'strokeOpacity', value = value)
+  rlang::exec(.add_sort_to_encoding, !!!args_out)
+} #' vl_sort_strokeWidth
+#' 
+#' Sort strokeWidth encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' this encoding), a list with a custom ordering, or NA to specify no sorting
+#' @return A modified spec
+#' @seealso [vl_sort_strokeWidth_by_field()] to sort by another field, 
+#' [vl_sort_strokeWidth_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_strokeWidth <- function(spec, value) {
+  args_out <- list(spec = spec, .enc = 'strokeWidth', value = value)
+  rlang::exec(.add_sort_to_encoding, !!!args_out)
+} #' vl_sort_x
+#' 
+#' Sort x encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' this encoding), a list with a custom ordering, or NA to specify no sorting
+#' @return A modified spec
+#' @seealso [vl_sort_x_by_field()] to sort by another field, 
+#' [vl_sort_x_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_x <- function(spec, value) {
+  args_out <- list(spec = spec, .enc = 'x', value = value)
+  rlang::exec(.add_sort_to_encoding, !!!args_out)
+} #' vl_sort_y
+#' 
+#' Sort y encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' this encoding), a list with a custom ordering, or NA to specify no sorting
+#' @return A modified spec
+#' @seealso [vl_sort_y_by_field()] to sort by another field, 
+#' [vl_sort_y_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_y <- function(spec, value) {
+  args_out <- list(spec = spec, .enc = 'y', value = value)
+  rlang::exec(.add_sort_to_encoding, !!!args_out)
+} #' vl_sort_color_by_field
+#' 
+#' Sort color encoding by another field in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
+#' 
+#' __Default value:__ If unspecified, defaults to the field specified in the outer data reference. (type = Field)
+#' @param op An [aggregate operation](https://vega.github.io/vega-lite/docs/aggregate.html#ops) to perform on the field prior to sorting (e.g., `"count"`, `"mean"` and `"median"`).
+#' An aggregation is required when there are multiple values of the sort field for each encoded data field.
+#' The input data objects will be aggregated, grouped by the encoded data field.
+#' 
+#' For a full list of operations, please see the documentation for [aggregate](https://vega.github.io/vega-lite/docs/aggregate.html#ops).
+#' 
+#' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_color] to sort by this encoding or a custom order, 
+#' [vl_sort_color_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_color_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'color'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_fill_by_field
+#' 
+#' Sort fill encoding by another field in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
+#' 
+#' __Default value:__ If unspecified, defaults to the field specified in the outer data reference. (type = Field)
+#' @param op An [aggregate operation](https://vega.github.io/vega-lite/docs/aggregate.html#ops) to perform on the field prior to sorting (e.g., `"count"`, `"mean"` and `"median"`).
+#' An aggregation is required when there are multiple values of the sort field for each encoded data field.
+#' The input data objects will be aggregated, grouped by the encoded data field.
+#' 
+#' For a full list of operations, please see the documentation for [aggregate](https://vega.github.io/vega-lite/docs/aggregate.html#ops).
+#' 
+#' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_fill] to sort by this encoding or a custom order, 
+#' [vl_sort_fill_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_fill_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'fill'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_fillOpacity_by_field
+#' 
+#' Sort fillOpacity encoding by another field in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
+#' 
+#' __Default value:__ If unspecified, defaults to the field specified in the outer data reference. (type = Field)
+#' @param op An [aggregate operation](https://vega.github.io/vega-lite/docs/aggregate.html#ops) to perform on the field prior to sorting (e.g., `"count"`, `"mean"` and `"median"`).
+#' An aggregation is required when there are multiple values of the sort field for each encoded data field.
+#' The input data objects will be aggregated, grouped by the encoded data field.
+#' 
+#' For a full list of operations, please see the documentation for [aggregate](https://vega.github.io/vega-lite/docs/aggregate.html#ops).
+#' 
+#' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_fillOpacity] to sort by this encoding or a custom order, 
+#' [vl_sort_fillOpacity_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_fillOpacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'fillOpacity'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_href_by_field
+#' 
+#' Sort href encoding by another field in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
+#' 
+#' __Default value:__ If unspecified, defaults to the field specified in the outer data reference. (type = Field)
+#' @param op An [aggregate operation](https://vega.github.io/vega-lite/docs/aggregate.html#ops) to perform on the field prior to sorting (e.g., `"count"`, `"mean"` and `"median"`).
+#' An aggregation is required when there are multiple values of the sort field for each encoded data field.
+#' The input data objects will be aggregated, grouped by the encoded data field.
+#' 
+#' For a full list of operations, please see the documentation for [aggregate](https://vega.github.io/vega-lite/docs/aggregate.html#ops).
+#' 
+#' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_href] to sort by this encoding or a custom order, 
+#' [vl_sort_href_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_href_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'href'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_opacity_by_field
+#' 
+#' Sort opacity encoding by another field in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
+#' 
+#' __Default value:__ If unspecified, defaults to the field specified in the outer data reference. (type = Field)
+#' @param op An [aggregate operation](https://vega.github.io/vega-lite/docs/aggregate.html#ops) to perform on the field prior to sorting (e.g., `"count"`, `"mean"` and `"median"`).
+#' An aggregation is required when there are multiple values of the sort field for each encoded data field.
+#' The input data objects will be aggregated, grouped by the encoded data field.
+#' 
+#' For a full list of operations, please see the documentation for [aggregate](https://vega.github.io/vega-lite/docs/aggregate.html#ops).
+#' 
+#' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_opacity] to sort by this encoding or a custom order, 
+#' [vl_sort_opacity_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_opacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'opacity'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_order_by_field
+#' 
+#' Sort order encoding by another field in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
+#' 
+#' __Default value:__ If unspecified, defaults to the field specified in the outer data reference. (type = Field)
+#' @param op An [aggregate operation](https://vega.github.io/vega-lite/docs/aggregate.html#ops) to perform on the field prior to sorting (e.g., `"count"`, `"mean"` and `"median"`).
+#' An aggregation is required when there are multiple values of the sort field for each encoded data field.
+#' The input data objects will be aggregated, grouped by the encoded data field.
+#' 
+#' For a full list of operations, please see the documentation for [aggregate](https://vega.github.io/vega-lite/docs/aggregate.html#ops).
+#' 
+#' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_order] to sort by this encoding or a custom order, 
+#' [vl_sort_order_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_order_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'order'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_shape_by_field
+#' 
+#' Sort shape encoding by another field in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
+#' 
+#' __Default value:__ If unspecified, defaults to the field specified in the outer data reference. (type = Field)
+#' @param op An [aggregate operation](https://vega.github.io/vega-lite/docs/aggregate.html#ops) to perform on the field prior to sorting (e.g., `"count"`, `"mean"` and `"median"`).
+#' An aggregation is required when there are multiple values of the sort field for each encoded data field.
+#' The input data objects will be aggregated, grouped by the encoded data field.
+#' 
+#' For a full list of operations, please see the documentation for [aggregate](https://vega.github.io/vega-lite/docs/aggregate.html#ops).
+#' 
+#' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_shape] to sort by this encoding or a custom order, 
+#' [vl_sort_shape_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_shape_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'shape'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_size_by_field
+#' 
+#' Sort size encoding by another field in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
+#' 
+#' __Default value:__ If unspecified, defaults to the field specified in the outer data reference. (type = Field)
+#' @param op An [aggregate operation](https://vega.github.io/vega-lite/docs/aggregate.html#ops) to perform on the field prior to sorting (e.g., `"count"`, `"mean"` and `"median"`).
+#' An aggregation is required when there are multiple values of the sort field for each encoded data field.
+#' The input data objects will be aggregated, grouped by the encoded data field.
+#' 
+#' For a full list of operations, please see the documentation for [aggregate](https://vega.github.io/vega-lite/docs/aggregate.html#ops).
+#' 
+#' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_size] to sort by this encoding or a custom order, 
+#' [vl_sort_size_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_size_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'size'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_stroke_by_field
+#' 
+#' Sort stroke encoding by another field in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
+#' 
+#' __Default value:__ If unspecified, defaults to the field specified in the outer data reference. (type = Field)
+#' @param op An [aggregate operation](https://vega.github.io/vega-lite/docs/aggregate.html#ops) to perform on the field prior to sorting (e.g., `"count"`, `"mean"` and `"median"`).
+#' An aggregation is required when there are multiple values of the sort field for each encoded data field.
+#' The input data objects will be aggregated, grouped by the encoded data field.
+#' 
+#' For a full list of operations, please see the documentation for [aggregate](https://vega.github.io/vega-lite/docs/aggregate.html#ops).
+#' 
+#' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_stroke] to sort by this encoding or a custom order, 
+#' [vl_sort_stroke_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_stroke_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'stroke'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_strokeOpacity_by_field
+#' 
+#' Sort strokeOpacity encoding by another field in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
+#' 
+#' __Default value:__ If unspecified, defaults to the field specified in the outer data reference. (type = Field)
+#' @param op An [aggregate operation](https://vega.github.io/vega-lite/docs/aggregate.html#ops) to perform on the field prior to sorting (e.g., `"count"`, `"mean"` and `"median"`).
+#' An aggregation is required when there are multiple values of the sort field for each encoded data field.
+#' The input data objects will be aggregated, grouped by the encoded data field.
+#' 
+#' For a full list of operations, please see the documentation for [aggregate](https://vega.github.io/vega-lite/docs/aggregate.html#ops).
+#' 
+#' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_strokeOpacity] to sort by this encoding or a custom order, 
+#' [vl_sort_strokeOpacity_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_strokeOpacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_strokeWidth_by_field
+#' 
+#' Sort strokeWidth encoding by another field in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
+#' 
+#' __Default value:__ If unspecified, defaults to the field specified in the outer data reference. (type = Field)
+#' @param op An [aggregate operation](https://vega.github.io/vega-lite/docs/aggregate.html#ops) to perform on the field prior to sorting (e.g., `"count"`, `"mean"` and `"median"`).
+#' An aggregation is required when there are multiple values of the sort field for each encoded data field.
+#' The input data objects will be aggregated, grouped by the encoded data field.
+#' 
+#' For a full list of operations, please see the documentation for [aggregate](https://vega.github.io/vega-lite/docs/aggregate.html#ops).
+#' 
+#' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_strokeWidth] to sort by this encoding or a custom order, 
+#' [vl_sort_strokeWidth_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_strokeWidth_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'strokeWidth'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_x_by_field
+#' 
+#' Sort x encoding by another field in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
+#' 
+#' __Default value:__ If unspecified, defaults to the field specified in the outer data reference. (type = Field)
+#' @param op An [aggregate operation](https://vega.github.io/vega-lite/docs/aggregate.html#ops) to perform on the field prior to sorting (e.g., `"count"`, `"mean"` and `"median"`).
+#' An aggregation is required when there are multiple values of the sort field for each encoded data field.
+#' The input data objects will be aggregated, grouped by the encoded data field.
+#' 
+#' For a full list of operations, please see the documentation for [aggregate](https://vega.github.io/vega-lite/docs/aggregate.html#ops).
+#' 
+#' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_x] to sort by this encoding or a custom order, 
+#' [vl_sort_x_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_x_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'x'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_y_by_field
+#' 
+#' Sort y encoding by another field in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
+#' 
+#' __Default value:__ If unspecified, defaults to the field specified in the outer data reference. (type = Field)
+#' @param op An [aggregate operation](https://vega.github.io/vega-lite/docs/aggregate.html#ops) to perform on the field prior to sorting (e.g., `"count"`, `"mean"` and `"median"`).
+#' An aggregation is required when there are multiple values of the sort field for each encoded data field.
+#' The input data objects will be aggregated, grouped by the encoded data field.
+#' 
+#' For a full list of operations, please see the documentation for [aggregate](https://vega.github.io/vega-lite/docs/aggregate.html#ops).
+#' 
+#' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_y] to sort by this encoding or a custom order, 
+#' [vl_sort_y_by_encoding()] to sort by another encoding
+#' @export
+vl_sort_y_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'y'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_color_by_encoding
+#' 
+#' Sort color encoding by another encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_color_by_field()] to sort by another field, 
+#' [vl_sort_color] to sort by this encoding or a custom sort
+#' @export
+vl_sort_color_by_encoding <- function(spec, encoding = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'color'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_fill_by_encoding
+#' 
+#' Sort fill encoding by another encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_fill_by_field()] to sort by another field, 
+#' [vl_sort_fill] to sort by this encoding or a custom sort
+#' @export
+vl_sort_fill_by_encoding <- function(spec, encoding = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'fill'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_fillOpacity_by_encoding
+#' 
+#' Sort fillOpacity encoding by another encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_fillOpacity_by_field()] to sort by another field, 
+#' [vl_sort_fillOpacity] to sort by this encoding or a custom sort
+#' @export
+vl_sort_fillOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'fillOpacity'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_href_by_encoding
+#' 
+#' Sort href encoding by another encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_href_by_field()] to sort by another field, 
+#' [vl_sort_href] to sort by this encoding or a custom sort
+#' @export
+vl_sort_href_by_encoding <- function(spec, encoding = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'href'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_opacity_by_encoding
+#' 
+#' Sort opacity encoding by another encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_opacity_by_field()] to sort by another field, 
+#' [vl_sort_opacity] to sort by this encoding or a custom sort
+#' @export
+vl_sort_opacity_by_encoding <- function(spec, encoding = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'opacity'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_order_by_encoding
+#' 
+#' Sort order encoding by another encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_order_by_field()] to sort by another field, 
+#' [vl_sort_order] to sort by this encoding or a custom sort
+#' @export
+vl_sort_order_by_encoding <- function(spec, encoding = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'order'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_shape_by_encoding
+#' 
+#' Sort shape encoding by another encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_shape_by_field()] to sort by another field, 
+#' [vl_sort_shape] to sort by this encoding or a custom sort
+#' @export
+vl_sort_shape_by_encoding <- function(spec, encoding = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'shape'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_size_by_encoding
+#' 
+#' Sort size encoding by another encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_size_by_field()] to sort by another field, 
+#' [vl_sort_size] to sort by this encoding or a custom sort
+#' @export
+vl_sort_size_by_encoding <- function(spec, encoding = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'size'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_stroke_by_encoding
+#' 
+#' Sort stroke encoding by another encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_stroke_by_field()] to sort by another field, 
+#' [vl_sort_stroke] to sort by this encoding or a custom sort
+#' @export
+vl_sort_stroke_by_encoding <- function(spec, encoding = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'stroke'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_strokeOpacity_by_encoding
+#' 
+#' Sort strokeOpacity encoding by another encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_strokeOpacity_by_field()] to sort by another field, 
+#' [vl_sort_strokeOpacity] to sort by this encoding or a custom sort
+#' @export
+vl_sort_strokeOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_strokeWidth_by_encoding
+#' 
+#' Sort strokeWidth encoding by another encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_strokeWidth_by_field()] to sort by another field, 
+#' [vl_sort_strokeWidth] to sort by this encoding or a custom sort
+#' @export
+vl_sort_strokeWidth_by_encoding <- function(spec, encoding = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'strokeWidth'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_x_by_encoding
+#' 
+#' Sort x encoding by another encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_x_by_field()] to sort by another field, 
+#' [vl_sort_x] to sort by this encoding or a custom sort
+#' @export
+vl_sort_x_by_encoding <- function(spec, encoding = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'x'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_sort_y_by_encoding
+#' 
+#' Sort y encoding by another encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
+#' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
+#' @return A modified spec
+#' @seealso [vl_sort_y_by_field()] to sort by another field, 
+#' [vl_sort_y] to sort by this encoding or a custom sort
+#' @export
+vl_sort_y_by_encoding <- function(spec, encoding = NULL, order = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'y'))
+  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
+} #' vl_impute_x
+#' 
+#' Add impute transform to x encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param frame A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
+#' 
+#' __Default value:__:  `[null, null]` indicating that the window includes all objects. (type = array)
+#' @param keyvals Defines the key values that should be considered for imputation.
+#' An array of key values or an object defining a [number sequence](https://vega.github.io/vega-lite/docs/impute.html#sequence-def).
+#' 
+#' If provided, this will be used in addition to the key values observed within the input data.  If not provided, the values will be derived from all unique values of the `key` field. For `impute` in `encoding`, the key field is the x-field if the y-field is imputed, or vice versa.
+#' 
+#' If there is no impute grouping, this property _must_ be specified. (type = Varies)
+#' @param method The imputation method to use for the field value of imputed data objects.
+#' One of `value`, `mean`, `median`, `max` or `min`.
+#' 
+#' __Default value:__  `"value"` (type = ImputeMethod)
+#' @param value The field value to use when the imputation `method` is `"value"`. (type = Varies)
+#' @return A modified spec
+#' @export
+vl_impute_x <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'x'))
+  rlang::exec(.add_impute_to_encoding, !!!args_out)
+} #' vl_impute_y
+#' 
+#' Add impute transform to y encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param frame A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
+#' 
+#' __Default value:__:  `[null, null]` indicating that the window includes all objects. (type = array)
+#' @param keyvals Defines the key values that should be considered for imputation.
+#' An array of key values or an object defining a [number sequence](https://vega.github.io/vega-lite/docs/impute.html#sequence-def).
+#' 
+#' If provided, this will be used in addition to the key values observed within the input data.  If not provided, the values will be derived from all unique values of the `key` field. For `impute` in `encoding`, the key field is the x-field if the y-field is imputed, or vice versa.
+#' 
+#' If there is no impute grouping, this property _must_ be specified. (type = Varies)
+#' @param method The imputation method to use for the field value of imputed data objects.
+#' One of `value`, `mean`, `median`, `max` or `min`.
+#' 
+#' __Default value:__  `"value"` (type = ImputeMethod)
+#' @param value The field value to use when the imputation `method` is `"value"`. (type = Varies)
+#' @return A modified spec
+#' @export
+vl_impute_y <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'y'))
+  rlang::exec(.add_impute_to_encoding, !!!args_out)
+} #' vl_aggregate_color
+#' 
+#' Add aggregate transform to color encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_color <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'color', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_detail
+#' 
+#' Add aggregate transform to detail encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_detail <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'detail', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_fill
+#' 
+#' Add aggregate transform to fill encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_fill <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'fill', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_fillOpacity
+#' 
+#' Add aggregate transform to fillOpacity encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_fillOpacity <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'fillOpacity', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_href
+#' 
+#' Add aggregate transform to href encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_href <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'href', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_key
+#' 
+#' Add aggregate transform to key encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_key <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'key', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_latitude
+#' 
+#' Add aggregate transform to latitude encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_latitude <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'latitude', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_latitude2
+#' 
+#' Add aggregate transform to latitude2 encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_latitude2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'latitude2', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_longitude
+#' 
+#' Add aggregate transform to longitude encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_longitude <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'longitude', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_longitude2
+#' 
+#' Add aggregate transform to longitude2 encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_longitude2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'longitude2', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_opacity
+#' 
+#' Add aggregate transform to opacity encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_opacity <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'opacity', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_order
+#' 
+#' Add aggregate transform to order encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_order <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'order', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_shape
+#' 
+#' Add aggregate transform to shape encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_shape <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'shape', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_size
+#' 
+#' Add aggregate transform to size encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_size <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'size', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_stroke
+#' 
+#' Add aggregate transform to stroke encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_stroke <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'stroke', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_strokeOpacity
+#' 
+#' Add aggregate transform to strokeOpacity encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_strokeOpacity <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'strokeOpacity', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_strokeWidth
+#' 
+#' Add aggregate transform to strokeWidth encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_strokeWidth <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'strokeWidth', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_text
+#' 
+#' Add aggregate transform to text encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_text <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'text', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_tooltip
+#' 
+#' Add aggregate transform to tooltip encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_tooltip <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'tooltip', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_x
+#' 
+#' Add aggregate transform to x encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_x <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'x', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_x2
+#' 
+#' Add aggregate transform to x2 encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_x2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'x2', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_xError
+#' 
+#' Add aggregate transform to xError encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_xError <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'xError', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_xError2
+#' 
+#' Add aggregate transform to xError2 encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_xError2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'xError2', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_y
+#' 
+#' Add aggregate transform to y encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_y <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'y', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_y2
+#' 
+#' Add aggregate transform to y2 encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_y2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'y2', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_yError
+#' 
+#' Add aggregate transform to yError encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_yError <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'yError', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_aggregate_yError2
+#' 
+#' Add aggregate transform to yError2 encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified spec
+#' @export
+vl_aggregate_yError2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  args_out <- list(spec = spec, .enc = 'yError2', op = match.arg(op))
+  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
+} #' vl_axis_x
+#' 
+#' Add axis to x encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param bandPosition An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
+#' 
+#'   __Default value:__ `0.5` (type = number)
+#' @param domain A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.
+#' 
+#' __Default value:__ `true` (type = boolean)
+#' @param domainColor Color of axis domain line.
+#' 
+#' __Default value:__ `"gray"`. (type = Color)
+#' @param domainDash An array of alternating [stroke, space] lengths for dashed domain lines. (type = array)
+#' @param domainDashOffset The pixel offset at which to start drawing with the domain dash array. (type = number)
+#' @param domainOpacity Opacity of the axis domain line. (type = number)
+#' @param domainWidth Stroke width of axis domain line
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param format The formatting pattern for labels. This is D3's [number format pattern](https://github.com/d3/d3-format#locale_format) for quantitative fields and D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format) for time field. To override the default type, set `formatType`.
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more information.
+#' 
+#' __Default value:__  derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for quantitative fields and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for temporal fields. (type = string)
+#' @param formatType The format type for labels (number or time). (type = string)
+#' @param grid A boolean flag indicating if grid lines should be included as part of the axis
+#' 
+#' __Default value:__ `true` for [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous) that are not binned; otherwise, `false`. (type = boolean)
+#' @param gridColor Color of gridlines.
+#' 
+#' __Default value:__ `"lightGray"`. (type = Color)
+#' @param gridDash An array of alternating [stroke, space] lengths for dashed grid lines. (type = array)
+#' @param gridDashOffset The pixel offset at which to start drawing with the grid dash array. (type = number)
+#' @param gridOpacity The stroke opacity of grid (value between [0,1])
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param gridWidth The grid width, in pixels.
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param labelAlign Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation. (type = Align)
+#' @param labelAngle The rotation angle of the axis labels.
+#' 
+#' __Default value:__ `-90` for nominal and ordinal fields; `0` otherwise. (type = number)
+#' @param labelBaseline Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`. (type = TextBaseline)
+#' @param labelBound Indicates if labels should be hidden if they exceed the axis range. If `false` (the default) no bounds overlap analysis is performed. If `true`, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.
+#' 
+#' __Default value:__ `false`. (type = number OR boolean)
+#' @param labelColor The color of the tick label, can be in hex color code or regular color name. (type = Color)
+#' @param labelFlush Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `true` for axis of a continuous x-scale. Otherwise, `false`. (type = boolean OR number)
+#' @param labelFlushOffset Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of `2` will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param labelFont The font of the tick label. (type = string)
+#' @param labelFontSize The font size of the label, in pixels. (type = number)
+#' @param labelFontStyle Font style of the title. (type = FontStyle)
+#' @param labelFontWeight Font weight of axis tick labels. (type = FontWeight)
+#' @param labelLimit Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `180` (type = number)
+#' @param labelOpacity The opacity of the labels. (type = number)
+#' @param labelOverlap The strategy to use for resolving overlap of axis labels. If `false` (the default), no overlap reduction is attempted. If set to `true` or `"parity"`, a strategy of removing every other label is used (this works well for standard linear axes). If set to `"greedy"`, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true` for non-nominal fields with non-log scales; `"greedy"` for log scales; otherwise `false`. (type = LabelOverlap)
+#' @param labelPadding The padding, in pixels, between axis and text labels.
+#' 
+#' __Default value:__ `2` (type = number)
+#' @param labelSeparation The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled. (type = number)
+#' @param labels A boolean flag indicating if labels should be included as part of the axis.
+#' 
+#' __Default value:__ `true`. (type = boolean)
+#' @param maxExtent The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.
+#' 
+#' __Default value:__ `undefined`. (type = number)
+#' @param minExtent The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.
+#' 
+#' __Default value:__ `30` for y-axis; `undefined` for x-axis. (type = number)
+#' @param offset The offset, in pixels, by which to displace the axis from the edge of the enclosing group or data rectangle.
+#' 
+#' __Default value:__ derived from the [axis config](https://vega.github.io/vega-lite/docs/config.html#facet-scale-config)'s `offset` (`0` by default) (type = number)
+#' @param orient The orientation of the axis. One of `"top"`, `"bottom"`, `"left"` or `"right"`. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).
+#' 
+#' __Default value:__ `"bottom"` for x-axes and `"left"` for y-axes. (type = AxisOrient)
+#' @param position The anchor position of the axis in pixels. For x-axes with top or bottom orientation, this sets the axis group x coordinate. For y-axes with left or right orientation, this sets the axis group y coordinate.
+#' 
+#' __Default value__: `0` (type = number)
+#' @param tickColor The color of the axis's tick.
+#' 
+#' __Default value:__ `"gray"` (type = Color)
+#' @param tickCount A desired number of ticks, for axes visualizing quantitative scales. The resulting number may be different so that values are "nice" (multiples of 2, 5, 10) and lie within the underlying scale's range. (type = number)
+#' @param tickDash An array of alternating [stroke, space] lengths for dashed tick mark lines. (type = array)
+#' @param tickDashOffset The pixel offset at which to start drawing with the tick mark dash array. (type = number)
+#' @param tickExtra Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for `band` scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with `"bandPosition": 1` and an axis `"padding"` value of `0`. (type = boolean)
+#' @param tickMinStep The minimum desired step between axis ticks, in terms of scale domain values. For example, a value of `1` indicates that ticks should not be less than 1 unit apart. If `tickMinStep` is specified, the `tickCount` value will be adjusted, if necessary, to enforce the minimum step value.
+#' 
+#' __Default value__: `undefined` (type = number)
+#' @param tickOffset Position offset in pixels to apply to ticks, labels, and gridlines. (type = number)
+#' @param tickOpacity Opacity of the ticks. (type = number)
+#' @param tickRound Boolean flag indicating if pixel position values should be rounded to the nearest integer.
+#' 
+#' __Default value:__ `true` (type = boolean)
+#' @param tickSize The size in pixels of axis ticks.
+#' 
+#' __Default value:__ `5` (type = number)
+#' @param tickWidth The width, in pixels, of ticks.
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param ticks Boolean value that determines whether the axis should include ticks.
+#' 
+#' __Default value:__ `true` (type = boolean)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param titleAlign Horizontal text alignment of axis titles. (type = Align)
+#' @param titleAnchor Text anchor position for placing axis titles. (type = TitleAnchor)
+#' @param titleAngle Angle in degrees of axis titles. (type = number)
+#' @param titleBaseline Vertical text baseline for axis titles. (type = TextBaseline)
+#' @param titleColor Color of the title, can be in hex color code or regular color name. (type = Color)
+#' @param titleFont Font of the title. (e.g., `"Helvetica Neue"`). (type = string)
+#' @param titleFontSize Font size of the title. (type = number)
+#' @param titleFontStyle Font style of the title. (type = FontStyle)
+#' @param titleFontWeight Font weight of the title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`). (type = FontWeight)
+#' @param titleLimit Maximum allowed pixel width of axis titles. (type = number)
+#' @param titleOpacity Opacity of the axis title. (type = number)
+#' @param titlePadding The padding, in pixels, between title and axis. (type = number)
+#' @param titleX X-coordinate of the axis title relative to the axis group. (type = number)
+#' @param titleY Y-coordinate of the axis title relative to the axis group. (type = number)
+#' @param values Explicitly set the visible axis tick values. (type = Varies)
+#' @param zindex A non-positive integer indicating z-index of the axis.
+#' If zindex is 0, axes should be drawn behind all chart elements.
+#' To put them in front, use `"zindex = 1"`.
+#' 
+#' __Default value:__ `1` (in front of the marks) for actual axis and `0` (behind the marks) for grids. (type = number)
+#' @param remove Remove the axis?
+#' @return A modified spec
+#' @export
+vl_axis_x <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, values = NULL, zindex = NULL, remove = FALSE) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'x'))
+  rlang::exec(.add_axis_to_encoding, !!!args_out)
+} #' vl_axis_y
+#' 
+#' Add axis to y encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param bandPosition An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
+#' 
+#'   __Default value:__ `0.5` (type = number)
+#' @param domain A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.
+#' 
+#' __Default value:__ `true` (type = boolean)
+#' @param domainColor Color of axis domain line.
+#' 
+#' __Default value:__ `"gray"`. (type = Color)
+#' @param domainDash An array of alternating [stroke, space] lengths for dashed domain lines. (type = array)
+#' @param domainDashOffset The pixel offset at which to start drawing with the domain dash array. (type = number)
+#' @param domainOpacity Opacity of the axis domain line. (type = number)
+#' @param domainWidth Stroke width of axis domain line
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param format The formatting pattern for labels. This is D3's [number format pattern](https://github.com/d3/d3-format#locale_format) for quantitative fields and D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format) for time field. To override the default type, set `formatType`.
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more information.
+#' 
+#' __Default value:__  derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for quantitative fields and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for temporal fields. (type = string)
+#' @param formatType The format type for labels (number or time). (type = string)
+#' @param grid A boolean flag indicating if grid lines should be included as part of the axis
+#' 
+#' __Default value:__ `true` for [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous) that are not binned; otherwise, `false`. (type = boolean)
+#' @param gridColor Color of gridlines.
+#' 
+#' __Default value:__ `"lightGray"`. (type = Color)
+#' @param gridDash An array of alternating [stroke, space] lengths for dashed grid lines. (type = array)
+#' @param gridDashOffset The pixel offset at which to start drawing with the grid dash array. (type = number)
+#' @param gridOpacity The stroke opacity of grid (value between [0,1])
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param gridWidth The grid width, in pixels.
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param labelAlign Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation. (type = Align)
+#' @param labelAngle The rotation angle of the axis labels.
+#' 
+#' __Default value:__ `-90` for nominal and ordinal fields; `0` otherwise. (type = number)
+#' @param labelBaseline Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`. (type = TextBaseline)
+#' @param labelBound Indicates if labels should be hidden if they exceed the axis range. If `false` (the default) no bounds overlap analysis is performed. If `true`, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.
+#' 
+#' __Default value:__ `false`. (type = number OR boolean)
+#' @param labelColor The color of the tick label, can be in hex color code or regular color name. (type = Color)
+#' @param labelFlush Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `true` for axis of a continuous x-scale. Otherwise, `false`. (type = boolean OR number)
+#' @param labelFlushOffset Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of `2` will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param labelFont The font of the tick label. (type = string)
+#' @param labelFontSize The font size of the label, in pixels. (type = number)
+#' @param labelFontStyle Font style of the title. (type = FontStyle)
+#' @param labelFontWeight Font weight of axis tick labels. (type = FontWeight)
+#' @param labelLimit Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `180` (type = number)
+#' @param labelOpacity The opacity of the labels. (type = number)
+#' @param labelOverlap The strategy to use for resolving overlap of axis labels. If `false` (the default), no overlap reduction is attempted. If set to `true` or `"parity"`, a strategy of removing every other label is used (this works well for standard linear axes). If set to `"greedy"`, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true` for non-nominal fields with non-log scales; `"greedy"` for log scales; otherwise `false`. (type = LabelOverlap)
+#' @param labelPadding The padding, in pixels, between axis and text labels.
+#' 
+#' __Default value:__ `2` (type = number)
+#' @param labelSeparation The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled. (type = number)
+#' @param labels A boolean flag indicating if labels should be included as part of the axis.
+#' 
+#' __Default value:__ `true`. (type = boolean)
+#' @param maxExtent The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.
+#' 
+#' __Default value:__ `undefined`. (type = number)
+#' @param minExtent The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.
+#' 
+#' __Default value:__ `30` for y-axis; `undefined` for x-axis. (type = number)
+#' @param offset The offset, in pixels, by which to displace the axis from the edge of the enclosing group or data rectangle.
+#' 
+#' __Default value:__ derived from the [axis config](https://vega.github.io/vega-lite/docs/config.html#facet-scale-config)'s `offset` (`0` by default) (type = number)
+#' @param orient The orientation of the axis. One of `"top"`, `"bottom"`, `"left"` or `"right"`. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).
+#' 
+#' __Default value:__ `"bottom"` for x-axes and `"left"` for y-axes. (type = AxisOrient)
+#' @param position The anchor position of the axis in pixels. For x-axes with top or bottom orientation, this sets the axis group x coordinate. For y-axes with left or right orientation, this sets the axis group y coordinate.
+#' 
+#' __Default value__: `0` (type = number)
+#' @param tickColor The color of the axis's tick.
+#' 
+#' __Default value:__ `"gray"` (type = Color)
+#' @param tickCount A desired number of ticks, for axes visualizing quantitative scales. The resulting number may be different so that values are "nice" (multiples of 2, 5, 10) and lie within the underlying scale's range. (type = number)
+#' @param tickDash An array of alternating [stroke, space] lengths for dashed tick mark lines. (type = array)
+#' @param tickDashOffset The pixel offset at which to start drawing with the tick mark dash array. (type = number)
+#' @param tickExtra Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for `band` scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with `"bandPosition": 1` and an axis `"padding"` value of `0`. (type = boolean)
+#' @param tickMinStep The minimum desired step between axis ticks, in terms of scale domain values. For example, a value of `1` indicates that ticks should not be less than 1 unit apart. If `tickMinStep` is specified, the `tickCount` value will be adjusted, if necessary, to enforce the minimum step value.
+#' 
+#' __Default value__: `undefined` (type = number)
+#' @param tickOffset Position offset in pixels to apply to ticks, labels, and gridlines. (type = number)
+#' @param tickOpacity Opacity of the ticks. (type = number)
+#' @param tickRound Boolean flag indicating if pixel position values should be rounded to the nearest integer.
+#' 
+#' __Default value:__ `true` (type = boolean)
+#' @param tickSize The size in pixels of axis ticks.
+#' 
+#' __Default value:__ `5` (type = number)
+#' @param tickWidth The width, in pixels, of ticks.
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param ticks Boolean value that determines whether the axis should include ticks.
+#' 
+#' __Default value:__ `true` (type = boolean)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param titleAlign Horizontal text alignment of axis titles. (type = Align)
+#' @param titleAnchor Text anchor position for placing axis titles. (type = TitleAnchor)
+#' @param titleAngle Angle in degrees of axis titles. (type = number)
+#' @param titleBaseline Vertical text baseline for axis titles. (type = TextBaseline)
+#' @param titleColor Color of the title, can be in hex color code or regular color name. (type = Color)
+#' @param titleFont Font of the title. (e.g., `"Helvetica Neue"`). (type = string)
+#' @param titleFontSize Font size of the title. (type = number)
+#' @param titleFontStyle Font style of the title. (type = FontStyle)
+#' @param titleFontWeight Font weight of the title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`). (type = FontWeight)
+#' @param titleLimit Maximum allowed pixel width of axis titles. (type = number)
+#' @param titleOpacity Opacity of the axis title. (type = number)
+#' @param titlePadding The padding, in pixels, between title and axis. (type = number)
+#' @param titleX X-coordinate of the axis title relative to the axis group. (type = number)
+#' @param titleY Y-coordinate of the axis title relative to the axis group. (type = number)
+#' @param values Explicitly set the visible axis tick values. (type = Varies)
+#' @param zindex A non-positive integer indicating z-index of the axis.
+#' If zindex is 0, axes should be drawn behind all chart elements.
+#' To put them in front, use `"zindex = 1"`.
+#' 
+#' __Default value:__ `1` (in front of the marks) for actual axis and `0` (behind the marks) for grids. (type = number)
+#' @param remove Remove the axis?
+#' @return A modified spec
+#' @export
+vl_axis_y <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, values = NULL, zindex = NULL, remove = FALSE) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'y'))
+  rlang::exec(.add_axis_to_encoding, !!!args_out)
+} #' vl_scale_color
+#' 
+#' Add scale to color encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param base The logarithm base of the `log` scale (default `10`). (type = number)
+#' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
+#' @param clamp If `true`, values that exceed the data domain are clamped to either the minimum or maximum range value
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `clamp` (`true` by default). (type = boolean)
+#' @param constant A constant determining the slope of the symlog function around zero. Only used for `symlog` scales.
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param domain Customized domain values.
+#' 
+#' For _quantitative_ fields, `domain` can take the form of a two-element array with minimum and maximum values.  [Piecewise scales](https://vega.github.io/vega-lite/docs/scale.html#piecewise) can be created by providing a `domain` with more than two entries.
+#' If the input field is aggregated, `domain` can also be a string value `"unaggregated"`, indicating that the domain should include the raw data values prior to the aggregation.
+#' 
+#' For _temporal_ fields, `domain` can be a two-element array minimum and maximum values, in the form of either timestamps or the [DateTime definition objects](https://vega.github.io/vega-lite/docs/types.html#datetime).
+#' 
+#' For _ordinal_ and _nominal_ fields, `domain` can be an array that lists valid input values.
+#' 
+#' The `selection` property can be used to [interactively determine](https://vega.github.io/vega-lite/docs/selection.html#scale-domains) the scale domain. (type = Varies)
+#' @param exponent The exponent of the `pow` scale. (type = number)
+#' @param interpolate The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors (in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal values include `rgb`, `hsl`, `hsl-long`, `lab`, `hcl`, `hcl-long`, `cubehelix` and `cubehelix-long` ('-long' variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a string-valued _type_ property and an optional numeric _gamma_ property applicable to rgb and cubehelix interpolators. For more, see the [d3-interpolate documentation](https://github.com/d3/d3-interpolate).
+#' 
+#' * __Default value:__ `hcl` (type = Varies)
+#' @param nice Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of _[0.201479…, 0.996679…]_, a nice domain might be _[0.2, 1.0]_.
+#' 
+#' For quantitative scales such as linear, `nice` can be either a boolean flag or a number. If `nice` is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
+#' 
+#' For temporal fields with time and utc scales, the `nice` value can be a string indicating the desired time interval. Legal values are `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`. Alternatively, `time` and `utc` scales can accept an object-valued interval specifier of the form `{"interval": "month", "step": 3}`, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
+#' 
+#' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise. (type = Varies)
+#' @param padding For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+#' 
+#' For _[band](https://vega.github.io/vega-lite/docs/scale.html#band)_ scales, shortcut for setting `paddingInner` and `paddingOuter` to the same value.
+#' 
+#' For _[point](https://vega.github.io/vega-lite/docs/scale.html#point)_ scales, alias for `paddingOuter`.
+#' 
+#' __Default value:__ For _continuous_ scales, derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `continuousPadding`.
+#' For _band and point_ scales, see `paddingInner` and `paddingOuter`. (type = number)
+#' @param paddingInner The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' For point scale, this property is invalid as point scales do not have internal band widths (only step sizes between bands).
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingInner`. (type = number)
+#' @param paddingOuter The outer padding (spacing) at the ends of the range of band and point scales,
+#' as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingOuter` for band scales and `pointPadding` for point scales. (type = number)
+#' @param range The range of the scale. One of:
+#' 
+#' - A string indicating a [pre-defined named scale range](https://vega.github.io/vega-lite/docs/scale.html#range-config) (e.g., example, `"symbol"`, or `"diverging"`).
+#' 
+#' - For [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous), two-element array indicating  minimum and maximum values, or an array with more than two entries for specifying a [piecewise scale](https://vega.github.io/vega-lite/docs/scale.html#piecewise).
+#' 
+#' - For [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) and [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales, an array of desired output values.
+#' 
+#' __Notes:__
+#' 
+#' 1) For color scales you can also specify a color [`scheme`](https://vega.github.io/vega-lite/docs/scale.html#scheme) instead of `range`.
+#' 
+#' 2) Any directly specified `range` for `x` and `y` channels will be ignored. Range can be customized via the view's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` and `height`) or via [range steps and paddings properties](#range-step) for [band](#band) and [point](#point) scales. (type = Varies)
+#' @param rangeStep The distance between the starts of adjacent bands or points in [band](https://vega.github.io/vega-lite/docs/scale.html#band) and [point](https://vega.github.io/vega-lite/docs/scale.html#point) scales.
+#' 
+#' If `rangeStep` is `null` or if the view contains the scale's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` for `x` scales and `height` for `y` scales), `rangeStep` will be automatically determined to fit the size of the view.
+#' 
+#' __Default value:__  derived the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `textXRangeStep` (`90` by default) for x-scales of `text` marks and `rangeStep` (`21` by default) for x-scales of other marks and y-scales.
+#' 
+#' __Warning__: If `rangeStep` is `null` and the cardinality of the scale's domain is higher than `width` or `height`, the rangeStep might become less than one pixel and the mark might not appear correctly. (type = number OR null)
+#' @param round If `true`, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.
+#' 
+#' __Default value:__ `false`. (type = boolean)
+#' @param scheme A string indicating a color [scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme) name (e.g., `"category10"` or `"blues"`) or a [scheme parameter object](https://vega.github.io/vega-lite/docs/scale.html#scheme-params).
+#' 
+#' Discrete color schemes may be used with [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) or [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales. Continuous color schemes are intended for use with color scales.
+#' 
+#' For the full list of supported schemes, please refer to the [Vega Scheme](https://vega.github.io/vega/docs/schemes/#reference) reference. (type = Varies)
+#' @param type The type of scale.  Vega-Lite supports the following categories of scale types:
+#' 
+#' 1) [**Continuous Scales**](https://vega.github.io/vega-lite/docs/scale.html#continuous) -- mapping continuous domains to continuous output ranges ([`"linear"`](https://vega.github.io/vega-lite/docs/scale.html#linear), [`"pow"`](https://vega.github.io/vega-lite/docs/scale.html#pow), [`"sqrt"`](https://vega.github.io/vega-lite/docs/scale.html#sqrt), [`"symlog"`](https://vega.github.io/vega-lite/docs/scale.html#symlog), [`"log"`](https://vega.github.io/vega-lite/docs/scale.html#log), [`"time"`](https://vega.github.io/vega-lite/docs/scale.html#time), [`"utc"`](https://vega.github.io/vega-lite/docs/scale.html#utc).
+#' 
+#' 2) [**Discrete Scales**](https://vega.github.io/vega-lite/docs/scale.html#discrete) -- mapping discrete domains to discrete ([`"ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#ordinal)) or continuous ([`"band"`](https://vega.github.io/vega-lite/docs/scale.html#band) and [`"point"`](https://vega.github.io/vega-lite/docs/scale.html#point)) output ranges.
+#' 
+#' 3) [**Discretizing Scales**](https://vega.github.io/vega-lite/docs/scale.html#discretizing) -- mapping continuous domains to discrete output ranges [`"bin-ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal), [`"quantile"`](https://vega.github.io/vega-lite/docs/scale.html#quantile), [`"quantize"`](https://vega.github.io/vega-lite/docs/scale.html#quantize) and [`"threshold"`](https://vega.github.io/vega-lite/docs/scale.html#threshold).
+#' 
+#' __Default value:__ please see the [scale type table](https://vega.github.io/vega-lite/docs/scale.html#type). (type = ScaleType)
+#' @param zero If `true`, ensures that a zero baseline value is included in the scale domain.
+#' 
+#' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
+#' 
+#' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
+#' @return A modified spec
+#' @export
+vl_scale_color <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'color'))
+  rlang::exec(.add_scale_to_encoding, !!!args_out)
+} #' vl_scale_fill
+#' 
+#' Add scale to fill encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param base The logarithm base of the `log` scale (default `10`). (type = number)
+#' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
+#' @param clamp If `true`, values that exceed the data domain are clamped to either the minimum or maximum range value
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `clamp` (`true` by default). (type = boolean)
+#' @param constant A constant determining the slope of the symlog function around zero. Only used for `symlog` scales.
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param domain Customized domain values.
+#' 
+#' For _quantitative_ fields, `domain` can take the form of a two-element array with minimum and maximum values.  [Piecewise scales](https://vega.github.io/vega-lite/docs/scale.html#piecewise) can be created by providing a `domain` with more than two entries.
+#' If the input field is aggregated, `domain` can also be a string value `"unaggregated"`, indicating that the domain should include the raw data values prior to the aggregation.
+#' 
+#' For _temporal_ fields, `domain` can be a two-element array minimum and maximum values, in the form of either timestamps or the [DateTime definition objects](https://vega.github.io/vega-lite/docs/types.html#datetime).
+#' 
+#' For _ordinal_ and _nominal_ fields, `domain` can be an array that lists valid input values.
+#' 
+#' The `selection` property can be used to [interactively determine](https://vega.github.io/vega-lite/docs/selection.html#scale-domains) the scale domain. (type = Varies)
+#' @param exponent The exponent of the `pow` scale. (type = number)
+#' @param interpolate The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors (in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal values include `rgb`, `hsl`, `hsl-long`, `lab`, `hcl`, `hcl-long`, `cubehelix` and `cubehelix-long` ('-long' variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a string-valued _type_ property and an optional numeric _gamma_ property applicable to rgb and cubehelix interpolators. For more, see the [d3-interpolate documentation](https://github.com/d3/d3-interpolate).
+#' 
+#' * __Default value:__ `hcl` (type = Varies)
+#' @param nice Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of _[0.201479…, 0.996679…]_, a nice domain might be _[0.2, 1.0]_.
+#' 
+#' For quantitative scales such as linear, `nice` can be either a boolean flag or a number. If `nice` is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
+#' 
+#' For temporal fields with time and utc scales, the `nice` value can be a string indicating the desired time interval. Legal values are `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`. Alternatively, `time` and `utc` scales can accept an object-valued interval specifier of the form `{"interval": "month", "step": 3}`, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
+#' 
+#' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise. (type = Varies)
+#' @param padding For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+#' 
+#' For _[band](https://vega.github.io/vega-lite/docs/scale.html#band)_ scales, shortcut for setting `paddingInner` and `paddingOuter` to the same value.
+#' 
+#' For _[point](https://vega.github.io/vega-lite/docs/scale.html#point)_ scales, alias for `paddingOuter`.
+#' 
+#' __Default value:__ For _continuous_ scales, derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `continuousPadding`.
+#' For _band and point_ scales, see `paddingInner` and `paddingOuter`. (type = number)
+#' @param paddingInner The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' For point scale, this property is invalid as point scales do not have internal band widths (only step sizes between bands).
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingInner`. (type = number)
+#' @param paddingOuter The outer padding (spacing) at the ends of the range of band and point scales,
+#' as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingOuter` for band scales and `pointPadding` for point scales. (type = number)
+#' @param range The range of the scale. One of:
+#' 
+#' - A string indicating a [pre-defined named scale range](https://vega.github.io/vega-lite/docs/scale.html#range-config) (e.g., example, `"symbol"`, or `"diverging"`).
+#' 
+#' - For [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous), two-element array indicating  minimum and maximum values, or an array with more than two entries for specifying a [piecewise scale](https://vega.github.io/vega-lite/docs/scale.html#piecewise).
+#' 
+#' - For [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) and [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales, an array of desired output values.
+#' 
+#' __Notes:__
+#' 
+#' 1) For color scales you can also specify a color [`scheme`](https://vega.github.io/vega-lite/docs/scale.html#scheme) instead of `range`.
+#' 
+#' 2) Any directly specified `range` for `x` and `y` channels will be ignored. Range can be customized via the view's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` and `height`) or via [range steps and paddings properties](#range-step) for [band](#band) and [point](#point) scales. (type = Varies)
+#' @param rangeStep The distance between the starts of adjacent bands or points in [band](https://vega.github.io/vega-lite/docs/scale.html#band) and [point](https://vega.github.io/vega-lite/docs/scale.html#point) scales.
+#' 
+#' If `rangeStep` is `null` or if the view contains the scale's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` for `x` scales and `height` for `y` scales), `rangeStep` will be automatically determined to fit the size of the view.
+#' 
+#' __Default value:__  derived the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `textXRangeStep` (`90` by default) for x-scales of `text` marks and `rangeStep` (`21` by default) for x-scales of other marks and y-scales.
+#' 
+#' __Warning__: If `rangeStep` is `null` and the cardinality of the scale's domain is higher than `width` or `height`, the rangeStep might become less than one pixel and the mark might not appear correctly. (type = number OR null)
+#' @param round If `true`, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.
+#' 
+#' __Default value:__ `false`. (type = boolean)
+#' @param scheme A string indicating a color [scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme) name (e.g., `"category10"` or `"blues"`) or a [scheme parameter object](https://vega.github.io/vega-lite/docs/scale.html#scheme-params).
+#' 
+#' Discrete color schemes may be used with [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) or [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales. Continuous color schemes are intended for use with color scales.
+#' 
+#' For the full list of supported schemes, please refer to the [Vega Scheme](https://vega.github.io/vega/docs/schemes/#reference) reference. (type = Varies)
+#' @param type The type of scale.  Vega-Lite supports the following categories of scale types:
+#' 
+#' 1) [**Continuous Scales**](https://vega.github.io/vega-lite/docs/scale.html#continuous) -- mapping continuous domains to continuous output ranges ([`"linear"`](https://vega.github.io/vega-lite/docs/scale.html#linear), [`"pow"`](https://vega.github.io/vega-lite/docs/scale.html#pow), [`"sqrt"`](https://vega.github.io/vega-lite/docs/scale.html#sqrt), [`"symlog"`](https://vega.github.io/vega-lite/docs/scale.html#symlog), [`"log"`](https://vega.github.io/vega-lite/docs/scale.html#log), [`"time"`](https://vega.github.io/vega-lite/docs/scale.html#time), [`"utc"`](https://vega.github.io/vega-lite/docs/scale.html#utc).
+#' 
+#' 2) [**Discrete Scales**](https://vega.github.io/vega-lite/docs/scale.html#discrete) -- mapping discrete domains to discrete ([`"ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#ordinal)) or continuous ([`"band"`](https://vega.github.io/vega-lite/docs/scale.html#band) and [`"point"`](https://vega.github.io/vega-lite/docs/scale.html#point)) output ranges.
+#' 
+#' 3) [**Discretizing Scales**](https://vega.github.io/vega-lite/docs/scale.html#discretizing) -- mapping continuous domains to discrete output ranges [`"bin-ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal), [`"quantile"`](https://vega.github.io/vega-lite/docs/scale.html#quantile), [`"quantize"`](https://vega.github.io/vega-lite/docs/scale.html#quantize) and [`"threshold"`](https://vega.github.io/vega-lite/docs/scale.html#threshold).
+#' 
+#' __Default value:__ please see the [scale type table](https://vega.github.io/vega-lite/docs/scale.html#type). (type = ScaleType)
+#' @param zero If `true`, ensures that a zero baseline value is included in the scale domain.
+#' 
+#' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
+#' 
+#' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
+#' @return A modified spec
+#' @export
+vl_scale_fill <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'fill'))
+  rlang::exec(.add_scale_to_encoding, !!!args_out)
+} #' vl_scale_fillOpacity
+#' 
+#' Add scale to fillOpacity encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param base The logarithm base of the `log` scale (default `10`). (type = number)
+#' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
+#' @param clamp If `true`, values that exceed the data domain are clamped to either the minimum or maximum range value
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `clamp` (`true` by default). (type = boolean)
+#' @param constant A constant determining the slope of the symlog function around zero. Only used for `symlog` scales.
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param domain Customized domain values.
+#' 
+#' For _quantitative_ fields, `domain` can take the form of a two-element array with minimum and maximum values.  [Piecewise scales](https://vega.github.io/vega-lite/docs/scale.html#piecewise) can be created by providing a `domain` with more than two entries.
+#' If the input field is aggregated, `domain` can also be a string value `"unaggregated"`, indicating that the domain should include the raw data values prior to the aggregation.
+#' 
+#' For _temporal_ fields, `domain` can be a two-element array minimum and maximum values, in the form of either timestamps or the [DateTime definition objects](https://vega.github.io/vega-lite/docs/types.html#datetime).
+#' 
+#' For _ordinal_ and _nominal_ fields, `domain` can be an array that lists valid input values.
+#' 
+#' The `selection` property can be used to [interactively determine](https://vega.github.io/vega-lite/docs/selection.html#scale-domains) the scale domain. (type = Varies)
+#' @param exponent The exponent of the `pow` scale. (type = number)
+#' @param interpolate The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors (in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal values include `rgb`, `hsl`, `hsl-long`, `lab`, `hcl`, `hcl-long`, `cubehelix` and `cubehelix-long` ('-long' variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a string-valued _type_ property and an optional numeric _gamma_ property applicable to rgb and cubehelix interpolators. For more, see the [d3-interpolate documentation](https://github.com/d3/d3-interpolate).
+#' 
+#' * __Default value:__ `hcl` (type = Varies)
+#' @param nice Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of _[0.201479…, 0.996679…]_, a nice domain might be _[0.2, 1.0]_.
+#' 
+#' For quantitative scales such as linear, `nice` can be either a boolean flag or a number. If `nice` is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
+#' 
+#' For temporal fields with time and utc scales, the `nice` value can be a string indicating the desired time interval. Legal values are `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`. Alternatively, `time` and `utc` scales can accept an object-valued interval specifier of the form `{"interval": "month", "step": 3}`, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
+#' 
+#' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise. (type = Varies)
+#' @param padding For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+#' 
+#' For _[band](https://vega.github.io/vega-lite/docs/scale.html#band)_ scales, shortcut for setting `paddingInner` and `paddingOuter` to the same value.
+#' 
+#' For _[point](https://vega.github.io/vega-lite/docs/scale.html#point)_ scales, alias for `paddingOuter`.
+#' 
+#' __Default value:__ For _continuous_ scales, derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `continuousPadding`.
+#' For _band and point_ scales, see `paddingInner` and `paddingOuter`. (type = number)
+#' @param paddingInner The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' For point scale, this property is invalid as point scales do not have internal band widths (only step sizes between bands).
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingInner`. (type = number)
+#' @param paddingOuter The outer padding (spacing) at the ends of the range of band and point scales,
+#' as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingOuter` for band scales and `pointPadding` for point scales. (type = number)
+#' @param range The range of the scale. One of:
+#' 
+#' - A string indicating a [pre-defined named scale range](https://vega.github.io/vega-lite/docs/scale.html#range-config) (e.g., example, `"symbol"`, or `"diverging"`).
+#' 
+#' - For [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous), two-element array indicating  minimum and maximum values, or an array with more than two entries for specifying a [piecewise scale](https://vega.github.io/vega-lite/docs/scale.html#piecewise).
+#' 
+#' - For [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) and [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales, an array of desired output values.
+#' 
+#' __Notes:__
+#' 
+#' 1) For color scales you can also specify a color [`scheme`](https://vega.github.io/vega-lite/docs/scale.html#scheme) instead of `range`.
+#' 
+#' 2) Any directly specified `range` for `x` and `y` channels will be ignored. Range can be customized via the view's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` and `height`) or via [range steps and paddings properties](#range-step) for [band](#band) and [point](#point) scales. (type = Varies)
+#' @param rangeStep The distance between the starts of adjacent bands or points in [band](https://vega.github.io/vega-lite/docs/scale.html#band) and [point](https://vega.github.io/vega-lite/docs/scale.html#point) scales.
+#' 
+#' If `rangeStep` is `null` or if the view contains the scale's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` for `x` scales and `height` for `y` scales), `rangeStep` will be automatically determined to fit the size of the view.
+#' 
+#' __Default value:__  derived the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `textXRangeStep` (`90` by default) for x-scales of `text` marks and `rangeStep` (`21` by default) for x-scales of other marks and y-scales.
+#' 
+#' __Warning__: If `rangeStep` is `null` and the cardinality of the scale's domain is higher than `width` or `height`, the rangeStep might become less than one pixel and the mark might not appear correctly. (type = number OR null)
+#' @param round If `true`, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.
+#' 
+#' __Default value:__ `false`. (type = boolean)
+#' @param scheme A string indicating a color [scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme) name (e.g., `"category10"` or `"blues"`) or a [scheme parameter object](https://vega.github.io/vega-lite/docs/scale.html#scheme-params).
+#' 
+#' Discrete color schemes may be used with [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) or [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales. Continuous color schemes are intended for use with color scales.
+#' 
+#' For the full list of supported schemes, please refer to the [Vega Scheme](https://vega.github.io/vega/docs/schemes/#reference) reference. (type = Varies)
+#' @param type The type of scale.  Vega-Lite supports the following categories of scale types:
+#' 
+#' 1) [**Continuous Scales**](https://vega.github.io/vega-lite/docs/scale.html#continuous) -- mapping continuous domains to continuous output ranges ([`"linear"`](https://vega.github.io/vega-lite/docs/scale.html#linear), [`"pow"`](https://vega.github.io/vega-lite/docs/scale.html#pow), [`"sqrt"`](https://vega.github.io/vega-lite/docs/scale.html#sqrt), [`"symlog"`](https://vega.github.io/vega-lite/docs/scale.html#symlog), [`"log"`](https://vega.github.io/vega-lite/docs/scale.html#log), [`"time"`](https://vega.github.io/vega-lite/docs/scale.html#time), [`"utc"`](https://vega.github.io/vega-lite/docs/scale.html#utc).
+#' 
+#' 2) [**Discrete Scales**](https://vega.github.io/vega-lite/docs/scale.html#discrete) -- mapping discrete domains to discrete ([`"ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#ordinal)) or continuous ([`"band"`](https://vega.github.io/vega-lite/docs/scale.html#band) and [`"point"`](https://vega.github.io/vega-lite/docs/scale.html#point)) output ranges.
+#' 
+#' 3) [**Discretizing Scales**](https://vega.github.io/vega-lite/docs/scale.html#discretizing) -- mapping continuous domains to discrete output ranges [`"bin-ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal), [`"quantile"`](https://vega.github.io/vega-lite/docs/scale.html#quantile), [`"quantize"`](https://vega.github.io/vega-lite/docs/scale.html#quantize) and [`"threshold"`](https://vega.github.io/vega-lite/docs/scale.html#threshold).
+#' 
+#' __Default value:__ please see the [scale type table](https://vega.github.io/vega-lite/docs/scale.html#type). (type = ScaleType)
+#' @param zero If `true`, ensures that a zero baseline value is included in the scale domain.
+#' 
+#' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
+#' 
+#' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
+#' @return A modified spec
+#' @export
+vl_scale_fillOpacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'fillOpacity'))
+  rlang::exec(.add_scale_to_encoding, !!!args_out)
+} #' vl_scale_href
+#' 
+#' Add scale to href encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param base The logarithm base of the `log` scale (default `10`). (type = number)
+#' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
+#' @param clamp If `true`, values that exceed the data domain are clamped to either the minimum or maximum range value
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `clamp` (`true` by default). (type = boolean)
+#' @param constant A constant determining the slope of the symlog function around zero. Only used for `symlog` scales.
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param domain Customized domain values.
+#' 
+#' For _quantitative_ fields, `domain` can take the form of a two-element array with minimum and maximum values.  [Piecewise scales](https://vega.github.io/vega-lite/docs/scale.html#piecewise) can be created by providing a `domain` with more than two entries.
+#' If the input field is aggregated, `domain` can also be a string value `"unaggregated"`, indicating that the domain should include the raw data values prior to the aggregation.
+#' 
+#' For _temporal_ fields, `domain` can be a two-element array minimum and maximum values, in the form of either timestamps or the [DateTime definition objects](https://vega.github.io/vega-lite/docs/types.html#datetime).
+#' 
+#' For _ordinal_ and _nominal_ fields, `domain` can be an array that lists valid input values.
+#' 
+#' The `selection` property can be used to [interactively determine](https://vega.github.io/vega-lite/docs/selection.html#scale-domains) the scale domain. (type = Varies)
+#' @param exponent The exponent of the `pow` scale. (type = number)
+#' @param interpolate The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors (in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal values include `rgb`, `hsl`, `hsl-long`, `lab`, `hcl`, `hcl-long`, `cubehelix` and `cubehelix-long` ('-long' variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a string-valued _type_ property and an optional numeric _gamma_ property applicable to rgb and cubehelix interpolators. For more, see the [d3-interpolate documentation](https://github.com/d3/d3-interpolate).
+#' 
+#' * __Default value:__ `hcl` (type = Varies)
+#' @param nice Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of _[0.201479…, 0.996679…]_, a nice domain might be _[0.2, 1.0]_.
+#' 
+#' For quantitative scales such as linear, `nice` can be either a boolean flag or a number. If `nice` is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
+#' 
+#' For temporal fields with time and utc scales, the `nice` value can be a string indicating the desired time interval. Legal values are `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`. Alternatively, `time` and `utc` scales can accept an object-valued interval specifier of the form `{"interval": "month", "step": 3}`, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
+#' 
+#' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise. (type = Varies)
+#' @param padding For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+#' 
+#' For _[band](https://vega.github.io/vega-lite/docs/scale.html#band)_ scales, shortcut for setting `paddingInner` and `paddingOuter` to the same value.
+#' 
+#' For _[point](https://vega.github.io/vega-lite/docs/scale.html#point)_ scales, alias for `paddingOuter`.
+#' 
+#' __Default value:__ For _continuous_ scales, derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `continuousPadding`.
+#' For _band and point_ scales, see `paddingInner` and `paddingOuter`. (type = number)
+#' @param paddingInner The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' For point scale, this property is invalid as point scales do not have internal band widths (only step sizes between bands).
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingInner`. (type = number)
+#' @param paddingOuter The outer padding (spacing) at the ends of the range of band and point scales,
+#' as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingOuter` for band scales and `pointPadding` for point scales. (type = number)
+#' @param range The range of the scale. One of:
+#' 
+#' - A string indicating a [pre-defined named scale range](https://vega.github.io/vega-lite/docs/scale.html#range-config) (e.g., example, `"symbol"`, or `"diverging"`).
+#' 
+#' - For [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous), two-element array indicating  minimum and maximum values, or an array with more than two entries for specifying a [piecewise scale](https://vega.github.io/vega-lite/docs/scale.html#piecewise).
+#' 
+#' - For [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) and [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales, an array of desired output values.
+#' 
+#' __Notes:__
+#' 
+#' 1) For color scales you can also specify a color [`scheme`](https://vega.github.io/vega-lite/docs/scale.html#scheme) instead of `range`.
+#' 
+#' 2) Any directly specified `range` for `x` and `y` channels will be ignored. Range can be customized via the view's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` and `height`) or via [range steps and paddings properties](#range-step) for [band](#band) and [point](#point) scales. (type = Varies)
+#' @param rangeStep The distance between the starts of adjacent bands or points in [band](https://vega.github.io/vega-lite/docs/scale.html#band) and [point](https://vega.github.io/vega-lite/docs/scale.html#point) scales.
+#' 
+#' If `rangeStep` is `null` or if the view contains the scale's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` for `x` scales and `height` for `y` scales), `rangeStep` will be automatically determined to fit the size of the view.
+#' 
+#' __Default value:__  derived the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `textXRangeStep` (`90` by default) for x-scales of `text` marks and `rangeStep` (`21` by default) for x-scales of other marks and y-scales.
+#' 
+#' __Warning__: If `rangeStep` is `null` and the cardinality of the scale's domain is higher than `width` or `height`, the rangeStep might become less than one pixel and the mark might not appear correctly. (type = number OR null)
+#' @param round If `true`, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.
+#' 
+#' __Default value:__ `false`. (type = boolean)
+#' @param scheme A string indicating a color [scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme) name (e.g., `"category10"` or `"blues"`) or a [scheme parameter object](https://vega.github.io/vega-lite/docs/scale.html#scheme-params).
+#' 
+#' Discrete color schemes may be used with [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) or [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales. Continuous color schemes are intended for use with color scales.
+#' 
+#' For the full list of supported schemes, please refer to the [Vega Scheme](https://vega.github.io/vega/docs/schemes/#reference) reference. (type = Varies)
+#' @param type The type of scale.  Vega-Lite supports the following categories of scale types:
+#' 
+#' 1) [**Continuous Scales**](https://vega.github.io/vega-lite/docs/scale.html#continuous) -- mapping continuous domains to continuous output ranges ([`"linear"`](https://vega.github.io/vega-lite/docs/scale.html#linear), [`"pow"`](https://vega.github.io/vega-lite/docs/scale.html#pow), [`"sqrt"`](https://vega.github.io/vega-lite/docs/scale.html#sqrt), [`"symlog"`](https://vega.github.io/vega-lite/docs/scale.html#symlog), [`"log"`](https://vega.github.io/vega-lite/docs/scale.html#log), [`"time"`](https://vega.github.io/vega-lite/docs/scale.html#time), [`"utc"`](https://vega.github.io/vega-lite/docs/scale.html#utc).
+#' 
+#' 2) [**Discrete Scales**](https://vega.github.io/vega-lite/docs/scale.html#discrete) -- mapping discrete domains to discrete ([`"ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#ordinal)) or continuous ([`"band"`](https://vega.github.io/vega-lite/docs/scale.html#band) and [`"point"`](https://vega.github.io/vega-lite/docs/scale.html#point)) output ranges.
+#' 
+#' 3) [**Discretizing Scales**](https://vega.github.io/vega-lite/docs/scale.html#discretizing) -- mapping continuous domains to discrete output ranges [`"bin-ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal), [`"quantile"`](https://vega.github.io/vega-lite/docs/scale.html#quantile), [`"quantize"`](https://vega.github.io/vega-lite/docs/scale.html#quantize) and [`"threshold"`](https://vega.github.io/vega-lite/docs/scale.html#threshold).
+#' 
+#' __Default value:__ please see the [scale type table](https://vega.github.io/vega-lite/docs/scale.html#type). (type = ScaleType)
+#' @param zero If `true`, ensures that a zero baseline value is included in the scale domain.
+#' 
+#' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
+#' 
+#' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
+#' @return A modified spec
+#' @export
+vl_scale_href <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'href'))
+  rlang::exec(.add_scale_to_encoding, !!!args_out)
+} #' vl_scale_opacity
+#' 
+#' Add scale to opacity encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param base The logarithm base of the `log` scale (default `10`). (type = number)
+#' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
+#' @param clamp If `true`, values that exceed the data domain are clamped to either the minimum or maximum range value
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `clamp` (`true` by default). (type = boolean)
+#' @param constant A constant determining the slope of the symlog function around zero. Only used for `symlog` scales.
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param domain Customized domain values.
+#' 
+#' For _quantitative_ fields, `domain` can take the form of a two-element array with minimum and maximum values.  [Piecewise scales](https://vega.github.io/vega-lite/docs/scale.html#piecewise) can be created by providing a `domain` with more than two entries.
+#' If the input field is aggregated, `domain` can also be a string value `"unaggregated"`, indicating that the domain should include the raw data values prior to the aggregation.
+#' 
+#' For _temporal_ fields, `domain` can be a two-element array minimum and maximum values, in the form of either timestamps or the [DateTime definition objects](https://vega.github.io/vega-lite/docs/types.html#datetime).
+#' 
+#' For _ordinal_ and _nominal_ fields, `domain` can be an array that lists valid input values.
+#' 
+#' The `selection` property can be used to [interactively determine](https://vega.github.io/vega-lite/docs/selection.html#scale-domains) the scale domain. (type = Varies)
+#' @param exponent The exponent of the `pow` scale. (type = number)
+#' @param interpolate The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors (in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal values include `rgb`, `hsl`, `hsl-long`, `lab`, `hcl`, `hcl-long`, `cubehelix` and `cubehelix-long` ('-long' variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a string-valued _type_ property and an optional numeric _gamma_ property applicable to rgb and cubehelix interpolators. For more, see the [d3-interpolate documentation](https://github.com/d3/d3-interpolate).
+#' 
+#' * __Default value:__ `hcl` (type = Varies)
+#' @param nice Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of _[0.201479…, 0.996679…]_, a nice domain might be _[0.2, 1.0]_.
+#' 
+#' For quantitative scales such as linear, `nice` can be either a boolean flag or a number. If `nice` is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
+#' 
+#' For temporal fields with time and utc scales, the `nice` value can be a string indicating the desired time interval. Legal values are `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`. Alternatively, `time` and `utc` scales can accept an object-valued interval specifier of the form `{"interval": "month", "step": 3}`, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
+#' 
+#' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise. (type = Varies)
+#' @param padding For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+#' 
+#' For _[band](https://vega.github.io/vega-lite/docs/scale.html#band)_ scales, shortcut for setting `paddingInner` and `paddingOuter` to the same value.
+#' 
+#' For _[point](https://vega.github.io/vega-lite/docs/scale.html#point)_ scales, alias for `paddingOuter`.
+#' 
+#' __Default value:__ For _continuous_ scales, derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `continuousPadding`.
+#' For _band and point_ scales, see `paddingInner` and `paddingOuter`. (type = number)
+#' @param paddingInner The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' For point scale, this property is invalid as point scales do not have internal band widths (only step sizes between bands).
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingInner`. (type = number)
+#' @param paddingOuter The outer padding (spacing) at the ends of the range of band and point scales,
+#' as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingOuter` for band scales and `pointPadding` for point scales. (type = number)
+#' @param range The range of the scale. One of:
+#' 
+#' - A string indicating a [pre-defined named scale range](https://vega.github.io/vega-lite/docs/scale.html#range-config) (e.g., example, `"symbol"`, or `"diverging"`).
+#' 
+#' - For [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous), two-element array indicating  minimum and maximum values, or an array with more than two entries for specifying a [piecewise scale](https://vega.github.io/vega-lite/docs/scale.html#piecewise).
+#' 
+#' - For [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) and [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales, an array of desired output values.
+#' 
+#' __Notes:__
+#' 
+#' 1) For color scales you can also specify a color [`scheme`](https://vega.github.io/vega-lite/docs/scale.html#scheme) instead of `range`.
+#' 
+#' 2) Any directly specified `range` for `x` and `y` channels will be ignored. Range can be customized via the view's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` and `height`) or via [range steps and paddings properties](#range-step) for [band](#band) and [point](#point) scales. (type = Varies)
+#' @param rangeStep The distance between the starts of adjacent bands or points in [band](https://vega.github.io/vega-lite/docs/scale.html#band) and [point](https://vega.github.io/vega-lite/docs/scale.html#point) scales.
+#' 
+#' If `rangeStep` is `null` or if the view contains the scale's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` for `x` scales and `height` for `y` scales), `rangeStep` will be automatically determined to fit the size of the view.
+#' 
+#' __Default value:__  derived the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `textXRangeStep` (`90` by default) for x-scales of `text` marks and `rangeStep` (`21` by default) for x-scales of other marks and y-scales.
+#' 
+#' __Warning__: If `rangeStep` is `null` and the cardinality of the scale's domain is higher than `width` or `height`, the rangeStep might become less than one pixel and the mark might not appear correctly. (type = number OR null)
+#' @param round If `true`, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.
+#' 
+#' __Default value:__ `false`. (type = boolean)
+#' @param scheme A string indicating a color [scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme) name (e.g., `"category10"` or `"blues"`) or a [scheme parameter object](https://vega.github.io/vega-lite/docs/scale.html#scheme-params).
+#' 
+#' Discrete color schemes may be used with [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) or [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales. Continuous color schemes are intended for use with color scales.
+#' 
+#' For the full list of supported schemes, please refer to the [Vega Scheme](https://vega.github.io/vega/docs/schemes/#reference) reference. (type = Varies)
+#' @param type The type of scale.  Vega-Lite supports the following categories of scale types:
+#' 
+#' 1) [**Continuous Scales**](https://vega.github.io/vega-lite/docs/scale.html#continuous) -- mapping continuous domains to continuous output ranges ([`"linear"`](https://vega.github.io/vega-lite/docs/scale.html#linear), [`"pow"`](https://vega.github.io/vega-lite/docs/scale.html#pow), [`"sqrt"`](https://vega.github.io/vega-lite/docs/scale.html#sqrt), [`"symlog"`](https://vega.github.io/vega-lite/docs/scale.html#symlog), [`"log"`](https://vega.github.io/vega-lite/docs/scale.html#log), [`"time"`](https://vega.github.io/vega-lite/docs/scale.html#time), [`"utc"`](https://vega.github.io/vega-lite/docs/scale.html#utc).
+#' 
+#' 2) [**Discrete Scales**](https://vega.github.io/vega-lite/docs/scale.html#discrete) -- mapping discrete domains to discrete ([`"ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#ordinal)) or continuous ([`"band"`](https://vega.github.io/vega-lite/docs/scale.html#band) and [`"point"`](https://vega.github.io/vega-lite/docs/scale.html#point)) output ranges.
+#' 
+#' 3) [**Discretizing Scales**](https://vega.github.io/vega-lite/docs/scale.html#discretizing) -- mapping continuous domains to discrete output ranges [`"bin-ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal), [`"quantile"`](https://vega.github.io/vega-lite/docs/scale.html#quantile), [`"quantize"`](https://vega.github.io/vega-lite/docs/scale.html#quantize) and [`"threshold"`](https://vega.github.io/vega-lite/docs/scale.html#threshold).
+#' 
+#' __Default value:__ please see the [scale type table](https://vega.github.io/vega-lite/docs/scale.html#type). (type = ScaleType)
+#' @param zero If `true`, ensures that a zero baseline value is included in the scale domain.
+#' 
+#' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
+#' 
+#' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
+#' @return A modified spec
+#' @export
+vl_scale_opacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'opacity'))
+  rlang::exec(.add_scale_to_encoding, !!!args_out)
+} #' vl_scale_shape
+#' 
+#' Add scale to shape encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param base The logarithm base of the `log` scale (default `10`). (type = number)
+#' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
+#' @param clamp If `true`, values that exceed the data domain are clamped to either the minimum or maximum range value
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `clamp` (`true` by default). (type = boolean)
+#' @param constant A constant determining the slope of the symlog function around zero. Only used for `symlog` scales.
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param domain Customized domain values.
+#' 
+#' For _quantitative_ fields, `domain` can take the form of a two-element array with minimum and maximum values.  [Piecewise scales](https://vega.github.io/vega-lite/docs/scale.html#piecewise) can be created by providing a `domain` with more than two entries.
+#' If the input field is aggregated, `domain` can also be a string value `"unaggregated"`, indicating that the domain should include the raw data values prior to the aggregation.
+#' 
+#' For _temporal_ fields, `domain` can be a two-element array minimum and maximum values, in the form of either timestamps or the [DateTime definition objects](https://vega.github.io/vega-lite/docs/types.html#datetime).
+#' 
+#' For _ordinal_ and _nominal_ fields, `domain` can be an array that lists valid input values.
+#' 
+#' The `selection` property can be used to [interactively determine](https://vega.github.io/vega-lite/docs/selection.html#scale-domains) the scale domain. (type = Varies)
+#' @param exponent The exponent of the `pow` scale. (type = number)
+#' @param interpolate The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors (in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal values include `rgb`, `hsl`, `hsl-long`, `lab`, `hcl`, `hcl-long`, `cubehelix` and `cubehelix-long` ('-long' variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a string-valued _type_ property and an optional numeric _gamma_ property applicable to rgb and cubehelix interpolators. For more, see the [d3-interpolate documentation](https://github.com/d3/d3-interpolate).
+#' 
+#' * __Default value:__ `hcl` (type = Varies)
+#' @param nice Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of _[0.201479…, 0.996679…]_, a nice domain might be _[0.2, 1.0]_.
+#' 
+#' For quantitative scales such as linear, `nice` can be either a boolean flag or a number. If `nice` is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
+#' 
+#' For temporal fields with time and utc scales, the `nice` value can be a string indicating the desired time interval. Legal values are `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`. Alternatively, `time` and `utc` scales can accept an object-valued interval specifier of the form `{"interval": "month", "step": 3}`, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
+#' 
+#' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise. (type = Varies)
+#' @param padding For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+#' 
+#' For _[band](https://vega.github.io/vega-lite/docs/scale.html#band)_ scales, shortcut for setting `paddingInner` and `paddingOuter` to the same value.
+#' 
+#' For _[point](https://vega.github.io/vega-lite/docs/scale.html#point)_ scales, alias for `paddingOuter`.
+#' 
+#' __Default value:__ For _continuous_ scales, derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `continuousPadding`.
+#' For _band and point_ scales, see `paddingInner` and `paddingOuter`. (type = number)
+#' @param paddingInner The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' For point scale, this property is invalid as point scales do not have internal band widths (only step sizes between bands).
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingInner`. (type = number)
+#' @param paddingOuter The outer padding (spacing) at the ends of the range of band and point scales,
+#' as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingOuter` for band scales and `pointPadding` for point scales. (type = number)
+#' @param range The range of the scale. One of:
+#' 
+#' - A string indicating a [pre-defined named scale range](https://vega.github.io/vega-lite/docs/scale.html#range-config) (e.g., example, `"symbol"`, or `"diverging"`).
+#' 
+#' - For [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous), two-element array indicating  minimum and maximum values, or an array with more than two entries for specifying a [piecewise scale](https://vega.github.io/vega-lite/docs/scale.html#piecewise).
+#' 
+#' - For [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) and [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales, an array of desired output values.
+#' 
+#' __Notes:__
+#' 
+#' 1) For color scales you can also specify a color [`scheme`](https://vega.github.io/vega-lite/docs/scale.html#scheme) instead of `range`.
+#' 
+#' 2) Any directly specified `range` for `x` and `y` channels will be ignored. Range can be customized via the view's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` and `height`) or via [range steps and paddings properties](#range-step) for [band](#band) and [point](#point) scales. (type = Varies)
+#' @param rangeStep The distance between the starts of adjacent bands or points in [band](https://vega.github.io/vega-lite/docs/scale.html#band) and [point](https://vega.github.io/vega-lite/docs/scale.html#point) scales.
+#' 
+#' If `rangeStep` is `null` or if the view contains the scale's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` for `x` scales and `height` for `y` scales), `rangeStep` will be automatically determined to fit the size of the view.
+#' 
+#' __Default value:__  derived the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `textXRangeStep` (`90` by default) for x-scales of `text` marks and `rangeStep` (`21` by default) for x-scales of other marks and y-scales.
+#' 
+#' __Warning__: If `rangeStep` is `null` and the cardinality of the scale's domain is higher than `width` or `height`, the rangeStep might become less than one pixel and the mark might not appear correctly. (type = number OR null)
+#' @param round If `true`, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.
+#' 
+#' __Default value:__ `false`. (type = boolean)
+#' @param scheme A string indicating a color [scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme) name (e.g., `"category10"` or `"blues"`) or a [scheme parameter object](https://vega.github.io/vega-lite/docs/scale.html#scheme-params).
+#' 
+#' Discrete color schemes may be used with [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) or [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales. Continuous color schemes are intended for use with color scales.
+#' 
+#' For the full list of supported schemes, please refer to the [Vega Scheme](https://vega.github.io/vega/docs/schemes/#reference) reference. (type = Varies)
+#' @param type The type of scale.  Vega-Lite supports the following categories of scale types:
+#' 
+#' 1) [**Continuous Scales**](https://vega.github.io/vega-lite/docs/scale.html#continuous) -- mapping continuous domains to continuous output ranges ([`"linear"`](https://vega.github.io/vega-lite/docs/scale.html#linear), [`"pow"`](https://vega.github.io/vega-lite/docs/scale.html#pow), [`"sqrt"`](https://vega.github.io/vega-lite/docs/scale.html#sqrt), [`"symlog"`](https://vega.github.io/vega-lite/docs/scale.html#symlog), [`"log"`](https://vega.github.io/vega-lite/docs/scale.html#log), [`"time"`](https://vega.github.io/vega-lite/docs/scale.html#time), [`"utc"`](https://vega.github.io/vega-lite/docs/scale.html#utc).
+#' 
+#' 2) [**Discrete Scales**](https://vega.github.io/vega-lite/docs/scale.html#discrete) -- mapping discrete domains to discrete ([`"ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#ordinal)) or continuous ([`"band"`](https://vega.github.io/vega-lite/docs/scale.html#band) and [`"point"`](https://vega.github.io/vega-lite/docs/scale.html#point)) output ranges.
+#' 
+#' 3) [**Discretizing Scales**](https://vega.github.io/vega-lite/docs/scale.html#discretizing) -- mapping continuous domains to discrete output ranges [`"bin-ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal), [`"quantile"`](https://vega.github.io/vega-lite/docs/scale.html#quantile), [`"quantize"`](https://vega.github.io/vega-lite/docs/scale.html#quantize) and [`"threshold"`](https://vega.github.io/vega-lite/docs/scale.html#threshold).
+#' 
+#' __Default value:__ please see the [scale type table](https://vega.github.io/vega-lite/docs/scale.html#type). (type = ScaleType)
+#' @param zero If `true`, ensures that a zero baseline value is included in the scale domain.
+#' 
+#' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
+#' 
+#' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
+#' @return A modified spec
+#' @export
+vl_scale_shape <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'shape'))
+  rlang::exec(.add_scale_to_encoding, !!!args_out)
+} #' vl_scale_size
+#' 
+#' Add scale to size encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param base The logarithm base of the `log` scale (default `10`). (type = number)
+#' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
+#' @param clamp If `true`, values that exceed the data domain are clamped to either the minimum or maximum range value
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `clamp` (`true` by default). (type = boolean)
+#' @param constant A constant determining the slope of the symlog function around zero. Only used for `symlog` scales.
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param domain Customized domain values.
+#' 
+#' For _quantitative_ fields, `domain` can take the form of a two-element array with minimum and maximum values.  [Piecewise scales](https://vega.github.io/vega-lite/docs/scale.html#piecewise) can be created by providing a `domain` with more than two entries.
+#' If the input field is aggregated, `domain` can also be a string value `"unaggregated"`, indicating that the domain should include the raw data values prior to the aggregation.
+#' 
+#' For _temporal_ fields, `domain` can be a two-element array minimum and maximum values, in the form of either timestamps or the [DateTime definition objects](https://vega.github.io/vega-lite/docs/types.html#datetime).
+#' 
+#' For _ordinal_ and _nominal_ fields, `domain` can be an array that lists valid input values.
+#' 
+#' The `selection` property can be used to [interactively determine](https://vega.github.io/vega-lite/docs/selection.html#scale-domains) the scale domain. (type = Varies)
+#' @param exponent The exponent of the `pow` scale. (type = number)
+#' @param interpolate The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors (in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal values include `rgb`, `hsl`, `hsl-long`, `lab`, `hcl`, `hcl-long`, `cubehelix` and `cubehelix-long` ('-long' variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a string-valued _type_ property and an optional numeric _gamma_ property applicable to rgb and cubehelix interpolators. For more, see the [d3-interpolate documentation](https://github.com/d3/d3-interpolate).
+#' 
+#' * __Default value:__ `hcl` (type = Varies)
+#' @param nice Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of _[0.201479…, 0.996679…]_, a nice domain might be _[0.2, 1.0]_.
+#' 
+#' For quantitative scales such as linear, `nice` can be either a boolean flag or a number. If `nice` is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
+#' 
+#' For temporal fields with time and utc scales, the `nice` value can be a string indicating the desired time interval. Legal values are `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`. Alternatively, `time` and `utc` scales can accept an object-valued interval specifier of the form `{"interval": "month", "step": 3}`, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
+#' 
+#' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise. (type = Varies)
+#' @param padding For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+#' 
+#' For _[band](https://vega.github.io/vega-lite/docs/scale.html#band)_ scales, shortcut for setting `paddingInner` and `paddingOuter` to the same value.
+#' 
+#' For _[point](https://vega.github.io/vega-lite/docs/scale.html#point)_ scales, alias for `paddingOuter`.
+#' 
+#' __Default value:__ For _continuous_ scales, derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `continuousPadding`.
+#' For _band and point_ scales, see `paddingInner` and `paddingOuter`. (type = number)
+#' @param paddingInner The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' For point scale, this property is invalid as point scales do not have internal band widths (only step sizes between bands).
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingInner`. (type = number)
+#' @param paddingOuter The outer padding (spacing) at the ends of the range of band and point scales,
+#' as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingOuter` for band scales and `pointPadding` for point scales. (type = number)
+#' @param range The range of the scale. One of:
+#' 
+#' - A string indicating a [pre-defined named scale range](https://vega.github.io/vega-lite/docs/scale.html#range-config) (e.g., example, `"symbol"`, or `"diverging"`).
+#' 
+#' - For [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous), two-element array indicating  minimum and maximum values, or an array with more than two entries for specifying a [piecewise scale](https://vega.github.io/vega-lite/docs/scale.html#piecewise).
+#' 
+#' - For [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) and [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales, an array of desired output values.
+#' 
+#' __Notes:__
+#' 
+#' 1) For color scales you can also specify a color [`scheme`](https://vega.github.io/vega-lite/docs/scale.html#scheme) instead of `range`.
+#' 
+#' 2) Any directly specified `range` for `x` and `y` channels will be ignored. Range can be customized via the view's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` and `height`) or via [range steps and paddings properties](#range-step) for [band](#band) and [point](#point) scales. (type = Varies)
+#' @param rangeStep The distance between the starts of adjacent bands or points in [band](https://vega.github.io/vega-lite/docs/scale.html#band) and [point](https://vega.github.io/vega-lite/docs/scale.html#point) scales.
+#' 
+#' If `rangeStep` is `null` or if the view contains the scale's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` for `x` scales and `height` for `y` scales), `rangeStep` will be automatically determined to fit the size of the view.
+#' 
+#' __Default value:__  derived the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `textXRangeStep` (`90` by default) for x-scales of `text` marks and `rangeStep` (`21` by default) for x-scales of other marks and y-scales.
+#' 
+#' __Warning__: If `rangeStep` is `null` and the cardinality of the scale's domain is higher than `width` or `height`, the rangeStep might become less than one pixel and the mark might not appear correctly. (type = number OR null)
+#' @param round If `true`, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.
+#' 
+#' __Default value:__ `false`. (type = boolean)
+#' @param scheme A string indicating a color [scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme) name (e.g., `"category10"` or `"blues"`) or a [scheme parameter object](https://vega.github.io/vega-lite/docs/scale.html#scheme-params).
+#' 
+#' Discrete color schemes may be used with [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) or [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales. Continuous color schemes are intended for use with color scales.
+#' 
+#' For the full list of supported schemes, please refer to the [Vega Scheme](https://vega.github.io/vega/docs/schemes/#reference) reference. (type = Varies)
+#' @param type The type of scale.  Vega-Lite supports the following categories of scale types:
+#' 
+#' 1) [**Continuous Scales**](https://vega.github.io/vega-lite/docs/scale.html#continuous) -- mapping continuous domains to continuous output ranges ([`"linear"`](https://vega.github.io/vega-lite/docs/scale.html#linear), [`"pow"`](https://vega.github.io/vega-lite/docs/scale.html#pow), [`"sqrt"`](https://vega.github.io/vega-lite/docs/scale.html#sqrt), [`"symlog"`](https://vega.github.io/vega-lite/docs/scale.html#symlog), [`"log"`](https://vega.github.io/vega-lite/docs/scale.html#log), [`"time"`](https://vega.github.io/vega-lite/docs/scale.html#time), [`"utc"`](https://vega.github.io/vega-lite/docs/scale.html#utc).
+#' 
+#' 2) [**Discrete Scales**](https://vega.github.io/vega-lite/docs/scale.html#discrete) -- mapping discrete domains to discrete ([`"ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#ordinal)) or continuous ([`"band"`](https://vega.github.io/vega-lite/docs/scale.html#band) and [`"point"`](https://vega.github.io/vega-lite/docs/scale.html#point)) output ranges.
+#' 
+#' 3) [**Discretizing Scales**](https://vega.github.io/vega-lite/docs/scale.html#discretizing) -- mapping continuous domains to discrete output ranges [`"bin-ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal), [`"quantile"`](https://vega.github.io/vega-lite/docs/scale.html#quantile), [`"quantize"`](https://vega.github.io/vega-lite/docs/scale.html#quantize) and [`"threshold"`](https://vega.github.io/vega-lite/docs/scale.html#threshold).
+#' 
+#' __Default value:__ please see the [scale type table](https://vega.github.io/vega-lite/docs/scale.html#type). (type = ScaleType)
+#' @param zero If `true`, ensures that a zero baseline value is included in the scale domain.
+#' 
+#' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
+#' 
+#' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
+#' @return A modified spec
+#' @export
+vl_scale_size <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'size'))
+  rlang::exec(.add_scale_to_encoding, !!!args_out)
+} #' vl_scale_stroke
+#' 
+#' Add scale to stroke encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param base The logarithm base of the `log` scale (default `10`). (type = number)
+#' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
+#' @param clamp If `true`, values that exceed the data domain are clamped to either the minimum or maximum range value
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `clamp` (`true` by default). (type = boolean)
+#' @param constant A constant determining the slope of the symlog function around zero. Only used for `symlog` scales.
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param domain Customized domain values.
+#' 
+#' For _quantitative_ fields, `domain` can take the form of a two-element array with minimum and maximum values.  [Piecewise scales](https://vega.github.io/vega-lite/docs/scale.html#piecewise) can be created by providing a `domain` with more than two entries.
+#' If the input field is aggregated, `domain` can also be a string value `"unaggregated"`, indicating that the domain should include the raw data values prior to the aggregation.
+#' 
+#' For _temporal_ fields, `domain` can be a two-element array minimum and maximum values, in the form of either timestamps or the [DateTime definition objects](https://vega.github.io/vega-lite/docs/types.html#datetime).
+#' 
+#' For _ordinal_ and _nominal_ fields, `domain` can be an array that lists valid input values.
+#' 
+#' The `selection` property can be used to [interactively determine](https://vega.github.io/vega-lite/docs/selection.html#scale-domains) the scale domain. (type = Varies)
+#' @param exponent The exponent of the `pow` scale. (type = number)
+#' @param interpolate The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors (in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal values include `rgb`, `hsl`, `hsl-long`, `lab`, `hcl`, `hcl-long`, `cubehelix` and `cubehelix-long` ('-long' variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a string-valued _type_ property and an optional numeric _gamma_ property applicable to rgb and cubehelix interpolators. For more, see the [d3-interpolate documentation](https://github.com/d3/d3-interpolate).
+#' 
+#' * __Default value:__ `hcl` (type = Varies)
+#' @param nice Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of _[0.201479…, 0.996679…]_, a nice domain might be _[0.2, 1.0]_.
+#' 
+#' For quantitative scales such as linear, `nice` can be either a boolean flag or a number. If `nice` is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
+#' 
+#' For temporal fields with time and utc scales, the `nice` value can be a string indicating the desired time interval. Legal values are `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`. Alternatively, `time` and `utc` scales can accept an object-valued interval specifier of the form `{"interval": "month", "step": 3}`, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
+#' 
+#' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise. (type = Varies)
+#' @param padding For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+#' 
+#' For _[band](https://vega.github.io/vega-lite/docs/scale.html#band)_ scales, shortcut for setting `paddingInner` and `paddingOuter` to the same value.
+#' 
+#' For _[point](https://vega.github.io/vega-lite/docs/scale.html#point)_ scales, alias for `paddingOuter`.
+#' 
+#' __Default value:__ For _continuous_ scales, derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `continuousPadding`.
+#' For _band and point_ scales, see `paddingInner` and `paddingOuter`. (type = number)
+#' @param paddingInner The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' For point scale, this property is invalid as point scales do not have internal band widths (only step sizes between bands).
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingInner`. (type = number)
+#' @param paddingOuter The outer padding (spacing) at the ends of the range of band and point scales,
+#' as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingOuter` for band scales and `pointPadding` for point scales. (type = number)
+#' @param range The range of the scale. One of:
+#' 
+#' - A string indicating a [pre-defined named scale range](https://vega.github.io/vega-lite/docs/scale.html#range-config) (e.g., example, `"symbol"`, or `"diverging"`).
+#' 
+#' - For [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous), two-element array indicating  minimum and maximum values, or an array with more than two entries for specifying a [piecewise scale](https://vega.github.io/vega-lite/docs/scale.html#piecewise).
+#' 
+#' - For [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) and [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales, an array of desired output values.
+#' 
+#' __Notes:__
+#' 
+#' 1) For color scales you can also specify a color [`scheme`](https://vega.github.io/vega-lite/docs/scale.html#scheme) instead of `range`.
+#' 
+#' 2) Any directly specified `range` for `x` and `y` channels will be ignored. Range can be customized via the view's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` and `height`) or via [range steps and paddings properties](#range-step) for [band](#band) and [point](#point) scales. (type = Varies)
+#' @param rangeStep The distance between the starts of adjacent bands or points in [band](https://vega.github.io/vega-lite/docs/scale.html#band) and [point](https://vega.github.io/vega-lite/docs/scale.html#point) scales.
+#' 
+#' If `rangeStep` is `null` or if the view contains the scale's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` for `x` scales and `height` for `y` scales), `rangeStep` will be automatically determined to fit the size of the view.
+#' 
+#' __Default value:__  derived the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `textXRangeStep` (`90` by default) for x-scales of `text` marks and `rangeStep` (`21` by default) for x-scales of other marks and y-scales.
+#' 
+#' __Warning__: If `rangeStep` is `null` and the cardinality of the scale's domain is higher than `width` or `height`, the rangeStep might become less than one pixel and the mark might not appear correctly. (type = number OR null)
+#' @param round If `true`, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.
+#' 
+#' __Default value:__ `false`. (type = boolean)
+#' @param scheme A string indicating a color [scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme) name (e.g., `"category10"` or `"blues"`) or a [scheme parameter object](https://vega.github.io/vega-lite/docs/scale.html#scheme-params).
+#' 
+#' Discrete color schemes may be used with [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) or [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales. Continuous color schemes are intended for use with color scales.
+#' 
+#' For the full list of supported schemes, please refer to the [Vega Scheme](https://vega.github.io/vega/docs/schemes/#reference) reference. (type = Varies)
+#' @param type The type of scale.  Vega-Lite supports the following categories of scale types:
+#' 
+#' 1) [**Continuous Scales**](https://vega.github.io/vega-lite/docs/scale.html#continuous) -- mapping continuous domains to continuous output ranges ([`"linear"`](https://vega.github.io/vega-lite/docs/scale.html#linear), [`"pow"`](https://vega.github.io/vega-lite/docs/scale.html#pow), [`"sqrt"`](https://vega.github.io/vega-lite/docs/scale.html#sqrt), [`"symlog"`](https://vega.github.io/vega-lite/docs/scale.html#symlog), [`"log"`](https://vega.github.io/vega-lite/docs/scale.html#log), [`"time"`](https://vega.github.io/vega-lite/docs/scale.html#time), [`"utc"`](https://vega.github.io/vega-lite/docs/scale.html#utc).
+#' 
+#' 2) [**Discrete Scales**](https://vega.github.io/vega-lite/docs/scale.html#discrete) -- mapping discrete domains to discrete ([`"ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#ordinal)) or continuous ([`"band"`](https://vega.github.io/vega-lite/docs/scale.html#band) and [`"point"`](https://vega.github.io/vega-lite/docs/scale.html#point)) output ranges.
+#' 
+#' 3) [**Discretizing Scales**](https://vega.github.io/vega-lite/docs/scale.html#discretizing) -- mapping continuous domains to discrete output ranges [`"bin-ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal), [`"quantile"`](https://vega.github.io/vega-lite/docs/scale.html#quantile), [`"quantize"`](https://vega.github.io/vega-lite/docs/scale.html#quantize) and [`"threshold"`](https://vega.github.io/vega-lite/docs/scale.html#threshold).
+#' 
+#' __Default value:__ please see the [scale type table](https://vega.github.io/vega-lite/docs/scale.html#type). (type = ScaleType)
+#' @param zero If `true`, ensures that a zero baseline value is included in the scale domain.
+#' 
+#' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
+#' 
+#' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
+#' @return A modified spec
+#' @export
+vl_scale_stroke <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'stroke'))
+  rlang::exec(.add_scale_to_encoding, !!!args_out)
+} #' vl_scale_strokeOpacity
+#' 
+#' Add scale to strokeOpacity encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param base The logarithm base of the `log` scale (default `10`). (type = number)
+#' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
+#' @param clamp If `true`, values that exceed the data domain are clamped to either the minimum or maximum range value
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `clamp` (`true` by default). (type = boolean)
+#' @param constant A constant determining the slope of the symlog function around zero. Only used for `symlog` scales.
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param domain Customized domain values.
+#' 
+#' For _quantitative_ fields, `domain` can take the form of a two-element array with minimum and maximum values.  [Piecewise scales](https://vega.github.io/vega-lite/docs/scale.html#piecewise) can be created by providing a `domain` with more than two entries.
+#' If the input field is aggregated, `domain` can also be a string value `"unaggregated"`, indicating that the domain should include the raw data values prior to the aggregation.
+#' 
+#' For _temporal_ fields, `domain` can be a two-element array minimum and maximum values, in the form of either timestamps or the [DateTime definition objects](https://vega.github.io/vega-lite/docs/types.html#datetime).
+#' 
+#' For _ordinal_ and _nominal_ fields, `domain` can be an array that lists valid input values.
+#' 
+#' The `selection` property can be used to [interactively determine](https://vega.github.io/vega-lite/docs/selection.html#scale-domains) the scale domain. (type = Varies)
+#' @param exponent The exponent of the `pow` scale. (type = number)
+#' @param interpolate The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors (in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal values include `rgb`, `hsl`, `hsl-long`, `lab`, `hcl`, `hcl-long`, `cubehelix` and `cubehelix-long` ('-long' variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a string-valued _type_ property and an optional numeric _gamma_ property applicable to rgb and cubehelix interpolators. For more, see the [d3-interpolate documentation](https://github.com/d3/d3-interpolate).
+#' 
+#' * __Default value:__ `hcl` (type = Varies)
+#' @param nice Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of _[0.201479…, 0.996679…]_, a nice domain might be _[0.2, 1.0]_.
+#' 
+#' For quantitative scales such as linear, `nice` can be either a boolean flag or a number. If `nice` is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
+#' 
+#' For temporal fields with time and utc scales, the `nice` value can be a string indicating the desired time interval. Legal values are `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`. Alternatively, `time` and `utc` scales can accept an object-valued interval specifier of the form `{"interval": "month", "step": 3}`, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
+#' 
+#' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise. (type = Varies)
+#' @param padding For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+#' 
+#' For _[band](https://vega.github.io/vega-lite/docs/scale.html#band)_ scales, shortcut for setting `paddingInner` and `paddingOuter` to the same value.
+#' 
+#' For _[point](https://vega.github.io/vega-lite/docs/scale.html#point)_ scales, alias for `paddingOuter`.
+#' 
+#' __Default value:__ For _continuous_ scales, derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `continuousPadding`.
+#' For _band and point_ scales, see `paddingInner` and `paddingOuter`. (type = number)
+#' @param paddingInner The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' For point scale, this property is invalid as point scales do not have internal band widths (only step sizes between bands).
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingInner`. (type = number)
+#' @param paddingOuter The outer padding (spacing) at the ends of the range of band and point scales,
+#' as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingOuter` for band scales and `pointPadding` for point scales. (type = number)
+#' @param range The range of the scale. One of:
+#' 
+#' - A string indicating a [pre-defined named scale range](https://vega.github.io/vega-lite/docs/scale.html#range-config) (e.g., example, `"symbol"`, or `"diverging"`).
+#' 
+#' - For [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous), two-element array indicating  minimum and maximum values, or an array with more than two entries for specifying a [piecewise scale](https://vega.github.io/vega-lite/docs/scale.html#piecewise).
+#' 
+#' - For [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) and [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales, an array of desired output values.
+#' 
+#' __Notes:__
+#' 
+#' 1) For color scales you can also specify a color [`scheme`](https://vega.github.io/vega-lite/docs/scale.html#scheme) instead of `range`.
+#' 
+#' 2) Any directly specified `range` for `x` and `y` channels will be ignored. Range can be customized via the view's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` and `height`) or via [range steps and paddings properties](#range-step) for [band](#band) and [point](#point) scales. (type = Varies)
+#' @param rangeStep The distance between the starts of adjacent bands or points in [band](https://vega.github.io/vega-lite/docs/scale.html#band) and [point](https://vega.github.io/vega-lite/docs/scale.html#point) scales.
+#' 
+#' If `rangeStep` is `null` or if the view contains the scale's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` for `x` scales and `height` for `y` scales), `rangeStep` will be automatically determined to fit the size of the view.
+#' 
+#' __Default value:__  derived the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `textXRangeStep` (`90` by default) for x-scales of `text` marks and `rangeStep` (`21` by default) for x-scales of other marks and y-scales.
+#' 
+#' __Warning__: If `rangeStep` is `null` and the cardinality of the scale's domain is higher than `width` or `height`, the rangeStep might become less than one pixel and the mark might not appear correctly. (type = number OR null)
+#' @param round If `true`, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.
+#' 
+#' __Default value:__ `false`. (type = boolean)
+#' @param scheme A string indicating a color [scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme) name (e.g., `"category10"` or `"blues"`) or a [scheme parameter object](https://vega.github.io/vega-lite/docs/scale.html#scheme-params).
+#' 
+#' Discrete color schemes may be used with [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) or [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales. Continuous color schemes are intended for use with color scales.
+#' 
+#' For the full list of supported schemes, please refer to the [Vega Scheme](https://vega.github.io/vega/docs/schemes/#reference) reference. (type = Varies)
+#' @param type The type of scale.  Vega-Lite supports the following categories of scale types:
+#' 
+#' 1) [**Continuous Scales**](https://vega.github.io/vega-lite/docs/scale.html#continuous) -- mapping continuous domains to continuous output ranges ([`"linear"`](https://vega.github.io/vega-lite/docs/scale.html#linear), [`"pow"`](https://vega.github.io/vega-lite/docs/scale.html#pow), [`"sqrt"`](https://vega.github.io/vega-lite/docs/scale.html#sqrt), [`"symlog"`](https://vega.github.io/vega-lite/docs/scale.html#symlog), [`"log"`](https://vega.github.io/vega-lite/docs/scale.html#log), [`"time"`](https://vega.github.io/vega-lite/docs/scale.html#time), [`"utc"`](https://vega.github.io/vega-lite/docs/scale.html#utc).
+#' 
+#' 2) [**Discrete Scales**](https://vega.github.io/vega-lite/docs/scale.html#discrete) -- mapping discrete domains to discrete ([`"ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#ordinal)) or continuous ([`"band"`](https://vega.github.io/vega-lite/docs/scale.html#band) and [`"point"`](https://vega.github.io/vega-lite/docs/scale.html#point)) output ranges.
+#' 
+#' 3) [**Discretizing Scales**](https://vega.github.io/vega-lite/docs/scale.html#discretizing) -- mapping continuous domains to discrete output ranges [`"bin-ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal), [`"quantile"`](https://vega.github.io/vega-lite/docs/scale.html#quantile), [`"quantize"`](https://vega.github.io/vega-lite/docs/scale.html#quantize) and [`"threshold"`](https://vega.github.io/vega-lite/docs/scale.html#threshold).
+#' 
+#' __Default value:__ please see the [scale type table](https://vega.github.io/vega-lite/docs/scale.html#type). (type = ScaleType)
+#' @param zero If `true`, ensures that a zero baseline value is included in the scale domain.
+#' 
+#' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
+#' 
+#' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
+#' @return A modified spec
+#' @export
+vl_scale_strokeOpacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
+  rlang::exec(.add_scale_to_encoding, !!!args_out)
+} #' vl_scale_strokeWidth
+#' 
+#' Add scale to strokeWidth encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param base The logarithm base of the `log` scale (default `10`). (type = number)
+#' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
+#' @param clamp If `true`, values that exceed the data domain are clamped to either the minimum or maximum range value
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `clamp` (`true` by default). (type = boolean)
+#' @param constant A constant determining the slope of the symlog function around zero. Only used for `symlog` scales.
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param domain Customized domain values.
+#' 
+#' For _quantitative_ fields, `domain` can take the form of a two-element array with minimum and maximum values.  [Piecewise scales](https://vega.github.io/vega-lite/docs/scale.html#piecewise) can be created by providing a `domain` with more than two entries.
+#' If the input field is aggregated, `domain` can also be a string value `"unaggregated"`, indicating that the domain should include the raw data values prior to the aggregation.
+#' 
+#' For _temporal_ fields, `domain` can be a two-element array minimum and maximum values, in the form of either timestamps or the [DateTime definition objects](https://vega.github.io/vega-lite/docs/types.html#datetime).
+#' 
+#' For _ordinal_ and _nominal_ fields, `domain` can be an array that lists valid input values.
+#' 
+#' The `selection` property can be used to [interactively determine](https://vega.github.io/vega-lite/docs/selection.html#scale-domains) the scale domain. (type = Varies)
+#' @param exponent The exponent of the `pow` scale. (type = number)
+#' @param interpolate The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors (in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal values include `rgb`, `hsl`, `hsl-long`, `lab`, `hcl`, `hcl-long`, `cubehelix` and `cubehelix-long` ('-long' variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a string-valued _type_ property and an optional numeric _gamma_ property applicable to rgb and cubehelix interpolators. For more, see the [d3-interpolate documentation](https://github.com/d3/d3-interpolate).
+#' 
+#' * __Default value:__ `hcl` (type = Varies)
+#' @param nice Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of _[0.201479…, 0.996679…]_, a nice domain might be _[0.2, 1.0]_.
+#' 
+#' For quantitative scales such as linear, `nice` can be either a boolean flag or a number. If `nice` is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
+#' 
+#' For temporal fields with time and utc scales, the `nice` value can be a string indicating the desired time interval. Legal values are `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`. Alternatively, `time` and `utc` scales can accept an object-valued interval specifier of the form `{"interval": "month", "step": 3}`, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
+#' 
+#' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise. (type = Varies)
+#' @param padding For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+#' 
+#' For _[band](https://vega.github.io/vega-lite/docs/scale.html#band)_ scales, shortcut for setting `paddingInner` and `paddingOuter` to the same value.
+#' 
+#' For _[point](https://vega.github.io/vega-lite/docs/scale.html#point)_ scales, alias for `paddingOuter`.
+#' 
+#' __Default value:__ For _continuous_ scales, derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `continuousPadding`.
+#' For _band and point_ scales, see `paddingInner` and `paddingOuter`. (type = number)
+#' @param paddingInner The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' For point scale, this property is invalid as point scales do not have internal band widths (only step sizes between bands).
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingInner`. (type = number)
+#' @param paddingOuter The outer padding (spacing) at the ends of the range of band and point scales,
+#' as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingOuter` for band scales and `pointPadding` for point scales. (type = number)
+#' @param range The range of the scale. One of:
+#' 
+#' - A string indicating a [pre-defined named scale range](https://vega.github.io/vega-lite/docs/scale.html#range-config) (e.g., example, `"symbol"`, or `"diverging"`).
+#' 
+#' - For [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous), two-element array indicating  minimum and maximum values, or an array with more than two entries for specifying a [piecewise scale](https://vega.github.io/vega-lite/docs/scale.html#piecewise).
+#' 
+#' - For [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) and [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales, an array of desired output values.
+#' 
+#' __Notes:__
+#' 
+#' 1) For color scales you can also specify a color [`scheme`](https://vega.github.io/vega-lite/docs/scale.html#scheme) instead of `range`.
+#' 
+#' 2) Any directly specified `range` for `x` and `y` channels will be ignored. Range can be customized via the view's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` and `height`) or via [range steps and paddings properties](#range-step) for [band](#band) and [point](#point) scales. (type = Varies)
+#' @param rangeStep The distance between the starts of adjacent bands or points in [band](https://vega.github.io/vega-lite/docs/scale.html#band) and [point](https://vega.github.io/vega-lite/docs/scale.html#point) scales.
+#' 
+#' If `rangeStep` is `null` or if the view contains the scale's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` for `x` scales and `height` for `y` scales), `rangeStep` will be automatically determined to fit the size of the view.
+#' 
+#' __Default value:__  derived the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `textXRangeStep` (`90` by default) for x-scales of `text` marks and `rangeStep` (`21` by default) for x-scales of other marks and y-scales.
+#' 
+#' __Warning__: If `rangeStep` is `null` and the cardinality of the scale's domain is higher than `width` or `height`, the rangeStep might become less than one pixel and the mark might not appear correctly. (type = number OR null)
+#' @param round If `true`, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.
+#' 
+#' __Default value:__ `false`. (type = boolean)
+#' @param scheme A string indicating a color [scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme) name (e.g., `"category10"` or `"blues"`) or a [scheme parameter object](https://vega.github.io/vega-lite/docs/scale.html#scheme-params).
+#' 
+#' Discrete color schemes may be used with [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) or [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales. Continuous color schemes are intended for use with color scales.
+#' 
+#' For the full list of supported schemes, please refer to the [Vega Scheme](https://vega.github.io/vega/docs/schemes/#reference) reference. (type = Varies)
+#' @param type The type of scale.  Vega-Lite supports the following categories of scale types:
+#' 
+#' 1) [**Continuous Scales**](https://vega.github.io/vega-lite/docs/scale.html#continuous) -- mapping continuous domains to continuous output ranges ([`"linear"`](https://vega.github.io/vega-lite/docs/scale.html#linear), [`"pow"`](https://vega.github.io/vega-lite/docs/scale.html#pow), [`"sqrt"`](https://vega.github.io/vega-lite/docs/scale.html#sqrt), [`"symlog"`](https://vega.github.io/vega-lite/docs/scale.html#symlog), [`"log"`](https://vega.github.io/vega-lite/docs/scale.html#log), [`"time"`](https://vega.github.io/vega-lite/docs/scale.html#time), [`"utc"`](https://vega.github.io/vega-lite/docs/scale.html#utc).
+#' 
+#' 2) [**Discrete Scales**](https://vega.github.io/vega-lite/docs/scale.html#discrete) -- mapping discrete domains to discrete ([`"ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#ordinal)) or continuous ([`"band"`](https://vega.github.io/vega-lite/docs/scale.html#band) and [`"point"`](https://vega.github.io/vega-lite/docs/scale.html#point)) output ranges.
+#' 
+#' 3) [**Discretizing Scales**](https://vega.github.io/vega-lite/docs/scale.html#discretizing) -- mapping continuous domains to discrete output ranges [`"bin-ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal), [`"quantile"`](https://vega.github.io/vega-lite/docs/scale.html#quantile), [`"quantize"`](https://vega.github.io/vega-lite/docs/scale.html#quantize) and [`"threshold"`](https://vega.github.io/vega-lite/docs/scale.html#threshold).
+#' 
+#' __Default value:__ please see the [scale type table](https://vega.github.io/vega-lite/docs/scale.html#type). (type = ScaleType)
+#' @param zero If `true`, ensures that a zero baseline value is included in the scale domain.
+#' 
+#' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
+#' 
+#' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
+#' @return A modified spec
+#' @export
+vl_scale_strokeWidth <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'strokeWidth'))
+  rlang::exec(.add_scale_to_encoding, !!!args_out)
+} #' vl_scale_x
+#' 
+#' Add scale to x encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param base The logarithm base of the `log` scale (default `10`). (type = number)
+#' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
+#' @param clamp If `true`, values that exceed the data domain are clamped to either the minimum or maximum range value
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `clamp` (`true` by default). (type = boolean)
+#' @param constant A constant determining the slope of the symlog function around zero. Only used for `symlog` scales.
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param domain Customized domain values.
+#' 
+#' For _quantitative_ fields, `domain` can take the form of a two-element array with minimum and maximum values.  [Piecewise scales](https://vega.github.io/vega-lite/docs/scale.html#piecewise) can be created by providing a `domain` with more than two entries.
+#' If the input field is aggregated, `domain` can also be a string value `"unaggregated"`, indicating that the domain should include the raw data values prior to the aggregation.
+#' 
+#' For _temporal_ fields, `domain` can be a two-element array minimum and maximum values, in the form of either timestamps or the [DateTime definition objects](https://vega.github.io/vega-lite/docs/types.html#datetime).
+#' 
+#' For _ordinal_ and _nominal_ fields, `domain` can be an array that lists valid input values.
+#' 
+#' The `selection` property can be used to [interactively determine](https://vega.github.io/vega-lite/docs/selection.html#scale-domains) the scale domain. (type = Varies)
+#' @param exponent The exponent of the `pow` scale. (type = number)
+#' @param interpolate The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors (in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal values include `rgb`, `hsl`, `hsl-long`, `lab`, `hcl`, `hcl-long`, `cubehelix` and `cubehelix-long` ('-long' variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a string-valued _type_ property and an optional numeric _gamma_ property applicable to rgb and cubehelix interpolators. For more, see the [d3-interpolate documentation](https://github.com/d3/d3-interpolate).
+#' 
+#' * __Default value:__ `hcl` (type = Varies)
+#' @param nice Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of _[0.201479…, 0.996679…]_, a nice domain might be _[0.2, 1.0]_.
+#' 
+#' For quantitative scales such as linear, `nice` can be either a boolean flag or a number. If `nice` is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
+#' 
+#' For temporal fields with time and utc scales, the `nice` value can be a string indicating the desired time interval. Legal values are `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`. Alternatively, `time` and `utc` scales can accept an object-valued interval specifier of the form `{"interval": "month", "step": 3}`, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
+#' 
+#' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise. (type = Varies)
+#' @param padding For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+#' 
+#' For _[band](https://vega.github.io/vega-lite/docs/scale.html#band)_ scales, shortcut for setting `paddingInner` and `paddingOuter` to the same value.
+#' 
+#' For _[point](https://vega.github.io/vega-lite/docs/scale.html#point)_ scales, alias for `paddingOuter`.
+#' 
+#' __Default value:__ For _continuous_ scales, derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `continuousPadding`.
+#' For _band and point_ scales, see `paddingInner` and `paddingOuter`. (type = number)
+#' @param paddingInner The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' For point scale, this property is invalid as point scales do not have internal band widths (only step sizes between bands).
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingInner`. (type = number)
+#' @param paddingOuter The outer padding (spacing) at the ends of the range of band and point scales,
+#' as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingOuter` for band scales and `pointPadding` for point scales. (type = number)
+#' @param range The range of the scale. One of:
+#' 
+#' - A string indicating a [pre-defined named scale range](https://vega.github.io/vega-lite/docs/scale.html#range-config) (e.g., example, `"symbol"`, or `"diverging"`).
+#' 
+#' - For [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous), two-element array indicating  minimum and maximum values, or an array with more than two entries for specifying a [piecewise scale](https://vega.github.io/vega-lite/docs/scale.html#piecewise).
+#' 
+#' - For [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) and [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales, an array of desired output values.
+#' 
+#' __Notes:__
+#' 
+#' 1) For color scales you can also specify a color [`scheme`](https://vega.github.io/vega-lite/docs/scale.html#scheme) instead of `range`.
+#' 
+#' 2) Any directly specified `range` for `x` and `y` channels will be ignored. Range can be customized via the view's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` and `height`) or via [range steps and paddings properties](#range-step) for [band](#band) and [point](#point) scales. (type = Varies)
+#' @param rangeStep The distance between the starts of adjacent bands or points in [band](https://vega.github.io/vega-lite/docs/scale.html#band) and [point](https://vega.github.io/vega-lite/docs/scale.html#point) scales.
+#' 
+#' If `rangeStep` is `null` or if the view contains the scale's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` for `x` scales and `height` for `y` scales), `rangeStep` will be automatically determined to fit the size of the view.
+#' 
+#' __Default value:__  derived the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `textXRangeStep` (`90` by default) for x-scales of `text` marks and `rangeStep` (`21` by default) for x-scales of other marks and y-scales.
+#' 
+#' __Warning__: If `rangeStep` is `null` and the cardinality of the scale's domain is higher than `width` or `height`, the rangeStep might become less than one pixel and the mark might not appear correctly. (type = number OR null)
+#' @param round If `true`, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.
+#' 
+#' __Default value:__ `false`. (type = boolean)
+#' @param scheme A string indicating a color [scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme) name (e.g., `"category10"` or `"blues"`) or a [scheme parameter object](https://vega.github.io/vega-lite/docs/scale.html#scheme-params).
+#' 
+#' Discrete color schemes may be used with [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) or [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales. Continuous color schemes are intended for use with color scales.
+#' 
+#' For the full list of supported schemes, please refer to the [Vega Scheme](https://vega.github.io/vega/docs/schemes/#reference) reference. (type = Varies)
+#' @param type The type of scale.  Vega-Lite supports the following categories of scale types:
+#' 
+#' 1) [**Continuous Scales**](https://vega.github.io/vega-lite/docs/scale.html#continuous) -- mapping continuous domains to continuous output ranges ([`"linear"`](https://vega.github.io/vega-lite/docs/scale.html#linear), [`"pow"`](https://vega.github.io/vega-lite/docs/scale.html#pow), [`"sqrt"`](https://vega.github.io/vega-lite/docs/scale.html#sqrt), [`"symlog"`](https://vega.github.io/vega-lite/docs/scale.html#symlog), [`"log"`](https://vega.github.io/vega-lite/docs/scale.html#log), [`"time"`](https://vega.github.io/vega-lite/docs/scale.html#time), [`"utc"`](https://vega.github.io/vega-lite/docs/scale.html#utc).
+#' 
+#' 2) [**Discrete Scales**](https://vega.github.io/vega-lite/docs/scale.html#discrete) -- mapping discrete domains to discrete ([`"ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#ordinal)) or continuous ([`"band"`](https://vega.github.io/vega-lite/docs/scale.html#band) and [`"point"`](https://vega.github.io/vega-lite/docs/scale.html#point)) output ranges.
+#' 
+#' 3) [**Discretizing Scales**](https://vega.github.io/vega-lite/docs/scale.html#discretizing) -- mapping continuous domains to discrete output ranges [`"bin-ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal), [`"quantile"`](https://vega.github.io/vega-lite/docs/scale.html#quantile), [`"quantize"`](https://vega.github.io/vega-lite/docs/scale.html#quantize) and [`"threshold"`](https://vega.github.io/vega-lite/docs/scale.html#threshold).
+#' 
+#' __Default value:__ please see the [scale type table](https://vega.github.io/vega-lite/docs/scale.html#type). (type = ScaleType)
+#' @param zero If `true`, ensures that a zero baseline value is included in the scale domain.
+#' 
+#' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
+#' 
+#' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
+#' @return A modified spec
+#' @export
+vl_scale_x <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'x'))
+  rlang::exec(.add_scale_to_encoding, !!!args_out)
+} #' vl_scale_y
+#' 
+#' Add scale to y encoding in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param base The logarithm base of the `log` scale (default `10`). (type = number)
+#' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
+#' @param clamp If `true`, values that exceed the data domain are clamped to either the minimum or maximum range value
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `clamp` (`true` by default). (type = boolean)
+#' @param constant A constant determining the slope of the symlog function around zero. Only used for `symlog` scales.
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param domain Customized domain values.
+#' 
+#' For _quantitative_ fields, `domain` can take the form of a two-element array with minimum and maximum values.  [Piecewise scales](https://vega.github.io/vega-lite/docs/scale.html#piecewise) can be created by providing a `domain` with more than two entries.
+#' If the input field is aggregated, `domain` can also be a string value `"unaggregated"`, indicating that the domain should include the raw data values prior to the aggregation.
+#' 
+#' For _temporal_ fields, `domain` can be a two-element array minimum and maximum values, in the form of either timestamps or the [DateTime definition objects](https://vega.github.io/vega-lite/docs/types.html#datetime).
+#' 
+#' For _ordinal_ and _nominal_ fields, `domain` can be an array that lists valid input values.
+#' 
+#' The `selection` property can be used to [interactively determine](https://vega.github.io/vega-lite/docs/selection.html#scale-domains) the scale domain. (type = Varies)
+#' @param exponent The exponent of the `pow` scale. (type = number)
+#' @param interpolate The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors (in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal values include `rgb`, `hsl`, `hsl-long`, `lab`, `hcl`, `hcl-long`, `cubehelix` and `cubehelix-long` ('-long' variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a string-valued _type_ property and an optional numeric _gamma_ property applicable to rgb and cubehelix interpolators. For more, see the [d3-interpolate documentation](https://github.com/d3/d3-interpolate).
+#' 
+#' * __Default value:__ `hcl` (type = Varies)
+#' @param nice Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of _[0.201479…, 0.996679…]_, a nice domain might be _[0.2, 1.0]_.
+#' 
+#' For quantitative scales such as linear, `nice` can be either a boolean flag or a number. If `nice` is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
+#' 
+#' For temporal fields with time and utc scales, the `nice` value can be a string indicating the desired time interval. Legal values are `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`. Alternatively, `time` and `utc` scales can accept an object-valued interval specifier of the form `{"interval": "month", "step": 3}`, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
+#' 
+#' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise. (type = Varies)
+#' @param padding For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+#' 
+#' For _[band](https://vega.github.io/vega-lite/docs/scale.html#band)_ scales, shortcut for setting `paddingInner` and `paddingOuter` to the same value.
+#' 
+#' For _[point](https://vega.github.io/vega-lite/docs/scale.html#point)_ scales, alias for `paddingOuter`.
+#' 
+#' __Default value:__ For _continuous_ scales, derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `continuousPadding`.
+#' For _band and point_ scales, see `paddingInner` and `paddingOuter`. (type = number)
+#' @param paddingInner The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' For point scale, this property is invalid as point scales do not have internal band widths (only step sizes between bands).
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingInner`. (type = number)
+#' @param paddingOuter The outer padding (spacing) at the ends of the range of band and point scales,
+#' as a fraction of the step size. This value must lie in the range [0,1].
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingOuter` for band scales and `pointPadding` for point scales. (type = number)
+#' @param range The range of the scale. One of:
+#' 
+#' - A string indicating a [pre-defined named scale range](https://vega.github.io/vega-lite/docs/scale.html#range-config) (e.g., example, `"symbol"`, or `"diverging"`).
+#' 
+#' - For [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous), two-element array indicating  minimum and maximum values, or an array with more than two entries for specifying a [piecewise scale](https://vega.github.io/vega-lite/docs/scale.html#piecewise).
+#' 
+#' - For [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) and [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales, an array of desired output values.
+#' 
+#' __Notes:__
+#' 
+#' 1) For color scales you can also specify a color [`scheme`](https://vega.github.io/vega-lite/docs/scale.html#scheme) instead of `range`.
+#' 
+#' 2) Any directly specified `range` for `x` and `y` channels will be ignored. Range can be customized via the view's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` and `height`) or via [range steps and paddings properties](#range-step) for [band](#band) and [point](#point) scales. (type = Varies)
+#' @param rangeStep The distance between the starts of adjacent bands or points in [band](https://vega.github.io/vega-lite/docs/scale.html#band) and [point](https://vega.github.io/vega-lite/docs/scale.html#point) scales.
+#' 
+#' If `rangeStep` is `null` or if the view contains the scale's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` for `x` scales and `height` for `y` scales), `rangeStep` will be automatically determined to fit the size of the view.
+#' 
+#' __Default value:__  derived the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `textXRangeStep` (`90` by default) for x-scales of `text` marks and `rangeStep` (`21` by default) for x-scales of other marks and y-scales.
+#' 
+#' __Warning__: If `rangeStep` is `null` and the cardinality of the scale's domain is higher than `width` or `height`, the rangeStep might become less than one pixel and the mark might not appear correctly. (type = number OR null)
+#' @param round If `true`, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.
+#' 
+#' __Default value:__ `false`. (type = boolean)
+#' @param scheme A string indicating a color [scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme) name (e.g., `"category10"` or `"blues"`) or a [scheme parameter object](https://vega.github.io/vega-lite/docs/scale.html#scheme-params).
+#' 
+#' Discrete color schemes may be used with [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) or [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales. Continuous color schemes are intended for use with color scales.
+#' 
+#' For the full list of supported schemes, please refer to the [Vega Scheme](https://vega.github.io/vega/docs/schemes/#reference) reference. (type = Varies)
+#' @param type The type of scale.  Vega-Lite supports the following categories of scale types:
+#' 
+#' 1) [**Continuous Scales**](https://vega.github.io/vega-lite/docs/scale.html#continuous) -- mapping continuous domains to continuous output ranges ([`"linear"`](https://vega.github.io/vega-lite/docs/scale.html#linear), [`"pow"`](https://vega.github.io/vega-lite/docs/scale.html#pow), [`"sqrt"`](https://vega.github.io/vega-lite/docs/scale.html#sqrt), [`"symlog"`](https://vega.github.io/vega-lite/docs/scale.html#symlog), [`"log"`](https://vega.github.io/vega-lite/docs/scale.html#log), [`"time"`](https://vega.github.io/vega-lite/docs/scale.html#time), [`"utc"`](https://vega.github.io/vega-lite/docs/scale.html#utc).
+#' 
+#' 2) [**Discrete Scales**](https://vega.github.io/vega-lite/docs/scale.html#discrete) -- mapping discrete domains to discrete ([`"ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#ordinal)) or continuous ([`"band"`](https://vega.github.io/vega-lite/docs/scale.html#band) and [`"point"`](https://vega.github.io/vega-lite/docs/scale.html#point)) output ranges.
+#' 
+#' 3) [**Discretizing Scales**](https://vega.github.io/vega-lite/docs/scale.html#discretizing) -- mapping continuous domains to discrete output ranges [`"bin-ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal), [`"quantile"`](https://vega.github.io/vega-lite/docs/scale.html#quantile), [`"quantize"`](https://vega.github.io/vega-lite/docs/scale.html#quantize) and [`"threshold"`](https://vega.github.io/vega-lite/docs/scale.html#threshold).
+#' 
+#' __Default value:__ please see the [scale type table](https://vega.github.io/vega-lite/docs/scale.html#type). (type = ScaleType)
+#' @param zero If `true`, ensures that a zero baseline value is included in the scale domain.
+#' 
+#' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
+#' 
+#' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
+#' @return A modified spec
+#' @export
+vl_scale_y <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'y'))
+  rlang::exec(.add_scale_to_encoding, !!!args_out)
 }

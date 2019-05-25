@@ -98,8 +98,5 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 A modified spec
 }
 \description{
-Create spec for color encoding.
-}
-\seealso{
-\code{\link[=vl_encode_color]{vl_encode_color()}}
+Create spec for Color.
 }

@@ -51,8 +51,5 @@ or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field 
 A modified spec
 }
 \description{
-Create spec for y2 encoding.
-}
-\seealso{
-\code{\link[=vl_encode_y2]{vl_encode_y2()}}
+Create spec for Y2.
 }

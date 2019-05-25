@@ -49,8 +49,5 @@ or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field 
 A modified spec
 }
 \description{
-Create spec for longitude2 encoding.
-}
-\seealso{
-\code{\link[=vl_encode_longitude2]{vl_encode_longitude2()}}
+Create spec for Longitude2.
 }
