@@ -23,7 +23,7 @@ The goal of vlbuildr is to provide an R api for building up vega-lite specs. Thi
 
 ## Examples
 
-These are some examples showing current capabilities (note, might not actually show up here on github due to current issues rendering to markdown format, see pkgdown site for these and more examples.)
+These are some examples showing current capabilities (note, if viewing on github README, might not actually show up due to current issues rendering to markdown format, see [pkgdown site](https://aliciaschep.github.io/vlbuildr/) for these and more examples.)
 
 ```{r example}
 library(vlbuildr)
