@@ -103,3 +103,6 @@ A modified spec
 \description{
 Add encoding for opacity to a vega-lite spec.
 }
+\seealso{
+\code{\link[=vl_encode]{vl_encode()}}, \code{\link[=vl_Opacity]{vl_Opacity()}}
+}

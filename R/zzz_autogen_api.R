@@ -1,4 +1,333 @@
-#' vl_encode_color
+#' vl_add_data
+#' 
+#' Add data to a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param format An object that specifies the format for parsing the data. (type = DataFormat)
+#' @param name Provide a placeholder name and bind data at runtime. (type = string)
+#' @param url An URL from which to load the data set. Use the `format.type` property
+#' to ensure the loaded data is correctly parsed. (type = string)
+#' @param values The full data set, included inline. This can be an array of objects or primitive values, an object, or a string.
+#' Arrays of primitive values are ingested as objects with a `data` property. Strings are parsed according to the specified format type. (type = InlineDataset)
+#' @return A modified spec
+#' @export
+
+vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  
+  rlang::exec(.add_data, !!!args_out)
+} 
+#' vl_mark
+#' 
+#' Add a mark to a vega-lite spec.
+#' @param spec A vega-lite spec
+#' @param align The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`. (type = Align)
+#' @param angle The rotation angle of the text, in degrees. (type = number)
+#' @param baseline The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"` (type = TextBaseline)
+#' @param binSpacing Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param clip Whether a mark be clipped to the enclosing group’s width and height. (type = boolean)
+#' @param color Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config). (type = string)
+#' @param cornerRadius The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0` (type = number)
+#' @param cursor The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used. (type = Cursor)
+#' @param dir The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"` (type = Dir)
+#' @param dx The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property. (type = number)
+#' @param dy The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property. (type = number)
+#' @param ellipsis The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"` (type = string)
+#' @param fill Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None) (type = Color)
+#' @param fillOpacity The fill opacity (value between [0,1]).
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param filled Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config). (type = boolean)
+#' @param font The typeface to set the text in (e.g., `"Helvetica Neue"`). (type = string)
+#' @param fontSize The font size, in pixels. (type = number)
+#' @param fontStyle The font style (e.g., `"italic"`). (type = FontStyle)
+#' @param fontWeight The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`). (type = FontWeight)
+#' @param href A URL to load upon mouse click. If defined, the mark acts as a hyperlink. (type = string)
+#' @param interpolate The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y. (type = Interpolate)
+#' @param limit The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit (type = number)
+#' @param line A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
+#' 
+#' - If this value is an empty object (`{}`) or `true`, lines with default properties will be used.
+#' 
+#' - If this value is `false`, no lines would be automatically added to area marks.
+#' 
+#' __Default value:__ `false`. (type = Varies)
+#' @param opacity The overall opacity (value between [0,1]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise. (type = number)
+#' @param order For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources. (type = null OR boolean)
+#' @param orient The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored. (type = Orientation)
+#' @param point A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`. (type = Varies)
+#' @param radius Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties. (type = number)
+#' @param shape Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"` (type = string)
+#' @param size Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks. (type = number)
+#' @param stroke Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None) (type = Color)
+#' @param strokeCap The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"` (type = StrokeCap)
+#' @param strokeDash An array of alternating stroke, space lengths for creating dashed or dotted lines. (type = array)
+#' @param strokeDashOffset The offset (in pixels) into which to begin drawing with the stroke dash array. (type = number)
+#' @param strokeJoin The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"` (type = StrokeJoin)
+#' @param strokeMiterLimit The miter limit at which to bevel a line join. (type = number)
+#' @param strokeOpacity The stroke opacity (value between [0,1]).
+#' 
+#' __Default value:__ `1` (type = number)
+#' @param strokeWidth The stroke width, in pixels. (type = number)
+#' @param style A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the [style configuration](https://vega.github.io/vega-lite/docs/mark.html#style-config). If style is an array, later styles will override earlier styles. Any [mark properties](https://vega.github.io/vega-lite/docs/encoding.html#mark-prop) explicitly defined within the `encoding` will override a style default.
+#' 
+#' __Default value:__ The mark's name.  For example, a bar mark will have style `"bar"` by default.
+#' __Note:__ Any specified style will augment the default style. For example, a bar mark with `"style": "foo"` will receive from `config.style.bar` and `config.style.foo` (the specified style `"foo"` has higher precedence). (type = Varies)
+#' @param tension Depending on the interpolation type, sets the tension parameter (for line and area marks). (type = number)
+#' @param text Placeholder text if the `text` channel is not specified (type = string)
+#' @param theta Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north". (type = number)
+#' @param thickness Thickness of the tick mark.
+#' 
+#' __Default value:__  `1` (type = number)
+#' @param tooltip The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used. (type = Varies)
+#' @param type The mark type. This could a primitive mark type
+#' (one of `"bar"`, `"circle"`, `"square"`, `"tick"`, `"line"`,
+#' `"area"`, `"point"`, `"geoshape"`, `"rule"`, and `"text"`)
+#' or a composite mark type (`"boxplot"`, `"errorband"`, `"errorbar"`). (type = Mark)
+#' @param x X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`. (type = number)
+#' @param x2 X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`. (type = number)
+#' @param x2Offset Offset for x2-position. (type = number)
+#' @param xOffset Offset for x-position. (type = number)
+#' @param y Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2` (type = number)
+#' @param y2 Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`. (type = number)
+#' @param y2Offset Offset for y2-position. (type = number)
+#' @param yOffset Offset for y-position. (type = number)
+#' @return A modified spec
+#' @export
+#' @name vl_mark
+vl_mark <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  rlang::exec(.add_mark, !!!args_out)
+}
+ 
+#' @name vl_mark
+#' @export
+vl_mark_boxplot <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.mark = 'boxplot'))
+  rlang::exec(.add_mark, !!!args_out)
+}
+ 
+#' @name vl_mark
+#' @export
+vl_mark_errorbar <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.mark = 'errorbar'))
+  rlang::exec(.add_mark, !!!args_out)
+}
+ 
+#' @name vl_mark
+#' @export
+vl_mark_errorband <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.mark = 'errorband'))
+  rlang::exec(.add_mark, !!!args_out)
+}
+ 
+#' @name vl_mark
+#' @export
+vl_mark_area <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.mark = 'area'))
+  rlang::exec(.add_mark, !!!args_out)
+}
+ 
+#' @name vl_mark
+#' @export
+vl_mark_bar <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.mark = 'bar'))
+  rlang::exec(.add_mark, !!!args_out)
+}
+ 
+#' @name vl_mark
+#' @export
+vl_mark_line <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.mark = 'line'))
+  rlang::exec(.add_mark, !!!args_out)
+}
+ 
+#' @name vl_mark
+#' @export
+vl_mark_trail <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.mark = 'trail'))
+  rlang::exec(.add_mark, !!!args_out)
+}
+ 
+#' @name vl_mark
+#' @export
+vl_mark_point <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.mark = 'point'))
+  rlang::exec(.add_mark, !!!args_out)
+}
+ 
+#' @name vl_mark
+#' @export
+vl_mark_text <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.mark = 'text'))
+  rlang::exec(.add_mark, !!!args_out)
+}
+ 
+#' @name vl_mark
+#' @export
+vl_mark_tick <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.mark = 'tick'))
+  rlang::exec(.add_mark, !!!args_out)
+}
+ 
+#' @name vl_mark
+#' @export
+vl_mark_rect <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.mark = 'rect'))
+  rlang::exec(.add_mark, !!!args_out)
+}
+ 
+#' @name vl_mark
+#' @export
+vl_mark_rule <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.mark = 'rule'))
+  rlang::exec(.add_mark, !!!args_out)
+}
+ 
+#' @name vl_mark
+#' @export
+vl_mark_circle <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.mark = 'circle'))
+  rlang::exec(.add_mark, !!!args_out)
+}
+ 
+#' @name vl_mark
+#' @export
+vl_mark_square <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.mark = 'square'))
+  rlang::exec(.add_mark, !!!args_out)
+}
+ 
+#' @name vl_mark
+#' @export
+vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.mark = 'geoshape'))
+  rlang::exec(.add_mark, !!!args_out)
+}
+ #' vl_encode_color
 #' 
 #' Add encoding for color to a vega-lite spec.
 #' @param spec A vega-lite spec.
@@ -76,6 +405,7 @@
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = string OR null)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Color()]
 vl_encode_color <- function(spec, aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -132,6 +462,7 @@ vl_encode_color <- function(spec, aggregate = NULL, bin = NULL, condition = NULL
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Detail()]
 vl_encode_detail <- function(spec, aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -216,6 +547,7 @@ vl_encode_detail <- function(spec, aggregate = NULL, bin = NULL, field = NULL, t
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = string OR null)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Fill()]
 vl_encode_fill <- function(spec, aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -300,6 +632,7 @@ vl_encode_fill <- function(spec, aggregate = NULL, bin = NULL, condition = NULL,
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_FillOpacity()]
 vl_encode_fillOpacity <- function(spec, aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -384,6 +717,7 @@ vl_encode_fillOpacity <- function(spec, aggregate = NULL, bin = NULL, condition 
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = string)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Href()]
 vl_encode_href <- function(spec, aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -440,6 +774,7 @@ vl_encode_href <- function(spec, aggregate = NULL, bin = NULL, condition = NULL,
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Key()]
 vl_encode_key <- function(spec, aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -496,6 +831,7 @@ vl_encode_key <- function(spec, aggregate = NULL, bin = NULL, field = NULL, time
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = string)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Latitude()]
 vl_encode_latitude <- function(spec, aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -540,6 +876,7 @@ vl_encode_latitude <- function(spec, aggregate = NULL, bin = NULL, field = NULL,
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Latitude2()]
 vl_encode_latitude2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -596,6 +933,7 @@ vl_encode_latitude2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = string)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Longitude()]
 vl_encode_longitude <- function(spec, aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -640,6 +978,7 @@ vl_encode_longitude <- function(spec, aggregate = NULL, bin = NULL, field = NULL
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Longitude2()]
 vl_encode_longitude2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -724,6 +1063,7 @@ vl_encode_longitude2 <- function(spec, aggregate = NULL, bin = NULL, field = NUL
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Opacity()]
 vl_encode_opacity <- function(spec, aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -782,6 +1122,7 @@ vl_encode_opacity <- function(spec, aggregate = NULL, bin = NULL, condition = NU
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Order()]
 vl_encode_order <- function(spec, aggregate = NULL, bin = NULL, field = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -866,6 +1207,7 @@ vl_encode_order <- function(spec, aggregate = NULL, bin = NULL, field = NULL, so
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = string)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Shape()]
 vl_encode_shape <- function(spec, aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -950,6 +1292,7 @@ vl_encode_shape <- function(spec, aggregate = NULL, bin = NULL, condition = NULL
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Size()]
 vl_encode_size <- function(spec, aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -1034,6 +1377,7 @@ vl_encode_size <- function(spec, aggregate = NULL, bin = NULL, condition = NULL,
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = string OR null)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Stroke()]
 vl_encode_stroke <- function(spec, aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -1118,6 +1462,7 @@ vl_encode_stroke <- function(spec, aggregate = NULL, bin = NULL, condition = NUL
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_StrokeOpacity()]
 vl_encode_strokeOpacity <- function(spec, aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -1202,6 +1547,7 @@ vl_encode_strokeOpacity <- function(spec, aggregate = NULL, bin = NULL, conditio
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_StrokeWidth()]
 vl_encode_strokeWidth <- function(spec, aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -1264,6 +1610,7 @@ vl_encode_strokeWidth <- function(spec, aggregate = NULL, bin = NULL, condition 
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = string OR number OR boolean)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Text()]
 vl_encode_text <- function(spec, aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -1326,6 +1673,7 @@ vl_encode_text <- function(spec, aggregate = NULL, bin = NULL, condition = NULL,
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = string OR number OR boolean)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Tooltip()]
 vl_encode_tooltip <- function(spec, aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -1423,6 +1771,7 @@ vl_encode_tooltip <- function(spec, aggregate = NULL, bin = NULL, condition = NU
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = Varies)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_X()]
 vl_encode_x <- function(spec, aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -1468,6 +1817,7 @@ vl_encode_x <- function(spec, aggregate = NULL, axis = NULL, bin = NULL, field =
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = Varies)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_X2()]
 vl_encode_x2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -1513,6 +1863,7 @@ vl_encode_x2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL, timeU
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_XError()]
 vl_encode_xError <- function(spec, aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -1558,6 +1909,7 @@ vl_encode_xError <- function(spec, aggregate = NULL, bin = NULL, field = NULL, t
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_XError2()]
 vl_encode_xError2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -1655,6 +2007,7 @@ vl_encode_xError2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL, 
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = Varies)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Y()]
 vl_encode_y <- function(spec, aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -1700,6 +2053,7 @@ vl_encode_y <- function(spec, aggregate = NULL, axis = NULL, bin = NULL, field =
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = Varies)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_Y2()]
 vl_encode_y2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -1745,6 +2099,7 @@ vl_encode_y2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL, timeU
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_YError()]
 vl_encode_yError <- function(spec, aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -1790,6 +2145,7 @@ vl_encode_yError <- function(spec, aggregate = NULL, bin = NULL, field = NULL, t
 #' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_encode()], [vl_YError2()]
 vl_encode_yError2 <- function(spec, aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -3540,1222 +3896,10 @@ vl_YError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NU
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
-} #' vl_bin_color
-#' 
-#' Add bin transform to color encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_color <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'color'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_detail
-#' 
-#' Add bin transform to detail encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_detail <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'detail'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_fill
-#' 
-#' Add bin transform to fill encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_fill <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fill'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_fillOpacity
-#' 
-#' Add bin transform to fillOpacity encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_fillOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fillOpacity'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_href
-#' 
-#' Add bin transform to href encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_href <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'href'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_key
-#' 
-#' Add bin transform to key encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_key <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'key'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_latitude
-#' 
-#' Add bin transform to latitude encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_latitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'latitude'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_latitude2
-#' 
-#' Add bin transform to latitude2 encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_latitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'latitude2'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_longitude
-#' 
-#' Add bin transform to longitude encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_longitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'longitude'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_longitude2
-#' 
-#' Add bin transform to longitude2 encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_longitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'longitude2'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_opacity
-#' 
-#' Add bin transform to opacity encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_opacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'opacity'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_order
-#' 
-#' Add bin transform to order encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_order <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'order'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_shape
-#' 
-#' Add bin transform to shape encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_shape <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'shape'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_size
-#' 
-#' Add bin transform to size encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_size <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'size'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_stroke
-#' 
-#' Add bin transform to stroke encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_stroke <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'stroke'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_strokeOpacity
-#' 
-#' Add bin transform to strokeOpacity encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_strokeOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_strokeWidth
-#' 
-#' Add bin transform to strokeWidth encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_strokeWidth <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeWidth'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_text
-#' 
-#' Add bin transform to text encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_text <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'text'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_tooltip
-#' 
-#' Add bin transform to tooltip encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_tooltip <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'tooltip'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_x
-#' 
-#' Add bin transform to x encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_x <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'x'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_x2
-#' 
-#' Add bin transform to x2 encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_x2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'x2'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_xError
-#' 
-#' Add bin transform to xError encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_xError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'xError'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_xError2
-#' 
-#' Add bin transform to xError2 encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_xError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'xError2'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_y
-#' 
-#' Add bin transform to y encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_y <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'y'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_y2
-#' 
-#' Add bin transform to y2 encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_y2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'y2'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_yError
-#' 
-#' Add bin transform to yError encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_yError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'yError'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_bin_yError2
-#' 
-#' Add bin transform to yError2 encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
-#' 
-#' __Default Value:__ the minimum bin extent value (type = number)
-#' @param base The number base to use for automatic bin determination (default is base 10).
-#' 
-#' __Default value:__ `10` (type = number)
-#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
-#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
-#' 
-#' __Default value:__ `[5, 2]` (type = array)
-#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
-#' @param maxbins Maximum number of bins.
-#' 
-#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
-#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
-#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
-#' @param step An exact step size to use between bins.
-#' 
-#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
-#' @param steps An array of allowable step sizes to choose from. (type = array)
-#' @return A modified spec
-#' @export
-vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'yError2'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-} #' vl_stack_x
-#' 
-#' Add stack transform to x encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param stack one of 'zero', 'center', 'normalize', NA
-#' @return A modified spec
-#' @export
-vl_stack_x <- function(spec, stack = c('zero', 'center', 'normalize', NA)) {
-  args_out <- list(spec = spec, .enc = 'x', stack = match.arg(stack))
-  rlang::exec(.add_stack_to_encoding, !!!args_out)
-} #' vl_stack_y
-#' 
-#' Add stack transform to y encoding in a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param stack one of 'zero', 'center', 'normalize', NA
-#' @return A modified spec
-#' @export
-vl_stack_y <- function(spec, stack = c('zero', 'center', 'normalize', NA)) {
-  args_out <- list(spec = spec, .enc = 'y', stack = match.arg(stack))
-  rlang::exec(.add_stack_to_encoding, !!!args_out)
-} 
-#' vl_mark
-#' 
-#' Add a mark to a vega-lite spec.
-#' @param spec A vega-lite spec
-#' @param align The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`. (type = Align)
-#' @param angle The rotation angle of the text, in degrees. (type = number)
-#' @param baseline The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
-#' 
-#' __Default value:__ `"middle"` (type = TextBaseline)
-#' @param binSpacing Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
-#' 
-#' __Default value:__ `1` (type = number)
-#' @param clip Whether a mark be clipped to the enclosing group’s width and height. (type = boolean)
-#' @param color Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
-#' 
-#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
-#' 
-#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config). (type = string)
-#' @param cornerRadius The radius in pixels of rounded rectangle corners.
-#' 
-#' __Default value:__ `0` (type = number)
-#' @param cursor The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used. (type = Cursor)
-#' @param dir The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
-#' 
-#' __Default value:__ `"ltr"` (type = Dir)
-#' @param dx The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property. (type = number)
-#' @param dy The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property. (type = number)
-#' @param ellipsis The ellipsis string for text truncated in response to the limit parameter.
-#' 
-#' __Default value:__ `"…"` (type = string)
-#' @param fill Default Fill Color.  This has higher precedence than `config.color`
-#' 
-#' __Default value:__ (None) (type = Color)
-#' @param fillOpacity The fill opacity (value between [0,1]).
-#' 
-#' __Default value:__ `1` (type = number)
-#' @param filled Whether the mark's color should be used as fill color instead of stroke color.
-#' 
-#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
-#' 
-#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config). (type = boolean)
-#' @param font The typeface to set the text in (e.g., `"Helvetica Neue"`). (type = string)
-#' @param fontSize The font size, in pixels. (type = number)
-#' @param fontStyle The font style (e.g., `"italic"`). (type = FontStyle)
-#' @param fontWeight The font weight.
-#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`). (type = FontWeight)
-#' @param href A URL to load upon mouse click. If defined, the mark acts as a hyperlink. (type = string)
-#' @param interpolate The line interpolation method to use for line and area marks. One of the following:
-#' - `"linear"`: piecewise linear segments, as in a polyline.
-#' - `"linear-closed"`: close the linear segments to form a polygon.
-#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
-#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
-#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
-#' - `"basis"`: a B-spline, with control point duplication on the ends.
-#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
-#' - `"basis-closed"`: a closed B-spline, as in a loop.
-#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
-#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
-#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
-#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
-#' - `"monotone"`: cubic interpolation that preserves monotonicity in y. (type = Interpolate)
-#' @param limit The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
-#' 
-#' __Default value:__ `0`, indicating no limit (type = number)
-#' @param line A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
-#' 
-#' - If this value is an empty object (`{}`) or `true`, lines with default properties will be used.
-#' 
-#' - If this value is `false`, no lines would be automatically added to area marks.
-#' 
-#' __Default value:__ `false`. (type = Varies)
-#' @param opacity The overall opacity (value between [0,1]).
-#' 
-#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise. (type = number)
-#' @param order For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources. (type = null OR boolean)
-#' @param orient The orientation of a non-stacked bar, tick, area, and line charts.
-#' The value is either horizontal (default) or vertical.
-#' - For bar, rule and tick, this determines whether the size of the bar and tick
-#' should be applied to x or y dimension.
-#' - For area, this property determines the orient property of the Vega output.
-#' - For line and trail marks, this property determines the sort order of the points in the line
-#' if `config.sortLineBy` is not specified.
-#' For stacked charts, this is always determined by the orientation of the stack;
-#' therefore explicitly specified value will be ignored. (type = Orientation)
-#' @param point A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
-#' 
-#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
-#' 
-#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
-#' 
-#' - If this property is `false`, no points would be automatically added to line or area marks.
-#' 
-#' __Default value:__ `false`. (type = Varies)
-#' @param radius Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties. (type = number)
-#' @param shape Shape of the point marks. Supported values include:
-#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
-#' - the line symbol `"stroke"`
-#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
-#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
-#' 
-#' __Default value:__ `"circle"` (type = string)
-#' @param size Default size for marks.
-#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
-#' - For `bar`, this represents the band size of the bar, in pixels.
-#' - For `text`, this represents the font size, in pixels.
-#' 
-#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks. (type = number)
-#' @param stroke Default Stroke Color.  This has higher precedence than `config.color`
-#' 
-#' __Default value:__ (None) (type = Color)
-#' @param strokeCap The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
-#' 
-#' __Default value:__ `"square"` (type = StrokeCap)
-#' @param strokeDash An array of alternating stroke, space lengths for creating dashed or dotted lines. (type = array)
-#' @param strokeDashOffset The offset (in pixels) into which to begin drawing with the stroke dash array. (type = number)
-#' @param strokeJoin The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
-#' 
-#' __Default value:__ `"miter"` (type = StrokeJoin)
-#' @param strokeMiterLimit The miter limit at which to bevel a line join. (type = number)
-#' @param strokeOpacity The stroke opacity (value between [0,1]).
-#' 
-#' __Default value:__ `1` (type = number)
-#' @param strokeWidth The stroke width, in pixels. (type = number)
-#' @param style A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the [style configuration](https://vega.github.io/vega-lite/docs/mark.html#style-config). If style is an array, later styles will override earlier styles. Any [mark properties](https://vega.github.io/vega-lite/docs/encoding.html#mark-prop) explicitly defined within the `encoding` will override a style default.
-#' 
-#' __Default value:__ The mark's name.  For example, a bar mark will have style `"bar"` by default.
-#' __Note:__ Any specified style will augment the default style. For example, a bar mark with `"style": "foo"` will receive from `config.style.bar` and `config.style.foo` (the specified style `"foo"` has higher precedence). (type = Varies)
-#' @param tension Depending on the interpolation type, sets the tension parameter (for line and area marks). (type = number)
-#' @param text Placeholder text if the `text` channel is not specified (type = string)
-#' @param theta Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north". (type = number)
-#' @param thickness Thickness of the tick mark.
-#' 
-#' __Default value:__  `1` (type = number)
-#' @param tooltip The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
-#' 
-#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
-#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
-#' - If set to `null`, then no tooltip will be used. (type = Varies)
-#' @param type The mark type. This could a primitive mark type
-#' (one of `"bar"`, `"circle"`, `"square"`, `"tick"`, `"line"`,
-#' `"area"`, `"point"`, `"geoshape"`, `"rule"`, and `"text"`)
-#' or a composite mark type (`"boxplot"`, `"errorband"`, `"errorbar"`). (type = Mark)
-#' @param x X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`. (type = number)
-#' @param x2 X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`. (type = number)
-#' @param x2Offset Offset for x2-position. (type = number)
-#' @param xOffset Offset for x-position. (type = number)
-#' @param y Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2` (type = number)
-#' @param y2 Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`. (type = number)
-#' @param y2Offset Offset for y2-position. (type = number)
-#' @param yOffset Offset for y-position. (type = number)
-#' @return A modified spec
-#' @export
-#' @name vl_mark
-vl_mark <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
-#' @export
-vl_mark_boxplot <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'boxplot'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
-#' @export
-vl_mark_errorbar <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'errorbar'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
-#' @export
-vl_mark_errorband <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'errorband'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
-#' @export
-vl_mark_area <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'area'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
-#' @export
-vl_mark_bar <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'bar'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
-#' @export
-vl_mark_line <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'line'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
-#' @export
-vl_mark_trail <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'trail'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
-#' @export
-vl_mark_point <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'point'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
-#' @export
-vl_mark_text <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'text'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
-#' @export
-vl_mark_tick <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'tick'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
-#' @export
-vl_mark_rect <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'rect'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
-#' @export
-vl_mark_rule <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'rule'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
-#' @export
-vl_mark_circle <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'circle'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
-#' @export
-vl_mark_square <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'square'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
-#' @export
-vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'geoshape'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- #' vl_add_data
-#'
-#' Add data to a vega-lite spec.
-#' @param spec A vega-lite spec
-#' @param format An object that specifies the format for parsing the data. (type = DataFormat)
-#' @param name Provide a placeholder name and bind data at runtime. (type = string)
-#' @param url An URL from which to load the data set. Use the `format.type` property
-#' to ensure the loaded data is correctly parsed. (type = string)
-#' @param values The full data set, included inline. This can be an array of objects or primitive values, an object, or a string.
-#' Arrays of primitive values are ingested as objects with a `data` property. Strings are parsed according to the specified format type. (type = InlineDataset)
-#' @return A modified spec
-#' @export
-#' @name add_data
-vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  rlang::exec(.add_data, !!!args_out)
-} #' vl_transform_filter
+} #' vl_filter
 #' 
 #' Add FilterTransform to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param filter The `filter` property must be one of the predicate definitions:
 #' 
 #' 1) an [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string,
@@ -4775,30 +3919,32 @@ vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = N
 #' 4) a logical operand that combines (1), (2), or (3). (type = LogicalOperand<Predicate>)
 #' @return A modified spec
 #' @export
+
 vl_filter <- function(spec, filter = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'filter'))
   rlang::exec(.add_transform, !!!args_out)
-} #' vl_transform_calculate
+} #' vl_calculate
 #' 
 #' Add CalculateTransform to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param as The field for storing the computed formula value. (type = string)
 #' @param calculate A [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string. Use the variable `datum` to refer to the current data object. (type = string)
 #' @return A modified spec
 #' @export
+
 vl_calculate <- function(spec, as = NULL, calculate = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'calculate'))
   rlang::exec(.add_transform, !!!args_out)
-} #' vl_transform_lookup
+} #' vl_lookup
 #' 
 #' Add LookupTransform to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param as The field or fields for storing the computed formula value.
 #' If `from.fields` is specified, the transform will use the same names for `as`.
 #' If `from.fields` is not specified, `as` has to be a string and we put the whole object into the data under the specified name. (type = Varies)
@@ -4809,46 +3955,49 @@ vl_calculate <- function(spec, as = NULL, calculate = NULL) {
 #' @param lookup Key in primary data source. (type = string)
 #' @return A modified spec
 #' @export
+
 vl_lookup <- function(spec, as = NULL, default = NULL, from = NULL, lookup = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'lookup'))
   rlang::exec(.add_transform, !!!args_out)
-} #' vl_transform_bin
+} #' vl_bin
 #' 
 #' Add BinTransform to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param as The output fields at which to write the start and end bin values. (type = Varies)
 #' @param bin An object indicating bin properties, or simply `true` for using default bin parameters. (type = Varies)
 #' @param field The data field to bin. (type = string)
 #' @return A modified spec
 #' @export
+
 vl_bin <- function(spec, as = NULL, bin = NULL, field = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'bin'))
   rlang::exec(.add_transform, !!!args_out)
-} #' vl_transform_timeunit
+} #' vl_timeunit
 #' 
 #' Add TimeUnitTransform to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param as The output field to write the timeUnit value. (type = string)
 #' @param field The data field to apply time unit. (type = string)
 #' @param timeUnit The timeUnit. (type = TimeUnit)
 #' @return A modified spec
 #' @export
+
 vl_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'timeunit'))
   rlang::exec(.add_transform, !!!args_out)
-} #' vl_transform_impute
+} #' vl_impute
 #' 
 #' Add ImputeTransform to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param frame A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
 #' 
 #' __Default value:__:  `[null, null]` indicating that the window includes all objects. (type = array)
@@ -4870,30 +4019,32 @@ vl_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL) {
 #' @param value The field value to use when the imputation `method` is `"value"`. (type = Varies)
 #' @return A modified spec
 #' @export
+
 vl_impute <- function(spec, frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'impute'))
   rlang::exec(.add_transform, !!!args_out)
-} #' vl_transform_aggregate
+} #' vl_aggregate
 #' 
 #' Add AggregateTransform to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param aggregate Array of objects that define fields to aggregate. (type = array)
 #' @param groupby The data fields to group by. If not specified, a single group containing all data objects will be used. (type = array)
 #' @return A modified spec
 #' @export
+
 vl_aggregate <- function(spec, aggregate = NULL, groupby = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'aggregate'))
   rlang::exec(.add_transform, !!!args_out)
-} #' vl_transform_window
+} #' vl_window
 #' 
 #' Add WindowTransform to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param frame A frame specification as a two-element array indicating how the sliding window should proceed. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. The default value is `[null, 0]`, indicating that the sliding window includes the current object and all preceding objects. The value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object. Finally, `[null, null]` indicates that the window frame should always include all data objects. If you this frame and want to assign the same value to add objects, you can use the simpler [join aggregate transform](https://vega.github.io/vega-lite/docs/joinaggregate.html). The only operators affected are the aggregation operations and the `first_value`, `last_value`, and `nth_value` window operations. The other window operations are not affected by this.
 #' 
 #' __Default value:__:  `[null, 0]` (includes the current object and all preceding objects) (type = array)
@@ -4905,30 +4056,32 @@ vl_aggregate <- function(spec, aggregate = NULL, groupby = NULL) {
 #' @param window The definition of the fields in the window, and what calculations to use. (type = array)
 #' @return A modified spec
 #' @export
+
 vl_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'window'))
   rlang::exec(.add_transform, !!!args_out)
-} #' vl_transform_joinaggregate
+} #' vl_joinaggregate
 #' 
 #' Add JoinAggregateTransform to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param groupby The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group. (type = array)
 #' @param joinaggregate The definition of the fields in the join aggregate, and what calculations to use. (type = array)
 #' @return A modified spec
 #' @export
+
 vl_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'joinaggregate'))
   rlang::exec(.add_transform, !!!args_out)
-} #' vl_transform_stack
+} #' vl_stack
 #' 
 #' Add StackTransform to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param as Output field names. This can be either a string or an array of strings with
 #' two elements denoting the name for the fields for stack start and stack end
 #' respectively.
@@ -4940,16 +4093,17 @@ vl_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL) {
 #' @param stack The field which is stacked. (type = string)
 #' @return A modified spec
 #' @export
+
 vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'stack'))
   rlang::exec(.add_transform, !!!args_out)
-} #' vl_transform_flatten
+} #' vl_flatten
 #' 
 #' Add FlattenTransform to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param as The output field names for extracted array values.
 #' 
 #' __Default value:__ The field name of the corresponding array field (type = array)
@@ -4959,36 +4113,39 @@ vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL
 #' the longest array will be used with `null` values added for missing entries. (type = array)
 #' @return A modified spec
 #' @export
+
 vl_flatten <- function(spec, as = NULL, flatten = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'flatten'))
   rlang::exec(.add_transform, !!!args_out)
-} #' vl_transform_fold
+} #' vl_fold
 #' 
 #' Add FoldTransform to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param as The output field names for the key and value properties produced by the fold transform.
 #' __Default value:__ `["key", "value"]` (type = array)
 #' @param fold An array of data fields indicating the properties to fold. (type = array)
 #' @return A modified spec
 #' @export
+
 vl_fold <- function(spec, as = NULL, fold = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.trans = 'fold'))
   rlang::exec(.add_transform, !!!args_out)
-} #' vl_transform_sample
+} #' vl_sample
 #' 
 #' Add SampleTransform to a vega-lite spec.
-#' @param spec A vega-lite spec
+#' @param spec A vega-lite spec.
 #' @param sample The maximum number of data objects to include in the sample.
 #' 
 #' __Default value:__ `1000` (type = number)
 #' @return A modified spec
 #' @export
+
 vl_sample <- function(spec, sample = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5212,178 +4369,1130 @@ vl_SampleTransform <- function(sample = NULL) {
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
+} #' vl_bin_color
+#' 
+#' Add bin to encoding for color in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_color()]
+vl_bin_color <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'color'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_detail
+#' 
+#' Add bin to encoding for detail in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_detail()]
+vl_bin_detail <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'detail'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_fill
+#' 
+#' Add bin to encoding for fill in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_fill()]
+vl_bin_fill <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'fill'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_fillOpacity
+#' 
+#' Add bin to encoding for fillOpacity in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_fillOpacity()]
+vl_bin_fillOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'fillOpacity'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_href
+#' 
+#' Add bin to encoding for href in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_href()]
+vl_bin_href <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'href'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_key
+#' 
+#' Add bin to encoding for key in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_key()]
+vl_bin_key <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'key'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_latitude
+#' 
+#' Add bin to encoding for latitude in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_latitude()]
+vl_bin_latitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'latitude'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_latitude2
+#' 
+#' Add bin to encoding for latitude2 in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_latitude2()]
+vl_bin_latitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'latitude2'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_longitude
+#' 
+#' Add bin to encoding for longitude in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_longitude()]
+vl_bin_longitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'longitude'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_longitude2
+#' 
+#' Add bin to encoding for longitude2 in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_longitude2()]
+vl_bin_longitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'longitude2'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_opacity
+#' 
+#' Add bin to encoding for opacity in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_opacity()]
+vl_bin_opacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'opacity'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_order
+#' 
+#' Add bin to encoding for order in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_order()]
+vl_bin_order <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'order'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_shape
+#' 
+#' Add bin to encoding for shape in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_shape()]
+vl_bin_shape <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'shape'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_size
+#' 
+#' Add bin to encoding for size in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_size()]
+vl_bin_size <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'size'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_stroke
+#' 
+#' Add bin to encoding for stroke in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_stroke()]
+vl_bin_stroke <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'stroke'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_strokeOpacity
+#' 
+#' Add bin to encoding for strokeOpacity in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_strokeOpacity()]
+vl_bin_strokeOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_strokeWidth
+#' 
+#' Add bin to encoding for strokeWidth in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_strokeWidth()]
+vl_bin_strokeWidth <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'strokeWidth'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_text
+#' 
+#' Add bin to encoding for text in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_text()]
+vl_bin_text <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'text'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_tooltip
+#' 
+#' Add bin to encoding for tooltip in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_tooltip()]
+vl_bin_tooltip <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'tooltip'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_x
+#' 
+#' Add bin to encoding for x in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_x()]
+vl_bin_x <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'x'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_x2
+#' 
+#' Add bin to encoding for x2 in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_x2()]
+vl_bin_x2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'x2'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_xError
+#' 
+#' Add bin to encoding for xError in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_xError()]
+vl_bin_xError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'xError'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_xError2
+#' 
+#' Add bin to encoding for xError2 in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_xError2()]
+vl_bin_xError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'xError2'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_y
+#' 
+#' Add bin to encoding for y in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_y()]
+vl_bin_y <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'y'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_y2
+#' 
+#' Add bin to encoding for y2 in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_y2()]
+vl_bin_y2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'y2'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_yError
+#' 
+#' Add bin to encoding for yError in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_yError()]
+vl_bin_yError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'yError'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_bin_yError2
+#' 
+#' Add bin to encoding for yError2 in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param anchor A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value (type = number)
+#' @param base The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10` (type = number)
+#' @param binned When set to true, Vega-Lite treats the input data as already binned. (type = boolean)
+#' @param divide Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]` (type = array)
+#' @param extent A two-element (`[min, max]`) array indicating the range of desired bin values. (type = array)
+#' @param maxbins Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels (type = number)
+#' @param minstep A minimum allowable step size (particularly useful for integer values). (type = number)
+#' @param nice If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)
+#' @param step An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored. (type = number)
+#' @param steps An array of allowable step sizes to choose from. (type = array)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_yError2()]
+vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'yError2'))
+  rlang::exec(.add_bin_to_encoding, !!!args_out)
+} #' vl_stack_x
+#' 
+#' Add stack to encoding for x to a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param stack one of 'zero', 'center', 'normalize', NA
+#' @return A modified spec
+#' @export
+#' @seealso [vl_stack()] to add a top level stack transform
+vl_stack_x <- function(spec, stack = c('zero', 'center', 'normalize', NA)) {
+  args_out <- list(spec = spec, .enc = 'x', stack = match.arg(stack))
+  rlang::exec(.add_stack_to_encoding, !!!args_out)
+} #' vl_stack_y
+#' 
+#' Add stack to encoding for y to a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param stack one of 'zero', 'center', 'normalize', NA
+#' @return A modified spec
+#' @export
+#' @seealso [vl_stack()] to add a top level stack transform
+vl_stack_y <- function(spec, stack = c('zero', 'center', 'normalize', NA)) {
+  args_out <- list(spec = spec, .enc = 'y', stack = match.arg(stack))
+  rlang::exec(.add_stack_to_encoding, !!!args_out)
 } #' vl_sort_color
 #' 
-#' Sort color encoding in a vega-lite spec.
+#' Add sort to encoding for color to a vega-lite spec.
 #' @param spec A vega-lite spec.
-#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' @param value either 'ascending' or 'descending' to specify sort order (using
 #' this encoding), a list with a custom ordering, or NA to specify no sorting
 #' @return A modified spec
-#' @seealso [vl_sort_color_by_field()] to sort by another field, 
-#' [vl_sort_color_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_color_by_field()] to sort by another field,
+#' [vl_sort_color_by_encoding()] to sort by another encoding
 vl_sort_color <- function(spec, value) {
-  args_out <- list(spec = spec, .enc = 'color', value = value)
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'color'))
   rlang::exec(.add_sort_to_encoding, !!!args_out)
 } #' vl_sort_fill
 #' 
-#' Sort fill encoding in a vega-lite spec.
+#' Add sort to encoding for fill to a vega-lite spec.
 #' @param spec A vega-lite spec.
-#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' @param value either 'ascending' or 'descending' to specify sort order (using
 #' this encoding), a list with a custom ordering, or NA to specify no sorting
 #' @return A modified spec
-#' @seealso [vl_sort_fill_by_field()] to sort by another field, 
-#' [vl_sort_fill_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_fill_by_field()] to sort by another field,
+#' [vl_sort_fill_by_encoding()] to sort by another encoding
 vl_sort_fill <- function(spec, value) {
-  args_out <- list(spec = spec, .enc = 'fill', value = value)
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'fill'))
   rlang::exec(.add_sort_to_encoding, !!!args_out)
 } #' vl_sort_fillOpacity
 #' 
-#' Sort fillOpacity encoding in a vega-lite spec.
+#' Add sort to encoding for fillOpacity to a vega-lite spec.
 #' @param spec A vega-lite spec.
-#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' @param value either 'ascending' or 'descending' to specify sort order (using
 #' this encoding), a list with a custom ordering, or NA to specify no sorting
 #' @return A modified spec
-#' @seealso [vl_sort_fillOpacity_by_field()] to sort by another field, 
-#' [vl_sort_fillOpacity_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_fillOpacity_by_field()] to sort by another field,
+#' [vl_sort_fillOpacity_by_encoding()] to sort by another encoding
 vl_sort_fillOpacity <- function(spec, value) {
-  args_out <- list(spec = spec, .enc = 'fillOpacity', value = value)
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'fillOpacity'))
   rlang::exec(.add_sort_to_encoding, !!!args_out)
 } #' vl_sort_href
 #' 
-#' Sort href encoding in a vega-lite spec.
+#' Add sort to encoding for href to a vega-lite spec.
 #' @param spec A vega-lite spec.
-#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' @param value either 'ascending' or 'descending' to specify sort order (using
 #' this encoding), a list with a custom ordering, or NA to specify no sorting
 #' @return A modified spec
-#' @seealso [vl_sort_href_by_field()] to sort by another field, 
-#' [vl_sort_href_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_href_by_field()] to sort by another field,
+#' [vl_sort_href_by_encoding()] to sort by another encoding
 vl_sort_href <- function(spec, value) {
-  args_out <- list(spec = spec, .enc = 'href', value = value)
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'href'))
   rlang::exec(.add_sort_to_encoding, !!!args_out)
 } #' vl_sort_opacity
 #' 
-#' Sort opacity encoding in a vega-lite spec.
+#' Add sort to encoding for opacity to a vega-lite spec.
 #' @param spec A vega-lite spec.
-#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' @param value either 'ascending' or 'descending' to specify sort order (using
 #' this encoding), a list with a custom ordering, or NA to specify no sorting
 #' @return A modified spec
-#' @seealso [vl_sort_opacity_by_field()] to sort by another field, 
-#' [vl_sort_opacity_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_opacity_by_field()] to sort by another field,
+#' [vl_sort_opacity_by_encoding()] to sort by another encoding
 vl_sort_opacity <- function(spec, value) {
-  args_out <- list(spec = spec, .enc = 'opacity', value = value)
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'opacity'))
   rlang::exec(.add_sort_to_encoding, !!!args_out)
 } #' vl_sort_order
 #' 
-#' Sort order encoding in a vega-lite spec.
+#' Add sort to encoding for order to a vega-lite spec.
 #' @param spec A vega-lite spec.
-#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' @param value either 'ascending' or 'descending' to specify sort order (using
 #' this encoding), a list with a custom ordering, or NA to specify no sorting
 #' @return A modified spec
-#' @seealso [vl_sort_order_by_field()] to sort by another field, 
-#' [vl_sort_order_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_order_by_field()] to sort by another field,
+#' [vl_sort_order_by_encoding()] to sort by another encoding
 vl_sort_order <- function(spec, value) {
-  args_out <- list(spec = spec, .enc = 'order', value = value)
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'order'))
   rlang::exec(.add_sort_to_encoding, !!!args_out)
 } #' vl_sort_shape
 #' 
-#' Sort shape encoding in a vega-lite spec.
+#' Add sort to encoding for shape to a vega-lite spec.
 #' @param spec A vega-lite spec.
-#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' @param value either 'ascending' or 'descending' to specify sort order (using
 #' this encoding), a list with a custom ordering, or NA to specify no sorting
 #' @return A modified spec
-#' @seealso [vl_sort_shape_by_field()] to sort by another field, 
-#' [vl_sort_shape_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_shape_by_field()] to sort by another field,
+#' [vl_sort_shape_by_encoding()] to sort by another encoding
 vl_sort_shape <- function(spec, value) {
-  args_out <- list(spec = spec, .enc = 'shape', value = value)
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'shape'))
   rlang::exec(.add_sort_to_encoding, !!!args_out)
 } #' vl_sort_size
 #' 
-#' Sort size encoding in a vega-lite spec.
+#' Add sort to encoding for size to a vega-lite spec.
 #' @param spec A vega-lite spec.
-#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' @param value either 'ascending' or 'descending' to specify sort order (using
 #' this encoding), a list with a custom ordering, or NA to specify no sorting
 #' @return A modified spec
-#' @seealso [vl_sort_size_by_field()] to sort by another field, 
-#' [vl_sort_size_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_size_by_field()] to sort by another field,
+#' [vl_sort_size_by_encoding()] to sort by another encoding
 vl_sort_size <- function(spec, value) {
-  args_out <- list(spec = spec, .enc = 'size', value = value)
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'size'))
   rlang::exec(.add_sort_to_encoding, !!!args_out)
 } #' vl_sort_stroke
 #' 
-#' Sort stroke encoding in a vega-lite spec.
+#' Add sort to encoding for stroke to a vega-lite spec.
 #' @param spec A vega-lite spec.
-#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' @param value either 'ascending' or 'descending' to specify sort order (using
 #' this encoding), a list with a custom ordering, or NA to specify no sorting
 #' @return A modified spec
-#' @seealso [vl_sort_stroke_by_field()] to sort by another field, 
-#' [vl_sort_stroke_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_stroke_by_field()] to sort by another field,
+#' [vl_sort_stroke_by_encoding()] to sort by another encoding
 vl_sort_stroke <- function(spec, value) {
-  args_out <- list(spec = spec, .enc = 'stroke', value = value)
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'stroke'))
   rlang::exec(.add_sort_to_encoding, !!!args_out)
 } #' vl_sort_strokeOpacity
 #' 
-#' Sort strokeOpacity encoding in a vega-lite spec.
+#' Add sort to encoding for strokeOpacity to a vega-lite spec.
 #' @param spec A vega-lite spec.
-#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' @param value either 'ascending' or 'descending' to specify sort order (using
 #' this encoding), a list with a custom ordering, or NA to specify no sorting
 #' @return A modified spec
-#' @seealso [vl_sort_strokeOpacity_by_field()] to sort by another field, 
-#' [vl_sort_strokeOpacity_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_strokeOpacity_by_field()] to sort by another field,
+#' [vl_sort_strokeOpacity_by_encoding()] to sort by another encoding
 vl_sort_strokeOpacity <- function(spec, value) {
-  args_out <- list(spec = spec, .enc = 'strokeOpacity', value = value)
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
   rlang::exec(.add_sort_to_encoding, !!!args_out)
 } #' vl_sort_strokeWidth
 #' 
-#' Sort strokeWidth encoding in a vega-lite spec.
+#' Add sort to encoding for strokeWidth to a vega-lite spec.
 #' @param spec A vega-lite spec.
-#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' @param value either 'ascending' or 'descending' to specify sort order (using
 #' this encoding), a list with a custom ordering, or NA to specify no sorting
 #' @return A modified spec
-#' @seealso [vl_sort_strokeWidth_by_field()] to sort by another field, 
-#' [vl_sort_strokeWidth_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_strokeWidth_by_field()] to sort by another field,
+#' [vl_sort_strokeWidth_by_encoding()] to sort by another encoding
 vl_sort_strokeWidth <- function(spec, value) {
-  args_out <- list(spec = spec, .enc = 'strokeWidth', value = value)
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'strokeWidth'))
   rlang::exec(.add_sort_to_encoding, !!!args_out)
 } #' vl_sort_x
 #' 
-#' Sort x encoding in a vega-lite spec.
+#' Add sort to encoding for x to a vega-lite spec.
 #' @param spec A vega-lite spec.
-#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' @param value either 'ascending' or 'descending' to specify sort order (using
 #' this encoding), a list with a custom ordering, or NA to specify no sorting
 #' @return A modified spec
-#' @seealso [vl_sort_x_by_field()] to sort by another field, 
-#' [vl_sort_x_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_x_by_field()] to sort by another field,
+#' [vl_sort_x_by_encoding()] to sort by another encoding
 vl_sort_x <- function(spec, value) {
-  args_out <- list(spec = spec, .enc = 'x', value = value)
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'x'))
   rlang::exec(.add_sort_to_encoding, !!!args_out)
 } #' vl_sort_y
 #' 
-#' Sort y encoding in a vega-lite spec.
+#' Add sort to encoding for y to a vega-lite spec.
 #' @param spec A vega-lite spec.
-#' @param value either 'ascending' or 'descending' to specify sort order (using 
+#' @param value either 'ascending' or 'descending' to specify sort order (using
 #' this encoding), a list with a custom ordering, or NA to specify no sorting
 #' @return A modified spec
-#' @seealso [vl_sort_y_by_field()] to sort by another field, 
-#' [vl_sort_y_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_y_by_field()] to sort by another field,
+#' [vl_sort_y_by_encoding()] to sort by another encoding
 vl_sort_y <- function(spec, value) {
-  args_out <- list(spec = spec, .enc = 'y', value = value)
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'y'))
   rlang::exec(.add_sort_to_encoding, !!!args_out)
 } #' vl_sort_color_by_field
 #' 
-#' Sort color encoding by another field in a vega-lite spec.
+#' Add sort by another field to encoding for color in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
 #' 
@@ -5397,9 +5506,9 @@ vl_sort_y <- function(spec, value) {
 #' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_color] to sort by this encoding or a custom order, 
-#' [vl_sort_color_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_color] to sort by same field,
+#' [vl_sort_color_by_encoding()] to sort by another encoding
 vl_sort_color_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5408,7 +5517,7 @@ vl_sort_color_by_field <- function(spec, field = NULL, op = NULL, order = NULL) 
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_fill_by_field
 #' 
-#' Sort fill encoding by another field in a vega-lite spec.
+#' Add sort by another field to encoding for fill in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
 #' 
@@ -5422,9 +5531,9 @@ vl_sort_color_by_field <- function(spec, field = NULL, op = NULL, order = NULL) 
 #' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_fill] to sort by this encoding or a custom order, 
-#' [vl_sort_fill_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_fill] to sort by same field,
+#' [vl_sort_fill_by_encoding()] to sort by another encoding
 vl_sort_fill_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5433,7 +5542,7 @@ vl_sort_fill_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_fillOpacity_by_field
 #' 
-#' Sort fillOpacity encoding by another field in a vega-lite spec.
+#' Add sort by another field to encoding for fillOpacity in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
 #' 
@@ -5447,9 +5556,9 @@ vl_sort_fill_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
 #' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_fillOpacity] to sort by this encoding or a custom order, 
-#' [vl_sort_fillOpacity_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_fillOpacity] to sort by same field,
+#' [vl_sort_fillOpacity_by_encoding()] to sort by another encoding
 vl_sort_fillOpacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5458,7 +5567,7 @@ vl_sort_fillOpacity_by_field <- function(spec, field = NULL, op = NULL, order = 
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_href_by_field
 #' 
-#' Sort href encoding by another field in a vega-lite spec.
+#' Add sort by another field to encoding for href in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
 #' 
@@ -5472,9 +5581,9 @@ vl_sort_fillOpacity_by_field <- function(spec, field = NULL, op = NULL, order = 
 #' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_href] to sort by this encoding or a custom order, 
-#' [vl_sort_href_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_href] to sort by same field,
+#' [vl_sort_href_by_encoding()] to sort by another encoding
 vl_sort_href_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5483,7 +5592,7 @@ vl_sort_href_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_opacity_by_field
 #' 
-#' Sort opacity encoding by another field in a vega-lite spec.
+#' Add sort by another field to encoding for opacity in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
 #' 
@@ -5497,9 +5606,9 @@ vl_sort_href_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
 #' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_opacity] to sort by this encoding or a custom order, 
-#' [vl_sort_opacity_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_opacity] to sort by same field,
+#' [vl_sort_opacity_by_encoding()] to sort by another encoding
 vl_sort_opacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5508,7 +5617,7 @@ vl_sort_opacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_order_by_field
 #' 
-#' Sort order encoding by another field in a vega-lite spec.
+#' Add sort by another field to encoding for order in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
 #' 
@@ -5522,9 +5631,9 @@ vl_sort_opacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL
 #' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_order] to sort by this encoding or a custom order, 
-#' [vl_sort_order_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_order] to sort by same field,
+#' [vl_sort_order_by_encoding()] to sort by another encoding
 vl_sort_order_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5533,7 +5642,7 @@ vl_sort_order_by_field <- function(spec, field = NULL, op = NULL, order = NULL) 
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_shape_by_field
 #' 
-#' Sort shape encoding by another field in a vega-lite spec.
+#' Add sort by another field to encoding for shape in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
 #' 
@@ -5547,9 +5656,9 @@ vl_sort_order_by_field <- function(spec, field = NULL, op = NULL, order = NULL) 
 #' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_shape] to sort by this encoding or a custom order, 
-#' [vl_sort_shape_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_shape] to sort by same field,
+#' [vl_sort_shape_by_encoding()] to sort by another encoding
 vl_sort_shape_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5558,7 +5667,7 @@ vl_sort_shape_by_field <- function(spec, field = NULL, op = NULL, order = NULL) 
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_size_by_field
 #' 
-#' Sort size encoding by another field in a vega-lite spec.
+#' Add sort by another field to encoding for size in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
 #' 
@@ -5572,9 +5681,9 @@ vl_sort_shape_by_field <- function(spec, field = NULL, op = NULL, order = NULL) 
 #' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_size] to sort by this encoding or a custom order, 
-#' [vl_sort_size_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_size] to sort by same field,
+#' [vl_sort_size_by_encoding()] to sort by another encoding
 vl_sort_size_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5583,7 +5692,7 @@ vl_sort_size_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_stroke_by_field
 #' 
-#' Sort stroke encoding by another field in a vega-lite spec.
+#' Add sort by another field to encoding for stroke in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
 #' 
@@ -5597,9 +5706,9 @@ vl_sort_size_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
 #' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_stroke] to sort by this encoding or a custom order, 
-#' [vl_sort_stroke_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_stroke] to sort by same field,
+#' [vl_sort_stroke_by_encoding()] to sort by another encoding
 vl_sort_stroke_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5608,7 +5717,7 @@ vl_sort_stroke_by_field <- function(spec, field = NULL, op = NULL, order = NULL)
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_strokeOpacity_by_field
 #' 
-#' Sort strokeOpacity encoding by another field in a vega-lite spec.
+#' Add sort by another field to encoding for strokeOpacity in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
 #' 
@@ -5622,9 +5731,9 @@ vl_sort_stroke_by_field <- function(spec, field = NULL, op = NULL, order = NULL)
 #' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_strokeOpacity] to sort by this encoding or a custom order, 
-#' [vl_sort_strokeOpacity_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_strokeOpacity] to sort by same field,
+#' [vl_sort_strokeOpacity_by_encoding()] to sort by another encoding
 vl_sort_strokeOpacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5633,7 +5742,7 @@ vl_sort_strokeOpacity_by_field <- function(spec, field = NULL, op = NULL, order 
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_strokeWidth_by_field
 #' 
-#' Sort strokeWidth encoding by another field in a vega-lite spec.
+#' Add sort by another field to encoding for strokeWidth in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
 #' 
@@ -5647,9 +5756,9 @@ vl_sort_strokeOpacity_by_field <- function(spec, field = NULL, op = NULL, order 
 #' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_strokeWidth] to sort by this encoding or a custom order, 
-#' [vl_sort_strokeWidth_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_strokeWidth] to sort by same field,
+#' [vl_sort_strokeWidth_by_encoding()] to sort by another encoding
 vl_sort_strokeWidth_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5658,7 +5767,7 @@ vl_sort_strokeWidth_by_field <- function(spec, field = NULL, op = NULL, order = 
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_x_by_field
 #' 
-#' Sort x encoding by another field in a vega-lite spec.
+#' Add sort by another field to encoding for x in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
 #' 
@@ -5672,9 +5781,9 @@ vl_sort_strokeWidth_by_field <- function(spec, field = NULL, op = NULL, order = 
 #' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_x] to sort by this encoding or a custom order, 
-#' [vl_sort_x_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_x] to sort by same field,
+#' [vl_sort_x_by_encoding()] to sort by another encoding
 vl_sort_x_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5683,7 +5792,7 @@ vl_sort_x_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_y_by_field
 #' 
-#' Sort y encoding by another field in a vega-lite spec.
+#' Add sort by another field to encoding for y in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param field The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
 #' 
@@ -5697,9 +5806,9 @@ vl_sort_x_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
 #' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`. (type = AggregateOp)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_y] to sort by this encoding or a custom order, 
-#' [vl_sort_y_by_encoding()] to sort by another encoding
 #' @export
+#' @seealso [vl_sort_y] to sort by same field,
+#' [vl_sort_y_by_encoding()] to sort by another encoding
 vl_sort_y_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5708,14 +5817,14 @@ vl_sort_y_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_color_by_encoding
 #' 
-#' Sort color encoding by another encoding in a vega-lite spec.
+#' Add sort by another encoding to encoding for color in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_color_by_field()] to sort by another field, 
-#' [vl_sort_color] to sort by this encoding or a custom sort
 #' @export
+#' @seealso [vl_sort_color] to sort by same field,
+#' [vl_sort_color_by_field()] to sort by another field
 vl_sort_color_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5724,14 +5833,14 @@ vl_sort_color_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_fill_by_encoding
 #' 
-#' Sort fill encoding by another encoding in a vega-lite spec.
+#' Add sort by another encoding to encoding for fill in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_fill_by_field()] to sort by another field, 
-#' [vl_sort_fill] to sort by this encoding or a custom sort
 #' @export
+#' @seealso [vl_sort_fill] to sort by same field,
+#' [vl_sort_fill_by_field()] to sort by another field
 vl_sort_fill_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5740,14 +5849,14 @@ vl_sort_fill_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_fillOpacity_by_encoding
 #' 
-#' Sort fillOpacity encoding by another encoding in a vega-lite spec.
+#' Add sort by another encoding to encoding for fillOpacity in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_fillOpacity_by_field()] to sort by another field, 
-#' [vl_sort_fillOpacity] to sort by this encoding or a custom sort
 #' @export
+#' @seealso [vl_sort_fillOpacity] to sort by same field,
+#' [vl_sort_fillOpacity_by_field()] to sort by another field
 vl_sort_fillOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5756,14 +5865,14 @@ vl_sort_fillOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL)
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_href_by_encoding
 #' 
-#' Sort href encoding by another encoding in a vega-lite spec.
+#' Add sort by another encoding to encoding for href in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_href_by_field()] to sort by another field, 
-#' [vl_sort_href] to sort by this encoding or a custom sort
 #' @export
+#' @seealso [vl_sort_href] to sort by same field,
+#' [vl_sort_href_by_field()] to sort by another field
 vl_sort_href_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5772,14 +5881,14 @@ vl_sort_href_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_opacity_by_encoding
 #' 
-#' Sort opacity encoding by another encoding in a vega-lite spec.
+#' Add sort by another encoding to encoding for opacity in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_opacity_by_field()] to sort by another field, 
-#' [vl_sort_opacity] to sort by this encoding or a custom sort
 #' @export
+#' @seealso [vl_sort_opacity] to sort by same field,
+#' [vl_sort_opacity_by_field()] to sort by another field
 vl_sort_opacity_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5788,14 +5897,14 @@ vl_sort_opacity_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_order_by_encoding
 #' 
-#' Sort order encoding by another encoding in a vega-lite spec.
+#' Add sort by another encoding to encoding for order in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_order_by_field()] to sort by another field, 
-#' [vl_sort_order] to sort by this encoding or a custom sort
 #' @export
+#' @seealso [vl_sort_order] to sort by same field,
+#' [vl_sort_order_by_field()] to sort by another field
 vl_sort_order_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5804,14 +5913,14 @@ vl_sort_order_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_shape_by_encoding
 #' 
-#' Sort shape encoding by another encoding in a vega-lite spec.
+#' Add sort by another encoding to encoding for shape in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_shape_by_field()] to sort by another field, 
-#' [vl_sort_shape] to sort by this encoding or a custom sort
 #' @export
+#' @seealso [vl_sort_shape] to sort by same field,
+#' [vl_sort_shape_by_field()] to sort by another field
 vl_sort_shape_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5820,14 +5929,14 @@ vl_sort_shape_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_size_by_encoding
 #' 
-#' Sort size encoding by another encoding in a vega-lite spec.
+#' Add sort by another encoding to encoding for size in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_size_by_field()] to sort by another field, 
-#' [vl_sort_size] to sort by this encoding or a custom sort
 #' @export
+#' @seealso [vl_sort_size] to sort by same field,
+#' [vl_sort_size_by_field()] to sort by another field
 vl_sort_size_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5836,14 +5945,14 @@ vl_sort_size_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_stroke_by_encoding
 #' 
-#' Sort stroke encoding by another encoding in a vega-lite spec.
+#' Add sort by another encoding to encoding for stroke in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_stroke_by_field()] to sort by another field, 
-#' [vl_sort_stroke] to sort by this encoding or a custom sort
 #' @export
+#' @seealso [vl_sort_stroke] to sort by same field,
+#' [vl_sort_stroke_by_field()] to sort by another field
 vl_sort_stroke_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5852,14 +5961,14 @@ vl_sort_stroke_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_strokeOpacity_by_encoding
 #' 
-#' Sort strokeOpacity encoding by another encoding in a vega-lite spec.
+#' Add sort by another encoding to encoding for strokeOpacity in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_strokeOpacity_by_field()] to sort by another field, 
-#' [vl_sort_strokeOpacity] to sort by this encoding or a custom sort
 #' @export
+#' @seealso [vl_sort_strokeOpacity] to sort by same field,
+#' [vl_sort_strokeOpacity_by_field()] to sort by another field
 vl_sort_strokeOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5868,14 +5977,14 @@ vl_sort_strokeOpacity_by_encoding <- function(spec, encoding = NULL, order = NUL
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_strokeWidth_by_encoding
 #' 
-#' Sort strokeWidth encoding by another encoding in a vega-lite spec.
+#' Add sort by another encoding to encoding for strokeWidth in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_strokeWidth_by_field()] to sort by another field, 
-#' [vl_sort_strokeWidth] to sort by this encoding or a custom sort
 #' @export
+#' @seealso [vl_sort_strokeWidth] to sort by same field,
+#' [vl_sort_strokeWidth_by_field()] to sort by another field
 vl_sort_strokeWidth_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5884,14 +5993,14 @@ vl_sort_strokeWidth_by_encoding <- function(spec, encoding = NULL, order = NULL)
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_x_by_encoding
 #' 
-#' Sort x encoding by another encoding in a vega-lite spec.
+#' Add sort by another encoding to encoding for x in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_x_by_field()] to sort by another field, 
-#' [vl_sort_x] to sort by this encoding or a custom sort
 #' @export
+#' @seealso [vl_sort_x] to sort by same field,
+#' [vl_sort_x_by_field()] to sort by another field
 vl_sort_x_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5900,14 +6009,14 @@ vl_sort_x_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_sort_y_by_encoding
 #' 
-#' Sort y encoding by another encoding in a vega-lite spec.
+#' Add sort by another encoding to encoding for y in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param encoding The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`) (type = SingleDefUnitChannel)
 #' @param order The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort). (type = Varies)
 #' @return A modified spec
-#' @seealso [vl_sort_y_by_field()] to sort by another field, 
-#' [vl_sort_y] to sort by this encoding or a custom sort
 #' @export
+#' @seealso [vl_sort_y] to sort by same field,
+#' [vl_sort_y_by_field()] to sort by another field
 vl_sort_y_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5916,7 +6025,7 @@ vl_sort_y_by_encoding <- function(spec, encoding = NULL, order = NULL) {
   rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
 } #' vl_impute_x
 #' 
-#' Add impute transform to x encoding in a vega-lite spec.
+#' Add impute to encoding for x in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param frame A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
 #' 
@@ -5934,6 +6043,7 @@ vl_sort_y_by_encoding <- function(spec, encoding = NULL, order = NULL) {
 #' @param value The field value to use when the imputation `method` is `"value"`. (type = Varies)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_x()]
 vl_impute_x <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5942,7 +6052,7 @@ vl_impute_x <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value
   rlang::exec(.add_impute_to_encoding, !!!args_out)
 } #' vl_impute_y
 #' 
-#' Add impute transform to y encoding in a vega-lite spec.
+#' Add impute to encoding for y in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param frame A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
 #' 
@@ -5960,6 +6070,7 @@ vl_impute_x <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value
 #' @param value The field value to use when the imputation `method` is `"value"`. (type = Varies)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_y()]
 vl_impute_y <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -5968,277 +6079,304 @@ vl_impute_y <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value
   rlang::exec(.add_impute_to_encoding, !!!args_out)
 } #' vl_aggregate_color
 #' 
-#' Add aggregate transform to color encoding in a vega-lite spec.
+#' Add aggregate to encoding for color to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_color <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'color', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_detail
 #' 
-#' Add aggregate transform to detail encoding in a vega-lite spec.
+#' Add aggregate to encoding for detail to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_detail <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'detail', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_fill
 #' 
-#' Add aggregate transform to fill encoding in a vega-lite spec.
+#' Add aggregate to encoding for fill to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_fill <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'fill', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_fillOpacity
 #' 
-#' Add aggregate transform to fillOpacity encoding in a vega-lite spec.
+#' Add aggregate to encoding for fillOpacity to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_fillOpacity <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'fillOpacity', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_href
 #' 
-#' Add aggregate transform to href encoding in a vega-lite spec.
+#' Add aggregate to encoding for href to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_href <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'href', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_key
 #' 
-#' Add aggregate transform to key encoding in a vega-lite spec.
+#' Add aggregate to encoding for key to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_key <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'key', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_latitude
 #' 
-#' Add aggregate transform to latitude encoding in a vega-lite spec.
+#' Add aggregate to encoding for latitude to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_latitude <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'latitude', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_latitude2
 #' 
-#' Add aggregate transform to latitude2 encoding in a vega-lite spec.
+#' Add aggregate to encoding for latitude2 to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_latitude2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'latitude2', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_longitude
 #' 
-#' Add aggregate transform to longitude encoding in a vega-lite spec.
+#' Add aggregate to encoding for longitude to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_longitude <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'longitude', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_longitude2
 #' 
-#' Add aggregate transform to longitude2 encoding in a vega-lite spec.
+#' Add aggregate to encoding for longitude2 to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_longitude2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'longitude2', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_opacity
 #' 
-#' Add aggregate transform to opacity encoding in a vega-lite spec.
+#' Add aggregate to encoding for opacity to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_opacity <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'opacity', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_order
 #' 
-#' Add aggregate transform to order encoding in a vega-lite spec.
+#' Add aggregate to encoding for order to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_order <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'order', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_shape
 #' 
-#' Add aggregate transform to shape encoding in a vega-lite spec.
+#' Add aggregate to encoding for shape to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_shape <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'shape', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_size
 #' 
-#' Add aggregate transform to size encoding in a vega-lite spec.
+#' Add aggregate to encoding for size to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_size <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'size', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_stroke
 #' 
-#' Add aggregate transform to stroke encoding in a vega-lite spec.
+#' Add aggregate to encoding for stroke to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_stroke <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'stroke', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_strokeOpacity
 #' 
-#' Add aggregate transform to strokeOpacity encoding in a vega-lite spec.
+#' Add aggregate to encoding for strokeOpacity to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_strokeOpacity <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'strokeOpacity', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_strokeWidth
 #' 
-#' Add aggregate transform to strokeWidth encoding in a vega-lite spec.
+#' Add aggregate to encoding for strokeWidth to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_strokeWidth <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'strokeWidth', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_text
 #' 
-#' Add aggregate transform to text encoding in a vega-lite spec.
+#' Add aggregate to encoding for text to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_text <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'text', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_tooltip
 #' 
-#' Add aggregate transform to tooltip encoding in a vega-lite spec.
+#' Add aggregate to encoding for tooltip to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_tooltip <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'tooltip', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_x
 #' 
-#' Add aggregate transform to x encoding in a vega-lite spec.
+#' Add aggregate to encoding for x to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_x <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'x', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_x2
 #' 
-#' Add aggregate transform to x2 encoding in a vega-lite spec.
+#' Add aggregate to encoding for x2 to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_x2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'x2', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_xError
 #' 
-#' Add aggregate transform to xError encoding in a vega-lite spec.
+#' Add aggregate to encoding for xError to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_xError <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'xError', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_xError2
 #' 
-#' Add aggregate transform to xError2 encoding in a vega-lite spec.
+#' Add aggregate to encoding for xError2 to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_xError2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'xError2', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_y
 #' 
-#' Add aggregate transform to y encoding in a vega-lite spec.
+#' Add aggregate to encoding for y to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_y <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'y', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_y2
 #' 
-#' Add aggregate transform to y2 encoding in a vega-lite spec.
+#' Add aggregate to encoding for y2 to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_y2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'y2', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_yError
 #' 
-#' Add aggregate transform to yError encoding in a vega-lite spec.
+#' Add aggregate to encoding for yError to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_yError <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'yError', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_aggregate_yError2
 #' 
-#' Add aggregate transform to yError2 encoding in a vega-lite spec.
+#' Add aggregate to encoding for yError2 to a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified spec
 #' @export
+#' @seealso [vl_aggregate()] to add a top level aggregate transform
 vl_aggregate_yError2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   args_out <- list(spec = spec, .enc = 'yError2', op = match.arg(op))
   rlang::exec(.add_aggregate_to_encoding, !!!args_out)
 } #' vl_axis_x
 #' 
-#' Add axis to x encoding in a vega-lite spec.
+#' Add axis to encoding for x in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param bandPosition An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
 #' 
@@ -6380,6 +6518,7 @@ vl_aggregate_yError2 <- function(spec, op = c('argmax', 'argmin', 'average', 'co
 #' @param remove Remove the axis?
 #' @return A modified spec
 #' @export
+#' @seealso [vl_x()]
 vl_axis_x <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, values = NULL, zindex = NULL, remove = FALSE) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -6388,7 +6527,7 @@ vl_axis_x <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NU
   rlang::exec(.add_axis_to_encoding, !!!args_out)
 } #' vl_axis_y
 #' 
-#' Add axis to y encoding in a vega-lite spec.
+#' Add axis to encoding for y in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param bandPosition An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
 #' 
@@ -6530,6 +6669,7 @@ vl_axis_x <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NU
 #' @param remove Remove the axis?
 #' @return A modified spec
 #' @export
+#' @seealso [vl_y()]
 vl_axis_y <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, values = NULL, zindex = NULL, remove = FALSE) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -6538,7 +6678,7 @@ vl_axis_y <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NU
   rlang::exec(.add_axis_to_encoding, !!!args_out)
 } #' vl_scale_color
 #' 
-#' Add scale to color encoding in a vega-lite spec.
+#' Add scale to encoding for color in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param base The logarithm base of the `log` scale (default `10`). (type = number)
 #' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
@@ -6630,6 +6770,7 @@ vl_axis_y <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NU
 #' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_color()]
 vl_scale_color <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -6638,7 +6779,7 @@ vl_scale_color <- function(spec, base = NULL, bins = NULL, clamp = NULL, constan
   rlang::exec(.add_scale_to_encoding, !!!args_out)
 } #' vl_scale_fill
 #' 
-#' Add scale to fill encoding in a vega-lite spec.
+#' Add scale to encoding for fill in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param base The logarithm base of the `log` scale (default `10`). (type = number)
 #' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
@@ -6730,6 +6871,7 @@ vl_scale_color <- function(spec, base = NULL, bins = NULL, clamp = NULL, constan
 #' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_fill()]
 vl_scale_fill <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -6738,7 +6880,7 @@ vl_scale_fill <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant
   rlang::exec(.add_scale_to_encoding, !!!args_out)
 } #' vl_scale_fillOpacity
 #' 
-#' Add scale to fillOpacity encoding in a vega-lite spec.
+#' Add scale to encoding for fillOpacity in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param base The logarithm base of the `log` scale (default `10`). (type = number)
 #' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
@@ -6830,6 +6972,7 @@ vl_scale_fill <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant
 #' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_fillOpacity()]
 vl_scale_fillOpacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -6838,7 +6981,7 @@ vl_scale_fillOpacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, c
   rlang::exec(.add_scale_to_encoding, !!!args_out)
 } #' vl_scale_href
 #' 
-#' Add scale to href encoding in a vega-lite spec.
+#' Add scale to encoding for href in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param base The logarithm base of the `log` scale (default `10`). (type = number)
 #' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
@@ -6930,6 +7073,7 @@ vl_scale_fillOpacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, c
 #' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_href()]
 vl_scale_href <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -6938,7 +7082,7 @@ vl_scale_href <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant
   rlang::exec(.add_scale_to_encoding, !!!args_out)
 } #' vl_scale_opacity
 #' 
-#' Add scale to opacity encoding in a vega-lite spec.
+#' Add scale to encoding for opacity in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param base The logarithm base of the `log` scale (default `10`). (type = number)
 #' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
@@ -7030,6 +7174,7 @@ vl_scale_href <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant
 #' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_opacity()]
 vl_scale_opacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -7038,7 +7183,7 @@ vl_scale_opacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, const
   rlang::exec(.add_scale_to_encoding, !!!args_out)
 } #' vl_scale_shape
 #' 
-#' Add scale to shape encoding in a vega-lite spec.
+#' Add scale to encoding for shape in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param base The logarithm base of the `log` scale (default `10`). (type = number)
 #' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
@@ -7130,6 +7275,7 @@ vl_scale_opacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, const
 #' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_shape()]
 vl_scale_shape <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -7138,7 +7284,7 @@ vl_scale_shape <- function(spec, base = NULL, bins = NULL, clamp = NULL, constan
   rlang::exec(.add_scale_to_encoding, !!!args_out)
 } #' vl_scale_size
 #' 
-#' Add scale to size encoding in a vega-lite spec.
+#' Add scale to encoding for size in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param base The logarithm base of the `log` scale (default `10`). (type = number)
 #' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
@@ -7230,6 +7376,7 @@ vl_scale_shape <- function(spec, base = NULL, bins = NULL, clamp = NULL, constan
 #' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_size()]
 vl_scale_size <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -7238,7 +7385,7 @@ vl_scale_size <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant
   rlang::exec(.add_scale_to_encoding, !!!args_out)
 } #' vl_scale_stroke
 #' 
-#' Add scale to stroke encoding in a vega-lite spec.
+#' Add scale to encoding for stroke in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param base The logarithm base of the `log` scale (default `10`). (type = number)
 #' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
@@ -7330,6 +7477,7 @@ vl_scale_size <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant
 #' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_stroke()]
 vl_scale_stroke <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -7338,7 +7486,7 @@ vl_scale_stroke <- function(spec, base = NULL, bins = NULL, clamp = NULL, consta
   rlang::exec(.add_scale_to_encoding, !!!args_out)
 } #' vl_scale_strokeOpacity
 #' 
-#' Add scale to strokeOpacity encoding in a vega-lite spec.
+#' Add scale to encoding for strokeOpacity in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param base The logarithm base of the `log` scale (default `10`). (type = number)
 #' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
@@ -7430,6 +7578,7 @@ vl_scale_stroke <- function(spec, base = NULL, bins = NULL, clamp = NULL, consta
 #' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_strokeOpacity()]
 vl_scale_strokeOpacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -7438,7 +7587,7 @@ vl_scale_strokeOpacity <- function(spec, base = NULL, bins = NULL, clamp = NULL,
   rlang::exec(.add_scale_to_encoding, !!!args_out)
 } #' vl_scale_strokeWidth
 #' 
-#' Add scale to strokeWidth encoding in a vega-lite spec.
+#' Add scale to encoding for strokeWidth in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param base The logarithm base of the `log` scale (default `10`). (type = number)
 #' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
@@ -7530,6 +7679,7 @@ vl_scale_strokeOpacity <- function(spec, base = NULL, bins = NULL, clamp = NULL,
 #' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_strokeWidth()]
 vl_scale_strokeWidth <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -7538,7 +7688,7 @@ vl_scale_strokeWidth <- function(spec, base = NULL, bins = NULL, clamp = NULL, c
   rlang::exec(.add_scale_to_encoding, !!!args_out)
 } #' vl_scale_x
 #' 
-#' Add scale to x encoding in a vega-lite spec.
+#' Add scale to encoding for x in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param base The logarithm base of the `log` scale (default `10`). (type = number)
 #' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
@@ -7630,6 +7780,7 @@ vl_scale_strokeWidth <- function(spec, base = NULL, bins = NULL, clamp = NULL, c
 #' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_x()]
 vl_scale_x <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
@@ -7638,7 +7789,7 @@ vl_scale_x <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = 
   rlang::exec(.add_scale_to_encoding, !!!args_out)
 } #' vl_scale_y
 #' 
-#' Add scale to y encoding in a vega-lite spec.
+#' Add scale to encoding for y in a vega-lite spec.
 #' @param spec A vega-lite spec.
 #' @param base The logarithm base of the `log` scale (default `10`). (type = number)
 #' @param bins An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)
@@ -7730,10 +7881,2889 @@ vl_scale_x <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = 
 #' __Note:__ Log, time, and utc scales do not support `zero`. (type = boolean)
 #' @return A modified spec
 #' @export
+#' @seealso [vl_y()]
 vl_scale_y <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
   args_in <- rlang::fn_fmls_syms()
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out <- c(args_out, list(.enc = 'y'))
   rlang::exec(.add_scale_to_encoding, !!!args_out)
+} #' vl_legend_color
+#' 
+#' Add legend to encoding for color in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param clipHeight The height in pixels to clip symbol legend entries and limit their size. (type = number)
+#' @param columnPadding The horizontal padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param columns The number of columns in which to arrange symbol legend entries. A value of `0` or lower indicates a single row with one column per entry. (type = number)
+#' @param cornerRadius Corner radius for the full legend. (type = number)
+#' @param direction The direction of the legend, one of `"vertical"` or `"horizontal"`.
+#' 
+#' __Default value:__
+#' - For top-/bottom-`orient`ed legends, `"horizontal"`
+#' - For left-/right-`orient`ed legends, `"vertical"`
+#' - For top/bottom-left/right-`orient`ed legends, `"horizontal"` for gradient legends and `"vertical"` for symbol legends. (type = Orientation)
+#' @param fillColor Background fill color for the full legend. (type = Color)
+#' @param format The formatting pattern for labels. This is D3's [number format pattern](https://github.com/d3/d3-format#locale_format) for quantitative fields and D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format) for time field. To override the default type, set `formatType`.
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more information.
+#' 
+#' __Default value:__  derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for quantitative fields and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for temporal fields. (type = string)
+#' @param formatType The format type for labels (number or time). (type = string)
+#' @param gradientLength The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+#' 
+#' __Default value:__ `200`. (type = number)
+#' @param gradientOpacity Opacity of the color gradient. (type = number)
+#' @param gradientStrokeColor The color of the gradient stroke, can be in hex color code or regular color name.
+#' 
+#' __Default value:__ `"lightGray"`. (type = Color)
+#' @param gradientStrokeWidth The width of the gradient stroke, in pixels.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param gradientThickness The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
+#' 
+#' __Default value:__ `16`. (type = number)
+#' @param gridAlign The alignment to apply to symbol legends rows and columns. The supported string values are `"all"`, `"each"` (the default), and `none`. For more information, see the [grid layout documentation](https://vega.github.io/vega/docs/layout).
+#' 
+#' __Default value:__ `"each"`. (type = LayoutAlign)
+#' @param labelAlign The alignment of the legend label, can be left, center, or right. (type = Align)
+#' @param labelBaseline The position of the baseline of legend label, can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' 
+#' __Default value:__ `"middle"`. (type = TextBaseline)
+#' @param labelColor The color of the legend label, can be in hex color code or regular color name. (type = Color)
+#' @param labelFont The font of the legend label. (type = string)
+#' @param labelFontSize The font size of legend label.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param labelFontStyle The font style of legend label. (type = FontStyle)
+#' @param labelFontWeight The font weight of legend label. (type = FontWeight)
+#' @param labelLimit Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `160`. (type = number)
+#' @param labelOffset The offset of the legend label. (type = number)
+#' @param labelOpacity Opacity of labels. (type = number)
+#' @param labelOverlap The strategy to use for resolving overlap of labels in gradient legends. If `false`, no overlap reduction is attempted. If set to `true` (default) or `"parity"`, a strategy of removing every other label is used. If set to `"greedy"`, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true`. (type = LabelOverlap)
+#' @param labelPadding Padding in pixels between the legend and legend labels. (type = number)
+#' @param labelSeparation The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled. (type = number)
+#' @param offset The offset in pixels by which to displace the legend from the data rectangle and axes.
+#' 
+#' __Default value:__ `18`. (type = number)
+#' @param orient The orientation of the legend, which determines how the legend is positioned within the scene. One of `"left"`, `"right"`, `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"`, `"none"`.
+#' 
+#' __Default value:__ `"right"` (type = LegendOrient)
+#' @param padding The padding between the border and content of the legend group.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param rowPadding The vertical padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `2`. (type = number)
+#' @param strokeColor Border stroke color for the full legend. (type = Color)
+#' @param symbolDash An array of alternating [stroke, space] lengths for dashed symbol strokes. (type = array)
+#' @param symbolDashOffset The pixel offset at which to start drawing with the symbol stroke dash array. (type = number)
+#' @param symbolFillColor The color of the legend symbol, (type = Color)
+#' @param symbolOffset Horizontal pixel offset for legend symbols.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param symbolOpacity Opacity of the legend symbols. (type = number)
+#' @param symbolSize The size of the legend symbol, in pixels.
+#' 
+#' __Default value:__ `100`. (type = number)
+#' @param symbolStrokeColor Stroke color for legend symbols. (type = Color)
+#' @param symbolStrokeWidth The width of the symbol's stroke.
+#' 
+#' __Default value:__ `1.5`. (type = number)
+#' @param symbolType Default shape type (such as "circle") for legend symbols.
+#' Can be one of ``"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#'    * In addition to a set of built-in shapes, custom shapes can be defined using [SVG path strings](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths).
+#'    *
+#'    * __Default value:__ `"circle"`.
+#'    * (type = SymbolShape)
+#' @param tickCount The desired number of tick values for quantitative legends. (type = number)
+#' @param tickMinStep The minimum desired step between legend ticks, in terms of scale domain values. For example, a value of `1` indicates that ticks should not be less than 1 unit apart. If `tickMinStep` is specified, the `tickCount` value will be adjusted, if necessary, to enforce the minimum step value.
+#' 
+#' __Default value__: `undefined` (type = number)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param titleAlign Horizontal text alignment for legend titles.
+#' 
+#' __Default value:__ `"left"`. (type = Align)
+#' @param titleAnchor Text anchor position for placing legend titles. (type = TitleAnchor)
+#' @param titleBaseline Vertical text baseline for legend titles.
+#' 
+#' __Default value:__ `"top"`. (type = TextBaseline)
+#' @param titleColor The color of the legend title, can be in hex color code or regular color name. (type = Color)
+#' @param titleFont The font of the legend title. (type = string)
+#' @param titleFontSize The font size of the legend title. (type = number)
+#' @param titleFontStyle The font style of the legend title. (type = FontStyle)
+#' @param titleFontWeight The font weight of the legend title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`). (type = FontWeight)
+#' @param titleLimit Maximum allowed pixel width of axis titles.
+#' 
+#' __Default value:__ `180`. (type = number)
+#' @param titleOpacity Opacity of the legend title. (type = number)
+#' @param titleOrient Orientation of the legend title. (type = Orient)
+#' @param titlePadding The padding, in pixels, between title and legend.
+#' 
+#' __Default value:__ `5`. (type = number)
+#' @param type The type of the legend. Use `"symbol"` to create a discrete legend and `"gradient"` for a continuous color gradient.
+#' 
+#' __Default value:__ `"gradient"` for non-binned quantitative fields and temporal fields; `"symbol"` otherwise. (type = string)
+#' @param values Explicitly set the visible legend values. (type = array)
+#' @param zindex A non-positive integer indicating z-index of the legend.
+#' If zindex is 0, legend should be drawn behind all chart elements.
+#' To put them in front, use zindex = 1. (type = number)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_color()]
+vl_legend_color <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'color'))
+  rlang::exec(.add_legend_to_encoding, !!!args_out)
+} #' vl_legend_fill
+#' 
+#' Add legend to encoding for fill in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param clipHeight The height in pixels to clip symbol legend entries and limit their size. (type = number)
+#' @param columnPadding The horizontal padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param columns The number of columns in which to arrange symbol legend entries. A value of `0` or lower indicates a single row with one column per entry. (type = number)
+#' @param cornerRadius Corner radius for the full legend. (type = number)
+#' @param direction The direction of the legend, one of `"vertical"` or `"horizontal"`.
+#' 
+#' __Default value:__
+#' - For top-/bottom-`orient`ed legends, `"horizontal"`
+#' - For left-/right-`orient`ed legends, `"vertical"`
+#' - For top/bottom-left/right-`orient`ed legends, `"horizontal"` for gradient legends and `"vertical"` for symbol legends. (type = Orientation)
+#' @param fillColor Background fill color for the full legend. (type = Color)
+#' @param format The formatting pattern for labels. This is D3's [number format pattern](https://github.com/d3/d3-format#locale_format) for quantitative fields and D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format) for time field. To override the default type, set `formatType`.
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more information.
+#' 
+#' __Default value:__  derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for quantitative fields and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for temporal fields. (type = string)
+#' @param formatType The format type for labels (number or time). (type = string)
+#' @param gradientLength The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+#' 
+#' __Default value:__ `200`. (type = number)
+#' @param gradientOpacity Opacity of the color gradient. (type = number)
+#' @param gradientStrokeColor The color of the gradient stroke, can be in hex color code or regular color name.
+#' 
+#' __Default value:__ `"lightGray"`. (type = Color)
+#' @param gradientStrokeWidth The width of the gradient stroke, in pixels.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param gradientThickness The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
+#' 
+#' __Default value:__ `16`. (type = number)
+#' @param gridAlign The alignment to apply to symbol legends rows and columns. The supported string values are `"all"`, `"each"` (the default), and `none`. For more information, see the [grid layout documentation](https://vega.github.io/vega/docs/layout).
+#' 
+#' __Default value:__ `"each"`. (type = LayoutAlign)
+#' @param labelAlign The alignment of the legend label, can be left, center, or right. (type = Align)
+#' @param labelBaseline The position of the baseline of legend label, can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' 
+#' __Default value:__ `"middle"`. (type = TextBaseline)
+#' @param labelColor The color of the legend label, can be in hex color code or regular color name. (type = Color)
+#' @param labelFont The font of the legend label. (type = string)
+#' @param labelFontSize The font size of legend label.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param labelFontStyle The font style of legend label. (type = FontStyle)
+#' @param labelFontWeight The font weight of legend label. (type = FontWeight)
+#' @param labelLimit Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `160`. (type = number)
+#' @param labelOffset The offset of the legend label. (type = number)
+#' @param labelOpacity Opacity of labels. (type = number)
+#' @param labelOverlap The strategy to use for resolving overlap of labels in gradient legends. If `false`, no overlap reduction is attempted. If set to `true` (default) or `"parity"`, a strategy of removing every other label is used. If set to `"greedy"`, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true`. (type = LabelOverlap)
+#' @param labelPadding Padding in pixels between the legend and legend labels. (type = number)
+#' @param labelSeparation The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled. (type = number)
+#' @param offset The offset in pixels by which to displace the legend from the data rectangle and axes.
+#' 
+#' __Default value:__ `18`. (type = number)
+#' @param orient The orientation of the legend, which determines how the legend is positioned within the scene. One of `"left"`, `"right"`, `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"`, `"none"`.
+#' 
+#' __Default value:__ `"right"` (type = LegendOrient)
+#' @param padding The padding between the border and content of the legend group.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param rowPadding The vertical padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `2`. (type = number)
+#' @param strokeColor Border stroke color for the full legend. (type = Color)
+#' @param symbolDash An array of alternating [stroke, space] lengths for dashed symbol strokes. (type = array)
+#' @param symbolDashOffset The pixel offset at which to start drawing with the symbol stroke dash array. (type = number)
+#' @param symbolFillColor The color of the legend symbol, (type = Color)
+#' @param symbolOffset Horizontal pixel offset for legend symbols.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param symbolOpacity Opacity of the legend symbols. (type = number)
+#' @param symbolSize The size of the legend symbol, in pixels.
+#' 
+#' __Default value:__ `100`. (type = number)
+#' @param symbolStrokeColor Stroke color for legend symbols. (type = Color)
+#' @param symbolStrokeWidth The width of the symbol's stroke.
+#' 
+#' __Default value:__ `1.5`. (type = number)
+#' @param symbolType Default shape type (such as "circle") for legend symbols.
+#' Can be one of ``"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#'    * In addition to a set of built-in shapes, custom shapes can be defined using [SVG path strings](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths).
+#'    *
+#'    * __Default value:__ `"circle"`.
+#'    * (type = SymbolShape)
+#' @param tickCount The desired number of tick values for quantitative legends. (type = number)
+#' @param tickMinStep The minimum desired step between legend ticks, in terms of scale domain values. For example, a value of `1` indicates that ticks should not be less than 1 unit apart. If `tickMinStep` is specified, the `tickCount` value will be adjusted, if necessary, to enforce the minimum step value.
+#' 
+#' __Default value__: `undefined` (type = number)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param titleAlign Horizontal text alignment for legend titles.
+#' 
+#' __Default value:__ `"left"`. (type = Align)
+#' @param titleAnchor Text anchor position for placing legend titles. (type = TitleAnchor)
+#' @param titleBaseline Vertical text baseline for legend titles.
+#' 
+#' __Default value:__ `"top"`. (type = TextBaseline)
+#' @param titleColor The color of the legend title, can be in hex color code or regular color name. (type = Color)
+#' @param titleFont The font of the legend title. (type = string)
+#' @param titleFontSize The font size of the legend title. (type = number)
+#' @param titleFontStyle The font style of the legend title. (type = FontStyle)
+#' @param titleFontWeight The font weight of the legend title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`). (type = FontWeight)
+#' @param titleLimit Maximum allowed pixel width of axis titles.
+#' 
+#' __Default value:__ `180`. (type = number)
+#' @param titleOpacity Opacity of the legend title. (type = number)
+#' @param titleOrient Orientation of the legend title. (type = Orient)
+#' @param titlePadding The padding, in pixels, between title and legend.
+#' 
+#' __Default value:__ `5`. (type = number)
+#' @param type The type of the legend. Use `"symbol"` to create a discrete legend and `"gradient"` for a continuous color gradient.
+#' 
+#' __Default value:__ `"gradient"` for non-binned quantitative fields and temporal fields; `"symbol"` otherwise. (type = string)
+#' @param values Explicitly set the visible legend values. (type = array)
+#' @param zindex A non-positive integer indicating z-index of the legend.
+#' If zindex is 0, legend should be drawn behind all chart elements.
+#' To put them in front, use zindex = 1. (type = number)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_fill()]
+vl_legend_fill <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'fill'))
+  rlang::exec(.add_legend_to_encoding, !!!args_out)
+} #' vl_legend_fillOpacity
+#' 
+#' Add legend to encoding for fillOpacity in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param clipHeight The height in pixels to clip symbol legend entries and limit their size. (type = number)
+#' @param columnPadding The horizontal padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param columns The number of columns in which to arrange symbol legend entries. A value of `0` or lower indicates a single row with one column per entry. (type = number)
+#' @param cornerRadius Corner radius for the full legend. (type = number)
+#' @param direction The direction of the legend, one of `"vertical"` or `"horizontal"`.
+#' 
+#' __Default value:__
+#' - For top-/bottom-`orient`ed legends, `"horizontal"`
+#' - For left-/right-`orient`ed legends, `"vertical"`
+#' - For top/bottom-left/right-`orient`ed legends, `"horizontal"` for gradient legends and `"vertical"` for symbol legends. (type = Orientation)
+#' @param fillColor Background fill color for the full legend. (type = Color)
+#' @param format The formatting pattern for labels. This is D3's [number format pattern](https://github.com/d3/d3-format#locale_format) for quantitative fields and D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format) for time field. To override the default type, set `formatType`.
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more information.
+#' 
+#' __Default value:__  derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for quantitative fields and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for temporal fields. (type = string)
+#' @param formatType The format type for labels (number or time). (type = string)
+#' @param gradientLength The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+#' 
+#' __Default value:__ `200`. (type = number)
+#' @param gradientOpacity Opacity of the color gradient. (type = number)
+#' @param gradientStrokeColor The color of the gradient stroke, can be in hex color code or regular color name.
+#' 
+#' __Default value:__ `"lightGray"`. (type = Color)
+#' @param gradientStrokeWidth The width of the gradient stroke, in pixels.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param gradientThickness The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
+#' 
+#' __Default value:__ `16`. (type = number)
+#' @param gridAlign The alignment to apply to symbol legends rows and columns. The supported string values are `"all"`, `"each"` (the default), and `none`. For more information, see the [grid layout documentation](https://vega.github.io/vega/docs/layout).
+#' 
+#' __Default value:__ `"each"`. (type = LayoutAlign)
+#' @param labelAlign The alignment of the legend label, can be left, center, or right. (type = Align)
+#' @param labelBaseline The position of the baseline of legend label, can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' 
+#' __Default value:__ `"middle"`. (type = TextBaseline)
+#' @param labelColor The color of the legend label, can be in hex color code or regular color name. (type = Color)
+#' @param labelFont The font of the legend label. (type = string)
+#' @param labelFontSize The font size of legend label.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param labelFontStyle The font style of legend label. (type = FontStyle)
+#' @param labelFontWeight The font weight of legend label. (type = FontWeight)
+#' @param labelLimit Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `160`. (type = number)
+#' @param labelOffset The offset of the legend label. (type = number)
+#' @param labelOpacity Opacity of labels. (type = number)
+#' @param labelOverlap The strategy to use for resolving overlap of labels in gradient legends. If `false`, no overlap reduction is attempted. If set to `true` (default) or `"parity"`, a strategy of removing every other label is used. If set to `"greedy"`, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true`. (type = LabelOverlap)
+#' @param labelPadding Padding in pixels between the legend and legend labels. (type = number)
+#' @param labelSeparation The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled. (type = number)
+#' @param offset The offset in pixels by which to displace the legend from the data rectangle and axes.
+#' 
+#' __Default value:__ `18`. (type = number)
+#' @param orient The orientation of the legend, which determines how the legend is positioned within the scene. One of `"left"`, `"right"`, `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"`, `"none"`.
+#' 
+#' __Default value:__ `"right"` (type = LegendOrient)
+#' @param padding The padding between the border and content of the legend group.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param rowPadding The vertical padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `2`. (type = number)
+#' @param strokeColor Border stroke color for the full legend. (type = Color)
+#' @param symbolDash An array of alternating [stroke, space] lengths for dashed symbol strokes. (type = array)
+#' @param symbolDashOffset The pixel offset at which to start drawing with the symbol stroke dash array. (type = number)
+#' @param symbolFillColor The color of the legend symbol, (type = Color)
+#' @param symbolOffset Horizontal pixel offset for legend symbols.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param symbolOpacity Opacity of the legend symbols. (type = number)
+#' @param symbolSize The size of the legend symbol, in pixels.
+#' 
+#' __Default value:__ `100`. (type = number)
+#' @param symbolStrokeColor Stroke color for legend symbols. (type = Color)
+#' @param symbolStrokeWidth The width of the symbol's stroke.
+#' 
+#' __Default value:__ `1.5`. (type = number)
+#' @param symbolType Default shape type (such as "circle") for legend symbols.
+#' Can be one of ``"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#'    * In addition to a set of built-in shapes, custom shapes can be defined using [SVG path strings](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths).
+#'    *
+#'    * __Default value:__ `"circle"`.
+#'    * (type = SymbolShape)
+#' @param tickCount The desired number of tick values for quantitative legends. (type = number)
+#' @param tickMinStep The minimum desired step between legend ticks, in terms of scale domain values. For example, a value of `1` indicates that ticks should not be less than 1 unit apart. If `tickMinStep` is specified, the `tickCount` value will be adjusted, if necessary, to enforce the minimum step value.
+#' 
+#' __Default value__: `undefined` (type = number)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param titleAlign Horizontal text alignment for legend titles.
+#' 
+#' __Default value:__ `"left"`. (type = Align)
+#' @param titleAnchor Text anchor position for placing legend titles. (type = TitleAnchor)
+#' @param titleBaseline Vertical text baseline for legend titles.
+#' 
+#' __Default value:__ `"top"`. (type = TextBaseline)
+#' @param titleColor The color of the legend title, can be in hex color code or regular color name. (type = Color)
+#' @param titleFont The font of the legend title. (type = string)
+#' @param titleFontSize The font size of the legend title. (type = number)
+#' @param titleFontStyle The font style of the legend title. (type = FontStyle)
+#' @param titleFontWeight The font weight of the legend title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`). (type = FontWeight)
+#' @param titleLimit Maximum allowed pixel width of axis titles.
+#' 
+#' __Default value:__ `180`. (type = number)
+#' @param titleOpacity Opacity of the legend title. (type = number)
+#' @param titleOrient Orientation of the legend title. (type = Orient)
+#' @param titlePadding The padding, in pixels, between title and legend.
+#' 
+#' __Default value:__ `5`. (type = number)
+#' @param type The type of the legend. Use `"symbol"` to create a discrete legend and `"gradient"` for a continuous color gradient.
+#' 
+#' __Default value:__ `"gradient"` for non-binned quantitative fields and temporal fields; `"symbol"` otherwise. (type = string)
+#' @param values Explicitly set the visible legend values. (type = array)
+#' @param zindex A non-positive integer indicating z-index of the legend.
+#' If zindex is 0, legend should be drawn behind all chart elements.
+#' To put them in front, use zindex = 1. (type = number)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_fillOpacity()]
+vl_legend_fillOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'fillOpacity'))
+  rlang::exec(.add_legend_to_encoding, !!!args_out)
+} #' vl_legend_href
+#' 
+#' Add legend to encoding for href in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param clipHeight The height in pixels to clip symbol legend entries and limit their size. (type = number)
+#' @param columnPadding The horizontal padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param columns The number of columns in which to arrange symbol legend entries. A value of `0` or lower indicates a single row with one column per entry. (type = number)
+#' @param cornerRadius Corner radius for the full legend. (type = number)
+#' @param direction The direction of the legend, one of `"vertical"` or `"horizontal"`.
+#' 
+#' __Default value:__
+#' - For top-/bottom-`orient`ed legends, `"horizontal"`
+#' - For left-/right-`orient`ed legends, `"vertical"`
+#' - For top/bottom-left/right-`orient`ed legends, `"horizontal"` for gradient legends and `"vertical"` for symbol legends. (type = Orientation)
+#' @param fillColor Background fill color for the full legend. (type = Color)
+#' @param format The formatting pattern for labels. This is D3's [number format pattern](https://github.com/d3/d3-format#locale_format) for quantitative fields and D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format) for time field. To override the default type, set `formatType`.
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more information.
+#' 
+#' __Default value:__  derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for quantitative fields and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for temporal fields. (type = string)
+#' @param formatType The format type for labels (number or time). (type = string)
+#' @param gradientLength The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+#' 
+#' __Default value:__ `200`. (type = number)
+#' @param gradientOpacity Opacity of the color gradient. (type = number)
+#' @param gradientStrokeColor The color of the gradient stroke, can be in hex color code or regular color name.
+#' 
+#' __Default value:__ `"lightGray"`. (type = Color)
+#' @param gradientStrokeWidth The width of the gradient stroke, in pixels.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param gradientThickness The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
+#' 
+#' __Default value:__ `16`. (type = number)
+#' @param gridAlign The alignment to apply to symbol legends rows and columns. The supported string values are `"all"`, `"each"` (the default), and `none`. For more information, see the [grid layout documentation](https://vega.github.io/vega/docs/layout).
+#' 
+#' __Default value:__ `"each"`. (type = LayoutAlign)
+#' @param labelAlign The alignment of the legend label, can be left, center, or right. (type = Align)
+#' @param labelBaseline The position of the baseline of legend label, can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' 
+#' __Default value:__ `"middle"`. (type = TextBaseline)
+#' @param labelColor The color of the legend label, can be in hex color code or regular color name. (type = Color)
+#' @param labelFont The font of the legend label. (type = string)
+#' @param labelFontSize The font size of legend label.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param labelFontStyle The font style of legend label. (type = FontStyle)
+#' @param labelFontWeight The font weight of legend label. (type = FontWeight)
+#' @param labelLimit Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `160`. (type = number)
+#' @param labelOffset The offset of the legend label. (type = number)
+#' @param labelOpacity Opacity of labels. (type = number)
+#' @param labelOverlap The strategy to use for resolving overlap of labels in gradient legends. If `false`, no overlap reduction is attempted. If set to `true` (default) or `"parity"`, a strategy of removing every other label is used. If set to `"greedy"`, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true`. (type = LabelOverlap)
+#' @param labelPadding Padding in pixels between the legend and legend labels. (type = number)
+#' @param labelSeparation The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled. (type = number)
+#' @param offset The offset in pixels by which to displace the legend from the data rectangle and axes.
+#' 
+#' __Default value:__ `18`. (type = number)
+#' @param orient The orientation of the legend, which determines how the legend is positioned within the scene. One of `"left"`, `"right"`, `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"`, `"none"`.
+#' 
+#' __Default value:__ `"right"` (type = LegendOrient)
+#' @param padding The padding between the border and content of the legend group.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param rowPadding The vertical padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `2`. (type = number)
+#' @param strokeColor Border stroke color for the full legend. (type = Color)
+#' @param symbolDash An array of alternating [stroke, space] lengths for dashed symbol strokes. (type = array)
+#' @param symbolDashOffset The pixel offset at which to start drawing with the symbol stroke dash array. (type = number)
+#' @param symbolFillColor The color of the legend symbol, (type = Color)
+#' @param symbolOffset Horizontal pixel offset for legend symbols.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param symbolOpacity Opacity of the legend symbols. (type = number)
+#' @param symbolSize The size of the legend symbol, in pixels.
+#' 
+#' __Default value:__ `100`. (type = number)
+#' @param symbolStrokeColor Stroke color for legend symbols. (type = Color)
+#' @param symbolStrokeWidth The width of the symbol's stroke.
+#' 
+#' __Default value:__ `1.5`. (type = number)
+#' @param symbolType Default shape type (such as "circle") for legend symbols.
+#' Can be one of ``"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#'    * In addition to a set of built-in shapes, custom shapes can be defined using [SVG path strings](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths).
+#'    *
+#'    * __Default value:__ `"circle"`.
+#'    * (type = SymbolShape)
+#' @param tickCount The desired number of tick values for quantitative legends. (type = number)
+#' @param tickMinStep The minimum desired step between legend ticks, in terms of scale domain values. For example, a value of `1` indicates that ticks should not be less than 1 unit apart. If `tickMinStep` is specified, the `tickCount` value will be adjusted, if necessary, to enforce the minimum step value.
+#' 
+#' __Default value__: `undefined` (type = number)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param titleAlign Horizontal text alignment for legend titles.
+#' 
+#' __Default value:__ `"left"`. (type = Align)
+#' @param titleAnchor Text anchor position for placing legend titles. (type = TitleAnchor)
+#' @param titleBaseline Vertical text baseline for legend titles.
+#' 
+#' __Default value:__ `"top"`. (type = TextBaseline)
+#' @param titleColor The color of the legend title, can be in hex color code or regular color name. (type = Color)
+#' @param titleFont The font of the legend title. (type = string)
+#' @param titleFontSize The font size of the legend title. (type = number)
+#' @param titleFontStyle The font style of the legend title. (type = FontStyle)
+#' @param titleFontWeight The font weight of the legend title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`). (type = FontWeight)
+#' @param titleLimit Maximum allowed pixel width of axis titles.
+#' 
+#' __Default value:__ `180`. (type = number)
+#' @param titleOpacity Opacity of the legend title. (type = number)
+#' @param titleOrient Orientation of the legend title. (type = Orient)
+#' @param titlePadding The padding, in pixels, between title and legend.
+#' 
+#' __Default value:__ `5`. (type = number)
+#' @param type The type of the legend. Use `"symbol"` to create a discrete legend and `"gradient"` for a continuous color gradient.
+#' 
+#' __Default value:__ `"gradient"` for non-binned quantitative fields and temporal fields; `"symbol"` otherwise. (type = string)
+#' @param values Explicitly set the visible legend values. (type = array)
+#' @param zindex A non-positive integer indicating z-index of the legend.
+#' If zindex is 0, legend should be drawn behind all chart elements.
+#' To put them in front, use zindex = 1. (type = number)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_href()]
+vl_legend_href <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'href'))
+  rlang::exec(.add_legend_to_encoding, !!!args_out)
+} #' vl_legend_opacity
+#' 
+#' Add legend to encoding for opacity in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param clipHeight The height in pixels to clip symbol legend entries and limit their size. (type = number)
+#' @param columnPadding The horizontal padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param columns The number of columns in which to arrange symbol legend entries. A value of `0` or lower indicates a single row with one column per entry. (type = number)
+#' @param cornerRadius Corner radius for the full legend. (type = number)
+#' @param direction The direction of the legend, one of `"vertical"` or `"horizontal"`.
+#' 
+#' __Default value:__
+#' - For top-/bottom-`orient`ed legends, `"horizontal"`
+#' - For left-/right-`orient`ed legends, `"vertical"`
+#' - For top/bottom-left/right-`orient`ed legends, `"horizontal"` for gradient legends and `"vertical"` for symbol legends. (type = Orientation)
+#' @param fillColor Background fill color for the full legend. (type = Color)
+#' @param format The formatting pattern for labels. This is D3's [number format pattern](https://github.com/d3/d3-format#locale_format) for quantitative fields and D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format) for time field. To override the default type, set `formatType`.
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more information.
+#' 
+#' __Default value:__  derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for quantitative fields and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for temporal fields. (type = string)
+#' @param formatType The format type for labels (number or time). (type = string)
+#' @param gradientLength The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+#' 
+#' __Default value:__ `200`. (type = number)
+#' @param gradientOpacity Opacity of the color gradient. (type = number)
+#' @param gradientStrokeColor The color of the gradient stroke, can be in hex color code or regular color name.
+#' 
+#' __Default value:__ `"lightGray"`. (type = Color)
+#' @param gradientStrokeWidth The width of the gradient stroke, in pixels.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param gradientThickness The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
+#' 
+#' __Default value:__ `16`. (type = number)
+#' @param gridAlign The alignment to apply to symbol legends rows and columns. The supported string values are `"all"`, `"each"` (the default), and `none`. For more information, see the [grid layout documentation](https://vega.github.io/vega/docs/layout).
+#' 
+#' __Default value:__ `"each"`. (type = LayoutAlign)
+#' @param labelAlign The alignment of the legend label, can be left, center, or right. (type = Align)
+#' @param labelBaseline The position of the baseline of legend label, can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' 
+#' __Default value:__ `"middle"`. (type = TextBaseline)
+#' @param labelColor The color of the legend label, can be in hex color code or regular color name. (type = Color)
+#' @param labelFont The font of the legend label. (type = string)
+#' @param labelFontSize The font size of legend label.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param labelFontStyle The font style of legend label. (type = FontStyle)
+#' @param labelFontWeight The font weight of legend label. (type = FontWeight)
+#' @param labelLimit Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `160`. (type = number)
+#' @param labelOffset The offset of the legend label. (type = number)
+#' @param labelOpacity Opacity of labels. (type = number)
+#' @param labelOverlap The strategy to use for resolving overlap of labels in gradient legends. If `false`, no overlap reduction is attempted. If set to `true` (default) or `"parity"`, a strategy of removing every other label is used. If set to `"greedy"`, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true`. (type = LabelOverlap)
+#' @param labelPadding Padding in pixels between the legend and legend labels. (type = number)
+#' @param labelSeparation The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled. (type = number)
+#' @param offset The offset in pixels by which to displace the legend from the data rectangle and axes.
+#' 
+#' __Default value:__ `18`. (type = number)
+#' @param orient The orientation of the legend, which determines how the legend is positioned within the scene. One of `"left"`, `"right"`, `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"`, `"none"`.
+#' 
+#' __Default value:__ `"right"` (type = LegendOrient)
+#' @param padding The padding between the border and content of the legend group.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param rowPadding The vertical padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `2`. (type = number)
+#' @param strokeColor Border stroke color for the full legend. (type = Color)
+#' @param symbolDash An array of alternating [stroke, space] lengths for dashed symbol strokes. (type = array)
+#' @param symbolDashOffset The pixel offset at which to start drawing with the symbol stroke dash array. (type = number)
+#' @param symbolFillColor The color of the legend symbol, (type = Color)
+#' @param symbolOffset Horizontal pixel offset for legend symbols.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param symbolOpacity Opacity of the legend symbols. (type = number)
+#' @param symbolSize The size of the legend symbol, in pixels.
+#' 
+#' __Default value:__ `100`. (type = number)
+#' @param symbolStrokeColor Stroke color for legend symbols. (type = Color)
+#' @param symbolStrokeWidth The width of the symbol's stroke.
+#' 
+#' __Default value:__ `1.5`. (type = number)
+#' @param symbolType Default shape type (such as "circle") for legend symbols.
+#' Can be one of ``"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#'    * In addition to a set of built-in shapes, custom shapes can be defined using [SVG path strings](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths).
+#'    *
+#'    * __Default value:__ `"circle"`.
+#'    * (type = SymbolShape)
+#' @param tickCount The desired number of tick values for quantitative legends. (type = number)
+#' @param tickMinStep The minimum desired step between legend ticks, in terms of scale domain values. For example, a value of `1` indicates that ticks should not be less than 1 unit apart. If `tickMinStep` is specified, the `tickCount` value will be adjusted, if necessary, to enforce the minimum step value.
+#' 
+#' __Default value__: `undefined` (type = number)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param titleAlign Horizontal text alignment for legend titles.
+#' 
+#' __Default value:__ `"left"`. (type = Align)
+#' @param titleAnchor Text anchor position for placing legend titles. (type = TitleAnchor)
+#' @param titleBaseline Vertical text baseline for legend titles.
+#' 
+#' __Default value:__ `"top"`. (type = TextBaseline)
+#' @param titleColor The color of the legend title, can be in hex color code or regular color name. (type = Color)
+#' @param titleFont The font of the legend title. (type = string)
+#' @param titleFontSize The font size of the legend title. (type = number)
+#' @param titleFontStyle The font style of the legend title. (type = FontStyle)
+#' @param titleFontWeight The font weight of the legend title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`). (type = FontWeight)
+#' @param titleLimit Maximum allowed pixel width of axis titles.
+#' 
+#' __Default value:__ `180`. (type = number)
+#' @param titleOpacity Opacity of the legend title. (type = number)
+#' @param titleOrient Orientation of the legend title. (type = Orient)
+#' @param titlePadding The padding, in pixels, between title and legend.
+#' 
+#' __Default value:__ `5`. (type = number)
+#' @param type The type of the legend. Use `"symbol"` to create a discrete legend and `"gradient"` for a continuous color gradient.
+#' 
+#' __Default value:__ `"gradient"` for non-binned quantitative fields and temporal fields; `"symbol"` otherwise. (type = string)
+#' @param values Explicitly set the visible legend values. (type = array)
+#' @param zindex A non-positive integer indicating z-index of the legend.
+#' If zindex is 0, legend should be drawn behind all chart elements.
+#' To put them in front, use zindex = 1. (type = number)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_opacity()]
+vl_legend_opacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'opacity'))
+  rlang::exec(.add_legend_to_encoding, !!!args_out)
+} #' vl_legend_shape
+#' 
+#' Add legend to encoding for shape in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param clipHeight The height in pixels to clip symbol legend entries and limit their size. (type = number)
+#' @param columnPadding The horizontal padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param columns The number of columns in which to arrange symbol legend entries. A value of `0` or lower indicates a single row with one column per entry. (type = number)
+#' @param cornerRadius Corner radius for the full legend. (type = number)
+#' @param direction The direction of the legend, one of `"vertical"` or `"horizontal"`.
+#' 
+#' __Default value:__
+#' - For top-/bottom-`orient`ed legends, `"horizontal"`
+#' - For left-/right-`orient`ed legends, `"vertical"`
+#' - For top/bottom-left/right-`orient`ed legends, `"horizontal"` for gradient legends and `"vertical"` for symbol legends. (type = Orientation)
+#' @param fillColor Background fill color for the full legend. (type = Color)
+#' @param format The formatting pattern for labels. This is D3's [number format pattern](https://github.com/d3/d3-format#locale_format) for quantitative fields and D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format) for time field. To override the default type, set `formatType`.
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more information.
+#' 
+#' __Default value:__  derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for quantitative fields and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for temporal fields. (type = string)
+#' @param formatType The format type for labels (number or time). (type = string)
+#' @param gradientLength The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+#' 
+#' __Default value:__ `200`. (type = number)
+#' @param gradientOpacity Opacity of the color gradient. (type = number)
+#' @param gradientStrokeColor The color of the gradient stroke, can be in hex color code or regular color name.
+#' 
+#' __Default value:__ `"lightGray"`. (type = Color)
+#' @param gradientStrokeWidth The width of the gradient stroke, in pixels.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param gradientThickness The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
+#' 
+#' __Default value:__ `16`. (type = number)
+#' @param gridAlign The alignment to apply to symbol legends rows and columns. The supported string values are `"all"`, `"each"` (the default), and `none`. For more information, see the [grid layout documentation](https://vega.github.io/vega/docs/layout).
+#' 
+#' __Default value:__ `"each"`. (type = LayoutAlign)
+#' @param labelAlign The alignment of the legend label, can be left, center, or right. (type = Align)
+#' @param labelBaseline The position of the baseline of legend label, can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' 
+#' __Default value:__ `"middle"`. (type = TextBaseline)
+#' @param labelColor The color of the legend label, can be in hex color code or regular color name. (type = Color)
+#' @param labelFont The font of the legend label. (type = string)
+#' @param labelFontSize The font size of legend label.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param labelFontStyle The font style of legend label. (type = FontStyle)
+#' @param labelFontWeight The font weight of legend label. (type = FontWeight)
+#' @param labelLimit Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `160`. (type = number)
+#' @param labelOffset The offset of the legend label. (type = number)
+#' @param labelOpacity Opacity of labels. (type = number)
+#' @param labelOverlap The strategy to use for resolving overlap of labels in gradient legends. If `false`, no overlap reduction is attempted. If set to `true` (default) or `"parity"`, a strategy of removing every other label is used. If set to `"greedy"`, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true`. (type = LabelOverlap)
+#' @param labelPadding Padding in pixels between the legend and legend labels. (type = number)
+#' @param labelSeparation The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled. (type = number)
+#' @param offset The offset in pixels by which to displace the legend from the data rectangle and axes.
+#' 
+#' __Default value:__ `18`. (type = number)
+#' @param orient The orientation of the legend, which determines how the legend is positioned within the scene. One of `"left"`, `"right"`, `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"`, `"none"`.
+#' 
+#' __Default value:__ `"right"` (type = LegendOrient)
+#' @param padding The padding between the border and content of the legend group.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param rowPadding The vertical padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `2`. (type = number)
+#' @param strokeColor Border stroke color for the full legend. (type = Color)
+#' @param symbolDash An array of alternating [stroke, space] lengths for dashed symbol strokes. (type = array)
+#' @param symbolDashOffset The pixel offset at which to start drawing with the symbol stroke dash array. (type = number)
+#' @param symbolFillColor The color of the legend symbol, (type = Color)
+#' @param symbolOffset Horizontal pixel offset for legend symbols.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param symbolOpacity Opacity of the legend symbols. (type = number)
+#' @param symbolSize The size of the legend symbol, in pixels.
+#' 
+#' __Default value:__ `100`. (type = number)
+#' @param symbolStrokeColor Stroke color for legend symbols. (type = Color)
+#' @param symbolStrokeWidth The width of the symbol's stroke.
+#' 
+#' __Default value:__ `1.5`. (type = number)
+#' @param symbolType Default shape type (such as "circle") for legend symbols.
+#' Can be one of ``"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#'    * In addition to a set of built-in shapes, custom shapes can be defined using [SVG path strings](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths).
+#'    *
+#'    * __Default value:__ `"circle"`.
+#'    * (type = SymbolShape)
+#' @param tickCount The desired number of tick values for quantitative legends. (type = number)
+#' @param tickMinStep The minimum desired step between legend ticks, in terms of scale domain values. For example, a value of `1` indicates that ticks should not be less than 1 unit apart. If `tickMinStep` is specified, the `tickCount` value will be adjusted, if necessary, to enforce the minimum step value.
+#' 
+#' __Default value__: `undefined` (type = number)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param titleAlign Horizontal text alignment for legend titles.
+#' 
+#' __Default value:__ `"left"`. (type = Align)
+#' @param titleAnchor Text anchor position for placing legend titles. (type = TitleAnchor)
+#' @param titleBaseline Vertical text baseline for legend titles.
+#' 
+#' __Default value:__ `"top"`. (type = TextBaseline)
+#' @param titleColor The color of the legend title, can be in hex color code or regular color name. (type = Color)
+#' @param titleFont The font of the legend title. (type = string)
+#' @param titleFontSize The font size of the legend title. (type = number)
+#' @param titleFontStyle The font style of the legend title. (type = FontStyle)
+#' @param titleFontWeight The font weight of the legend title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`). (type = FontWeight)
+#' @param titleLimit Maximum allowed pixel width of axis titles.
+#' 
+#' __Default value:__ `180`. (type = number)
+#' @param titleOpacity Opacity of the legend title. (type = number)
+#' @param titleOrient Orientation of the legend title. (type = Orient)
+#' @param titlePadding The padding, in pixels, between title and legend.
+#' 
+#' __Default value:__ `5`. (type = number)
+#' @param type The type of the legend. Use `"symbol"` to create a discrete legend and `"gradient"` for a continuous color gradient.
+#' 
+#' __Default value:__ `"gradient"` for non-binned quantitative fields and temporal fields; `"symbol"` otherwise. (type = string)
+#' @param values Explicitly set the visible legend values. (type = array)
+#' @param zindex A non-positive integer indicating z-index of the legend.
+#' If zindex is 0, legend should be drawn behind all chart elements.
+#' To put them in front, use zindex = 1. (type = number)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_shape()]
+vl_legend_shape <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'shape'))
+  rlang::exec(.add_legend_to_encoding, !!!args_out)
+} #' vl_legend_size
+#' 
+#' Add legend to encoding for size in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param clipHeight The height in pixels to clip symbol legend entries and limit their size. (type = number)
+#' @param columnPadding The horizontal padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param columns The number of columns in which to arrange symbol legend entries. A value of `0` or lower indicates a single row with one column per entry. (type = number)
+#' @param cornerRadius Corner radius for the full legend. (type = number)
+#' @param direction The direction of the legend, one of `"vertical"` or `"horizontal"`.
+#' 
+#' __Default value:__
+#' - For top-/bottom-`orient`ed legends, `"horizontal"`
+#' - For left-/right-`orient`ed legends, `"vertical"`
+#' - For top/bottom-left/right-`orient`ed legends, `"horizontal"` for gradient legends and `"vertical"` for symbol legends. (type = Orientation)
+#' @param fillColor Background fill color for the full legend. (type = Color)
+#' @param format The formatting pattern for labels. This is D3's [number format pattern](https://github.com/d3/d3-format#locale_format) for quantitative fields and D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format) for time field. To override the default type, set `formatType`.
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more information.
+#' 
+#' __Default value:__  derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for quantitative fields and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for temporal fields. (type = string)
+#' @param formatType The format type for labels (number or time). (type = string)
+#' @param gradientLength The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+#' 
+#' __Default value:__ `200`. (type = number)
+#' @param gradientOpacity Opacity of the color gradient. (type = number)
+#' @param gradientStrokeColor The color of the gradient stroke, can be in hex color code or regular color name.
+#' 
+#' __Default value:__ `"lightGray"`. (type = Color)
+#' @param gradientStrokeWidth The width of the gradient stroke, in pixels.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param gradientThickness The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
+#' 
+#' __Default value:__ `16`. (type = number)
+#' @param gridAlign The alignment to apply to symbol legends rows and columns. The supported string values are `"all"`, `"each"` (the default), and `none`. For more information, see the [grid layout documentation](https://vega.github.io/vega/docs/layout).
+#' 
+#' __Default value:__ `"each"`. (type = LayoutAlign)
+#' @param labelAlign The alignment of the legend label, can be left, center, or right. (type = Align)
+#' @param labelBaseline The position of the baseline of legend label, can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' 
+#' __Default value:__ `"middle"`. (type = TextBaseline)
+#' @param labelColor The color of the legend label, can be in hex color code or regular color name. (type = Color)
+#' @param labelFont The font of the legend label. (type = string)
+#' @param labelFontSize The font size of legend label.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param labelFontStyle The font style of legend label. (type = FontStyle)
+#' @param labelFontWeight The font weight of legend label. (type = FontWeight)
+#' @param labelLimit Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `160`. (type = number)
+#' @param labelOffset The offset of the legend label. (type = number)
+#' @param labelOpacity Opacity of labels. (type = number)
+#' @param labelOverlap The strategy to use for resolving overlap of labels in gradient legends. If `false`, no overlap reduction is attempted. If set to `true` (default) or `"parity"`, a strategy of removing every other label is used. If set to `"greedy"`, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true`. (type = LabelOverlap)
+#' @param labelPadding Padding in pixels between the legend and legend labels. (type = number)
+#' @param labelSeparation The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled. (type = number)
+#' @param offset The offset in pixels by which to displace the legend from the data rectangle and axes.
+#' 
+#' __Default value:__ `18`. (type = number)
+#' @param orient The orientation of the legend, which determines how the legend is positioned within the scene. One of `"left"`, `"right"`, `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"`, `"none"`.
+#' 
+#' __Default value:__ `"right"` (type = LegendOrient)
+#' @param padding The padding between the border and content of the legend group.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param rowPadding The vertical padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `2`. (type = number)
+#' @param strokeColor Border stroke color for the full legend. (type = Color)
+#' @param symbolDash An array of alternating [stroke, space] lengths for dashed symbol strokes. (type = array)
+#' @param symbolDashOffset The pixel offset at which to start drawing with the symbol stroke dash array. (type = number)
+#' @param symbolFillColor The color of the legend symbol, (type = Color)
+#' @param symbolOffset Horizontal pixel offset for legend symbols.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param symbolOpacity Opacity of the legend symbols. (type = number)
+#' @param symbolSize The size of the legend symbol, in pixels.
+#' 
+#' __Default value:__ `100`. (type = number)
+#' @param symbolStrokeColor Stroke color for legend symbols. (type = Color)
+#' @param symbolStrokeWidth The width of the symbol's stroke.
+#' 
+#' __Default value:__ `1.5`. (type = number)
+#' @param symbolType Default shape type (such as "circle") for legend symbols.
+#' Can be one of ``"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#'    * In addition to a set of built-in shapes, custom shapes can be defined using [SVG path strings](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths).
+#'    *
+#'    * __Default value:__ `"circle"`.
+#'    * (type = SymbolShape)
+#' @param tickCount The desired number of tick values for quantitative legends. (type = number)
+#' @param tickMinStep The minimum desired step between legend ticks, in terms of scale domain values. For example, a value of `1` indicates that ticks should not be less than 1 unit apart. If `tickMinStep` is specified, the `tickCount` value will be adjusted, if necessary, to enforce the minimum step value.
+#' 
+#' __Default value__: `undefined` (type = number)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param titleAlign Horizontal text alignment for legend titles.
+#' 
+#' __Default value:__ `"left"`. (type = Align)
+#' @param titleAnchor Text anchor position for placing legend titles. (type = TitleAnchor)
+#' @param titleBaseline Vertical text baseline for legend titles.
+#' 
+#' __Default value:__ `"top"`. (type = TextBaseline)
+#' @param titleColor The color of the legend title, can be in hex color code or regular color name. (type = Color)
+#' @param titleFont The font of the legend title. (type = string)
+#' @param titleFontSize The font size of the legend title. (type = number)
+#' @param titleFontStyle The font style of the legend title. (type = FontStyle)
+#' @param titleFontWeight The font weight of the legend title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`). (type = FontWeight)
+#' @param titleLimit Maximum allowed pixel width of axis titles.
+#' 
+#' __Default value:__ `180`. (type = number)
+#' @param titleOpacity Opacity of the legend title. (type = number)
+#' @param titleOrient Orientation of the legend title. (type = Orient)
+#' @param titlePadding The padding, in pixels, between title and legend.
+#' 
+#' __Default value:__ `5`. (type = number)
+#' @param type The type of the legend. Use `"symbol"` to create a discrete legend and `"gradient"` for a continuous color gradient.
+#' 
+#' __Default value:__ `"gradient"` for non-binned quantitative fields and temporal fields; `"symbol"` otherwise. (type = string)
+#' @param values Explicitly set the visible legend values. (type = array)
+#' @param zindex A non-positive integer indicating z-index of the legend.
+#' If zindex is 0, legend should be drawn behind all chart elements.
+#' To put them in front, use zindex = 1. (type = number)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_size()]
+vl_legend_size <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'size'))
+  rlang::exec(.add_legend_to_encoding, !!!args_out)
+} #' vl_legend_stroke
+#' 
+#' Add legend to encoding for stroke in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param clipHeight The height in pixels to clip symbol legend entries and limit their size. (type = number)
+#' @param columnPadding The horizontal padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param columns The number of columns in which to arrange symbol legend entries. A value of `0` or lower indicates a single row with one column per entry. (type = number)
+#' @param cornerRadius Corner radius for the full legend. (type = number)
+#' @param direction The direction of the legend, one of `"vertical"` or `"horizontal"`.
+#' 
+#' __Default value:__
+#' - For top-/bottom-`orient`ed legends, `"horizontal"`
+#' - For left-/right-`orient`ed legends, `"vertical"`
+#' - For top/bottom-left/right-`orient`ed legends, `"horizontal"` for gradient legends and `"vertical"` for symbol legends. (type = Orientation)
+#' @param fillColor Background fill color for the full legend. (type = Color)
+#' @param format The formatting pattern for labels. This is D3's [number format pattern](https://github.com/d3/d3-format#locale_format) for quantitative fields and D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format) for time field. To override the default type, set `formatType`.
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more information.
+#' 
+#' __Default value:__  derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for quantitative fields and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for temporal fields. (type = string)
+#' @param formatType The format type for labels (number or time). (type = string)
+#' @param gradientLength The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+#' 
+#' __Default value:__ `200`. (type = number)
+#' @param gradientOpacity Opacity of the color gradient. (type = number)
+#' @param gradientStrokeColor The color of the gradient stroke, can be in hex color code or regular color name.
+#' 
+#' __Default value:__ `"lightGray"`. (type = Color)
+#' @param gradientStrokeWidth The width of the gradient stroke, in pixels.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param gradientThickness The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
+#' 
+#' __Default value:__ `16`. (type = number)
+#' @param gridAlign The alignment to apply to symbol legends rows and columns. The supported string values are `"all"`, `"each"` (the default), and `none`. For more information, see the [grid layout documentation](https://vega.github.io/vega/docs/layout).
+#' 
+#' __Default value:__ `"each"`. (type = LayoutAlign)
+#' @param labelAlign The alignment of the legend label, can be left, center, or right. (type = Align)
+#' @param labelBaseline The position of the baseline of legend label, can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' 
+#' __Default value:__ `"middle"`. (type = TextBaseline)
+#' @param labelColor The color of the legend label, can be in hex color code or regular color name. (type = Color)
+#' @param labelFont The font of the legend label. (type = string)
+#' @param labelFontSize The font size of legend label.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param labelFontStyle The font style of legend label. (type = FontStyle)
+#' @param labelFontWeight The font weight of legend label. (type = FontWeight)
+#' @param labelLimit Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `160`. (type = number)
+#' @param labelOffset The offset of the legend label. (type = number)
+#' @param labelOpacity Opacity of labels. (type = number)
+#' @param labelOverlap The strategy to use for resolving overlap of labels in gradient legends. If `false`, no overlap reduction is attempted. If set to `true` (default) or `"parity"`, a strategy of removing every other label is used. If set to `"greedy"`, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true`. (type = LabelOverlap)
+#' @param labelPadding Padding in pixels between the legend and legend labels. (type = number)
+#' @param labelSeparation The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled. (type = number)
+#' @param offset The offset in pixels by which to displace the legend from the data rectangle and axes.
+#' 
+#' __Default value:__ `18`. (type = number)
+#' @param orient The orientation of the legend, which determines how the legend is positioned within the scene. One of `"left"`, `"right"`, `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"`, `"none"`.
+#' 
+#' __Default value:__ `"right"` (type = LegendOrient)
+#' @param padding The padding between the border and content of the legend group.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param rowPadding The vertical padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `2`. (type = number)
+#' @param strokeColor Border stroke color for the full legend. (type = Color)
+#' @param symbolDash An array of alternating [stroke, space] lengths for dashed symbol strokes. (type = array)
+#' @param symbolDashOffset The pixel offset at which to start drawing with the symbol stroke dash array. (type = number)
+#' @param symbolFillColor The color of the legend symbol, (type = Color)
+#' @param symbolOffset Horizontal pixel offset for legend symbols.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param symbolOpacity Opacity of the legend symbols. (type = number)
+#' @param symbolSize The size of the legend symbol, in pixels.
+#' 
+#' __Default value:__ `100`. (type = number)
+#' @param symbolStrokeColor Stroke color for legend symbols. (type = Color)
+#' @param symbolStrokeWidth The width of the symbol's stroke.
+#' 
+#' __Default value:__ `1.5`. (type = number)
+#' @param symbolType Default shape type (such as "circle") for legend symbols.
+#' Can be one of ``"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#'    * In addition to a set of built-in shapes, custom shapes can be defined using [SVG path strings](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths).
+#'    *
+#'    * __Default value:__ `"circle"`.
+#'    * (type = SymbolShape)
+#' @param tickCount The desired number of tick values for quantitative legends. (type = number)
+#' @param tickMinStep The minimum desired step between legend ticks, in terms of scale domain values. For example, a value of `1` indicates that ticks should not be less than 1 unit apart. If `tickMinStep` is specified, the `tickCount` value will be adjusted, if necessary, to enforce the minimum step value.
+#' 
+#' __Default value__: `undefined` (type = number)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param titleAlign Horizontal text alignment for legend titles.
+#' 
+#' __Default value:__ `"left"`. (type = Align)
+#' @param titleAnchor Text anchor position for placing legend titles. (type = TitleAnchor)
+#' @param titleBaseline Vertical text baseline for legend titles.
+#' 
+#' __Default value:__ `"top"`. (type = TextBaseline)
+#' @param titleColor The color of the legend title, can be in hex color code or regular color name. (type = Color)
+#' @param titleFont The font of the legend title. (type = string)
+#' @param titleFontSize The font size of the legend title. (type = number)
+#' @param titleFontStyle The font style of the legend title. (type = FontStyle)
+#' @param titleFontWeight The font weight of the legend title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`). (type = FontWeight)
+#' @param titleLimit Maximum allowed pixel width of axis titles.
+#' 
+#' __Default value:__ `180`. (type = number)
+#' @param titleOpacity Opacity of the legend title. (type = number)
+#' @param titleOrient Orientation of the legend title. (type = Orient)
+#' @param titlePadding The padding, in pixels, between title and legend.
+#' 
+#' __Default value:__ `5`. (type = number)
+#' @param type The type of the legend. Use `"symbol"` to create a discrete legend and `"gradient"` for a continuous color gradient.
+#' 
+#' __Default value:__ `"gradient"` for non-binned quantitative fields and temporal fields; `"symbol"` otherwise. (type = string)
+#' @param values Explicitly set the visible legend values. (type = array)
+#' @param zindex A non-positive integer indicating z-index of the legend.
+#' If zindex is 0, legend should be drawn behind all chart elements.
+#' To put them in front, use zindex = 1. (type = number)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_stroke()]
+vl_legend_stroke <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'stroke'))
+  rlang::exec(.add_legend_to_encoding, !!!args_out)
+} #' vl_legend_strokeOpacity
+#' 
+#' Add legend to encoding for strokeOpacity in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param clipHeight The height in pixels to clip symbol legend entries and limit their size. (type = number)
+#' @param columnPadding The horizontal padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param columns The number of columns in which to arrange symbol legend entries. A value of `0` or lower indicates a single row with one column per entry. (type = number)
+#' @param cornerRadius Corner radius for the full legend. (type = number)
+#' @param direction The direction of the legend, one of `"vertical"` or `"horizontal"`.
+#' 
+#' __Default value:__
+#' - For top-/bottom-`orient`ed legends, `"horizontal"`
+#' - For left-/right-`orient`ed legends, `"vertical"`
+#' - For top/bottom-left/right-`orient`ed legends, `"horizontal"` for gradient legends and `"vertical"` for symbol legends. (type = Orientation)
+#' @param fillColor Background fill color for the full legend. (type = Color)
+#' @param format The formatting pattern for labels. This is D3's [number format pattern](https://github.com/d3/d3-format#locale_format) for quantitative fields and D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format) for time field. To override the default type, set `formatType`.
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more information.
+#' 
+#' __Default value:__  derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for quantitative fields and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for temporal fields. (type = string)
+#' @param formatType The format type for labels (number or time). (type = string)
+#' @param gradientLength The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+#' 
+#' __Default value:__ `200`. (type = number)
+#' @param gradientOpacity Opacity of the color gradient. (type = number)
+#' @param gradientStrokeColor The color of the gradient stroke, can be in hex color code or regular color name.
+#' 
+#' __Default value:__ `"lightGray"`. (type = Color)
+#' @param gradientStrokeWidth The width of the gradient stroke, in pixels.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param gradientThickness The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
+#' 
+#' __Default value:__ `16`. (type = number)
+#' @param gridAlign The alignment to apply to symbol legends rows and columns. The supported string values are `"all"`, `"each"` (the default), and `none`. For more information, see the [grid layout documentation](https://vega.github.io/vega/docs/layout).
+#' 
+#' __Default value:__ `"each"`. (type = LayoutAlign)
+#' @param labelAlign The alignment of the legend label, can be left, center, or right. (type = Align)
+#' @param labelBaseline The position of the baseline of legend label, can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' 
+#' __Default value:__ `"middle"`. (type = TextBaseline)
+#' @param labelColor The color of the legend label, can be in hex color code or regular color name. (type = Color)
+#' @param labelFont The font of the legend label. (type = string)
+#' @param labelFontSize The font size of legend label.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param labelFontStyle The font style of legend label. (type = FontStyle)
+#' @param labelFontWeight The font weight of legend label. (type = FontWeight)
+#' @param labelLimit Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `160`. (type = number)
+#' @param labelOffset The offset of the legend label. (type = number)
+#' @param labelOpacity Opacity of labels. (type = number)
+#' @param labelOverlap The strategy to use for resolving overlap of labels in gradient legends. If `false`, no overlap reduction is attempted. If set to `true` (default) or `"parity"`, a strategy of removing every other label is used. If set to `"greedy"`, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true`. (type = LabelOverlap)
+#' @param labelPadding Padding in pixels between the legend and legend labels. (type = number)
+#' @param labelSeparation The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled. (type = number)
+#' @param offset The offset in pixels by which to displace the legend from the data rectangle and axes.
+#' 
+#' __Default value:__ `18`. (type = number)
+#' @param orient The orientation of the legend, which determines how the legend is positioned within the scene. One of `"left"`, `"right"`, `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"`, `"none"`.
+#' 
+#' __Default value:__ `"right"` (type = LegendOrient)
+#' @param padding The padding between the border and content of the legend group.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param rowPadding The vertical padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `2`. (type = number)
+#' @param strokeColor Border stroke color for the full legend. (type = Color)
+#' @param symbolDash An array of alternating [stroke, space] lengths for dashed symbol strokes. (type = array)
+#' @param symbolDashOffset The pixel offset at which to start drawing with the symbol stroke dash array. (type = number)
+#' @param symbolFillColor The color of the legend symbol, (type = Color)
+#' @param symbolOffset Horizontal pixel offset for legend symbols.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param symbolOpacity Opacity of the legend symbols. (type = number)
+#' @param symbolSize The size of the legend symbol, in pixels.
+#' 
+#' __Default value:__ `100`. (type = number)
+#' @param symbolStrokeColor Stroke color for legend symbols. (type = Color)
+#' @param symbolStrokeWidth The width of the symbol's stroke.
+#' 
+#' __Default value:__ `1.5`. (type = number)
+#' @param symbolType Default shape type (such as "circle") for legend symbols.
+#' Can be one of ``"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#'    * In addition to a set of built-in shapes, custom shapes can be defined using [SVG path strings](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths).
+#'    *
+#'    * __Default value:__ `"circle"`.
+#'    * (type = SymbolShape)
+#' @param tickCount The desired number of tick values for quantitative legends. (type = number)
+#' @param tickMinStep The minimum desired step between legend ticks, in terms of scale domain values. For example, a value of `1` indicates that ticks should not be less than 1 unit apart. If `tickMinStep` is specified, the `tickCount` value will be adjusted, if necessary, to enforce the minimum step value.
+#' 
+#' __Default value__: `undefined` (type = number)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param titleAlign Horizontal text alignment for legend titles.
+#' 
+#' __Default value:__ `"left"`. (type = Align)
+#' @param titleAnchor Text anchor position for placing legend titles. (type = TitleAnchor)
+#' @param titleBaseline Vertical text baseline for legend titles.
+#' 
+#' __Default value:__ `"top"`. (type = TextBaseline)
+#' @param titleColor The color of the legend title, can be in hex color code or regular color name. (type = Color)
+#' @param titleFont The font of the legend title. (type = string)
+#' @param titleFontSize The font size of the legend title. (type = number)
+#' @param titleFontStyle The font style of the legend title. (type = FontStyle)
+#' @param titleFontWeight The font weight of the legend title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`). (type = FontWeight)
+#' @param titleLimit Maximum allowed pixel width of axis titles.
+#' 
+#' __Default value:__ `180`. (type = number)
+#' @param titleOpacity Opacity of the legend title. (type = number)
+#' @param titleOrient Orientation of the legend title. (type = Orient)
+#' @param titlePadding The padding, in pixels, between title and legend.
+#' 
+#' __Default value:__ `5`. (type = number)
+#' @param type The type of the legend. Use `"symbol"` to create a discrete legend and `"gradient"` for a continuous color gradient.
+#' 
+#' __Default value:__ `"gradient"` for non-binned quantitative fields and temporal fields; `"symbol"` otherwise. (type = string)
+#' @param values Explicitly set the visible legend values. (type = array)
+#' @param zindex A non-positive integer indicating z-index of the legend.
+#' If zindex is 0, legend should be drawn behind all chart elements.
+#' To put them in front, use zindex = 1. (type = number)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_strokeOpacity()]
+vl_legend_strokeOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
+  rlang::exec(.add_legend_to_encoding, !!!args_out)
+} #' vl_legend_strokeWidth
+#' 
+#' Add legend to encoding for strokeWidth in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param clipHeight The height in pixels to clip symbol legend entries and limit their size. (type = number)
+#' @param columnPadding The horizontal padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param columns The number of columns in which to arrange symbol legend entries. A value of `0` or lower indicates a single row with one column per entry. (type = number)
+#' @param cornerRadius Corner radius for the full legend. (type = number)
+#' @param direction The direction of the legend, one of `"vertical"` or `"horizontal"`.
+#' 
+#' __Default value:__
+#' - For top-/bottom-`orient`ed legends, `"horizontal"`
+#' - For left-/right-`orient`ed legends, `"vertical"`
+#' - For top/bottom-left/right-`orient`ed legends, `"horizontal"` for gradient legends and `"vertical"` for symbol legends. (type = Orientation)
+#' @param fillColor Background fill color for the full legend. (type = Color)
+#' @param format The formatting pattern for labels. This is D3's [number format pattern](https://github.com/d3/d3-format#locale_format) for quantitative fields and D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format) for time field. To override the default type, set `formatType`.
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more information.
+#' 
+#' __Default value:__  derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for quantitative fields and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for temporal fields. (type = string)
+#' @param formatType The format type for labels (number or time). (type = string)
+#' @param gradientLength The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+#' 
+#' __Default value:__ `200`. (type = number)
+#' @param gradientOpacity Opacity of the color gradient. (type = number)
+#' @param gradientStrokeColor The color of the gradient stroke, can be in hex color code or regular color name.
+#' 
+#' __Default value:__ `"lightGray"`. (type = Color)
+#' @param gradientStrokeWidth The width of the gradient stroke, in pixels.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param gradientThickness The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
+#' 
+#' __Default value:__ `16`. (type = number)
+#' @param gridAlign The alignment to apply to symbol legends rows and columns. The supported string values are `"all"`, `"each"` (the default), and `none`. For more information, see the [grid layout documentation](https://vega.github.io/vega/docs/layout).
+#' 
+#' __Default value:__ `"each"`. (type = LayoutAlign)
+#' @param labelAlign The alignment of the legend label, can be left, center, or right. (type = Align)
+#' @param labelBaseline The position of the baseline of legend label, can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' 
+#' __Default value:__ `"middle"`. (type = TextBaseline)
+#' @param labelColor The color of the legend label, can be in hex color code or regular color name. (type = Color)
+#' @param labelFont The font of the legend label. (type = string)
+#' @param labelFontSize The font size of legend label.
+#' 
+#' __Default value:__ `10`. (type = number)
+#' @param labelFontStyle The font style of legend label. (type = FontStyle)
+#' @param labelFontWeight The font weight of legend label. (type = FontWeight)
+#' @param labelLimit Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `160`. (type = number)
+#' @param labelOffset The offset of the legend label. (type = number)
+#' @param labelOpacity Opacity of labels. (type = number)
+#' @param labelOverlap The strategy to use for resolving overlap of labels in gradient legends. If `false`, no overlap reduction is attempted. If set to `true` (default) or `"parity"`, a strategy of removing every other label is used. If set to `"greedy"`, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true`. (type = LabelOverlap)
+#' @param labelPadding Padding in pixels between the legend and legend labels. (type = number)
+#' @param labelSeparation The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled. (type = number)
+#' @param offset The offset in pixels by which to displace the legend from the data rectangle and axes.
+#' 
+#' __Default value:__ `18`. (type = number)
+#' @param orient The orientation of the legend, which determines how the legend is positioned within the scene. One of `"left"`, `"right"`, `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"`, `"none"`.
+#' 
+#' __Default value:__ `"right"` (type = LegendOrient)
+#' @param padding The padding between the border and content of the legend group.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param rowPadding The vertical padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `2`. (type = number)
+#' @param strokeColor Border stroke color for the full legend. (type = Color)
+#' @param symbolDash An array of alternating [stroke, space] lengths for dashed symbol strokes. (type = array)
+#' @param symbolDashOffset The pixel offset at which to start drawing with the symbol stroke dash array. (type = number)
+#' @param symbolFillColor The color of the legend symbol, (type = Color)
+#' @param symbolOffset Horizontal pixel offset for legend symbols.
+#' 
+#' __Default value:__ `0`. (type = number)
+#' @param symbolOpacity Opacity of the legend symbols. (type = number)
+#' @param symbolSize The size of the legend symbol, in pixels.
+#' 
+#' __Default value:__ `100`. (type = number)
+#' @param symbolStrokeColor Stroke color for legend symbols. (type = Color)
+#' @param symbolStrokeWidth The width of the symbol's stroke.
+#' 
+#' __Default value:__ `1.5`. (type = number)
+#' @param symbolType Default shape type (such as "circle") for legend symbols.
+#' Can be one of ``"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#'    * In addition to a set of built-in shapes, custom shapes can be defined using [SVG path strings](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths).
+#'    *
+#'    * __Default value:__ `"circle"`.
+#'    * (type = SymbolShape)
+#' @param tickCount The desired number of tick values for quantitative legends. (type = number)
+#' @param tickMinStep The minimum desired step between legend ticks, in terms of scale domain values. For example, a value of `1` indicates that ticks should not be less than 1 unit apart. If `tickMinStep` is specified, the `tickCount` value will be adjusted, if necessary, to enforce the minimum step value.
+#' 
+#' __Default value__: `undefined` (type = number)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param titleAlign Horizontal text alignment for legend titles.
+#' 
+#' __Default value:__ `"left"`. (type = Align)
+#' @param titleAnchor Text anchor position for placing legend titles. (type = TitleAnchor)
+#' @param titleBaseline Vertical text baseline for legend titles.
+#' 
+#' __Default value:__ `"top"`. (type = TextBaseline)
+#' @param titleColor The color of the legend title, can be in hex color code or regular color name. (type = Color)
+#' @param titleFont The font of the legend title. (type = string)
+#' @param titleFontSize The font size of the legend title. (type = number)
+#' @param titleFontStyle The font style of the legend title. (type = FontStyle)
+#' @param titleFontWeight The font weight of the legend title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`). (type = FontWeight)
+#' @param titleLimit Maximum allowed pixel width of axis titles.
+#' 
+#' __Default value:__ `180`. (type = number)
+#' @param titleOpacity Opacity of the legend title. (type = number)
+#' @param titleOrient Orientation of the legend title. (type = Orient)
+#' @param titlePadding The padding, in pixels, between title and legend.
+#' 
+#' __Default value:__ `5`. (type = number)
+#' @param type The type of the legend. Use `"symbol"` to create a discrete legend and `"gradient"` for a continuous color gradient.
+#' 
+#' __Default value:__ `"gradient"` for non-binned quantitative fields and temporal fields; `"symbol"` otherwise. (type = string)
+#' @param values Explicitly set the visible legend values. (type = array)
+#' @param zindex A non-positive integer indicating z-index of the legend.
+#' If zindex is 0, legend should be drawn behind all chart elements.
+#' To put them in front, use zindex = 1. (type = number)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_strokeWidth()]
+vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'strokeWidth'))
+  rlang::exec(.add_legend_to_encoding, !!!args_out)
+} #' vl_condition_color
+#' 
+#' Add condition to encoding for color in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param test  (type = LogicalOperand<Predicate>)
+#' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number OR string OR boolean OR null)
+#' @param selection A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose). (type = SelectionOperand)
+#' @param aggregate Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+#' 
+#' __Default value:__ `undefined` (None) (type = Aggregate)
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false` (type = Varies)
+#' @param field __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo['bar']"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\[0\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)
+#' @param legend An object defining properties of the legend.
+#' If `null`, the legend for the encoding channel will be removed.
+#' 
+#' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied. (type = Varies)
+#' @param scale An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' 
+#' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
+#' 
+#' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied. (type = Varies)
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort-by-encoding definition](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding) for sorting by another encoding channel. (This type of sort definition is not available for `row` and `column` channels.)
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`. (type = Sort)
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None) (type = TimeUnit)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param type The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_color()]
+vl_condition_color <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'color'))
+  rlang::exec(.add_condition_to_encoding, !!!args_out)
+} #' vl_condition_fill
+#' 
+#' Add condition to encoding for fill in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param test  (type = LogicalOperand<Predicate>)
+#' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number OR string OR boolean OR null)
+#' @param selection A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose). (type = SelectionOperand)
+#' @param aggregate Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+#' 
+#' __Default value:__ `undefined` (None) (type = Aggregate)
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false` (type = Varies)
+#' @param field __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo['bar']"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\[0\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)
+#' @param legend An object defining properties of the legend.
+#' If `null`, the legend for the encoding channel will be removed.
+#' 
+#' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied. (type = Varies)
+#' @param scale An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' 
+#' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
+#' 
+#' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied. (type = Varies)
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort-by-encoding definition](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding) for sorting by another encoding channel. (This type of sort definition is not available for `row` and `column` channels.)
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`. (type = Sort)
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None) (type = TimeUnit)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param type The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_fill()]
+vl_condition_fill <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'fill'))
+  rlang::exec(.add_condition_to_encoding, !!!args_out)
+} #' vl_condition_fillOpacity
+#' 
+#' Add condition to encoding for fillOpacity in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param test  (type = LogicalOperand<Predicate>)
+#' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number OR string OR boolean OR null)
+#' @param selection A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose). (type = SelectionOperand)
+#' @param aggregate Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+#' 
+#' __Default value:__ `undefined` (None) (type = Aggregate)
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false` (type = Varies)
+#' @param field __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo['bar']"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\[0\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)
+#' @param legend An object defining properties of the legend.
+#' If `null`, the legend for the encoding channel will be removed.
+#' 
+#' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied. (type = Varies)
+#' @param scale An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' 
+#' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
+#' 
+#' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied. (type = Varies)
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort-by-encoding definition](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding) for sorting by another encoding channel. (This type of sort definition is not available for `row` and `column` channels.)
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`. (type = Sort)
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None) (type = TimeUnit)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param type The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_fillOpacity()]
+vl_condition_fillOpacity <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'fillOpacity'))
+  rlang::exec(.add_condition_to_encoding, !!!args_out)
+} #' vl_condition_href
+#' 
+#' Add condition to encoding for href in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param test  (type = LogicalOperand<Predicate>)
+#' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number OR string OR boolean OR null)
+#' @param selection A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose). (type = SelectionOperand)
+#' @param aggregate Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+#' 
+#' __Default value:__ `undefined` (None) (type = Aggregate)
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false` (type = Varies)
+#' @param field __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo['bar']"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\[0\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)
+#' @param legend An object defining properties of the legend.
+#' If `null`, the legend for the encoding channel will be removed.
+#' 
+#' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied. (type = Varies)
+#' @param scale An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' 
+#' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
+#' 
+#' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied. (type = Varies)
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort-by-encoding definition](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding) for sorting by another encoding channel. (This type of sort definition is not available for `row` and `column` channels.)
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`. (type = Sort)
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None) (type = TimeUnit)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param type The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_href()]
+vl_condition_href <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'href'))
+  rlang::exec(.add_condition_to_encoding, !!!args_out)
+} #' vl_condition_opacity
+#' 
+#' Add condition to encoding for opacity in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param test  (type = LogicalOperand<Predicate>)
+#' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number OR string OR boolean OR null)
+#' @param selection A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose). (type = SelectionOperand)
+#' @param aggregate Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+#' 
+#' __Default value:__ `undefined` (None) (type = Aggregate)
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false` (type = Varies)
+#' @param field __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo['bar']"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\[0\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)
+#' @param legend An object defining properties of the legend.
+#' If `null`, the legend for the encoding channel will be removed.
+#' 
+#' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied. (type = Varies)
+#' @param scale An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' 
+#' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
+#' 
+#' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied. (type = Varies)
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort-by-encoding definition](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding) for sorting by another encoding channel. (This type of sort definition is not available for `row` and `column` channels.)
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`. (type = Sort)
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None) (type = TimeUnit)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param type The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_opacity()]
+vl_condition_opacity <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'opacity'))
+  rlang::exec(.add_condition_to_encoding, !!!args_out)
+} #' vl_condition_shape
+#' 
+#' Add condition to encoding for shape in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param test  (type = LogicalOperand<Predicate>)
+#' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number OR string OR boolean OR null)
+#' @param selection A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose). (type = SelectionOperand)
+#' @param aggregate Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+#' 
+#' __Default value:__ `undefined` (None) (type = Aggregate)
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false` (type = Varies)
+#' @param field __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo['bar']"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\[0\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)
+#' @param legend An object defining properties of the legend.
+#' If `null`, the legend for the encoding channel will be removed.
+#' 
+#' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied. (type = Varies)
+#' @param scale An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' 
+#' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
+#' 
+#' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied. (type = Varies)
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort-by-encoding definition](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding) for sorting by another encoding channel. (This type of sort definition is not available for `row` and `column` channels.)
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`. (type = Sort)
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None) (type = TimeUnit)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param type The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_shape()]
+vl_condition_shape <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'shape'))
+  rlang::exec(.add_condition_to_encoding, !!!args_out)
+} #' vl_condition_size
+#' 
+#' Add condition to encoding for size in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param test  (type = LogicalOperand<Predicate>)
+#' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number OR string OR boolean OR null)
+#' @param selection A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose). (type = SelectionOperand)
+#' @param aggregate Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+#' 
+#' __Default value:__ `undefined` (None) (type = Aggregate)
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false` (type = Varies)
+#' @param field __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo['bar']"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\[0\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)
+#' @param legend An object defining properties of the legend.
+#' If `null`, the legend for the encoding channel will be removed.
+#' 
+#' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied. (type = Varies)
+#' @param scale An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' 
+#' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
+#' 
+#' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied. (type = Varies)
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort-by-encoding definition](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding) for sorting by another encoding channel. (This type of sort definition is not available for `row` and `column` channels.)
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`. (type = Sort)
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None) (type = TimeUnit)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param type The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_size()]
+vl_condition_size <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'size'))
+  rlang::exec(.add_condition_to_encoding, !!!args_out)
+} #' vl_condition_stroke
+#' 
+#' Add condition to encoding for stroke in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param test  (type = LogicalOperand<Predicate>)
+#' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number OR string OR boolean OR null)
+#' @param selection A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose). (type = SelectionOperand)
+#' @param aggregate Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+#' 
+#' __Default value:__ `undefined` (None) (type = Aggregate)
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false` (type = Varies)
+#' @param field __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo['bar']"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\[0\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)
+#' @param legend An object defining properties of the legend.
+#' If `null`, the legend for the encoding channel will be removed.
+#' 
+#' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied. (type = Varies)
+#' @param scale An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' 
+#' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
+#' 
+#' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied. (type = Varies)
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort-by-encoding definition](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding) for sorting by another encoding channel. (This type of sort definition is not available for `row` and `column` channels.)
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`. (type = Sort)
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None) (type = TimeUnit)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param type The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_stroke()]
+vl_condition_stroke <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'stroke'))
+  rlang::exec(.add_condition_to_encoding, !!!args_out)
+} #' vl_condition_strokeOpacity
+#' 
+#' Add condition to encoding for strokeOpacity in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param test  (type = LogicalOperand<Predicate>)
+#' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number OR string OR boolean OR null)
+#' @param selection A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose). (type = SelectionOperand)
+#' @param aggregate Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+#' 
+#' __Default value:__ `undefined` (None) (type = Aggregate)
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false` (type = Varies)
+#' @param field __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo['bar']"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\[0\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)
+#' @param legend An object defining properties of the legend.
+#' If `null`, the legend for the encoding channel will be removed.
+#' 
+#' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied. (type = Varies)
+#' @param scale An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' 
+#' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
+#' 
+#' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied. (type = Varies)
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort-by-encoding definition](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding) for sorting by another encoding channel. (This type of sort definition is not available for `row` and `column` channels.)
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`. (type = Sort)
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None) (type = TimeUnit)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param type The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_strokeOpacity()]
+vl_condition_strokeOpacity <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
+  rlang::exec(.add_condition_to_encoding, !!!args_out)
+} #' vl_condition_strokeWidth
+#' 
+#' Add condition to encoding for strokeWidth in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param test  (type = LogicalOperand<Predicate>)
+#' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number OR string OR boolean OR null)
+#' @param selection A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose). (type = SelectionOperand)
+#' @param aggregate Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+#' 
+#' __Default value:__ `undefined` (None) (type = Aggregate)
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false` (type = Varies)
+#' @param field __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo['bar']"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\[0\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)
+#' @param legend An object defining properties of the legend.
+#' If `null`, the legend for the encoding channel will be removed.
+#' 
+#' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied. (type = Varies)
+#' @param scale An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' 
+#' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
+#' 
+#' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied. (type = Varies)
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort-by-encoding definition](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding) for sorting by another encoding channel. (This type of sort definition is not available for `row` and `column` channels.)
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`. (type = Sort)
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None) (type = TimeUnit)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param type The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_strokeWidth()]
+vl_condition_strokeWidth <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'strokeWidth'))
+  rlang::exec(.add_condition_to_encoding, !!!args_out)
+} #' vl_condition_text
+#' 
+#' Add condition to encoding for text in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param test  (type = LogicalOperand<Predicate>)
+#' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number OR string OR boolean OR null)
+#' @param selection A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose). (type = SelectionOperand)
+#' @param aggregate Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+#' 
+#' __Default value:__ `undefined` (None) (type = Aggregate)
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false` (type = Varies)
+#' @param field __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo['bar']"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\[0\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)
+#' @param legend An object defining properties of the legend.
+#' If `null`, the legend for the encoding channel will be removed.
+#' 
+#' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied. (type = Varies)
+#' @param scale An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' 
+#' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
+#' 
+#' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied. (type = Varies)
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort-by-encoding definition](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding) for sorting by another encoding channel. (This type of sort definition is not available for `row` and `column` channels.)
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`. (type = Sort)
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None) (type = TimeUnit)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param type The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_text()]
+vl_condition_text <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'text'))
+  rlang::exec(.add_condition_to_encoding, !!!args_out)
+} #' vl_condition_tooltip
+#' 
+#' Add condition to encoding for tooltip in a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param test  (type = LogicalOperand<Predicate>)
+#' @param value A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity). (type = number OR string OR boolean OR null)
+#' @param selection A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose). (type = SelectionOperand)
+#' @param aggregate Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+#' 
+#' __Default value:__ `undefined` (None) (type = Aggregate)
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false` (type = Varies)
+#' @param field __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo['bar']"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\[0\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)
+#' @param legend An object defining properties of the legend.
+#' If `null`, the legend for the encoding channel will be removed.
+#' 
+#' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied. (type = Varies)
+#' @param scale An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' 
+#' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
+#' 
+#' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied. (type = Varies)
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort-by-encoding definition](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding) for sorting by another encoding channel. (This type of sort definition is not available for `row` and `column` channels.)
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`. (type = Sort)
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None) (type = TimeUnit)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param type The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = StandardType)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_tooltip()]
+vl_condition_tooltip <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(.enc = 'tooltip'))
+  rlang::exec(.add_condition_to_encoding, !!!args_out)
+} #' vl_add_single_selection
+#' 
+#' Add SingleSelection to a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param selection_name Name of selection
+#' @param bind Establish a two-way binding between a single selection and input elements
+#' (also known as dynamic query widgets). A binding takes the form of
+#' Vega's [input element binding definition](https://vega.github.io/vega/docs/signals/#bind)
+#' or can be a mapping between projected field/encodings and binding definitions.
+#' 
+#' See the [bind transform](https://vega.github.io/vega-lite/docs/bind.html) documentation for more information. (type = Varies)
+#' @param empty By default, all data values are considered to lie within an empty selection.
+#' When set to `none`, empty selections contain no data values. (type = string)
+#' @param encodings An array of encoding channels. The corresponding data field values
+#' must match for a data tuple to fall within the selection. (type = array)
+#' @param fields An array of field names whose values must match for a data tuple to
+#' fall within the selection. (type = array)
+#' @param init Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and initial values. (type = SelectionInitMapping)
+#' @param nearest When true, an invisible voronoi diagram is computed to accelerate discrete
+#' selection. The data value _nearest_ the mouse cursor is added to the selection.
+#' 
+#' See the [nearest transform](https://vega.github.io/vega-lite/docs/nearest.html) documentation for more information. (type = boolean)
+#' @param on A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
+#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters). (type = EventStream)
+#' @param resolve With layered and multi-view displays, a strategy that determines how
+#' selections' data queries are resolved when applied in a filter transform,
+#' conditional encoding rule, or scale domain. (type = SelectionResolution)
+#' @return A modified spec
+#' @export
+
+vl_add_single_selection <- function(spec, selection_name, bind = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(type = 'single'))
+  rlang::exec(.add_selection, !!!args_out)
+} #' vl_add_multi_selection
+#' 
+#' Add MultiSelection to a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param selection_name Name of selection
+#' @param empty By default, all data values are considered to lie within an empty selection.
+#' When set to `none`, empty selections contain no data values. (type = string)
+#' @param encodings An array of encoding channels. The corresponding data field values
+#' must match for a data tuple to fall within the selection. (type = array)
+#' @param fields An array of field names whose values must match for a data tuple to
+#' fall within the selection. (type = array)
+#' @param init Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and an initial
+#' value (or array of values). (type = Varies)
+#' @param nearest When true, an invisible voronoi diagram is computed to accelerate discrete
+#' selection. The data value _nearest_ the mouse cursor is added to the selection.
+#' 
+#' See the [nearest transform](https://vega.github.io/vega-lite/docs/nearest.html) documentation for more information. (type = boolean)
+#' @param on A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
+#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters). (type = EventStream)
+#' @param resolve With layered and multi-view displays, a strategy that determines how
+#' selections' data queries are resolved when applied in a filter transform,
+#' conditional encoding rule, or scale domain. (type = SelectionResolution)
+#' @param toggle Controls whether data values should be toggled or only ever inserted into
+#' multi selections. Can be `true`, `false` (for insertion only), or a
+#' [Vega expression](https://vega.github.io/vega/docs/expressions/).
+#' 
+#' __Default value:__ `true`, which corresponds to `event.shiftKey` (i.e.,
+#' data values are toggled when a user interacts with the shift-key pressed).
+#' 
+#' See the [toggle transform](https://vega.github.io/vega-lite/docs/toggle.html) documentation for more information. (type = string OR boolean)
+#' @return A modified spec
+#' @export
+
+vl_add_multi_selection <- function(spec, selection_name, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(type = 'multi'))
+  rlang::exec(.add_selection, !!!args_out)
+} #' vl_add_interval_selection
+#' 
+#' Add IntervalSelection to a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param selection_name Name of selection
+#' @param bind Establishes a two-way binding between the interval selection and the scales
+#' used within the same view. This allows a user to interactively pan and
+#' zoom the view. (type = string)
+#' @param empty By default, all data values are considered to lie within an empty selection.
+#' When set to `none`, empty selections contain no data values. (type = string)
+#' @param encodings An array of encoding channels. The corresponding data field values
+#' must match for a data tuple to fall within the selection. (type = array)
+#' @param fields An array of field names whose values must match for a data tuple to
+#' fall within the selection. (type = array)
+#' @param init Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and arrays of
+#' initial values. (type = SelectionInitArrayMapping)
+#' @param mark An interval selection also adds a rectangle mark to depict the
+#' extents of the interval. The `mark` property can be used to customize the
+#' appearance of the mark. (type = BrushConfig)
+#' @param on A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
+#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters). (type = EventStream)
+#' @param resolve With layered and multi-view displays, a strategy that determines how
+#' selections' data queries are resolved when applied in a filter transform,
+#' conditional encoding rule, or scale domain. (type = SelectionResolution)
+#' @param translate When truthy, allows a user to interactively move an interval selection
+#' back-and-forth. Can be `true`, `false` (to disable panning), or a
+#' [Vega event stream definition](https://vega.github.io/vega/docs/event-streams/)
+#' which must include a start and end event to trigger continuous panning.
+#' 
+#' __Default value:__ `true`, which corresponds to
+#' `[mousedown, window:mouseup] > window:mousemove!` which corresponds to
+#' clicks and dragging within an interval selection to reposition it. (type = string OR boolean)
+#' @param zoom When truthy, allows a user to interactively resize an interval selection.
+#' Can be `true`, `false` (to disable zooming), or a [Vega event stream
+#' definition](https://vega.github.io/vega/docs/event-streams/). Currently,
+#' only `wheel` events are supported.
+#' 
+#' 
+#' __Default value:__ `true`, which corresponds to `wheel!`. (type = string OR boolean)
+#' @return A modified spec
+#' @export
+
+vl_add_interval_selection <- function(spec, selection_name, bind = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, zoom = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out <- c(args_out, list(type = 'interval'))
+  rlang::exec(.add_selection, !!!args_out)
+} #' vl_bind_radio_input
+#' 
+#' Add binding to a radio input to a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param selection_name Name of selection to add binding to
+#' @param projection_name Name of projection (field or encoding) within selection
+#' @param debounce  (type = number)
+#' @param element  (type = Element)
+#' @param name  (type = string)
+#' @param options  (type = array)
+#' @param type  (type = string)
+#' @return A modified spec
+#' @export
+
+vl_bind_radio_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, name = NULL, options = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out$input <- 'radio'
+  rlang::exec(.add_binding, !!!args_out)
+} #' vl_bind_select_input
+#' 
+#' Add binding to a select input to a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param selection_name Name of selection to add binding to
+#' @param projection_name Name of projection (field or encoding) within selection
+#' @param debounce  (type = number)
+#' @param element  (type = Element)
+#' @param name  (type = string)
+#' @param options  (type = array)
+#' @param type  (type = string)
+#' @return A modified spec
+#' @export
+
+vl_bind_select_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, name = NULL, options = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out$input <- 'select'
+  rlang::exec(.add_binding, !!!args_out)
+} #' vl_bind_checkbox_input
+#' 
+#' Add binding to a checkbox input to a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param selection_name Name of selection to add binding to
+#' @param projection_name Name of projection (field or encoding) within selection
+#' @param debounce  (type = number)
+#' @param element  (type = Element)
+#' @param name  (type = string)
+#' @param type  (type = string)
+#' @return A modified spec
+#' @export
+
+vl_bind_checkbox_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, name = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out$input <- 'checkbox'
+  rlang::exec(.add_binding, !!!args_out)
+} #' vl_bind_range_input
+#' 
+#' Add binding to a range input to a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param selection_name Name of selection to add binding to
+#' @param projection_name Name of projection (field or encoding) within selection
+#' @param debounce  (type = number)
+#' @param element  (type = Element)
+#' @param max  (type = number)
+#' @param min  (type = number)
+#' @param name  (type = string)
+#' @param step  (type = number)
+#' @param type  (type = string)
+#' @return A modified spec
+#' @export
+
+vl_bind_range_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, max = NULL, min = NULL, name = NULL, step = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out$input <- 'range'
+  rlang::exec(.add_binding, !!!args_out)
+} #' vl_facet_row
+#' 
+#' Add faceting by row to a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param aggregate Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+#' 
+#' __Default value:__ `undefined` (None) (type = Aggregate)
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false` (type = Varies)
+#' @param field __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo['bar']"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\[0\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)
+#' @param header An object defining properties of a facet's header. (type = Header)
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`. (type = Varies)
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None) (type = TimeUnit)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param type The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = Type)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_facet_col()], [vl_facet_wrap()]
+vl_facet_row <- function(spec, aggregate = NULL, bin = NULL, field = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  
+  rlang::exec(.add_facet_row, !!!args_out)
+} #' vl_facet_col
+#' 
+#' Add faceting by column to a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param aggregate Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+#' 
+#' __Default value:__ `undefined` (None) (type = Aggregate)
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false` (type = Varies)
+#' @param field __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo['bar']"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\[0\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)
+#' @param header An object defining properties of a facet's header. (type = Header)
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`. (type = Varies)
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None) (type = TimeUnit)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param type The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = Type)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_facet_row()], [vl_facet_wrap()]
+vl_facet_col <- function(spec, aggregate = NULL, bin = NULL, field = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  
+  rlang::exec(.add_facet_col, !!!args_out)
+} #' vl_facet_wrap
+#' 
+#' Add faceting by column to a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param aggregate Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+#' 
+#' __Default value:__ `undefined` (None) (type = Aggregate)
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - To indicate that the data for the `x` (or `y`) channel are already binned, you can set the `bin` property of the `x` (or `y`) channel to `"binned"` and map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false` (type = Varies)
+#' @param field __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo['bar']"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\[0\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`. (type = Field)
+#' @param header An object defining properties of a facet's header. (type = Header)
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`. (type = Varies)
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None) (type = TimeUnit)
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used. (type = string OR null)
+#' @param type The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`). (type = Type)
+#' @param columns number of columns to add
+#' @return A modified spec
+#' @export
+#' @seealso [vl_facet_row()], [vl_facet_wrap()]
+vl_facet_wrap <- function(spec, columns = 2, aggregate = NULL, bin = NULL, field = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  
+  rlang::exec(.add_facet_wrap, !!!args_out)
+} #' vl_repeat_row
+#' 
+#' Add repeating by row to a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param ... fields to use for repeat (strings)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_repeat_col()], [vl_repeat_wrap()]
+vl_repeat_row <- function(spec, ..., columns = 2) {
+  args_out <- c(list(spec = spec, .type = 'row'),list(...))
+  rlang::exec(.add_repeat, !!!args_out)
+} #' vl_repeat_col
+#' 
+#' Add repeating by col to a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param ... fields to use for repeat (strings)
+#' @return A modified spec
+#' @export
+#' @seealso [vl_repeat_row()], [vl_repeat_wrap()]
+vl_repeat_col <- function(spec, ..., columns = 2) {
+  args_out <- c(list(spec = spec, .type = 'col'),list(...))
+  rlang::exec(.add_repeat, !!!args_out)
+} #' vl_repeat_wrap
+#' 
+#' Add repeating by wrap to a vega-lite spec.
+#' @param spec A vega-lite spec.
+#' @param ... fields to use for repeat (strings)
+#' @param columns number of columns to use
+#' @return A modified spec
+#' @export
+#' @seealso [vl_repeat_col()], [vl_repeat_row()]
+vl_repeat_wrap <- function(spec, ..., columns = 2) {
+  args_out <- c(list(spec = spec, .type = 'wrap'),list(...), columns = columns)
+  rlang::exec(.add_repeat, !!!args_out)
 }

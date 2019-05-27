@@ -55,3 +55,6 @@ A modified spec
 \description{
 Add encoding for x2 to a vega-lite spec.
 }
+\seealso{
+\code{\link[=vl_encode]{vl_encode()}}, \code{\link[=vl_X2]{vl_X2()}}
+}

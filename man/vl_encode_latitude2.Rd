@@ -53,3 +53,6 @@ A modified spec
 \description{
 Add encoding for latitude2 to a vega-lite spec.
 }
+\seealso{
+\code{\link[=vl_encode]{vl_encode()}}, \code{\link[=vl_Latitude2]{vl_Latitude2()}}
+}

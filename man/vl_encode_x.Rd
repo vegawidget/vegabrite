@@ -119,3 +119,6 @@ A modified spec
 \description{
 Add encoding for x to a vega-lite spec.
 }
+\seealso{
+\code{\link[=vl_encode]{vl_encode()}}, \code{\link[=vl_X]{vl_X()}}
+}

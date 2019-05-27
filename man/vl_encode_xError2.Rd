@@ -55,3 +55,6 @@ A modified spec
 \description{
 Add encoding for xError2 to a vega-lite spec.
 }
+\seealso{
+\code{\link[=vl_encode]{vl_encode()}}, \code{\link[=vl_XError2]{vl_XError2()}}
+}

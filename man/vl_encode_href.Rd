@@ -102,3 +102,6 @@ A modified spec
 \description{
 Add encoding for href to a vega-lite spec.
 }
+\seealso{
+\code{\link[=vl_encode]{vl_encode()}}, \code{\link[=vl_Href]{vl_Href()}}
+}

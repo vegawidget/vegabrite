@@ -66,3 +66,6 @@ A modified spec
 \description{
 Add encoding for latitude to a vega-lite spec.
 }
+\seealso{
+\code{\link[=vl_encode]{vl_encode()}}, \code{\link[=vl_Latitude]{vl_Latitude()}}
+}

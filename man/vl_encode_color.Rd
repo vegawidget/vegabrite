@@ -102,3 +102,6 @@ A modified spec
 \description{
 Add encoding for color to a vega-lite spec.
 }
+\seealso{
+\code{\link[=vl_encode]{vl_encode()}}, \code{\link[=vl_Color]{vl_Color()}}
+}

@@ -7,7 +7,10 @@
 vl_chart(description = NULL)
 }
 \arguments{
-\item{description}{}
+\item{description}{Description field for chart}
+}
+\value{
+A vega-lite spec, as an S3 object of class vegaspec using \code{\link[vegawidget:as_vegaspec]{vegawidget::as_vegaspec()}}
 }
 \description{
 vl_chart

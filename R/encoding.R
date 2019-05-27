@@ -24,7 +24,8 @@
 .add_param_to_encoding <- function(spec, .enc, param, value){
   
   if (is_composite(spec)) {
-    stop("Can't add encoding to composite spec; add encoding prior to combining specs")
+    stop("Can't add ",param, " for ", .enc, 
+         " to composite spec; add encoding prior to combining specs")
   }
   if (hasName(spec, "spec")) {
     inner_spec <- TRUE
@@ -72,6 +73,52 @@
 
 .add_scale_to_encoding <- function(spec, .enc, ...){
   .add_param_to_encoding(spec, .enc, "scale", list(...))
+}
+
+.add_legend_to_encoding <- function(spec, .enc, ...){
+  .add_param_to_encoding(spec, .enc, "legend", list(...))
+}
+
+.add_condition_to_encoding <- function(spec, .enc, ...){
+  
+  # adds to an array, so not use standard func...
+  
+  if (is_composite(spec)) {
+    stop("Can't add condition for encoding to composite spec; add prior to combining specs")
+  }
+  if (hasName(spec, "spec")) {
+    inner_spec <- TRUE
+    outer_spec <- spec
+    spec <- outer_spec[["spec"]]
+  } else {
+    inner_spec <- FALSE
+  }
+  
+  if (!hasName(spec,"encoding") || !hasName(spec[["encoding"]], .enc)) {
+    stop("Error in adding condition to ", .enc, 
+         "\nCould not find ",.enc," encoding in spec.",
+         "\nAdd encoding first before adding condigion.")
+  }
+  
+  if (hasName(spec[["encoding"]][[.enc]],"condition")) {
+    # Check if named
+    if (is.null(names(spec[["encoding"]][[.enc]][["condition"]]))) {
+      value <- c(spec[["encoding"]][[.enc]][["condition"]], list(list(...)))
+    } else {
+      value <- c(list(spec[["encoding"]][[.enc]][["condition"]]), list(list(...)))
+    }
+  } else {
+    value <- list(...)
+  }
+  
+  spec[["encoding"]][[.enc]][["condition"]] <- value
+  
+  if (inner_spec) {
+    outer_spec[["spec"]] <- spec
+    spec <- outer_spec
+  }
+  return(spec)
+  
 }
 
 #' vl_encoding

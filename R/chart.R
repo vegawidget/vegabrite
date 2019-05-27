@@ -1,11 +1,9 @@
 #' vl_chart
 #'
-#' @param description
+#' @param description Description field for chart
 #'
-#' @return
+#' @return A vega-lite spec, as an S3 object of class vegaspec using [vegawidget::as_vegaspec()]
 #' @export
-#'
-#' @examples
 vl_chart <- function(description = NULL) {
   spec <- list(
     `$schema` = vegawidget::vega_schema()
