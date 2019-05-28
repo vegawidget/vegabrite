@@ -68,8 +68,8 @@
 <!--/.navbar -->
 
       
-      </header><script src="index_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="index_files/vega-5.3.2/vega.min.js"></script><script src="index_files/vega-lite-3.0.2/vega-lite.min.js"></script><link href="index_files/vega-embed-4.0.0/vega-embed.css" rel="stylesheet">
-<script src="index_files/vega-embed-4.0.0/vega-embed.js"></script><script src="index_files/vegawidget-binding-0.2.0.9000/vegawidget.js"></script><div class="row">
+      </header><script src="index_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="index_files/vega-5.3.3/vega.min.js"></script><script src="index_files/vega-lite-3.2.1/vega-lite.min.js"></script><link href="index_files/vega-embed-4.0.0/vega-embed.css" rel="stylesheet">
+<script src="index_files/vega-embed-4.0.0/vega-embed.js"></script><script src="index_files/vegawidget-binding-0.2.0.9002/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     
 
@@ -81,10 +81,15 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#vlbuildr" class="anchor"></a>vlbuildr</h1></div>
 <p>The goal of vlbuildr is to provide an R api for building up vega-lite specs. This package is in very early stages at the moment… API likely to change!</p>
+<div id="inspiration-and-related-work" class="section level2">
+<h2 class="hasAnchor">
+<a href="#inspiration-and-related-work" class="anchor"></a>Inspiration and related work</h2>
+<p>The API for this package is heavily inspired by the <a href="articles/examples.html">vegalite R package</a>, but is rebuilt from scratch to (1) build up the API semi-automatically based on the Vega-lite schema (an approach inspired by <a href="https://github.com/altair-viz/altair">Altair</a> and <a href="https://github.com/vega/vega-lite-api">vega-lite-api</a>) and (2) take advantage of the htmlwidget infrastucture for vega specs provided by the <a href="">vegawidget</a> package.</p>
+</div>
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h2>
-<p>These are some examples showing current capabilities (note, might not actually show up here on github due to current issues rendering to markdown format, see pkgdown site for these and more examples.)</p>
+<p>These are some examples showing current capabilities; see <a href="https://aliciaschep.github.io/vlbuildr/articles/examples.html">pkgdown site</a> for more examples.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(vlbuildr)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(vegawidget)</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
@@ -92,8 +97,8 @@
 <a class="sourceLine" id="cb1-5" data-line-number="5"><span class="st">   </span><span class="kw"><a href="reference/vl_mark.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">   </span><span class="kw"><a href="reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="dt">field =</span> <span class="st">"wt"</span>, <span class="dt">type =</span> <span class="st">"quantitative"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">   </span><span class="kw"><a href="reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="dt">field =</span> <span class="st">"mpg"</span>, <span class="dt">type =</span> <span class="st">"quantitative"</span>) </a></code></pre></div>
-<div id="htmlwidget-08dac483efc0addd2fd9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-08dac483efc0addd2fd9">{"x":{
+<div id="htmlwidget-b4f7d8f1d9e8eeb6c181" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b4f7d8f1d9e8eeb6c181">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
     "data": {
@@ -578,8 +583,8 @@
 <a class="sourceLine" id="cb2-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="reference/vl_axis_y.html">vl_axis_y</a></span>(<span class="dt">title =</span> <span class="st">"population"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="reference/vl_encode_color.html">vl_encode_color</a></span>(<span class="dt">field =</span> <span class="st">"gender"</span>, <span class="dt">type =</span> <span class="st">"nominal"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="reference/vl_mark.html">vl_mark_bar</a></span>() </a></code></pre></div>
-<div id="htmlwidget-b53ab75e7e0baae90ad2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b53ab75e7e0baae90ad2">{"x":{
+<div id="htmlwidget-be84fa93a6b5b3666d02" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-be84fa93a6b5b3666d02">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
     "data": {

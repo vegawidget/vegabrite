@@ -20,10 +20,13 @@ knitr::opts_chunk$set(
 
 The goal of vlbuildr is to provide an R api for building up vega-lite specs. This package is in very early stages at the moment... API likely to change!
 
+## Inspiration and related work
+
+The API for this package is heavily inspired by the [vegalite R package](articles/examples.html), but is rebuilt from scratch to (1) build up the API semi-automatically based on the Vega-lite schema (an approach inspired by [Altair](https://github.com/altair-viz/altair) and [vega-lite-api](https://github.com/vega/vega-lite-api)) and (2) take advantage of the htmlwidget infrastucture for vega specs provided by the [vegawidget]() package.
 
 ## Examples
 
-These are some examples showing current capabilities (note, if viewing on github README, might not actually show up due to current issues rendering to markdown format, see [pkgdown site](https://aliciaschep.github.io/vlbuildr/) for these and more examples.)
+These are some examples showing current capabilities; see [pkgdown site](https://aliciaschep.github.io/vlbuildr/articles/examples.html) for more examples.
 
 ```{r example}
 library(vlbuildr)
