@@ -32,7 +32,7 @@ vl_add_projection_config(spec, center = NULL, clipAngle = NULL,
 
 \item{parallel}{(type = number)}
 
-\item{precision}{Sets the threshold for the projection’s \href{http://bl.ocks.org/mbostock/3795544}{adaptive resampling} to the specified value in pixels. This value corresponds to the \href{http://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm}{Douglas–Peucker distance}. If precision is not specified, returns the projection’s current resampling precision which defaults to \code{√0.5 ≅ 0.70710…}. (type = string)}
+\item{precision}{Sets the threshold for the projection’s \href{http://bl.ocks.org/mbostock/3795544}{adaptive resampling} to the specified value in pixels. This value corresponds to the \href{http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm}{Douglas–Peucker distance}. If precision is not specified, returns the projection’s current resampling precision which defaults to \code{√0.5 ≅ 0.70710…}. (type = string)}
 
 \item{radius}{(type = number)}
 

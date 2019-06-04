@@ -31,6 +31,8 @@
 
 
 <meta property="og:title" content="vl_add_projection_config — vl_add_projection_config" />
+
+<meta property="og:description" content="Add projection config (ProjectionConfig) to a vega-lite spec." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -110,7 +112,9 @@
     </div>
 
     <div class="ref-description">
-
+    
+    <p>Add projection config (ProjectionConfig) to a vega-lite spec.</p>
+    
     </div>
 
     <pre class="usage"><span class='fu'>vl_add_projection_config</span>(<span class='no'>spec</span>, <span class='kw'>center</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clipAngle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -162,39 +166,55 @@
     </tr>
     <tr>
       <th>precision</th>
-      <td><p>Sets the threshold for the projection’s <a href='http://bl.ocks.org/mbostock/3795544'>adaptive resampling</a> to the specified value in pixels. This value corresponds to the <a href='http://en.wikipedia.org/wiki/Ramer<!-- %E2%80%93Douglas%E2%80%93Peucker_algorithm}{Douglas–Peucker distance}. If precision is not specified, returns the projection’s current resampling precision which defaults to \code{√0.5 ≅ 0.70710…}. (type = string)} -->
-
-\item{radius}{(type = number)}
-
-\item{ratio}{(type = number)}
-
-\item{reflectX}{(type = boolean)}
-
-\item{reflectY}{(type = boolean)}
-
-\item{rotate}{Sets the projection’s three-axis rotation to the specified angles, which must be a two- or three-element array of numbers \link[=`lambda`, `phi`, `gamma`]{lambda, phi, gamma} specifying the rotation angles in degrees about each spherical axis. (These correspond to yaw, pitch and roll.)
-
-\strong{Default value:} \code{[0, 0, 0]} (type = array)}
-
-\item{scale}{Sets the projection's scale (zoom) value, overriding automatic fitting. (type = number)}
-
-\item{spacing}{(type = number)}
-
-\item{tilt}{(type = number)}
-
-\item{translate}{Sets the projection's translation (pan) value, overriding automatic fitting. (type = array)}
-
-\item{type}{The cartographic projection to use. This value is case-insensitive, for example \code{"albers"} and \code{"Albers"} indicate the same projection type. You can find all valid projection types \href{https://vega.github.io/vega-lite/docs/projection.html#projection-types}{in the documentation}.
-
-\strong{Default value:} \code{mercator} (type = ProjectionType)}
-'>
-</a>
-A modified spec
-
-
-Add projection config (ProjectionConfig) to a vega-lite spec.</p></td>
+      <td><p>Sets the threshold for the projection’s <a href='http://bl.ocks.org/mbostock/3795544'>adaptive resampling</a> to the specified value in pixels. This value corresponds to the <a href='http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm'>Douglas–Peucker distance</a>. If precision is not specified, returns the projection’s current resampling precision which defaults to <code>√0.5 ≅ 0.70710…</code>. (type = string)</p></td>
+    </tr>
+    <tr>
+      <th>radius</th>
+      <td><p>(type = number)</p></td>
+    </tr>
+    <tr>
+      <th>ratio</th>
+      <td><p>(type = number)</p></td>
+    </tr>
+    <tr>
+      <th>reflectX</th>
+      <td><p>(type = boolean)</p></td>
+    </tr>
+    <tr>
+      <th>reflectY</th>
+      <td><p>(type = boolean)</p></td>
+    </tr>
+    <tr>
+      <th>rotate</th>
+      <td><p>Sets the projection’s three-axis rotation to the specified angles, which must be a two- or three-element array of numbers lambda, phi, gamma specifying the rotation angles in degrees about each spherical axis. (These correspond to yaw, pitch and roll.)</p>
+<p><strong>Default value:</strong> <code>[0, 0, 0]</code> (type = array)</p></td>
+    </tr>
+    <tr>
+      <th>scale</th>
+      <td><p>Sets the projection's scale (zoom) value, overriding automatic fitting. (type = number)</p></td>
+    </tr>
+    <tr>
+      <th>spacing</th>
+      <td><p>(type = number)</p></td>
+    </tr>
+    <tr>
+      <th>tilt</th>
+      <td><p>(type = number)</p></td>
+    </tr>
+    <tr>
+      <th>translate</th>
+      <td><p>Sets the projection's translation (pan) value, overriding automatic fitting. (type = array)</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>The cartographic projection to use. This value is case-insensitive, for example <code>"albers"</code> and <code>"Albers"</code> indicate the same projection type. You can find all valid projection types <a href='https://vega.github.io/vega-lite/docs/projection.html#projection-types'>in the documentation</a>.</p>
+<p><strong>Default value:</strong> <code>mercator</code> (type = ProjectionType)</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A modified spec</p>
     
 
   </div>
@@ -202,7 +222,9 @@ Add projection config (ProjectionConfig) to a vega-lite spec.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

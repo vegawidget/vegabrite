@@ -44,7 +44,7 @@ The \code{selection} property can be used to \href{https://vega.github.io/vega-l
 \item \strong{Default value:} \code{hcl} (type = Varies)
 }}
 
-\item{nice}{Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of \emph{\link{0.201479…, 0.996679…}}, a nice domain might be \emph{\link{0.2, 1.0}}.
+\item{nice}{Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of [0.201479…, 0.996679…], a nice domain might be [0.2, 1.0].
 
 For quantitative scales such as linear, \code{nice} can be either a boolean flag or a number. If \code{nice} is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
 
