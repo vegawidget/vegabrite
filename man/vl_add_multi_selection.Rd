@@ -4,16 +4,23 @@
 \alias{vl_add_multi_selection}
 \title{vl_add_multi_selection}
 \usage{
-vl_add_multi_selection(spec, selection_name, empty = NULL,
-  encodings = NULL, fields = NULL, init = NULL, nearest = NULL,
-  on = NULL, resolve = NULL, toggle = NULL)
+vl_add_multi_selection(spec, selection_name, clear = NULL,
+  empty = NULL, encodings = NULL, fields = NULL, init = NULL,
+  nearest = NULL, on = NULL, resolve = NULL, toggle = NULL)
 }
 \arguments{
 \item{spec}{A vega-lite spec.}
 
 \item{selection_name}{Name of selection}
 
-\item{empty}{By default, all data values are considered to lie within an empty selection.
+\item{clear}{Clears the selection, emptying it of all values. Can be an
+\href{https://vega.github.io/vega/docs/event-streams/}{EventStream} or \code{false} to disable.
+
+\strong{Default value:} \code{dblclick}.
+
+See the \href{https://vega.github.io/vega-lite/docs/clear.html}{clear} documentation for more information. (type = Varies)}
+
+\item{empty}{By default, \code{all} data values are considered to lie within an empty selection.
 When set to \code{none}, empty selections contain no data values. (type = string)}
 
 \item{encodings}{An array of encoding channels. The corresponding data field values

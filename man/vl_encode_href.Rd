@@ -5,8 +5,8 @@
 \title{vl_encode_href}
 \usage{
 vl_encode_href(spec, aggregate = NULL, bin = NULL, condition = NULL,
-  field = NULL, legend = NULL, scale = NULL, sort = NULL,
-  timeUnit = NULL, title = NULL, type = NULL, value = NULL)
+  field = NULL, format = NULL, formatType = NULL, timeUnit = NULL,
+  title = NULL, type = NULL, value = NULL)
 }
 \arguments{
 \item{spec}{A vega-lite spec.}
@@ -19,14 +19,14 @@ vl_encode_href(spec, aggregate = NULL, bin = NULL, condition = NULL,
 \item{bin}{A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y} channel are binned before they are imported into Vega-Lite (\code{"binned"}).
 \itemize{
 \item If \code{true}, default \href{https://vega.github.io/vega-lite/docs/bin.html}{binning parameters} will be applied.
-\item To indicate that the data for the \code{x} (or \code{y}) channel are already binned, you can set the \code{bin} property of the \code{x} (or \code{y}) channel to \code{"binned"} and map the bin-start field to \code{x} (or \code{y}) and the bin-end field to \code{x2} (or \code{y2}). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's \href{https://vega.github.io/vega-lite/docs/axis.html#ticks}{tickMinStep} property.
+\item If \code{"binned"}, this indicates that the data for the \code{x} (or \code{y}) channel are already binned. You can map the bin-start field to \code{x} (or \code{y}) and the bin-end field to \code{x2} (or \code{y2}). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's \href{https://vega.github.io/vega-lite/docs/axis.html#ticks}{tickMinStep} property.
 }
 
 \strong{Default value:} \code{false} (type = Varies)}
 
-\item{condition}{One or more value definition(s) with a selection predicate.
+\item{condition}{One or more value definition(s) with \href{https://vega.github.io/vega-lite/docs/condition.html}{a selection or a test predicate}.
 
-\strong{Note:} A field definition's \code{condition} property can only contain \href{https://vega.github.io/vega-lite/docs/encoding.html#value-def}{value definitions}
+\strong{Note:} A field definition's \code{condition} property can only contain \href{https://vega.github.io/vega-lite/docs/condition.html#value}{conditional value definitions}
 since Vega-Lite only allows at most one encoded field per encoding channel. (type = Varies) OR A field definition or one or more value definition(s) with a selection predicate. (type = Varies)}
 
 \item{field}{\strong{Required.} A string defining the name of the field from which to pull a data value
@@ -38,33 +38,23 @@ See more details about escaping in the \href{https://vega.github.io/vega-lite/do
 
 \strong{Note:} \code{field} is not required if \code{aggregate} is \code{count}. (type = Field)}
 
-\item{legend}{An object defining properties of the legend.
-If \code{null}, the legend for the encoding channel will be removed.
-
-\strong{Default value:} If undefined, default \href{https://vega.github.io/vega-lite/docs/legend.html}{legend properties} are applied. (type = Varies)}
-
-\item{scale}{An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
-
-If \code{null}, the scale will be \href{https://vega.github.io/vega-lite/docs/scale.html#disable}{disabled and the data value will be directly encoded}.
-
-\strong{Default value:} If undefined, default \href{https://vega.github.io/vega-lite/docs/scale.html}{scale properties} are applied. (type = Varies)}
-
-\item{sort}{Sort order for the encoded field.
-
-For continuous fields (quantitative or temporal), \code{sort} can be either \code{"ascending"} or \code{"descending"}.
-
-For discrete fields, \code{sort} can be one of the following:
+\item{format}{The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 \itemize{
-\item \code{"ascending"} or \code{"descending"} -- for sorting by the values' natural order in Javascript.
-\item \href{https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding}{A sort-by-encoding definition} for sorting by another encoding channel. (This type of sort definition is not available for \code{row} and \code{column} channels.)
-\item \href{https://vega.github.io/vega-lite/docs/sort.html#sort-field}{A sort field definition} for sorting by another field.
-\item \href{https://vega.github.io/vega-lite/docs/sort.html#sort-array}{An array specifying the field values in preferred order}. In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be \href{types#datetime}{date-time definition objects}. In addition, for time units \code{"month"} and \code{"day"}, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., \code{"Mon"}, \code{"Tue"}).
-\item \code{null} indicating no sort.
+\item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern}.
+\item If the format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
 }
 
-\strong{Default value:} \code{"ascending"}
+See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more examples.
 
-\strong{Note:} \code{null} is not supported for \code{row} and \code{column}. (type = Sort)}
+\strong{Default value:}  Derived from \href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for number format and from \href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for time format. (type = string)}
+
+\item{formatType}{The format type for labels (\code{"number"} or \code{"time"}).
+
+\strong{Default value:}
+\itemize{
+\item \code{"time"} for temporal fields and ordinal and nomimal fields with \code{timeUnit}.
+\item \code{"number"} for quantitative fields as well as ordinal and nomimal fields without \code{timeUnit}. (type = string)
+}}
 
 \item{timeUnit}{Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field.
 or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}.
@@ -91,10 +81,10 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 \item When using with \href{https://vega.github.io/vega-lite/docs/bin.html}{bin}, the \code{type} property can be either \code{"quantitative"} (for using a linear bin scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{"ordinal" (for using an ordinal bin scale)}.
 \item When using with \href{https://vega.github.io/vega-lite/docs/timeunit.html}{timeUnit}, the \code{type} property can be either \code{"temporal"} (for using a temporal scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{"ordinal" (for using an ordinal scale)}.
 \item When using with \href{https://vega.github.io/vega-lite/docs/aggregate.html}{aggregate}, the \code{type} property refers to the post-aggregation data type. For example, we can calculate count \code{distinct} of a categorical field \code{"cat"} using \code{{"aggregate": "distinct", "field": "cat", "type": "quantitative"}}. The \code{"type"} of the aggregate output is \code{"quantitative"}.
-\item Secondary channels (e.g., \code{x2}, \code{y2}, \code{xError}, \code{yError}) do not have \code{type} as they have exactly the same type as their primary channels (e.g., \code{x}, \code{y}). (type = string)
+\item Secondary channels (e.g., \code{x2}, \code{y2}, \code{xError}, \code{yError}) do not have \code{type} as they have exactly the same type as their primary channels (e.g., \code{x}, \code{y}). (type = StandardType)
 }}
 
-\item{value}{A constant value in visual domain (e.g., \code{"red"} / "#0099ff" for color, values between \code{0} to \code{1} for opacity). (type = string)}
+\item{value}{A constant value in visual domain (e.g., \code{"red"} / "#0099ff" for color, values between \code{0} to \code{1} for opacity). (type = string OR number OR boolean)}
 }
 \value{
 A modified spec

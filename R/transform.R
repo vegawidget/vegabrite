@@ -1,24 +1,13 @@
 .add_transform <- function(spec, .trans, ...){
   
-  if (is_composite(spec)) {
-    stop("Can't add transform to composite spec; add transform prior to combining specs")
-  }
-  if (hasName(spec, "spec")) {
-    inner_spec <- TRUE
-    outer_spec <- spec
-    spec <- outer_spec[["spec"]]
-  } else {
-    inner_spec <- FALSE
+  fn <- function(spec) {
+    if (!hasName(spec,"transform")) spec$transform <- list()
+    spec[["transform"]] <- c(spec[["transform"]],list(list(...)))
+    spec
   }
   
-  if (!hasName(spec,"transform")) spec$transform <- list()
-  spec[["transform"]] <- c(spec[["transform"]],list(list(...)))
-  
-  if (inner_spec) {
-    outer_spec[["spec"]] <- spec
-    spec <- outer_spec
-  }
-  return(spec)
+  modify_inner_spec(spec, fn)
+
 }
 
 .add_bin_to_encoding <- function(spec, .enc, ...) {

@@ -5,9 +5,9 @@
 \title{vl_add_interval_selection}
 \usage{
 vl_add_interval_selection(spec, selection_name, bind = NULL,
-  empty = NULL, encodings = NULL, fields = NULL, init = NULL,
-  mark = NULL, on = NULL, resolve = NULL, translate = NULL,
-  zoom = NULL)
+  clear = NULL, empty = NULL, encodings = NULL, fields = NULL,
+  init = NULL, mark = NULL, on = NULL, resolve = NULL,
+  translate = NULL, zoom = NULL)
 }
 \arguments{
 \item{spec}{A vega-lite spec.}
@@ -18,7 +18,14 @@ vl_add_interval_selection(spec, selection_name, bind = NULL,
 used within the same view. This allows a user to interactively pan and
 zoom the view. (type = string)}
 
-\item{empty}{By default, all data values are considered to lie within an empty selection.
+\item{clear}{Clears the selection, emptying it of all values. Can be an
+\href{https://vega.github.io/vega/docs/event-streams/}{EventStream} or \code{false} to disable.
+
+\strong{Default value:} \code{dblclick}.
+
+See the \href{https://vega.github.io/vega-lite/docs/clear.html}{clear} documentation for more information. (type = Varies)}
+
+\item{empty}{By default, \code{all} data values are considered to lie within an empty selection.
 When set to \code{none}, empty selections contain no data values. (type = string)}
 
 \item{encodings}{An array of encoding channels. The corresponding data field values

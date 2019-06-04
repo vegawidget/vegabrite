@@ -4,6 +4,7 @@
 #'
 #' @return A vega-lite spec, as an S3 object of class vegaspec using [vegawidget::as_vegaspec()]
 #' @export
+#' @importFrom utils hasName
 vl_chart <- function(description = NULL) {
   spec <- list(
     `$schema` = vegawidget::vega_schema()

@@ -12,7 +12,7 @@ vl_condition_fillOpacity(spec, test = NULL, value = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{test}{(type = LogicalOperand<Predicate>)}
+\item{test}{Predicate for triggering the condition (type = LogicalOperand<Predicate>)}
 
 \item{value}{A constant value in visual domain (e.g., \code{"red"} / "#0099ff" for color, values between \code{0} to \code{1} for opacity). (type = number OR string OR boolean OR null)}
 
@@ -26,7 +26,7 @@ vl_condition_fillOpacity(spec, test = NULL, value = NULL,
 \item{bin}{A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y} channel are binned before they are imported into Vega-Lite (\code{"binned"}).
 \itemize{
 \item If \code{true}, default \href{https://vega.github.io/vega-lite/docs/bin.html}{binning parameters} will be applied.
-\item To indicate that the data for the \code{x} (or \code{y}) channel are already binned, you can set the \code{bin} property of the \code{x} (or \code{y}) channel to \code{"binned"} and map the bin-start field to \code{x} (or \code{y}) and the bin-end field to \code{x2} (or \code{y2}). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's \href{https://vega.github.io/vega-lite/docs/axis.html#ticks}{tickMinStep} property.
+\item If \code{"binned"}, this indicates that the data for the \code{x} (or \code{y}) channel are already binned. You can map the bin-start field to \code{x} (or \code{y}) and the bin-end field to \code{x2} (or \code{y2}). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's \href{https://vega.github.io/vega-lite/docs/axis.html#ticks}{tickMinStep} property.
 }
 
 \strong{Default value:} \code{false} (type = Varies)}

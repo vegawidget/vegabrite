@@ -145,3 +145,22 @@ vl_chart() %>%
   vl_encode_color(field = "Origin", type = "nominal") %>%
   vl_repeat_wrap("Horsepower", "Miles_per_Gallon", "Acceleration", "Displacement")
 ```
+
+
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/population.json") %>%
+  vl_filter("datum.year == 2000") %>%
+  vl_calculate(as = "gender", calculate = 'datum.sex == 2 ? "Female" : "Male"') %>%
+  vl_encode_x(field = "gender", type = "nominal") %>%
+  vl_encode_y(field = "people", type = "quantitative", aggregate = "sum") %>%
+  vl_encode_color(field = "gender", type = "nominal") %>%
+  vl_scale_x(rangeStep = 8) %>%
+  vl_scale_color(range = c("#EA98D2", "#659CCA")) %>%
+  vl_facet_column(field = "age", type = "ordinal") %>%
+  vl_axis_x(remove = TRUE) %>%
+  vl_axis_y(title = "population", grid = FALSE) %>%
+  vl_add_view_config(strokeWidth = 0) %>%
+  vl_mark_bar()
+```
+

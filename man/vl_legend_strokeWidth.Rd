@@ -51,13 +51,23 @@ vl_legend_strokeWidth(spec, clipHeight = NULL, columnPadding = NULL,
 
 \item{fillColor}{Background fill color for the full legend. (type = Color)}
 
-\item{format}{The formatting pattern for labels. This is D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern} for quantitative fields and D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern} for time field. To override the default type, set \code{formatType}.
+\item{format}{The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+\itemize{
+\item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern}.
+\item If the format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
+}
 
-See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more information.
+See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more examples.
 
-\strong{Default value:}  derived from \href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for quantitative fields and from \href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for temporal fields. (type = string)}
+\strong{Default value:}  Derived from \href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for number format and from \href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for time format. (type = string)}
 
-\item{formatType}{The format type for labels (number or time). (type = string)}
+\item{formatType}{The format type for labels (\code{"number"} or \code{"time"}).
+
+\strong{Default value:}
+\itemize{
+\item \code{"time"} for temporal fields and ordinal and nomimal fields with \code{timeUnit}.
+\item \code{"number"} for quantitative fields as well as ordinal and nomimal fields without \code{timeUnit}. (type = string)
+}}
 
 \item{gradientLength}{The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
 

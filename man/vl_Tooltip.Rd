@@ -5,8 +5,8 @@
 \title{vl_Tooltip}
 \usage{
 vl_Tooltip(aggregate = NULL, bin = NULL, condition = NULL,
-  field = NULL, format = NULL, timeUnit = NULL, title = NULL,
-  type = NULL, value = NULL)
+  field = NULL, format = NULL, formatType = NULL, timeUnit = NULL,
+  title = NULL, type = NULL, value = NULL)
 }
 \arguments{
 \item{aggregate}{Aggregation function for the field
@@ -17,14 +17,14 @@ vl_Tooltip(aggregate = NULL, bin = NULL, condition = NULL,
 \item{bin}{A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y} channel are binned before they are imported into Vega-Lite (\code{"binned"}).
 \itemize{
 \item If \code{true}, default \href{https://vega.github.io/vega-lite/docs/bin.html}{binning parameters} will be applied.
-\item To indicate that the data for the \code{x} (or \code{y}) channel are already binned, you can set the \code{bin} property of the \code{x} (or \code{y}) channel to \code{"binned"} and map the bin-start field to \code{x} (or \code{y}) and the bin-end field to \code{x2} (or \code{y2}). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's \href{https://vega.github.io/vega-lite/docs/axis.html#ticks}{tickMinStep} property.
+\item If \code{"binned"}, this indicates that the data for the \code{x} (or \code{y}) channel are already binned. You can map the bin-start field to \code{x} (or \code{y}) and the bin-end field to \code{x2} (or \code{y2}). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's \href{https://vega.github.io/vega-lite/docs/axis.html#ticks}{tickMinStep} property.
 }
 
 \strong{Default value:} \code{false} (type = Varies)}
 
-\item{condition}{One or more value definition(s) with a selection predicate.
+\item{condition}{One or more value definition(s) with \href{https://vega.github.io/vega-lite/docs/condition.html}{a selection or a test predicate}.
 
-\strong{Note:} A field definition's \code{condition} property can only contain \href{https://vega.github.io/vega-lite/docs/encoding.html#value-def}{value definitions}
+\strong{Note:} A field definition's \code{condition} property can only contain \href{https://vega.github.io/vega-lite/docs/condition.html#value}{conditional value definitions}
 since Vega-Lite only allows at most one encoded field per encoding channel. (type = Varies) OR A field definition or one or more value definition(s) with a selection predicate. (type = Varies)}
 
 \item{field}{\strong{Required.} A string defining the name of the field from which to pull a data value
@@ -36,7 +36,23 @@ See more details about escaping in the \href{https://vega.github.io/vega-lite/do
 
 \strong{Note:} \code{field} is not required if \code{aggregate} is \code{count}. (type = Field)}
 
-\item{format}{The \href{https://vega.github.io/vega-lite/docs/format.html}{formatting pattern} for a text field. If not defined, this will be determined automatically. (type = string)}
+\item{format}{The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+\itemize{
+\item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern}.
+\item If the format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
+}
+
+See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more examples.
+
+\strong{Default value:}  Derived from \href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for number format and from \href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for time format. (type = string)}
+
+\item{formatType}{The format type for labels (\code{"number"} or \code{"time"}).
+
+\strong{Default value:}
+\itemize{
+\item \code{"time"} for temporal fields and ordinal and nomimal fields with \code{timeUnit}.
+\item \code{"number"} for quantitative fields as well as ordinal and nomimal fields without \code{timeUnit}. (type = string)
+}}
 
 \item{timeUnit}{Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field.
 or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}.
