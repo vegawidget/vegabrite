@@ -118,9 +118,9 @@
     </div>
 
     <pre class="usage"><span class='fu'>vl_add_interval_selection</span>(<span class='no'>spec</span>, <span class='no'>selection_name</span>, <span class='kw'>bind</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>empty</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>encodings</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>mark</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>on</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>resolve</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>translate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>zoom</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>clear</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>empty</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>encodings</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>init</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mark</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>on</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>resolve</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>translate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zoom</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -140,8 +140,15 @@ used within the same view. This allows a user to interactively pan and
 zoom the view. (type = string)</p></td>
     </tr>
     <tr>
+      <th>clear</th>
+      <td><p>Clears the selection, emptying it of all values. Can be an
+<a href='https://vega.github.io/vega/docs/event-streams/'>EventStream</a> or <code>false</code> to disable.</p>
+<p><strong>Default value:</strong> <code>dblclick</code>.</p>
+<p>See the <a href='https://vega.github.io/vega-lite/docs/clear.html'>clear</a> documentation for more information. (type = Varies)</p></td>
+    </tr>
+    <tr>
       <th>empty</th>
-      <td><p>By default, all data values are considered to lie within an empty selection.
+      <td><p>By default, <code>all</code> data values are considered to lie within an empty selection.
 When set to <code>none</code>, empty selections contain no data values. (type = string)</p></td>
     </tr>
     <tr>

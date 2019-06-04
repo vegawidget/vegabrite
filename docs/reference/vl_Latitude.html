@@ -118,7 +118,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>vl_Latitude</span>(<span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>field</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>timeUnit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>timeUnit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -133,7 +133,7 @@
       <th>bin</th>
       <td><p>A flag for binning a <code>quantitative</code> field, <a href='https://vega.github.io/vega-lite/docs/bin.html#params'>an object defining binning parameters</a>, or indicating that the data for <code>x</code> or <code>y</code> channel are binned before they are imported into Vega-Lite (<code>"binned"</code>).</p><ul>
 <li><p>If <code>true</code>, default <a href='https://vega.github.io/vega-lite/docs/bin.html'>binning parameters</a> will be applied.</p></li>
-<li><p>To indicate that the data for the <code>x</code> (or <code>y</code>) channel are already binned, you can set the <code>bin</code> property of the <code>x</code> (or <code>y</code>) channel to <code>"binned"</code> and map the bin-start field to <code>x</code> (or <code>y</code>) and the bin-end field to <code>x2</code> (or <code>y2</code>). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's <a href='https://vega.github.io/vega-lite/docs/axis.html#ticks'>tickMinStep</a> property.</p></li>
+<li><p>If <code>"binned"</code>, this indicates that the data for the <code>x</code> (or <code>y</code>) channel are already binned. You can map the bin-start field to <code>x</code> (or <code>y</code>) and the bin-end field to <code>x2</code> (or <code>y2</code>). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's <a href='https://vega.github.io/vega-lite/docs/axis.html#ticks'>tickMinStep</a> property.</p></li>
 </ul>
 
 <p><strong>Default value:</strong> <code>false</code> (type = Varies)</p></td>
@@ -174,6 +174,10 @@ It can also be a <code>"geojson"</code> type for encoding <a href='https://vega.
 <li><p>When using with <a href='https://vega.github.io/vega-lite/docs/aggregate.html'>aggregate</a>, the <code>type</code> property refers to the post-aggregation data type. For example, we can calculate count <code>distinct</code> of a categorical field <code>"cat"</code> using <code>{"aggregate": "distinct", "field": "cat", "type": "quantitative"}</code>. The <code>"type"</code> of the aggregate output is <code>"quantitative"</code>.</p></li>
 <li><p>Secondary channels (e.g., <code>x2</code>, <code>y2</code>, <code>xError</code>, <code>yError</code>) do not have <code>type</code> as they have exactly the same type as their primary channels (e.g., <code>x</code>, <code>y</code>). (type = string)</p></li>
 </ul></td>
+    </tr>
+    <tr>
+      <th>value</th>
+      <td><p>A constant value in visual domain (e.g., <code>"red"</code> / "#0099ff" for color, values between <code>0</code> to <code>1</code> for opacity). (type = number)</p></td>
     </tr>
     </table>
     

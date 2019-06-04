@@ -138,7 +138,7 @@
       <th>bin</th>
       <td><p>A flag for binning a <code>quantitative</code> field, <a href='https://vega.github.io/vega-lite/docs/bin.html#params'>an object defining binning parameters</a>, or indicating that the data for <code>x</code> or <code>y</code> channel are binned before they are imported into Vega-Lite (<code>"binned"</code>).</p><ul>
 <li><p>If <code>true</code>, default <a href='https://vega.github.io/vega-lite/docs/bin.html'>binning parameters</a> will be applied.</p></li>
-<li><p>To indicate that the data for the <code>x</code> (or <code>y</code>) channel are already binned, you can set the <code>bin</code> property of the <code>x</code> (or <code>y</code>) channel to <code>"binned"</code> and map the bin-start field to <code>x</code> (or <code>y</code>) and the bin-end field to <code>x2</code> (or <code>y2</code>). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's <a href='https://vega.github.io/vega-lite/docs/axis.html#ticks'>tickMinStep</a> property.</p></li>
+<li><p>If <code>"binned"</code>, this indicates that the data for the <code>x</code> (or <code>y</code>) channel are already binned. You can map the bin-start field to <code>x</code> (or <code>y</code>) and the bin-end field to <code>x2</code> (or <code>y2</code>). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's <a href='https://vega.github.io/vega-lite/docs/axis.html#ticks'>tickMinStep</a> property.</p></li>
 </ul>
 
 <p><strong>Default value:</strong> <code>false</code> (type = Varies)</p></td>
@@ -206,7 +206,7 @@ It can also be a <code>"geojson"</code> type for encoding <a href='https://vega.
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='vl_facet_col.html'>vl_facet_col()</a></code>, <code><a href='vl_facet_wrap.html'>vl_facet_wrap()</a></code></p></div>
+    <div class='dont-index'><p><code><a href='vl_facet_column.html'>vl_facet_column()</a></code>, <code><a href='vl_facet_wrap.html'>vl_facet_wrap()</a></code></p></div>
     
 
   </div>

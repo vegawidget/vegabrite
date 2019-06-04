@@ -118,7 +118,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>vl_add_data</span>(<span class='no'>spec</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>values</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>values</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sequence</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sphere</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>graticule</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -144,6 +144,18 @@ to ensure the loaded data is correctly parsed. (type = string)</p></td>
       <th>values</th>
       <td><p>The full data set, included inline. This can be an array of objects or primitive values, an object, or a string.
 Arrays of primitive values are ingested as objects with a <code>data</code> property. Strings are parsed according to the specified format type. (type = InlineDataset)</p></td>
+    </tr>
+    <tr>
+      <th>sequence</th>
+      <td><p>Generate a sequence of numbers. (type = SequenceParams)</p></td>
+    </tr>
+    <tr>
+      <th>sphere</th>
+      <td><p>Generate sphere GeoJSON data for the full globe. (type = Varies)</p></td>
+    </tr>
+    <tr>
+      <th>graticule</th>
+      <td><p>Generate graticule GeoJSON data for geographic reference lines. (type = Varies)</p></td>
     </tr>
     </table>
     

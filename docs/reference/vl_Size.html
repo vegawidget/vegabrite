@@ -134,15 +134,15 @@
       <th>bin</th>
       <td><p>A flag for binning a <code>quantitative</code> field, <a href='https://vega.github.io/vega-lite/docs/bin.html#params'>an object defining binning parameters</a>, or indicating that the data for <code>x</code> or <code>y</code> channel are binned before they are imported into Vega-Lite (<code>"binned"</code>).</p><ul>
 <li><p>If <code>true</code>, default <a href='https://vega.github.io/vega-lite/docs/bin.html'>binning parameters</a> will be applied.</p></li>
-<li><p>To indicate that the data for the <code>x</code> (or <code>y</code>) channel are already binned, you can set the <code>bin</code> property of the <code>x</code> (or <code>y</code>) channel to <code>"binned"</code> and map the bin-start field to <code>x</code> (or <code>y</code>) and the bin-end field to <code>x2</code> (or <code>y2</code>). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's <a href='https://vega.github.io/vega-lite/docs/axis.html#ticks'>tickMinStep</a> property.</p></li>
+<li><p>If <code>"binned"</code>, this indicates that the data for the <code>x</code> (or <code>y</code>) channel are already binned. You can map the bin-start field to <code>x</code> (or <code>y</code>) and the bin-end field to <code>x2</code> (or <code>y2</code>). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's <a href='https://vega.github.io/vega-lite/docs/axis.html#ticks'>tickMinStep</a> property.</p></li>
 </ul>
 
 <p><strong>Default value:</strong> <code>false</code> (type = Varies)</p></td>
     </tr>
     <tr>
       <th>condition</th>
-      <td><p>One or more value definition(s) with a selection predicate.</p>
-<p><strong>Note:</strong> A field definition's <code>condition</code> property can only contain <a href='https://vega.github.io/vega-lite/docs/encoding.html#value-def'>value definitions</a>
+      <td><p>One or more value definition(s) with <a href='https://vega.github.io/vega-lite/docs/condition.html'>a selection or a test predicate</a>.</p>
+<p><strong>Note:</strong> A field definition's <code>condition</code> property can only contain <a href='https://vega.github.io/vega-lite/docs/condition.html#value'>conditional value definitions</a>
 since Vega-Lite only allows at most one encoded field per encoding channel. (type = Varies) OR A field definition or one or more value definition(s) with a selection predicate. (type = Varies)</p></td>
     </tr>
     <tr>

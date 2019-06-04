@@ -118,8 +118,8 @@
     </div>
 
     <pre class="usage"><span class='fu'>vl_Text</span>(<span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>condition</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>field</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>timeUnit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>field</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>formatType</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>timeUnit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -134,15 +134,15 @@
       <th>bin</th>
       <td><p>A flag for binning a <code>quantitative</code> field, <a href='https://vega.github.io/vega-lite/docs/bin.html#params'>an object defining binning parameters</a>, or indicating that the data for <code>x</code> or <code>y</code> channel are binned before they are imported into Vega-Lite (<code>"binned"</code>).</p><ul>
 <li><p>If <code>true</code>, default <a href='https://vega.github.io/vega-lite/docs/bin.html'>binning parameters</a> will be applied.</p></li>
-<li><p>To indicate that the data for the <code>x</code> (or <code>y</code>) channel are already binned, you can set the <code>bin</code> property of the <code>x</code> (or <code>y</code>) channel to <code>"binned"</code> and map the bin-start field to <code>x</code> (or <code>y</code>) and the bin-end field to <code>x2</code> (or <code>y2</code>). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's <a href='https://vega.github.io/vega-lite/docs/axis.html#ticks'>tickMinStep</a> property.</p></li>
+<li><p>If <code>"binned"</code>, this indicates that the data for the <code>x</code> (or <code>y</code>) channel are already binned. You can map the bin-start field to <code>x</code> (or <code>y</code>) and the bin-end field to <code>x2</code> (or <code>y2</code>). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's <a href='https://vega.github.io/vega-lite/docs/axis.html#ticks'>tickMinStep</a> property.</p></li>
 </ul>
 
 <p><strong>Default value:</strong> <code>false</code> (type = Varies)</p></td>
     </tr>
     <tr>
       <th>condition</th>
-      <td><p>One or more value definition(s) with a selection predicate.</p>
-<p><strong>Note:</strong> A field definition's <code>condition</code> property can only contain <a href='https://vega.github.io/vega-lite/docs/encoding.html#value-def'>value definitions</a>
+      <td><p>One or more value definition(s) with <a href='https://vega.github.io/vega-lite/docs/condition.html'>a selection or a test predicate</a>.</p>
+<p><strong>Note:</strong> A field definition's <code>condition</code> property can only contain <a href='https://vega.github.io/vega-lite/docs/condition.html#value'>conditional value definitions</a>
 since Vega-Lite only allows at most one encoded field per encoding channel. (type = Varies) OR A field definition or one or more value definition(s) with a selection predicate. (type = Varies)</p></td>
     </tr>
     <tr>
@@ -156,7 +156,21 @@ See more details about escaping in the <a href='https://vega.github.io/vega-lite
     </tr>
     <tr>
       <th>format</th>
-      <td><p>The <a href='https://vega.github.io/vega-lite/docs/format.html'>formatting pattern</a> for a text field. If not defined, this will be determined automatically. (type = string)</p></td>
+      <td><p>The text formatting pattern for labels of guides (axes, legends, headers) and text marks.</p><ul>
+<li><p>If the format type is <code>"number"</code> (e.g., for quantitative fields), this is D3's <a href='https://github.com/d3/d3-format#locale_format'>number format pattern</a>.</p></li>
+<li><p>If the format type is <code>"time"</code> (e.g., for temporal fields), this is D3's <a href='https://github.com/d3/d3-time-format#locale_format'>time format pattern</a>.</p></li>
+</ul>
+
+<p>See the <a href='https://vega.github.io/vega-lite/docs/format.html'>format documentation</a> for more examples.</p>
+<p><strong>Default value:</strong>  Derived from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>numberFormat</a> config for number format and from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>timeFormat</a> config for time format. (type = string)</p></td>
+    </tr>
+    <tr>
+      <th>formatType</th>
+      <td><p>The format type for labels (<code>"number"</code> or <code>"time"</code>).</p>
+<p><strong>Default value:</strong></p><ul>
+<li><p><code>"time"</code> for temporal fields and ordinal and nomimal fields with <code>timeUnit</code>.</p></li>
+<li><p><code>"number"</code> for quantitative fields as well as ordinal and nomimal fields without <code>timeUnit</code>. (type = string)</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>timeUnit</th>

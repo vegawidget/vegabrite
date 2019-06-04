@@ -179,13 +179,21 @@
     </tr>
     <tr>
       <th>format</th>
-      <td><p>The formatting pattern for labels. This is D3's <a href='https://github.com/d3/d3-format#locale_format'>number format pattern</a> for quantitative fields and D3's <a href='https://github.com/d3/d3-time-format#locale_format'>time format pattern</a> for time field. To override the default type, set <code>formatType</code>.</p>
-<p>See the <a href='https://vega.github.io/vega-lite/docs/format.html'>format documentation</a> for more information.</p>
-<p><strong>Default value:</strong>  derived from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>numberFormat</a> config for quantitative fields and from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>timeFormat</a> config for temporal fields. (type = string)</p></td>
+      <td><p>The text formatting pattern for labels of guides (axes, legends, headers) and text marks.</p><ul>
+<li><p>If the format type is <code>"number"</code> (e.g., for quantitative fields), this is D3's <a href='https://github.com/d3/d3-format#locale_format'>number format pattern</a>.</p></li>
+<li><p>If the format type is <code>"time"</code> (e.g., for temporal fields), this is D3's <a href='https://github.com/d3/d3-time-format#locale_format'>time format pattern</a>.</p></li>
+</ul>
+
+<p>See the <a href='https://vega.github.io/vega-lite/docs/format.html'>format documentation</a> for more examples.</p>
+<p><strong>Default value:</strong>  Derived from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>numberFormat</a> config for number format and from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>timeFormat</a> config for time format. (type = string)</p></td>
     </tr>
     <tr>
       <th>formatType</th>
-      <td><p>The format type for labels (number or time). (type = string)</p></td>
+      <td><p>The format type for labels (<code>"number"</code> or <code>"time"</code>).</p>
+<p><strong>Default value:</strong></p><ul>
+<li><p><code>"time"</code> for temporal fields and ordinal and nomimal fields with <code>timeUnit</code>.</p></li>
+<li><p><code>"number"</code> for quantitative fields as well as ordinal and nomimal fields without <code>timeUnit</code>. (type = string)</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>gradientLength</th>

@@ -118,8 +118,8 @@
     </div>
 
     <pre class="usage"><span class='fu'>vl_Href</span>(<span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>condition</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>field</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legend</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>timeUnit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>field</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>formatType</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>timeUnit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -134,15 +134,15 @@
       <th>bin</th>
       <td><p>A flag for binning a <code>quantitative</code> field, <a href='https://vega.github.io/vega-lite/docs/bin.html#params'>an object defining binning parameters</a>, or indicating that the data for <code>x</code> or <code>y</code> channel are binned before they are imported into Vega-Lite (<code>"binned"</code>).</p><ul>
 <li><p>If <code>true</code>, default <a href='https://vega.github.io/vega-lite/docs/bin.html'>binning parameters</a> will be applied.</p></li>
-<li><p>To indicate that the data for the <code>x</code> (or <code>y</code>) channel are already binned, you can set the <code>bin</code> property of the <code>x</code> (or <code>y</code>) channel to <code>"binned"</code> and map the bin-start field to <code>x</code> (or <code>y</code>) and the bin-end field to <code>x2</code> (or <code>y2</code>). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's <a href='https://vega.github.io/vega-lite/docs/axis.html#ticks'>tickMinStep</a> property.</p></li>
+<li><p>If <code>"binned"</code>, this indicates that the data for the <code>x</code> (or <code>y</code>) channel are already binned. You can map the bin-start field to <code>x</code> (or <code>y</code>) and the bin-end field to <code>x2</code> (or <code>y2</code>). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's <a href='https://vega.github.io/vega-lite/docs/axis.html#ticks'>tickMinStep</a> property.</p></li>
 </ul>
 
 <p><strong>Default value:</strong> <code>false</code> (type = Varies)</p></td>
     </tr>
     <tr>
       <th>condition</th>
-      <td><p>One or more value definition(s) with a selection predicate.</p>
-<p><strong>Note:</strong> A field definition's <code>condition</code> property can only contain <a href='https://vega.github.io/vega-lite/docs/encoding.html#value-def'>value definitions</a>
+      <td><p>One or more value definition(s) with <a href='https://vega.github.io/vega-lite/docs/condition.html'>a selection or a test predicate</a>.</p>
+<p><strong>Note:</strong> A field definition's <code>condition</code> property can only contain <a href='https://vega.github.io/vega-lite/docs/condition.html#value'>conditional value definitions</a>
 since Vega-Lite only allows at most one encoded field per encoding channel. (type = Varies) OR A field definition or one or more value definition(s) with a selection predicate. (type = Varies)</p></td>
     </tr>
     <tr>
@@ -155,31 +155,22 @@ See more details about escaping in the <a href='https://vega.github.io/vega-lite
 <p><strong>Note:</strong> <code>field</code> is not required if <code>aggregate</code> is <code>count</code>. (type = Field)</p></td>
     </tr>
     <tr>
-      <th>legend</th>
-      <td><p>An object defining properties of the legend.
-If <code>null</code>, the legend for the encoding channel will be removed.</p>
-<p><strong>Default value:</strong> If undefined, default <a href='https://vega.github.io/vega-lite/docs/legend.html'>legend properties</a> are applied. (type = Varies)</p></td>
-    </tr>
-    <tr>
-      <th>scale</th>
-      <td><p>An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.</p>
-<p>If <code>null</code>, the scale will be <a href='https://vega.github.io/vega-lite/docs/scale.html#disable'>disabled and the data value will be directly encoded</a>.</p>
-<p><strong>Default value:</strong> If undefined, default <a href='https://vega.github.io/vega-lite/docs/scale.html'>scale properties</a> are applied. (type = Varies)</p></td>
-    </tr>
-    <tr>
-      <th>sort</th>
-      <td><p>Sort order for the encoded field.</p>
-<p>For continuous fields (quantitative or temporal), <code>sort</code> can be either <code>"ascending"</code> or <code>"descending"</code>.</p>
-<p>For discrete fields, <code>sort</code> can be one of the following:</p><ul>
-<li><p><code>"ascending"</code> or <code>"descending"</code> -- for sorting by the values' natural order in Javascript.</p></li>
-<li><p><a href='https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding'>A sort-by-encoding definition</a> for sorting by another encoding channel. (This type of sort definition is not available for <code>row</code> and <code>column</code> channels.)</p></li>
-<li><p><a href='https://vega.github.io/vega-lite/docs/sort.html#sort-field'>A sort field definition</a> for sorting by another field.</p></li>
-<li><p><a href='https://vega.github.io/vega-lite/docs/sort.html#sort-array'>An array specifying the field values in preferred order</a>. In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be <a href='types#datetime'>date-time definition objects</a>. In addition, for time units <code>"month"</code> and <code>"day"</code>, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., <code>"Mon"</code>, <code>"Tue"</code>).</p></li>
-<li><p><code>null</code> indicating no sort.</p></li>
+      <th>format</th>
+      <td><p>The text formatting pattern for labels of guides (axes, legends, headers) and text marks.</p><ul>
+<li><p>If the format type is <code>"number"</code> (e.g., for quantitative fields), this is D3's <a href='https://github.com/d3/d3-format#locale_format'>number format pattern</a>.</p></li>
+<li><p>If the format type is <code>"time"</code> (e.g., for temporal fields), this is D3's <a href='https://github.com/d3/d3-time-format#locale_format'>time format pattern</a>.</p></li>
 </ul>
 
-<p><strong>Default value:</strong> <code>"ascending"</code></p>
-<p><strong>Note:</strong> <code>null</code> is not supported for <code>row</code> and <code>column</code>. (type = Sort)</p></td>
+<p>See the <a href='https://vega.github.io/vega-lite/docs/format.html'>format documentation</a> for more examples.</p>
+<p><strong>Default value:</strong>  Derived from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>numberFormat</a> config for number format and from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>timeFormat</a> config for time format. (type = string)</p></td>
+    </tr>
+    <tr>
+      <th>formatType</th>
+      <td><p>The format type for labels (<code>"number"</code> or <code>"time"</code>).</p>
+<p><strong>Default value:</strong></p><ul>
+<li><p><code>"time"</code> for temporal fields and ordinal and nomimal fields with <code>timeUnit</code>.</p></li>
+<li><p><code>"number"</code> for quantitative fields as well as ordinal and nomimal fields without <code>timeUnit</code>. (type = string)</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>timeUnit</th>
@@ -206,12 +197,12 @@ It can also be a <code>"geojson"</code> type for encoding <a href='https://vega.
 <li><p>When using with <a href='https://vega.github.io/vega-lite/docs/bin.html'>bin</a>, the <code>type</code> property can be either <code>"quantitative"</code> (for using a linear bin scale) or <a href='https://vega.github.io/vega-lite/docs/type.html#cast-bin'>"ordinal" (for using an ordinal bin scale)</a>.</p></li>
 <li><p>When using with <a href='https://vega.github.io/vega-lite/docs/timeunit.html'>timeUnit</a>, the <code>type</code> property can be either <code>"temporal"</code> (for using a temporal scale) or <a href='https://vega.github.io/vega-lite/docs/type.html#cast-bin'>"ordinal" (for using an ordinal scale)</a>.</p></li>
 <li><p>When using with <a href='https://vega.github.io/vega-lite/docs/aggregate.html'>aggregate</a>, the <code>type</code> property refers to the post-aggregation data type. For example, we can calculate count <code>distinct</code> of a categorical field <code>"cat"</code> using <code>{"aggregate": "distinct", "field": "cat", "type": "quantitative"}</code>. The <code>"type"</code> of the aggregate output is <code>"quantitative"</code>.</p></li>
-<li><p>Secondary channels (e.g., <code>x2</code>, <code>y2</code>, <code>xError</code>, <code>yError</code>) do not have <code>type</code> as they have exactly the same type as their primary channels (e.g., <code>x</code>, <code>y</code>). (type = string)</p></li>
+<li><p>Secondary channels (e.g., <code>x2</code>, <code>y2</code>, <code>xError</code>, <code>yError</code>) do not have <code>type</code> as they have exactly the same type as their primary channels (e.g., <code>x</code>, <code>y</code>). (type = StandardType)</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>value</th>
-      <td><p>A constant value in visual domain (e.g., <code>"red"</code> / "#0099ff" for color, values between <code>0</code> to <code>1</code> for opacity). (type = string)</p></td>
+      <td><p>A constant value in visual domain (e.g., <code>"red"</code> / "#0099ff" for color, values between <code>0</code> to <code>1</code> for opacity). (type = string OR number OR boolean)</p></td>
     </tr>
     </table>
     
