@@ -25,8 +25,8 @@ library(vegawidget)
 vl_chart() %>%
    vl_add_data(values = mtcars) %>%
    vl_mark_point() %>%
-   vl_encode_x(field = "wt", type = "quantitative") %>%
-   vl_encode_y(field = "mpg", type = "quantitative") 
+   vl_encode_x("wt") %>%
+   vl_encode_y("mpg") 
 ```
 
 
@@ -163,4 +163,38 @@ vl_chart() %>%
   vl_add_view_config(strokeWidth = 0) %>%
   vl_mark_bar()
 ```
+
+```{r}
+bar_chart <- vl_chart() %>%
+  vl_mark_bar() %>%
+  vl_encode_x("date:O", timeUnit = "month") %>%
+  vl_encode_y("precipitation:Q", aggregate = "mean")
+
+point_chart <- vl_chart() %>%
+  vl_mark_point() %>%
+  vl_encode_x("temp_min:Q", bin = TRUE) %>%
+  vl_encode_y("temp_max:Q", bin = TRUE) %>%
+  vl_encode_size(aggregate = "count", type = "quantitative")
+  
+vl_hconcat(bar_chart, point_chart) %>% 
+  vl_add_data(url = "https://vega.github.io/vega-lite/data/weather.csv") %>%
+  vl_filter("datum.location === 'Seattle'")
+```
+
+
+
+### Multiple marks...
+
+
+```{r}
+vl_chart() %>%
+    vl_add_data(url = "https://vega.github.io/vega-editor/app/data/stocks.csv") %>% 
+    vl_mark_line() %>% 
+    vl_mark_point() %>%
+    vl_filter("datum.symbol==='GOOG'") %>%
+    vl_encode_x(field = "date", type = "temporal") %>%
+    vl_encode_y(field = "price", type = "quantitative")
+```
+
+
 

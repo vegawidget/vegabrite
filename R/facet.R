@@ -1,10 +1,10 @@
-add_facet <- function(spec, ...) {
-  UseMethod("add_facet", spec)
+.add_facet <- function(spec, ...) {
+  UseMethod(".add_facet", spec)
 }
 
 
 
-add_facet.vegaspec_facet <- function(spec, .type, ...) {
+.add_facet.vegaspec_facet <- function(spec, .type, ...) {
 
   if (.type == "row") {
     spec[["facet"]][["row"]] <- list(...)
@@ -21,7 +21,7 @@ add_facet.vegaspec_facet <- function(spec, .type, ...) {
   return(vegawidget::as_vegaspec(spec))
 }
 
-add_facet.vegaspec_unit <- function(spec, .type, ...) {
+.add_facet.vegaspec_unit <- function(spec, .type, ...) {
   
   keep <- c('$schema','data')
   move <- names(spec)[which(!(names(spec) %in% keep))]
@@ -46,13 +46,13 @@ add_facet.vegaspec_unit <- function(spec, .type, ...) {
 
 
 .add_facet_row <- function(spec, ...){
-  add_facet(spec, "row", ...)
+  .add_facet(spec, "row", ...)
 }
 
 .add_facet_column <- function(spec, ...){
-  add_facet(spec, "column", ...)
+  .add_facet(spec, "column", ...)
 }
 
 .add_facet_wrap <- function(spec, ...){
-  add_facet(spec, "wrap", ...)
+  .add_facet(spec, "wrap", ...)
 }

@@ -1,12 +1,8 @@
 .add_transform <- function(spec, .trans, ...){
   
-  fn <- function(spec) {
-    if (!hasName(spec,"transform")) spec$transform <- list()
-    spec[["transform"]] <- c(spec[["transform"]],list(list(...)))
-    spec
-  }
-  
-  modify_inner_spec(spec, fn)
+  if (!hasName(spec,"transform")) spec$transform <- list()
+  spec[["transform"]] <- c(spec[["transform"]],list(list(...)))
+  spec
 
 }
 

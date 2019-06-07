@@ -1,8 +1,42 @@
+ENCODE_MAPPING <- list(
+  "N" = "nominal",
+  "T" = "temporal",
+  "Q" = "quantitative",
+  "O" = "ordinal"
+)
+
 .add_encoding <- function(spec, .enc, ...){
 
   fn <- function(spec) {
+    
+    # Handle shorthand
+    enc <- list(...)
+    if (is.null(names(enc)) && length(enc) == 1) {
+      enc <- list(field = enc[[1]])
+    }
+    if (!hasName(enc,"type") && hasName(enc,"field") && grepl(":[N,O,Q,T]$", enc[["field"]])) {
+      field <- enc$field
+      nc <- nchar(field)
+      enc$type <- ENCODE_MAPPING[[substr(field, nc, nc)]]
+      enc$field <- substr(field,1, nc - 2)
+    } else if (!hasName(enc,"type") && hasName(enc,"field")) {
+      dat <- .get_inline_data(spec)
+      if (!is.null(dat)) {
+        col <- dat[[enc$field]]
+        if (is.factor(col)) {
+          enc$type <- "ordinal"          
+        } else if (inherits(col, c("POSIXt", "POSIXct", "POSIXlt", "Date"))) {
+          enc$type <- "temporal"
+        } else if (is.numeric(col)) {
+          enc$type <- "quantitative"
+        } else{
+          enc$type <- "nominal"
+        }
+      }
+    }
+    
     if (!hasName(spec,"encoding")) spec$encoding <- list()
-    spec[["encoding"]][[.enc]] <- list(...)
+    spec[["encoding"]][[.enc]] <- enc
     spec
   }
   

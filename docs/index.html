@@ -89,16 +89,16 @@
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h2>
-<p>These are some examples showing current capabilities; see <a href="https://aliciaschep.github.io/vlbuildr/articles/examples.html">pkgdown site</a> for more examples.</p>
+<p>These are some examples showing current capabilities; see <a href="https://aliciaschep.github.io/vlbuildr/articles/examples.html">pkgdown site</a> for more examples, including interactive ones.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(vlbuildr)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(vegawidget)</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"><span class="st">   </span><span class="kw"><a href="reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb1-5" data-line-number="5"><span class="st">   </span><span class="kw"><a href="reference/vl_mark.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">   </span><span class="kw"><a href="reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="dt">field =</span> <span class="st">"wt"</span>, <span class="dt">type =</span> <span class="st">"quantitative"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">   </span><span class="kw"><a href="reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="dt">field =</span> <span class="st">"mpg"</span>, <span class="dt">type =</span> <span class="st">"quantitative"</span>) </a></code></pre></div>
-<div id="htmlwidget-b6174a81b89db8acbf13" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b6174a81b89db8acbf13">{"x":{
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">   </span><span class="kw"><a href="reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">"wt"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">   </span><span class="kw"><a href="reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">"mpg"</span>) </a></code></pre></div>
+<div id="htmlwidget-36a6fd7745043cefacb5" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-36a6fd7745043cefacb5">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
     "data": {
@@ -574,17 +574,14 @@
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="reference/vl_calculate.html">vl_calculate</a></span>(<span class="dt">calculate =</span> <span class="st">"datum.sex == 2 ? 'Female' : 'Male'"</span>, </a>
 <a class="sourceLine" id="cb2-4" data-line-number="4">               <span class="dt">as =</span> <span class="st">"gender"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="reference/vl_filter.html">vl_filter</a></span>(<span class="st">"datum.year == 2000"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="dt">field =</span> <span class="st">"age"</span>, </a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">              <span class="dt">type =</span> <span class="st">"ordinal"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="reference/vl_scale_x.html">vl_scale_x</a></span>(<span class="dt">rangeStep =</span> <span class="dv">17</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="dt">field =</span> <span class="st">"people"</span>, <span class="dt">type =</span> <span class="st">"quantitative"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="reference/vl_stack_y.html">vl_stack_y</a></span>(<span class="st">"normalize"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="reference/vl_aggregate_y.html">vl_aggregate_y</a></span>(<span class="st">"sum"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="reference/vl_axis_y.html">vl_axis_y</a></span>(<span class="dt">title =</span> <span class="st">"population"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="reference/vl_encode_color.html">vl_encode_color</a></span>(<span class="dt">field =</span> <span class="st">"gender"</span>, <span class="dt">type =</span> <span class="st">"nominal"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="reference/vl_mark.html">vl_mark_bar</a></span>() </a></code></pre></div>
-<div id="htmlwidget-d4cf6a82390cb656673c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d4cf6a82390cb656673c">{"x":{
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="reference/vl_encode.html">vl_encode</a></span>(<span class="dt">x =</span> <span class="st">"age:O"</span>, <span class="dt">y =</span> <span class="st">"people:Q"</span>, <span class="dt">color =</span> <span class="st">"gender:N"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="reference/vl_scale_x.html">vl_scale_x</a></span>(<span class="dt">rangeStep =</span> <span class="dv">17</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="reference/vl_stack_y.html">vl_stack_y</a></span>(<span class="st">"normalize"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="reference/vl_aggregate_y.html">vl_aggregate_y</a></span>(<span class="st">"sum"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="reference/vl_axis_y.html">vl_axis_y</a></span>(<span class="dt">title =</span> <span class="st">"population"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="reference/vl_mark.html">vl_mark_bar</a></span>() </a></code></pre></div>
+<div id="htmlwidget-35190eb36baff4acbf54" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-35190eb36baff4acbf54">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
     "data": {

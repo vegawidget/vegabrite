@@ -4,11 +4,34 @@
 \alias{vl_encode_longitude}
 \title{vl_encode_longitude}
 \usage{
-vl_encode_longitude(spec, aggregate = NULL, bin = NULL, field = NULL,
-  timeUnit = NULL, title = NULL, type = NULL, value = NULL)
+vl_encode_longitude(spec, field = NULL, type = NULL,
+  aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL,
+  value = NULL)
 }
 \arguments{
 \item{spec}{A vega-lite spec.}
+
+\item{field}{\strong{Required.} A string defining the name of the field from which to pull a data value
+or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{repeat} operator.
+
+\strong{Note:} Dots (\code{.}) and brackets (\code{[} and \code{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \code{"field": "foo['bar']"}).
+If field names contain dots or brackets but are not nested, you can use \code{\\} to escape dots and brackets (e.g., \code{"a\\.b"} and \code{"a\\[0\\]"}).
+See more details about escaping in the \href{https://vega.github.io/vega-lite/docs/field.html}{field documentation}.
+
+\strong{Note:} \code{field} is not required if \code{aggregate} is \code{count}. (type = Field)}
+
+\item{type}{The encoded field's type of measurement (\code{"quantitative"}, \code{"temporal"}, \code{"ordinal"}, or \code{"nominal"}).
+It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io/vega-lite/docs/geoshape.html}{'geoshape'}.
+
+\strong{Note:}
+\itemize{
+\item Data values for a temporal field can be either a date-time string (e.g., \code{"2015-03-07 12:32:17"}, \code{"17:01"}, \code{"2015-03-16"}. \code{"2015"}) or a timestamp number (e.g., \code{1552199579097}).
+\item Data \code{type} describes the semantics of the data rather than the primitive data types (\code{number}, \code{string}, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+\item When using with \href{https://vega.github.io/vega-lite/docs/bin.html}{bin}, the \code{type} property can be either \code{"quantitative"} (for using a linear bin scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{"ordinal" (for using an ordinal bin scale)}.
+\item When using with \href{https://vega.github.io/vega-lite/docs/timeunit.html}{timeUnit}, the \code{type} property can be either \code{"temporal"} (for using a temporal scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{"ordinal" (for using an ordinal scale)}.
+\item When using with \href{https://vega.github.io/vega-lite/docs/aggregate.html}{aggregate}, the \code{type} property refers to the post-aggregation data type. For example, we can calculate count \code{distinct} of a categorical field \code{"cat"} using \code{{"aggregate": "distinct", "field": "cat", "type": "quantitative"}}. The \code{"type"} of the aggregate output is \code{"quantitative"}.
+\item Secondary channels (e.g., \code{x2}, \code{y2}, \code{xError}, \code{yError}) do not have \code{type} as they have exactly the same type as their primary channels (e.g., \code{x}, \code{y}). (type = string)
+}}
 
 \item{aggregate}{Aggregation function for the field
 (e.g., \code{mean}, \code{sum}, \code{median}, \code{min}, \code{max}, \code{count}).
@@ -23,15 +46,6 @@ vl_encode_longitude(spec, aggregate = NULL, bin = NULL, field = NULL,
 
 \strong{Default value:} \code{false} (type = Varies)}
 
-\item{field}{\strong{Required.} A string defining the name of the field from which to pull a data value
-or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{repeat} operator.
-
-\strong{Note:} Dots (\code{.}) and brackets (\code{[} and \code{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \code{"field": "foo['bar']"}).
-If field names contain dots or brackets but are not nested, you can use \code{\\} to escape dots and brackets (e.g., \code{"a\\.b"} and \code{"a\\[0\\]"}).
-See more details about escaping in the \href{https://vega.github.io/vega-lite/docs/field.html}{field documentation}.
-
-\strong{Note:} \code{field} is not required if \code{aggregate} is \code{count}. (type = Field)}
-
 \item{timeUnit}{Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field.
 or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}.
 
@@ -45,19 +59,6 @@ or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field 
 \enumerate{
 \item You can customize the default field title format by providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{fieldTitle} property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config} or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{fieldTitle function via the compile function's options}.
 \item If both field definition's \code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used. (type = string OR null)
-}}
-
-\item{type}{The encoded field's type of measurement (\code{"quantitative"}, \code{"temporal"}, \code{"ordinal"}, or \code{"nominal"}).
-It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io/vega-lite/docs/geoshape.html}{'geoshape'}.
-
-\strong{Note:}
-\itemize{
-\item Data values for a temporal field can be either a date-time string (e.g., \code{"2015-03-07 12:32:17"}, \code{"17:01"}, \code{"2015-03-16"}. \code{"2015"}) or a timestamp number (e.g., \code{1552199579097}).
-\item Data \code{type} describes the semantics of the data rather than the primitive data types (\code{number}, \code{string}, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
-\item When using with \href{https://vega.github.io/vega-lite/docs/bin.html}{bin}, the \code{type} property can be either \code{"quantitative"} (for using a linear bin scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{"ordinal" (for using an ordinal bin scale)}.
-\item When using with \href{https://vega.github.io/vega-lite/docs/timeunit.html}{timeUnit}, the \code{type} property can be either \code{"temporal"} (for using a temporal scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{"ordinal" (for using an ordinal scale)}.
-\item When using with \href{https://vega.github.io/vega-lite/docs/aggregate.html}{aggregate}, the \code{type} property refers to the post-aggregation data type. For example, we can calculate count \code{distinct} of a categorical field \code{"cat"} using \code{{"aggregate": "distinct", "field": "cat", "type": "quantitative"}}. The \code{"type"} of the aggregate output is \code{"quantitative"}.
-\item Secondary channels (e.g., \code{x2}, \code{y2}, \code{xError}, \code{yError}) do not have \code{type} as they have exactly the same type as their primary channels (e.g., \code{x}, \code{y}). (type = string)
 }}
 
 \item{value}{A constant value in visual domain (e.g., \code{"red"} / "#0099ff" for color, values between \code{0} to \code{1} for opacity). (type = number)}

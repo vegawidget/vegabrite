@@ -1,3 +1,5 @@
+TOP_LEVEL_KEYS <- c("$schema", "autosize", "background", "config", "datasets", 
+  "padding", "usermeta")
 
 is_composite <- function(spec){
 
@@ -26,7 +28,11 @@ modify_inner_spec.vegaspec_vconcat <- function(spec, fn) {
 }
 
 modify_inner_spec.vegaspec_layer <- function(spec, fn) {
-  stop("Can't apply change to a layer spec; apply prior to concatenating")
+  # Layer spec can have most 'inner' spec properties...
+  # Excpetions: mark & selection
+  # Functions calling this helper should have a separate
+  # layer spec function if needed...
+  fn(spec)
 }
 
 
@@ -45,4 +51,24 @@ modify_inner_spec.vegaspec_unit <- function(spec, fn) {
 }
 
 
+.extract_inner_spec <- function(spec) {
+  keep <- intersect(TOP_LEVEL_KEYS,names(spec))
+  move <- names(spec)[which(!(names(spec) %in% keep))]
+  list(outer = spec[keep], inner = spec[move])
+}
+
+.extract_inner_specs <- function(...) {
+  modified <- purrr::map(list(...), .extract_inner_spec)
+  inners <- purrr::map(modified, ~purrr::pluck(.,'inner'))
+  outers <- purrr::map(modified, ~purrr::pluck(.,'outer'))
+  list(inners = inners, outers = outers)
+}
+
+.get_inline_data <- function(spec) {
+  if (!hasName(spec,"data") || !hasName(spec$data, "values")){
+    NULL
+  } else{
+    spec$data$value
+  }
+}
 

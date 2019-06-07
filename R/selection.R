@@ -1,4 +1,12 @@
-.add_selection <- function(spec, selection_name, ...){
+.add_selection <- function(spec, ...) {
+  UseMethod(".add_selection", spec)
+}
+
+.add_selection.vegaspec_layer <- function(spec, ...) {
+  stop("Cant' add selection to layered spec")  
+}
+
+.add_selection.vegaspec_vega_lite <- function(spec, selection_name, ...){
   
   fn <- function(spec){
     if (!hasName(spec,"selection")) spec$selection <- list()
@@ -10,7 +18,15 @@
   modify_inner_spec(spec, fn)
 }
 
-.add_binding <- function(spec, selection_name, projection_name = NULL, ...){
+.add_binding <- function(spec, ...) {
+  UseMethod(".add_binding", spec)
+}
+
+.add_binding.vegaspec_layer <- function(spec, ...) {
+  stop("Can't add selection binding to layered spec")
+}
+
+.add_binding.vegaspec_vega_lite <- function(spec, selection_name, projection_name = NULL, ...){
   
   fn <- function(spec){
     if (!hasName(spec,"selection") || !hasName(spec$selection, selection_name)) {
