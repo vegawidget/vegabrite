@@ -5,8 +5,25 @@ vlbuildr
 ========
 
 The goal of vlbuildr is to provide an R api for building up vega-lite
-specs. This package is in very early stages at the moment… API likely to
-change!
+specs.
+
+### Current status
+
+This package is in early stages at the moment. Most of a “v0” of the
+public facing API has been built (although definitely not locked-down
+yet!).
+
+However, the internals of the package might change substantially to
+provide greater robustness, make it harder to make invalid specs, and/or
+provide more info when making invalid spec. The current approach seeks
+to make it easy to build up specs, provided your input arguments are
+okay… but it does no checking of those inputs and you can very easily
+make invalid specs! Still TBD exactly how rigorous/helpful this package
+will aim to be with regards to bad specifications..
+
+The documentation is also still very bare-bones. The parameter
+documentation for functions is fairly complete, however, as it relies on
+descriptions pulled directly from the Vega-Lite schema.
 
 Inspiration and related work
 ----------------------------
@@ -18,6 +35,13 @@ approach inspired by [Altair](https://github.com/altair-viz/altair) and
 [vega-lite-api](https://github.com/vega/vega-lite-api)) and (2) take
 advantage of the htmlwidget infrastucture for vega specs provided by the
 [vegawidget]() package.
+
+Building
+--------
+
+Much of the public API is auto-generated via the `build.R` script in the
+`inst` directory. The script makes uses of another package,
+[vlmetabuildr](https://github.com/AliciaSchep/vlmetabuildr).
 
 Examples
 --------
@@ -34,8 +58,6 @@ vl_chart() %>%
    vl_mark_point() %>%
    vl_encode_x("wt") %>%
    vl_encode_y("mpg") 
-#> Warning in .as_vegaspec.list(spec): Spec has no `$schema` element, adding `
-#> $schema` element for Vega-Lite major-version
 ```
 
 ![](man/figures/README-example-1.png)
@@ -52,8 +74,6 @@ vl_chart() %>%
   vl_aggregate_y("sum") %>%
   vl_axis_y(title = "population") %>%
   vl_mark_bar() 
-#> Warning in .as_vegaspec.list(spec): Spec has no `$schema` element, adding `
-#> $schema` element for Vega-Lite major-version
 ```
 
 ![](man/figures/README-example2-1.png)

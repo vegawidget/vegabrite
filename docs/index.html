@@ -80,11 +80,23 @@
 <div id="vlbuildr" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#vlbuildr" class="anchor"></a>vlbuildr</h1></div>
-<p>The goal of vlbuildr is to provide an R api for building up vega-lite specs. This package is in very early stages at the moment… API likely to change!</p>
+<p>The goal of vlbuildr is to provide an R api for building up vega-lite specs.</p>
+<div id="current-status" class="section level3">
+<h3 class="hasAnchor">
+<a href="#current-status" class="anchor"></a>Current status</h3>
+<p>This package is in early stages at the moment. Most of a “v0” of the public facing API has been built (although definitely not locked-down yet!).</p>
+<p>However, the internals of the package might change substantially to provide greater robustness, make it harder to make invalid specs, and/or provide more info when making invalid spec. The current approach seeks to make it easy to build up specs, provided your input arguments are okay… but it does no checking of those inputs and you can very easily make invalid specs! Still TBD exactly how rigorous/helpful this package will aim to be with regards to bad specifications..</p>
+<p>The documentation is also still very bare-bones. The parameter documentation for functions is fairly complete, however, as it relies on descriptions pulled directly from the Vega-Lite schema.</p>
+</div>
 <div id="inspiration-and-related-work" class="section level2">
 <h2 class="hasAnchor">
 <a href="#inspiration-and-related-work" class="anchor"></a>Inspiration and related work</h2>
 <p>The API for this package is heavily inspired by the <a href="articles/examples.html">vegalite R package</a>, but is rebuilt from scratch to (1) build up the API semi-automatically based on the Vega-lite schema (an approach inspired by <a href="https://github.com/altair-viz/altair">Altair</a> and <a href="https://github.com/vega/vega-lite-api">vega-lite-api</a>) and (2) take advantage of the htmlwidget infrastucture for vega specs provided by the <a href="">vegawidget</a> package.</p>
+</div>
+<div id="building" class="section level2">
+<h2 class="hasAnchor">
+<a href="#building" class="anchor"></a>Building</h2>
+<p>Much of the public API is auto-generated via the <code>build.R</code> script in the <code>inst</code> directory. The script makes uses of another package, <a href="https://github.com/AliciaSchep/vlmetabuildr">vlmetabuildr</a>.</p>
 </div>
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
@@ -97,8 +109,8 @@
 <a class="sourceLine" id="cb1-5" data-line-number="5"><span class="st">   </span><span class="kw"><a href="reference/vl_mark.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">   </span><span class="kw"><a href="reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">"wt"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">   </span><span class="kw"><a href="reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">"mpg"</span>) </a></code></pre></div>
-<div id="htmlwidget-2325e1427519c7d45986" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2325e1427519c7d45986">{"x":{
+<div id="htmlwidget-96d88bdd3234ef09131e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-96d88bdd3234ef09131e">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
     "data": {
@@ -580,8 +592,8 @@
 <a class="sourceLine" id="cb2-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="reference/aggregate_encoding.html">vl_aggregate_y</a></span>(<span class="st">"sum"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="reference/axis_encoding.html">vl_axis_y</a></span>(<span class="dt">title =</span> <span class="st">"population"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="reference/vl_mark.html">vl_mark_bar</a></span>() </a></code></pre></div>
-<div id="htmlwidget-473b373bd90bbc6dd18e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-473b373bd90bbc6dd18e">{"x":{
+<div id="htmlwidget-f83a8336930b55fdf26c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f83a8336930b55fdf26c">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
     "data": {
