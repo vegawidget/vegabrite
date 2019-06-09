@@ -141,7 +141,7 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \item{strokeColor}{(\emph{Legend}) Border stroke color for the full legend.}
 
-\item{symbolDash}{(\emph{Legend}) An array of alternating \link{stroke, space} lengths for dashed symbol strokes.}
+\item{symbolDash}{(\emph{Legend}) An array of alternating [stroke, space] lengths for dashed symbol strokes.}
 
 \item{symbolDashOffset}{(\emph{Legend}) The pixel offset at which to start drawing with the symbol stroke dash array.}
 

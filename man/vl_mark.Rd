@@ -247,7 +247,9 @@ vl_mark_errorband(spec, band = NULL, borders = NULL, clip = NULL,
 
 \item{box}{(\emph{BoxPlotDef})}
 
-\item{clip}{(\emph{BoxPlotDef, ErrorBarDef, ErrorBandDef}) Whether a composite mark be clipped to the enclosing group’s width and height.#' (\emph{MarkDef}) Whether a mark be clipped to the enclosing group’s width and height.}
+\item{clip}{(\emph{BoxPlotDef, ErrorBarDef, ErrorBandDef}) Whether a composite mark be clipped to the enclosing group’s width and height.
+
+(\emph{MarkDef}) Whether a mark be clipped to the enclosing group’s width and height.}
 
 \item{color}{(\emph{BoxPlotDef, ErrorBarDef, ErrorBandDef, MarkDef}) Default color.  Note that \code{fill} and \code{stroke} have higher precedence than \code{color} and will override \code{color}.
 
@@ -263,7 +265,9 @@ vl_mark_errorband(spec, band = NULL, borders = NULL, clip = NULL,
 \item \code{"iqr"}: Extend the band to the q1 and q3.
 }
 
-\strong{Default value:} \code{"stderr"}.#' (\emph{ErrorBarDef}) The extent of the rule. Available options include:
+\strong{Default value:} \code{"stderr"}.
+
+(\emph{ErrorBarDef}) The extent of the rule. Available options include:
 \itemize{
 \item \code{"ci"}: Extend the rule to the confidence interval of the mean.
 \item \code{"stderr"}: The size of rule are set to the value of standard error, extending from the mean.
@@ -271,23 +275,33 @@ vl_mark_errorband(spec, band = NULL, borders = NULL, clip = NULL,
 \item \code{"iqr"}: Extend the rule to the q1 and q3.
 }
 
-\strong{Default value:} \code{"stderr"}.#' (\emph{BoxPlotDef}) The extent of the whiskers. Available options include:
+\strong{Default value:} \code{"stderr"}.
+
+(\emph{BoxPlotDef}) The extent of the whiskers. Available options include:
 \itemize{
 \item \code{"min-max"}: min and max are the lower and upper whiskers respectively.
-\item A number representing multiple of the interquartile range.  This number will be multiplied by the IQR to determine whisker boundary, which spans from the smallest data to the largest data within the range [Q1 - k * IQR, Q3 + k * IQR] where \emph{Q1} and \emph{Q3} are the first and third quartiles while \emph{IQR} is the interquartile range (\emph{Q3-Q1}).
+\item A number representing multiple of the interquartile range.  This number will be multiplied by the IQR to determine whisker boundary, which spans from the smallest data to the largest data within the range \emph{[Q1 - k * IQR, Q3 + k * IQR]} where \emph{Q1} and \emph{Q3} are the first and third quartiles while \emph{IQR} is the interquartile range (\emph{Q3-Q1}).
 }
 
 \strong{Default value:} \code{1.5}.}
 
 \item{median}{(\emph{BoxPlotDef})}
 
-\item{opacity}{(\emph{BoxPlotDef, ErrorBarDef, ErrorBandDef}) The opacity (value between \link{0,1}) of the mark.#' (\emph{MarkDef}) The overall opacity (value between \link{0,1}).
+\item{opacity}{(\emph{BoxPlotDef, ErrorBarDef, ErrorBandDef}) The opacity (value between [0,1]) of the mark.
+
+(\emph{MarkDef}) The overall opacity (value between [0,1]).
 
 \strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick}, \code{circle}, or \code{square} marks or layered \code{bar} charts and \code{1} otherwise.}
 
 \item{orient}{(\emph{BoxPlotDef}) Orientation of the box plot.  This is normally automatically determined based on types of fields on x and y channels. However, an explicit \code{orient} be specified when the orientation is ambiguous.
 
-\strong{Default value:} \code{"vertical"}.#' (\emph{ErrorBandDef}) Orientation of the error band. This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.#' (\emph{ErrorBarDef}) Orientation of the error bar.  This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.#' (\emph{MarkDef}) The orientation of a non-stacked bar, tick, area, and line charts.
+\strong{Default value:} \code{"vertical"}.
+
+(\emph{ErrorBandDef}) Orientation of the error band. This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.
+
+(\emph{ErrorBarDef}) Orientation of the error bar.  This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.
+
+(\emph{MarkDef}) The orientation of a non-stacked bar, tick, area, and line charts.
 The value is either horizontal (default) or vertical.
 \itemize{
 \item For bar, rule and tick, this determines whether the size of the bar and tick
@@ -310,7 +324,9 @@ therefore explicitly specified value will be ignored.
 \item For \code{text}, this represents the font size, in pixels.
 }
 
-\strong{Default value:} \code{30} for point, circle, square marks; \code{rangeStep} - 1 for bar marks with discrete dimensions; \code{5} for bar marks with continuous dimensions; \code{11} for text marks.#' (\emph{BoxPlotDef}) Size of the box and median tick of a box plot}
+\strong{Default value:} \code{30} for point, circle, square marks; \code{rangeStep} - 1 for bar marks with discrete dimensions; \code{5} for bar marks with continuous dimensions; \code{11} for text marks.
+
+(\emph{BoxPlotDef}) Size of the box and median tick of a box plot}
 
 \item{ticks}{(\emph{BoxPlotDef, ErrorBarDef})}
 
@@ -337,7 +353,11 @@ or a composite mark type (\code{"boxplot"}, \code{"errorband"}, \code{"errorbar"
 \item \code{"cardinal-open"}: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
 \item \code{"cardinal-closed"}: a closed Cardinal spline, as in a loop.
 \item \code{"bundle"}: equivalent to basis, except the tension parameter is used to straighten the spline.
-\item \code{"monotone"}: cubic interpolation that preserves monotonicity in y.#' (\emph{MarkDef}) The line interpolation method to use for line and area marks. One of the following:
+\item \code{"monotone"}: cubic interpolation that preserves monotonicity in y.
+}
+
+(\emph{MarkDef}) The line interpolation method to use for line and area marks. One of the following:
+\itemize{
 \item \code{"linear"}: piecewise linear segments, as in a polyline.
 \item \code{"linear-closed"}: close the linear segments to form a polygon.
 \item \code{"step"}: alternate between horizontal and vertical segments, as in a step function.
@@ -353,7 +373,9 @@ or a composite mark type (\code{"boxplot"}, \code{"errorband"}, \code{"errorbar"
 \item \code{"monotone"}: cubic interpolation that preserves monotonicity in y.
 }}
 
-\item{tension}{(\emph{MarkDef}) Depending on the interpolation type, sets the tension parameter (for line and area marks).#' (\emph{ErrorBandDef}) The tension parameter for the interpolation type of the error band.}
+\item{tension}{(\emph{MarkDef}) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+
+(\emph{ErrorBandDef}) The tension parameter for the interpolation type of the error band.}
 
 \item{align}{(\emph{MarkDef}) The horizontal alignment of the text. One of \code{"left"}, \code{"right"}, \code{"center"}.}
 
@@ -389,7 +411,7 @@ or a composite mark type (\code{"boxplot"}, \code{"errorband"}, \code{"errorbar"
 
 \strong{Default value:} (None)}
 
-\item{fillOpacity}{(\emph{MarkDef}) The fill opacity (value between \link{0,1}).
+\item{fillOpacity}{(\emph{MarkDef}) The fill opacity (value between [0,1]).
 
 \strong{Default value:} \code{1}}
 
@@ -463,7 +485,7 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 
 \item{strokeMiterLimit}{(\emph{MarkDef}) The miter limit at which to bevel a line join.}
 
-\item{strokeOpacity}{(\emph{MarkDef}) The stroke opacity (value between \link{0,1}).
+\item{strokeOpacity}{(\emph{MarkDef}) The stroke opacity (value between [0,1]).
 
 \strong{Default value:} \code{1}}
 

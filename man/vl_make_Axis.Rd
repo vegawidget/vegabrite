@@ -40,7 +40,7 @@ vl_make_Axis(bandPosition = NULL, domain = NULL, domainColor = NULL,
 
 \strong{Default value:} \code{"gray"}.}
 
-\item{domainDash}{(\emph{Axis}) An array of alternating \link{stroke, space} lengths for dashed domain lines.}
+\item{domainDash}{(\emph{Axis}) An array of alternating [stroke, space] lengths for dashed domain lines.}
 
 \item{domainDashOffset}{(\emph{Axis}) The pixel offset at which to start drawing with the domain dash array.}
 
@@ -76,11 +76,11 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \strong{Default value:} \code{"lightGray"}.}
 
-\item{gridDash}{(\emph{Axis}) An array of alternating \link{stroke, space} lengths for dashed grid lines.}
+\item{gridDash}{(\emph{Axis}) An array of alternating [stroke, space] lengths for dashed grid lines.}
 
 \item{gridDashOffset}{(\emph{Axis}) The pixel offset at which to start drawing with the grid dash array.}
 
-\item{gridOpacity}{(\emph{Axis}) The stroke opacity of grid (value between \link{0,1})
+\item{gridOpacity}{(\emph{Axis}) The stroke opacity of grid (value between [0,1])
 
 \strong{Default value:} \code{1}}
 
@@ -164,7 +164,7 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \item{tickCount}{(\emph{Axis}) A desired number of ticks, for axes visualizing quantitative scales. The resulting number may be different so that values are "nice" (multiples of 2, 5, 10) and lie within the underlying scale's range.}
 
-\item{tickDash}{(\emph{Axis}) An array of alternating \link{stroke, space} lengths for dashed tick mark lines.}
+\item{tickDash}{(\emph{Axis}) An array of alternating [stroke, space] lengths for dashed tick mark lines.}
 
 \item{tickDashOffset}{(\emph{Axis}) The pixel offset at which to start drawing with the tick mark dash array.}
 

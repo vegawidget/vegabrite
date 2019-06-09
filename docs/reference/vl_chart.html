@@ -181,7 +181,8 @@ Object values can additionally specify parameters for content sizing and automat
       <th>center</th>
       <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
 <p>An object value of the form <code>{"row": boolean, "column": boolean}</code> can be used to supply different centering values for rows and columns.</p>
-<p><strong>Default value:</strong> <code>false</code>#' (<em>TopLevelVConcatSpec, TopLevelHConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
+<p><strong>Default value:</strong> <code>false</code></p>
+<p>(<em>TopLevelVConcatSpec, TopLevelHConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
 <p><strong>Default value:</strong> <code>false</code></p></td>
     </tr>
     <tr>
@@ -215,7 +216,8 @@ This can be an array of objects or primitive values or a string. Arrays of primi
     </tr>
     <tr>
       <th>encoding</th>
-      <td><p>(<em>TopLevelUnitSpec</em>) A key-value mapping between encoding channels and definition of fields.#' (<em>TopLevelLayerSpec</em>) A shared key-value mapping between encoding channels and definition of fields in the underlying layers.</p></td>
+      <td><p>(<em>TopLevelUnitSpec</em>) A key-value mapping between encoding channels and definition of fields.</p>
+<p>(<em>TopLevelLayerSpec</em>) A shared key-value mapping between encoding channels and definition of fields in the underlying layers.</p></td>
     </tr>
     <tr>
       <th>height</th>
@@ -247,7 +249,8 @@ If an object, the value should have the format <code>{"left": 5, "top": 5, "righ
     <tr>
       <th>projection</th>
       <td><p>(<em>TopLevelUnitSpec</em>) An object defining properties of geographic projection, which will be applied to <code>shape</code> path for <code>"geoshape"</code> marks
-and to <code>latitude</code> and <code>"longitude"</code> channels for other marks.#' (<em>TopLevelLayerSpec</em>) An object defining properties of the geographic projection shared by underlying layers.</p></td>
+and to <code>latitude</code> and <code>"longitude"</code> channels for other marks.</p>
+<p>(<em>TopLevelLayerSpec</em>) An object defining properties of the geographic projection shared by underlying layers.</p></td>
     </tr>
     <tr>
       <th>resolve</th>
@@ -262,7 +265,8 @@ and to <code>latitude</code> and <code>"longitude"</code> channels for other mar
       <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec</em>) The spacing in pixels between sub-views of the composition operator.
 An object of the form <code>{"row": number, "column": number}</code> can be used to set
 different spacing values for rows and columns.</p>
-<p><strong>Default value</strong>: Depends on <code>"spacing"</code> property of <a href='https://vega.github.io/vega-lite/docs/config.html#view-config'>the view composition configuration</a> (<code>20</code> by default)#' (<em>TopLevelVConcatSpec, TopLevelHConcatSpec</em>) The spacing in pixels between sub-views of the concat operator.</p>
+<p><strong>Default value</strong>: Depends on <code>"spacing"</code> property of <a href='https://vega.github.io/vega-lite/docs/config.html#view-config'>the view composition configuration</a> (<code>20</code> by default)</p>
+<p>(<em>TopLevelVConcatSpec, TopLevelHConcatSpec</em>) The spacing in pixels between sub-views of the concat operator.</p>
 <p><strong>Default value</strong>: <code>10</code></p></td>
     </tr>
     <tr>
@@ -304,7 +308,8 @@ This object is completely ignored by Vega and Vega-Lite and can be used for cust
     </tr>
     <tr>
       <th>spec</th>
-      <td><p>(<em>TopLevelFacetSpec</em>) A specification of the view that gets faceted.#' (<em>TopLevelRepeatSpec</em>) A specification of the view that gets repeated.</p></td>
+      <td><p>(<em>TopLevelFacetSpec</em>) A specification of the view that gets faceted.</p>
+<p>(<em>TopLevelRepeatSpec</em>) A specification of the view that gets repeated.</p></td>
     </tr>
     <tr>
       <th>layer</th>

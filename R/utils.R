@@ -58,9 +58,9 @@ modify_inner_spec.vegaspec_unit <- function(spec, fn) {
 }
 
 .extract_inner_specs <- function(...) {
-  modified <- purrr::map(list(...), .extract_inner_spec)
-  inners <- purrr::map(modified, ~purrr::pluck(.,'inner'))
-  outers <- purrr::map(modified, ~purrr::pluck(.,'outer'))
+  modified <- lapply(list(...), .extract_inner_spec)
+  inners <- lapply(modified, function(x) x[['inner']])
+  outers <- lapply(modified, function(x) x[['outer']])
   list(inners = inners, outers = outers)
 }
 

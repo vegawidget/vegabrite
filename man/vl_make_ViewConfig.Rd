@@ -21,7 +21,7 @@ vl_make_ViewConfig(clip = NULL, cornerRadius = NULL, fill = NULL,
 
 \strong{Default value:} \code{undefined}}
 
-\item{fillOpacity}{(\emph{ViewConfig}) The fill opacity (value between \link{0,1}).
+\item{fillOpacity}{(\emph{ViewConfig}) The fill opacity (value between [0,1]).
 
 \strong{Default value:} \code{1}}
 
@@ -29,7 +29,7 @@ vl_make_ViewConfig(clip = NULL, cornerRadius = NULL, fill = NULL,
 
 \strong{Default value:} \code{200}}
 
-\item{opacity}{(\emph{ViewConfig}) The overall opacity (value between \link{0,1}).
+\item{opacity}{(\emph{ViewConfig}) The overall opacity (value between [0,1]).
 
 \strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick}, \code{circle}, or \code{square} marks or layered \code{bar} charts and \code{1} otherwise.}
 
@@ -51,7 +51,7 @@ vl_make_ViewConfig(clip = NULL, cornerRadius = NULL, fill = NULL,
 
 \item{strokeMiterLimit}{(\emph{ViewConfig}) The miter limit at which to bevel a line join.}
 
-\item{strokeOpacity}{(\emph{ViewConfig}) The stroke opacity (value between \link{0,1}).
+\item{strokeOpacity}{(\emph{ViewConfig}) The stroke opacity (value between [0,1]).
 
 \strong{Default value:} \code{1}}
 

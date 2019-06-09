@@ -30,8 +30,8 @@ If \code{null}, the axis for the encoding channel will be removed.
 \item{field}{(\emph{PositionFieldDef}) \strong{Required.} A string defining the name of the field from which to pull a data value
 or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{repeat} operator.
 
-\strong{Note:} Dots (\code{.}) and brackets (\code{[} and \code{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \code{"field": "foo['bar']"}).
-If field names contain dots or brackets but are not nested, you can use \code{\\} to escape dots and brackets (e.g., \code{"a\\.b"} and \code{"a\\[0\\]"}).
+\strong{Note:} Dots (\code{.}) and brackets (\code{[} and \code{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \code{"field": "foo\['bar'\]"}).
+If field names contain dots or brackets but are not nested, you can use \code{\\} to escape dots and brackets (e.g., \code{"a\\.b"} and \code{"a\\\[0\\\]"}).
 See more details about escaping in the \href{https://vega.github.io/vega-lite/docs/field.html}{field documentation}.
 
 \strong{Note:} \code{field} is not required if \code{aggregate} is \code{count}.}

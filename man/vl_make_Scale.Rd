@@ -42,7 +42,7 @@ The \code{selection} property can be used to \href{https://vega.github.io/vega-l
 \item \strong{Default value:} \code{hcl}
 }}
 
-\item{nice}{(\emph{Scale}) Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of [0.201479…, 0.996679…], a nice domain might be [0.2, 1.0].
+\item{nice}{(\emph{Scale}) Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of \emph{[0.201479…, 0.996679…]}, a nice domain might be \emph{[0.2, 1.0]}.
 
 For quantitative scales such as linear, \code{nice} can be either a boolean flag or a number. If \code{nice} is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
 
@@ -59,14 +59,14 @@ For \emph{\href{https://vega.github.io/vega-lite/docs/scale.html#point}{point}} 
 \strong{Default value:} For \emph{continuous} scales, derived from the \href{https://vega.github.io/vega-lite/docs/scale.html#config}{scale config}'s \code{continuousPadding}.
 For \emph{band and point} scales, see \code{paddingInner} and \code{paddingOuter}.}
 
-\item{paddingInner}{(\emph{Scale}) The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range \link{0,1}.
+\item{paddingInner}{(\emph{Scale}) The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range [0,1].
 
 For point scale, this property is invalid as point scales do not have internal band widths (only step sizes between bands).
 
 \strong{Default value:} derived from the \href{https://vega.github.io/vega-lite/docs/scale.html#config}{scale config}'s \code{bandPaddingInner}.}
 
 \item{paddingOuter}{(\emph{Scale}) The outer padding (spacing) at the ends of the range of band and point scales,
-as a fraction of the step size. This value must lie in the range \link{0,1}.
+as a fraction of the step size. This value must lie in the range [0,1].
 
 \strong{Default value:} derived from the \href{https://vega.github.io/vega-lite/docs/scale.html#config}{scale config}'s \code{bandPaddingOuter} for band scales and \code{pointPadding} for point scales.}
 

@@ -171,7 +171,8 @@ Object values can additionally specify parameters for content sizing and automat
       <th>center</th>
       <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
 <p>An object value of the form <code>{"row": boolean, "column": boolean}</code> can be used to supply different centering values for rows and columns.</p>
-<p><strong>Default value:</strong> <code>false</code>#' (<em>TopLevelVConcatSpec, TopLevelHConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
+<p><strong>Default value:</strong> <code>false</code></p>
+<p>(<em>TopLevelVConcatSpec, TopLevelHConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
 <p><strong>Default value:</strong> <code>false</code></p></td>
     </tr>
     <tr>
@@ -224,14 +225,16 @@ If an object, the value should have the format <code>{"left": 5, "top": 5, "righ
     <tr>
       <th>projection</th>
       <td><p>(<em>TopLevelUnitSpec</em>) An object defining properties of geographic projection, which will be applied to <code>shape</code> path for <code>"geoshape"</code> marks
-and to <code>latitude</code> and <code>"longitude"</code> channels for other marks.#' (<em>TopLevelLayerSpec</em>) An object defining properties of the geographic projection shared by underlying layers.</p></td>
+and to <code>latitude</code> and <code>"longitude"</code> channels for other marks.</p>
+<p>(<em>TopLevelLayerSpec</em>) An object defining properties of the geographic projection shared by underlying layers.</p></td>
     </tr>
     <tr>
       <th>spacing</th>
       <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec</em>) The spacing in pixels between sub-views of the composition operator.
 An object of the form <code>{"row": number, "column": number}</code> can be used to set
 different spacing values for rows and columns.</p>
-<p><strong>Default value</strong>: Depends on <code>"spacing"</code> property of <a href='https://vega.github.io/vega-lite/docs/config.html#view-config'>the view composition configuration</a> (<code>20</code> by default)#' (<em>TopLevelVConcatSpec, TopLevelHConcatSpec</em>) The spacing in pixels between sub-views of the concat operator.</p>
+<p><strong>Default value</strong>: Depends on <code>"spacing"</code> property of <a href='https://vega.github.io/vega-lite/docs/config.html#view-config'>the view composition configuration</a> (<code>20</code> by default)</p>
+<p>(<em>TopLevelVConcatSpec, TopLevelHConcatSpec</em>) The spacing in pixels between sub-views of the concat operator.</p>
 <p><strong>Default value</strong>: <code>10</code></p></td>
     </tr>
     <tr>
@@ -268,7 +271,7 @@ This object is completely ignored by Vega and Vega-Lite and can be used for cust
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='vl_chart.html'>vl_chart()</a></code>, <code>vl_config()</code></p></div>
+    <div class='dont-index'><p><code><a href='vl_chart.html'>vl_chart()</a></code>, <code><a href='vl_add_config.html'>vl_add_config()</a></code></p></div>
     
 
   </div>

@@ -19,7 +19,7 @@ vl_make_BinParams(anchor = NULL, base = NULL, binned = NULL,
 
 \item{binned}{(\emph{BinParams}) When set to true, Vega-Lite treats the input data as already binned.}
 
-\item{divide}{(\emph{BinParams}) Scale factors indicating allowable subdivisions. The default value is \link{5, 2}, which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+\item{divide}{(\emph{BinParams}) Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
 
 \strong{Default value:} \code{[5, 2]}}
 

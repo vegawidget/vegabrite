@@ -142,8 +142,8 @@
       <th>field</th>
       <td><p>(<em>LatLongFieldDef</em>) <strong>Required.</strong> A string defining the name of the field from which to pull a data value
 or an object defining iterated values from the <a href='https://vega.github.io/vega-lite/docs/repeat.html'>repeat</a> operator.</p>
-<p><strong>Note:</strong> Dots (<code>.</code>) and brackets (<code>[</code> and <code>]</code>) can be used to access nested objects (e.g., <code>"field": "foo.bar"</code> and <code>"field": "foo['bar']"</code>).
-If field names contain dots or brackets but are not nested, you can use <code>\</code> to escape dots and brackets (e.g., <code>"a\.b"</code> and <code>"a\[0\]"</code>).
+<p><strong>Note:</strong> Dots (<code>.</code>) and brackets (<code>[</code> and <code>]</code>) can be used to access nested objects (e.g., <code>"field": "foo.bar"</code> and <code>"field": "foo\['bar'\]"</code>).
+If field names contain dots or brackets but are not nested, you can use <code>\</code> to escape dots and brackets (e.g., <code>"a\.b"</code> and <code>"a\\[0\\]"</code>).
 See more details about escaping in the <a href='https://vega.github.io/vega-lite/docs/field.html'>field documentation</a>.</p>
 <p><strong>Note:</strong> <code>field</code> is not required if <code>aggregate</code> is <code>count</code>.</p></td>
     </tr>

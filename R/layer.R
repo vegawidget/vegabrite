@@ -10,7 +10,7 @@ vl_layer <- function(...) {
   
   parts <- .extract_inner_specs(...)
   
-  out_spec <- purrr::reduce(parts$outers, utils::modifyList, .dir = "backward")
+  out_spec <- Reduce(utils::modifyList, parts$outers, right = TRUE)
   
   out_spec[["layer"]] <- parts$inners
   

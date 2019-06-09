@@ -49,8 +49,6 @@ For interval selections, the event stream must specify a \href{https://vega.gith
 \item{resolve}{(\emph{SingleSelection}) With layered and multi-view displays, a strategy that determines how
 selections' data queries are resolved when applied in a filter transform,
 conditional encoding rule, or scale domain.}
-
-\item{type}{(\emph{SingleSelection}) single}
 }
 \value{
 A modified spec

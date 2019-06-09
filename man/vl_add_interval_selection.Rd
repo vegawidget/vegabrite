@@ -62,8 +62,6 @@ Can be \code{true}, \code{false} (to disable zooming), or a \href{https://vega.g
 only \code{wheel} events are supported.
 
 \strong{Default value:} \code{true}, which corresponds to \code{wheel!}.}
-
-\item{type}{(\emph{IntervalSelection}) interval}
 }
 \value{
 A modified spec

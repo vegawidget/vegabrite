@@ -58,7 +58,7 @@ Object values can additionally specify parameters for content sizing and automat
 
 \item{countTitle}{(\emph{Config}) Default axis and legend title for count fields.
 
-\strong{Default value:} \code{'Count of Records}.}
+\strong{Default value:} \code{Count of Records}.}
 
 \item{errorband}{(\emph{Config}) ErrorBand Config}
 

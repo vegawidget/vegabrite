@@ -1,1 +1,79 @@
 destination: docs
+
+reference:
+  - title: "Initialize a chart"
+    desc: "Initialize a Vega-Lite specification"
+    contents:
+    - vl_chart
+  - title: "Top level properties"
+    desc: "Add top level properties to a spec"
+    contents:
+    - vl_add_data
+    - vl_add_properties
+  - title: "Mark"
+    desc: "Add a mark to chart spec"
+    contents:
+    - vl_mark
+  - title: "Encoding"
+    desc: "Encode a channel"
+    contents:
+    - starts_with("vl_encode")
+  - title: "Encoding properties"
+    desc: "Add property to an encoding channel"
+    contents:
+    - starts_with("vl_axis")
+    - starts_with("vl_scale")
+    - starts_with("vl_condition")
+    - starts_with("vl_legend")
+    - starts_with("vl_sort")
+  - title: "Transforms "
+    desc: "Add a transformation to a spec at the top level or to an encoding"
+    contents:
+    - starts_with("vl_aggregate")
+    - starts_with("vl_bin_")
+    - vl_bin
+    - vl_calculate
+    - vl_filter
+    - vl_flatten
+    - vl_fold
+    - starts_with("vl_impute")
+    - vl_joinaggregate
+    - vl_lookup
+    - vl_sample
+    - starts_with("vl_stack")
+    - vl_timeunit
+    - vl_window
+  - title: "Composition"
+    desc: "Combine specs via layering or concatenation"
+    contents:
+    - concat
+    - ends_with("layer")
+  - title: "Faceting & repeating"
+    desc: "Use faceting or repeating to make sub-plots"
+    contents:
+    - starts_with("vl_facet")
+    - starts_with("vl_repeat")
+  - title: "Config"
+    desc: "Add configuration"
+    contents:
+    - ends_with("config")
+  - title: "Selection"
+    desc: "Add selection to a spec"
+    contents:
+    - ends_with("selection")
+  - title: "Binding"
+    desc: "Add a binding to a selection"
+    contents:
+    - starts_with("vl_bind")
+  - title: "Resolve"
+    desc: > 
+      Add instructions on how to resolve axis, legend, or scale in cases
+      of composite plots
+    contents:
+    - starts_with("vl_resolve")
+  - title: "Make spec objects"
+    desc: >
+      As opposed to other functions that modify / add to a spec, these make a 
+      sub-component of a Vega-lite spec
+    contents:
+    - starts_with("vl_make")

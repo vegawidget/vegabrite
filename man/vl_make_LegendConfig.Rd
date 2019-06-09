@@ -162,7 +162,7 @@ vl_make_LegendConfig(clipHeight = NULL, columnPadding = NULL,
 
 \strong{Default value:} \code{"gray"}.}
 
-\item{symbolDash}{(\emph{LegendConfig}) An array of alternating \link{stroke, space} lengths for dashed symbol strokes.}
+\item{symbolDash}{(\emph{LegendConfig}) An array of alternating [stroke, space] lengths for dashed symbol strokes.}
 
 \item{symbolDashOffset}{(\emph{LegendConfig}) The pixel offset at which to start drawing with the symbol stroke dash array.}
 

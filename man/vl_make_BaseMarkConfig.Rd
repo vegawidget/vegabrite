@@ -47,7 +47,7 @@ vl_make_BaseMarkConfig(align = NULL, angle = NULL, baseline = NULL,
 
 \strong{Default value:} (None)}
 
-\item{fillOpacity}{(\emph{BaseMarkConfig}) The fill opacity (value between \link{0,1}).
+\item{fillOpacity}{(\emph{BaseMarkConfig}) The fill opacity (value between [0,1]).
 
 \strong{Default value:} \code{1}}
 
@@ -83,7 +83,7 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 
 \strong{Default value:} \code{0}, indicating no limit}
 
-\item{opacity}{(\emph{BaseMarkConfig}) The overall opacity (value between \link{0,1}).
+\item{opacity}{(\emph{BaseMarkConfig}) The overall opacity (value between [0,1]).
 
 \strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick}, \code{circle}, or \code{square} marks or layered \code{bar} charts and \code{1} otherwise.}
 
@@ -134,7 +134,7 @@ For example: in the case of circles, the radius is determined in part by the squ
 
 \item{strokeMiterLimit}{(\emph{BaseMarkConfig}) The miter limit at which to bevel a line join.}
 
-\item{strokeOpacity}{(\emph{BaseMarkConfig}) The stroke opacity (value between \link{0,1}).
+\item{strokeOpacity}{(\emph{BaseMarkConfig}) The stroke opacity (value between [0,1]).
 
 \strong{Default value:} \code{1}}
 

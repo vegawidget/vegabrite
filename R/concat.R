@@ -11,7 +11,7 @@ vl_hconcat <- function(...) {
 
   parts <- .extract_inner_specs(...)
   
-  out_spec <- purrr::reduce(parts$outers, utils::modifyList, .dir = "backward")
+  out_spec <- Reduce(utils::modifyList, parts$outers, right = TRUE)
   
   out_spec[["hconcat"]] <- parts$inners
    
@@ -26,7 +26,7 @@ vl_vconcat <- function(...) {
   
   parts <- .extract_inner_specs(...)
   
-  out_spec <- purrr::reduce(parts$outers, utils::modifyList, .dir = "backward")
+  out_spec <- Reduce(utils::modifyList, parts$outers, right = TRUE)
   
   out_spec[["vconcat"]] <- parts$inners
   
@@ -35,13 +35,13 @@ vl_vconcat <- function(...) {
 }
 
 #' @export
-#'
+#' @param columns Number of columns to use
 #' @name concat
 vl_concat <- function(..., columns = 2) {
   
   parts <- .extract_inner_specs(...)
   
-  out_spec <- purrr::reduce(parts$outers, utils::modifyList, .dir = "backward")
+  out_spec <- Reduce(utils::modifyList, parts$outers, right = TRUE)
   
   out_spec[["concat"]] <- parts$inners
   out_spec[["columns"]] <- columns

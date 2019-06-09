@@ -15,6 +15,8 @@ vl_concat(..., columns = 2)
 }
 \arguments{
 \item{...}{specs}
+
+\item{columns}{Number of columns to use}
 }
 \value{
 A composite spec

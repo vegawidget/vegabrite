@@ -18,7 +18,7 @@ vl_make_ProjectionConfig(center = NULL, clipAngle = NULL,
 
 \item{clipAngle}{(\emph{Projection}) Sets the projection’s clipping circle radius to the specified angle in degrees. If \code{null}, switches to \href{http://bl.ocks.org/mbostock/3788999}{antimeridian} cutting rather than small-circle clipping.}
 
-\item{clipExtent}{(\emph{Projection}) Sets the projection’s viewport clip extent to the specified bounds in pixels. The extent bounds are specified as an array \code{[[x0, y0], [x1, y1]]}, where \code{x0} is the left-side of the viewport, \code{y0} is the top, \code{x1} is the right and \code{y1} is the bottom. If \code{null}, no viewport clipping is performed.}
+\item{clipExtent}{(\emph{Projection}) Sets the projection’s viewport clip extent to the specified bounds in pixels. The extent bounds are specified as an array \code{[\[x0, y0\], \[x1, y1\]]}, where \code{x0} is the left-side of the viewport, \code{y0} is the top, \code{x1} is the right and \code{y1} is the bottom. If \code{null}, no viewport clipping is performed.}
 
 \item{coefficient}{(\emph{Projection})}
 
@@ -40,7 +40,7 @@ vl_make_ProjectionConfig(center = NULL, clipAngle = NULL,
 
 \item{reflectY}{(\emph{Projection})}
 
-\item{rotate}{(\emph{Projection}) Sets the projection’s three-axis rotation to the specified angles, which must be a two- or three-element array of numbers \link[=`lambda`, `phi`, `gamma`]{lambda, phi, gamma} specifying the rotation angles in degrees about each spherical axis. (These correspond to yaw, pitch and roll.)
+\item{rotate}{(\emph{Projection}) Sets the projection’s three-axis rotation to the specified angles, which must be a two- or three-element array of numbers [\code{lambda}, \code{phi}, \code{gamma}] specifying the rotation angles in degrees about each spherical axis. (These correspond to yaw, pitch and roll.)
 
 \strong{Default value:} \code{[0, 0, 0]}}
 

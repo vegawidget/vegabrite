@@ -353,7 +353,8 @@
     </tr>
     <tr>
       <th>clip</th>
-      <td><p>(<em>BoxPlotDef, ErrorBarDef, ErrorBandDef</em>) Whether a composite mark be clipped to the enclosing group’s width and height.#' (<em>MarkDef</em>) Whether a mark be clipped to the enclosing group’s width and height.</p></td>
+      <td><p>(<em>BoxPlotDef, ErrorBarDef, ErrorBandDef</em>) Whether a composite mark be clipped to the enclosing group’s width and height.</p>
+<p>(<em>MarkDef</em>) Whether a mark be clipped to the enclosing group’s width and height.</p></td>
     </tr>
     <tr>
       <th>color</th>
@@ -370,16 +371,18 @@
 <li><p><code>"iqr"</code>: Extend the band to the q1 and q3.</p></li>
 </ul>
 
-<p><strong>Default value:</strong> <code>"stderr"</code>.#' (<em>ErrorBarDef</em>) The extent of the rule. Available options include:</p><ul>
+<p><strong>Default value:</strong> <code>"stderr"</code>.</p>
+<p>(<em>ErrorBarDef</em>) The extent of the rule. Available options include:</p><ul>
 <li><p><code>"ci"</code>: Extend the rule to the confidence interval of the mean.</p></li>
 <li><p><code>"stderr"</code>: The size of rule are set to the value of standard error, extending from the mean.</p></li>
 <li><p><code>"stdev"</code>: The size of rule are set to the value of standard deviation, extending from the mean.</p></li>
 <li><p><code>"iqr"</code>: Extend the rule to the q1 and q3.</p></li>
 </ul>
 
-<p><strong>Default value:</strong> <code>"stderr"</code>.#' (<em>BoxPlotDef</em>) The extent of the whiskers. Available options include:</p><ul>
+<p><strong>Default value:</strong> <code>"stderr"</code>.</p>
+<p>(<em>BoxPlotDef</em>) The extent of the whiskers. Available options include:</p><ul>
 <li><p><code>"min-max"</code>: min and max are the lower and upper whiskers respectively.</p></li>
-<li><p>A number representing multiple of the interquartile range.  This number will be multiplied by the IQR to determine whisker boundary, which spans from the smallest data to the largest data within the range [Q1 - k * IQR, Q3 + k * IQR] where <em>Q1</em> and <em>Q3</em> are the first and third quartiles while <em>IQR</em> is the interquartile range (<em>Q3-Q1</em>).</p></li>
+<li><p>A number representing multiple of the interquartile range.  This number will be multiplied by the IQR to determine whisker boundary, which spans from the smallest data to the largest data within the range <em>[Q1 - k * IQR, Q3 + k * IQR]</em> where <em>Q1</em> and <em>Q3</em> are the first and third quartiles while <em>IQR</em> is the interquartile range (<em>Q3-Q1</em>).</p></li>
 </ul>
 
 <p><strong>Default value:</strong> <code>1.5</code>.</p></td>
@@ -390,13 +393,17 @@
     </tr>
     <tr>
       <th>opacity</th>
-      <td><p>(<em>BoxPlotDef, ErrorBarDef, ErrorBandDef</em>) The opacity (value between 0,1) of the mark.#' (<em>MarkDef</em>) The overall opacity (value between 0,1).</p>
+      <td><p>(<em>BoxPlotDef, ErrorBarDef, ErrorBandDef</em>) The opacity (value between [0,1]) of the mark.</p>
+<p>(<em>MarkDef</em>) The overall opacity (value between [0,1]).</p>
 <p><strong>Default value:</strong> <code>0.7</code> for non-aggregate plots with <code>point</code>, <code>tick</code>, <code>circle</code>, or <code>square</code> marks or layered <code>bar</code> charts and <code>1</code> otherwise.</p></td>
     </tr>
     <tr>
       <th>orient</th>
       <td><p>(<em>BoxPlotDef</em>) Orientation of the box plot.  This is normally automatically determined based on types of fields on x and y channels. However, an explicit <code>orient</code> be specified when the orientation is ambiguous.</p>
-<p><strong>Default value:</strong> <code>"vertical"</code>.#' (<em>ErrorBandDef</em>) Orientation of the error band. This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.#' (<em>ErrorBarDef</em>) Orientation of the error bar.  This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.#' (<em>MarkDef</em>) The orientation of a non-stacked bar, tick, area, and line charts.
+<p><strong>Default value:</strong> <code>"vertical"</code>.</p>
+<p>(<em>ErrorBandDef</em>) Orientation of the error band. This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.</p>
+<p>(<em>ErrorBarDef</em>) Orientation of the error bar.  This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.</p>
+<p>(<em>MarkDef</em>) The orientation of a non-stacked bar, tick, area, and line charts.
 The value is either horizontal (default) or vertical.</p><ul>
 <li><p>For bar, rule and tick, this determines whether the size of the bar and tick
 should be applied to x or y dimension.</p></li>
@@ -423,7 +430,8 @@ therefore explicitly specified value will be ignored.</p></li>
 <li><p>For <code>text</code>, this represents the font size, in pixels.</p></li>
 </ul>
 
-<p><strong>Default value:</strong> <code>30</code> for point, circle, square marks; <code>rangeStep</code> - 1 for bar marks with discrete dimensions; <code>5</code> for bar marks with continuous dimensions; <code>11</code> for text marks.#' (<em>BoxPlotDef</em>) Size of the box and median tick of a box plot</p></td>
+<p><strong>Default value:</strong> <code>30</code> for point, circle, square marks; <code>rangeStep</code> - 1 for bar marks with discrete dimensions; <code>5</code> for bar marks with continuous dimensions; <code>11</code> for text marks.</p>
+<p>(<em>BoxPlotDef</em>) Size of the box and median tick of a box plot</p></td>
     </tr>
     <tr>
       <th>ticks</th>
@@ -459,7 +467,10 @@ or a composite mark type (<code>"boxplot"</code>, <code>"errorband"</code>, <cod
 <li><p><code>"cardinal-open"</code>: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.</p></li>
 <li><p><code>"cardinal-closed"</code>: a closed Cardinal spline, as in a loop.</p></li>
 <li><p><code>"bundle"</code>: equivalent to basis, except the tension parameter is used to straighten the spline.</p></li>
-<li><p><code>"monotone"</code>: cubic interpolation that preserves monotonicity in y.#' (<em>MarkDef</em>) The line interpolation method to use for line and area marks. One of the following:</p></li>
+<li><p><code>"monotone"</code>: cubic interpolation that preserves monotonicity in y.</p></li>
+</ul>
+
+<p>(<em>MarkDef</em>) The line interpolation method to use for line and area marks. One of the following:</p><ul>
 <li><p><code>"linear"</code>: piecewise linear segments, as in a polyline.</p></li>
 <li><p><code>"linear-closed"</code>: close the linear segments to form a polygon.</p></li>
 <li><p><code>"step"</code>: alternate between horizontal and vertical segments, as in a step function.</p></li>
@@ -477,7 +488,8 @@ or a composite mark type (<code>"boxplot"</code>, <code>"errorband"</code>, <cod
     </tr>
     <tr>
       <th>tension</th>
-      <td><p>(<em>MarkDef</em>) Depending on the interpolation type, sets the tension parameter (for line and area marks).#' (<em>ErrorBandDef</em>) The tension parameter for the interpolation type of the error band.</p></td>
+      <td><p>(<em>MarkDef</em>) Depending on the interpolation type, sets the tension parameter (for line and area marks).</p>
+<p>(<em>ErrorBandDef</em>) The tension parameter for the interpolation type of the error band.</p></td>
     </tr>
     <tr>
       <th>align</th>
@@ -531,7 +543,7 @@ or a composite mark type (<code>"boxplot"</code>, <code>"errorband"</code>, <cod
     </tr>
     <tr>
       <th>fillOpacity</th>
-      <td><p>(<em>MarkDef</em>) The fill opacity (value between 0,1).</p>
+      <td><p>(<em>MarkDef</em>) The fill opacity (value between [0,1]).</p>
 <p><strong>Default value:</strong> <code>1</code></p></td>
     </tr>
     <tr>
@@ -633,7 +645,7 @@ This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or 
     </tr>
     <tr>
       <th>strokeOpacity</th>
-      <td><p>(<em>MarkDef</em>) The stroke opacity (value between 0,1).</p>
+      <td><p>(<em>MarkDef</em>) The stroke opacity (value between [0,1]).</p>
 <p><strong>Default value:</strong> <code>1</code></p></td>
     </tr>
     <tr>

@@ -47,7 +47,9 @@ Object values can additionally specify parameters for content sizing and automat
 
 An object value of the form \code{{"row": boolean, "column": boolean}} can be used to supply different centering values for rows and columns.
 
-\strong{Default value:} \code{false}#' (\emph{TopLevelVConcatSpec, TopLevelHConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
+\strong{Default value:} \code{false}
+
+(\emph{TopLevelVConcatSpec, TopLevelHConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
 
 \strong{Default value:} \code{false}}
 
@@ -94,13 +96,17 @@ If an object, the value should have the format \code{{"left": 5, "top": 5, "righ
 \strong{Default value}: \code{5}}
 
 \item{projection}{(\emph{TopLevelUnitSpec}) An object defining properties of geographic projection, which will be applied to \code{shape} path for \code{"geoshape"} marks
-and to \code{latitude} and \code{"longitude"} channels for other marks.#' (\emph{TopLevelLayerSpec}) An object defining properties of the geographic projection shared by underlying layers.}
+and to \code{latitude} and \code{"longitude"} channels for other marks.
+
+(\emph{TopLevelLayerSpec}) An object defining properties of the geographic projection shared by underlying layers.}
 
 \item{spacing}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) The spacing in pixels between sub-views of the composition operator.
 An object of the form \code{{"row": number, "column": number}} can be used to set
 different spacing values for rows and columns.
 
-\strong{Default value}: Depends on \code{"spacing"} property of \href{https://vega.github.io/vega-lite/docs/config.html#view-config}{the view composition configuration} (\code{20} by default)#' (\emph{TopLevelVConcatSpec, TopLevelHConcatSpec}) The spacing in pixels between sub-views of the concat operator.
+\strong{Default value}: Depends on \code{"spacing"} property of \href{https://vega.github.io/vega-lite/docs/config.html#view-config}{the view composition configuration} (\code{20} by default)
+
+(\emph{TopLevelVConcatSpec, TopLevelHConcatSpec}) The spacing in pixels between sub-views of the concat operator.
 
 \strong{Default value}: \code{10}}
 
@@ -135,5 +141,5 @@ properties like width, height, background which don't have a
 a specific function for adding them (unlike \code{mark} or \code{encoding}).
 }
 \seealso{
-\code{\link[=vl_chart]{vl_chart()}}, \code{\link[=vl_config]{vl_config()}}
+\code{\link[=vl_chart]{vl_chart()}}, \code{\link[=vl_add_config]{vl_add_config()}}
 }

@@ -206,52 +206,74 @@ Object values can additionally specify parameters for content sizing and automat
     <tr>
       <th>countTitle</th>
       <td><p>(<em>Config</em>) Default axis and legend title for count fields.</p>
-<p><strong>Default value:</strong> <code>'Count of Records}.}
-
-\item{errorband}{(\emph{Config}) ErrorBand Config}
-
-\item{errorbar}{(\emph{Config}) ErrorBar Config}
-
-\item{facet}{(\emph{Config}) Default configuration for the \code{facet} view composition operator}
-
-\item{fieldTitle}{(\emph{Config}) Defines how Vega-Lite generates title for fields.  There are three possible styles:
-\itemize{
-\item \code{"verbal"} (Default) - displays function in a verbal style (e.g., "Sum of field", "Year-month of date", "field (binned)").
-\item \code{"function"} - displays function using parentheses and capitalized texts (e.g., "SUM(field)", "YEARMONTH(date)", "BIN(field)").
-\item \code{"plain"} - displays only the field name without functions (e.g., "field", "date", "field").
-}}
-
-\item{geoshape}{(\emph{Config}) Geoshape-Specific Config}
-
-\item{header}{(\emph{Config}) Header configuration, which determines default properties for all \href{https://vega.github.io/vega-lite/docs/header.html}{headers}.
-
-For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
-
-\item{headerColumn}{(\emph{Config}) Header configuration, which determines default properties for column \href{https://vega.github.io/vega-lite/docs/header.html}{headers}.
-
-For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
-
-\item{headerFacet}{(\emph{Config}) Header configuration, which determines default properties for non-row/column facet \href{https://vega.github.io/vega-lite/docs/header.html}{headers}.
-
-For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
-
-\item{headerRow}{(\emph{Config}) Header configuration, which determines default properties for row \href{https://vega.github.io/vega-lite/docs/header.html}{headers}.
-
-For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
-
-\item{invalidValues}{(\emph{Config}) Defines how Vega-Lite should handle invalid values (\code{null} and \code{NaN}).
-\itemize{
-\item If set to \code{"filter"} (default), all data items with null values will be skipped (for line, trail, and area marks) or filtered (for other marks).
-\item If \code{null}, all data items are included. In this case, invalid values will be interpreted as zeroes.
-}}
-
-\item{legend}{(\emph{Config}) Legend configuration, which determines default properties for all \href{https://vega.github.io/vega-lite/docs/legend.html}{legends}. For a full list of legend configuration options, please see the \href{https://vega.github.io/vega-lite/docs/legend.html#config}{corresponding section of in the legend documentation}.}
-
-\item{line}{(\emph{Config}) Line-Specific Config}
-
-\item{mark}{(\emph{Config}) Mark Config}
-
-\item{numberFormat}{(\emph{Config}) D3 Number format for guide labels and text marks. For example "s" for SI units. Use \href{https://github.com/d3/d3-format#locale_format}{D3's number format pattern</code>.</p></td>
+<p><strong>Default value:</strong> <code>Count of Records</code>.</p></td>
+    </tr>
+    <tr>
+      <th>errorband</th>
+      <td><p>(<em>Config</em>) ErrorBand Config</p></td>
+    </tr>
+    <tr>
+      <th>errorbar</th>
+      <td><p>(<em>Config</em>) ErrorBar Config</p></td>
+    </tr>
+    <tr>
+      <th>facet</th>
+      <td><p>(<em>Config</em>) Default configuration for the <code>facet</code> view composition operator</p></td>
+    </tr>
+    <tr>
+      <th>fieldTitle</th>
+      <td><p>(<em>Config</em>) Defines how Vega-Lite generates title for fields.  There are three possible styles:</p><ul>
+<li><p><code>"verbal"</code> (Default) - displays function in a verbal style (e.g., "Sum of field", "Year-month of date", "field (binned)").</p></li>
+<li><p><code>"function"</code> - displays function using parentheses and capitalized texts (e.g., "SUM(field)", "YEARMONTH(date)", "BIN(field)").</p></li>
+<li><p><code>"plain"</code> - displays only the field name without functions (e.g., "field", "date", "field").</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>geoshape</th>
+      <td><p>(<em>Config</em>) Geoshape-Specific Config</p></td>
+    </tr>
+    <tr>
+      <th>header</th>
+      <td><p>(<em>Config</em>) Header configuration, which determines default properties for all <a href='https://vega.github.io/vega-lite/docs/header.html'>headers</a>.</p>
+<p>For a full list of header configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/header.html#config'>corresponding section of in the header documentation</a>.</p></td>
+    </tr>
+    <tr>
+      <th>headerColumn</th>
+      <td><p>(<em>Config</em>) Header configuration, which determines default properties for column <a href='https://vega.github.io/vega-lite/docs/header.html'>headers</a>.</p>
+<p>For a full list of header configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/header.html#config'>corresponding section of in the header documentation</a>.</p></td>
+    </tr>
+    <tr>
+      <th>headerFacet</th>
+      <td><p>(<em>Config</em>) Header configuration, which determines default properties for non-row/column facet <a href='https://vega.github.io/vega-lite/docs/header.html'>headers</a>.</p>
+<p>For a full list of header configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/header.html#config'>corresponding section of in the header documentation</a>.</p></td>
+    </tr>
+    <tr>
+      <th>headerRow</th>
+      <td><p>(<em>Config</em>) Header configuration, which determines default properties for row <a href='https://vega.github.io/vega-lite/docs/header.html'>headers</a>.</p>
+<p>For a full list of header configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/header.html#config'>corresponding section of in the header documentation</a>.</p></td>
+    </tr>
+    <tr>
+      <th>invalidValues</th>
+      <td><p>(<em>Config</em>) Defines how Vega-Lite should handle invalid values (<code>null</code> and <code>NaN</code>).</p><ul>
+<li><p>If set to <code>"filter"</code> (default), all data items with null values will be skipped (for line, trail, and area marks) or filtered (for other marks).</p></li>
+<li><p>If <code>null</code>, all data items are included. In this case, invalid values will be interpreted as zeroes.</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>legend</th>
+      <td><p>(<em>Config</em>) Legend configuration, which determines default properties for all <a href='https://vega.github.io/vega-lite/docs/legend.html'>legends</a>. For a full list of legend configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/legend.html#config'>corresponding section of in the legend documentation</a>.</p></td>
+    </tr>
+    <tr>
+      <th>line</th>
+      <td><p>(<em>Config</em>) Line-Specific Config</p></td>
+    </tr>
+    <tr>
+      <th>mark</th>
+      <td><p>(<em>Config</em>) Mark Config</p></td>
+    </tr>
+    <tr>
+      <th>numberFormat</th>
+      <td><p>(<em>Config</em>) D3 Number format for guide labels and text marks. For example "s" for SI units. Use <a href='https://github.com/d3/d3-format#locale_format'>D3's number format pattern</a>.</p></td>
     </tr>
     <tr>
       <th>padding</th>

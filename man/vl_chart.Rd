@@ -53,7 +53,9 @@ Object values can additionally specify parameters for content sizing and automat
 
 An object value of the form \code{{"row": boolean, "column": boolean}} can be used to supply different centering values for rows and columns.
 
-\strong{Default value:} \code{false}#' (\emph{TopLevelVConcatSpec, TopLevelHConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
+\strong{Default value:} \code{false}
+
+(\emph{TopLevelVConcatSpec, TopLevelHConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
 
 \strong{Default value:} \code{false}}
 
@@ -81,7 +83,9 @@ This can be an array of objects or primitive values or a string. Arrays of primi
 
 \item{description}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Description of this mark for commenting purpose.}
 
-\item{encoding}{(\emph{TopLevelUnitSpec}) A key-value mapping between encoding channels and definition of fields.#' (\emph{TopLevelLayerSpec}) A shared key-value mapping between encoding channels and definition of fields in the underlying layers.}
+\item{encoding}{(\emph{TopLevelUnitSpec}) A key-value mapping between encoding channels and definition of fields.
+
+(\emph{TopLevelLayerSpec}) A shared key-value mapping between encoding channels and definition of fields in the underlying layers.}
 
 \item{height}{(\emph{TopLevelUnitSpec, TopLevelLayerSpec}) The height of a visualization.
 
@@ -107,7 +111,9 @@ If an object, the value should have the format \code{{"left": 5, "top": 5, "righ
 \strong{Default value}: \code{5}}
 
 \item{projection}{(\emph{TopLevelUnitSpec}) An object defining properties of geographic projection, which will be applied to \code{shape} path for \code{"geoshape"} marks
-and to \code{latitude} and \code{"longitude"} channels for other marks.#' (\emph{TopLevelLayerSpec}) An object defining properties of the geographic projection shared by underlying layers.}
+and to \code{latitude} and \code{"longitude"} channels for other marks.
+
+(\emph{TopLevelLayerSpec}) An object defining properties of the geographic projection shared by underlying layers.}
 
 \item{resolve}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Scale, axis, and legend resolutions for view composition specifications.}
 
@@ -117,7 +123,9 @@ and to \code{latitude} and \code{"longitude"} channels for other marks.#' (\emph
 An object of the form \code{{"row": number, "column": number}} can be used to set
 different spacing values for rows and columns.
 
-\strong{Default value}: Depends on \code{"spacing"} property of \href{https://vega.github.io/vega-lite/docs/config.html#view-config}{the view composition configuration} (\code{20} by default)#' (\emph{TopLevelVConcatSpec, TopLevelHConcatSpec}) The spacing in pixels between sub-views of the concat operator.
+\strong{Default value}: Depends on \code{"spacing"} property of \href{https://vega.github.io/vega-lite/docs/config.html#view-config}{the view composition configuration} (\code{20} by default)
+
+(\emph{TopLevelVConcatSpec, TopLevelHConcatSpec}) The spacing in pixels between sub-views of the concat operator.
 
 \strong{Default value}: \code{10}}
 
@@ -151,7 +159,9 @@ This object is completely ignored by Vega and Vega-Lite and can be used for cust
 \item \href{https://vega.github.io/vega-lite/docs/facet.html#mapping}{An object that maps row and column channels to their field definitions}
 }}
 
-\item{spec}{(\emph{TopLevelFacetSpec}) A specification of the view that gets faceted.#' (\emph{TopLevelRepeatSpec}) A specification of the view that gets repeated.}
+\item{spec}{(\emph{TopLevelFacetSpec}) A specification of the view that gets faceted.
+
+(\emph{TopLevelRepeatSpec}) A specification of the view that gets repeated.}
 
 \item{layer}{(\emph{TopLevelLayerSpec}) Layer or single view specifications to be layered.
 

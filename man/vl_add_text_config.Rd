@@ -56,7 +56,7 @@ vl_add_text_config(spec, align = NULL, angle = NULL, baseline = NULL,
 
 \strong{Default value:} (None)}
 
-\item{fillOpacity}{(\emph{TextConfig}) The fill opacity (value between \link{0,1}).
+\item{fillOpacity}{(\emph{TextConfig}) The fill opacity (value between [0,1]).
 
 \strong{Default value:} \code{1}}
 
@@ -98,7 +98,7 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 
 \strong{Default value:} \code{0}, indicating no limit}
 
-\item{opacity}{(\emph{TextConfig}) The overall opacity (value between \link{0,1}).
+\item{opacity}{(\emph{TextConfig}) The overall opacity (value between [0,1]).
 
 \strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick}, \code{circle}, or \code{square} marks or layered \code{bar} charts and \code{1} otherwise.}
 
@@ -157,7 +157,7 @@ therefore explicitly specified value will be ignored.
 
 \item{strokeMiterLimit}{(\emph{TextConfig}) The miter limit at which to bevel a line join.}
 
-\item{strokeOpacity}{(\emph{TextConfig}) The stroke opacity (value between \link{0,1}).
+\item{strokeOpacity}{(\emph{TextConfig}) The stroke opacity (value between [0,1]).
 
 \strong{Default value:} \code{1}}
 

@@ -52,8 +52,6 @@ multi selections. Can be \code{true}, \code{false} (for insertion only), or a
 data values are toggled when a user interacts with the shift-key pressed).
 
 See the \href{https://vega.github.io/vega-lite/docs/toggle.html}{toggle transform} documentation for more information.}
-
-\item{type}{(\emph{MultiSelection}) multi}
 }
 \value{
 A modified spec

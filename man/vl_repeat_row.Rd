@@ -4,7 +4,7 @@
 \alias{vl_repeat_row}
 \title{vl_repeat_row}
 \usage{
-vl_repeat_row(spec, ..., columns = 2)
+vl_repeat_row(spec, ...)
 }
 \arguments{
 \item{spec}{A vega-lite spec.}

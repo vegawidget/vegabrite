@@ -40,7 +40,7 @@ vl_add_axisTop_config(spec, bandPosition = NULL, domain = NULL,
 
 \strong{Default value:} \code{"gray"}.}
 
-\item{domainDash}{(\emph{AxisConfig}) An array of alternating \link{stroke, space} lengths for dashed domain lines.}
+\item{domainDash}{(\emph{AxisConfig}) An array of alternating [stroke, space] lengths for dashed domain lines.}
 
 \item{domainDashOffset}{(\emph{AxisConfig}) The pixel offset at which to start drawing with the domain dash array.}
 
@@ -58,11 +58,11 @@ vl_add_axisTop_config(spec, bandPosition = NULL, domain = NULL,
 
 \strong{Default value:} \code{"lightGray"}.}
 
-\item{gridDash}{(\emph{AxisConfig}) An array of alternating \link{stroke, space} lengths for dashed grid lines.}
+\item{gridDash}{(\emph{AxisConfig}) An array of alternating [stroke, space] lengths for dashed grid lines.}
 
 \item{gridDashOffset}{(\emph{AxisConfig}) The pixel offset at which to start drawing with the grid dash array.}
 
-\item{gridOpacity}{(\emph{AxisConfig}) The stroke opacity of grid (value between \link{0,1})
+\item{gridOpacity}{(\emph{AxisConfig}) The stroke opacity of grid (value between [0,1])
 
 \strong{Default value:} \code{1}}
 
@@ -140,7 +140,7 @@ vl_add_axisTop_config(spec, bandPosition = NULL, domain = NULL,
 
 \strong{Default value:} \code{"gray"}}
 
-\item{tickDash}{(\emph{AxisConfig}) An array of alternating \link{stroke, space} lengths for dashed tick mark lines.}
+\item{tickDash}{(\emph{AxisConfig}) An array of alternating [stroke, space] lengths for dashed tick mark lines.}
 
 \item{tickDashOffset}{(\emph{AxisConfig}) The pixel offset at which to start drawing with the tick mark dash array.}
 
