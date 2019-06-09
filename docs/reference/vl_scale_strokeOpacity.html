@@ -133,71 +133,71 @@
     </tr>
     <tr>
       <th>base</th>
-      <td><p>The logarithm base of the <code>log</code> scale (default <code>10</code>). (type = number)</p></td>
+      <td><p>(<em>Scale</em>) The logarithm base of the <code>log</code> scale (default <code>10</code>).</p></td>
     </tr>
     <tr>
       <th>bins</th>
-      <td><p>An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels. (type = array)</p></td>
+      <td><p>(<em>Scale</em>) An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels.</p></td>
     </tr>
     <tr>
       <th>clamp</th>
-      <td><p>If <code>true</code>, values that exceed the data domain are clamped to either the minimum or maximum range value</p>
-<p><strong>Default value:</strong> derived from the <a href='https://vega.github.io/vega-lite/docs/config.html#scale-config'>scale config</a>'s <code>clamp</code> (<code>true</code> by default). (type = boolean)</p></td>
+      <td><p>(<em>Scale</em>) If <code>true</code>, values that exceed the data domain are clamped to either the minimum or maximum range value</p>
+<p><strong>Default value:</strong> derived from the <a href='https://vega.github.io/vega-lite/docs/config.html#scale-config'>scale config</a>'s <code>clamp</code> (<code>true</code> by default).</p></td>
     </tr>
     <tr>
       <th>constant</th>
-      <td><p>A constant determining the slope of the symlog function around zero. Only used for <code>symlog</code> scales.</p>
-<p><strong>Default value:</strong> <code>1</code> (type = number)</p></td>
+      <td><p>(<em>Scale</em>) A constant determining the slope of the symlog function around zero. Only used for <code>symlog</code> scales.</p>
+<p><strong>Default value:</strong> <code>1</code></p></td>
     </tr>
     <tr>
       <th>domain</th>
-      <td><p>Customized domain values.</p>
+      <td><p>(<em>Scale</em>) Customized domain values.</p>
 <p>For <em>quantitative</em> fields, <code>domain</code> can take the form of a two-element array with minimum and maximum values.  <a href='https://vega.github.io/vega-lite/docs/scale.html#piecewise'>Piecewise scales</a> can be created by providing a <code>domain</code> with more than two entries.
 If the input field is aggregated, <code>domain</code> can also be a string value <code>"unaggregated"</code>, indicating that the domain should include the raw data values prior to the aggregation.</p>
 <p>For <em>temporal</em> fields, <code>domain</code> can be a two-element array minimum and maximum values, in the form of either timestamps or the <a href='https://vega.github.io/vega-lite/docs/types.html#datetime'>DateTime definition objects</a>.</p>
 <p>For <em>ordinal</em> and <em>nominal</em> fields, <code>domain</code> can be an array that lists valid input values.</p>
-<p>The <code>selection</code> property can be used to <a href='https://vega.github.io/vega-lite/docs/selection.html#scale-domains'>interactively determine</a> the scale domain. (type = Varies)</p></td>
+<p>The <code>selection</code> property can be used to <a href='https://vega.github.io/vega-lite/docs/selection.html#scale-domains'>interactively determine</a> the scale domain.</p></td>
     </tr>
     <tr>
       <th>exponent</th>
-      <td><p>The exponent of the <code>pow</code> scale. (type = number)</p></td>
+      <td><p>(<em>Scale</em>) The exponent of the <code>pow</code> scale.</p></td>
     </tr>
     <tr>
       <th>interpolate</th>
-      <td><p>The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors (in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal values include <code>rgb</code>, <code>hsl</code>, <code>hsl-long</code>, <code>lab</code>, <code>hcl</code>, <code>hcl-long</code>, <code>cubehelix</code> and <code>cubehelix-long</code> ('-long' variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a string-valued <em>type</em> property and an optional numeric <em>gamma</em> property applicable to rgb and cubehelix interpolators. For more, see the <a href='https://github.com/d3/d3-interpolate'>d3-interpolate documentation</a>.</p><ul>
-<li><p><strong>Default value:</strong> <code>hcl</code> (type = Varies)</p></li>
+      <td><p>(<em>Scale</em>) The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors (in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal values include <code>rgb</code>, <code>hsl</code>, <code>hsl-long</code>, <code>lab</code>, <code>hcl</code>, <code>hcl-long</code>, <code>cubehelix</code> and <code>cubehelix-long</code> ('-long' variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a string-valued <em>type</em> property and an optional numeric <em>gamma</em> property applicable to rgb and cubehelix interpolators. For more, see the <a href='https://github.com/d3/d3-interpolate'>d3-interpolate documentation</a>.</p><ul>
+<li><p><strong>Default value:</strong> <code>hcl</code></p></li>
 </ul></td>
     </tr>
     <tr>
       <th>nice</th>
-      <td><p>Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of [0.201479…, 0.996679…], a nice domain might be [0.2, 1.0].</p>
+      <td><p>(<em>Scale</em>) Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of [0.201479…, 0.996679…], a nice domain might be [0.2, 1.0].</p>
 <p>For quantitative scales such as linear, <code>nice</code> can be either a boolean flag or a number. If <code>nice</code> is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.</p>
 <p>For temporal fields with time and utc scales, the <code>nice</code> value can be a string indicating the desired time interval. Legal values are <code>"millisecond"</code>, <code>"second"</code>, <code>"minute"</code>, <code>"hour"</code>, <code>"day"</code>, <code>"week"</code>, <code>"month"</code>, and <code>"year"</code>. Alternatively, <code>time</code> and <code>utc</code> scales can accept an object-valued interval specifier of the form <code>{"interval": "month", "step": 3}</code>, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.</p>
-<p><strong>Default value:</strong> <code>true</code> for unbinned <em>quantitative</em> fields; <code>false</code> otherwise. (type = Varies)</p></td>
+<p><strong>Default value:</strong> <code>true</code> for unbinned <em>quantitative</em> fields; <code>false</code> otherwise.</p></td>
     </tr>
     <tr>
       <th>padding</th>
-      <td><p>For <em><a href='https://vega.github.io/vega-lite/docs/scale.html#continuous'>continuous</a></em> scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.</p>
+      <td><p>(<em>Scale</em>) For <em><a href='https://vega.github.io/vega-lite/docs/scale.html#continuous'>continuous</a></em> scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.</p>
 <p>For <em><a href='https://vega.github.io/vega-lite/docs/scale.html#band'>band</a></em> scales, shortcut for setting <code>paddingInner</code> and <code>paddingOuter</code> to the same value.</p>
 <p>For <em><a href='https://vega.github.io/vega-lite/docs/scale.html#point'>point</a></em> scales, alias for <code>paddingOuter</code>.</p>
 <p><strong>Default value:</strong> For <em>continuous</em> scales, derived from the <a href='https://vega.github.io/vega-lite/docs/scale.html#config'>scale config</a>'s <code>continuousPadding</code>.
-For <em>band and point</em> scales, see <code>paddingInner</code> and <code>paddingOuter</code>. (type = number)</p></td>
+For <em>band and point</em> scales, see <code>paddingInner</code> and <code>paddingOuter</code>.</p></td>
     </tr>
     <tr>
       <th>paddingInner</th>
-      <td><p>The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range 0,1.</p>
+      <td><p>(<em>Scale</em>) The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range 0,1.</p>
 <p>For point scale, this property is invalid as point scales do not have internal band widths (only step sizes between bands).</p>
-<p><strong>Default value:</strong> derived from the <a href='https://vega.github.io/vega-lite/docs/scale.html#config'>scale config</a>'s <code>bandPaddingInner</code>. (type = number)</p></td>
+<p><strong>Default value:</strong> derived from the <a href='https://vega.github.io/vega-lite/docs/scale.html#config'>scale config</a>'s <code>bandPaddingInner</code>.</p></td>
     </tr>
     <tr>
       <th>paddingOuter</th>
-      <td><p>The outer padding (spacing) at the ends of the range of band and point scales,
+      <td><p>(<em>Scale</em>) The outer padding (spacing) at the ends of the range of band and point scales,
 as a fraction of the step size. This value must lie in the range 0,1.</p>
-<p><strong>Default value:</strong> derived from the <a href='https://vega.github.io/vega-lite/docs/scale.html#config'>scale config</a>'s <code>bandPaddingOuter</code> for band scales and <code>pointPadding</code> for point scales. (type = number)</p></td>
+<p><strong>Default value:</strong> derived from the <a href='https://vega.github.io/vega-lite/docs/scale.html#config'>scale config</a>'s <code>bandPaddingOuter</code> for band scales and <code>pointPadding</code> for point scales.</p></td>
     </tr>
     <tr>
       <th>range</th>
-      <td><p>The range of the scale. One of:</p><ul>
+      <td><p>(<em>Scale</em>) The range of the scale. One of:</p><ul>
 <li><p>A string indicating a <a href='https://vega.github.io/vega-lite/docs/scale.html#range-config'>pre-defined named scale range</a> (e.g., example, <code>"symbol"</code>, or <code>"diverging"</code>).</p></li>
 <li><p>For <a href='https://vega.github.io/vega-lite/docs/scale.html#continuous'>continuous scales</a>, two-element array indicating  minimum and maximum values, or an array with more than two entries for specifying a <a href='https://vega.github.io/vega-lite/docs/scale.html#piecewise'>piecewise scale</a>.</p></li>
 <li><p>For <a href='https://vega.github.io/vega-lite/docs/scale.html#discrete'>discrete</a> and <a href='https://vega.github.io/vega-lite/docs/scale.html#discretizing'>discretizing</a> scales, an array of desired output values.</p></li>
@@ -205,42 +205,42 @@ as a fraction of the step size. This value must lie in the range 0,1.</p>
 
 <p><strong>Notes:</strong></p><ol>
 <li><p>For color scales you can also specify a color <a href='https://vega.github.io/vega-lite/docs/scale.html#scheme'>scheme</a> instead of <code>range</code>.</p></li>
-<li><p>Any directly specified <code>range</code> for <code>x</code> and <code>y</code> channels will be ignored. Range can be customized via the view's corresponding <a href='https://vega.github.io/vega-lite/docs/size.html'>size</a> (<code>width</code> and <code>height</code>) or via <a href='#range-step'>range steps and paddings properties</a> for <a href='#band'>band</a> and <a href='#point'>point</a> scales. (type = Varies)</p></li>
+<li><p>Any directly specified <code>range</code> for <code>x</code> and <code>y</code> channels will be ignored. Range can be customized via the view's corresponding <a href='https://vega.github.io/vega-lite/docs/size.html'>size</a> (<code>width</code> and <code>height</code>) or via <a href='#range-step'>range steps and paddings properties</a> for <a href='#band'>band</a> and <a href='#point'>point</a> scales.</p></li>
 </ol></td>
     </tr>
     <tr>
       <th>rangeStep</th>
-      <td><p>The distance between the starts of adjacent bands or points in <a href='https://vega.github.io/vega-lite/docs/scale.html#band'>band</a> and <a href='https://vega.github.io/vega-lite/docs/scale.html#point'>point</a> scales.</p>
+      <td><p>(<em>Scale</em>) The distance between the starts of adjacent bands or points in <a href='https://vega.github.io/vega-lite/docs/scale.html#band'>band</a> and <a href='https://vega.github.io/vega-lite/docs/scale.html#point'>point</a> scales.</p>
 <p>If <code>rangeStep</code> is <code>null</code> or if the view contains the scale's corresponding <a href='https://vega.github.io/vega-lite/docs/size.html'>size</a> (<code>width</code> for <code>x</code> scales and <code>height</code> for <code>y</code> scales), <code>rangeStep</code> will be automatically determined to fit the size of the view.</p>
 <p><strong>Default value:</strong>  derived the <a href='https://vega.github.io/vega-lite/docs/config.html#scale-config'>scale config</a>'s <code>textXRangeStep</code> (<code>90</code> by default) for x-scales of <code>text</code> marks and <code>rangeStep</code> (<code>21</code> by default) for x-scales of other marks and y-scales.</p>
-<p><strong>Warning</strong>: If <code>rangeStep</code> is <code>null</code> and the cardinality of the scale's domain is higher than <code>width</code> or <code>height</code>, the rangeStep might become less than one pixel and the mark might not appear correctly. (type = number OR null)</p></td>
+<p><strong>Warning</strong>: If <code>rangeStep</code> is <code>null</code> and the cardinality of the scale's domain is higher than <code>width</code> or <code>height</code>, the rangeStep might become less than one pixel and the mark might not appear correctly.</p></td>
     </tr>
     <tr>
       <th>round</th>
-      <td><p>If <code>true</code>, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.</p>
-<p><strong>Default value:</strong> <code>false</code>. (type = boolean)</p></td>
+      <td><p>(<em>Scale</em>) If <code>true</code>, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.</p>
+<p><strong>Default value:</strong> <code>false</code>.</p></td>
     </tr>
     <tr>
       <th>scheme</th>
-      <td><p>A string indicating a color <a href='https://vega.github.io/vega-lite/docs/scale.html#scheme'>scheme</a> name (e.g., <code>"category10"</code> or <code>"blues"</code>) or a <a href='https://vega.github.io/vega-lite/docs/scale.html#scheme-params'>scheme parameter object</a>.</p>
+      <td><p>(<em>Scale</em>) A string indicating a color <a href='https://vega.github.io/vega-lite/docs/scale.html#scheme'>scheme</a> name (e.g., <code>"category10"</code> or <code>"blues"</code>) or a <a href='https://vega.github.io/vega-lite/docs/scale.html#scheme-params'>scheme parameter object</a>.</p>
 <p>Discrete color schemes may be used with <a href='https://vega.github.io/vega-lite/docs/scale.html#discrete'>discrete</a> or <a href='https://vega.github.io/vega-lite/docs/scale.html#discretizing'>discretizing</a> scales. Continuous color schemes are intended for use with color scales.</p>
-<p>For the full list of supported schemes, please refer to the <a href='https://vega.github.io/vega/docs/schemes/#reference'>Vega Scheme</a> reference. (type = Varies)</p></td>
+<p>For the full list of supported schemes, please refer to the <a href='https://vega.github.io/vega/docs/schemes/#reference'>Vega Scheme</a> reference.</p></td>
     </tr>
     <tr>
       <th>type</th>
-      <td><p>The type of scale.  Vega-Lite supports the following categories of scale types:</p><ol>
+      <td><p>(<em>Scale</em>) The type of scale.  Vega-Lite supports the following categories of scale types:</p><ol>
 <li><p><a href='https://vega.github.io/vega-lite/docs/scale.html#continuous'>Continuous Scales</a> -- mapping continuous domains to continuous output ranges (<a href='https://vega.github.io/vega-lite/docs/scale.html#linear'>"linear"</a>, <a href='https://vega.github.io/vega-lite/docs/scale.html#pow'>"pow"</a>, <a href='https://vega.github.io/vega-lite/docs/scale.html#sqrt'>"sqrt"</a>, <a href='https://vega.github.io/vega-lite/docs/scale.html#symlog'>"symlog"</a>, <a href='https://vega.github.io/vega-lite/docs/scale.html#log'>"log"</a>, <a href='https://vega.github.io/vega-lite/docs/scale.html#time'>"time"</a>, <a href='https://vega.github.io/vega-lite/docs/scale.html#utc'>"utc"</a>.</p></li>
 <li><p><a href='https://vega.github.io/vega-lite/docs/scale.html#discrete'>Discrete Scales</a> -- mapping discrete domains to discrete (<a href='https://vega.github.io/vega-lite/docs/scale.html#ordinal'>"ordinal"</a>) or continuous (<a href='https://vega.github.io/vega-lite/docs/scale.html#band'>"band"</a> and <a href='https://vega.github.io/vega-lite/docs/scale.html#point'>"point"</a>) output ranges.</p></li>
 <li><p><a href='https://vega.github.io/vega-lite/docs/scale.html#discretizing'>Discretizing Scales</a> -- mapping continuous domains to discrete output ranges <a href='https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal'>"bin-ordinal"</a>, <a href='https://vega.github.io/vega-lite/docs/scale.html#quantile'>"quantile"</a>, <a href='https://vega.github.io/vega-lite/docs/scale.html#quantize'>"quantize"</a> and <a href='https://vega.github.io/vega-lite/docs/scale.html#threshold'>"threshold"</a>.</p></li>
 </ol>
 
-<p><strong>Default value:</strong> please see the <a href='https://vega.github.io/vega-lite/docs/scale.html#type'>scale type table</a>. (type = ScaleType)</p></td>
+<p><strong>Default value:</strong> please see the <a href='https://vega.github.io/vega-lite/docs/scale.html#type'>scale type table</a>.</p></td>
     </tr>
     <tr>
       <th>zero</th>
-      <td><p>If <code>true</code>, ensures that a zero baseline value is included in the scale domain.</p>
+      <td><p>(<em>Scale</em>) If <code>true</code>, ensures that a zero baseline value is included in the scale domain.</p>
 <p><strong>Default value:</strong> <code>true</code> for x and y channels if the quantitative field is not binned and no custom <code>domain</code> is provided; <code>false</code> otherwise.</p>
-<p><strong>Note:</strong> Log, time, and utc scales do not support <code>zero</code>. (type = boolean)</p></td>
+<p><strong>Note:</strong> Log, time, and utc scales do not support <code>zero</code>.</p></td>
     </tr>
     </table>
     

@@ -129,26 +129,26 @@
     </tr>
     <tr>
       <th>band</th>
-      <td><p>(type = Varies)</p></td>
+      <td><p>(<em>ErrorBandConfig</em>)</p></td>
     </tr>
     <tr>
       <th>borders</th>
-      <td><p>(type = Varies)</p></td>
+      <td><p>(<em>ErrorBandConfig</em>)</p></td>
     </tr>
     <tr>
       <th>extent</th>
-      <td><p>The extent of the band. Available options include:</p><ul>
+      <td><p>(<em>ErrorBandConfig</em>) The extent of the band. Available options include:</p><ul>
 <li><p><code>"ci"</code>: Extend the band to the confidence interval of the mean.</p></li>
 <li><p><code>"stderr"</code>: The size of band are set to the value of standard error, extending from the mean.</p></li>
 <li><p><code>"stdev"</code>: The size of band are set to the value of standard deviation, extending from the mean.</p></li>
 <li><p><code>"iqr"</code>: Extend the band to the q1 and q3.</p></li>
 </ul>
 
-<p><strong>Default value:</strong> <code>"stderr"</code>. (type = ErrorBarExtent)</p></td>
+<p><strong>Default value:</strong> <code>"stderr"</code>.</p></td>
     </tr>
     <tr>
       <th>interpolate</th>
-      <td><p>The line interpolation method for the error band. One of the following:</p><ul>
+      <td><p>(<em>ErrorBandConfig</em>) The line interpolation method for the error band. One of the following:</p><ul>
 <li><p><code>"linear"</code>: piecewise linear segments, as in a polyline.</p></li>
 <li><p><code>"linear-closed"</code>: close the linear segments to form a polygon.</p></li>
 <li><p><code>"step"</code>: a piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes at the midpoint of each pair of adjacent x-values.</p></li>
@@ -161,12 +161,12 @@
 <li><p><code>"cardinal-open"</code>: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.</p></li>
 <li><p><code>"cardinal-closed"</code>: a closed Cardinal spline, as in a loop.</p></li>
 <li><p><code>"bundle"</code>: equivalent to basis, except the tension parameter is used to straighten the spline.</p></li>
-<li><p><code>"monotone"</code>: cubic interpolation that preserves monotonicity in y. (type = Interpolate)</p></li>
+<li><p><code>"monotone"</code>: cubic interpolation that preserves monotonicity in y.</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>tension</th>
-      <td><p>The tension parameter for the interpolation type of the error band. (type = number)</p></td>
+      <td><p>(<em>ErrorBandConfig</em>) The tension parameter for the interpolation type of the error band.</p></td>
     </tr>
     </table>
     

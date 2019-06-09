@@ -141,194 +141,194 @@
     </tr>
     <tr>
       <th>area</th>
-      <td><p>Area-Specific Config (type = AreaConfig)</p></td>
+      <td><p>(<em>Config</em>) Area-Specific Config</p></td>
     </tr>
     <tr>
       <th>autosize</th>
-      <td><p>Sets how the visualization size should be determined. If a string, should be one of <code>"pad"</code>, <code>"fit"</code> or <code>"none"</code>.
+      <td><p>(<em>Config</em>) Sets how the visualization size should be determined. If a string, should be one of <code>"pad"</code>, <code>"fit"</code> or <code>"none"</code>.
 Object values can additionally specify parameters for content sizing and automatic resizing.
 <code>"fit"</code> is only supported for single and layered views that don't use <code>rangeStep</code>.</p>
-<p><strong>Default value</strong>: <code>pad</code> (type = Varies)</p></td>
+<p><strong>Default value</strong>: <code>pad</code></p></td>
     </tr>
     <tr>
       <th>axis</th>
-      <td><p>Axis configuration, which determines default properties for all <code>x</code> and <code>y</code> <a href='https://vega.github.io/vega-lite/docs/axis.html'>axes</a>. For a full list of axis configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/axis.html#config'>corresponding section of the axis documentation</a>. (type = AxisConfig)</p></td>
+      <td><p>(<em>Config</em>) Axis configuration, which determines default properties for all <code>x</code> and <code>y</code> <a href='https://vega.github.io/vega-lite/docs/axis.html'>axes</a>. For a full list of axis configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/axis.html#config'>corresponding section of the axis documentation</a>.</p></td>
     </tr>
     <tr>
       <th>axisBand</th>
-      <td><p>Specific axis config for axes with "band" scales. (type = AxisConfig)</p></td>
+      <td><p>(<em>Config</em>) Specific axis config for axes with "band" scales.</p></td>
     </tr>
     <tr>
       <th>axisBottom</th>
-      <td><p>Specific axis config for x-axis along the bottom edge of the chart. (type = AxisConfig)</p></td>
+      <td><p>(<em>Config</em>) Specific axis config for x-axis along the bottom edge of the chart.</p></td>
     </tr>
     <tr>
       <th>axisLeft</th>
-      <td><p>Specific axis config for y-axis along the left edge of the chart. (type = AxisConfig)</p></td>
+      <td><p>(<em>Config</em>) Specific axis config for y-axis along the left edge of the chart.</p></td>
     </tr>
     <tr>
       <th>axisRight</th>
-      <td><p>Specific axis config for y-axis along the right edge of the chart. (type = AxisConfig)</p></td>
+      <td><p>(<em>Config</em>) Specific axis config for y-axis along the right edge of the chart.</p></td>
     </tr>
     <tr>
       <th>axisTop</th>
-      <td><p>Specific axis config for x-axis along the top edge of the chart. (type = AxisConfig)</p></td>
+      <td><p>(<em>Config</em>) Specific axis config for x-axis along the top edge of the chart.</p></td>
     </tr>
     <tr>
       <th>axisX</th>
-      <td><p>X-axis specific config. (type = AxisConfig)</p></td>
+      <td><p>(<em>Config</em>) X-axis specific config.</p></td>
     </tr>
     <tr>
       <th>axisY</th>
-      <td><p>Y-axis specific config. (type = AxisConfig)</p></td>
+      <td><p>(<em>Config</em>) Y-axis specific config.</p></td>
     </tr>
     <tr>
       <th>background</th>
-      <td><p>CSS color property to use as the background of the whole Vega-Lite view</p>
-<p><strong>Default value:</strong> none (transparent) (type = string)</p></td>
+      <td><p>(<em>Config</em>) CSS color property to use as the background of the whole Vega-Lite view</p>
+<p><strong>Default value:</strong> none (transparent)</p></td>
     </tr>
     <tr>
       <th>bar</th>
-      <td><p>Bar-Specific Config (type = BarConfig)</p></td>
+      <td><p>(<em>Config</em>) Bar-Specific Config</p></td>
     </tr>
     <tr>
       <th>boxplot</th>
-      <td><p>Box Config (type = BoxPlotConfig)</p></td>
+      <td><p>(<em>Config</em>) Box Config</p></td>
     </tr>
     <tr>
       <th>circle</th>
-      <td><p>Circle-Specific Config (type = MarkConfig)</p></td>
+      <td><p>(<em>Config</em>) Circle-Specific Config</p></td>
     </tr>
     <tr>
       <th>concat</th>
-      <td><p>Default configuration for all concatenation view composition operators (<code>concat</code>, <code>hconcat</code>, and <code>vconcat</code>) (type = CompositionConfig)</p></td>
+      <td><p>(<em>Config</em>) Default configuration for all concatenation view composition operators (<code>concat</code>, <code>hconcat</code>, and <code>vconcat</code>)</p></td>
     </tr>
     <tr>
       <th>countTitle</th>
-      <td><p>Default axis and legend title for count fields.</p>
-<p><strong>Default value:</strong> <code>'Count of Records}. (type = string)}
+      <td><p>(<em>Config</em>) Default axis and legend title for count fields.</p>
+<p><strong>Default value:</strong> <code>'Count of Records}.}
 
-\item{errorband}{ErrorBand Config (type = ErrorBandConfig)}
+\item{errorband}{(\emph{Config}) ErrorBand Config}
 
-\item{errorbar}{ErrorBar Config (type = ErrorBarConfig)}
+\item{errorbar}{(\emph{Config}) ErrorBar Config}
 
-\item{facet}{Default configuration for the \code{facet} view composition operator (type = CompositionConfig)}
+\item{facet}{(\emph{Config}) Default configuration for the \code{facet} view composition operator}
 
-\item{fieldTitle}{Defines how Vega-Lite generates title for fields.  There are three possible styles:
+\item{fieldTitle}{(\emph{Config}) Defines how Vega-Lite generates title for fields.  There are three possible styles:
 \itemize{
 \item \code{"verbal"} (Default) - displays function in a verbal style (e.g., "Sum of field", "Year-month of date", "field (binned)").
 \item \code{"function"} - displays function using parentheses and capitalized texts (e.g., "SUM(field)", "YEARMONTH(date)", "BIN(field)").
-\item \code{"plain"} - displays only the field name without functions (e.g., "field", "date", "field"). (type = string)
+\item \code{"plain"} - displays only the field name without functions (e.g., "field", "date", "field").
 }}
 
-\item{geoshape}{Geoshape-Specific Config (type = MarkConfig)}
+\item{geoshape}{(\emph{Config}) Geoshape-Specific Config}
 
-\item{header}{Header configuration, which determines default properties for all \href{https://vega.github.io/vega-lite/docs/header.html}{headers}.
+\item{header}{(\emph{Config}) Header configuration, which determines default properties for all \href{https://vega.github.io/vega-lite/docs/header.html}{headers}.
 
-For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}. (type = HeaderConfig)}
+For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
 
-\item{headerColumn}{Header configuration, which determines default properties for column \href{https://vega.github.io/vega-lite/docs/header.html}{headers}.
+\item{headerColumn}{(\emph{Config}) Header configuration, which determines default properties for column \href{https://vega.github.io/vega-lite/docs/header.html}{headers}.
 
-For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}. (type = HeaderConfig)}
+For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
 
-\item{headerFacet}{Header configuration, which determines default properties for non-row/column facet \href{https://vega.github.io/vega-lite/docs/header.html}{headers}.
+\item{headerFacet}{(\emph{Config}) Header configuration, which determines default properties for non-row/column facet \href{https://vega.github.io/vega-lite/docs/header.html}{headers}.
 
-For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}. (type = HeaderConfig)}
+For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
 
-\item{headerRow}{Header configuration, which determines default properties for row \href{https://vega.github.io/vega-lite/docs/header.html}{headers}.
+\item{headerRow}{(\emph{Config}) Header configuration, which determines default properties for row \href{https://vega.github.io/vega-lite/docs/header.html}{headers}.
 
-For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}. (type = HeaderConfig)}
+For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
 
-\item{invalidValues}{Defines how Vega-Lite should handle invalid values (\code{null} and \code{NaN}).
+\item{invalidValues}{(\emph{Config}) Defines how Vega-Lite should handle invalid values (\code{null} and \code{NaN}).
 \itemize{
 \item If set to \code{"filter"} (default), all data items with null values will be skipped (for line, trail, and area marks) or filtered (for other marks).
-\item If \code{null}, all data items are included. In this case, invalid values will be interpreted as zeroes. (type = string OR null)
+\item If \code{null}, all data items are included. In this case, invalid values will be interpreted as zeroes.
 }}
 
-\item{legend}{Legend configuration, which determines default properties for all \href{https://vega.github.io/vega-lite/docs/legend.html}{legends}. For a full list of legend configuration options, please see the \href{https://vega.github.io/vega-lite/docs/legend.html#config}{corresponding section of in the legend documentation}. (type = LegendConfig)}
+\item{legend}{(\emph{Config}) Legend configuration, which determines default properties for all \href{https://vega.github.io/vega-lite/docs/legend.html}{legends}. For a full list of legend configuration options, please see the \href{https://vega.github.io/vega-lite/docs/legend.html#config}{corresponding section of in the legend documentation}.}
 
-\item{line}{Line-Specific Config (type = LineConfig)}
+\item{line}{(\emph{Config}) Line-Specific Config}
 
-\item{mark}{Mark Config (type = MarkConfig)}
+\item{mark}{(\emph{Config}) Mark Config}
 
-\item{numberFormat}{D3 Number format for guide labels and text marks. For example "s" for SI units. Use \href{https://github.com/d3/d3-format#locale_format}{D3's number format pattern</code>. (type = string)</p></td>
+\item{numberFormat}{(\emph{Config}) D3 Number format for guide labels and text marks. For example "s" for SI units. Use \href{https://github.com/d3/d3-format#locale_format}{D3's number format pattern</code>.</p></td>
     </tr>
     <tr>
       <th>padding</th>
-      <td><p>The default visualization padding, in pixels, from the edge of the visualization canvas to the data rectangle.  If a number, specifies padding for all sides.
+      <td><p>(<em>Config</em>) The default visualization padding, in pixels, from the edge of the visualization canvas to the data rectangle.  If a number, specifies padding for all sides.
 If an object, the value should have the format <code>{"left": 5, "top": 5, "right": 5, "bottom": 5}</code> to specify padding for each side of the visualization.</p>
-<p><strong>Default value</strong>: <code>5</code> (type = Padding)</p></td>
+<p><strong>Default value</strong>: <code>5</code></p></td>
     </tr>
     <tr>
       <th>point</th>
-      <td><p>Point-Specific Config (type = MarkConfig)</p></td>
+      <td><p>(<em>Config</em>) Point-Specific Config</p></td>
     </tr>
     <tr>
       <th>projection</th>
-      <td><p>Projection configuration, which determines default properties for all <a href='https://vega.github.io/vega-lite/docs/projection.html'>projections</a>. For a full list of projection configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/projection.html#config'>corresponding section of the projection documentation</a>. (type = ProjectionConfig)</p></td>
+      <td><p>(<em>Config</em>) Projection configuration, which determines default properties for all <a href='https://vega.github.io/vega-lite/docs/projection.html'>projections</a>. For a full list of projection configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/projection.html#config'>corresponding section of the projection documentation</a>.</p></td>
     </tr>
     <tr>
       <th>range</th>
-      <td><p>An object hash that defines default range arrays or schemes for using with scales.
-For a full list of scale range configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/scale.html#config'>corresponding section of the scale documentation</a>. (type = RangeConfig)</p></td>
+      <td><p>(<em>Config</em>) An object hash that defines default range arrays or schemes for using with scales.
+For a full list of scale range configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/scale.html#config'>corresponding section of the scale documentation</a>.</p></td>
     </tr>
     <tr>
       <th>rect</th>
-      <td><p>Rect-Specific Config (type = MarkConfig)</p></td>
+      <td><p>(<em>Config</em>) Rect-Specific Config</p></td>
     </tr>
     <tr>
       <th>repeat</th>
-      <td><p>Default configuration for the <code>repeat</code> view composition operator (type = CompositionConfig)</p></td>
+      <td><p>(<em>Config</em>) Default configuration for the <code>repeat</code> view composition operator</p></td>
     </tr>
     <tr>
       <th>rule</th>
-      <td><p>Rule-Specific Config (type = MarkConfig)</p></td>
+      <td><p>(<em>Config</em>) Rule-Specific Config</p></td>
     </tr>
     <tr>
       <th>scale</th>
-      <td><p>Scale configuration determines default properties for all <a href='https://vega.github.io/vega-lite/docs/scale.html'>scales</a>. For a full list of scale configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/scale.html#config'>corresponding section of the scale documentation</a>. (type = ScaleConfig)</p></td>
+      <td><p>(<em>Config</em>) Scale configuration determines default properties for all <a href='https://vega.github.io/vega-lite/docs/scale.html'>scales</a>. For a full list of scale configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/scale.html#config'>corresponding section of the scale documentation</a>.</p></td>
     </tr>
     <tr>
       <th>selection</th>
-      <td><p>An object hash for defining default properties for each type of selections. (type = SelectionConfig)</p></td>
+      <td><p>(<em>Config</em>) An object hash for defining default properties for each type of selections.</p></td>
     </tr>
     <tr>
       <th>square</th>
-      <td><p>Square-Specific Config (type = MarkConfig)</p></td>
+      <td><p>(<em>Config</em>) Square-Specific Config</p></td>
     </tr>
     <tr>
       <th>stack</th>
-      <td><p>Default stack offset for stackable mark. (type = StackOffset)</p></td>
+      <td><p>(<em>Config</em>) Default stack offset for stackable mark.</p></td>
     </tr>
     <tr>
       <th>style</th>
-      <td><p>An object hash that defines key-value mappings to determine default properties for marks with a given <a href='https://vega.github.io/vega-lite/docs/mark.html#mark-def'>style</a>.  The keys represent styles names; the values have to be valid <a href='https://vega.github.io/vega-lite/docs/mark.html#config'>mark configuration objects</a>. (type = StyleConfigIndex)</p></td>
+      <td><p>(<em>Config</em>) An object hash that defines key-value mappings to determine default properties for marks with a given <a href='https://vega.github.io/vega-lite/docs/mark.html#mark-def'>style</a>.  The keys represent styles names; the values have to be valid <a href='https://vega.github.io/vega-lite/docs/mark.html#config'>mark configuration objects</a>.</p></td>
     </tr>
     <tr>
       <th>text</th>
-      <td><p>Text-Specific Config (type = TextConfig)</p></td>
+      <td><p>(<em>Config</em>) Text-Specific Config</p></td>
     </tr>
     <tr>
       <th>tick</th>
-      <td><p>Tick-Specific Config (type = TickConfig)</p></td>
+      <td><p>(<em>Config</em>) Tick-Specific Config</p></td>
     </tr>
     <tr>
       <th>timeFormat</th>
-      <td><p>Default time format for raw time values (without time units) in text marks, legend labels and header labels.</p>
+      <td><p>(<em>Config</em>) Default time format for raw time values (without time units) in text marks, legend labels and header labels.</p>
 <p><strong>Default value:</strong> <code>"%b %d, %Y"</code>
-<strong>Note:</strong> Axes automatically determine format each label automatically so this config would not affect axes. (type = string)</p></td>
+<strong>Note:</strong> Axes automatically determine format each label automatically so this config would not affect axes.</p></td>
     </tr>
     <tr>
       <th>title</th>
-      <td><p>Title configuration, which determines default properties for all <a href='https://vega.github.io/vega-lite/docs/title.html'>titles</a>. For a full list of title configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/title.html#config'>corresponding section of the title documentation</a>. (type = TitleConfig)</p></td>
+      <td><p>(<em>Config</em>) Title configuration, which determines default properties for all <a href='https://vega.github.io/vega-lite/docs/title.html'>titles</a>. For a full list of title configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/title.html#config'>corresponding section of the title documentation</a>.</p></td>
     </tr>
     <tr>
       <th>trail</th>
-      <td><p>Trail-Specific Config (type = LineConfig)</p></td>
+      <td><p>(<em>Config</em>) Trail-Specific Config</p></td>
     </tr>
     <tr>
       <th>view</th>
-      <td><p>Default properties for <a href='https://vega.github.io/vega-lite/docs/spec.html#single'>single view plots</a>. (type = ViewConfig)</p></td>
+      <td><p>(<em>Config</em>) Default properties for <a href='https://vega.github.io/vega-lite/docs/spec.html#single'>single view plots</a>.</p></td>
     </tr>
     </table>
     

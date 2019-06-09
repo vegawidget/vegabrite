@@ -133,82 +133,82 @@
     </tr>
     <tr>
       <th>center</th>
-      <td><p>Sets the projection’s center to the specified center, a two-element array of longitude and latitude in degrees.</p>
-<p><strong>Default value:</strong> <code>[0, 0]</code> (type = array)</p></td>
+      <td><p>(<em>Projection</em>) Sets the projection’s center to the specified center, a two-element array of longitude and latitude in degrees.</p>
+<p><strong>Default value:</strong> <code>[0, 0]</code></p></td>
     </tr>
     <tr>
       <th>clipAngle</th>
-      <td><p>Sets the projection’s clipping circle radius to the specified angle in degrees. If <code>null</code>, switches to <a href='http://bl.ocks.org/mbostock/3788999'>antimeridian</a> cutting rather than small-circle clipping. (type = number)</p></td>
+      <td><p>(<em>Projection</em>) Sets the projection’s clipping circle radius to the specified angle in degrees. If <code>null</code>, switches to <a href='http://bl.ocks.org/mbostock/3788999'>antimeridian</a> cutting rather than small-circle clipping.</p></td>
     </tr>
     <tr>
       <th>clipExtent</th>
-      <td><p>Sets the projection’s viewport clip extent to the specified bounds in pixels. The extent bounds are specified as an array <code>[[x0, y0], [x1, y1]]</code>, where <code>x0</code> is the left-side of the viewport, <code>y0</code> is the top, <code>x1</code> is the right and <code>y1</code> is the bottom. If <code>null</code>, no viewport clipping is performed. (type = array)</p></td>
+      <td><p>(<em>Projection</em>) Sets the projection’s viewport clip extent to the specified bounds in pixels. The extent bounds are specified as an array <code>[[x0, y0], [x1, y1]]</code>, where <code>x0</code> is the left-side of the viewport, <code>y0</code> is the top, <code>x1</code> is the right and <code>y1</code> is the bottom. If <code>null</code>, no viewport clipping is performed.</p></td>
     </tr>
     <tr>
       <th>coefficient</th>
-      <td><p>(type = number)</p></td>
+      <td><p>(<em>Projection</em>)</p></td>
     </tr>
     <tr>
       <th>distance</th>
-      <td><p>(type = number)</p></td>
+      <td><p>(<em>Projection</em>)</p></td>
     </tr>
     <tr>
       <th>fraction</th>
-      <td><p>(type = number)</p></td>
+      <td><p>(<em>Projection</em>)</p></td>
     </tr>
     <tr>
       <th>lobes</th>
-      <td><p>(type = number)</p></td>
+      <td><p>(<em>Projection</em>)</p></td>
     </tr>
     <tr>
       <th>parallel</th>
-      <td><p>(type = number)</p></td>
+      <td><p>(<em>Projection</em>)</p></td>
     </tr>
     <tr>
       <th>precision</th>
-      <td><p>Sets the threshold for the projection’s <a href='http://bl.ocks.org/mbostock/3795544'>adaptive resampling</a> to the specified value in pixels. This value corresponds to the <a href='http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm'>Douglas–Peucker distance</a>. If precision is not specified, returns the projection’s current resampling precision which defaults to <code>√0.5 ≅ 0.70710…</code>. (type = string)</p></td>
+      <td><p>(<em>Projection</em>) Sets the threshold for the projection’s <a href='http://bl.ocks.org/mbostock/3795544'>adaptive resampling</a> to the specified value in pixels. This value corresponds to the <a href='http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm'>Douglas–Peucker distance</a>. If precision is not specified, returns the projection’s current resampling precision which defaults to <code>√0.5 ≅ 0.70710…</code>.</p></td>
     </tr>
     <tr>
       <th>radius</th>
-      <td><p>(type = number)</p></td>
+      <td><p>(<em>Projection</em>)</p></td>
     </tr>
     <tr>
       <th>ratio</th>
-      <td><p>(type = number)</p></td>
+      <td><p>(<em>Projection</em>)</p></td>
     </tr>
     <tr>
       <th>reflectX</th>
-      <td><p>(type = boolean)</p></td>
+      <td><p>(<em>Projection</em>)</p></td>
     </tr>
     <tr>
       <th>reflectY</th>
-      <td><p>(type = boolean)</p></td>
+      <td><p>(<em>Projection</em>)</p></td>
     </tr>
     <tr>
       <th>rotate</th>
-      <td><p>Sets the projection’s three-axis rotation to the specified angles, which must be a two- or three-element array of numbers lambda, phi, gamma specifying the rotation angles in degrees about each spherical axis. (These correspond to yaw, pitch and roll.)</p>
-<p><strong>Default value:</strong> <code>[0, 0, 0]</code> (type = array)</p></td>
+      <td><p>(<em>Projection</em>) Sets the projection’s three-axis rotation to the specified angles, which must be a two- or three-element array of numbers lambda, phi, gamma specifying the rotation angles in degrees about each spherical axis. (These correspond to yaw, pitch and roll.)</p>
+<p><strong>Default value:</strong> <code>[0, 0, 0]</code></p></td>
     </tr>
     <tr>
       <th>scale</th>
-      <td><p>Sets the projection's scale (zoom) value, overriding automatic fitting. (type = number)</p></td>
+      <td><p>(<em>Projection</em>) Sets the projection's scale (zoom) value, overriding automatic fitting.</p></td>
     </tr>
     <tr>
       <th>spacing</th>
-      <td><p>(type = number)</p></td>
+      <td><p>(<em>Projection</em>)</p></td>
     </tr>
     <tr>
       <th>tilt</th>
-      <td><p>(type = number)</p></td>
+      <td><p>(<em>Projection</em>)</p></td>
     </tr>
     <tr>
       <th>translate</th>
-      <td><p>Sets the projection's translation (pan) value, overriding automatic fitting. (type = array)</p></td>
+      <td><p>(<em>Projection</em>) Sets the projection's translation (pan) value, overriding automatic fitting.</p></td>
     </tr>
     <tr>
       <th>type</th>
-      <td><p>The cartographic projection to use. This value is case-insensitive, for example <code>"albers"</code> and <code>"Albers"</code> indicate the same projection type. You can find all valid projection types <a href='https://vega.github.io/vega-lite/docs/projection.html#projection-types'>in the documentation</a>.</p>
-<p><strong>Default value:</strong> <code>mercator</code> (type = ProjectionType)</p></td>
+      <td><p>(<em>Projection</em>) The cartographic projection to use. This value is case-insensitive, for example <code>"albers"</code> and <code>"Albers"</code> indicate the same projection type. You can find all valid projection types <a href='https://vega.github.io/vega-lite/docs/projection.html#projection-types'>in the documentation</a>.</p>
+<p><strong>Default value:</strong> <code>mercator</code></p></td>
     </tr>
     </table>
     

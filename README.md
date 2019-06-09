@@ -24,7 +24,7 @@ Examples
 
 These are some examples showing current capabilities; see [pkgdown
 site](https://aliciaschep.github.io/vlbuildr/articles/examples.html) for
-more examples.
+more examples, including interactive ones.
 
 ``` r
 library(vlbuildr)
@@ -32,8 +32,10 @@ library(vegawidget)
 vl_chart() %>%
    vl_add_data(values = mtcars) %>%
    vl_mark_point() %>%
-   vl_encode_x(field = "wt", type = "quantitative") %>%
-   vl_encode_y(field = "mpg", type = "quantitative") 
+   vl_encode_x("wt") %>%
+   vl_encode_y("mpg") 
+#> Warning in .as_vegaspec.list(spec): Spec has no `$schema` element, adding `
+#> $schema` element for Vega-Lite major-version
 ```
 
 ![](man/figures/README-example-1.png)
@@ -44,15 +46,14 @@ vl_chart() %>%
   vl_calculate(calculate = "datum.sex == 2 ? 'Female' : 'Male'", 
                as = "gender") %>%
   vl_filter("datum.year == 2000") %>%
-  vl_encode_x(field = "age", 
-              type = "ordinal") %>%
+  vl_encode(x = "age:O", y = "people:Q", color = "gender:N") %>%
   vl_scale_x(rangeStep = 17) %>%
-  vl_encode_y(field = "people", type = "quantitative") %>%
   vl_stack_y("normalize") %>%
   vl_aggregate_y("sum") %>%
   vl_axis_y(title = "population") %>%
-  vl_encode_color(field = "gender", type = "nominal") %>%
   vl_mark_bar() 
+#> Warning in .as_vegaspec.list(spec): Spec has no `$schema` element, adding `
+#> $schema` element for Vega-Lite major-version
 ```
 
 ![](man/figures/README-example2-1.png)

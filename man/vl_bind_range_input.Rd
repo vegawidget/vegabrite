@@ -15,19 +15,19 @@ vl_bind_range_input(spec, selection_name, projection_name = NULL,
 
 \item{projection_name}{Name of projection (field or encoding) within selection}
 
-\item{debounce}{(type = number)}
+\item{debounce}{(\emph{BindRange})}
 
-\item{element}{(type = Element)}
+\item{element}{(\emph{BindRange})}
 
-\item{max}{(type = number)}
+\item{max}{(\emph{BindRange})}
 
-\item{min}{(type = number)}
+\item{min}{(\emph{BindRange})}
 
-\item{name}{(type = string)}
+\item{name}{(\emph{BindRange})}
 
-\item{step}{(type = number)}
+\item{step}{(\emph{BindRange})}
 
-\item{type}{(type = string)}
+\item{type}{(\emph{BindRange})}
 }
 \value{
 A modified spec

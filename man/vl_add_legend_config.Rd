@@ -33,208 +33,206 @@ vl_add_legend_config(spec, clipHeight = NULL, columnPadding = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{clipHeight}{The height in pixels to clip symbol legend entries and limit their size. (type = number)}
+\item{clipHeight}{(\emph{LegendConfig}) The height in pixels to clip symbol legend entries and limit their size.}
 
-\item{columnPadding}{The horizontal padding in pixels between symbol legend entries.
+\item{columnPadding}{(\emph{LegendConfig}) The horizontal padding in pixels between symbol legend entries.
 
-\strong{Default value:} \code{10}. (type = number)}
+\strong{Default value:} \code{10}.}
 
-\item{columns}{The number of columns in which to arrange symbol legend entries. A value of \code{0} or lower indicates a single row with one column per entry. (type = number)}
+\item{columns}{(\emph{LegendConfig}) The number of columns in which to arrange symbol legend entries. A value of \code{0} or lower indicates a single row with one column per entry.}
 
-\item{cornerRadius}{Corner radius for the full legend. (type = number)}
+\item{cornerRadius}{(\emph{LegendConfig}) Corner radius for the full legend.}
 
-\item{fillColor}{Background fill color for the full legend. (type = Color)}
+\item{fillColor}{(\emph{LegendConfig}) Background fill color for the full legend.}
 
-\item{gradientDirection}{The default direction (\code{"horizontal"} or \code{"vertical"}) for gradient legends.
+\item{gradientDirection}{(\emph{LegendConfig}) The default direction (\code{"horizontal"} or \code{"vertical"}) for gradient legends.
 
-\strong{Default value:} \code{"vertical"}. (type = Orientation)}
+\strong{Default value:} \code{"vertical"}.}
 
-\item{gradientHorizontalMaxLength}{Max legend length for a horizontal gradient when \code{config.legend.gradientLength} is undefined.
+\item{gradientHorizontalMaxLength}{(\emph{LegendConfig}) Max legend length for a horizontal gradient when \code{config.legend.gradientLength} is undefined.
 
-\strong{Default value:} \code{200} (type = number)}
+\strong{Default value:} \code{200}}
 
-\item{gradientHorizontalMinLength}{Min legend length for a horizontal gradient when \code{config.legend.gradientLength} is undefined.
+\item{gradientHorizontalMinLength}{(\emph{LegendConfig}) Min legend length for a horizontal gradient when \code{config.legend.gradientLength} is undefined.
 
-\strong{Default value:} \code{100} (type = number)}
+\strong{Default value:} \code{100}}
 
-\item{gradientLabelLimit}{The maximum allowed length in pixels of color ramp gradient labels. (type = number)}
+\item{gradientLabelLimit}{(\emph{LegendConfig}) The maximum allowed length in pixels of color ramp gradient labels.}
 
-\item{gradientLabelOffset}{Vertical offset in pixels for color ramp gradient labels.
+\item{gradientLabelOffset}{(\emph{LegendConfig}) Vertical offset in pixels for color ramp gradient labels.
 
-\strong{Default value:} \code{2}. (type = number)}
+\strong{Default value:} \code{2}.}
 
-\item{gradientLength}{The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+\item{gradientLength}{(\emph{LegendConfig}) The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
 
-\strong{Default value:} \code{200}. (type = number)}
+\strong{Default value:} \code{200}.}
 
-\item{gradientOpacity}{Opacity of the color gradient. (type = number)}
+\item{gradientOpacity}{(\emph{LegendConfig}) Opacity of the color gradient.}
 
-\item{gradientStrokeColor}{The color of the gradient stroke, can be in hex color code or regular color name.
+\item{gradientStrokeColor}{(\emph{LegendConfig}) The color of the gradient stroke, can be in hex color code or regular color name.
 
-\strong{Default value:} \code{"lightGray"}. (type = Color)}
+\strong{Default value:} \code{"lightGray"}.}
 
-\item{gradientStrokeWidth}{The width of the gradient stroke, in pixels.
+\item{gradientStrokeWidth}{(\emph{LegendConfig}) The width of the gradient stroke, in pixels.
 
-\strong{Default value:} \code{0}. (type = number)}
+\strong{Default value:} \code{0}.}
 
-\item{gradientThickness}{The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
+\item{gradientThickness}{(\emph{LegendConfig}) The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
 
-\strong{Default value:} \code{16}. (type = number)}
+\strong{Default value:} \code{16}.}
 
-\item{gradientVerticalMaxLength}{Max legend length for a vertical gradient when \code{config.legend.gradientLength} is undefined.
+\item{gradientVerticalMaxLength}{(\emph{LegendConfig}) Max legend length for a vertical gradient when \code{config.legend.gradientLength} is undefined.
 
-\strong{Default value:} \code{200} (type = number)}
+\strong{Default value:} \code{200}}
 
-\item{gradientVerticalMinLength}{Min legend length for a vertical gradient when \code{config.legend.gradientLength} is undefined.
+\item{gradientVerticalMinLength}{(\emph{LegendConfig}) Min legend length for a vertical gradient when \code{config.legend.gradientLength} is undefined.
 
-\strong{Default value:} \code{100} (type = number)}
+\strong{Default value:} \code{100}}
 
-\item{gridAlign}{The alignment to apply to symbol legends rows and columns. The supported string values are \code{"all"}, \code{"each"} (the default), and \code{none}. For more information, see the \href{https://vega.github.io/vega/docs/layout}{grid layout documentation}.
+\item{gridAlign}{(\emph{LegendConfig}) The alignment to apply to symbol legends rows and columns. The supported string values are \code{"all"}, \code{"each"} (the default), and \code{none}. For more information, see the \href{https://vega.github.io/vega/docs/layout}{grid layout documentation}.
 
-\strong{Default value:} \code{"each"}. (type = LayoutAlign)}
+\strong{Default value:} \code{"each"}.}
 
-\item{labelAlign}{The alignment of the legend label, can be left, center, or right. (type = Align)}
+\item{labelAlign}{(\emph{LegendConfig}) The alignment of the legend label, can be left, center, or right.}
 
-\item{labelBaseline}{The position of the baseline of legend label, can be \code{"top"}, \code{"middle"}, \code{"bottom"}, or \code{"alphabetic"}.
+\item{labelBaseline}{(\emph{LegendConfig}) The position of the baseline of legend label, can be \code{"top"}, \code{"middle"}, \code{"bottom"}, or \code{"alphabetic"}.
 
-\strong{Default value:} \code{"middle"}. (type = TextBaseline)}
+\strong{Default value:} \code{"middle"}.}
 
-\item{labelColor}{The color of the legend label, can be in hex color code or regular color name. (type = Color)}
+\item{labelColor}{(\emph{LegendConfig}) The color of the legend label, can be in hex color code or regular color name.}
 
-\item{labelFont}{The font of the legend label. (type = string)}
+\item{labelFont}{(\emph{LegendConfig}) The font of the legend label.}
 
-\item{labelFontSize}{The font size of legend label.
+\item{labelFontSize}{(\emph{LegendConfig}) The font size of legend label.
 
-\strong{Default value:} \code{10}. (type = number)}
+\strong{Default value:} \code{10}.}
 
-\item{labelFontStyle}{The font style of legend label. (type = FontStyle)}
+\item{labelFontStyle}{(\emph{LegendConfig}) The font style of legend label.}
 
-\item{labelFontWeight}{The font weight of legend label. (type = FontWeight)}
+\item{labelFontWeight}{(\emph{LegendConfig}) The font weight of legend label.}
 
-\item{labelLimit}{Maximum allowed pixel width of axis tick labels.
+\item{labelLimit}{(\emph{LegendConfig}) Maximum allowed pixel width of axis tick labels.
 
-\strong{Default value:} \code{160}. (type = number)}
+\strong{Default value:} \code{160}.}
 
-\item{labelOffset}{The offset of the legend label. (type = number)}
+\item{labelOffset}{(\emph{LegendConfig}) The offset of the legend label.}
 
-\item{labelOpacity}{Opacity of labels. (type = number)}
+\item{labelOpacity}{(\emph{LegendConfig}) Opacity of labels.}
 
-\item{labelOverlap}{The strategy to use for resolving overlap of labels in gradient legends. If \code{false}, no overlap reduction is attempted. If set to \code{true} or \code{"parity"}, a strategy of removing every other label is used. If set to \code{"greedy"}, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+\item{labelOverlap}{(\emph{LegendConfig}) The strategy to use for resolving overlap of labels in gradient legends. If \code{false}, no overlap reduction is attempted. If set to \code{true} or \code{"parity"}, a strategy of removing every other label is used. If set to \code{"greedy"}, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
 
 \strong{Default value:} \code{"greedy"} for \code{log scales otherwise}true`.
-\itemize{
-\item (type = LabelOverlap)
-}}
+*}
 
-\item{labelPadding}{Padding in pixels between the legend and legend labels. (type = number)}
+\item{labelPadding}{(\emph{LegendConfig}) Padding in pixels between the legend and legend labels.}
 
-\item{labelSeparation}{The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default \code{0}). This property is ignored if \emph{labelOverlap} resolution is not enabled. (type = number)}
+\item{labelSeparation}{(\emph{LegendConfig}) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default \code{0}). This property is ignored if \emph{labelOverlap} resolution is not enabled.}
 
-\item{layout}{Legend orient group layout parameters. (type = LegendLayout)}
+\item{layout}{(\emph{LegendConfig}) Legend orient group layout parameters.}
 
-\item{offset}{The offset in pixels by which to displace the legend from the data rectangle and axes.
+\item{offset}{(\emph{LegendConfig}) The offset in pixels by which to displace the legend from the data rectangle and axes.
 
-\strong{Default value:} \code{18}. (type = number)}
+\strong{Default value:} \code{18}.}
 
-\item{orient}{The orientation of the legend, which determines how the legend is positioned within the scene. One of "left", "right", "top-left", "top-right", "bottom-left", "bottom-right", "none".
+\item{orient}{(\emph{LegendConfig}) The orientation of the legend, which determines how the legend is positioned within the scene. One of "left", "right", "top-left", "top-right", "bottom-left", "bottom-right", "none".
 
-\strong{Default value:} \code{"right"} (type = LegendOrient)}
+\strong{Default value:} \code{"right"}}
 
-\item{padding}{The padding between the border and content of the legend group.
+\item{padding}{(\emph{LegendConfig}) The padding between the border and content of the legend group.
 
-\strong{Default value:} \code{0}. (type = number)}
+\strong{Default value:} \code{0}.}
 
-\item{rowPadding}{The vertical padding in pixels between symbol legend entries.
+\item{rowPadding}{(\emph{LegendConfig}) The vertical padding in pixels between symbol legend entries.
 
-\strong{Default value:} \code{2}. (type = number)}
+\strong{Default value:} \code{2}.}
 
-\item{shortTimeLabels}{Whether month names and weekday names should be abbreviated.
+\item{shortTimeLabels}{(\emph{LegendConfig}) Whether month names and weekday names should be abbreviated.
 
-\strong{Default value:}  \code{false} (type = boolean)}
+\strong{Default value:}  \code{false}}
 
-\item{strokeColor}{Border stroke color for the full legend. (type = Color)}
+\item{strokeColor}{(\emph{LegendConfig}) Border stroke color for the full legend.}
 
-\item{strokeDash}{Border stroke dash pattern for the full legend. (type = array)}
+\item{strokeDash}{(\emph{LegendConfig}) Border stroke dash pattern for the full legend.}
 
-\item{strokeWidth}{Border stroke width for the full legend. (type = number)}
+\item{strokeWidth}{(\emph{LegendConfig}) Border stroke width for the full legend.}
 
-\item{symbolBaseFillColor}{Default fill color for legend symbols. Only applied if there is no \code{"fill"} scale color encoding for the legend.
+\item{symbolBaseFillColor}{(\emph{LegendConfig}) Default fill color for legend symbols. Only applied if there is no \code{"fill"} scale color encoding for the legend.
 
-\strong{Default value:} \code{"transparent"}. (type = Color)}
+\strong{Default value:} \code{"transparent"}.}
 
-\item{symbolBaseStrokeColor}{Default stroke color for legend symbols. Only applied if there is no \code{"fill"} scale color encoding for the legend.
+\item{symbolBaseStrokeColor}{(\emph{LegendConfig}) Default stroke color for legend symbols. Only applied if there is no \code{"fill"} scale color encoding for the legend.
 
-\strong{Default value:} \code{"gray"}. (type = Color)}
+\strong{Default value:} \code{"gray"}.}
 
-\item{symbolDash}{An array of alternating \link{stroke, space} lengths for dashed symbol strokes. (type = array)}
+\item{symbolDash}{(\emph{LegendConfig}) An array of alternating \link{stroke, space} lengths for dashed symbol strokes.}
 
-\item{symbolDashOffset}{The pixel offset at which to start drawing with the symbol stroke dash array. (type = number)}
+\item{symbolDashOffset}{(\emph{LegendConfig}) The pixel offset at which to start drawing with the symbol stroke dash array.}
 
-\item{symbolDirection}{The default direction (\code{"horizontal"} or \code{"vertical"}) for symbol legends.
+\item{symbolDirection}{(\emph{LegendConfig}) The default direction (\code{"horizontal"} or \code{"vertical"}) for symbol legends.
 
-\strong{Default value:} \code{"vertical"}. (type = Orientation)}
+\strong{Default value:} \code{"vertical"}.}
 
-\item{symbolFillColor}{The color of the legend symbol, (type = Color)}
+\item{symbolFillColor}{(\emph{LegendConfig}) The color of the legend symbol,}
 
-\item{symbolOffset}{Horizontal pixel offset for legend symbols.
+\item{symbolOffset}{(\emph{LegendConfig}) Horizontal pixel offset for legend symbols.
 
-\strong{Default value:} \code{0}. (type = number)}
+\strong{Default value:} \code{0}.}
 
-\item{symbolOpacity}{Opacity of the legend symbols. (type = number)}
+\item{symbolOpacity}{(\emph{LegendConfig}) Opacity of the legend symbols.}
 
-\item{symbolSize}{The size of the legend symbol, in pixels.
+\item{symbolSize}{(\emph{LegendConfig}) The size of the legend symbol, in pixels.
 
-\strong{Default value:} \code{100}. (type = number)}
+\strong{Default value:} \code{100}.}
 
-\item{symbolStrokeColor}{Stroke color for legend symbols. (type = Color)}
+\item{symbolStrokeColor}{(\emph{LegendConfig}) Stroke color for legend symbols.}
 
-\item{symbolStrokeWidth}{The width of the symbol's stroke.
+\item{symbolStrokeWidth}{(\emph{LegendConfig}) The width of the symbol's stroke.
 
-\strong{Default value:} \code{1.5}. (type = number)}
+\strong{Default value:} \code{1.5}.}
 
-\item{symbolType}{Default shape type (such as "circle") for legend symbols.
+\item{symbolType}{(\emph{LegendConfig}) Default shape type (such as "circle") for legend symbols.
 Can be one of ``"circle"\code{,}"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
 \itemize{
 \item In addition to a set of built-in shapes, custom shapes can be defined using \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path strings}.
 \item 
 \item \strong{Default value:} \code{"circle"}.
-\item (type = SymbolShape)
+\item 
 }}
 
-\item{title}{Set to null to disable title for the axis, legend, or header. (type = null)}
+\item{title}{(\emph{LegendConfig}) Set to null to disable title for the axis, legend, or header.}
 
-\item{titleAlign}{Horizontal text alignment for legend titles.
+\item{titleAlign}{(\emph{LegendConfig}) Horizontal text alignment for legend titles.
 
-\strong{Default value:} \code{"left"}. (type = Align)}
+\strong{Default value:} \code{"left"}.}
 
-\item{titleAnchor}{Text anchor position for placing legend titles. (type = TitleAnchor)}
+\item{titleAnchor}{(\emph{LegendConfig}) Text anchor position for placing legend titles.}
 
-\item{titleBaseline}{Vertical text baseline for legend titles.
+\item{titleBaseline}{(\emph{LegendConfig}) Vertical text baseline for legend titles.
 
-\strong{Default value:} \code{"top"}. (type = TextBaseline)}
+\strong{Default value:} \code{"top"}.}
 
-\item{titleColor}{The color of the legend title, can be in hex color code or regular color name. (type = Color)}
+\item{titleColor}{(\emph{LegendConfig}) The color of the legend title, can be in hex color code or regular color name.}
 
-\item{titleFont}{The font of the legend title. (type = string)}
+\item{titleFont}{(\emph{LegendConfig}) The font of the legend title.}
 
-\item{titleFontSize}{The font size of the legend title. (type = number)}
+\item{titleFontSize}{(\emph{LegendConfig}) The font size of the legend title.}
 
-\item{titleFontStyle}{The font style of the legend title. (type = FontStyle)}
+\item{titleFontStyle}{(\emph{LegendConfig}) The font style of the legend title.}
 
-\item{titleFontWeight}{The font weight of the legend title.
-This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}). (type = FontWeight)}
+\item{titleFontWeight}{(\emph{LegendConfig}) The font weight of the legend title.
+This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
 
-\item{titleLimit}{Maximum allowed pixel width of axis titles.
+\item{titleLimit}{(\emph{LegendConfig}) Maximum allowed pixel width of axis titles.
 
-\strong{Default value:} \code{180}. (type = number)}
+\strong{Default value:} \code{180}.}
 
-\item{titleOpacity}{Opacity of the legend title. (type = number)}
+\item{titleOpacity}{(\emph{LegendConfig}) Opacity of the legend title.}
 
-\item{titleOrient}{Orientation of the legend title. (type = Orient)}
+\item{titleOrient}{(\emph{LegendConfig}) Orientation of the legend title.}
 
-\item{titlePadding}{The padding, in pixels, between title and legend.
+\item{titlePadding}{(\emph{LegendConfig}) The padding, in pixels, between title and legend.
 
-\strong{Default value:} \code{5}. (type = number)}
+\strong{Default value:} \code{5}.}
 }
 \value{
 A modified spec

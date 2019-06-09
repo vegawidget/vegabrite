@@ -15,15 +15,15 @@ vl_bind_radio_input(spec, selection_name, projection_name = NULL,
 
 \item{projection_name}{Name of projection (field or encoding) within selection}
 
-\item{debounce}{(type = number)}
+\item{debounce}{(\emph{BindRadioSelect})}
 
-\item{element}{(type = Element)}
+\item{element}{(\emph{BindRadioSelect})}
 
-\item{name}{(type = string)}
+\item{name}{(\emph{BindRadioSelect})}
 
-\item{options}{(type = array)}
+\item{options}{(\emph{BindRadioSelect})}
 
-\item{type}{(type = string)}
+\item{type}{(\emph{BindRadioSelect})}
 }
 \value{
 A modified spec

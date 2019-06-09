@@ -10,11 +10,11 @@ vl_add_errorband_config(spec, band = NULL, borders = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{band}{(type = Varies)}
+\item{band}{(\emph{ErrorBandConfig})}
 
-\item{borders}{(type = Varies)}
+\item{borders}{(\emph{ErrorBandConfig})}
 
-\item{extent}{The extent of the band. Available options include:
+\item{extent}{(\emph{ErrorBandConfig}) The extent of the band. Available options include:
 \itemize{
 \item \code{"ci"}: Extend the band to the confidence interval of the mean.
 \item \code{"stderr"}: The size of band are set to the value of standard error, extending from the mean.
@@ -22,9 +22,9 @@ vl_add_errorband_config(spec, band = NULL, borders = NULL,
 \item \code{"iqr"}: Extend the band to the q1 and q3.
 }
 
-\strong{Default value:} \code{"stderr"}. (type = ErrorBarExtent)}
+\strong{Default value:} \code{"stderr"}.}
 
-\item{interpolate}{The line interpolation method for the error band. One of the following:
+\item{interpolate}{(\emph{ErrorBandConfig}) The line interpolation method for the error band. One of the following:
 \itemize{
 \item \code{"linear"}: piecewise linear segments, as in a polyline.
 \item \code{"linear-closed"}: close the linear segments to form a polygon.
@@ -38,10 +38,10 @@ vl_add_errorband_config(spec, band = NULL, borders = NULL,
 \item \code{"cardinal-open"}: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
 \item \code{"cardinal-closed"}: a closed Cardinal spline, as in a loop.
 \item \code{"bundle"}: equivalent to basis, except the tension parameter is used to straighten the spline.
-\item \code{"monotone"}: cubic interpolation that preserves monotonicity in y. (type = Interpolate)
+\item \code{"monotone"}: cubic interpolation that preserves monotonicity in y.
 }}
 
-\item{tension}{The tension parameter for the interpolation type of the error band. (type = number)}
+\item{tension}{(\emph{ErrorBandConfig}) The tension parameter for the interpolation type of the error band.}
 }
 \value{
 A modified spec

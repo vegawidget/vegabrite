@@ -13,45 +13,47 @@ vl_add_multi_selection(spec, selection_name, clear = NULL,
 
 \item{selection_name}{Name of selection}
 
-\item{clear}{Clears the selection, emptying it of all values. Can be an
+\item{clear}{(\emph{MultiSelection}) Clears the selection, emptying it of all values. Can be an
 \href{https://vega.github.io/vega/docs/event-streams/}{EventStream} or \code{false} to disable.
 
 \strong{Default value:} \code{dblclick}.
 
-See the \href{https://vega.github.io/vega-lite/docs/clear.html}{clear} documentation for more information. (type = Varies)}
+See the \href{https://vega.github.io/vega-lite/docs/clear.html}{clear} documentation for more information.}
 
-\item{empty}{By default, \code{all} data values are considered to lie within an empty selection.
-When set to \code{none}, empty selections contain no data values. (type = string)}
+\item{empty}{(\emph{MultiSelection}) By default, \code{all} data values are considered to lie within an empty selection.
+When set to \code{none}, empty selections contain no data values.}
 
-\item{encodings}{An array of encoding channels. The corresponding data field values
-must match for a data tuple to fall within the selection. (type = array)}
+\item{encodings}{(\emph{MultiSelection}) An array of encoding channels. The corresponding data field values
+must match for a data tuple to fall within the selection.}
 
-\item{fields}{An array of field names whose values must match for a data tuple to
-fall within the selection. (type = array)}
+\item{fields}{(\emph{MultiSelection}) An array of field names whose values must match for a data tuple to
+fall within the selection.}
 
-\item{init}{Initialize the selection with a mapping between \href{https://vega.github.io/vega-lite/docs/project.html}{projected channels or field names} and an initial
-value (or array of values). (type = Varies)}
+\item{init}{(\emph{MultiSelection}) Initialize the selection with a mapping between \href{https://vega.github.io/vega-lite/docs/project.html}{projected channels or field names} and an initial
+value (or array of values).}
 
-\item{nearest}{When true, an invisible voronoi diagram is computed to accelerate discrete
+\item{nearest}{(\emph{MultiSelection}) When true, an invisible voronoi diagram is computed to accelerate discrete
 selection. The data value \emph{nearest} the mouse cursor is added to the selection.
 
-See the \href{https://vega.github.io/vega-lite/docs/nearest.html}{nearest transform} documentation for more information. (type = boolean)}
+See the \href{https://vega.github.io/vega-lite/docs/nearest.html}{nearest transform} documentation for more information.}
 
-\item{on}{A \href{https://vega.github.io/vega/docs/event-streams/}{Vega event stream} (object or selector) that triggers the selection.
-For interval selections, the event stream must specify a \href{https://vega.github.io/vega/docs/event-streams/#between-filters}{start and end}. (type = EventStream)}
+\item{on}{(\emph{MultiSelection}) A \href{https://vega.github.io/vega/docs/event-streams/}{Vega event stream} (object or selector) that triggers the selection.
+For interval selections, the event stream must specify a \href{https://vega.github.io/vega/docs/event-streams/#between-filters}{start and end}.}
 
-\item{resolve}{With layered and multi-view displays, a strategy that determines how
+\item{resolve}{(\emph{MultiSelection}) With layered and multi-view displays, a strategy that determines how
 selections' data queries are resolved when applied in a filter transform,
-conditional encoding rule, or scale domain. (type = SelectionResolution)}
+conditional encoding rule, or scale domain.}
 
-\item{toggle}{Controls whether data values should be toggled or only ever inserted into
+\item{toggle}{(\emph{MultiSelection}) Controls whether data values should be toggled or only ever inserted into
 multi selections. Can be \code{true}, \code{false} (for insertion only), or a
 \href{https://vega.github.io/vega/docs/expressions/}{Vega expression}.
 
 \strong{Default value:} \code{true}, which corresponds to \code{event.shiftKey} (i.e.,
 data values are toggled when a user interacts with the shift-key pressed).
 
-See the \href{https://vega.github.io/vega-lite/docs/toggle.html}{toggle transform} documentation for more information. (type = string OR boolean)}
+See the \href{https://vega.github.io/vega-lite/docs/toggle.html}{toggle transform} documentation for more information.}
+
+\item{type}{(\emph{MultiSelection}) multi}
 }
 \value{
 A modified spec

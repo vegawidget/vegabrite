@@ -10,7 +10,7 @@ vl_add_errorbar_config(spec, extent = NULL, rule = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{extent}{The extent of the rule. Available options include:
+\item{extent}{(\emph{ErrorBarConfig}) The extent of the rule. Available options include:
 \itemize{
 \item \code{"ci"}: Extend the rule to the confidence interval of the mean.
 \item \code{"stderr"}: The size of rule are set to the value of standard error, extending from the mean.
@@ -18,11 +18,11 @@ vl_add_errorbar_config(spec, extent = NULL, rule = NULL,
 \item \code{"iqr"}: Extend the rule to the q1 and q3.
 }
 
-\strong{Default value:} \code{"stderr"}. (type = ErrorBarExtent)}
+\strong{Default value:} \code{"stderr"}.}
 
-\item{rule}{(type = Varies)}
+\item{rule}{(\emph{ErrorBarConfig})}
 
-\item{ticks}{(type = Varies)}
+\item{ticks}{(\emph{ErrorBarConfig})}
 }
 \value{
 A modified spec

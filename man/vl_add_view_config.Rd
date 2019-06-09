@@ -14,55 +14,55 @@ vl_add_view_config(spec, clip = NULL, cornerRadius = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{clip}{Whether the view should be clipped. (type = boolean)}
+\item{clip}{(\emph{ViewConfig}) Whether the view should be clipped.}
 
-\item{cornerRadius}{The radius in pixels of rounded rectangle corners.
+\item{cornerRadius}{(\emph{ViewConfig}) The radius in pixels of rounded rectangle corners.
 
-\strong{Default value:} \code{0} (type = number)}
+\strong{Default value:} \code{0}}
 
-\item{fill}{The fill color.
+\item{fill}{(\emph{ViewConfig}) The fill color.
 
-\strong{Default value:} \code{undefined} (type = string OR null)}
+\strong{Default value:} \code{undefined}}
 
-\item{fillOpacity}{The fill opacity (value between \link{0,1}).
+\item{fillOpacity}{(\emph{ViewConfig}) The fill opacity (value between \link{0,1}).
 
-\strong{Default value:} \code{1} (type = number)}
+\strong{Default value:} \code{1}}
 
-\item{height}{The default height of the single plot or each plot in a trellis plot when the visualization has a continuous (non-ordinal) y-scale with \code{rangeStep} = \code{null}.
+\item{height}{(\emph{ViewConfig}) The default height of the single plot or each plot in a trellis plot when the visualization has a continuous (non-ordinal) y-scale with \code{rangeStep} = \code{null}.
 
-\strong{Default value:} \code{200} (type = number)}
+\strong{Default value:} \code{200}}
 
-\item{opacity}{The overall opacity (value between \link{0,1}).
+\item{opacity}{(\emph{ViewConfig}) The overall opacity (value between \link{0,1}).
 
-\strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick}, \code{circle}, or \code{square} marks or layered \code{bar} charts and \code{1} otherwise. (type = number)}
+\strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick}, \code{circle}, or \code{square} marks or layered \code{bar} charts and \code{1} otherwise.}
 
-\item{stroke}{The stroke color.
+\item{stroke}{(\emph{ViewConfig}) The stroke color.
 
-\strong{Default value:} \code{"#ddd"} (type = string OR null)}
+\strong{Default value:} \code{"#ddd"}}
 
-\item{strokeCap}{The stroke cap for line ending style. One of \code{"butt"}, \code{"round"}, or \code{"square"}.
+\item{strokeCap}{(\emph{ViewConfig}) The stroke cap for line ending style. One of \code{"butt"}, \code{"round"}, or \code{"square"}.
 
-\strong{Default value:} \code{"square"} (type = StrokeCap)}
+\strong{Default value:} \code{"square"}}
 
-\item{strokeDash}{An array of alternating stroke, space lengths for creating dashed or dotted lines. (type = array)}
+\item{strokeDash}{(\emph{ViewConfig}) An array of alternating stroke, space lengths for creating dashed or dotted lines.}
 
-\item{strokeDashOffset}{The offset (in pixels) into which to begin drawing with the stroke dash array. (type = number)}
+\item{strokeDashOffset}{(\emph{ViewConfig}) The offset (in pixels) into which to begin drawing with the stroke dash array.}
 
-\item{strokeJoin}{The stroke line join method. One of \code{"miter"}, \code{"round"} or \code{"bevel"}.
+\item{strokeJoin}{(\emph{ViewConfig}) The stroke line join method. One of \code{"miter"}, \code{"round"} or \code{"bevel"}.
 
-\strong{Default value:} \code{"miter"} (type = StrokeJoin)}
+\strong{Default value:} \code{"miter"}}
 
-\item{strokeMiterLimit}{The miter limit at which to bevel a line join. (type = number)}
+\item{strokeMiterLimit}{(\emph{ViewConfig}) The miter limit at which to bevel a line join.}
 
-\item{strokeOpacity}{The stroke opacity (value between \link{0,1}).
+\item{strokeOpacity}{(\emph{ViewConfig}) The stroke opacity (value between \link{0,1}).
 
-\strong{Default value:} \code{1} (type = number)}
+\strong{Default value:} \code{1}}
 
-\item{strokeWidth}{The stroke width, in pixels. (type = number)}
+\item{strokeWidth}{(\emph{ViewConfig}) The stroke width, in pixels.}
 
-\item{width}{The default width of the single plot or each plot in a trellis plot when the visualization has a continuous (non-ordinal) x-scale or ordinal x-scale with \code{rangeStep} = \code{null}.
+\item{width}{(\emph{ViewConfig}) The default width of the single plot or each plot in a trellis plot when the visualization has a continuous (non-ordinal) x-scale or ordinal x-scale with \code{rangeStep} = \code{null}.
 
-\strong{Default value:} \code{200} (type = number)}
+\strong{Default value:} \code{200}}
 }
 \value{
 A modified spec

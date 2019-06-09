@@ -9,9 +9,9 @@ vl_aggregate(spec, aggregate = NULL, groupby = NULL)
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{aggregate}{Array of objects that define fields to aggregate. (type = array)}
+\item{aggregate}{(\emph{AggregateTransform}) Array of objects that define fields to aggregate.}
 
-\item{groupby}{The data fields to group by. If not specified, a single group containing all data objects will be used. (type = array)}
+\item{groupby}{(\emph{AggregateTransform}) The data fields to group by. If not specified, a single group containing all data objects will be used.}
 }
 \value{
 A modified spec

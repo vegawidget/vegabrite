@@ -10,31 +10,31 @@ vl_impute(spec, frame = NULL, groupby = NULL, impute = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{frame}{A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value \code{[-5, 5]} indicates that the window should include five objects preceding and five objects following the current object.
+\item{frame}{(\emph{ImputeTransform}) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value \code{[-5, 5]} indicates that the window should include five objects preceding and five objects following the current object.
 
-\strong{Default value:}:  \code{[null, null]} indicating that the window includes all objects. (type = array)}
+\strong{Default value:}:  \code{[null, null]} indicating that the window includes all objects.}
 
-\item{groupby}{An optional array of fields by which to group the values.
-Imputation will then be performed on a per-group basis. (type = array)}
+\item{groupby}{(\emph{ImputeTransform}) An optional array of fields by which to group the values.
+Imputation will then be performed on a per-group basis.}
 
-\item{impute}{The data field for which the missing values should be imputed. (type = string)}
+\item{impute}{(\emph{ImputeTransform}) The data field for which the missing values should be imputed.}
 
-\item{key}{A key field that uniquely identifies data objects within a group.
-Missing key values (those occurring in the data but not in the current group) will be imputed. (type = string)}
+\item{key}{(\emph{ImputeTransform}) A key field that uniquely identifies data objects within a group.
+Missing key values (those occurring in the data but not in the current group) will be imputed.}
 
-\item{keyvals}{Defines the key values that should be considered for imputation.
+\item{keyvals}{(\emph{ImputeTransform}) Defines the key values that should be considered for imputation.
 An array of key values or an object defining a \href{https://vega.github.io/vega-lite/docs/impute.html#sequence-def}{number sequence}.
 
 If provided, this will be used in addition to the key values observed within the input data.  If not provided, the values will be derived from all unique values of the \code{key} field. For \code{impute} in \code{encoding}, the key field is the x-field if the y-field is imputed, or vice versa.
 
-If there is no impute grouping, this property \emph{must} be specified. (type = Varies)}
+If there is no impute grouping, this property \emph{must} be specified.}
 
-\item{method}{The imputation method to use for the field value of imputed data objects.
+\item{method}{(\emph{ImputeTransform}) The imputation method to use for the field value of imputed data objects.
 One of \code{value}, \code{mean}, \code{median}, \code{max} or \code{min}.
 
-\strong{Default value:}  \code{"value"} (type = ImputeMethod)}
+\strong{Default value:}  \code{"value"}}
 
-\item{value}{The field value to use when the imputation \code{method} is \code{"value"}. (type = Varies)}
+\item{value}{(\emph{ImputeTransform}) The field value to use when the imputation \code{method} is \code{"value"}.}
 }
 \value{
 A modified spec

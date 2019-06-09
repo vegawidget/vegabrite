@@ -17,7 +17,7 @@ vl_add_headerFacet_config(spec, format = NULL, formatType = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{format}{The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+\item{format}{(\emph{HeaderConfig}) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 \itemize{
 \item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern}.
 \item If the format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
@@ -25,76 +25,76 @@ vl_add_headerFacet_config(spec, format = NULL, formatType = NULL,
 
 See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more examples.
 
-\strong{Default value:}  Derived from \href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for number format and from \href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for time format. (type = string)}
+\strong{Default value:}  Derived from \href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for number format and from \href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for time format.}
 
-\item{formatType}{The format type for labels (\code{"number"} or \code{"time"}).
+\item{formatType}{(\emph{HeaderConfig}) The format type for labels (\code{"number"} or \code{"time"}).
 
 \strong{Default value:}
 \itemize{
 \item \code{"time"} for temporal fields and ordinal and nomimal fields with \code{timeUnit}.
-\item \code{"number"} for quantitative fields as well as ordinal and nomimal fields without \code{timeUnit}. (type = string)
+\item \code{"number"} for quantitative fields as well as ordinal and nomimal fields without \code{timeUnit}.
 }}
 
-\item{labelAlign}{Horizontal text alignment of header labels. (type = Align)}
+\item{labelAlign}{(\emph{HeaderConfig}) Horizontal text alignment of header labels.}
 
-\item{labelAnchor}{The anchor position for placing the labels. One of \code{"start"}, \code{"middle"}, or \code{"end"}. For example, with a label orientation of top these anchor positions map to a left-, center-, or right-aligned label. (type = TitleAnchor)}
+\item{labelAnchor}{(\emph{HeaderConfig}) The anchor position for placing the labels. One of \code{"start"}, \code{"middle"}, or \code{"end"}. For example, with a label orientation of top these anchor positions map to a left-, center-, or right-aligned label.}
 
-\item{labelAngle}{The rotation angle of the header labels.
+\item{labelAngle}{(\emph{HeaderConfig}) The rotation angle of the header labels.
 
-\strong{Default value:} \code{0} for column header, \code{-90} for row header. (type = number)}
+\strong{Default value:} \code{0} for column header, \code{-90} for row header.}
 
-\item{labelColor}{The color of the header label, can be in hex color code or regular color name. (type = string)}
+\item{labelColor}{(\emph{HeaderConfig}) The color of the header label, can be in hex color code or regular color name.}
 
-\item{labelFont}{The font of the header label. (type = string)}
+\item{labelFont}{(\emph{HeaderConfig}) The font of the header label.}
 
-\item{labelFontSize}{The font size of the header label, in pixels. (type = number)}
+\item{labelFontSize}{(\emph{HeaderConfig}) The font size of the header label, in pixels.}
 
-\item{labelLimit}{The maximum length of the header label in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+\item{labelLimit}{(\emph{HeaderConfig}) The maximum length of the header label in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
 
-\strong{Default value:} \code{0}, indicating no limit (type = number)}
+\strong{Default value:} \code{0}, indicating no limit}
 
-\item{labelOrient}{The orientation of the header label. One of \code{"top"}, \code{"bottom"}, \code{"left"} or \code{"right"}. (type = Orient)}
+\item{labelOrient}{(\emph{HeaderConfig}) The orientation of the header label. One of \code{"top"}, \code{"bottom"}, \code{"left"} or \code{"right"}.}
 
-\item{labelPadding}{The padding, in pixel, between facet header's label and the plot.
+\item{labelPadding}{(\emph{HeaderConfig}) The padding, in pixel, between facet header's label and the plot.
 
-\strong{Default value:} \code{10} (type = number)}
+\strong{Default value:} \code{10}}
 
-\item{shortTimeLabels}{Whether month names and weekday names should be abbreviated.
+\item{shortTimeLabels}{(\emph{HeaderConfig}) Whether month names and weekday names should be abbreviated.
 
-\strong{Default value:}  \code{false} (type = boolean)}
+\strong{Default value:}  \code{false}}
 
-\item{title}{Set to null to disable title for the axis, legend, or header. (type = null)}
+\item{title}{(\emph{HeaderConfig}) Set to null to disable title for the axis, legend, or header.}
 
-\item{titleAlign}{Horizontal text alignment (to the anchor) of header titles. (type = Align)}
+\item{titleAlign}{(\emph{HeaderConfig}) Horizontal text alignment (to the anchor) of header titles.}
 
-\item{titleAnchor}{The anchor position for placing the title. One of \code{"start"}, \code{"middle"}, or \code{"end"}. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title. (type = TitleAnchor)}
+\item{titleAnchor}{(\emph{HeaderConfig}) The anchor position for placing the title. One of \code{"start"}, \code{"middle"}, or \code{"end"}. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.}
 
-\item{titleAngle}{The rotation angle of the header title.
+\item{titleAngle}{(\emph{HeaderConfig}) The rotation angle of the header title.
 
-\strong{Default value:} \code{0}. (type = number)}
+\strong{Default value:} \code{0}.}
 
-\item{titleBaseline}{Vertical text baseline for the header title. One of \code{"top"}, \code{"bottom"}, \code{"middle"}.
+\item{titleBaseline}{(\emph{HeaderConfig}) Vertical text baseline for the header title. One of \code{"top"}, \code{"bottom"}, \code{"middle"}.
 
-\strong{Default value:} \code{"middle"} (type = TextBaseline)}
+\strong{Default value:} \code{"middle"}}
 
-\item{titleColor}{Color of the header title, can be in hex color code or regular color name. (type = string)}
+\item{titleColor}{(\emph{HeaderConfig}) Color of the header title, can be in hex color code or regular color name.}
 
-\item{titleFont}{Font of the header title. (e.g., \code{"Helvetica Neue"}). (type = string)}
+\item{titleFont}{(\emph{HeaderConfig}) Font of the header title. (e.g., \code{"Helvetica Neue"}).}
 
-\item{titleFontSize}{Font size of the header title. (type = number)}
+\item{titleFontSize}{(\emph{HeaderConfig}) Font size of the header title.}
 
-\item{titleFontWeight}{Font weight of the header title.
-This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}). (type = FontWeight)}
+\item{titleFontWeight}{(\emph{HeaderConfig}) Font weight of the header title.
+This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
 
-\item{titleLimit}{The maximum length of the header title in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+\item{titleLimit}{(\emph{HeaderConfig}) The maximum length of the header title in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
 
-\strong{Default value:} \code{0}, indicating no limit (type = number)}
+\strong{Default value:} \code{0}, indicating no limit}
 
-\item{titleOrient}{The orientation of the header title. One of \code{"top"}, \code{"bottom"}, \code{"left"} or \code{"right"}. (type = Orient)}
+\item{titleOrient}{(\emph{HeaderConfig}) The orientation of the header title. One of \code{"top"}, \code{"bottom"}, \code{"left"} or \code{"right"}.}
 
-\item{titlePadding}{The padding, in pixel, between facet header's title and the label.
+\item{titlePadding}{(\emph{HeaderConfig}) The padding, in pixel, between facet header's title and the label.
 
-\strong{Default value:} \code{10} (type = number)}
+\strong{Default value:} \code{10}}
 }
 \value{
 A modified spec

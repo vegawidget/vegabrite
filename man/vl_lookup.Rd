@@ -10,17 +10,17 @@ vl_lookup(spec, as = NULL, default = NULL, from = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{as}{The field or fields for storing the computed formula value.
+\item{as}{(\emph{LookupTransform}) The field or fields for storing the computed formula value.
 If \code{from.fields} is specified, the transform will use the same names for \code{as}.
-If \code{from.fields} is not specified, \code{as} has to be a string and we put the whole object into the data under the specified name. (type = Varies)}
+If \code{from.fields} is not specified, \code{as} has to be a string and we put the whole object into the data under the specified name.}
 
-\item{default}{The default value to use if lookup fails.
+\item{default}{(\emph{LookupTransform}) The default value to use if lookup fails.
 
-\strong{Default value:} \code{null} (type = string)}
+\strong{Default value:} \code{null}}
 
-\item{from}{Secondary data reference. (type = LookupData)}
+\item{from}{(\emph{LookupTransform}) Secondary data reference.}
 
-\item{lookup}{Key in primary data source. (type = string)}
+\item{lookup}{(\emph{LookupTransform}) Key in primary data source.}
 }
 \value{
 A modified spec

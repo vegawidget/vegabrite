@@ -12,46 +12,46 @@ vl_condition_fill(spec, test = NULL, value = NULL, selection = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{test}{Predicate for triggering the condition (type = LogicalOperand<Predicate>)}
+\item{test}{(\emph{ConditionalPredicate<ValueDef>, ConditionalPredicate<MarkPropFieldDef>}) Predicate for triggering the condition}
 
-\item{value}{A constant value in visual domain (e.g., \code{"red"} / "#0099ff" for color, values between \code{0} to \code{1} for opacity). (type = number OR string OR boolean OR null)}
+\item{value}{(\emph{ConditionalPredicate<ValueDef>, ConditionalSelection<ValueDef>}) A constant value in visual domain (e.g., \code{"red"} / "#0099ff" for color, values between \code{0} to \code{1} for opacity).}
 
-\item{selection}{A \href{https://vega.github.io/vega-lite/docs/selection.html}{selection name}, or a series of \href{https://vega.github.io/vega-lite/docs/selection.html#compose}{composed selections}. (type = SelectionOperand)}
+\item{selection}{(\emph{ConditionalSelection<ValueDef>, ConditionalSelection<MarkPropFieldDef>}) A \href{https://vega.github.io/vega-lite/docs/selection.html}{selection name}, or a series of \href{https://vega.github.io/vega-lite/docs/selection.html#compose}{composed selections}.}
 
-\item{aggregate}{Aggregation function for the field
+\item{aggregate}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>}) Aggregation function for the field
 (e.g., \code{mean}, \code{sum}, \code{median}, \code{min}, \code{max}, \code{count}).
 
-\strong{Default value:} \code{undefined} (None) (type = Aggregate)}
+\strong{Default value:} \code{undefined} (None)}
 
-\item{bin}{A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y} channel are binned before they are imported into Vega-Lite (\code{"binned"}).
+\item{bin}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>}) A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y} channel are binned before they are imported into Vega-Lite (\code{"binned"}).
 \itemize{
 \item If \code{true}, default \href{https://vega.github.io/vega-lite/docs/bin.html}{binning parameters} will be applied.
 \item If \code{"binned"}, this indicates that the data for the \code{x} (or \code{y}) channel are already binned. You can map the bin-start field to \code{x} (or \code{y}) and the bin-end field to \code{x2} (or \code{y2}). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's \href{https://vega.github.io/vega-lite/docs/axis.html#ticks}{tickMinStep} property.
 }
 
-\strong{Default value:} \code{false} (type = Varies)}
+\strong{Default value:} \code{false}}
 
-\item{field}{\strong{Required.} A string defining the name of the field from which to pull a data value
+\item{field}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>}) \strong{Required.} A string defining the name of the field from which to pull a data value
 or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{repeat} operator.
 
 \strong{Note:} Dots (\code{.}) and brackets (\code{[} and \code{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \code{"field": "foo['bar']"}).
 If field names contain dots or brackets but are not nested, you can use \code{\\} to escape dots and brackets (e.g., \code{"a\\.b"} and \code{"a\\[0\\]"}).
 See more details about escaping in the \href{https://vega.github.io/vega-lite/docs/field.html}{field documentation}.
 
-\strong{Note:} \code{field} is not required if \code{aggregate} is \code{count}. (type = Field)}
+\strong{Note:} \code{field} is not required if \code{aggregate} is \code{count}.}
 
-\item{legend}{An object defining properties of the legend.
+\item{legend}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>}) An object defining properties of the legend.
 If \code{null}, the legend for the encoding channel will be removed.
 
-\strong{Default value:} If undefined, default \href{https://vega.github.io/vega-lite/docs/legend.html}{legend properties} are applied. (type = Varies)}
+\strong{Default value:} If undefined, default \href{https://vega.github.io/vega-lite/docs/legend.html}{legend properties} are applied.}
 
-\item{scale}{An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+\item{scale}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>}) An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
 
 If \code{null}, the scale will be \href{https://vega.github.io/vega-lite/docs/scale.html#disable}{disabled and the data value will be directly encoded}.
 
-\strong{Default value:} If undefined, default \href{https://vega.github.io/vega-lite/docs/scale.html}{scale properties} are applied. (type = Varies)}
+\strong{Default value:} If undefined, default \href{https://vega.github.io/vega-lite/docs/scale.html}{scale properties} are applied.}
 
-\item{sort}{Sort order for the encoded field.
+\item{sort}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>}) Sort order for the encoded field.
 
 For continuous fields (quantitative or temporal), \code{sort} can be either \code{"ascending"} or \code{"descending"}.
 
@@ -66,24 +66,24 @@ For discrete fields, \code{sort} can be one of the following:
 
 \strong{Default value:} \code{"ascending"}
 
-\strong{Note:} \code{null} is not supported for \code{row} and \code{column}. (type = Sort)}
+\strong{Note:} \code{null} is not supported for \code{row} and \code{column}.}
 
-\item{timeUnit}{Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field.
+\item{timeUnit}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>}) Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field.
 or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}.
 
-\strong{Default value:} \code{undefined} (None) (type = TimeUnit)}
+\strong{Default value:} \code{undefined} (None)}
 
-\item{title}{A title for the field. If \code{null}, the title will be removed.
+\item{title}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>}) A title for the field. If \code{null}, the title will be removed.
 
 \strong{Default value:}  derived from the field's name and transformation function (\code{aggregate}, \code{bin} and \code{timeUnit}).  If the field has an aggregate function, the function is displayed as part of the title (e.g., \code{"Sum of Profit"}). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., \code{"Profit (binned)"}, \code{"Transaction Date (year-month)"}).  Otherwise, the title is simply the field name.
 
 \strong{Notes}:
 \enumerate{
 \item You can customize the default field title format by providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{fieldTitle} property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config} or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{fieldTitle function via the compile function's options}.
-\item If both field definition's \code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used. (type = string OR null)
+\item If both field definition's \code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used.
 }}
 
-\item{type}{The encoded field's type of measurement (\code{"quantitative"}, \code{"temporal"}, \code{"ordinal"}, or \code{"nominal"}).
+\item{type}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>}) The encoded field's type of measurement (\code{"quantitative"}, \code{"temporal"}, \code{"ordinal"}, or \code{"nominal"}).
 It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io/vega-lite/docs/geoshape.html}{'geoshape'}.
 
 \strong{Note:}
@@ -93,7 +93,7 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 \item When using with \href{https://vega.github.io/vega-lite/docs/bin.html}{bin}, the \code{type} property can be either \code{"quantitative"} (for using a linear bin scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{"ordinal" (for using an ordinal bin scale)}.
 \item When using with \href{https://vega.github.io/vega-lite/docs/timeunit.html}{timeUnit}, the \code{type} property can be either \code{"temporal"} (for using a temporal scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{"ordinal" (for using an ordinal scale)}.
 \item When using with \href{https://vega.github.io/vega-lite/docs/aggregate.html}{aggregate}, the \code{type} property refers to the post-aggregation data type. For example, we can calculate count \code{distinct} of a categorical field \code{"cat"} using \code{{"aggregate": "distinct", "field": "cat", "type": "quantitative"}}. The \code{"type"} of the aggregate output is \code{"quantitative"}.
-\item Secondary channels (e.g., \code{x2}, \code{y2}, \code{xError}, \code{yError}) do not have \code{type} as they have exactly the same type as their primary channels (e.g., \code{x}, \code{y}). (type = StandardType)
+\item Secondary channels (e.g., \code{x2}, \code{y2}, \code{xError}, \code{yError}) do not have \code{type} as they have exactly the same type as their primary channels (e.g., \code{x}, \code{y}).
 }}
 }
 \value{

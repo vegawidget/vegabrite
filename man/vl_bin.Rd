@@ -9,11 +9,11 @@ vl_bin(spec, as = NULL, bin = NULL, field = NULL)
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{as}{The output fields at which to write the start and end bin values. (type = Varies)}
+\item{as}{(\emph{BinTransform}) The output fields at which to write the start and end bin values.}
 
-\item{bin}{An object indicating bin properties, or simply \code{true} for using default bin parameters. (type = Varies)}
+\item{bin}{(\emph{BinTransform}) An object indicating bin properties, or simply \code{true} for using default bin parameters.}
 
-\item{field}{The data field to bin. (type = string)}
+\item{field}{(\emph{BinTransform}) The data field to bin.}
 }
 \value{
 A modified spec

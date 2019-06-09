@@ -10,22 +10,22 @@ vl_add_selection_config(spec, interval = NULL, multi = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{interval}{The default definition for an \href{https://vega.github.io/vega-lite/docs/selection.html#type}{interval} selection. All properties and transformations
+\item{interval}{(\emph{SelectionConfig}) The default definition for an \href{https://vega.github.io/vega-lite/docs/selection.html#type}{interval} selection. All properties and transformations
 for an interval selection definition (except \code{type}) may be specified here.
 
 For instance, setting \code{interval} to \code{{"translate": false}} disables the ability to move
-interval selections by default. (type = IntervalSelectionConfig)}
+interval selections by default.}
 
-\item{multi}{The default definition for a \href{https://vega.github.io/vega-lite/docs/selection.html#type}{multi} selection. All properties and transformations
+\item{multi}{(\emph{SelectionConfig}) The default definition for a \href{https://vega.github.io/vega-lite/docs/selection.html#type}{multi} selection. All properties and transformations
 for a multi selection definition (except \code{type}) may be specified here.
 
 For instance, setting \code{multi} to \code{{"toggle": "event.altKey"}} adds additional values to
-multi selections when clicking with the alt-key pressed by default. (type = MultiSelectionConfig)}
+multi selections when clicking with the alt-key pressed by default.}
 
-\item{single}{The default definition for a \href{https://vega.github.io/vega-lite/docs/selection.html#type}{single} selection. All properties and transformations
+\item{single}{(\emph{SelectionConfig}) The default definition for a \href{https://vega.github.io/vega-lite/docs/selection.html#type}{single} selection. All properties and transformations
 for a single selection definition (except \code{type}) may be specified here.
 
-For instance, setting \code{single} to \code{{"on": "dblclick"}} populates single selections on double-click by default. (type = SingleSelectionConfig)}
+For instance, setting \code{single} to \code{{"on": "dblclick"}} populates single selections on double-click by default.}
 }
 \value{
 A modified spec

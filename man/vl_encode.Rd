@@ -2,7 +2,7 @@
 % Please edit documentation in R/encoding.R
 \name{vl_encode}
 \alias{vl_encode}
-\title{vl_encoding}
+\title{vl_encode}
 \usage{
 vl_encode(spec, ...)
 }
@@ -16,7 +16,7 @@ a modified vegalite spec
 }
 \description{
 Add encodings to a spec. This is one way to add encodings... each encoding
-can also be added using vl_encoding_<name> where <name> is the name of the
+can also be added using vl_encode_<name> where <name> is the name of the
 encoding.
 }
 \examples{
@@ -25,7 +25,7 @@ vl_chart() \%>\%
   vl_add_data(values = mtcars) \%>\%
   vl_mark_point() \%>\%
   vl_encode(
-    x = vl_X(field = "wt", type = "quantitative"),
-    y = vl_Y(field = "mpg", type = "quantitative")
+    x = "wt:Q",
+    y = "mpg:Q"
   )
 }

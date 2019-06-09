@@ -9,9 +9,9 @@ vl_sample(spec, sample = NULL)
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{sample}{The maximum number of data objects to include in the sample.
+\item{sample}{(\emph{SampleTransform}) The maximum number of data objects to include in the sample.
 
-\strong{Default value:} \code{1000} (type = number)}
+\strong{Default value:} \code{1000}}
 }
 \value{
 A modified spec

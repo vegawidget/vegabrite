@@ -10,17 +10,17 @@ vl_add_range_config(spec, category = NULL, diverging = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{category}{Default range for \emph{nominal} (categorical) fields. (type = Varies)}
+\item{category}{(\emph{RangeConfig}) Default range for \emph{nominal} (categorical) fields.}
 
-\item{diverging}{Default range for diverging \emph{quantitative} fields. (type = Varies)}
+\item{diverging}{(\emph{RangeConfig}) Default range for diverging \emph{quantitative} fields.}
 
-\item{heatmap}{Default range for \emph{quantitative} heatmaps. (type = Varies)}
+\item{heatmap}{(\emph{RangeConfig}) Default range for \emph{quantitative} heatmaps.}
 
-\item{ordinal}{Default range for \emph{ordinal} fields. (type = Varies)}
+\item{ordinal}{(\emph{RangeConfig}) Default range for \emph{ordinal} fields.}
 
-\item{ramp}{Default range for \emph{quantitative} and \emph{temporal} fields. (type = Varies)}
+\item{ramp}{(\emph{RangeConfig}) Default range for \emph{quantitative} and \emph{temporal} fields.}
 
-\item{symbol}{Default range palette for the \code{shape} channel. (type = array)}
+\item{symbol}{(\emph{RangeConfig}) Default range palette for the \code{shape} channel.}
 }
 \value{
 A modified spec

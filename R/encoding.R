@@ -121,10 +121,10 @@ ENCODE_MAPPING <- list(
   
 }
 
-#' vl_encoding
+#' vl_encode
 #'
 #' Add encodings to a spec. This is one way to add encodings... each encoding
-#' can also be added using vl_encoding_<name> where <name> is the name of the
+#' can also be added using vl_encode_<name> where <name> is the name of the
 #' encoding.
 #'
 #' @param spec a vegalite spec
@@ -139,8 +139,8 @@ ENCODE_MAPPING <- list(
 #'   vl_add_data(values = mtcars) %>%
 #'   vl_mark_point() %>%
 #'   vl_encode(
-#'     x = vl_X(field = "wt", type = "quantitative"),
-#'     y = vl_Y(field = "mpg", type = "quantitative")
+#'     x = "wt:Q",
+#'     y = "mpg:Q"
 #'   )
 vl_encode <- function(spec, ...){
   inputs <- list(...)

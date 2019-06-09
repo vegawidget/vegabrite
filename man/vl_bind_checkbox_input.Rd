@@ -14,13 +14,13 @@ vl_bind_checkbox_input(spec, selection_name, projection_name = NULL,
 
 \item{projection_name}{Name of projection (field or encoding) within selection}
 
-\item{debounce}{(type = number)}
+\item{debounce}{(\emph{BindCheckbox})}
 
-\item{element}{(type = Element)}
+\item{element}{(\emph{BindCheckbox})}
 
-\item{name}{(type = string)}
+\item{name}{(\emph{BindCheckbox})}
 
-\item{type}{(type = string)}
+\item{type}{(\emph{BindCheckbox})}
 }
 \value{
 A modified spec

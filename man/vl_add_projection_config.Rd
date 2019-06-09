@@ -14,49 +14,49 @@ vl_add_projection_config(spec, center = NULL, clipAngle = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{center}{Sets the projection’s center to the specified center, a two-element array of longitude and latitude in degrees.
+\item{center}{(\emph{Projection}) Sets the projection’s center to the specified center, a two-element array of longitude and latitude in degrees.
 
-\strong{Default value:} \code{[0, 0]} (type = array)}
+\strong{Default value:} \code{[0, 0]}}
 
-\item{clipAngle}{Sets the projection’s clipping circle radius to the specified angle in degrees. If \code{null}, switches to \href{http://bl.ocks.org/mbostock/3788999}{antimeridian} cutting rather than small-circle clipping. (type = number)}
+\item{clipAngle}{(\emph{Projection}) Sets the projection’s clipping circle radius to the specified angle in degrees. If \code{null}, switches to \href{http://bl.ocks.org/mbostock/3788999}{antimeridian} cutting rather than small-circle clipping.}
 
-\item{clipExtent}{Sets the projection’s viewport clip extent to the specified bounds in pixels. The extent bounds are specified as an array \code{[[x0, y0], [x1, y1]]}, where \code{x0} is the left-side of the viewport, \code{y0} is the top, \code{x1} is the right and \code{y1} is the bottom. If \code{null}, no viewport clipping is performed. (type = array)}
+\item{clipExtent}{(\emph{Projection}) Sets the projection’s viewport clip extent to the specified bounds in pixels. The extent bounds are specified as an array \code{[[x0, y0], [x1, y1]]}, where \code{x0} is the left-side of the viewport, \code{y0} is the top, \code{x1} is the right and \code{y1} is the bottom. If \code{null}, no viewport clipping is performed.}
 
-\item{coefficient}{(type = number)}
+\item{coefficient}{(\emph{Projection})}
 
-\item{distance}{(type = number)}
+\item{distance}{(\emph{Projection})}
 
-\item{fraction}{(type = number)}
+\item{fraction}{(\emph{Projection})}
 
-\item{lobes}{(type = number)}
+\item{lobes}{(\emph{Projection})}
 
-\item{parallel}{(type = number)}
+\item{parallel}{(\emph{Projection})}
 
-\item{precision}{Sets the threshold for the projection’s \href{http://bl.ocks.org/mbostock/3795544}{adaptive resampling} to the specified value in pixels. This value corresponds to the \href{http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm}{Douglas–Peucker distance}. If precision is not specified, returns the projection’s current resampling precision which defaults to \code{√0.5 ≅ 0.70710…}. (type = string)}
+\item{precision}{(\emph{Projection}) Sets the threshold for the projection’s \href{http://bl.ocks.org/mbostock/3795544}{adaptive resampling} to the specified value in pixels. This value corresponds to the \href{http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm}{Douglas–Peucker distance}. If precision is not specified, returns the projection’s current resampling precision which defaults to \code{√0.5 ≅ 0.70710…}.}
 
-\item{radius}{(type = number)}
+\item{radius}{(\emph{Projection})}
 
-\item{ratio}{(type = number)}
+\item{ratio}{(\emph{Projection})}
 
-\item{reflectX}{(type = boolean)}
+\item{reflectX}{(\emph{Projection})}
 
-\item{reflectY}{(type = boolean)}
+\item{reflectY}{(\emph{Projection})}
 
-\item{rotate}{Sets the projection’s three-axis rotation to the specified angles, which must be a two- or three-element array of numbers \link[=`lambda`, `phi`, `gamma`]{lambda, phi, gamma} specifying the rotation angles in degrees about each spherical axis. (These correspond to yaw, pitch and roll.)
+\item{rotate}{(\emph{Projection}) Sets the projection’s three-axis rotation to the specified angles, which must be a two- or three-element array of numbers \link[=`lambda`, `phi`, `gamma`]{lambda, phi, gamma} specifying the rotation angles in degrees about each spherical axis. (These correspond to yaw, pitch and roll.)
 
-\strong{Default value:} \code{[0, 0, 0]} (type = array)}
+\strong{Default value:} \code{[0, 0, 0]}}
 
-\item{scale}{Sets the projection's scale (zoom) value, overriding automatic fitting. (type = number)}
+\item{scale}{(\emph{Projection}) Sets the projection's scale (zoom) value, overriding automatic fitting.}
 
-\item{spacing}{(type = number)}
+\item{spacing}{(\emph{Projection})}
 
-\item{tilt}{(type = number)}
+\item{tilt}{(\emph{Projection})}
 
-\item{translate}{Sets the projection's translation (pan) value, overriding automatic fitting. (type = array)}
+\item{translate}{(\emph{Projection}) Sets the projection's translation (pan) value, overriding automatic fitting.}
 
-\item{type}{The cartographic projection to use. This value is case-insensitive, for example \code{"albers"} and \code{"Albers"} indicate the same projection type. You can find all valid projection types \href{https://vega.github.io/vega-lite/docs/projection.html#projection-types}{in the documentation}.
+\item{type}{(\emph{Projection}) The cartographic projection to use. This value is case-insensitive, for example \code{"albers"} and \code{"Albers"} indicate the same projection type. You can find all valid projection types \href{https://vega.github.io/vega-lite/docs/projection.html#projection-types}{in the documentation}.
 
-\strong{Default value:} \code{mercator} (type = ProjectionType)}
+\strong{Default value:} \code{mercator}}
 }
 \value{
 A modified spec

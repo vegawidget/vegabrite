@@ -9,14 +9,14 @@ vl_flatten(spec, as = NULL, flatten = NULL)
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{as}{The output field names for extracted array values.
+\item{as}{(\emph{FlattenTransform}) The output field names for extracted array values.
 
-\strong{Default value:} The field name of the corresponding array field (type = array)}
+\strong{Default value:} The field name of the corresponding array field}
 
-\item{flatten}{An array of one or more data fields containing arrays to flatten.
+\item{flatten}{(\emph{FlattenTransform}) An array of one or more data fields containing arrays to flatten.
 If multiple fields are specified, their array values should have a parallel structure, ideally with the same length.
 If the lengths of parallel arrays do not match,
-the longest array will be used with \code{null} values added for missing entries. (type = array)}
+the longest array will be used with \code{null} values added for missing entries.}
 }
 \value{
 A modified spec

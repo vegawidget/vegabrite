@@ -135,70 +135,74 @@
     </tr>
     <tr>
       <th>bind</th>
-      <td><p>Establishes a two-way binding between the interval selection and the scales
+      <td><p>(<em>IntervalSelection</em>) Establishes a two-way binding between the interval selection and the scales
 used within the same view. This allows a user to interactively pan and
-zoom the view. (type = string)</p></td>
+zoom the view.</p></td>
     </tr>
     <tr>
       <th>clear</th>
-      <td><p>Clears the selection, emptying it of all values. Can be an
+      <td><p>(<em>IntervalSelection</em>) Clears the selection, emptying it of all values. Can be an
 <a href='https://vega.github.io/vega/docs/event-streams/'>EventStream</a> or <code>false</code> to disable.</p>
 <p><strong>Default value:</strong> <code>dblclick</code>.</p>
-<p>See the <a href='https://vega.github.io/vega-lite/docs/clear.html'>clear</a> documentation for more information. (type = Varies)</p></td>
+<p>See the <a href='https://vega.github.io/vega-lite/docs/clear.html'>clear</a> documentation for more information.</p></td>
     </tr>
     <tr>
       <th>empty</th>
-      <td><p>By default, <code>all</code> data values are considered to lie within an empty selection.
-When set to <code>none</code>, empty selections contain no data values. (type = string)</p></td>
+      <td><p>(<em>IntervalSelection</em>) By default, <code>all</code> data values are considered to lie within an empty selection.
+When set to <code>none</code>, empty selections contain no data values.</p></td>
     </tr>
     <tr>
       <th>encodings</th>
-      <td><p>An array of encoding channels. The corresponding data field values
-must match for a data tuple to fall within the selection. (type = array)</p></td>
+      <td><p>(<em>IntervalSelection</em>) An array of encoding channels. The corresponding data field values
+must match for a data tuple to fall within the selection.</p></td>
     </tr>
     <tr>
       <th>fields</th>
-      <td><p>An array of field names whose values must match for a data tuple to
-fall within the selection. (type = array)</p></td>
+      <td><p>(<em>IntervalSelection</em>) An array of field names whose values must match for a data tuple to
+fall within the selection.</p></td>
     </tr>
     <tr>
       <th>init</th>
-      <td><p>Initialize the selection with a mapping between <a href='https://vega.github.io/vega-lite/docs/project.html'>projected channels or field names</a> and arrays of
-initial values. (type = SelectionInitArrayMapping)</p></td>
+      <td><p>(<em>IntervalSelection</em>) Initialize the selection with a mapping between <a href='https://vega.github.io/vega-lite/docs/project.html'>projected channels or field names</a> and arrays of
+initial values.</p></td>
     </tr>
     <tr>
       <th>mark</th>
-      <td><p>An interval selection also adds a rectangle mark to depict the
+      <td><p>(<em>IntervalSelection</em>) An interval selection also adds a rectangle mark to depict the
 extents of the interval. The <code>mark</code> property can be used to customize the
-appearance of the mark. (type = BrushConfig)</p></td>
+appearance of the mark.</p></td>
     </tr>
     <tr>
       <th>on</th>
-      <td><p>A <a href='https://vega.github.io/vega/docs/event-streams/'>Vega event stream</a> (object or selector) that triggers the selection.
-For interval selections, the event stream must specify a <a href='https://vega.github.io/vega/docs/event-streams/#between-filters'>start and end</a>. (type = EventStream)</p></td>
+      <td><p>(<em>IntervalSelection</em>) A <a href='https://vega.github.io/vega/docs/event-streams/'>Vega event stream</a> (object or selector) that triggers the selection.
+For interval selections, the event stream must specify a <a href='https://vega.github.io/vega/docs/event-streams/#between-filters'>start and end</a>.</p></td>
     </tr>
     <tr>
       <th>resolve</th>
-      <td><p>With layered and multi-view displays, a strategy that determines how
+      <td><p>(<em>IntervalSelection</em>) With layered and multi-view displays, a strategy that determines how
 selections' data queries are resolved when applied in a filter transform,
-conditional encoding rule, or scale domain. (type = SelectionResolution)</p></td>
+conditional encoding rule, or scale domain.</p></td>
     </tr>
     <tr>
       <th>translate</th>
-      <td><p>When truthy, allows a user to interactively move an interval selection
+      <td><p>(<em>IntervalSelection</em>) When truthy, allows a user to interactively move an interval selection
 back-and-forth. Can be <code>true</code>, <code>false</code> (to disable panning), or a
 <a href='https://vega.github.io/vega/docs/event-streams/'>Vega event stream definition</a>
 which must include a start and end event to trigger continuous panning.</p>
 <p><strong>Default value:</strong> <code>true</code>, which corresponds to
 <code>[mousedown, window:mouseup] &gt; window:mousemove!</code> which corresponds to
-clicks and dragging within an interval selection to reposition it. (type = string OR boolean)</p></td>
+clicks and dragging within an interval selection to reposition it.</p></td>
     </tr>
     <tr>
       <th>zoom</th>
-      <td><p>When truthy, allows a user to interactively resize an interval selection.
+      <td><p>(<em>IntervalSelection</em>) When truthy, allows a user to interactively resize an interval selection.
 Can be <code>true</code>, <code>false</code> (to disable zooming), or a <a href='https://vega.github.io/vega/docs/event-streams/'>Vega event stream definition</a>. Currently,
 only <code>wheel</code> events are supported.</p>
-<p><strong>Default value:</strong> <code>true</code>, which corresponds to <code>wheel!</code>. (type = string OR boolean)</p></td>
+<p><strong>Default value:</strong> <code>true</code>, which corresponds to <code>wheel!</code>.</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>(<em>IntervalSelection</em>) interval</p></td>
     </tr>
     </table>
     

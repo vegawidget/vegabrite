@@ -11,35 +11,35 @@ vl_bin_color(spec, anchor = NULL, base = NULL, binned = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{anchor}{A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+\item{anchor}{(\emph{BinParams}) A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
 
-\strong{Default Value:} the minimum bin extent value (type = number)}
+\strong{Default Value:} the minimum bin extent value}
 
-\item{base}{The number base to use for automatic bin determination (default is base 10).
+\item{base}{(\emph{BinParams}) The number base to use for automatic bin determination (default is base 10).
 
-\strong{Default value:} \code{10} (type = number)}
+\strong{Default value:} \code{10}}
 
-\item{binned}{When set to true, Vega-Lite treats the input data as already binned. (type = boolean)}
+\item{binned}{(\emph{BinParams}) When set to true, Vega-Lite treats the input data as already binned.}
 
-\item{divide}{Scale factors indicating allowable subdivisions. The default value is \link{5, 2}, which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+\item{divide}{(\emph{BinParams}) Scale factors indicating allowable subdivisions. The default value is \link{5, 2}, which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
 
-\strong{Default value:} \code{[5, 2]} (type = array)}
+\strong{Default value:} \code{[5, 2]}}
 
-\item{extent}{A two-element (\code{[min, max]}) array indicating the range of desired bin values. (type = array)}
+\item{extent}{(\emph{BinParams}) A two-element (\code{[min, max]}) array indicating the range of desired bin values.}
 
-\item{maxbins}{Maximum number of bins.
+\item{maxbins}{(\emph{BinParams}) Maximum number of bins.
 
-\strong{Default value:} \code{6} for \code{row}, \code{column} and \code{shape} channels; \code{10} for other channels (type = number)}
+\strong{Default value:} \code{6} for \code{row}, \code{column} and \code{shape} channels; \code{10} for other channels}
 
-\item{minstep}{A minimum allowable step size (particularly useful for integer values). (type = number)}
+\item{minstep}{(\emph{BinParams}) A minimum allowable step size (particularly useful for integer values).}
 
-\item{nice}{If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten. (type = boolean)}
+\item{nice}{(\emph{BinParams}) If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten.}
 
-\item{step}{An exact step size to use between bins.
+\item{step}{(\emph{BinParams}) An exact step size to use between bins.
 
-\strong{Note:} If provided, options such as maxbins will be ignored. (type = number)}
+\strong{Note:} If provided, options such as maxbins will be ignored.}
 
-\item{steps}{An array of allowable step sizes to choose from. (type = array)}
+\item{steps}{(\emph{BinParams}) An array of allowable step sizes to choose from.}
 }
 \value{
 A modified spec

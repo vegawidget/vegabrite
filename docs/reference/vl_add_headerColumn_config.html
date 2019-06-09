@@ -136,118 +136,118 @@
     </tr>
     <tr>
       <th>format</th>
-      <td><p>The text formatting pattern for labels of guides (axes, legends, headers) and text marks.</p><ul>
+      <td><p>(<em>HeaderConfig</em>) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.</p><ul>
 <li><p>If the format type is <code>"number"</code> (e.g., for quantitative fields), this is D3's <a href='https://github.com/d3/d3-format#locale_format'>number format pattern</a>.</p></li>
 <li><p>If the format type is <code>"time"</code> (e.g., for temporal fields), this is D3's <a href='https://github.com/d3/d3-time-format#locale_format'>time format pattern</a>.</p></li>
 </ul>
 
 <p>See the <a href='https://vega.github.io/vega-lite/docs/format.html'>format documentation</a> for more examples.</p>
-<p><strong>Default value:</strong>  Derived from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>numberFormat</a> config for number format and from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>timeFormat</a> config for time format. (type = string)</p></td>
+<p><strong>Default value:</strong>  Derived from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>numberFormat</a> config for number format and from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>timeFormat</a> config for time format.</p></td>
     </tr>
     <tr>
       <th>formatType</th>
-      <td><p>The format type for labels (<code>"number"</code> or <code>"time"</code>).</p>
+      <td><p>(<em>HeaderConfig</em>) The format type for labels (<code>"number"</code> or <code>"time"</code>).</p>
 <p><strong>Default value:</strong></p><ul>
 <li><p><code>"time"</code> for temporal fields and ordinal and nomimal fields with <code>timeUnit</code>.</p></li>
-<li><p><code>"number"</code> for quantitative fields as well as ordinal and nomimal fields without <code>timeUnit</code>. (type = string)</p></li>
+<li><p><code>"number"</code> for quantitative fields as well as ordinal and nomimal fields without <code>timeUnit</code>.</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>labelAlign</th>
-      <td><p>Horizontal text alignment of header labels. (type = Align)</p></td>
+      <td><p>(<em>HeaderConfig</em>) Horizontal text alignment of header labels.</p></td>
     </tr>
     <tr>
       <th>labelAnchor</th>
-      <td><p>The anchor position for placing the labels. One of <code>"start"</code>, <code>"middle"</code>, or <code>"end"</code>. For example, with a label orientation of top these anchor positions map to a left-, center-, or right-aligned label. (type = TitleAnchor)</p></td>
+      <td><p>(<em>HeaderConfig</em>) The anchor position for placing the labels. One of <code>"start"</code>, <code>"middle"</code>, or <code>"end"</code>. For example, with a label orientation of top these anchor positions map to a left-, center-, or right-aligned label.</p></td>
     </tr>
     <tr>
       <th>labelAngle</th>
-      <td><p>The rotation angle of the header labels.</p>
-<p><strong>Default value:</strong> <code>0</code> for column header, <code>-90</code> for row header. (type = number)</p></td>
+      <td><p>(<em>HeaderConfig</em>) The rotation angle of the header labels.</p>
+<p><strong>Default value:</strong> <code>0</code> for column header, <code>-90</code> for row header.</p></td>
     </tr>
     <tr>
       <th>labelColor</th>
-      <td><p>The color of the header label, can be in hex color code or regular color name. (type = string)</p></td>
+      <td><p>(<em>HeaderConfig</em>) The color of the header label, can be in hex color code or regular color name.</p></td>
     </tr>
     <tr>
       <th>labelFont</th>
-      <td><p>The font of the header label. (type = string)</p></td>
+      <td><p>(<em>HeaderConfig</em>) The font of the header label.</p></td>
     </tr>
     <tr>
       <th>labelFontSize</th>
-      <td><p>The font size of the header label, in pixels. (type = number)</p></td>
+      <td><p>(<em>HeaderConfig</em>) The font size of the header label, in pixels.</p></td>
     </tr>
     <tr>
       <th>labelLimit</th>
-      <td><p>The maximum length of the header label in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.</p>
-<p><strong>Default value:</strong> <code>0</code>, indicating no limit (type = number)</p></td>
+      <td><p>(<em>HeaderConfig</em>) The maximum length of the header label in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.</p>
+<p><strong>Default value:</strong> <code>0</code>, indicating no limit</p></td>
     </tr>
     <tr>
       <th>labelOrient</th>
-      <td><p>The orientation of the header label. One of <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code> or <code>"right"</code>. (type = Orient)</p></td>
+      <td><p>(<em>HeaderConfig</em>) The orientation of the header label. One of <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code> or <code>"right"</code>.</p></td>
     </tr>
     <tr>
       <th>labelPadding</th>
-      <td><p>The padding, in pixel, between facet header's label and the plot.</p>
-<p><strong>Default value:</strong> <code>10</code> (type = number)</p></td>
+      <td><p>(<em>HeaderConfig</em>) The padding, in pixel, between facet header's label and the plot.</p>
+<p><strong>Default value:</strong> <code>10</code></p></td>
     </tr>
     <tr>
       <th>shortTimeLabels</th>
-      <td><p>Whether month names and weekday names should be abbreviated.</p>
-<p><strong>Default value:</strong>  <code>false</code> (type = boolean)</p></td>
+      <td><p>(<em>HeaderConfig</em>) Whether month names and weekday names should be abbreviated.</p>
+<p><strong>Default value:</strong>  <code>false</code></p></td>
     </tr>
     <tr>
       <th>title</th>
-      <td><p>Set to null to disable title for the axis, legend, or header. (type = null)</p></td>
+      <td><p>(<em>HeaderConfig</em>) Set to null to disable title for the axis, legend, or header.</p></td>
     </tr>
     <tr>
       <th>titleAlign</th>
-      <td><p>Horizontal text alignment (to the anchor) of header titles. (type = Align)</p></td>
+      <td><p>(<em>HeaderConfig</em>) Horizontal text alignment (to the anchor) of header titles.</p></td>
     </tr>
     <tr>
       <th>titleAnchor</th>
-      <td><p>The anchor position for placing the title. One of <code>"start"</code>, <code>"middle"</code>, or <code>"end"</code>. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title. (type = TitleAnchor)</p></td>
+      <td><p>(<em>HeaderConfig</em>) The anchor position for placing the title. One of <code>"start"</code>, <code>"middle"</code>, or <code>"end"</code>. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.</p></td>
     </tr>
     <tr>
       <th>titleAngle</th>
-      <td><p>The rotation angle of the header title.</p>
-<p><strong>Default value:</strong> <code>0</code>. (type = number)</p></td>
+      <td><p>(<em>HeaderConfig</em>) The rotation angle of the header title.</p>
+<p><strong>Default value:</strong> <code>0</code>.</p></td>
     </tr>
     <tr>
       <th>titleBaseline</th>
-      <td><p>Vertical text baseline for the header title. One of <code>"top"</code>, <code>"bottom"</code>, <code>"middle"</code>.</p>
-<p><strong>Default value:</strong> <code>"middle"</code> (type = TextBaseline)</p></td>
+      <td><p>(<em>HeaderConfig</em>) Vertical text baseline for the header title. One of <code>"top"</code>, <code>"bottom"</code>, <code>"middle"</code>.</p>
+<p><strong>Default value:</strong> <code>"middle"</code></p></td>
     </tr>
     <tr>
       <th>titleColor</th>
-      <td><p>Color of the header title, can be in hex color code or regular color name. (type = string)</p></td>
+      <td><p>(<em>HeaderConfig</em>) Color of the header title, can be in hex color code or regular color name.</p></td>
     </tr>
     <tr>
       <th>titleFont</th>
-      <td><p>Font of the header title. (e.g., <code>"Helvetica Neue"</code>). (type = string)</p></td>
+      <td><p>(<em>HeaderConfig</em>) Font of the header title. (e.g., <code>"Helvetica Neue"</code>).</p></td>
     </tr>
     <tr>
       <th>titleFontSize</th>
-      <td><p>Font size of the header title. (type = number)</p></td>
+      <td><p>(<em>HeaderConfig</em>) Font size of the header title.</p></td>
     </tr>
     <tr>
       <th>titleFontWeight</th>
-      <td><p>Font weight of the header title.
-This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or a number (<code>100</code>, <code>200</code>, <code>300</code>, ..., <code>900</code> where <code>"normal"</code> = <code>400</code> and <code>"bold"</code> = <code>700</code>). (type = FontWeight)</p></td>
+      <td><p>(<em>HeaderConfig</em>) Font weight of the header title.
+This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or a number (<code>100</code>, <code>200</code>, <code>300</code>, ..., <code>900</code> where <code>"normal"</code> = <code>400</code> and <code>"bold"</code> = <code>700</code>).</p></td>
     </tr>
     <tr>
       <th>titleLimit</th>
-      <td><p>The maximum length of the header title in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.</p>
-<p><strong>Default value:</strong> <code>0</code>, indicating no limit (type = number)</p></td>
+      <td><p>(<em>HeaderConfig</em>) The maximum length of the header title in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.</p>
+<p><strong>Default value:</strong> <code>0</code>, indicating no limit</p></td>
     </tr>
     <tr>
       <th>titleOrient</th>
-      <td><p>The orientation of the header title. One of <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code> or <code>"right"</code>. (type = Orient)</p></td>
+      <td><p>(<em>HeaderConfig</em>) The orientation of the header title. One of <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code> or <code>"right"</code>.</p></td>
     </tr>
     <tr>
       <th>titlePadding</th>
-      <td><p>The padding, in pixel, between facet header's title and the label.</p>
-<p><strong>Default value:</strong> <code>10</code> (type = number)</p></td>
+      <td><p>(<em>HeaderConfig</em>) The padding, in pixel, between facet header's title and the label.</p>
+<p><strong>Default value:</strong> <code>10</code></p></td>
     </tr>
     </table>
     

@@ -129,25 +129,25 @@
     </tr>
     <tr>
       <th>frame</th>
-      <td><p>A frame specification as a two-element array indicating how the sliding window should proceed. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. The default value is <code>[null, 0]</code>, indicating that the sliding window includes the current object and all preceding objects. The value <code>[-5, 5]</code> indicates that the window should include five objects preceding and five objects following the current object. Finally, <code>[null, null]</code> indicates that the window frame should always include all data objects. If you this frame and want to assign the same value to add objects, you can use the simpler <a href='https://vega.github.io/vega-lite/docs/joinaggregate.html'>join aggregate transform</a>. The only operators affected are the aggregation operations and the <code>first_value</code>, <code>last_value</code>, and <code>nth_value</code> window operations. The other window operations are not affected by this.</p>
-<p><strong>Default value:</strong>:  <code>[null, 0]</code> (includes the current object and all preceding objects) (type = array)</p></td>
+      <td><p>(<em>WindowTransform</em>) A frame specification as a two-element array indicating how the sliding window should proceed. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. The default value is <code>[null, 0]</code>, indicating that the sliding window includes the current object and all preceding objects. The value <code>[-5, 5]</code> indicates that the window should include five objects preceding and five objects following the current object. Finally, <code>[null, null]</code> indicates that the window frame should always include all data objects. If you this frame and want to assign the same value to add objects, you can use the simpler <a href='https://vega.github.io/vega-lite/docs/joinaggregate.html'>join aggregate transform</a>. The only operators affected are the aggregation operations and the <code>first_value</code>, <code>last_value</code>, and <code>nth_value</code> window operations. The other window operations are not affected by this.</p>
+<p><strong>Default value:</strong>:  <code>[null, 0]</code> (includes the current object and all preceding objects)</p></td>
     </tr>
     <tr>
       <th>groupby</th>
-      <td><p>The data fields for partitioning the data objects into separate windows. If unspecified, all data points will be in a single window. (type = array)</p></td>
+      <td><p>(<em>WindowTransform</em>) The data fields for partitioning the data objects into separate windows. If unspecified, all data points will be in a single window.</p></td>
     </tr>
     <tr>
       <th>ignorePeers</th>
-      <td><p>Indicates if the sliding window frame should ignore peer values (data that are considered identical by the sort criteria). The default is false, causing the window frame to expand to include all peer values. If set to true, the window frame will be defined by offset values only. This setting only affects those operations that depend on the window frame, namely aggregation operations and the first_value, last_value, and nth_value window operations.</p>
-<p><strong>Default value:</strong> <code>false</code> (type = boolean)</p></td>
+      <td><p>(<em>WindowTransform</em>) Indicates if the sliding window frame should ignore peer values (data that are considered identical by the sort criteria). The default is false, causing the window frame to expand to include all peer values. If set to true, the window frame will be defined by offset values only. This setting only affects those operations that depend on the window frame, namely aggregation operations and the first_value, last_value, and nth_value window operations.</p>
+<p><strong>Default value:</strong> <code>false</code></p></td>
     </tr>
     <tr>
       <th>sort</th>
-      <td><p>A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered “peer” values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to <code>true</code>). (type = array)</p></td>
+      <td><p>(<em>WindowTransform</em>) A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered “peer” values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to <code>true</code>).</p></td>
     </tr>
     <tr>
       <th>window</th>
-      <td><p>The definition of the fields in the window, and what calculations to use. (type = array)</p></td>
+      <td><p>(<em>WindowTransform</em>) The definition of the fields in the window, and what calculations to use.</p></td>
     </tr>
     </table>
     

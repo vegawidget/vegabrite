@@ -137,133 +137,133 @@
     </tr>
     <tr>
       <th>bandPaddingInner</th>
-      <td><p>Default inner padding for <code>x</code> and <code>y</code> band-ordinal scales.</p>
+      <td><p>(<em>ScaleConfig</em>) Default inner padding for <code>x</code> and <code>y</code> band-ordinal scales.</p>
 <p><strong>Default value:</strong></p><ul>
 <li><p><code>barBandPaddingInner</code> for bar marks (<code>0.1</code> by default)</p></li>
-<li><p><code>rectBandPaddingInner</code> for rect and other marks (<code>0</code> by default) (type = number)</p></li>
+<li><p><code>rectBandPaddingInner</code> for rect and other marks (<code>0</code> by default)</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>bandPaddingOuter</th>
-      <td><p>Default outer padding for <code>x</code> and <code>y</code> band-ordinal scales.</p>
-<p>If not specified, by default, band scale's paddingOuter is paddingInner/2. (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) Default outer padding for <code>x</code> and <code>y</code> band-ordinal scales.</p>
+<p>If not specified, by default, band scale's paddingOuter is paddingInner/2.</p></td>
     </tr>
     <tr>
       <th>barBandPaddingInner</th>
-      <td><p>Default inner padding for <code>x</code> and <code>y</code> band-ordinal scales of <code>"bar"</code> marks.</p>
-<p><strong>Default value:</strong> <code>0.1</code> (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) Default inner padding for <code>x</code> and <code>y</code> band-ordinal scales of <code>"bar"</code> marks.</p>
+<p><strong>Default value:</strong> <code>0.1</code></p></td>
     </tr>
     <tr>
       <th>barBandPaddingOuter</th>
-      <td><p>Default outer padding for <code>x</code> and <code>y</code> band-ordinal scales of <code>"bar"</code> marks.
-If not specified, by default, band scale's paddingOuter is paddingInner/2. (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) Default outer padding for <code>x</code> and <code>y</code> band-ordinal scales of <code>"bar"</code> marks.
+If not specified, by default, band scale's paddingOuter is paddingInner/2.</p></td>
     </tr>
     <tr>
       <th>clamp</th>
-      <td><p>If true, values that exceed the data domain are clamped to either the minimum or maximum range value (type = boolean)</p></td>
+      <td><p>(<em>ScaleConfig</em>) If true, values that exceed the data domain are clamped to either the minimum or maximum range value</p></td>
     </tr>
     <tr>
       <th>continuousPadding</th>
-      <td><p>Default padding for continuous scales.</p>
-<p><strong>Default:</strong> <code>5</code> for continuous x-scale of a vertical bar and continuous y-scale of a horizontal bar.; <code>0</code> otherwise. (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) Default padding for continuous scales.</p>
+<p><strong>Default:</strong> <code>5</code> for continuous x-scale of a vertical bar and continuous y-scale of a horizontal bar.; <code>0</code> otherwise.</p></td>
     </tr>
     <tr>
       <th>maxBandSize</th>
-      <td><p>The default max value for mapping quantitative fields to bar's size/bandSize.</p>
-<p>If undefined (default), we will use the scale's <code>rangeStep</code> - 1. (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) The default max value for mapping quantitative fields to bar's size/bandSize.</p>
+<p>If undefined (default), we will use the scale's <code>rangeStep</code> - 1.</p></td>
     </tr>
     <tr>
       <th>maxFontSize</th>
-      <td><p>The default max value for mapping quantitative fields to text's size/fontSize.</p>
-<p><strong>Default value:</strong> <code>40</code> (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) The default max value for mapping quantitative fields to text's size/fontSize.</p>
+<p><strong>Default value:</strong> <code>40</code></p></td>
     </tr>
     <tr>
       <th>maxOpacity</th>
-      <td><p>Default max opacity for mapping a field to opacity.</p>
-<p><strong>Default value:</strong> <code>0.8</code> (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) Default max opacity for mapping a field to opacity.</p>
+<p><strong>Default value:</strong> <code>0.8</code></p></td>
     </tr>
     <tr>
       <th>maxSize</th>
-      <td><p>Default max value for point size scale. (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) Default max value for point size scale.</p></td>
     </tr>
     <tr>
       <th>maxStrokeWidth</th>
-      <td><p>Default max strokeWidth for the scale of strokeWidth for rule and line marks and of size for trail marks.</p>
-<p><strong>Default value:</strong> <code>4</code> (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) Default max strokeWidth for the scale of strokeWidth for rule and line marks and of size for trail marks.</p>
+<p><strong>Default value:</strong> <code>4</code></p></td>
     </tr>
     <tr>
       <th>minBandSize</th>
-      <td><p>The default min value for mapping quantitative fields to bar and tick's size/bandSize scale with zero=false.</p>
-<p><strong>Default value:</strong> <code>2</code> (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) The default min value for mapping quantitative fields to bar and tick's size/bandSize scale with zero=false.</p>
+<p><strong>Default value:</strong> <code>2</code></p></td>
     </tr>
     <tr>
       <th>minFontSize</th>
-      <td><p>The default min value for mapping quantitative fields to tick's size/fontSize scale with zero=false</p>
-<p><strong>Default value:</strong> <code>8</code> (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) The default min value for mapping quantitative fields to tick's size/fontSize scale with zero=false</p>
+<p><strong>Default value:</strong> <code>8</code></p></td>
     </tr>
     <tr>
       <th>minOpacity</th>
-      <td><p>Default minimum opacity for mapping a field to opacity.</p>
-<p><strong>Default value:</strong> <code>0.3</code> (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) Default minimum opacity for mapping a field to opacity.</p>
+<p><strong>Default value:</strong> <code>0.3</code></p></td>
     </tr>
     <tr>
       <th>minSize</th>
-      <td><p>Default minimum value for point size scale with zero=false.</p>
-<p><strong>Default value:</strong> <code>9</code> (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) Default minimum value for point size scale with zero=false.</p>
+<p><strong>Default value:</strong> <code>9</code></p></td>
     </tr>
     <tr>
       <th>minStrokeWidth</th>
-      <td><p>Default minimum strokeWidth for the scale of strokeWidth for rule and line marks and of size for trail marks with zero=false.</p>
-<p><strong>Default value:</strong> <code>1</code> (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) Default minimum strokeWidth for the scale of strokeWidth for rule and line marks and of size for trail marks with zero=false.</p>
+<p><strong>Default value:</strong> <code>1</code></p></td>
     </tr>
     <tr>
       <th>pointPadding</th>
-      <td><p>Default outer padding for <code>x</code> and <code>y</code> point-ordinal scales.</p>
-<p><strong>Default value:</strong> <code>0.5</code> (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) Default outer padding for <code>x</code> and <code>y</code> point-ordinal scales.</p>
+<p><strong>Default value:</strong> <code>0.5</code></p></td>
     </tr>
     <tr>
       <th>quantileCount</th>
-      <td><p>Default range cardinality for <a href='https://vega.github.io/vega-lite/docs/scale.html#quantile'>quantile</a> scale.</p>
-<p><strong>Default value:</strong> <code>4</code> (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) Default range cardinality for <a href='https://vega.github.io/vega-lite/docs/scale.html#quantile'>quantile</a> scale.</p>
+<p><strong>Default value:</strong> <code>4</code></p></td>
     </tr>
     <tr>
       <th>quantizeCount</th>
-      <td><p>Default range cardinality for <a href='https://vega.github.io/vega-lite/docs/scale.html#quantize'>quantize</a> scale.</p>
-<p><strong>Default value:</strong> <code>4</code> (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) Default range cardinality for <a href='https://vega.github.io/vega-lite/docs/scale.html#quantize'>quantize</a> scale.</p>
+<p><strong>Default value:</strong> <code>4</code></p></td>
     </tr>
     <tr>
       <th>rangeStep</th>
-      <td><p>Default range step for band and point scales of (1) the <code>y</code> channel
+      <td><p>(<em>ScaleConfig</em>) Default range step for band and point scales of (1) the <code>y</code> channel
 and (2) the <code>x</code> channel when the mark is not <code>text</code>.</p>
-<p><strong>Default value:</strong> <code>20</code> (type = number OR null)</p></td>
+<p><strong>Default value:</strong> <code>20</code></p></td>
     </tr>
     <tr>
       <th>rectBandPaddingInner</th>
-      <td><p>Default inner padding for <code>x</code> and <code>y</code> band-ordinal scales of <code>"rect"</code> marks.</p>
-<p><strong>Default value:</strong> <code>0</code> (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) Default inner padding for <code>x</code> and <code>y</code> band-ordinal scales of <code>"rect"</code> marks.</p>
+<p><strong>Default value:</strong> <code>0</code></p></td>
     </tr>
     <tr>
       <th>rectBandPaddingOuter</th>
-      <td><p>Default outer padding for <code>x</code> and <code>y</code> band-ordinal scales of <code>"rect"</code> marks.
-If not specified, by default, band scale's paddingOuter is paddingInner/2. (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) Default outer padding for <code>x</code> and <code>y</code> band-ordinal scales of <code>"rect"</code> marks.
+If not specified, by default, band scale's paddingOuter is paddingInner/2.</p></td>
     </tr>
     <tr>
       <th>round</th>
-      <td><p>If true, rounds numeric output values to integers.
+      <td><p>(<em>ScaleConfig</em>) If true, rounds numeric output values to integers.
 This can be helpful for snapping to the pixel grid.
-(Only available for <code>x</code>, <code>y</code>, and <code>size</code> scales.) (type = boolean)</p></td>
+(Only available for <code>x</code>, <code>y</code>, and <code>size</code> scales.)</p></td>
     </tr>
     <tr>
       <th>textXRangeStep</th>
-      <td><p>Default range step for <code>x</code> band and point scales of text marks.</p>
-<p><strong>Default value:</strong> <code>90</code> (type = number)</p></td>
+      <td><p>(<em>ScaleConfig</em>) Default range step for <code>x</code> band and point scales of text marks.</p>
+<p><strong>Default value:</strong> <code>90</code></p></td>
     </tr>
     <tr>
       <th>useUnaggregatedDomain</th>
-      <td><p>Use the source data range before aggregation as scale domain instead of aggregated data for aggregate axis.</p>
+      <td><p>(<em>ScaleConfig</em>) Use the source data range before aggregation as scale domain instead of aggregated data for aggregate axis.</p>
 <p>This is equivalent to setting <code>domain</code> to <code>"unaggregate"</code> for aggregated <em>quantitative</em> fields by default.</p>
 <p>This property only works with aggregate functions that produce values within the raw data domain (<code>"mean"</code>, <code>"average"</code>, <code>"median"</code>, <code>"q1"</code>, <code>"q3"</code>, <code>"min"</code>, <code>"max"</code>). For other aggregations that produce values outside of the raw data domain (e.g. <code>"count"</code>, <code>"sum"</code>), this property is ignored.</p>
-<p><strong>Default value:</strong> <code>false</code> (type = boolean)</p></td>
+<p><strong>Default value:</strong> <code>false</code></p></td>
     </tr>
     </table>
     

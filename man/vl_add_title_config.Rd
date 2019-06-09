@@ -13,38 +13,38 @@ vl_add_title_config(spec, align = NULL, anchor = NULL, angle = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{align}{(type = Align)}
+\item{align}{(\emph{BaseTitleConfig})}
 
-\item{anchor}{The anchor position for placing the title. One of \code{"start"}, \code{"middle"}, or \code{"end"}. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title. (type = TitleAnchor)}
+\item{anchor}{(\emph{BaseTitleConfig}) The anchor position for placing the title. One of \code{"start"}, \code{"middle"}, or \code{"end"}. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.}
 
-\item{angle}{Angle in degrees of title text. (type = number)}
+\item{angle}{(\emph{BaseTitleConfig}) Angle in degrees of title text.}
 
-\item{baseline}{Vertical text baseline for title text. One of \code{"top"}, \code{"middle"}, \code{"bottom"}, or \code{"alphabetic"}. (type = TextBaseline)}
+\item{baseline}{(\emph{BaseTitleConfig}) Vertical text baseline for title text. One of \code{"top"}, \code{"middle"}, \code{"bottom"}, or \code{"alphabetic"}.}
 
-\item{color}{Text color for title text. (type = Color)}
+\item{color}{(\emph{BaseTitleConfig}) Text color for title text.}
 
-\item{dx}{Delta offset for title text x-coordinate. (type = number)}
+\item{dx}{(\emph{BaseTitleConfig}) Delta offset for title text x-coordinate.}
 
-\item{dy}{Delta offset for title text y-coordinate. (type = number)}
+\item{dy}{(\emph{BaseTitleConfig}) Delta offset for title text y-coordinate.}
 
-\item{font}{Font name for title text. (type = string)}
+\item{font}{(\emph{BaseTitleConfig}) Font name for title text.}
 
-\item{fontSize}{Font size in pixels for title text.
+\item{fontSize}{(\emph{BaseTitleConfig}) Font size in pixels for title text.
 
-\strong{Default value:} \code{10}. (type = number)}
+\strong{Default value:} \code{10}.}
 
-\item{fontStyle}{Font style for title text. (type = FontStyle)}
+\item{fontStyle}{(\emph{BaseTitleConfig}) Font style for title text.}
 
-\item{fontWeight}{Font weight for title text.
-This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}). (type = FontWeight)}
+\item{fontWeight}{(\emph{BaseTitleConfig}) Font weight for title text.
+This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
 
-\item{frame}{The reference frame for the anchor position, one of \code{"bounds"} (to anchor relative to the full bounding box) or \code{"group"} (to anchor relative to the group width or height). (type = TitleFrame)}
+\item{frame}{(\emph{BaseTitleConfig}) The reference frame for the anchor position, one of \code{"bounds"} (to anchor relative to the full bounding box) or \code{"group"} (to anchor relative to the group width or height).}
 
-\item{limit}{The maximum allowed length in pixels of legend labels. (type = number)}
+\item{limit}{(\emph{BaseTitleConfig}) The maximum allowed length in pixels of legend labels.}
 
-\item{offset}{The orthogonal offset in pixels by which to displace the title from its position along the edge of the chart. (type = number)}
+\item{offset}{(\emph{BaseTitleConfig}) The orthogonal offset in pixels by which to displace the title from its position along the edge of the chart.}
 
-\item{orient}{Default title orientation (\code{"top"}, \code{"bottom"}, \code{"left"}, or \code{"right"}) (type = TitleOrient)}
+\item{orient}{(\emph{BaseTitleConfig}) Default title orientation (\code{"top"}, \code{"bottom"}, \code{"left"}, or \code{"right"})}
 }
 \value{
 A modified spec

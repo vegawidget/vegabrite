@@ -128,20 +128,20 @@
     </tr>
     <tr>
       <th>field</th>
-      <td><p>The data <a href='https://vega.github.io/vega-lite/docs/field.html'>field</a> to sort by.</p>
-<p><strong>Default value:</strong> If unspecified, defaults to the field specified in the outer data reference. (type = Field)</p></td>
+      <td><p>(<em>EncodingSortField</em>) The data <a href='https://vega.github.io/vega-lite/docs/field.html'>field</a> to sort by.</p>
+<p><strong>Default value:</strong> If unspecified, defaults to the field specified in the outer data reference.</p></td>
     </tr>
     <tr>
       <th>op</th>
-      <td><p>An <a href='https://vega.github.io/vega-lite/docs/aggregate.html#ops'>aggregate operation</a> to perform on the field prior to sorting (e.g., <code>"count"</code>, <code>"mean"</code> and <code>"median"</code>).
+      <td><p>(<em>EncodingSortField</em>) An <a href='https://vega.github.io/vega-lite/docs/aggregate.html#ops'>aggregate operation</a> to perform on the field prior to sorting (e.g., <code>"count"</code>, <code>"mean"</code> and <code>"median"</code>).
 An aggregation is required when there are multiple values of the sort field for each encoded data field.
 The input data objects will be aggregated, grouped by the encoded data field.</p>
 <p>For a full list of operations, please see the documentation for <a href='https://vega.github.io/vega-lite/docs/aggregate.html#ops'>aggregate</a>.</p>
-<p><strong>Default value:</strong> <code>"sum"</code> for stacked plots. Otherwise, <code>"mean"</code>. (type = AggregateOp)</p></td>
+<p><strong>Default value:</strong> <code>"sum"</code> for stacked plots. Otherwise, <code>"mean"</code>.</p></td>
     </tr>
     <tr>
       <th>order</th>
-      <td><p>The sort order. One of <code>"ascending"</code> (default), <code>"descending"</code>, or <code>null</code> (no not sort). (type = Varies)</p></td>
+      <td><p>(<em>EncodingSortField</em>) The sort order. One of <code>"ascending"</code> (default), <code>"descending"</code>, or <code>null</code> (no not sort).</p></td>
     </tr>
     </table>
     

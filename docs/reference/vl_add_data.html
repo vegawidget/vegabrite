@@ -129,33 +129,33 @@
     </tr>
     <tr>
       <th>format</th>
-      <td><p>An object that specifies the format for parsing the data. (type = DataFormat)</p></td>
+      <td><p>(<em>UrlData, InlineData, NamedData</em>) An object that specifies the format for parsing the data.</p></td>
     </tr>
     <tr>
       <th>name</th>
-      <td><p>Provide a placeholder name and bind data at runtime. (type = string)</p></td>
+      <td><p>(<em>UrlData, InlineData, NamedData, SequenceGenerator, SphereGenerator, GraticuleGenerator</em>) Provide a placeholder name and bind data at runtime.</p></td>
     </tr>
     <tr>
       <th>url</th>
-      <td><p>An URL from which to load the data set. Use the <code>format.type</code> property
-to ensure the loaded data is correctly parsed. (type = string)</p></td>
+      <td><p>(<em>UrlData</em>) An URL from which to load the data set. Use the <code>format.type</code> property
+to ensure the loaded data is correctly parsed.</p></td>
     </tr>
     <tr>
       <th>values</th>
-      <td><p>The full data set, included inline. This can be an array of objects or primitive values, an object, or a string.
-Arrays of primitive values are ingested as objects with a <code>data</code> property. Strings are parsed according to the specified format type. (type = InlineDataset)</p></td>
+      <td><p>(<em>InlineData</em>) The full data set, included inline. This can be an array of objects or primitive values, an object, or a string.
+Arrays of primitive values are ingested as objects with a <code>data</code> property. Strings are parsed according to the specified format type.</p></td>
     </tr>
     <tr>
       <th>sequence</th>
-      <td><p>Generate a sequence of numbers. (type = SequenceParams)</p></td>
+      <td><p>(<em>SequenceGenerator</em>) Generate a sequence of numbers.</p></td>
     </tr>
     <tr>
       <th>sphere</th>
-      <td><p>Generate sphere GeoJSON data for the full globe. (type = Varies)</p></td>
+      <td><p>(<em>SphereGenerator</em>) Generate sphere GeoJSON data for the full globe.</p></td>
     </tr>
     <tr>
       <th>graticule</th>
-      <td><p>Generate graticule GeoJSON data for geographic reference lines. (type = Varies)</p></td>
+      <td><p>(<em>GraticuleGenerator</em>) Generate graticule GeoJSON data for geographic reference lines.</p></td>
     </tr>
     </table>
     

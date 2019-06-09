@@ -20,64 +20,64 @@ vl_add_square_config(spec, align = NULL, angle = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{align}{The horizontal alignment of the text. One of \code{"left"}, \code{"right"}, \code{"center"}. (type = Align)}
+\item{align}{(\emph{MarkConfig}) The horizontal alignment of the text. One of \code{"left"}, \code{"right"}, \code{"center"}.}
 
-\item{angle}{The rotation angle of the text, in degrees. (type = number)}
+\item{angle}{(\emph{MarkConfig}) The rotation angle of the text, in degrees.}
 
-\item{baseline}{The vertical alignment of the text. One of \code{"top"}, \code{"middle"}, \code{"bottom"}.
+\item{baseline}{(\emph{MarkConfig}) The vertical alignment of the text. One of \code{"top"}, \code{"middle"}, \code{"bottom"}.
 
-\strong{Default value:} \code{"middle"} (type = TextBaseline)}
+\strong{Default value:} \code{"middle"}}
 
-\item{color}{Default color.  Note that \code{fill} and \code{stroke} have higher precedence than \code{color} and will override \code{color}.
+\item{color}{(\emph{MarkConfig}) Default color.  Note that \code{fill} and \code{stroke} have higher precedence than \code{color} and will override \code{color}.
 
 \strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
 
-\strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. (type = string)}
+\strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.}
 
-\item{cornerRadius}{The radius in pixels of rounded rectangle corners.
+\item{cornerRadius}{(\emph{MarkConfig}) The radius in pixels of rounded rectangle corners.
 
-\strong{Default value:} \code{0} (type = number)}
+\strong{Default value:} \code{0}}
 
-\item{cursor}{The mouse cursor used over the mark. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values}{CSS cursor type} can be used. (type = Cursor)}
+\item{cursor}{(\emph{MarkConfig}) The mouse cursor used over the mark. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values}{CSS cursor type} can be used.}
 
-\item{dir}{The direction of the text. One of \code{"ltr"} (left-to-right) or \code{"rtl"} (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+\item{dir}{(\emph{MarkConfig}) The direction of the text. One of \code{"ltr"} (left-to-right) or \code{"rtl"} (right-to-left). This property determines on which side is truncated in response to the limit parameter.
 
-\strong{Default value:} \code{"ltr"} (type = Dir)}
+\strong{Default value:} \code{"ltr"}}
 
-\item{dx}{The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the \emph{angle} property. (type = number)}
+\item{dx}{(\emph{MarkConfig}) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the \emph{angle} property.}
 
-\item{dy}{The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the \emph{angle} property. (type = number)}
+\item{dy}{(\emph{MarkConfig}) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the \emph{angle} property.}
 
-\item{ellipsis}{The ellipsis string for text truncated in response to the limit parameter.
+\item{ellipsis}{(\emph{MarkConfig}) The ellipsis string for text truncated in response to the limit parameter.
 
-\strong{Default value:} \code{"…"} (type = string)}
+\strong{Default value:} \code{"…"}}
 
-\item{fill}{Default Fill Color.  This has higher precedence than \code{config.color}
+\item{fill}{(\emph{MarkConfig}) Default Fill Color.  This has higher precedence than \code{config.color}
 
-\strong{Default value:} (None) (type = Color)}
+\strong{Default value:} (None)}
 
-\item{fillOpacity}{The fill opacity (value between \link{0,1}).
+\item{fillOpacity}{(\emph{MarkConfig}) The fill opacity (value between \link{0,1}).
 
-\strong{Default value:} \code{1} (type = number)}
+\strong{Default value:} \code{1}}
 
-\item{filled}{Whether the mark's color should be used as fill color instead of stroke color.
+\item{filled}{(\emph{MarkConfig}) Whether the mark's color should be used as fill color instead of stroke color.
 
 \strong{Default value:} \code{false} for \code{point}, \code{line} and \code{rule}; otherwise, \code{true}.
 
-\strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. (type = boolean)}
+\strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.}
 
-\item{font}{The typeface to set the text in (e.g., \code{"Helvetica Neue"}). (type = string)}
+\item{font}{(\emph{MarkConfig}) The typeface to set the text in (e.g., \code{"Helvetica Neue"}).}
 
-\item{fontSize}{The font size, in pixels. (type = number)}
+\item{fontSize}{(\emph{MarkConfig}) The font size, in pixels.}
 
-\item{fontStyle}{The font style (e.g., \code{"italic"}). (type = FontStyle)}
+\item{fontStyle}{(\emph{MarkConfig}) The font style (e.g., \code{"italic"}).}
 
-\item{fontWeight}{The font weight.
-This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}). (type = FontWeight)}
+\item{fontWeight}{(\emph{MarkConfig}) The font weight.
+This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
 
-\item{href}{A URL to load upon mouse click. If defined, the mark acts as a hyperlink. (type = string)}
+\item{href}{(\emph{MarkConfig}) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.}
 
-\item{interpolate}{The line interpolation method to use for line and area marks. One of the following:
+\item{interpolate}{(\emph{MarkConfig}) The line interpolation method to use for line and area marks. One of the following:
 \itemize{
 \item \code{"linear"}: piecewise linear segments, as in a polyline.
 \item \code{"linear-closed"}: close the linear segments to form a polygon.
@@ -91,20 +91,20 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item \code{"cardinal-open"}: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
 \item \code{"cardinal-closed"}: a closed Cardinal spline, as in a loop.
 \item \code{"bundle"}: equivalent to basis, except the tension parameter is used to straighten the spline.
-\item \code{"monotone"}: cubic interpolation that preserves monotonicity in y. (type = Interpolate)
+\item \code{"monotone"}: cubic interpolation that preserves monotonicity in y.
 }}
 
-\item{limit}{The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+\item{limit}{(\emph{MarkConfig}) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
 
-\strong{Default value:} \code{0}, indicating no limit (type = number)}
+\strong{Default value:} \code{0}, indicating no limit}
 
-\item{opacity}{The overall opacity (value between \link{0,1}).
+\item{opacity}{(\emph{MarkConfig}) The overall opacity (value between \link{0,1}).
 
-\strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick}, \code{circle}, or \code{square} marks or layered \code{bar} charts and \code{1} otherwise. (type = number)}
+\strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick}, \code{circle}, or \code{square} marks or layered \code{bar} charts and \code{1} otherwise.}
 
-\item{order}{For line and trail marks, this \code{order} property can be set to \code{null} or \code{false} to make the lines use the original order in the data sources. (type = null OR boolean)}
+\item{order}{(\emph{MarkConfig}) For line and trail marks, this \code{order} property can be set to \code{null} or \code{false} to make the lines use the original order in the data sources.}
 
-\item{orient}{The orientation of a non-stacked bar, tick, area, and line charts.
+\item{orient}{(\emph{MarkConfig}) The orientation of a non-stacked bar, tick, area, and line charts.
 The value is either horizontal (default) or vertical.
 \itemize{
 \item For bar, rule and tick, this determines whether the size of the bar and tick
@@ -113,12 +113,12 @@ should be applied to x or y dimension.
 \item For line and trail marks, this property determines the sort order of the points in the line
 if \code{config.sortLineBy} is not specified.
 For stacked charts, this is always determined by the orientation of the stack;
-therefore explicitly specified value will be ignored. (type = Orientation)
+therefore explicitly specified value will be ignored.
 }}
 
-\item{radius}{Polar coordinate radial offset, in pixels, of the text label from the origin determined by the \code{x} and \code{y} properties. (type = number)}
+\item{radius}{(\emph{MarkConfig}) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the \code{x} and \code{y} properties.}
 
-\item{shape}{Shape of the point marks. Supported values include:
+\item{shape}{(\emph{MarkConfig}) Shape of the point marks. Supported values include:
 \itemize{
 \item plotting shapes: \code{"circle"}, \code{"square"}, \code{"cross"}, \code{"diamond"}, \code{"triangle-up"}, \code{"triangle-down"}, \code{"triangle-right"}, or \code{"triangle-left"}.
 \item the line symbol \code{"stroke"}
@@ -126,61 +126,61 @@ therefore explicitly specified value will be ignored. (type = Orientation)
 \item a custom \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path string} (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
 }
 
-\strong{Default value:} \code{"circle"} (type = string)}
+\strong{Default value:} \code{"circle"}}
 
-\item{size}{Default size for marks.
+\item{size}{(\emph{MarkConfig}) Default size for marks.
 \itemize{
 \item For \code{point}/\code{circle}/\code{square}, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
 \item For \code{bar}, this represents the band size of the bar, in pixels.
 \item For \code{text}, this represents the font size, in pixels.
 }
 
-\strong{Default value:} \code{30} for point, circle, square marks; \code{rangeStep} - 1 for bar marks with discrete dimensions; \code{5} for bar marks with continuous dimensions; \code{11} for text marks. (type = number)}
+\strong{Default value:} \code{30} for point, circle, square marks; \code{rangeStep} - 1 for bar marks with discrete dimensions; \code{5} for bar marks with continuous dimensions; \code{11} for text marks.}
 
-\item{stroke}{Default Stroke Color.  This has higher precedence than \code{config.color}
+\item{stroke}{(\emph{MarkConfig}) Default Stroke Color.  This has higher precedence than \code{config.color}
 
-\strong{Default value:} (None) (type = Color)}
+\strong{Default value:} (None)}
 
-\item{strokeCap}{The stroke cap for line ending style. One of \code{"butt"}, \code{"round"}, or \code{"square"}.
+\item{strokeCap}{(\emph{MarkConfig}) The stroke cap for line ending style. One of \code{"butt"}, \code{"round"}, or \code{"square"}.
 
-\strong{Default value:} \code{"square"} (type = StrokeCap)}
+\strong{Default value:} \code{"square"}}
 
-\item{strokeDash}{An array of alternating stroke, space lengths for creating dashed or dotted lines. (type = array)}
+\item{strokeDash}{(\emph{MarkConfig}) An array of alternating stroke, space lengths for creating dashed or dotted lines.}
 
-\item{strokeDashOffset}{The offset (in pixels) into which to begin drawing with the stroke dash array. (type = number)}
+\item{strokeDashOffset}{(\emph{MarkConfig}) The offset (in pixels) into which to begin drawing with the stroke dash array.}
 
-\item{strokeJoin}{The stroke line join method. One of \code{"miter"}, \code{"round"} or \code{"bevel"}.
+\item{strokeJoin}{(\emph{MarkConfig}) The stroke line join method. One of \code{"miter"}, \code{"round"} or \code{"bevel"}.
 
-\strong{Default value:} \code{"miter"} (type = StrokeJoin)}
+\strong{Default value:} \code{"miter"}}
 
-\item{strokeMiterLimit}{The miter limit at which to bevel a line join. (type = number)}
+\item{strokeMiterLimit}{(\emph{MarkConfig}) The miter limit at which to bevel a line join.}
 
-\item{strokeOpacity}{The stroke opacity (value between \link{0,1}).
+\item{strokeOpacity}{(\emph{MarkConfig}) The stroke opacity (value between \link{0,1}).
 
-\strong{Default value:} \code{1} (type = number)}
+\strong{Default value:} \code{1}}
 
-\item{strokeWidth}{The stroke width, in pixels. (type = number)}
+\item{strokeWidth}{(\emph{MarkConfig}) The stroke width, in pixels.}
 
-\item{tension}{Depending on the interpolation type, sets the tension parameter (for line and area marks). (type = number)}
+\item{tension}{(\emph{MarkConfig}) Depending on the interpolation type, sets the tension parameter (for line and area marks).}
 
-\item{text}{Placeholder text if the \code{text} channel is not specified (type = string)}
+\item{text}{(\emph{MarkConfig}) Placeholder text if the \code{text} channel is not specified}
 
-\item{theta}{Polar coordinate angle, in radians, of the text label from the origin determined by the \code{x} and \code{y} properties. Values for \code{theta} follow the same convention of \code{arc} mark \code{startAngle} and \code{endAngle} properties: angles are measured in radians, with \code{0} indicating "north". (type = number)}
+\item{theta}{(\emph{MarkConfig}) Polar coordinate angle, in radians, of the text label from the origin determined by the \code{x} and \code{y} properties. Values for \code{theta} follow the same convention of \code{arc} mark \code{startAngle} and \code{endAngle} properties: angles are measured in radians, with \code{0} indicating "north".}
 
-\item{tooltip}{The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+\item{tooltip}{(\emph{MarkConfig}) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
 \itemize{
 \item If \code{tooltip} is \code{{"content": "encoding"}}, then all fields from \code{encoding} will be used.
 \item If \code{tooltip} is \code{{"content": "data"}}, then all fields that appear in the highlighted data point will be used.
-\item If set to \code{null}, then no tooltip will be used. (type = Varies)
+\item If set to \code{null}, then no tooltip will be used.
 }}
 
-\item{x}{X coordinates of the marks, or width of horizontal \code{"bar"} and \code{"area"} without \code{x2}. (type = number)}
+\item{x}{(\emph{MarkConfig}) X coordinates of the marks, or width of horizontal \code{"bar"} and \code{"area"} without \code{x2}.}
 
-\item{x2}{X2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}. (type = number)}
+\item{x2}{(\emph{MarkConfig}) X2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.}
 
-\item{y}{Y coordinates of the marks, or height of vertical \code{"bar"} and \code{"area"} without \code{y2} (type = number)}
+\item{y}{(\emph{MarkConfig}) Y coordinates of the marks, or height of vertical \code{"bar"} and \code{"area"} without \code{y2}}
 
-\item{y2}{Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}. (type = number)}
+\item{y2}{(\emph{MarkConfig}) Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.}
 }
 \value{
 A modified spec

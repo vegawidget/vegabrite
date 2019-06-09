@@ -30,29 +30,29 @@ vl_axis_y(spec, bandPosition = NULL, domain = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{bandPosition}{An interpolation fraction indicating where, for \code{band} scales, axis ticks should be positioned. A value of \code{0} places ticks at the left edge of their bands. A value of \code{0.5} places ticks in the middle of their bands.
+\item{bandPosition}{(\emph{Axis}) An interpolation fraction indicating where, for \code{band} scales, axis ticks should be positioned. A value of \code{0} places ticks at the left edge of their bands. A value of \code{0.5} places ticks in the middle of their bands.
 
-\strong{Default value:} \code{0.5} (type = number)}
+\strong{Default value:} \code{0.5}}
 
-\item{domain}{A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.
+\item{domain}{(\emph{Axis}) A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.
 
-\strong{Default value:} \code{true} (type = boolean)}
+\strong{Default value:} \code{true}}
 
-\item{domainColor}{Color of axis domain line.
+\item{domainColor}{(\emph{Axis}) Color of axis domain line.
 
-\strong{Default value:} \code{"gray"}. (type = Color)}
+\strong{Default value:} \code{"gray"}.}
 
-\item{domainDash}{An array of alternating \link{stroke, space} lengths for dashed domain lines. (type = array)}
+\item{domainDash}{(\emph{Axis}) An array of alternating \link{stroke, space} lengths for dashed domain lines.}
 
-\item{domainDashOffset}{The pixel offset at which to start drawing with the domain dash array. (type = number)}
+\item{domainDashOffset}{(\emph{Axis}) The pixel offset at which to start drawing with the domain dash array.}
 
-\item{domainOpacity}{Opacity of the axis domain line. (type = number)}
+\item{domainOpacity}{(\emph{Axis}) Opacity of the axis domain line.}
 
-\item{domainWidth}{Stroke width of axis domain line
+\item{domainWidth}{(\emph{Axis}) Stroke width of axis domain line
 
-\strong{Default value:} \code{1} (type = number)}
+\strong{Default value:} \code{1}}
 
-\item{format}{The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+\item{format}{(\emph{Axis}) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 \itemize{
 \item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern}.
 \item If the format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
@@ -60,188 +60,188 @@ vl_axis_y(spec, bandPosition = NULL, domain = NULL,
 
 See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more examples.
 
-\strong{Default value:}  Derived from \href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for number format and from \href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for time format. (type = string)}
+\strong{Default value:}  Derived from \href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for number format and from \href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for time format.}
 
-\item{formatType}{The format type for labels (\code{"number"} or \code{"time"}).
+\item{formatType}{(\emph{Axis}) The format type for labels (\code{"number"} or \code{"time"}).
 
 \strong{Default value:}
 \itemize{
 \item \code{"time"} for temporal fields and ordinal and nomimal fields with \code{timeUnit}.
-\item \code{"number"} for quantitative fields as well as ordinal and nomimal fields without \code{timeUnit}. (type = string)
+\item \code{"number"} for quantitative fields as well as ordinal and nomimal fields without \code{timeUnit}.
 }}
 
-\item{grid}{A boolean flag indicating if grid lines should be included as part of the axis
+\item{grid}{(\emph{Axis}) A boolean flag indicating if grid lines should be included as part of the axis
 
-\strong{Default value:} \code{true} for \href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{continuous scales} that are not binned; otherwise, \code{false}. (type = boolean)}
+\strong{Default value:} \code{true} for \href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{continuous scales} that are not binned; otherwise, \code{false}.}
 
-\item{gridColor}{Color of gridlines.
+\item{gridColor}{(\emph{Axis}) Color of gridlines.
 
-\strong{Default value:} \code{"lightGray"}. (type = Color)}
+\strong{Default value:} \code{"lightGray"}.}
 
-\item{gridDash}{An array of alternating \link{stroke, space} lengths for dashed grid lines. (type = array)}
+\item{gridDash}{(\emph{Axis}) An array of alternating \link{stroke, space} lengths for dashed grid lines.}
 
-\item{gridDashOffset}{The pixel offset at which to start drawing with the grid dash array. (type = number)}
+\item{gridDashOffset}{(\emph{Axis}) The pixel offset at which to start drawing with the grid dash array.}
 
-\item{gridOpacity}{The stroke opacity of grid (value between \link{0,1})
+\item{gridOpacity}{(\emph{Axis}) The stroke opacity of grid (value between \link{0,1})
 
-\strong{Default value:} \code{1} (type = number)}
+\strong{Default value:} \code{1}}
 
-\item{gridWidth}{The grid width, in pixels.
+\item{gridWidth}{(\emph{Axis}) The grid width, in pixels.
 
-\strong{Default value:} \code{1} (type = number)}
+\strong{Default value:} \code{1}}
 
-\item{labelAlign}{Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation. (type = Align)}
+\item{labelAlign}{(\emph{Axis}) Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation.}
 
-\item{labelAngle}{The rotation angle of the axis labels.
+\item{labelAngle}{(\emph{Axis}) The rotation angle of the axis labels.
 
-\strong{Default value:} \code{-90} for nominal and ordinal fields; \code{0} otherwise. (type = number)}
+\strong{Default value:} \code{-90} for nominal and ordinal fields; \code{0} otherwise.}
 
-\item{labelBaseline}{Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be \code{"top"}, \code{"middle"}, \code{"bottom"}, or \code{"alphabetic"}. (type = TextBaseline)}
+\item{labelBaseline}{(\emph{Axis}) Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be \code{"top"}, \code{"middle"}, \code{"bottom"}, or \code{"alphabetic"}.}
 
-\item{labelBound}{Indicates if labels should be hidden if they exceed the axis range. If \code{false} (the default) no bounds overlap analysis is performed. If \code{true}, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.
+\item{labelBound}{(\emph{Axis}) Indicates if labels should be hidden if they exceed the axis range. If \code{false} (the default) no bounds overlap analysis is performed. If \code{true}, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.
 
-\strong{Default value:} \code{false}. (type = number OR boolean)}
+\strong{Default value:} \code{false}.}
 
-\item{labelColor}{The color of the tick label, can be in hex color code or regular color name. (type = Color)}
+\item{labelColor}{(\emph{Axis}) The color of the tick label, can be in hex color code or regular color name.}
 
-\item{labelFlush}{Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.
+\item{labelFlush}{(\emph{Axis}) Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.
 
-\strong{Default value:} \code{true} for axis of a continuous x-scale. Otherwise, \code{false}. (type = boolean OR number)}
+\strong{Default value:} \code{true} for axis of a continuous x-scale. Otherwise, \code{false}.}
 
-\item{labelFlushOffset}{Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of \code{2} will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.
+\item{labelFlushOffset}{(\emph{Axis}) Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of \code{2} will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.
 
-\strong{Default value:} \code{0}. (type = number)}
+\strong{Default value:} \code{0}.}
 
-\item{labelFont}{The font of the tick label. (type = string)}
+\item{labelFont}{(\emph{Axis}) The font of the tick label.}
 
-\item{labelFontSize}{The font size of the label, in pixels. (type = number)}
+\item{labelFontSize}{(\emph{Axis}) The font size of the label, in pixels.}
 
-\item{labelFontStyle}{Font style of the title. (type = FontStyle)}
+\item{labelFontStyle}{(\emph{Axis}) Font style of the title.}
 
-\item{labelFontWeight}{Font weight of axis tick labels. (type = FontWeight)}
+\item{labelFontWeight}{(\emph{Axis}) Font weight of axis tick labels.}
 
-\item{labelLimit}{Maximum allowed pixel width of axis tick labels.
+\item{labelLimit}{(\emph{Axis}) Maximum allowed pixel width of axis tick labels.
 
-\strong{Default value:} \code{180} (type = number)}
+\strong{Default value:} \code{180}}
 
-\item{labelOpacity}{The opacity of the labels. (type = number)}
+\item{labelOpacity}{(\emph{Axis}) The opacity of the labels.}
 
-\item{labelOverlap}{The strategy to use for resolving overlap of axis labels. If \code{false} (the default), no overlap reduction is attempted. If set to \code{true} or \code{"parity"}, a strategy of removing every other label is used (this works well for standard linear axes). If set to \code{"greedy"}, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).
+\item{labelOverlap}{(\emph{Axis}) The strategy to use for resolving overlap of axis labels. If \code{false} (the default), no overlap reduction is attempted. If set to \code{true} or \code{"parity"}, a strategy of removing every other label is used (this works well for standard linear axes). If set to \code{"greedy"}, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).
 
-\strong{Default value:} \code{true} for non-nominal fields with non-log scales; \code{"greedy"} for log scales; otherwise \code{false}. (type = LabelOverlap)}
+\strong{Default value:} \code{true} for non-nominal fields with non-log scales; \code{"greedy"} for log scales; otherwise \code{false}.}
 
-\item{labelPadding}{The padding, in pixels, between axis and text labels.
+\item{labelPadding}{(\emph{Axis}) The padding, in pixels, between axis and text labels.
 
-\strong{Default value:} \code{2} (type = number)}
+\strong{Default value:} \code{2}}
 
-\item{labelSeparation}{The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default \code{0}). This property is ignored if \emph{labelOverlap} resolution is not enabled. (type = number)}
+\item{labelSeparation}{(\emph{Axis}) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default \code{0}). This property is ignored if \emph{labelOverlap} resolution is not enabled.}
 
-\item{labels}{A boolean flag indicating if labels should be included as part of the axis.
+\item{labels}{(\emph{Axis}) A boolean flag indicating if labels should be included as part of the axis.
 
-\strong{Default value:} \code{true}. (type = boolean)}
+\strong{Default value:} \code{true}.}
 
-\item{maxExtent}{The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.
+\item{maxExtent}{(\emph{Axis}) The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.
 
-\strong{Default value:} \code{undefined}. (type = number)}
+\strong{Default value:} \code{undefined}.}
 
-\item{minExtent}{The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.
+\item{minExtent}{(\emph{Axis}) The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.
 
-\strong{Default value:} \code{30} for y-axis; \code{undefined} for x-axis. (type = number)}
+\strong{Default value:} \code{30} for y-axis; \code{undefined} for x-axis.}
 
-\item{offset}{The offset, in pixels, by which to displace the axis from the edge of the enclosing group or data rectangle.
+\item{offset}{(\emph{Axis}) The offset, in pixels, by which to displace the axis from the edge of the enclosing group or data rectangle.
 
-\strong{Default value:} derived from the \href{https://vega.github.io/vega-lite/docs/config.html#facet-scale-config}{axis config}'s \code{offset} (\code{0} by default) (type = number)}
+\strong{Default value:} derived from the \href{https://vega.github.io/vega-lite/docs/config.html#facet-scale-config}{axis config}'s \code{offset} (\code{0} by default)}
 
-\item{orient}{The orientation of the axis. One of \code{"top"}, \code{"bottom"}, \code{"left"} or \code{"right"}. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).
+\item{orient}{(\emph{Axis}) The orientation of the axis. One of \code{"top"}, \code{"bottom"}, \code{"left"} or \code{"right"}. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).
 
-\strong{Default value:} \code{"bottom"} for x-axes and \code{"left"} for y-axes. (type = AxisOrient)}
+\strong{Default value:} \code{"bottom"} for x-axes and \code{"left"} for y-axes.}
 
-\item{position}{The anchor position of the axis in pixels. For x-axes with top or bottom orientation, this sets the axis group x coordinate. For y-axes with left or right orientation, this sets the axis group y coordinate.
+\item{position}{(\emph{Axis}) The anchor position of the axis in pixels. For x-axes with top or bottom orientation, this sets the axis group x coordinate. For y-axes with left or right orientation, this sets the axis group y coordinate.
 
-\strong{Default value}: \code{0} (type = number)}
+\strong{Default value}: \code{0}}
 
-\item{tickColor}{The color of the axis's tick.
+\item{tickColor}{(\emph{Axis}) The color of the axis's tick.
 
-\strong{Default value:} \code{"gray"} (type = Color)}
+\strong{Default value:} \code{"gray"}}
 
-\item{tickCount}{A desired number of ticks, for axes visualizing quantitative scales. The resulting number may be different so that values are "nice" (multiples of 2, 5, 10) and lie within the underlying scale's range. (type = number)}
+\item{tickCount}{(\emph{Axis}) A desired number of ticks, for axes visualizing quantitative scales. The resulting number may be different so that values are "nice" (multiples of 2, 5, 10) and lie within the underlying scale's range.}
 
-\item{tickDash}{An array of alternating \link{stroke, space} lengths for dashed tick mark lines. (type = array)}
+\item{tickDash}{(\emph{Axis}) An array of alternating \link{stroke, space} lengths for dashed tick mark lines.}
 
-\item{tickDashOffset}{The pixel offset at which to start drawing with the tick mark dash array. (type = number)}
+\item{tickDashOffset}{(\emph{Axis}) The pixel offset at which to start drawing with the tick mark dash array.}
 
-\item{tickExtra}{Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for \code{band} scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with \code{"bandPosition": 1} and an axis \code{"padding"} value of \code{0}. (type = boolean)}
+\item{tickExtra}{(\emph{Axis}) Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for \code{band} scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with \code{"bandPosition": 1} and an axis \code{"padding"} value of \code{0}.}
 
-\item{tickMinStep}{The minimum desired step between axis ticks, in terms of scale domain values. For example, a value of \code{1} indicates that ticks should not be less than 1 unit apart. If \code{tickMinStep} is specified, the \code{tickCount} value will be adjusted, if necessary, to enforce the minimum step value.
+\item{tickMinStep}{(\emph{Axis}) The minimum desired step between axis ticks, in terms of scale domain values. For example, a value of \code{1} indicates that ticks should not be less than 1 unit apart. If \code{tickMinStep} is specified, the \code{tickCount} value will be adjusted, if necessary, to enforce the minimum step value.
 
-\strong{Default value}: \code{undefined} (type = number)}
+\strong{Default value}: \code{undefined}}
 
-\item{tickOffset}{Position offset in pixels to apply to ticks, labels, and gridlines. (type = number)}
+\item{tickOffset}{(\emph{Axis}) Position offset in pixels to apply to ticks, labels, and gridlines.}
 
-\item{tickOpacity}{Opacity of the ticks. (type = number)}
+\item{tickOpacity}{(\emph{Axis}) Opacity of the ticks.}
 
-\item{tickRound}{Boolean flag indicating if pixel position values should be rounded to the nearest integer.
+\item{tickRound}{(\emph{Axis}) Boolean flag indicating if pixel position values should be rounded to the nearest integer.
 
-\strong{Default value:} \code{true} (type = boolean)}
+\strong{Default value:} \code{true}}
 
-\item{tickSize}{The size in pixels of axis ticks.
+\item{tickSize}{(\emph{Axis}) The size in pixels of axis ticks.
 
-\strong{Default value:} \code{5} (type = number)}
+\strong{Default value:} \code{5}}
 
-\item{tickWidth}{The width, in pixels, of ticks.
+\item{tickWidth}{(\emph{Axis}) The width, in pixels, of ticks.
 
-\strong{Default value:} \code{1} (type = number)}
+\strong{Default value:} \code{1}}
 
-\item{ticks}{Boolean value that determines whether the axis should include ticks.
+\item{ticks}{(\emph{Axis}) Boolean value that determines whether the axis should include ticks.
 
-\strong{Default value:} \code{true} (type = boolean)}
+\strong{Default value:} \code{true}}
 
-\item{title}{A title for the field. If \code{null}, the title will be removed.
+\item{title}{(\emph{Axis}) A title for the field. If \code{null}, the title will be removed.
 
 \strong{Default value:}  derived from the field's name and transformation function (\code{aggregate}, \code{bin} and \code{timeUnit}).  If the field has an aggregate function, the function is displayed as part of the title (e.g., \code{"Sum of Profit"}). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., \code{"Profit (binned)"}, \code{"Transaction Date (year-month)"}).  Otherwise, the title is simply the field name.
 
 \strong{Notes}:
 \enumerate{
 \item You can customize the default field title format by providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{fieldTitle} property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config} or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{fieldTitle function via the compile function's options}.
-\item If both field definition's \code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used. (type = string OR null)
+\item If both field definition's \code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used.
 }}
 
-\item{titleAlign}{Horizontal text alignment of axis titles. (type = Align)}
+\item{titleAlign}{(\emph{Axis}) Horizontal text alignment of axis titles.}
 
-\item{titleAnchor}{Text anchor position for placing axis titles. (type = TitleAnchor)}
+\item{titleAnchor}{(\emph{Axis}) Text anchor position for placing axis titles.}
 
-\item{titleAngle}{Angle in degrees of axis titles. (type = number)}
+\item{titleAngle}{(\emph{Axis}) Angle in degrees of axis titles.}
 
-\item{titleBaseline}{Vertical text baseline for axis titles. (type = TextBaseline)}
+\item{titleBaseline}{(\emph{Axis}) Vertical text baseline for axis titles.}
 
-\item{titleColor}{Color of the title, can be in hex color code or regular color name. (type = Color)}
+\item{titleColor}{(\emph{Axis}) Color of the title, can be in hex color code or regular color name.}
 
-\item{titleFont}{Font of the title. (e.g., \code{"Helvetica Neue"}). (type = string)}
+\item{titleFont}{(\emph{Axis}) Font of the title. (e.g., \code{"Helvetica Neue"}).}
 
-\item{titleFontSize}{Font size of the title. (type = number)}
+\item{titleFontSize}{(\emph{Axis}) Font size of the title.}
 
-\item{titleFontStyle}{Font style of the title. (type = FontStyle)}
+\item{titleFontStyle}{(\emph{Axis}) Font style of the title.}
 
-\item{titleFontWeight}{Font weight of the title.
-This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}). (type = FontWeight)}
+\item{titleFontWeight}{(\emph{Axis}) Font weight of the title.
+This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
 
-\item{titleLimit}{Maximum allowed pixel width of axis titles. (type = number)}
+\item{titleLimit}{(\emph{Axis}) Maximum allowed pixel width of axis titles.}
 
-\item{titleOpacity}{Opacity of the axis title. (type = number)}
+\item{titleOpacity}{(\emph{Axis}) Opacity of the axis title.}
 
-\item{titlePadding}{The padding, in pixels, between title and axis. (type = number)}
+\item{titlePadding}{(\emph{Axis}) The padding, in pixels, between title and axis.}
 
-\item{titleX}{X-coordinate of the axis title relative to the axis group. (type = number)}
+\item{titleX}{(\emph{Axis}) X-coordinate of the axis title relative to the axis group.}
 
-\item{titleY}{Y-coordinate of the axis title relative to the axis group. (type = number)}
+\item{titleY}{(\emph{Axis}) Y-coordinate of the axis title relative to the axis group.}
 
-\item{values}{Explicitly set the visible axis tick values. (type = Varies)}
+\item{values}{(\emph{Axis}) Explicitly set the visible axis tick values.}
 
-\item{zindex}{A non-positive integer indicating z-index of the axis.
+\item{zindex}{(\emph{Axis}) A non-positive integer indicating z-index of the axis.
 If zindex is 0, axes should be drawn behind all chart elements.
 To put them in front, use \code{"zindex = 1"}.
 
-\strong{Default value:} \code{1} (in front of the marks) for actual axis and \code{0} (behind the marks) for grids. (type = number)}
+\strong{Default value:} \code{1} (in front of the marks) for actual axis and \code{0} (behind the marks) for grids.}
 
 \item{remove}{Remove the axis?}
 }

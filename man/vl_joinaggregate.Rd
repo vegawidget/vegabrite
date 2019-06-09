@@ -9,9 +9,9 @@ vl_joinaggregate(spec, groupby = NULL, joinaggregate = NULL)
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{groupby}{The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group. (type = array)}
+\item{groupby}{(\emph{JoinAggregateTransform}) The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group.}
 
-\item{joinaggregate}{The definition of the fields in the join aggregate, and what calculations to use. (type = array)}
+\item{joinaggregate}{(\emph{JoinAggregateTransform}) The definition of the fields in the join aggregate, and what calculations to use.}
 }
 \value{
 A modified spec

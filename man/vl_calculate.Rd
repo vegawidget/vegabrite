@@ -9,9 +9,9 @@ vl_calculate(spec, as = NULL, calculate = NULL)
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{as}{The field for storing the computed formula value. (type = string)}
+\item{as}{(\emph{CalculateTransform}) The field for storing the computed formula value.}
 
-\item{calculate}{A \href{https://vega.github.io/vega-lite/docs/types.html#expression}{expression} string. Use the variable \code{datum} to refer to the current data object. (type = string)}
+\item{calculate}{(\emph{CalculateTransform}) A \href{https://vega.github.io/vega-lite/docs/types.html#expression}{expression} string. Use the variable \code{datum} to refer to the current data object.}
 }
 \value{
 A modified spec

@@ -139,90 +139,90 @@
     </tr>
     <tr>
       <th>align</th>
-      <td><p>The horizontal alignment of the text. One of <code>"left"</code>, <code>"right"</code>, <code>"center"</code>. (type = Align)</p></td>
+      <td><p>(<em>TextConfig</em>) The horizontal alignment of the text. One of <code>"left"</code>, <code>"right"</code>, <code>"center"</code>.</p></td>
     </tr>
     <tr>
       <th>angle</th>
-      <td><p>The rotation angle of the text, in degrees. (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) The rotation angle of the text, in degrees.</p></td>
     </tr>
     <tr>
       <th>baseline</th>
-      <td><p>The vertical alignment of the text. One of <code>"top"</code>, <code>"middle"</code>, <code>"bottom"</code>.</p>
-<p><strong>Default value:</strong> <code>"middle"</code> (type = TextBaseline)</p></td>
+      <td><p>(<em>TextConfig</em>) The vertical alignment of the text. One of <code>"top"</code>, <code>"middle"</code>, <code>"bottom"</code>.</p>
+<p><strong>Default value:</strong> <code>"middle"</code></p></td>
     </tr>
     <tr>
       <th>color</th>
-      <td><p>Default color.  Note that <code>fill</code> and <code>stroke</code> have higher precedence than <code>color</code> and will override <code>color</code>.</p>
+      <td><p>(<em>TextConfig</em>) Default color.  Note that <code>fill</code> and <code>stroke</code> have higher precedence than <code>color</code> and will override <code>color</code>.</p>
 <p><strong>Default value:</strong> &lt;span style="color: #4682b4;"&gt;■&lt;/span&gt; <code>"#4682b4"</code></p>
-<p><strong>Note:</strong> This property cannot be used in a <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style config</a>. (type = string)</p></td>
+<p><strong>Note:</strong> This property cannot be used in a <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style config</a>.</p></td>
     </tr>
     <tr>
       <th>cornerRadius</th>
-      <td><p>The radius in pixels of rounded rectangle corners.</p>
-<p><strong>Default value:</strong> <code>0</code> (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) The radius in pixels of rounded rectangle corners.</p>
+<p><strong>Default value:</strong> <code>0</code></p></td>
     </tr>
     <tr>
       <th>cursor</th>
-      <td><p>The mouse cursor used over the mark. Any valid <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values'>CSS cursor type</a> can be used. (type = Cursor)</p></td>
+      <td><p>(<em>TextConfig</em>) The mouse cursor used over the mark. Any valid <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values'>CSS cursor type</a> can be used.</p></td>
     </tr>
     <tr>
       <th>dir</th>
-      <td><p>The direction of the text. One of <code>"ltr"</code> (left-to-right) or <code>"rtl"</code> (right-to-left). This property determines on which side is truncated in response to the limit parameter.</p>
-<p><strong>Default value:</strong> <code>"ltr"</code> (type = Dir)</p></td>
+      <td><p>(<em>TextConfig</em>) The direction of the text. One of <code>"ltr"</code> (left-to-right) or <code>"rtl"</code> (right-to-left). This property determines on which side is truncated in response to the limit parameter.</p>
+<p><strong>Default value:</strong> <code>"ltr"</code></p></td>
     </tr>
     <tr>
       <th>dx</th>
-      <td><p>The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the <em>angle</em> property. (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the <em>angle</em> property.</p></td>
     </tr>
     <tr>
       <th>dy</th>
-      <td><p>The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the <em>angle</em> property. (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the <em>angle</em> property.</p></td>
     </tr>
     <tr>
       <th>ellipsis</th>
-      <td><p>The ellipsis string for text truncated in response to the limit parameter.</p>
-<p><strong>Default value:</strong> <code>"…"</code> (type = string)</p></td>
+      <td><p>(<em>TextConfig</em>) The ellipsis string for text truncated in response to the limit parameter.</p>
+<p><strong>Default value:</strong> <code>"…"</code></p></td>
     </tr>
     <tr>
       <th>fill</th>
-      <td><p>Default Fill Color.  This has higher precedence than <code>config.color</code></p>
-<p><strong>Default value:</strong> (None) (type = Color)</p></td>
+      <td><p>(<em>TextConfig</em>) Default Fill Color.  This has higher precedence than <code>config.color</code></p>
+<p><strong>Default value:</strong> (None)</p></td>
     </tr>
     <tr>
       <th>fillOpacity</th>
-      <td><p>The fill opacity (value between 0,1).</p>
-<p><strong>Default value:</strong> <code>1</code> (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) The fill opacity (value between 0,1).</p>
+<p><strong>Default value:</strong> <code>1</code></p></td>
     </tr>
     <tr>
       <th>filled</th>
-      <td><p>Whether the mark's color should be used as fill color instead of stroke color.</p>
+      <td><p>(<em>TextConfig</em>) Whether the mark's color should be used as fill color instead of stroke color.</p>
 <p><strong>Default value:</strong> <code>false</code> for <code>point</code>, <code>line</code> and <code>rule</code>; otherwise, <code>true</code>.</p>
-<p><strong>Note:</strong> This property cannot be used in a <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style config</a>. (type = boolean)</p></td>
+<p><strong>Note:</strong> This property cannot be used in a <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style config</a>.</p></td>
     </tr>
     <tr>
       <th>font</th>
-      <td><p>The typeface to set the text in (e.g., <code>"Helvetica Neue"</code>). (type = string)</p></td>
+      <td><p>(<em>TextConfig</em>) The typeface to set the text in (e.g., <code>"Helvetica Neue"</code>).</p></td>
     </tr>
     <tr>
       <th>fontSize</th>
-      <td><p>The font size, in pixels. (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) The font size, in pixels.</p></td>
     </tr>
     <tr>
       <th>fontStyle</th>
-      <td><p>The font style (e.g., <code>"italic"</code>). (type = FontStyle)</p></td>
+      <td><p>(<em>TextConfig</em>) The font style (e.g., <code>"italic"</code>).</p></td>
     </tr>
     <tr>
       <th>fontWeight</th>
-      <td><p>The font weight.
-This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or a number (<code>100</code>, <code>200</code>, <code>300</code>, ..., <code>900</code> where <code>"normal"</code> = <code>400</code> and <code>"bold"</code> = <code>700</code>). (type = FontWeight)</p></td>
+      <td><p>(<em>TextConfig</em>) The font weight.
+This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or a number (<code>100</code>, <code>200</code>, <code>300</code>, ..., <code>900</code> where <code>"normal"</code> = <code>400</code> and <code>"bold"</code> = <code>700</code>).</p></td>
     </tr>
     <tr>
       <th>href</th>
-      <td><p>A URL to load upon mouse click. If defined, the mark acts as a hyperlink. (type = string)</p></td>
+      <td><p>(<em>TextConfig</em>) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.</p></td>
     </tr>
     <tr>
       <th>interpolate</th>
-      <td><p>The line interpolation method to use for line and area marks. One of the following:</p><ul>
+      <td><p>(<em>TextConfig</em>) The line interpolation method to use for line and area marks. One of the following:</p><ul>
 <li><p><code>"linear"</code>: piecewise linear segments, as in a polyline.</p></li>
 <li><p><code>"linear-closed"</code>: close the linear segments to form a polygon.</p></li>
 <li><p><code>"step"</code>: alternate between horizontal and vertical segments, as in a step function.</p></li>
@@ -235,26 +235,26 @@ This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or 
 <li><p><code>"cardinal-open"</code>: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.</p></li>
 <li><p><code>"cardinal-closed"</code>: a closed Cardinal spline, as in a loop.</p></li>
 <li><p><code>"bundle"</code>: equivalent to basis, except the tension parameter is used to straighten the spline.</p></li>
-<li><p><code>"monotone"</code>: cubic interpolation that preserves monotonicity in y. (type = Interpolate)</p></li>
+<li><p><code>"monotone"</code>: cubic interpolation that preserves monotonicity in y.</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>limit</th>
-      <td><p>The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.</p>
-<p><strong>Default value:</strong> <code>0</code>, indicating no limit (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.</p>
+<p><strong>Default value:</strong> <code>0</code>, indicating no limit</p></td>
     </tr>
     <tr>
       <th>opacity</th>
-      <td><p>The overall opacity (value between 0,1).</p>
-<p><strong>Default value:</strong> <code>0.7</code> for non-aggregate plots with <code>point</code>, <code>tick</code>, <code>circle</code>, or <code>square</code> marks or layered <code>bar</code> charts and <code>1</code> otherwise. (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) The overall opacity (value between 0,1).</p>
+<p><strong>Default value:</strong> <code>0.7</code> for non-aggregate plots with <code>point</code>, <code>tick</code>, <code>circle</code>, or <code>square</code> marks or layered <code>bar</code> charts and <code>1</code> otherwise.</p></td>
     </tr>
     <tr>
       <th>order</th>
-      <td><p>For line and trail marks, this <code>order</code> property can be set to <code>null</code> or <code>false</code> to make the lines use the original order in the data sources. (type = null OR boolean)</p></td>
+      <td><p>(<em>TextConfig</em>) For line and trail marks, this <code>order</code> property can be set to <code>null</code> or <code>false</code> to make the lines use the original order in the data sources.</p></td>
     </tr>
     <tr>
       <th>orient</th>
-      <td><p>The orientation of a non-stacked bar, tick, area, and line charts.
+      <td><p>(<em>TextConfig</em>) The orientation of a non-stacked bar, tick, area, and line charts.
 The value is either horizontal (default) or vertical.</p><ul>
 <li><p>For bar, rule and tick, this determines whether the size of the bar and tick
 should be applied to x or y dimension.</p></li>
@@ -262,109 +262,109 @@ should be applied to x or y dimension.</p></li>
 <li><p>For line and trail marks, this property determines the sort order of the points in the line
 if <code>config.sortLineBy</code> is not specified.
 For stacked charts, this is always determined by the orientation of the stack;
-therefore explicitly specified value will be ignored. (type = Orientation)</p></li>
+therefore explicitly specified value will be ignored.</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>radius</th>
-      <td><p>Polar coordinate radial offset, in pixels, of the text label from the origin determined by the <code>x</code> and <code>y</code> properties. (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the <code>x</code> and <code>y</code> properties.</p></td>
     </tr>
     <tr>
       <th>shape</th>
-      <td><p>Shape of the point marks. Supported values include:</p><ul>
+      <td><p>(<em>TextConfig</em>) Shape of the point marks. Supported values include:</p><ul>
 <li><p>plotting shapes: <code>"circle"</code>, <code>"square"</code>, <code>"cross"</code>, <code>"diamond"</code>, <code>"triangle-up"</code>, <code>"triangle-down"</code>, <code>"triangle-right"</code>, or <code>"triangle-left"</code>.</p></li>
 <li><p>the line symbol <code>"stroke"</code></p></li>
 <li><p>centered directional shapes <code>"arrow"</code>, <code>"wedge"</code>, or <code>"triangle"</code></p></li>
 <li><p>a custom <a href='https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths'>SVG path string</a> (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)</p></li>
 </ul>
 
-<p><strong>Default value:</strong> <code>"circle"</code> (type = string)</p></td>
+<p><strong>Default value:</strong> <code>"circle"</code></p></td>
     </tr>
     <tr>
       <th>shortTimeLabels</th>
-      <td><p>Whether month names and weekday names should be abbreviated. (type = boolean)</p></td>
+      <td><p>(<em>TextConfig</em>) Whether month names and weekday names should be abbreviated.</p></td>
     </tr>
     <tr>
       <th>size</th>
-      <td><p>Default size for marks.</p><ul>
+      <td><p>(<em>TextConfig</em>) Default size for marks.</p><ul>
 <li><p>For <code>point</code>/<code>circle</code>/<code>square</code>, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.</p></li>
 <li><p>For <code>bar</code>, this represents the band size of the bar, in pixels.</p></li>
 <li><p>For <code>text</code>, this represents the font size, in pixels.</p></li>
 </ul>
 
-<p><strong>Default value:</strong> <code>30</code> for point, circle, square marks; <code>rangeStep</code> - 1 for bar marks with discrete dimensions; <code>5</code> for bar marks with continuous dimensions; <code>11</code> for text marks. (type = number)</p></td>
+<p><strong>Default value:</strong> <code>30</code> for point, circle, square marks; <code>rangeStep</code> - 1 for bar marks with discrete dimensions; <code>5</code> for bar marks with continuous dimensions; <code>11</code> for text marks.</p></td>
     </tr>
     <tr>
       <th>stroke</th>
-      <td><p>Default Stroke Color.  This has higher precedence than <code>config.color</code></p>
-<p><strong>Default value:</strong> (None) (type = Color)</p></td>
+      <td><p>(<em>TextConfig</em>) Default Stroke Color.  This has higher precedence than <code>config.color</code></p>
+<p><strong>Default value:</strong> (None)</p></td>
     </tr>
     <tr>
       <th>strokeCap</th>
-      <td><p>The stroke cap for line ending style. One of <code>"butt"</code>, <code>"round"</code>, or <code>"square"</code>.</p>
-<p><strong>Default value:</strong> <code>"square"</code> (type = StrokeCap)</p></td>
+      <td><p>(<em>TextConfig</em>) The stroke cap for line ending style. One of <code>"butt"</code>, <code>"round"</code>, or <code>"square"</code>.</p>
+<p><strong>Default value:</strong> <code>"square"</code></p></td>
     </tr>
     <tr>
       <th>strokeDash</th>
-      <td><p>An array of alternating stroke, space lengths for creating dashed or dotted lines. (type = array)</p></td>
+      <td><p>(<em>TextConfig</em>) An array of alternating stroke, space lengths for creating dashed or dotted lines.</p></td>
     </tr>
     <tr>
       <th>strokeDashOffset</th>
-      <td><p>The offset (in pixels) into which to begin drawing with the stroke dash array. (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) The offset (in pixels) into which to begin drawing with the stroke dash array.</p></td>
     </tr>
     <tr>
       <th>strokeJoin</th>
-      <td><p>The stroke line join method. One of <code>"miter"</code>, <code>"round"</code> or <code>"bevel"</code>.</p>
-<p><strong>Default value:</strong> <code>"miter"</code> (type = StrokeJoin)</p></td>
+      <td><p>(<em>TextConfig</em>) The stroke line join method. One of <code>"miter"</code>, <code>"round"</code> or <code>"bevel"</code>.</p>
+<p><strong>Default value:</strong> <code>"miter"</code></p></td>
     </tr>
     <tr>
       <th>strokeMiterLimit</th>
-      <td><p>The miter limit at which to bevel a line join. (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) The miter limit at which to bevel a line join.</p></td>
     </tr>
     <tr>
       <th>strokeOpacity</th>
-      <td><p>The stroke opacity (value between 0,1).</p>
-<p><strong>Default value:</strong> <code>1</code> (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) The stroke opacity (value between 0,1).</p>
+<p><strong>Default value:</strong> <code>1</code></p></td>
     </tr>
     <tr>
       <th>strokeWidth</th>
-      <td><p>The stroke width, in pixels. (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) The stroke width, in pixels.</p></td>
     </tr>
     <tr>
       <th>tension</th>
-      <td><p>Depending on the interpolation type, sets the tension parameter (for line and area marks). (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) Depending on the interpolation type, sets the tension parameter (for line and area marks).</p></td>
     </tr>
     <tr>
       <th>text</th>
-      <td><p>Placeholder text if the <code>text</code> channel is not specified (type = string)</p></td>
+      <td><p>(<em>TextConfig</em>) Placeholder text if the <code>text</code> channel is not specified</p></td>
     </tr>
     <tr>
       <th>theta</th>
-      <td><p>Polar coordinate angle, in radians, of the text label from the origin determined by the <code>x</code> and <code>y</code> properties. Values for <code>theta</code> follow the same convention of <code>arc</code> mark <code>startAngle</code> and <code>endAngle</code> properties: angles are measured in radians, with <code>0</code> indicating "north". (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) Polar coordinate angle, in radians, of the text label from the origin determined by the <code>x</code> and <code>y</code> properties. Values for <code>theta</code> follow the same convention of <code>arc</code> mark <code>startAngle</code> and <code>endAngle</code> properties: angles are measured in radians, with <code>0</code> indicating "north".</p></td>
     </tr>
     <tr>
       <th>tooltip</th>
-      <td><p>The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.</p><ul>
+      <td><p>(<em>TextConfig</em>) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.</p><ul>
 <li><p>If <code>tooltip</code> is <code>{"content": "encoding"}</code>, then all fields from <code>encoding</code> will be used.</p></li>
 <li><p>If <code>tooltip</code> is <code>{"content": "data"}</code>, then all fields that appear in the highlighted data point will be used.</p></li>
-<li><p>If set to <code>null</code>, then no tooltip will be used. (type = Varies)</p></li>
+<li><p>If set to <code>null</code>, then no tooltip will be used.</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>x</th>
-      <td><p>X coordinates of the marks, or width of horizontal <code>"bar"</code> and <code>"area"</code> without <code>x2</code>. (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) X coordinates of the marks, or width of horizontal <code>"bar"</code> and <code>"area"</code> without <code>x2</code>.</p></td>
     </tr>
     <tr>
       <th>x2</th>
-      <td><p>X2 coordinates for ranged <code>"area"</code>, <code>"bar"</code>, <code>"rect"</code>, and  <code>"rule"</code>. (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) X2 coordinates for ranged <code>"area"</code>, <code>"bar"</code>, <code>"rect"</code>, and  <code>"rule"</code>.</p></td>
     </tr>
     <tr>
       <th>y</th>
-      <td><p>Y coordinates of the marks, or height of vertical <code>"bar"</code> and <code>"area"</code> without <code>y2</code> (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) Y coordinates of the marks, or height of vertical <code>"bar"</code> and <code>"area"</code> without <code>y2</code></p></td>
     </tr>
     <tr>
       <th>y2</th>
-      <td><p>Y2 coordinates for ranged <code>"area"</code>, <code>"bar"</code>, <code>"rect"</code>, and  <code>"rule"</code>. (type = number)</p></td>
+      <td><p>(<em>TextConfig</em>) Y2 coordinates for ranged <code>"area"</code>, <code>"bar"</code>, <code>"rect"</code>, and  <code>"rule"</code>.</p></td>
     </tr>
     </table>
     

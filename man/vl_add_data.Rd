@@ -10,21 +10,21 @@ vl_add_data(spec, format = NULL, name = NULL, url = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{format}{An object that specifies the format for parsing the data. (type = DataFormat)}
+\item{format}{(\emph{UrlData, InlineData, NamedData}) An object that specifies the format for parsing the data.}
 
-\item{name}{Provide a placeholder name and bind data at runtime. (type = string)}
+\item{name}{(\emph{UrlData, InlineData, NamedData, SequenceGenerator, SphereGenerator, GraticuleGenerator}) Provide a placeholder name and bind data at runtime.}
 
-\item{url}{An URL from which to load the data set. Use the \code{format.type} property
-to ensure the loaded data is correctly parsed. (type = string)}
+\item{url}{(\emph{UrlData}) An URL from which to load the data set. Use the \code{format.type} property
+to ensure the loaded data is correctly parsed.}
 
-\item{values}{The full data set, included inline. This can be an array of objects or primitive values, an object, or a string.
-Arrays of primitive values are ingested as objects with a \code{data} property. Strings are parsed according to the specified format type. (type = InlineDataset)}
+\item{values}{(\emph{InlineData}) The full data set, included inline. This can be an array of objects or primitive values, an object, or a string.
+Arrays of primitive values are ingested as objects with a \code{data} property. Strings are parsed according to the specified format type.}
 
-\item{sequence}{Generate a sequence of numbers. (type = SequenceParams)}
+\item{sequence}{(\emph{SequenceGenerator}) Generate a sequence of numbers.}
 
-\item{sphere}{Generate sphere GeoJSON data for the full globe. (type = Varies)}
+\item{sphere}{(\emph{SphereGenerator}) Generate sphere GeoJSON data for the full globe.}
 
-\item{graticule}{Generate graticule GeoJSON data for geographic reference lines. (type = Varies)}
+\item{graticule}{(\emph{GraticuleGenerator}) Generate graticule GeoJSON data for geographic reference lines.}
 }
 \value{
 A modified spec

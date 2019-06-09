@@ -9,7 +9,7 @@ vl_filter(spec, filter = NULL)
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{filter}{The \code{filter} property must be one of the predicate definitions:
+\item{filter}{(\emph{FilterTransform}) The \code{filter} property must be one of the predicate definitions:
 \enumerate{
 \item an \href{https://vega.github.io/vega-lite/docs/types.html#expression}{expression} string,
 where \code{datum} can be used to refer to the current data object
@@ -22,7 +22,7 @@ where \code{datum} can be used to refer to the current data object
 \href{https://vega.github.io/vega-lite/docs/filter.html#one-of-predicate}{oneOf},
 or \href{https://vega.github.io/vega-lite/docs/filter.html#valid-predicate}{valid},
 \item a \href{https://vega.github.io/vega-lite/docs/filter.html#selection-predicate}{selection predicate}
-\item a logical operand that combines (1), (2), or (3). (type = LogicalOperand<Predicate>)
+\item a logical operand that combines (1), (2), or (3).
 }}
 }
 \value{

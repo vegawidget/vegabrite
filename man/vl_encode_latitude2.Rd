@@ -11,44 +11,44 @@ vl_encode_latitude2(spec, field = NULL, type = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{field}{\strong{Required.} A string defining the name of the field from which to pull a data value
+\item{field}{(\emph{SecondaryFieldDef}) \strong{Required.} A string defining the name of the field from which to pull a data value
 or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{repeat} operator.
 
 \strong{Note:} Dots (\code{.}) and brackets (\code{[} and \code{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \code{"field": "foo['bar']"}).
 If field names contain dots or brackets but are not nested, you can use \code{\\} to escape dots and brackets (e.g., \code{"a\\.b"} and \code{"a\\[0\\]"}).
 See more details about escaping in the \href{https://vega.github.io/vega-lite/docs/field.html}{field documentation}.
 
-\strong{Note:} \code{field} is not required if \code{aggregate} is \code{count}. (type = Field)}
+\strong{Note:} \code{field} is not required if \code{aggregate} is \code{count}.}
 
-\item{aggregate}{Aggregation function for the field
+\item{aggregate}{(\emph{SecondaryFieldDef}) Aggregation function for the field
 (e.g., \code{mean}, \code{sum}, \code{median}, \code{min}, \code{max}, \code{count}).
 
-\strong{Default value:} \code{undefined} (None) (type = Aggregate)}
+\strong{Default value:} \code{undefined} (None)}
 
-\item{bin}{A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y} channel are binned before they are imported into Vega-Lite (\code{"binned"}).
+\item{bin}{(\emph{SecondaryFieldDef}) A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y} channel are binned before they are imported into Vega-Lite (\code{"binned"}).
 \itemize{
 \item If \code{true}, default \href{https://vega.github.io/vega-lite/docs/bin.html}{binning parameters} will be applied.
 \item If \code{"binned"}, this indicates that the data for the \code{x} (or \code{y}) channel are already binned. You can map the bin-start field to \code{x} (or \code{y}) and the bin-end field to \code{x2} (or \code{y2}). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's \href{https://vega.github.io/vega-lite/docs/axis.html#ticks}{tickMinStep} property.
 }
 
-\strong{Default value:} \code{false} (type = Varies)}
+\strong{Default value:} \code{false}}
 
-\item{timeUnit}{Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field.
+\item{timeUnit}{(\emph{SecondaryFieldDef}) Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field.
 or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}.
 
-\strong{Default value:} \code{undefined} (None) (type = TimeUnit)}
+\strong{Default value:} \code{undefined} (None)}
 
-\item{title}{A title for the field. If \code{null}, the title will be removed.
+\item{title}{(\emph{SecondaryFieldDef}) A title for the field. If \code{null}, the title will be removed.
 
 \strong{Default value:}  derived from the field's name and transformation function (\code{aggregate}, \code{bin} and \code{timeUnit}).  If the field has an aggregate function, the function is displayed as part of the title (e.g., \code{"Sum of Profit"}). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., \code{"Profit (binned)"}, \code{"Transaction Date (year-month)"}).  Otherwise, the title is simply the field name.
 
 \strong{Notes}:
 \enumerate{
 \item You can customize the default field title format by providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{fieldTitle} property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config} or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{fieldTitle function via the compile function's options}.
-\item If both field definition's \code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used. (type = string OR null)
+\item If both field definition's \code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used.
 }}
 
-\item{value}{A constant value in visual domain (e.g., \code{"red"} / "#0099ff" for color, values between \code{0} to \code{1} for opacity). (type = number)}
+\item{value}{(\emph{NumberValueDef}) A constant value in visual domain (e.g., \code{"red"} / "#0099ff" for color, values between \code{0} to \code{1} for opacity).}
 }
 \value{
 A modified spec
@@ -57,5 +57,5 @@ A modified spec
 Add encoding for latitude2 to a vega-lite spec.
 }
 \seealso{
-\code{\link[=vl_encode]{vl_encode()}}, \code{\link[=vl_Latitude2]{vl_Latitude2()}}
+\code{\link[=vl_encode]{vl_encode()}}, \code{\link[=vl_make_Latitude2]{vl_make_Latitude2()}}
 }

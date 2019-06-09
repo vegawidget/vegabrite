@@ -10,19 +10,19 @@ vl_stack(spec, as = NULL, groupby = NULL, offset = NULL,
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{as}{Output field names. This can be either a string or an array of strings with
+\item{as}{(\emph{StackTransform}) Output field names. This can be either a string or an array of strings with
 two elements denoting the name for the fields for stack start and stack end
 respectively.
-If a single string(eg."val") is provided, the end field will be "val_end". (type = Varies)}
+If a single string(eg."val") is provided, the end field will be "val_end".}
 
-\item{groupby}{The data fields to group by. (type = array)}
+\item{groupby}{(\emph{StackTransform}) The data fields to group by.}
 
-\item{offset}{Mode for stacking marks.
-\strong{Default value:} \code{"zero"} (type = string)}
+\item{offset}{(\emph{StackTransform}) Mode for stacking marks.
+\strong{Default value:} \code{"zero"}}
 
-\item{sort}{Field that determines the order of leaves in the stacked charts. (type = array)}
+\item{sort}{(\emph{StackTransform}) Field that determines the order of leaves in the stacked charts.}
 
-\item{stack}{The field which is stacked. (type = string)}
+\item{stack}{(\emph{StackTransform}) The field which is stacked.}
 }
 \value{
 A modified spec

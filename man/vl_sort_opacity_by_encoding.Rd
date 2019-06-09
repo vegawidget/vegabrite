@@ -9,9 +9,9 @@ vl_sort_opacity_by_encoding(spec, encoding = NULL, order = NULL)
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{encoding}{The \href{https://vega.github.io/vega-lite/docs/encoding.html#channels}{encoding channel} to sort by (e.g., \code{"x"}, \code{"y"}) (type = SingleDefUnitChannel)}
+\item{encoding}{(\emph{SortByEncoding}) The \href{https://vega.github.io/vega-lite/docs/encoding.html#channels}{encoding channel} to sort by (e.g., \code{"x"}, \code{"y"})}
 
-\item{order}{The sort order. One of \code{"ascending"} (default), \code{"descending"}, or \code{null} (no not sort). (type = Varies)}
+\item{order}{(\emph{SortByEncoding}) The sort order. One of \code{"ascending"} (default), \code{"descending"}, or \code{null} (no not sort).}
 }
 \value{
 A modified spec

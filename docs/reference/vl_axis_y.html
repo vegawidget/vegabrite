@@ -149,313 +149,313 @@
     </tr>
     <tr>
       <th>bandPosition</th>
-      <td><p>An interpolation fraction indicating where, for <code>band</code> scales, axis ticks should be positioned. A value of <code>0</code> places ticks at the left edge of their bands. A value of <code>0.5</code> places ticks in the middle of their bands.</p>
-<p><strong>Default value:</strong> <code>0.5</code> (type = number)</p></td>
+      <td><p>(<em>Axis</em>) An interpolation fraction indicating where, for <code>band</code> scales, axis ticks should be positioned. A value of <code>0</code> places ticks at the left edge of their bands. A value of <code>0.5</code> places ticks in the middle of their bands.</p>
+<p><strong>Default value:</strong> <code>0.5</code></p></td>
     </tr>
     <tr>
       <th>domain</th>
-      <td><p>A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.</p>
-<p><strong>Default value:</strong> <code>true</code> (type = boolean)</p></td>
+      <td><p>(<em>Axis</em>) A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.</p>
+<p><strong>Default value:</strong> <code>true</code></p></td>
     </tr>
     <tr>
       <th>domainColor</th>
-      <td><p>Color of axis domain line.</p>
-<p><strong>Default value:</strong> <code>"gray"</code>. (type = Color)</p></td>
+      <td><p>(<em>Axis</em>) Color of axis domain line.</p>
+<p><strong>Default value:</strong> <code>"gray"</code>.</p></td>
     </tr>
     <tr>
       <th>domainDash</th>
-      <td><p>An array of alternating stroke, space lengths for dashed domain lines. (type = array)</p></td>
+      <td><p>(<em>Axis</em>) An array of alternating stroke, space lengths for dashed domain lines.</p></td>
     </tr>
     <tr>
       <th>domainDashOffset</th>
-      <td><p>The pixel offset at which to start drawing with the domain dash array. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The pixel offset at which to start drawing with the domain dash array.</p></td>
     </tr>
     <tr>
       <th>domainOpacity</th>
-      <td><p>Opacity of the axis domain line. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) Opacity of the axis domain line.</p></td>
     </tr>
     <tr>
       <th>domainWidth</th>
-      <td><p>Stroke width of axis domain line</p>
-<p><strong>Default value:</strong> <code>1</code> (type = number)</p></td>
+      <td><p>(<em>Axis</em>) Stroke width of axis domain line</p>
+<p><strong>Default value:</strong> <code>1</code></p></td>
     </tr>
     <tr>
       <th>format</th>
-      <td><p>The text formatting pattern for labels of guides (axes, legends, headers) and text marks.</p><ul>
+      <td><p>(<em>Axis</em>) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.</p><ul>
 <li><p>If the format type is <code>"number"</code> (e.g., for quantitative fields), this is D3's <a href='https://github.com/d3/d3-format#locale_format'>number format pattern</a>.</p></li>
 <li><p>If the format type is <code>"time"</code> (e.g., for temporal fields), this is D3's <a href='https://github.com/d3/d3-time-format#locale_format'>time format pattern</a>.</p></li>
 </ul>
 
 <p>See the <a href='https://vega.github.io/vega-lite/docs/format.html'>format documentation</a> for more examples.</p>
-<p><strong>Default value:</strong>  Derived from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>numberFormat</a> config for number format and from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>timeFormat</a> config for time format. (type = string)</p></td>
+<p><strong>Default value:</strong>  Derived from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>numberFormat</a> config for number format and from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>timeFormat</a> config for time format.</p></td>
     </tr>
     <tr>
       <th>formatType</th>
-      <td><p>The format type for labels (<code>"number"</code> or <code>"time"</code>).</p>
+      <td><p>(<em>Axis</em>) The format type for labels (<code>"number"</code> or <code>"time"</code>).</p>
 <p><strong>Default value:</strong></p><ul>
 <li><p><code>"time"</code> for temporal fields and ordinal and nomimal fields with <code>timeUnit</code>.</p></li>
-<li><p><code>"number"</code> for quantitative fields as well as ordinal and nomimal fields without <code>timeUnit</code>. (type = string)</p></li>
+<li><p><code>"number"</code> for quantitative fields as well as ordinal and nomimal fields without <code>timeUnit</code>.</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>grid</th>
-      <td><p>A boolean flag indicating if grid lines should be included as part of the axis</p>
-<p><strong>Default value:</strong> <code>true</code> for <a href='https://vega.github.io/vega-lite/docs/scale.html#continuous'>continuous scales</a> that are not binned; otherwise, <code>false</code>. (type = boolean)</p></td>
+      <td><p>(<em>Axis</em>) A boolean flag indicating if grid lines should be included as part of the axis</p>
+<p><strong>Default value:</strong> <code>true</code> for <a href='https://vega.github.io/vega-lite/docs/scale.html#continuous'>continuous scales</a> that are not binned; otherwise, <code>false</code>.</p></td>
     </tr>
     <tr>
       <th>gridColor</th>
-      <td><p>Color of gridlines.</p>
-<p><strong>Default value:</strong> <code>"lightGray"</code>. (type = Color)</p></td>
+      <td><p>(<em>Axis</em>) Color of gridlines.</p>
+<p><strong>Default value:</strong> <code>"lightGray"</code>.</p></td>
     </tr>
     <tr>
       <th>gridDash</th>
-      <td><p>An array of alternating stroke, space lengths for dashed grid lines. (type = array)</p></td>
+      <td><p>(<em>Axis</em>) An array of alternating stroke, space lengths for dashed grid lines.</p></td>
     </tr>
     <tr>
       <th>gridDashOffset</th>
-      <td><p>The pixel offset at which to start drawing with the grid dash array. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The pixel offset at which to start drawing with the grid dash array.</p></td>
     </tr>
     <tr>
       <th>gridOpacity</th>
-      <td><p>The stroke opacity of grid (value between 0,1)</p>
-<p><strong>Default value:</strong> <code>1</code> (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The stroke opacity of grid (value between 0,1)</p>
+<p><strong>Default value:</strong> <code>1</code></p></td>
     </tr>
     <tr>
       <th>gridWidth</th>
-      <td><p>The grid width, in pixels.</p>
-<p><strong>Default value:</strong> <code>1</code> (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The grid width, in pixels.</p>
+<p><strong>Default value:</strong> <code>1</code></p></td>
     </tr>
     <tr>
       <th>labelAlign</th>
-      <td><p>Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation. (type = Align)</p></td>
+      <td><p>(<em>Axis</em>) Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation.</p></td>
     </tr>
     <tr>
       <th>labelAngle</th>
-      <td><p>The rotation angle of the axis labels.</p>
-<p><strong>Default value:</strong> <code>-90</code> for nominal and ordinal fields; <code>0</code> otherwise. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The rotation angle of the axis labels.</p>
+<p><strong>Default value:</strong> <code>-90</code> for nominal and ordinal fields; <code>0</code> otherwise.</p></td>
     </tr>
     <tr>
       <th>labelBaseline</th>
-      <td><p>Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be <code>"top"</code>, <code>"middle"</code>, <code>"bottom"</code>, or <code>"alphabetic"</code>. (type = TextBaseline)</p></td>
+      <td><p>(<em>Axis</em>) Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be <code>"top"</code>, <code>"middle"</code>, <code>"bottom"</code>, or <code>"alphabetic"</code>.</p></td>
     </tr>
     <tr>
       <th>labelBound</th>
-      <td><p>Indicates if labels should be hidden if they exceed the axis range. If <code>false</code> (the default) no bounds overlap analysis is performed. If <code>true</code>, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.</p>
-<p><strong>Default value:</strong> <code>false</code>. (type = number OR boolean)</p></td>
+      <td><p>(<em>Axis</em>) Indicates if labels should be hidden if they exceed the axis range. If <code>false</code> (the default) no bounds overlap analysis is performed. If <code>true</code>, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.</p>
+<p><strong>Default value:</strong> <code>false</code>.</p></td>
     </tr>
     <tr>
       <th>labelColor</th>
-      <td><p>The color of the tick label, can be in hex color code or regular color name. (type = Color)</p></td>
+      <td><p>(<em>Axis</em>) The color of the tick label, can be in hex color code or regular color name.</p></td>
     </tr>
     <tr>
       <th>labelFlush</th>
-      <td><p>Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.</p>
-<p><strong>Default value:</strong> <code>true</code> for axis of a continuous x-scale. Otherwise, <code>false</code>. (type = boolean OR number)</p></td>
+      <td><p>(<em>Axis</em>) Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.</p>
+<p><strong>Default value:</strong> <code>true</code> for axis of a continuous x-scale. Otherwise, <code>false</code>.</p></td>
     </tr>
     <tr>
       <th>labelFlushOffset</th>
-      <td><p>Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of <code>2</code> will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.</p>
-<p><strong>Default value:</strong> <code>0</code>. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of <code>2</code> will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.</p>
+<p><strong>Default value:</strong> <code>0</code>.</p></td>
     </tr>
     <tr>
       <th>labelFont</th>
-      <td><p>The font of the tick label. (type = string)</p></td>
+      <td><p>(<em>Axis</em>) The font of the tick label.</p></td>
     </tr>
     <tr>
       <th>labelFontSize</th>
-      <td><p>The font size of the label, in pixels. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The font size of the label, in pixels.</p></td>
     </tr>
     <tr>
       <th>labelFontStyle</th>
-      <td><p>Font style of the title. (type = FontStyle)</p></td>
+      <td><p>(<em>Axis</em>) Font style of the title.</p></td>
     </tr>
     <tr>
       <th>labelFontWeight</th>
-      <td><p>Font weight of axis tick labels. (type = FontWeight)</p></td>
+      <td><p>(<em>Axis</em>) Font weight of axis tick labels.</p></td>
     </tr>
     <tr>
       <th>labelLimit</th>
-      <td><p>Maximum allowed pixel width of axis tick labels.</p>
-<p><strong>Default value:</strong> <code>180</code> (type = number)</p></td>
+      <td><p>(<em>Axis</em>) Maximum allowed pixel width of axis tick labels.</p>
+<p><strong>Default value:</strong> <code>180</code></p></td>
     </tr>
     <tr>
       <th>labelOpacity</th>
-      <td><p>The opacity of the labels. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The opacity of the labels.</p></td>
     </tr>
     <tr>
       <th>labelOverlap</th>
-      <td><p>The strategy to use for resolving overlap of axis labels. If <code>false</code> (the default), no overlap reduction is attempted. If set to <code>true</code> or <code>"parity"</code>, a strategy of removing every other label is used (this works well for standard linear axes). If set to <code>"greedy"</code>, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).</p>
-<p><strong>Default value:</strong> <code>true</code> for non-nominal fields with non-log scales; <code>"greedy"</code> for log scales; otherwise <code>false</code>. (type = LabelOverlap)</p></td>
+      <td><p>(<em>Axis</em>) The strategy to use for resolving overlap of axis labels. If <code>false</code> (the default), no overlap reduction is attempted. If set to <code>true</code> or <code>"parity"</code>, a strategy of removing every other label is used (this works well for standard linear axes). If set to <code>"greedy"</code>, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).</p>
+<p><strong>Default value:</strong> <code>true</code> for non-nominal fields with non-log scales; <code>"greedy"</code> for log scales; otherwise <code>false</code>.</p></td>
     </tr>
     <tr>
       <th>labelPadding</th>
-      <td><p>The padding, in pixels, between axis and text labels.</p>
-<p><strong>Default value:</strong> <code>2</code> (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The padding, in pixels, between axis and text labels.</p>
+<p><strong>Default value:</strong> <code>2</code></p></td>
     </tr>
     <tr>
       <th>labelSeparation</th>
-      <td><p>The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default <code>0</code>). This property is ignored if <em>labelOverlap</em> resolution is not enabled. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default <code>0</code>). This property is ignored if <em>labelOverlap</em> resolution is not enabled.</p></td>
     </tr>
     <tr>
       <th>labels</th>
-      <td><p>A boolean flag indicating if labels should be included as part of the axis.</p>
-<p><strong>Default value:</strong> <code>true</code>. (type = boolean)</p></td>
+      <td><p>(<em>Axis</em>) A boolean flag indicating if labels should be included as part of the axis.</p>
+<p><strong>Default value:</strong> <code>true</code>.</p></td>
     </tr>
     <tr>
       <th>maxExtent</th>
-      <td><p>The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.</p>
-<p><strong>Default value:</strong> <code>undefined</code>. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.</p>
+<p><strong>Default value:</strong> <code>undefined</code>.</p></td>
     </tr>
     <tr>
       <th>minExtent</th>
-      <td><p>The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.</p>
-<p><strong>Default value:</strong> <code>30</code> for y-axis; <code>undefined</code> for x-axis. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.</p>
+<p><strong>Default value:</strong> <code>30</code> for y-axis; <code>undefined</code> for x-axis.</p></td>
     </tr>
     <tr>
       <th>offset</th>
-      <td><p>The offset, in pixels, by which to displace the axis from the edge of the enclosing group or data rectangle.</p>
-<p><strong>Default value:</strong> derived from the <a href='https://vega.github.io/vega-lite/docs/config.html#facet-scale-config'>axis config</a>'s <code>offset</code> (<code>0</code> by default) (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The offset, in pixels, by which to displace the axis from the edge of the enclosing group or data rectangle.</p>
+<p><strong>Default value:</strong> derived from the <a href='https://vega.github.io/vega-lite/docs/config.html#facet-scale-config'>axis config</a>'s <code>offset</code> (<code>0</code> by default)</p></td>
     </tr>
     <tr>
       <th>orient</th>
-      <td><p>The orientation of the axis. One of <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code> or <code>"right"</code>. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).</p>
-<p><strong>Default value:</strong> <code>"bottom"</code> for x-axes and <code>"left"</code> for y-axes. (type = AxisOrient)</p></td>
+      <td><p>(<em>Axis</em>) The orientation of the axis. One of <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code> or <code>"right"</code>. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).</p>
+<p><strong>Default value:</strong> <code>"bottom"</code> for x-axes and <code>"left"</code> for y-axes.</p></td>
     </tr>
     <tr>
       <th>position</th>
-      <td><p>The anchor position of the axis in pixels. For x-axes with top or bottom orientation, this sets the axis group x coordinate. For y-axes with left or right orientation, this sets the axis group y coordinate.</p>
-<p><strong>Default value</strong>: <code>0</code> (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The anchor position of the axis in pixels. For x-axes with top or bottom orientation, this sets the axis group x coordinate. For y-axes with left or right orientation, this sets the axis group y coordinate.</p>
+<p><strong>Default value</strong>: <code>0</code></p></td>
     </tr>
     <tr>
       <th>tickColor</th>
-      <td><p>The color of the axis's tick.</p>
-<p><strong>Default value:</strong> <code>"gray"</code> (type = Color)</p></td>
+      <td><p>(<em>Axis</em>) The color of the axis's tick.</p>
+<p><strong>Default value:</strong> <code>"gray"</code></p></td>
     </tr>
     <tr>
       <th>tickCount</th>
-      <td><p>A desired number of ticks, for axes visualizing quantitative scales. The resulting number may be different so that values are "nice" (multiples of 2, 5, 10) and lie within the underlying scale's range. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) A desired number of ticks, for axes visualizing quantitative scales. The resulting number may be different so that values are "nice" (multiples of 2, 5, 10) and lie within the underlying scale's range.</p></td>
     </tr>
     <tr>
       <th>tickDash</th>
-      <td><p>An array of alternating stroke, space lengths for dashed tick mark lines. (type = array)</p></td>
+      <td><p>(<em>Axis</em>) An array of alternating stroke, space lengths for dashed tick mark lines.</p></td>
     </tr>
     <tr>
       <th>tickDashOffset</th>
-      <td><p>The pixel offset at which to start drawing with the tick mark dash array. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The pixel offset at which to start drawing with the tick mark dash array.</p></td>
     </tr>
     <tr>
       <th>tickExtra</th>
-      <td><p>Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for <code>band</code> scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with <code>"bandPosition": 1</code> and an axis <code>"padding"</code> value of <code>0</code>. (type = boolean)</p></td>
+      <td><p>(<em>Axis</em>) Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for <code>band</code> scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with <code>"bandPosition": 1</code> and an axis <code>"padding"</code> value of <code>0</code>.</p></td>
     </tr>
     <tr>
       <th>tickMinStep</th>
-      <td><p>The minimum desired step between axis ticks, in terms of scale domain values. For example, a value of <code>1</code> indicates that ticks should not be less than 1 unit apart. If <code>tickMinStep</code> is specified, the <code>tickCount</code> value will be adjusted, if necessary, to enforce the minimum step value.</p>
-<p><strong>Default value</strong>: <code>undefined</code> (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The minimum desired step between axis ticks, in terms of scale domain values. For example, a value of <code>1</code> indicates that ticks should not be less than 1 unit apart. If <code>tickMinStep</code> is specified, the <code>tickCount</code> value will be adjusted, if necessary, to enforce the minimum step value.</p>
+<p><strong>Default value</strong>: <code>undefined</code></p></td>
     </tr>
     <tr>
       <th>tickOffset</th>
-      <td><p>Position offset in pixels to apply to ticks, labels, and gridlines. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) Position offset in pixels to apply to ticks, labels, and gridlines.</p></td>
     </tr>
     <tr>
       <th>tickOpacity</th>
-      <td><p>Opacity of the ticks. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) Opacity of the ticks.</p></td>
     </tr>
     <tr>
       <th>tickRound</th>
-      <td><p>Boolean flag indicating if pixel position values should be rounded to the nearest integer.</p>
-<p><strong>Default value:</strong> <code>true</code> (type = boolean)</p></td>
+      <td><p>(<em>Axis</em>) Boolean flag indicating if pixel position values should be rounded to the nearest integer.</p>
+<p><strong>Default value:</strong> <code>true</code></p></td>
     </tr>
     <tr>
       <th>tickSize</th>
-      <td><p>The size in pixels of axis ticks.</p>
-<p><strong>Default value:</strong> <code>5</code> (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The size in pixels of axis ticks.</p>
+<p><strong>Default value:</strong> <code>5</code></p></td>
     </tr>
     <tr>
       <th>tickWidth</th>
-      <td><p>The width, in pixels, of ticks.</p>
-<p><strong>Default value:</strong> <code>1</code> (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The width, in pixels, of ticks.</p>
+<p><strong>Default value:</strong> <code>1</code></p></td>
     </tr>
     <tr>
       <th>ticks</th>
-      <td><p>Boolean value that determines whether the axis should include ticks.</p>
-<p><strong>Default value:</strong> <code>true</code> (type = boolean)</p></td>
+      <td><p>(<em>Axis</em>) Boolean value that determines whether the axis should include ticks.</p>
+<p><strong>Default value:</strong> <code>true</code></p></td>
     </tr>
     <tr>
       <th>title</th>
-      <td><p>A title for the field. If <code>null</code>, the title will be removed.</p>
+      <td><p>(<em>Axis</em>) A title for the field. If <code>null</code>, the title will be removed.</p>
 <p><strong>Default value:</strong>  derived from the field's name and transformation function (<code>aggregate</code>, <code>bin</code> and <code>timeUnit</code>).  If the field has an aggregate function, the function is displayed as part of the title (e.g., <code>"Sum of Profit"</code>). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., <code>"Profit (binned)"</code>, <code>"Transaction Date (year-month)"</code>).  Otherwise, the title is simply the field name.</p>
 <p><strong>Notes</strong>:</p><ol>
 <li><p>You can customize the default field title format by providing the <a href='https://vega.github.io/vega-lite/docs/config.html#top-level-config'>fieldTitle</a> property in the <a href='https://vega.github.io/vega-lite/docs/config.html'>config</a> or <a href='https://vega.github.io/vega-lite/docs/compile.html#field-title'>fieldTitle function via the compile function's options</a>.</p></li>
-<li><p>If both field definition's <code>title</code> and axis, header, or legend <code>title</code> are defined, axis/header/legend title will be used. (type = string OR null)</p></li>
+<li><p>If both field definition's <code>title</code> and axis, header, or legend <code>title</code> are defined, axis/header/legend title will be used.</p></li>
 </ol></td>
     </tr>
     <tr>
       <th>titleAlign</th>
-      <td><p>Horizontal text alignment of axis titles. (type = Align)</p></td>
+      <td><p>(<em>Axis</em>) Horizontal text alignment of axis titles.</p></td>
     </tr>
     <tr>
       <th>titleAnchor</th>
-      <td><p>Text anchor position for placing axis titles. (type = TitleAnchor)</p></td>
+      <td><p>(<em>Axis</em>) Text anchor position for placing axis titles.</p></td>
     </tr>
     <tr>
       <th>titleAngle</th>
-      <td><p>Angle in degrees of axis titles. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) Angle in degrees of axis titles.</p></td>
     </tr>
     <tr>
       <th>titleBaseline</th>
-      <td><p>Vertical text baseline for axis titles. (type = TextBaseline)</p></td>
+      <td><p>(<em>Axis</em>) Vertical text baseline for axis titles.</p></td>
     </tr>
     <tr>
       <th>titleColor</th>
-      <td><p>Color of the title, can be in hex color code or regular color name. (type = Color)</p></td>
+      <td><p>(<em>Axis</em>) Color of the title, can be in hex color code or regular color name.</p></td>
     </tr>
     <tr>
       <th>titleFont</th>
-      <td><p>Font of the title. (e.g., <code>"Helvetica Neue"</code>). (type = string)</p></td>
+      <td><p>(<em>Axis</em>) Font of the title. (e.g., <code>"Helvetica Neue"</code>).</p></td>
     </tr>
     <tr>
       <th>titleFontSize</th>
-      <td><p>Font size of the title. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) Font size of the title.</p></td>
     </tr>
     <tr>
       <th>titleFontStyle</th>
-      <td><p>Font style of the title. (type = FontStyle)</p></td>
+      <td><p>(<em>Axis</em>) Font style of the title.</p></td>
     </tr>
     <tr>
       <th>titleFontWeight</th>
-      <td><p>Font weight of the title.
-This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or a number (<code>100</code>, <code>200</code>, <code>300</code>, ..., <code>900</code> where <code>"normal"</code> = <code>400</code> and <code>"bold"</code> = <code>700</code>). (type = FontWeight)</p></td>
+      <td><p>(<em>Axis</em>) Font weight of the title.
+This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or a number (<code>100</code>, <code>200</code>, <code>300</code>, ..., <code>900</code> where <code>"normal"</code> = <code>400</code> and <code>"bold"</code> = <code>700</code>).</p></td>
     </tr>
     <tr>
       <th>titleLimit</th>
-      <td><p>Maximum allowed pixel width of axis titles. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) Maximum allowed pixel width of axis titles.</p></td>
     </tr>
     <tr>
       <th>titleOpacity</th>
-      <td><p>Opacity of the axis title. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) Opacity of the axis title.</p></td>
     </tr>
     <tr>
       <th>titlePadding</th>
-      <td><p>The padding, in pixels, between title and axis. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) The padding, in pixels, between title and axis.</p></td>
     </tr>
     <tr>
       <th>titleX</th>
-      <td><p>X-coordinate of the axis title relative to the axis group. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) X-coordinate of the axis title relative to the axis group.</p></td>
     </tr>
     <tr>
       <th>titleY</th>
-      <td><p>Y-coordinate of the axis title relative to the axis group. (type = number)</p></td>
+      <td><p>(<em>Axis</em>) Y-coordinate of the axis title relative to the axis group.</p></td>
     </tr>
     <tr>
       <th>values</th>
-      <td><p>Explicitly set the visible axis tick values. (type = Varies)</p></td>
+      <td><p>(<em>Axis</em>) Explicitly set the visible axis tick values.</p></td>
     </tr>
     <tr>
       <th>zindex</th>
-      <td><p>A non-positive integer indicating z-index of the axis.
+      <td><p>(<em>Axis</em>) A non-positive integer indicating z-index of the axis.
 If zindex is 0, axes should be drawn behind all chart elements.
 To put them in front, use <code>"zindex = 1"</code>.</p>
-<p><strong>Default value:</strong> <code>1</code> (in front of the marks) for actual axis and <code>0</code> (behind the marks) for grids. (type = number)</p></td>
+<p><strong>Default value:</strong> <code>1</code> (in front of the marks) for actual axis and <code>0</code> (behind the marks) for grids.</p></td>
     </tr>
     <tr>
       <th>remove</th>

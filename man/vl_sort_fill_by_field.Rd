@@ -9,19 +9,19 @@ vl_sort_fill_by_field(spec, field = NULL, op = NULL, order = NULL)
 \arguments{
 \item{spec}{A vega-lite spec.}
 
-\item{field}{The data \href{https://vega.github.io/vega-lite/docs/field.html}{field} to sort by.
+\item{field}{(\emph{EncodingSortField}) The data \href{https://vega.github.io/vega-lite/docs/field.html}{field} to sort by.
 
-\strong{Default value:} If unspecified, defaults to the field specified in the outer data reference. (type = Field)}
+\strong{Default value:} If unspecified, defaults to the field specified in the outer data reference.}
 
-\item{op}{An \href{https://vega.github.io/vega-lite/docs/aggregate.html#ops}{aggregate operation} to perform on the field prior to sorting (e.g., \code{"count"}, \code{"mean"} and \code{"median"}).
+\item{op}{(\emph{EncodingSortField}) An \href{https://vega.github.io/vega-lite/docs/aggregate.html#ops}{aggregate operation} to perform on the field prior to sorting (e.g., \code{"count"}, \code{"mean"} and \code{"median"}).
 An aggregation is required when there are multiple values of the sort field for each encoded data field.
 The input data objects will be aggregated, grouped by the encoded data field.
 
 For a full list of operations, please see the documentation for \href{https://vega.github.io/vega-lite/docs/aggregate.html#ops}{aggregate}.
 
-\strong{Default value:} \code{"sum"} for stacked plots. Otherwise, \code{"mean"}. (type = AggregateOp)}
+\strong{Default value:} \code{"sum"} for stacked plots. Otherwise, \code{"mean"}.}
 
-\item{order}{The sort order. One of \code{"ascending"} (default), \code{"descending"}, or \code{null} (no not sort). (type = Varies)}
+\item{order}{(\emph{EncodingSortField}) The sort order. One of \code{"ascending"} (default), \code{"descending"}, or \code{null} (no not sort).}
 }
 \value{
 A modified spec
