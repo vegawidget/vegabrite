@@ -45,7 +45,7 @@ Much of the public API is auto-generated via the `build.R` script in the
 ## Examples
 
 These are some examples showing current capabilities; see [pkgdown
-site](https://aliciaschep.github.io/vlbuildr/articles/examples.html) for
+site](https://vegawidget.github.io/vlbuildr/articles/examples.html) for
 more examples, including interactive ones.
 
 ``` r
