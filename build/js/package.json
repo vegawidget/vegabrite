@@ -1,0 +1,23 @@
+{
+  "name": "vlbuildr",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "description": "Javascript support for vlbuildr",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vegawidget/vlbuildr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vegawidget/vlbuildr/issues"
+  },
+  "dependencies": {
+    "ajv": "^6.5.2"
+  },
+  "homepage": "https://github.com/vegawidget/vlbuildr#readme"
+}
