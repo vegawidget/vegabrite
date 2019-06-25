@@ -50,7 +50,6 @@ more examples, including interactive ones.
 
 ``` r
 library(vlbuildr)
-library(vegawidget)
 vl_chart() %>%
    vl_add_data(values = mtcars) %>%
    vl_mark_point() %>%
