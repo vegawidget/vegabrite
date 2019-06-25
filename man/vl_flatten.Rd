@@ -4,10 +4,10 @@
 \alias{vl_flatten}
 \title{vl_flatten}
 \usage{
-vl_flatten(spec, as = NULL, flatten = NULL)
+vl_flatten(spec = NULL, as = NULL, flatten = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{A vega-lite spec}
 
 \item{as}{(\emph{FlattenTransform}) The output field names for extracted array values.
 

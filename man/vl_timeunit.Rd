@@ -4,10 +4,10 @@
 \alias{vl_timeunit}
 \title{vl_timeunit}
 \usage{
-vl_timeunit(spec, as = NULL, field = NULL, timeUnit = NULL)
+vl_timeunit(spec = NULL, as = NULL, field = NULL, timeUnit = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{A vega-lite spec}
 
 \item{as}{(\emph{TimeUnitTransform}) The output field to write the timeUnit value.}
 

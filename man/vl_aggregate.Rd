@@ -4,10 +4,10 @@
 \alias{vl_aggregate}
 \title{vl_aggregate}
 \usage{
-vl_aggregate(spec, aggregate = NULL, groupby = NULL)
+vl_aggregate(spec = NULL, aggregate = NULL, groupby = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{A vega-lite spec}
 
 \item{aggregate}{(\emph{AggregateTransform}) Array of objects that define fields to aggregate.}
 

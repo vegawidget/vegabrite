@@ -4,10 +4,10 @@
 \alias{vl_sample}
 \title{vl_sample}
 \usage{
-vl_sample(spec, sample = NULL)
+vl_sample(spec = NULL, sample = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{A vega-lite spec}
 
 \item{sample}{(\emph{SampleTransform}) The maximum number of data objects to include in the sample.
 

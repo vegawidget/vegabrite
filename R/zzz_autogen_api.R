@@ -252,8 +252,9 @@ vl_add_properties <- function(spec, align = NULL, autosize = NULL, background = 
 }
  #' vl_add_data
 #' 
-#' Add data to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' Add data to a vega-lite spec
+#' 
+#' @param spec A vega-lite spec
 #' @param format (_UrlData, InlineData, NamedData_) An object that specifies the format for parsing the data.
 #' @param name (_UrlData, InlineData, NamedData, SequenceGenerator, SphereGenerator, GraticuleGenerator_) Provide a placeholder name and bind data at runtime.
 #' @param url (_UrlData_) An URL from which to load the data set. Use the `format.type` property
@@ -263,20 +264,21 @@ vl_add_properties <- function(spec, align = NULL, autosize = NULL, background = 
 #' @param sequence (_SequenceGenerator_) Generate a sequence of numbers.
 #' @param sphere (_SphereGenerator_) Generate sphere GeoJSON data for the full globe.
 #' @param graticule (_GraticuleGenerator_) Generate graticule GeoJSON data for geographic reference lines.
+#' 
 #' @return A modified spec
+#' 
 #' @export
-#'
-vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = NULL, sequence = NULL, sphere = NULL, graticule = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  #'
-  rlang::exec(.add_data, !!!args_out)
-}
- 
-#' vl_mark
+#' 
+#' 
+vl_add_data <- function(spec = NULL, format = NULL, name = NULL, url = NULL, values = NULL, sequence = NULL, sphere = NULL, graticule = NULL) {
+
+  args <- .modify_args(NULL,c("format", "name", "url", "values", "sequence", "sphere", "graticule"))
+  obj <- .make_object('Data', args$object)
+  .add_to_top_spec(args$spec, obj, name = 'data', how = 'replace')
+} #' vl_mark
 #' 
 #' Add a mark to a vega-lite spec.
+#' 
 #' @param spec A vega-lite spec
 #' @param box (_BoxPlotDef_)  
 #' @param clip (_BoxPlotDef, ErrorBarDef, ErrorBandDef_) Whether a composite mark be clipped to the enclosing group’s width and height.
@@ -483,166 +485,123 @@ vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = N
 #' @param y2 (_MarkDef_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y2Offset (_MarkDef_) Offset for y2-position.
 #' @param yOffset (_MarkDef_) Offset for y-position.
+#' 
 #' @return A modified spec
+#' 
 #' @export
+#' 
 #' @name vl_mark
-vl_mark <- function(spec, box = NULL, clip = NULL, color = NULL, extent = NULL, median = NULL, opacity = NULL, orient = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL, type = NULL, band = NULL, borders = NULL, interpolate = NULL, tension = NULL, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, limit = NULL, line = NULL, order = NULL, point = NULL, radius = NULL, shape = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+vl_mark <- function(spec = NULL, box = NULL, clip = NULL, color = NULL, extent = NULL, median = NULL, opacity = NULL, orient = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL, type = NULL, band = NULL, borders = NULL, interpolate = NULL, tension = NULL, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, limit = NULL, line = NULL, order = NULL, point = NULL, radius = NULL, shape = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+
+  args <- .modify_args(NULL,c("box", "clip", "color", "extent", "median", "opacity", "orient", "outliers", "rule", "size", "ticks", "type", "band", "borders", "interpolate", "tension", "align", "angle", "baseline", "binSpacing", "cornerRadius", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", "href", "limit", "line", "order", "point", "radius", "shape", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "style", "text", "theta", "thickness", "tooltip", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"))
+  obj <- .make_object('AnyMark', args$object)
+  .add_mark(args$spec, obj)
+} #' @name vl_mark
 #' @export
-vl_mark_area <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'area'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+vl_mark_area <- function(spec = NULL, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+
+  args <- .modify_args(list(type = 'area'),c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"))
+  obj <- .make_object('MarkDef', args$object)
+  .add_mark(args$spec, obj)
+} #' @name vl_mark
 #' @export
-vl_mark_bar <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'bar'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+vl_mark_bar <- function(spec = NULL, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+
+  args <- .modify_args(list(type = 'bar'),c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"))
+  obj <- .make_object('MarkDef', args$object)
+  .add_mark(args$spec, obj)
+} #' @name vl_mark
 #' @export
-vl_mark_line <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'line'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+vl_mark_line <- function(spec = NULL, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+
+  args <- .modify_args(list(type = 'line'),c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"))
+  obj <- .make_object('MarkDef', args$object)
+  .add_mark(args$spec, obj)
+} #' @name vl_mark
 #' @export
-vl_mark_trail <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'trail'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+vl_mark_trail <- function(spec = NULL, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+
+  args <- .modify_args(list(type = 'trail'),c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"))
+  obj <- .make_object('MarkDef', args$object)
+  .add_mark(args$spec, obj)
+} #' @name vl_mark
 #' @export
-vl_mark_point <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'point'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+vl_mark_point <- function(spec = NULL, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+
+  args <- .modify_args(list(type = 'point'),c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"))
+  obj <- .make_object('MarkDef', args$object)
+  .add_mark(args$spec, obj)
+} #' @name vl_mark
 #' @export
-vl_mark_text <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'text'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+vl_mark_text <- function(spec = NULL, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+
+  args <- .modify_args(list(type = 'text'),c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"))
+  obj <- .make_object('MarkDef', args$object)
+  .add_mark(args$spec, obj)
+} #' @name vl_mark
 #' @export
-vl_mark_tick <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'tick'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+vl_mark_tick <- function(spec = NULL, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+
+  args <- .modify_args(list(type = 'tick'),c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"))
+  obj <- .make_object('MarkDef', args$object)
+  .add_mark(args$spec, obj)
+} #' @name vl_mark
 #' @export
-vl_mark_rect <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'rect'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+vl_mark_rect <- function(spec = NULL, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+
+  args <- .modify_args(list(type = 'rect'),c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"))
+  obj <- .make_object('MarkDef', args$object)
+  .add_mark(args$spec, obj)
+} #' @name vl_mark
 #' @export
-vl_mark_rule <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'rule'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+vl_mark_rule <- function(spec = NULL, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+
+  args <- .modify_args(list(type = 'rule'),c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"))
+  obj <- .make_object('MarkDef', args$object)
+  .add_mark(args$spec, obj)
+} #' @name vl_mark
 #' @export
-vl_mark_circle <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'circle'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+vl_mark_circle <- function(spec = NULL, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+
+  args <- .modify_args(list(type = 'circle'),c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"))
+  obj <- .make_object('MarkDef', args$object)
+  .add_mark(args$spec, obj)
+} #' @name vl_mark
 #' @export
-vl_mark_square <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'square'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+vl_mark_square <- function(spec = NULL, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+
+  args <- .modify_args(list(type = 'square'),c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"))
+  obj <- .make_object('MarkDef', args$object)
+  .add_mark(args$spec, obj)
+} #' @name vl_mark
 #' @export
-vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'geoshape'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+vl_mark_geoshape <- function(spec = NULL, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
+
+  args <- .modify_args(list(type = 'geoshape'),c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"))
+  obj <- .make_object('MarkDef', args$object)
+  .add_mark(args$spec, obj)
+} #' @name vl_mark
 #' @export
-vl_mark_boxplot <- function(spec, box = NULL, clip = NULL, color = NULL, extent = NULL, median = NULL, opacity = NULL, orient = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'boxplot'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+vl_mark_boxplot <- function(spec = NULL, box = NULL, clip = NULL, color = NULL, extent = NULL, median = NULL, opacity = NULL, orient = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL) {
+
+  args <- .modify_args(list(type = 'boxplot'),c("box", "clip", "color", "extent", "median", "opacity", "orient", "outliers", "rule", "size", "ticks", "type"))
+  obj <- .make_object('BoxPlotDef', args$object)
+  .add_mark(args$spec, obj)
+} #' @name vl_mark
 #' @export
-vl_mark_errorbar <- function(spec, clip = NULL, color = NULL, extent = NULL, opacity = NULL, orient = NULL, rule = NULL, ticks = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'errorbar'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+vl_mark_errorbar <- function(spec = NULL, clip = NULL, color = NULL, extent = NULL, opacity = NULL, orient = NULL, rule = NULL, ticks = NULL) {
+
+  args <- .modify_args(list(type = 'errorbar'),c("clip", "color", "extent", "opacity", "orient", "rule", "ticks", "type"))
+  obj <- .make_object('ErrorBarDef', args$object)
+  .add_mark(args$spec, obj)
+} #' @name vl_mark
 #' @export
-vl_mark_errorband <- function(spec, band = NULL, borders = NULL, clip = NULL, color = NULL, extent = NULL, interpolate = NULL, opacity = NULL, orient = NULL, tension = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'errorband'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- #' vl_encode_color
+vl_mark_errorband <- function(spec = NULL, band = NULL, borders = NULL, clip = NULL, color = NULL, extent = NULL, interpolate = NULL, opacity = NULL, orient = NULL, tension = NULL) {
+
+  args <- .modify_args(list(type = 'errorband'),c("band", "borders", "clip", "color", "extent", "interpolate", "opacity", "orient", "tension", "type"))
+  obj <- .make_object('ErrorBandDef', args$object)
+  .add_mark(args$spec, obj)
+} #' vl_encode_color
 #' 
 #' Add encoding for color to a vega-lite spec.
 #' @param spec A vega-lite spec.
@@ -4352,56 +4311,63 @@ vl_make_YError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit
  #' vl_aggregate
 #' 
 #' Add AggregateTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' 
+#' @param spec A vega-lite spec
 #' @param aggregate (_AggregateTransform_) Array of objects that define fields to aggregate.
 #' @param groupby (_AggregateTransform_) The data fields to group by. If not specified, a single group containing all data objects will be used.
+#' 
 #' @return A modified spec
+#' 
 #' @export
-#'
-vl_aggregate <- function(spec, aggregate = NULL, groupby = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'aggregate'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_bin
+#' 
+#' 
+vl_aggregate <- function(spec = NULL, aggregate = NULL, groupby = NULL) {
+
+  args <- .modify_args(NULL,c("aggregate", "groupby"))
+  obj <- .make_object('AggregateTransform', args$object)
+  .add_to_top_spec(args$spec, obj, name = 'transform', how = 'append')
+} #' vl_bin
 #' 
 #' Add BinTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' 
+#' @param spec A vega-lite spec
 #' @param as (_BinTransform_) The output fields at which to write the start and end bin values.
 #' @param bin (_BinTransform_) An object indicating bin properties, or simply `true` for using default bin parameters.
 #' @param field (_BinTransform_) The data field to bin.
+#' 
 #' @return A modified spec
+#' 
 #' @export
-#'
-vl_bin <- function(spec, as = NULL, bin = NULL, field = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'bin'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_calculate
+#' 
+#' 
+vl_bin <- function(spec = NULL, as = NULL, bin = NULL, field = NULL) {
+
+  args <- .modify_args(NULL,c("as", "bin", "field"))
+  obj <- .make_object('BinTransform', args$object)
+  .add_to_top_spec(args$spec, obj, name = 'transform', how = 'append')
+} #' vl_calculate
 #' 
 #' Add CalculateTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' 
+#' @param spec A vega-lite spec
 #' @param as (_CalculateTransform_) The field for storing the computed formula value.
 #' @param calculate (_CalculateTransform_) A [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string. Use the variable `datum` to refer to the current data object.
+#' 
 #' @return A modified spec
+#' 
 #' @export
-#'
-vl_calculate <- function(spec, as = NULL, calculate = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'calculate'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_filter
+#' 
+#' 
+vl_calculate <- function(spec = NULL, as = NULL, calculate = NULL) {
+
+  args <- .modify_args(NULL,c("as", "calculate"))
+  obj <- .make_object('CalculateTransform', args$object)
+  .add_to_top_spec(args$spec, obj, name = 'transform', how = 'append')
+} #' vl_filter
 #' 
 #' Add FilterTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' 
+#' @param spec A vega-lite spec
 #' @param filter (_FilterTransform_) The `filter` property must be one of the predicate definitions:
 #' 
 #' 1) an [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string,
@@ -4419,20 +4385,22 @@ vl_calculate <- function(spec, as = NULL, calculate = NULL) {
 #' 3) a [selection predicate](https://vega.github.io/vega-lite/docs/filter.html#selection-predicate)
 #' 
 #' 4) a logical operand that combines (1), (2), or (3).
+#' 
 #' @return A modified spec
+#' 
 #' @export
-#'
-vl_filter <- function(spec, filter = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'filter'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_flatten
+#' 
+#' 
+vl_filter <- function(spec = NULL, filter = NULL) {
+
+  args <- .modify_args(NULL,c("filter"))
+  obj <- .make_object('FilterTransform', args$object)
+  .add_to_top_spec(args$spec, obj, name = 'transform', how = 'append')
+} #' vl_flatten
 #' 
 #' Add FlattenTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' 
+#' @param spec A vega-lite spec
 #' @param as (_FlattenTransform_) The output field names for extracted array values.
 #' 
 #' __Default value:__ The field name of the corresponding array field
@@ -4440,37 +4408,41 @@ vl_filter <- function(spec, filter = NULL) {
 #' If multiple fields are specified, their array values should have a parallel structure, ideally with the same length.
 #' If the lengths of parallel arrays do not match,
 #' the longest array will be used with `null` values added for missing entries.
+#' 
 #' @return A modified spec
+#' 
 #' @export
-#'
-vl_flatten <- function(spec, as = NULL, flatten = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'flatten'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_fold
+#' 
+#' 
+vl_flatten <- function(spec = NULL, as = NULL, flatten = NULL) {
+
+  args <- .modify_args(NULL,c("as", "flatten"))
+  obj <- .make_object('FlattenTransform', args$object)
+  .add_to_top_spec(args$spec, obj, name = 'transform', how = 'append')
+} #' vl_fold
 #' 
 #' Add FoldTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' 
+#' @param spec A vega-lite spec
 #' @param as (_FoldTransform_) The output field names for the key and value properties produced by the fold transform.
 #' __Default value:__ `["key", "value"]`
 #' @param fold (_FoldTransform_) An array of data fields indicating the properties to fold.
+#' 
 #' @return A modified spec
+#' 
 #' @export
-#'
-vl_fold <- function(spec, as = NULL, fold = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'fold'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_impute
+#' 
+#' 
+vl_fold <- function(spec = NULL, as = NULL, fold = NULL) {
+
+  args <- .modify_args(NULL,c("as", "fold"))
+  obj <- .make_object('FoldTransform', args$object)
+  .add_to_top_spec(args$spec, obj, name = 'transform', how = 'append')
+} #' vl_impute
 #' 
 #' Add ImputeTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' 
+#' @param spec A vega-lite spec
 #' @param frame (_ImputeTransform_) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
 #' 
 #' __Default value:__:  `[null, null]` indicating that the window includes all objects.
@@ -4490,36 +4462,40 @@ vl_fold <- function(spec, as = NULL, fold = NULL) {
 #' 
 #' __Default value:__  `"value"`
 #' @param value (_ImputeTransform_) The field value to use when the imputation `method` is `"value"`.
+#' 
 #' @return A modified spec
+#' 
 #' @export
-#'
-vl_impute <- function(spec, frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'impute'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_joinaggregate
+#' 
+#' 
+vl_impute <- function(spec = NULL, frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL) {
+
+  args <- .modify_args(NULL,c("frame", "groupby", "impute", "key", "keyvals", "method", "value"))
+  obj <- .make_object('ImputeTransform', args$object)
+  .add_to_top_spec(args$spec, obj, name = 'transform', how = 'append')
+} #' vl_joinaggregate
 #' 
 #' Add JoinAggregateTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' 
+#' @param spec A vega-lite spec
 #' @param groupby (_JoinAggregateTransform_) The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group.
 #' @param joinaggregate (_JoinAggregateTransform_) The definition of the fields in the join aggregate, and what calculations to use.
+#' 
 #' @return A modified spec
+#' 
 #' @export
-#'
-vl_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'joinaggregate'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_lookup
+#' 
+#' 
+vl_joinaggregate <- function(spec = NULL, groupby = NULL, joinaggregate = NULL) {
+
+  args <- .modify_args(NULL,c("groupby", "joinaggregate"))
+  obj <- .make_object('JoinAggregateTransform', args$object)
+  .add_to_top_spec(args$spec, obj, name = 'transform', how = 'append')
+} #' vl_lookup
 #' 
 #' Add LookupTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' 
+#' @param spec A vega-lite spec
 #' @param as (_LookupTransform_) The field or fields for storing the computed formula value.
 #' If `from.fields` is specified, the transform will use the same names for `as`.
 #' If `from.fields` is not specified, `as` has to be a string and we put the whole object into the data under the specified name.
@@ -4528,54 +4504,60 @@ vl_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL) {
 #' __Default value:__ `null`
 #' @param from (_LookupTransform_) Secondary data reference.
 #' @param lookup (_LookupTransform_) Key in primary data source.
+#' 
 #' @return A modified spec
+#' 
 #' @export
-#'
-vl_lookup <- function(spec, as = NULL, default = NULL, from = NULL, lookup = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'lookup'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_timeunit
+#' 
+#' 
+vl_lookup <- function(spec = NULL, as = NULL, default = NULL, from = NULL, lookup = NULL) {
+
+  args <- .modify_args(NULL,c("as", "default", "from", "lookup"))
+  obj <- .make_object('LookupTransform', args$object)
+  .add_to_top_spec(args$spec, obj, name = 'transform', how = 'append')
+} #' vl_timeunit
 #' 
 #' Add TimeUnitTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' 
+#' @param spec A vega-lite spec
 #' @param as (_TimeUnitTransform_) The output field to write the timeUnit value.
 #' @param field (_TimeUnitTransform_) The data field to apply time unit.
 #' @param timeUnit (_TimeUnitTransform_) The timeUnit.
+#' 
 #' @return A modified spec
+#' 
 #' @export
-#'
-vl_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'timeunit'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_sample
+#' 
+#' 
+vl_timeunit <- function(spec = NULL, as = NULL, field = NULL, timeUnit = NULL) {
+
+  args <- .modify_args(NULL,c("as", "field", "timeUnit"))
+  obj <- .make_object('TimeUnitTransform', args$object)
+  .add_to_top_spec(args$spec, obj, name = 'transform', how = 'append')
+} #' vl_sample
 #' 
 #' Add SampleTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' 
+#' @param spec A vega-lite spec
 #' @param sample (_SampleTransform_) The maximum number of data objects to include in the sample.
 #' 
 #' __Default value:__ `1000`
+#' 
 #' @return A modified spec
+#' 
 #' @export
-#'
-vl_sample <- function(spec, sample = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'sample'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_stack
+#' 
+#' 
+vl_sample <- function(spec = NULL, sample = NULL) {
+
+  args <- .modify_args(NULL,c("sample"))
+  obj <- .make_object('SampleTransform', args$object)
+  .add_to_top_spec(args$spec, obj, name = 'transform', how = 'append')
+} #' vl_stack
 #' 
 #' Add StackTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' 
+#' @param spec A vega-lite spec
 #' @param as (_StackTransform_) Output field names. This can be either a string or an array of strings with
 #' two elements denoting the name for the fields for stack start and stack end
 #' respectively.
@@ -4585,20 +4567,22 @@ vl_sample <- function(spec, sample = NULL) {
 #' __Default value:__ `"zero"`
 #' @param sort (_StackTransform_) Field that determines the order of leaves in the stacked charts.
 #' @param stack (_StackTransform_) The field which is stacked.
+#' 
 #' @return A modified spec
+#' 
 #' @export
-#'
-vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'stack'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_window
+#' 
+#' 
+vl_stack <- function(spec = NULL, as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL) {
+
+  args <- .modify_args(NULL,c("as", "groupby", "offset", "sort", "stack"))
+  obj <- .make_object('StackTransform', args$object)
+  .add_to_top_spec(args$spec, obj, name = 'transform', how = 'append')
+} #' vl_window
 #' 
 #' Add WindowTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' 
+#' @param spec A vega-lite spec
 #' @param frame (_WindowTransform_) A frame specification as a two-element array indicating how the sliding window should proceed. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. The default value is `[null, 0]`, indicating that the sliding window includes the current object and all preceding objects. The value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object. Finally, `[null, null]` indicates that the window frame should always include all data objects. If you this frame and want to assign the same value to add objects, you can use the simpler [join aggregate transform](https://vega.github.io/vega-lite/docs/joinaggregate.html). The only operators affected are the aggregation operations and the `first_value`, `last_value`, and `nth_value` window operations. The other window operations are not affected by this.
 #' 
 #' __Default value:__:  `[null, 0]` (includes the current object and all preceding objects)
@@ -4608,17 +4592,18 @@ vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL
 #' __Default value:__ `false`
 #' @param sort (_WindowTransform_) A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered “peer” values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to `true`).
 #' @param window (_WindowTransform_) The definition of the fields in the window, and what calculations to use.
+#' 
 #' @return A modified spec
+#' 
 #' @export
-#'
-vl_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'window'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_make_AggregateTransform
+#' 
+#' 
+vl_window <- function(spec = NULL, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL) {
+
+  args <- .modify_args(NULL,c("frame", "groupby", "ignorePeers", "sort", "window"))
+  obj <- .make_object('WindowTransform', args$object)
+  .add_to_top_spec(args$spec, obj, name = 'transform', how = 'append')
+} #' vl_make_AggregateTransform
 #' 
 #' Create spec for AggregateTransform.
 #' @param aggregate (_AggregateTransform_) Array of objects that define fields to aggregate.
@@ -5147,9 +5132,10 @@ vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divi
   rlang::exec(.add_bin_to_encoding, !!!args_out)
 }
  #' Add impute transform to encoding
-#'
-#' Add impute parameters to an encoding
-#' @param spec A vega-lite spec.
+#' 
+#' Add impute parameters to and encoding
+#' 
+#' @param spec A vega-lite spec
 #' @param frame (_ImputeParams_) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
 #' 
 #' __Default value:__:  `[null, null]` indicating that the window includes all objects.
@@ -5164,52 +5150,58 @@ vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divi
 #' 
 #' __Default value:__  `"value"`
 #' @param value (_ImputeParams_) The field value to use when the imputation `method` is `"value"`.
+#' 
 #' @return A modified spec
-#' @name impute_encoding 
-#'
-NULL
- #' @name impute_encoding
+#' 
 #' @export
-#' @seealso [vl_encode_x()]
-vl_impute_x <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'x'))
-  rlang::exec(.add_impute_to_encoding, !!!args_out)
-}
- #' @name impute_encoding
+#' 
+#' @name impute_encoding #' @name vl_mark
 #' @export
-#' @seealso [vl_encode_y()]
-vl_impute_y <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'y'))
-  rlang::exec(.add_impute_to_encoding, !!!args_out)
-}
- #' Add stack transform to encoding
-#'
-#' Add stack parameters to an encoding
-#' @param spec A vega-lite spec.
+vl_impute_x <- function(spec = NULL, frame = NULL, keyvals = NULL, method = NULL, value = NULL) {
+
+  args <- .modify_args(NULL,c("frame", "keyvals", "method", "value"))
+  obj <- .make_object('ImputeParams', args$object)
+  .add_param_to_encoding(args$spec, obj, .enc = x, param = 'impute')
+} #' @name vl_mark
+#' @export
+vl_impute_y <- function(spec = NULL, frame = NULL, keyvals = NULL, method = NULL, value = NULL) {
+
+  args <- .modify_args(NULL,c("frame", "keyvals", "method", "value"))
+  obj <- .make_object('ImputeParams', args$object)
+  .add_param_to_encoding(args$spec, obj, .enc = y, param = 'impute')
+} #' Add stack transform to encoding
+#' 
+#' Add stack parameters to and encoding
+#' 
+#' @param spec A vega-lite spec
 #' @param stack one of 'zero', 'center', 'normalize', NA
+#' 
 #' @return A modified spec
-#' @name stack_encoding 
-#' @seealso [vl_stack()] to add a top level stack transform
-NULL
- #' @name stack_encoding
+#' 
 #' @export
-vl_stack_x <- function(spec, stack = c('zero', 'center', 'normalize', NA)) {
-  args_out <- list(spec = spec, .enc = 'x', stack = match.arg(stack))
-  rlang::exec(.add_stack_to_encoding, !!!args_out)
-}
- #' @name stack_encoding
+#' 
+#' @name stack_encoding #' Add stack transform to encoding
+#' 
+#' Add stack parameters to and encoding
+#' 
+#' @param spec A vega-lite spec
+#' @param stack one of 'zero', 'center', 'normalize', NA
+#' 
+#' @return A modified spec
+#' 
 #' @export
-vl_stack_y <- function(spec, stack = c('zero', 'center', 'normalize', NA)) {
-  args_out <- list(spec = spec, .enc = 'y', stack = match.arg(stack))
-  rlang::exec(.add_stack_to_encoding, !!!args_out)
-}
- #' Add aggregate transform to encoding
+#' 
+#' @seealso [vl_stack()] to add a top level stack transform #' @name stack_encoding
+#' @export
+vl_stack_x <- function(spec = NULL, stack = c('zero', 'center', 'normalize', NA)) {
+  obj <- .make_object('PositionFieldDef/properties/stack', match.arg(stack))
+  .add_param_to_encoding(spec, obj, .enc = 'x', param = 'stack')
+} #' @name stack_encoding
+#' @export
+vl_stack_y <- function(spec = NULL, stack = c('zero', 'center', 'normalize', NA)) {
+  obj <- .make_object('PositionFieldDef/properties/stack', match.arg(stack))
+  .add_param_to_encoding(spec, obj, .enc = 'y', param = 'stack')
+} #' Add aggregate transform to encoding
 #'
 #' Add aggregate parameters to an encoding
 #' @param spec A vega-lite spec.

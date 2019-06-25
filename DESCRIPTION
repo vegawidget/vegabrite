@@ -13,7 +13,8 @@ Roxygen: list(markdown = TRUE)
 Imports:
     magrittr,
     rlang,
-    vegawidget
+    vegawidget,
+    V8
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr

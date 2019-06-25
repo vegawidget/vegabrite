@@ -4,11 +4,11 @@
 \alias{vl_lookup}
 \title{vl_lookup}
 \usage{
-vl_lookup(spec, as = NULL, default = NULL, from = NULL,
+vl_lookup(spec = NULL, as = NULL, default = NULL, from = NULL,
   lookup = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{A vega-lite spec}
 
 \item{as}{(\emph{LookupTransform}) The field or fields for storing the computed formula value.
 If \code{from.fields} is specified, the transform will use the same names for \code{as}.

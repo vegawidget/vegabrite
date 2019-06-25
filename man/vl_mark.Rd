@@ -17,19 +17,20 @@
 \alias{vl_mark_boxplot}
 \alias{vl_mark_errorbar}
 \alias{vl_mark_errorband}
+\alias{vl_impute_y}
 \title{vl_mark}
 \usage{
-vl_mark(spec, box = NULL, clip = NULL, color = NULL, extent = NULL,
-  median = NULL, opacity = NULL, orient = NULL, outliers = NULL,
-  rule = NULL, size = NULL, ticks = NULL, type = NULL,
-  band = NULL, borders = NULL, interpolate = NULL, tension = NULL,
-  align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL,
-  cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL,
-  dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL,
-  filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL,
-  fontWeight = NULL, href = NULL, limit = NULL, line = NULL,
-  order = NULL, point = NULL, radius = NULL, shape = NULL,
-  stroke = NULL, strokeCap = NULL, strokeDash = NULL,
+vl_mark(spec = NULL, box = NULL, clip = NULL, color = NULL,
+  extent = NULL, median = NULL, opacity = NULL, orient = NULL,
+  outliers = NULL, rule = NULL, size = NULL, ticks = NULL,
+  type = NULL, band = NULL, borders = NULL, interpolate = NULL,
+  tension = NULL, align = NULL, angle = NULL, baseline = NULL,
+  binSpacing = NULL, cornerRadius = NULL, cursor = NULL,
+  dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL,
+  fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL,
+  fontStyle = NULL, fontWeight = NULL, href = NULL, limit = NULL,
+  line = NULL, order = NULL, point = NULL, radius = NULL,
+  shape = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL,
   strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
   style = NULL, text = NULL, theta = NULL, thickness = NULL,
@@ -37,8 +38,8 @@ vl_mark(spec, box = NULL, clip = NULL, color = NULL, extent = NULL,
   xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL,
   yOffset = NULL)
 
-vl_mark_area(spec, align = NULL, angle = NULL, baseline = NULL,
-  binSpacing = NULL, clip = NULL, color = NULL,
+vl_mark_area(spec = NULL, align = NULL, angle = NULL,
+  baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL,
   cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL,
   dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL,
   filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL,
@@ -49,12 +50,12 @@ vl_mark_area(spec, align = NULL, angle = NULL, baseline = NULL,
   strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
   style = NULL, tension = NULL, text = NULL, theta = NULL,
-  thickness = NULL, tooltip = NULL, type = NULL, x = NULL,
-  x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL,
-  y2 = NULL, y2Offset = NULL, yOffset = NULL)
+  thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL,
+  x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
+  y2Offset = NULL, yOffset = NULL)
 
-vl_mark_bar(spec, align = NULL, angle = NULL, baseline = NULL,
-  binSpacing = NULL, clip = NULL, color = NULL,
+vl_mark_bar(spec = NULL, align = NULL, angle = NULL,
+  baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL,
   cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL,
   dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL,
   filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL,
@@ -65,12 +66,12 @@ vl_mark_bar(spec, align = NULL, angle = NULL, baseline = NULL,
   strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
   style = NULL, tension = NULL, text = NULL, theta = NULL,
-  thickness = NULL, tooltip = NULL, type = NULL, x = NULL,
-  x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL,
-  y2 = NULL, y2Offset = NULL, yOffset = NULL)
+  thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL,
+  x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
+  y2Offset = NULL, yOffset = NULL)
 
-vl_mark_line(spec, align = NULL, angle = NULL, baseline = NULL,
-  binSpacing = NULL, clip = NULL, color = NULL,
+vl_mark_line(spec = NULL, align = NULL, angle = NULL,
+  baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL,
   cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL,
   dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL,
   filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL,
@@ -81,12 +82,12 @@ vl_mark_line(spec, align = NULL, angle = NULL, baseline = NULL,
   strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
   style = NULL, tension = NULL, text = NULL, theta = NULL,
-  thickness = NULL, tooltip = NULL, type = NULL, x = NULL,
-  x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL,
-  y2 = NULL, y2Offset = NULL, yOffset = NULL)
+  thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL,
+  x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
+  y2Offset = NULL, yOffset = NULL)
 
-vl_mark_trail(spec, align = NULL, angle = NULL, baseline = NULL,
-  binSpacing = NULL, clip = NULL, color = NULL,
+vl_mark_trail(spec = NULL, align = NULL, angle = NULL,
+  baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL,
   cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL,
   dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL,
   filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL,
@@ -97,12 +98,12 @@ vl_mark_trail(spec, align = NULL, angle = NULL, baseline = NULL,
   strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
   style = NULL, tension = NULL, text = NULL, theta = NULL,
-  thickness = NULL, tooltip = NULL, type = NULL, x = NULL,
-  x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL,
-  y2 = NULL, y2Offset = NULL, yOffset = NULL)
+  thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL,
+  x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
+  y2Offset = NULL, yOffset = NULL)
 
-vl_mark_point(spec, align = NULL, angle = NULL, baseline = NULL,
-  binSpacing = NULL, clip = NULL, color = NULL,
+vl_mark_point(spec = NULL, align = NULL, angle = NULL,
+  baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL,
   cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL,
   dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL,
   filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL,
@@ -113,12 +114,12 @@ vl_mark_point(spec, align = NULL, angle = NULL, baseline = NULL,
   strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
   style = NULL, tension = NULL, text = NULL, theta = NULL,
-  thickness = NULL, tooltip = NULL, type = NULL, x = NULL,
-  x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL,
-  y2 = NULL, y2Offset = NULL, yOffset = NULL)
+  thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL,
+  x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
+  y2Offset = NULL, yOffset = NULL)
 
-vl_mark_text(spec, align = NULL, angle = NULL, baseline = NULL,
-  binSpacing = NULL, clip = NULL, color = NULL,
+vl_mark_text(spec = NULL, align = NULL, angle = NULL,
+  baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL,
   cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL,
   dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL,
   filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL,
@@ -129,12 +130,12 @@ vl_mark_text(spec, align = NULL, angle = NULL, baseline = NULL,
   strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
   style = NULL, tension = NULL, text = NULL, theta = NULL,
-  thickness = NULL, tooltip = NULL, type = NULL, x = NULL,
-  x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL,
-  y2 = NULL, y2Offset = NULL, yOffset = NULL)
+  thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL,
+  x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
+  y2Offset = NULL, yOffset = NULL)
 
-vl_mark_tick(spec, align = NULL, angle = NULL, baseline = NULL,
-  binSpacing = NULL, clip = NULL, color = NULL,
+vl_mark_tick(spec = NULL, align = NULL, angle = NULL,
+  baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL,
   cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL,
   dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL,
   filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL,
@@ -145,12 +146,12 @@ vl_mark_tick(spec, align = NULL, angle = NULL, baseline = NULL,
   strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
   style = NULL, tension = NULL, text = NULL, theta = NULL,
-  thickness = NULL, tooltip = NULL, type = NULL, x = NULL,
-  x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL,
-  y2 = NULL, y2Offset = NULL, yOffset = NULL)
+  thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL,
+  x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
+  y2Offset = NULL, yOffset = NULL)
 
-vl_mark_rect(spec, align = NULL, angle = NULL, baseline = NULL,
-  binSpacing = NULL, clip = NULL, color = NULL,
+vl_mark_rect(spec = NULL, align = NULL, angle = NULL,
+  baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL,
   cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL,
   dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL,
   filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL,
@@ -161,12 +162,12 @@ vl_mark_rect(spec, align = NULL, angle = NULL, baseline = NULL,
   strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
   style = NULL, tension = NULL, text = NULL, theta = NULL,
-  thickness = NULL, tooltip = NULL, type = NULL, x = NULL,
-  x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL,
-  y2 = NULL, y2Offset = NULL, yOffset = NULL)
+  thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL,
+  x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
+  y2Offset = NULL, yOffset = NULL)
 
-vl_mark_rule(spec, align = NULL, angle = NULL, baseline = NULL,
-  binSpacing = NULL, clip = NULL, color = NULL,
+vl_mark_rule(spec = NULL, align = NULL, angle = NULL,
+  baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL,
   cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL,
   dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL,
   filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL,
@@ -177,12 +178,12 @@ vl_mark_rule(spec, align = NULL, angle = NULL, baseline = NULL,
   strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
   style = NULL, tension = NULL, text = NULL, theta = NULL,
-  thickness = NULL, tooltip = NULL, type = NULL, x = NULL,
-  x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL,
-  y2 = NULL, y2Offset = NULL, yOffset = NULL)
+  thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL,
+  x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
+  y2Offset = NULL, yOffset = NULL)
 
-vl_mark_circle(spec, align = NULL, angle = NULL, baseline = NULL,
-  binSpacing = NULL, clip = NULL, color = NULL,
+vl_mark_circle(spec = NULL, align = NULL, angle = NULL,
+  baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL,
   cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL,
   dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL,
   filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL,
@@ -193,12 +194,12 @@ vl_mark_circle(spec, align = NULL, angle = NULL, baseline = NULL,
   strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
   style = NULL, tension = NULL, text = NULL, theta = NULL,
-  thickness = NULL, tooltip = NULL, type = NULL, x = NULL,
-  x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL,
-  y2 = NULL, y2Offset = NULL, yOffset = NULL)
+  thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL,
+  x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
+  y2Offset = NULL, yOffset = NULL)
 
-vl_mark_square(spec, align = NULL, angle = NULL, baseline = NULL,
-  binSpacing = NULL, clip = NULL, color = NULL,
+vl_mark_square(spec = NULL, align = NULL, angle = NULL,
+  baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL,
   cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL,
   dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL,
   filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL,
@@ -209,12 +210,12 @@ vl_mark_square(spec, align = NULL, angle = NULL, baseline = NULL,
   strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
   style = NULL, tension = NULL, text = NULL, theta = NULL,
-  thickness = NULL, tooltip = NULL, type = NULL, x = NULL,
-  x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL,
-  y2 = NULL, y2Offset = NULL, yOffset = NULL)
+  thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL,
+  x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
+  y2Offset = NULL, yOffset = NULL)
 
-vl_mark_geoshape(spec, align = NULL, angle = NULL, baseline = NULL,
-  binSpacing = NULL, clip = NULL, color = NULL,
+vl_mark_geoshape(spec = NULL, align = NULL, angle = NULL,
+  baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL,
   cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL,
   dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL,
   filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL,
@@ -225,22 +226,24 @@ vl_mark_geoshape(spec, align = NULL, angle = NULL, baseline = NULL,
   strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
   style = NULL, tension = NULL, text = NULL, theta = NULL,
-  thickness = NULL, tooltip = NULL, type = NULL, x = NULL,
-  x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL,
-  y2 = NULL, y2Offset = NULL, yOffset = NULL)
+  thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL,
+  x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
+  y2Offset = NULL, yOffset = NULL)
 
-vl_mark_boxplot(spec, box = NULL, clip = NULL, color = NULL,
+vl_mark_boxplot(spec = NULL, box = NULL, clip = NULL, color = NULL,
   extent = NULL, median = NULL, opacity = NULL, orient = NULL,
-  outliers = NULL, rule = NULL, size = NULL, ticks = NULL,
-  type = NULL)
+  outliers = NULL, rule = NULL, size = NULL, ticks = NULL)
 
-vl_mark_errorbar(spec, clip = NULL, color = NULL, extent = NULL,
-  opacity = NULL, orient = NULL, rule = NULL, ticks = NULL,
-  type = NULL)
+vl_mark_errorbar(spec = NULL, clip = NULL, color = NULL,
+  extent = NULL, opacity = NULL, orient = NULL, rule = NULL,
+  ticks = NULL)
 
-vl_mark_errorband(spec, band = NULL, borders = NULL, clip = NULL,
-  color = NULL, extent = NULL, interpolate = NULL, opacity = NULL,
-  orient = NULL, tension = NULL, type = NULL)
+vl_mark_errorband(spec = NULL, band = NULL, borders = NULL,
+  clip = NULL, color = NULL, extent = NULL, interpolate = NULL,
+  opacity = NULL, orient = NULL, tension = NULL)
+
+vl_impute_y(spec = NULL, frame = NULL, keyvals = NULL,
+  method = NULL, value = NULL)
 }
 \arguments{
 \item{spec}{A vega-lite spec}

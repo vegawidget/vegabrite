@@ -4,10 +4,10 @@
 \alias{vl_bin}
 \title{vl_bin}
 \usage{
-vl_bin(spec, as = NULL, bin = NULL, field = NULL)
+vl_bin(spec = NULL, as = NULL, bin = NULL, field = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{A vega-lite spec}
 
 \item{as}{(\emph{BinTransform}) The output fields at which to write the start and end bin values.}
 

@@ -4,11 +4,11 @@
 \alias{vl_impute}
 \title{vl_impute}
 \usage{
-vl_impute(spec, frame = NULL, groupby = NULL, impute = NULL,
+vl_impute(spec = NULL, frame = NULL, groupby = NULL, impute = NULL,
   key = NULL, keyvals = NULL, method = NULL, value = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{A vega-lite spec}
 
 \item{frame}{(\emph{ImputeTransform}) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value \code{[-5, 5]} indicates that the window should include five objects preceding and five objects following the current object.
 

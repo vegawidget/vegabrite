@@ -4,10 +4,10 @@
 \alias{vl_joinaggregate}
 \title{vl_joinaggregate}
 \usage{
-vl_joinaggregate(spec, groupby = NULL, joinaggregate = NULL)
+vl_joinaggregate(spec = NULL, groupby = NULL, joinaggregate = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{A vega-lite spec}
 
 \item{groupby}{(\emph{JoinAggregateTransform}) The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group.}
 

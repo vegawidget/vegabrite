@@ -4,11 +4,11 @@
 \alias{vl_stack}
 \title{vl_stack}
 \usage{
-vl_stack(spec, as = NULL, groupby = NULL, offset = NULL,
+vl_stack(spec = NULL, as = NULL, groupby = NULL, offset = NULL,
   sort = NULL, stack = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{A vega-lite spec}
 
 \item{as}{(\emph{StackTransform}) Output field names. This can be either a string or an array of strings with
 two elements denoting the name for the fields for stack start and stack end

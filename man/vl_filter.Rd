@@ -4,10 +4,10 @@
 \alias{vl_filter}
 \title{vl_filter}
 \usage{
-vl_filter(spec, filter = NULL)
+vl_filter(spec = NULL, filter = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{A vega-lite spec}
 
 \item{filter}{(\emph{FilterTransform}) The \code{filter} property must be one of the predicate definitions:
 \enumerate{

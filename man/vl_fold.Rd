@@ -4,10 +4,10 @@
 \alias{vl_fold}
 \title{vl_fold}
 \usage{
-vl_fold(spec, as = NULL, fold = NULL)
+vl_fold(spec = NULL, as = NULL, fold = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{A vega-lite spec}
 
 \item{as}{(\emph{FoldTransform}) The output field names for the key and value properties produced by the fold transform.
 \strong{Default value:} \code{["key", "value"]}}

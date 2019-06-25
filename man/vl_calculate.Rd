@@ -4,10 +4,10 @@
 \alias{vl_calculate}
 \title{vl_calculate}
 \usage{
-vl_calculate(spec, as = NULL, calculate = NULL)
+vl_calculate(spec = NULL, as = NULL, calculate = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{A vega-lite spec}
 
 \item{as}{(\emph{CalculateTransform}) The field for storing the computed formula value.}
 

@@ -99,7 +99,7 @@ ENCODE_MAPPING <- list(
     if (!hasName(spec,"encoding") || !hasName(spec[["encoding"]], .enc)) {
       stop("Error in adding condition to ", .enc, 
            "\nCould not find ",.enc," encoding in spec.",
-           "\nAdd encoding first before adding condigion.")
+           "\nAdd encoding first before adding condition.")
     }
     
     if (hasName(spec[["encoding"]][[.enc]],"condition")) {

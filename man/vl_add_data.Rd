@@ -4,11 +4,11 @@
 \alias{vl_add_data}
 \title{vl_add_data}
 \usage{
-vl_add_data(spec, format = NULL, name = NULL, url = NULL,
+vl_add_data(spec = NULL, format = NULL, name = NULL, url = NULL,
   values = NULL, sequence = NULL, sphere = NULL, graticule = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{A vega-lite spec}
 
 \item{format}{(\emph{UrlData, InlineData, NamedData}) An object that specifies the format for parsing the data.}
 
@@ -30,5 +30,5 @@ Arrays of primitive values are ingested as objects with a \code{data} property. 
 A modified spec
 }
 \description{
-Add data to a vega-lite spec.
+Add data to a vega-lite spec
 }
