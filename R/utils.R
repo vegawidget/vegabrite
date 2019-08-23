@@ -2,12 +2,9 @@ TOP_LEVEL_KEYS <- c("$schema", "autosize", "background", "config", "datasets",
   "padding", "usermeta")
 
 .make_object <- function(ref, x) {
-  res <- validate_sub_schema(x, ref)
-  if (!res$result) {
-    stop("Invalid specification for ",ref)
-  } 
+  
   x
-}
+}            
 
 .modify_args <- function(override, valid_names) {
   args_in <- rlang::fn_fmls_syms(rlang::caller_fn(n = 1))
@@ -16,15 +13,20 @@ TOP_LEVEL_KEYS <- c("$schema", "autosize", "background", "config", "datasets",
   args_nn <- c(args_nn, override)
   is_obj <- names(args_nn) %in% valid_names
   args_obj <- args_nn[is_obj]
-  args_extra <- setdiff(args_obj[!is_obj], c("spec"))
+  args_extra <- setdiff(args_nn[!is_obj], c("spec"))
   list(object = args_obj, extra = args_extra, spec = args_nn[['spec']])
 }
 
 
-.add_to_top_spec <- function(spec, x, name,
+.add_to_top_spec <- function(spec, x, name, ref,
                           how = c("replace","append","match")) {
 
   how <- match.arg(how)
+  
+  res <- validate_sub_schema(x, ref)
+  if (!res$result) {
+    stop("Invalid specification for ",ref)
+  }
 
   if (how == "replace") {
     spec[[name]] <- x
@@ -40,13 +42,13 @@ TOP_LEVEL_KEYS <- c("$schema", "autosize", "background", "config", "datasets",
   spec
 }
 
-.add_to_inner_spec <- function(spec, x, name,
+.add_to_inner_spec <- function(spec, x, name, ref,
                                  how = c("replace","append","match")) {
   
   how <- match.arg(how)
   
   fn <- function(spec){
-    .add_to_top_spec(spec, x, name, how)
+    .add_to_top_spec(spec, x, name, ref, how)
   }
   
   modify_inner_spec(spec, fn)

@@ -49,13 +49,13 @@ Object values can additionally specify parameters for content sizing and automat
 
 \strong{Default value:} \code{"full"}}
 
-\item{center}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
-
-An object value of the form \code{{"row": boolean, "column": boolean}} can be used to supply different centering values for rows and columns.
+\item{center}{(\emph{TopLevelVConcatSpec, TopLevelHConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
 
 \strong{Default value:} \code{false}
 
-(\emph{TopLevelVConcatSpec, TopLevelHConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
+(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
+
+An object value of the form \code{{"row": boolean, "column": boolean}} can be used to supply different centering values for rows and columns.
 
 \strong{Default value:} \code{false}}
 

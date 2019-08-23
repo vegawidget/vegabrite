@@ -2,11 +2,11 @@
   UseMethod(".add_mark", spec)
 }
 
-.add_mark.default <- function(spec, obj){
-  .add_to_inner_spec(spec, obj, "mark", how = "replace")
+.add_mark.default <- function(spec, obj, ref, ...){
+  .add_to_inner_spec(spec, obj, "mark", ref, how = "replace")
 }
 
-.add_mark.vegaspec_unit <- function(spec, obj){
+.add_mark.vegaspec_unit <- function(spec, obj, ref, ...){
   
   if (hasName(spec,"mark")) {
     if (hasName(spec, "selection")) {
@@ -22,12 +22,12 @@
     return(.add_mark(vegawidget::as_vegaspec(spec), obj))
   } 
   
-  .add_to_inner_spec(spec, obj, "mark", how = "replace")
+  .add_to_inner_spec(spec, obj, "mark", ref, how = "replace")
 
   }
 
 
-.add_mark.vegaspec_layer <- function(spec, obj){
+.add_mark.vegaspec_layer <- function(spec, obj, ref, ...){
   
   new_spec <- list("mark" = obj)
   spec$layer <- c(spec$layer, list(new_spec))

@@ -4,7 +4,7 @@ author: "Alicia Schep"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Examples}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -20,7 +20,6 @@ This vignette at the moment is just a place to store some various example plots!
 
 ```{r }
 library(vlbuildr)
-library(vegawidget)
 
 vl_chart() %>%
    vl_add_data(values = mtcars) %>%

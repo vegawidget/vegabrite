@@ -1,0 +1,18 @@
+---
+title: "Design"
+author: "Alicia Schep"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Design}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+# Adder function
+
+### spec,  obj, ref, extra, ....
+
+Should validate...

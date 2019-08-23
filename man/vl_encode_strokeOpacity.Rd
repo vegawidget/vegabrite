@@ -10,7 +10,7 @@ vl_encode_strokeOpacity(spec, field = NULL, type = NULL,
   value = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{field}{(\emph{FieldDefWithCondition<MarkPropFieldDef,number>}) \strong{Required.} A string defining the name of the field from which to pull a data value
 or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{repeat} operator.
@@ -100,11 +100,8 @@ or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field 
 \item{value}{(\emph{ValueDefWithOptionalCondition<MarkPropFieldDef,number>}) A constant value in visual domain (e.g., \code{"red"} / "#0099ff" for color, values between \code{0} to \code{1} for opacity).}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add encoding for strokeOpacity to a vega-lite spec.
-}
-\seealso{
-\code{\link[=vl_encode]{vl_encode()}}, \code{\link[=vl_make_StrokeOpacity]{vl_make_StrokeOpacity()}}
 }

@@ -5,12 +5,12 @@ ENCODE_MAPPING <- list(
   "O" = "ordinal"
 )
 
-.add_encoding <- function(spec, .enc, ...){
+.add_encoding <- function(spec, obj, ref, extra, encoding){
 
   fn <- function(spec) {
     
     # Handle shorthand
-    enc <- list(...)
+    enc <- obj
     if (is.null(names(enc)) && length(enc) == 1) {
       enc <- list(field = enc[[1]])
     }
@@ -36,7 +36,11 @@ ENCODE_MAPPING <- list(
     }
     
     if (!hasName(spec,"encoding")) spec$encoding <- list()
-    spec[["encoding"]][[.enc]] <- enc
+    val <- validate_sub_schema(enc, ref)
+    if (!val$result) {
+      stop("Invalid specification for ",ref)
+    }
+    spec[["encoding"]][[encoding]] <- enc
     spec
   }
   
