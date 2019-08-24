@@ -1,6 +1,6 @@
-.add_resolve <- function(spec, .type, .enc, how){
+.add_resolve <- function(spec, obj, .type, .enc){
   
-  spec[["resolve"]][[.type]][[.enc]] <- how
+  spec[["resolve"]][[.type]][[.enc]] <- obj$how
   
   return(spec)
 }
