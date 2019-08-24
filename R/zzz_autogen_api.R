@@ -141,8 +141,9 @@ vl_chart <- function(data = NULL, `$schema` = vegawidget::vega_schema(), align =
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   vegawidget::as_vegaspec(args_out)
 }
- #' vl_add_properties
-#'
+ 
+#' vl_add_properties
+#' 
 #' Add properties to top level of a vega-lite spec. Allows adding properties
 #' like width,height, background which don't have a specific function for
 #' adding them (unlike `mark`or `encoding`).
@@ -242,6 +243,7 @@ vl_chart <- function(data = NULL, `$schema` = vegawidget::vega_schema(), align =
 #' __See also:__ The documentation for [width and height](https://vega.github.io/vega-lite/docs/size.html) contains more examples.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_add_properties <- function(spec, align = NULL, autosize = NULL, background = NULL, bounds = NULL, center = NULL, columns = NULL, datasets = NULL, description = NULL, height = NULL, name = NULL, padding = NULL, projection = NULL, spacing = NULL, title = NULL, usermeta = NULL, view = NULL, width = NULL){
   args <- .modify_args(NULL, c("$schema", "align", "autosize", "background", "bounds", "center", "columns", 
   "config", "data", "datasets", "description", "encoding", "height", "mark", "name", 
@@ -249,8 +251,9 @@ vl_add_properties <- function(spec, align = NULL, autosize = NULL, background = 
   "usermeta", "view", "width", "facet", "spec", "layer", "repeat", "concat", "vconcat", 
   "hconcat"))
   .add_properties(args$spec, args$object, '#/definitions/TopLevelSpec')
-} #' vl_add_data
-#'
+} 
+#' vl_add_data
+#' 
 #' Add data to a vega-lite spec
 #' @param spec An input vega-lite spec
 #' @param format (_UrlData, InlineData, NamedData_) An object that specifies the format for parsing the data.
@@ -264,11 +267,13 @@ vl_add_properties <- function(spec, align = NULL, autosize = NULL, background = 
 #' @param graticule (_GraticuleGenerator_) Generate graticule GeoJSON data for geographic reference lines.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = NULL, sequence = NULL, sphere = NULL, graticule = NULL){
   args <- .modify_args(NULL, c("format", "name", "url", "values", "sequence", "sphere", "graticule"))
   .add_data(args$spec, args$object, '#/definitions/Data')
-} #' vl_mark_area
-#'
+} 
+#' vl_mark_area
+#' 
 #'
 #' @param spec An input vega-lite spec
 #' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
@@ -415,6 +420,7 @@ vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = N
 #' @param yOffset (_MarkDef_) Offset for y-position.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_mark_area <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
   args <- .modify_args(list(type = "area"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
@@ -425,8 +431,9 @@ vl_mark_area <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
   .add_mark(args$spec, args$object, '#/definitions/MarkDef')
-} #' vl_mark_bar
-#'
+} 
+#' vl_mark_bar
+#' 
 #'
 #' @param spec An input vega-lite spec
 #' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
@@ -573,6 +580,7 @@ vl_mark_area <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
 #' @param yOffset (_MarkDef_) Offset for y-position.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_mark_bar <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
   args <- .modify_args(list(type = "bar"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
@@ -583,8 +591,9 @@ vl_mark_bar <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSp
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
   .add_mark(args$spec, args$object, '#/definitions/MarkDef')
-} #' vl_mark_line
-#'
+} 
+#' vl_mark_line
+#' 
 #'
 #' @param spec An input vega-lite spec
 #' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
@@ -731,6 +740,7 @@ vl_mark_bar <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSp
 #' @param yOffset (_MarkDef_) Offset for y-position.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_mark_line <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
   args <- .modify_args(list(type = "line"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
@@ -741,8 +751,9 @@ vl_mark_line <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
   .add_mark(args$spec, args$object, '#/definitions/MarkDef')
-} #' vl_mark_trail
-#'
+} 
+#' vl_mark_trail
+#' 
 #'
 #' @param spec An input vega-lite spec
 #' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
@@ -889,6 +900,7 @@ vl_mark_line <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
 #' @param yOffset (_MarkDef_) Offset for y-position.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_mark_trail <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
   args <- .modify_args(list(type = "trail"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
@@ -899,8 +911,9 @@ vl_mark_trail <- function(spec, align = NULL, angle = NULL, baseline = NULL, bin
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
   .add_mark(args$spec, args$object, '#/definitions/MarkDef')
-} #' vl_mark_point
-#'
+} 
+#' vl_mark_point
+#' 
 #'
 #' @param spec An input vega-lite spec
 #' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
@@ -1047,6 +1060,7 @@ vl_mark_trail <- function(spec, align = NULL, angle = NULL, baseline = NULL, bin
 #' @param yOffset (_MarkDef_) Offset for y-position.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_mark_point <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
   args <- .modify_args(list(type = "point"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
@@ -1057,8 +1071,9 @@ vl_mark_point <- function(spec, align = NULL, angle = NULL, baseline = NULL, bin
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
   .add_mark(args$spec, args$object, '#/definitions/MarkDef')
-} #' vl_mark_text
-#'
+} 
+#' vl_mark_text
+#' 
 #'
 #' @param spec An input vega-lite spec
 #' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
@@ -1205,6 +1220,7 @@ vl_mark_point <- function(spec, align = NULL, angle = NULL, baseline = NULL, bin
 #' @param yOffset (_MarkDef_) Offset for y-position.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_mark_text <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
   args <- .modify_args(list(type = "text"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
@@ -1215,8 +1231,9 @@ vl_mark_text <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
   .add_mark(args$spec, args$object, '#/definitions/MarkDef')
-} #' vl_mark_tick
-#'
+} 
+#' vl_mark_tick
+#' 
 #'
 #' @param spec An input vega-lite spec
 #' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
@@ -1363,6 +1380,7 @@ vl_mark_text <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
 #' @param yOffset (_MarkDef_) Offset for y-position.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_mark_tick <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
   args <- .modify_args(list(type = "tick"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
@@ -1373,8 +1391,9 @@ vl_mark_tick <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
   .add_mark(args$spec, args$object, '#/definitions/MarkDef')
-} #' vl_mark_rect
-#'
+} 
+#' vl_mark_rect
+#' 
 #'
 #' @param spec An input vega-lite spec
 #' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
@@ -1521,6 +1540,7 @@ vl_mark_tick <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
 #' @param yOffset (_MarkDef_) Offset for y-position.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_mark_rect <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
   args <- .modify_args(list(type = "rect"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
@@ -1531,8 +1551,9 @@ vl_mark_rect <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
   .add_mark(args$spec, args$object, '#/definitions/MarkDef')
-} #' vl_mark_rule
-#'
+} 
+#' vl_mark_rule
+#' 
 #'
 #' @param spec An input vega-lite spec
 #' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
@@ -1679,6 +1700,7 @@ vl_mark_rect <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
 #' @param yOffset (_MarkDef_) Offset for y-position.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_mark_rule <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
   args <- .modify_args(list(type = "rule"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
@@ -1689,8 +1711,9 @@ vl_mark_rule <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
   .add_mark(args$spec, args$object, '#/definitions/MarkDef')
-} #' vl_mark_circle
-#'
+} 
+#' vl_mark_circle
+#' 
 #'
 #' @param spec An input vega-lite spec
 #' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
@@ -1837,6 +1860,7 @@ vl_mark_rule <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
 #' @param yOffset (_MarkDef_) Offset for y-position.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_mark_circle <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
   args <- .modify_args(list(type = "circle"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
@@ -1847,8 +1871,9 @@ vl_mark_circle <- function(spec, align = NULL, angle = NULL, baseline = NULL, bi
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
   .add_mark(args$spec, args$object, '#/definitions/MarkDef')
-} #' vl_mark_square
-#'
+} 
+#' vl_mark_square
+#' 
 #'
 #' @param spec An input vega-lite spec
 #' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
@@ -1995,6 +2020,7 @@ vl_mark_circle <- function(spec, align = NULL, angle = NULL, baseline = NULL, bi
 #' @param yOffset (_MarkDef_) Offset for y-position.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_mark_square <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
   args <- .modify_args(list(type = "square"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
@@ -2005,8 +2031,9 @@ vl_mark_square <- function(spec, align = NULL, angle = NULL, baseline = NULL, bi
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
   .add_mark(args$spec, args$object, '#/definitions/MarkDef')
-} #' vl_mark_geoshape
-#'
+} 
+#' vl_mark_geoshape
+#' 
 #'
 #' @param spec An input vega-lite spec
 #' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
@@ -2153,6 +2180,7 @@ vl_mark_square <- function(spec, align = NULL, angle = NULL, baseline = NULL, bi
 #' @param yOffset (_MarkDef_) Offset for y-position.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
   args <- .modify_args(list(type = "geoshape"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
@@ -2163,8 +2191,9 @@ vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, baseline = NULL, 
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
   .add_mark(args$spec, args$object, '#/definitions/MarkDef')
-} #' vl_mark_boxplot
-#'
+} 
+#' vl_mark_boxplot
+#' 
 #'
 #' @param spec An input vega-lite spec
 #' @param box (_BoxPlotDef_)  
@@ -2190,12 +2219,14 @@ vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, baseline = NULL, 
 #' @param ticks (_BoxPlotDef_)  
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_mark_boxplot <- function(spec, box = NULL, clip = NULL, color = NULL, extent = NULL, median = NULL, opacity = NULL, orient = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL, type = NULL){
   args <- .modify_args(list(type = "boxplot"), c("box", "clip", "color", "extent", "median", "opacity", "orient", "outliers", 
   "rule", "size", "ticks", "type"))
   .add_mark(args$spec, args$object, '#/definitions/BoxPlotDef')
-} #' vl_mark_errorbar
-#'
+} 
+#' vl_mark_errorbar
+#' 
 #'
 #' @param spec An input vega-lite spec
 #' @param clip (_ErrorBarDef_) Whether a composite mark be clipped to the enclosing group’s width and height.
@@ -2217,11 +2248,13 @@ vl_mark_boxplot <- function(spec, box = NULL, clip = NULL, color = NULL, extent 
 #' @param ticks (_ErrorBarDef_)  
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_mark_errorbar <- function(spec, clip = NULL, color = NULL, extent = NULL, opacity = NULL, orient = NULL, rule = NULL, ticks = NULL, type = NULL){
   args <- .modify_args(list(type = "errorbar"), c("clip", "color", "extent", "opacity", "orient", "rule", "ticks", "type"))
   .add_mark(args$spec, args$object, '#/definitions/ErrorBarDef')
-} #' vl_mark_errorband
-#'
+} 
+#' vl_mark_errorband
+#' 
 #'
 #' @param spec An input vega-lite spec
 #' @param band (_ErrorBandDef_)  
@@ -2258,12 +2291,14 @@ vl_mark_errorbar <- function(spec, clip = NULL, color = NULL, extent = NULL, opa
 #' @param tension (_ErrorBandDef_) The tension parameter for the interpolation type of the error band.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_mark_errorband <- function(spec, band = NULL, borders = NULL, clip = NULL, color = NULL, extent = NULL, interpolate = NULL, opacity = NULL, orient = NULL, tension = NULL, type = NULL){
   args <- .modify_args(list(type = "errorband"), c("band", "borders", "clip", "color", "extent", "interpolate", "opacity", "orient", 
   "tension", "type"))
   .add_mark(args$spec, args$object, '#/definitions/ErrorBandDef')
-} #' vl_encode_color
-#'
+} 
+#' vl_encode_color
+#' 
 #' Add encoding for color to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,(string|null)>_) Aggregation function for the field
@@ -2342,12 +2377,14 @@ vl_mark_errorband <- function(spec, band = NULL, borders = NULL, clip = NULL, co
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_color <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/color' , encoding = "color")
-} #' vl_encode_detail
-#'
+} 
+#' vl_encode_detail
+#' 
 #' Add encoding for detail to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDef_) Aggregation function for the field
@@ -2396,11 +2433,13 @@ vl_encode_color <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_detail <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/detail' , encoding = "detail")
-} #' vl_encode_fill
-#'
+} 
+#' vl_encode_fill
+#' 
 #' Add encoding for fill to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,(string|null)>_) Aggregation function for the field
@@ -2479,12 +2518,14 @@ vl_encode_detail <- function(spec, field = NULL, type = NULL, aggregate = NULL, 
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_fill <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/fill' , encoding = "fill")
-} #' vl_encode_fillOpacity
-#'
+} 
+#' vl_encode_fillOpacity
+#' 
 #' Add encoding for fillOpacity to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
@@ -2563,12 +2604,14 @@ vl_encode_fill <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/fillOpacity' , encoding = "fillOpacity")
-} #' vl_encode_href
-#'
+} 
+#' vl_encode_href
+#' 
 #' Add encoding for href to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
@@ -2637,12 +2680,14 @@ vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = N
 #' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_href <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/href' , encoding = "href")
-} #' vl_encode_key
-#'
+} 
+#' vl_encode_key
+#' 
 #' Add encoding for key to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDef_) Aggregation function for the field
@@ -2691,11 +2736,13 @@ vl_encode_href <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_key <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/key' , encoding = "key")
-} #' vl_encode_latitude
-#'
+} 
+#' vl_encode_latitude
+#' 
 #' Add encoding for latitude to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_LatLongFieldDef_) Aggregation function for the field
@@ -2745,11 +2792,13 @@ vl_encode_key <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_latitude <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/latitude' , encoding = "latitude")
-} #' vl_encode_latitude2
-#'
+} 
+#' vl_encode_latitude2
+#' 
 #' Add encoding for latitude2 to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
@@ -2787,11 +2836,13 @@ vl_encode_latitude <- function(spec, field = NULL, type = NULL, aggregate = NULL
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_latitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/latitude2' , encoding = "latitude2")
-} #' vl_encode_longitude
-#'
+} 
+#' vl_encode_longitude
+#' 
 #' Add encoding for longitude to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_LatLongFieldDef_) Aggregation function for the field
@@ -2841,11 +2892,13 @@ vl_encode_latitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_longitude <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/longitude' , encoding = "longitude")
-} #' vl_encode_longitude2
-#'
+} 
+#' vl_encode_longitude2
+#' 
 #' Add encoding for longitude2 to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
@@ -2883,11 +2936,13 @@ vl_encode_longitude <- function(spec, field = NULL, type = NULL, aggregate = NUL
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_longitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/longitude2' , encoding = "longitude2")
-} #' vl_encode_opacity
-#'
+} 
+#' vl_encode_opacity
+#' 
 #' Add encoding for opacity to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
@@ -2966,12 +3021,14 @@ vl_encode_longitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NUL
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_opacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/opacity' , encoding = "opacity")
-} #' vl_encode_order
-#'
+} 
+#' vl_encode_order
+#' 
 #' Add encoding for order to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_OrderFieldDef_) Aggregation function for the field
@@ -3022,11 +3079,13 @@ vl_encode_opacity <- function(spec, field = NULL, type = NULL, aggregate = NULL,
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "sort", "timeUnit", "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/order' , encoding = "order")
-} #' vl_encode_shape
-#'
+} 
+#' vl_encode_shape
+#' 
 #' Add encoding for shape to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) Aggregation function for the field
@@ -3105,12 +3164,14 @@ vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef<TypeForShape>,string>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_shape <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/shape' , encoding = "shape")
-} #' vl_encode_size
-#'
+} 
+#' vl_encode_size
+#' 
 #' Add encoding for size to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
@@ -3189,12 +3250,14 @@ vl_encode_shape <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_size <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/size' , encoding = "size")
-} #' vl_encode_stroke
-#'
+} 
+#' vl_encode_stroke
+#' 
 #' Add encoding for stroke to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,(string|null)>_) Aggregation function for the field
@@ -3273,12 +3336,14 @@ vl_encode_size <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_stroke <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/stroke' , encoding = "stroke")
-} #' vl_encode_strokeOpacity
-#'
+} 
+#' vl_encode_strokeOpacity
+#' 
 #' Add encoding for strokeOpacity to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
@@ -3357,12 +3422,14 @@ vl_encode_stroke <- function(spec, field = NULL, type = NULL, aggregate = NULL, 
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_strokeOpacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/strokeOpacity' , encoding = "strokeOpacity")
-} #' vl_encode_strokeWidth
-#'
+} 
+#' vl_encode_strokeWidth
+#' 
 #' Add encoding for strokeWidth to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
@@ -3441,12 +3508,14 @@ vl_encode_strokeOpacity <- function(spec, field = NULL, type = NULL, aggregate =
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/strokeWidth' , encoding = "strokeWidth")
-} #' vl_encode_text
-#'
+} 
+#' vl_encode_text
+#' 
 #' Add encoding for text to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
@@ -3515,12 +3584,14 @@ vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = N
 #' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/text' , encoding = "text")
-} #' vl_encode_tooltip
-#'
+} 
+#' vl_encode_tooltip
+#' 
 #' Add encoding for tooltip to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
@@ -3589,12 +3660,14 @@ vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_tooltip <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/tooltip' , encoding = "tooltip")
-} #' vl_encode_x
-#'
+} 
+#' vl_encode_x
+#' 
 #' Add encoding for x to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_PositionFieldDef_) Aggregation function for the field
@@ -3684,12 +3757,14 @@ vl_encode_tooltip <- function(spec, field = NULL, type = NULL, aggregate = NULL,
 #' @param value (_XValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_x <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "axis", "bin", "field", "impute", "scale", "sort", "stack", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/x' , encoding = "x")
-} #' vl_encode_x2
-#'
+} 
+#' vl_encode_x2
+#' 
 #' Add encoding for x2 to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
@@ -3727,11 +3802,13 @@ vl_encode_x <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis 
 #' @param value (_XValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_x2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/x2' , encoding = "x2")
-} #' vl_encode_xError
-#'
+} 
+#' vl_encode_xError
+#' 
 #' Add encoding for xError to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
@@ -3769,11 +3846,13 @@ vl_encode_x2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeU
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_xError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/xError' , encoding = "xError")
-} #' vl_encode_xError2
-#'
+} 
+#' vl_encode_xError2
+#' 
 #' Add encoding for xError2 to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
@@ -3811,11 +3890,13 @@ vl_encode_xError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, t
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_xError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/xError2' , encoding = "xError2")
-} #' vl_encode_y
-#'
+} 
+#' vl_encode_y
+#' 
 #' Add encoding for y to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_PositionFieldDef_) Aggregation function for the field
@@ -3905,12 +3986,14 @@ vl_encode_xError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, 
 #' @param value (_YValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_y <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "axis", "bin", "field", "impute", "scale", "sort", "stack", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/y' , encoding = "y")
-} #' vl_encode_y2
-#'
+} 
+#' vl_encode_y2
+#' 
 #' Add encoding for y2 to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
@@ -3948,11 +4031,13 @@ vl_encode_y <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis 
 #' @param value (_YValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_y2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/y2' , encoding = "y2")
-} #' vl_encode_yError
-#'
+} 
+#' vl_encode_yError
+#' 
 #' Add encoding for yError to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
@@ -3990,11 +4075,13 @@ vl_encode_y2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeU
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_yError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/yError' , encoding = "yError")
-} #' vl_encode_yError2
-#'
+} 
+#' vl_encode_yError2
+#' 
 #' Add encoding for yError2 to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
@@ -4032,6 +4119,7 @@ vl_encode_yError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, t
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_encode_yError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/yError2' , encoding = "yError2")
@@ -5848,19 +5936,22 @@ vl_make_YError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
 }
- #' vl_aggregate
-#'
+ 
+#' vl_aggregate
+#' 
 #' Add AggregateTransform to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate (_AggregateTransform_) Array of objects that define fields to aggregate.
 #' @param groupby (_AggregateTransform_) The data fields to group by. If not specified, a single group containing all data objects will be used.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_aggregate <- function(spec, aggregate = NULL, groupby = NULL){
   args <- .modify_args(NULL, c("aggregate", "groupby"))
   .add_transform(args$spec, args$object, '#/definitions/AggregateTransform')
-} #' vl_bin
-#'
+} 
+#' vl_bin
+#' 
 #' Add BinTransform to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param as (_BinTransform_) The output fields at which to write the start and end bin values.
@@ -5868,22 +5959,26 @@ vl_aggregate <- function(spec, aggregate = NULL, groupby = NULL){
 #' @param field (_BinTransform_) The data field to bin.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_bin <- function(spec, as = NULL, bin = NULL, field = NULL){
   args <- .modify_args(NULL, c("as", "bin", "field"))
   .add_transform(args$spec, args$object, '#/definitions/BinTransform')
-} #' vl_calculate
-#'
+} 
+#' vl_calculate
+#' 
 #' Add CalculateTransform to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param as (_CalculateTransform_) The field for storing the computed formula value.
 #' @param calculate (_CalculateTransform_) A [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string. Use the variable `datum` to refer to the current data object.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_calculate <- function(spec, as = NULL, calculate = NULL){
   args <- .modify_args(NULL, c("as", "calculate"))
   .add_transform(args$spec, args$object, '#/definitions/CalculateTransform')
-} #' vl_filter
-#'
+} 
+#' vl_filter
+#' 
 #' Add FilterTransform to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param filter (_FilterTransform_) The `filter` property must be one of the predicate definitions:
@@ -5905,11 +6000,13 @@ vl_calculate <- function(spec, as = NULL, calculate = NULL){
 #' 4) a logical operand that combines (1), (2), or (3).
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_filter <- function(spec, filter = NULL){
   args <- .modify_args(NULL, "filter")
   .add_transform(args$spec, args$object, '#/definitions/FilterTransform')
-} #' vl_flatten
-#'
+} 
+#' vl_flatten
+#' 
 #' Add FlattenTransform to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param as (_FlattenTransform_) The output field names for extracted array values.
@@ -5921,11 +6018,13 @@ vl_filter <- function(spec, filter = NULL){
 #' the longest array will be used with `null` values added for missing entries.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_flatten <- function(spec, as = NULL, flatten = NULL){
   args <- .modify_args(NULL, c("as", "flatten"))
   .add_transform(args$spec, args$object, '#/definitions/FlattenTransform')
-} #' vl_fold
-#'
+} 
+#' vl_fold
+#' 
 #' Add FoldTransform to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param as (_FoldTransform_) The output field names for the key and value properties produced by the fold transform.
@@ -5933,11 +6032,13 @@ vl_flatten <- function(spec, as = NULL, flatten = NULL){
 #' @param fold (_FoldTransform_) An array of data fields indicating the properties to fold.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_fold <- function(spec, as = NULL, fold = NULL){
   args <- .modify_args(NULL, c("as", "fold"))
   .add_transform(args$spec, args$object, '#/definitions/FoldTransform')
-} #' vl_impute
-#'
+} 
+#' vl_impute
+#' 
 #' Add ImputeTransform to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param frame (_ImputeTransform_) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
@@ -5961,22 +6062,26 @@ vl_fold <- function(spec, as = NULL, fold = NULL){
 #' @param value (_ImputeTransform_) The field value to use when the imputation `method` is `"value"`.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_impute <- function(spec, frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL){
   args <- .modify_args(NULL, c("frame", "groupby", "impute", "key", "keyvals", "method", "value"))
   .add_transform(args$spec, args$object, '#/definitions/ImputeTransform')
-} #' vl_joinaggregate
-#'
+} 
+#' vl_joinaggregate
+#' 
 #' Add JoinAggregateTransform to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param groupby (_JoinAggregateTransform_) The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group.
 #' @param joinaggregate (_JoinAggregateTransform_) The definition of the fields in the join aggregate, and what calculations to use.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL){
   args <- .modify_args(NULL, c("groupby", "joinaggregate"))
   .add_transform(args$spec, args$object, '#/definitions/JoinAggregateTransform')
-} #' vl_lookup
-#'
+} 
+#' vl_lookup
+#' 
 #' Add LookupTransform to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param as (_LookupTransform_) The field or fields for storing the computed formula value.
@@ -5989,11 +6094,13 @@ vl_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL){
 #' @param lookup (_LookupTransform_) Key in primary data source.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_lookup <- function(spec, as = NULL, default = NULL, from = NULL, lookup = NULL){
   args <- .modify_args(NULL, c("as", "default", "from", "lookup"))
   .add_transform(args$spec, args$object, '#/definitions/LookupTransform')
-} #' vl_timeunit
-#'
+} 
+#' vl_timeunit
+#' 
 #' Add TimeUnitTransform to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param as (_TimeUnitTransform_) The output field to write the timeUnit value.
@@ -6001,11 +6108,13 @@ vl_lookup <- function(spec, as = NULL, default = NULL, from = NULL, lookup = NUL
 #' @param timeUnit (_TimeUnitTransform_) The timeUnit.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL){
   args <- .modify_args(NULL, c("as", "field", "timeUnit"))
   .add_transform(args$spec, args$object, '#/definitions/TimeUnitTransform')
-} #' vl_sample
-#'
+} 
+#' vl_sample
+#' 
 #' Add SampleTransform to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param sample (_SampleTransform_) The maximum number of data objects to include in the sample.
@@ -6013,11 +6122,13 @@ vl_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL){
 #' __Default value:__ `1000`
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_sample <- function(spec, sample = NULL){
   args <- .modify_args(NULL, "sample")
   .add_transform(args$spec, args$object, '#/definitions/SampleTransform')
-} #' vl_stack
-#'
+} 
+#' vl_stack
+#' 
 #' Add StackTransform to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param as (_StackTransform_) Output field names. This can be either a string or an array of strings with
@@ -6031,11 +6142,13 @@ vl_sample <- function(spec, sample = NULL){
 #' @param stack (_StackTransform_) The field which is stacked.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL){
   args <- .modify_args(NULL, c("as", "groupby", "offset", "sort", "stack"))
   .add_transform(args$spec, args$object, '#/definitions/StackTransform')
-} #' vl_window
-#'
+} 
+#' vl_window
+#' 
 #' Add WindowTransform to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param frame (_WindowTransform_) A frame specification as a two-element array indicating how the sliding window should proceed. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. The default value is `[null, 0]`, indicating that the sliding window includes the current object and all preceding objects. The value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object. Finally, `[null, null]` indicates that the window frame should always include all data objects. If you this frame and want to assign the same value to add objects, you can use the simpler [join aggregate transform](https://vega.github.io/vega-lite/docs/joinaggregate.html). The only operators affected are the aggregation operations and the `first_value`, `last_value`, and `nth_value` window operations. The other window operations are not affected by this.
@@ -6049,6 +6162,7 @@ vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL
 #' @param window (_WindowTransform_) The definition of the fields in the window, and what calculations to use.
 #' @return A modified Vega-Lite Spec
 #' @export
+
 vl_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL){
   args <- .modify_args(NULL, c("frame", "groupby", "ignorePeers", "sort", "window"))
   .add_transform(args$spec, args$object, '#/definitions/WindowTransform')
@@ -6309,8 +6423,7 @@ vl_make_WindowTransform <- function(frame = NULL, groupby = NULL, ignorePeers = 
 #' @param steps (_BinParams_) An array of allowable step sizes to choose from.
 #' @return A modified Vega-Lite Spec
 #' @export
-#' @name bin_encoding
- 
+#' @name bin_encoding 
 #' @name bin_encoding
 #' @export
 vl_bin_color <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
@@ -6520,8 +6633,7 @@ vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divi
 #' @param value (_ImputeParams_) The field value to use when the imputation `method` is `"value"`.
 #' @return A modified Vega-Lite Spec
 #' @export
-#' @name impute_encoding
- 
+#' @name impute_encoding 
 #' @name impute_encoding
 #' @export
 vl_impute_x <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL){
@@ -6684,8 +6796,7 @@ vl_impute_y <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value
 #' __Default value:__ `1` (in front of the marks) for actual axis and `0` (behind the marks) for grids.
 #' @return A modified Vega-Lite Spec
 #' @export
-#' @name axis_encoding
- 
+#' @name axis_encoding 
 #' @name axis_encoding
 #' @export
 vl_axis_x <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, values = NULL, zindex = NULL){
@@ -6814,8 +6925,7 @@ vl_axis_y <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NU
 #' __Note:__ Log, time, and utc scales do not support `zero`.
 #' @return A modified Vega-Lite Spec
 #' @export
-#' @name scale_encoding
- 
+#' @name scale_encoding 
 #' @name scale_encoding
 #' @export
 vl_scale_color <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
@@ -7047,8 +7157,7 @@ vl_scale_y <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = 
 #' To put them in front, use zindex = 1.
 #' @return A modified Vega-Lite Spec
 #' @export
-#' @name legend_encoding
- 
+#' @name legend_encoding 
 #' @name legend_encoding
 #' @export
 vl_legend_color <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
@@ -7269,8 +7378,7 @@ vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL,
 #' @param value (_ConditionalPredicate<ValueDef>, ConditionalSelection<ValueDef>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
-#' @name condition_encoding
- 
+#' @name condition_encoding 
 #' @name condition_encoding
 #' @export
 vl_condition_color <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
@@ -7362,8 +7470,7 @@ vl_condition_tooltip <- function(spec, aggregate = NULL, bin = NULL, field = NUL
 #' @param stack One of 'zero', 'center', 'normalize', NA
 #' @return A modified Vega-Lite Spec
 #' @export
-#' @name stack_encoding
- 
+#' @name stack_encoding 
 #' @name stack_encoding
 #' @export
 vl_stack_x <- function(spec, stack = c('zero', 'center', 'normalize', NA)){
@@ -7383,8 +7490,7 @@ vl_stack_y <- function(spec, stack = c('zero', 'center', 'normalize', NA)){
 #' @param aggregate One of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
 #' @return A modified Vega-Lite Spec
 #' @export
-#' @name aggregate_encoding
- 
+#' @name aggregate_encoding 
 #' @name aggregate_encoding
 #' @export
 vl_aggregate_color <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
@@ -7632,8 +7738,7 @@ vl_sort_y <- function(spec, value){
 #' @param order (_EncodingSortField_) The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort).
 #' @return A modified Vega-Lite Spec
 #' @export
-#' @name sort_encoding_by_field
- 
+#' @name sort_encoding_by_field 
 #' @name sort_encoding_by_field
 #' @export
 vl_sort_color_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
@@ -7714,8 +7819,7 @@ vl_sort_y_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
 #' @param order (_SortByEncoding_) The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort).
 #' @return A modified Vega-Lite Spec
 #' @export
-#' @name sort_encoding_by_encoding
- 
+#' @name sort_encoding_by_encoding 
 #' @name sort_encoding_by_encoding
 #' @export
 vl_sort_color_by_encoding <- function(spec, encoding = NULL, order = NULL){
@@ -7787,4 +7891,357 @@ vl_sort_x_by_encoding <- function(spec, encoding = NULL, order = NULL){
 vl_sort_y_by_encoding <- function(spec, encoding = NULL, order = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
   .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "y")
+} 
+#' vl_add_single_selection
+#' 
+#' Add SingleSelection to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param selection_name Name for selection
+#' @param bind (_SingleSelection_) Establish a two-way binding between a single selection and input elements
+#' (also known as dynamic query widgets). A binding takes the form of
+#' Vega's [input element binding definition](https://vega.github.io/vega/docs/signals/#bind)
+#' or can be a mapping between projected field/encodings and binding definitions.
+#' 
+#' See the [bind transform](https://vega.github.io/vega-lite/docs/bind.html) documentation for more information.
+#' @param clear (_SingleSelection_) Clears the selection, emptying it of all values. Can be an
+#' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
+#' 
+#' __Default value:__ `dblclick`.
+#' 
+#' See the [clear](https://vega.github.io/vega-lite/docs/clear.html) documentation for more information.
+#' @param empty (_SingleSelection_) By default, `all` data values are considered to lie within an empty selection.
+#' When set to `none`, empty selections contain no data values.
+#' @param encodings (_SingleSelection_) An array of encoding channels. The corresponding data field values
+#' must match for a data tuple to fall within the selection.
+#' @param fields (_SingleSelection_) An array of field names whose values must match for a data tuple to
+#' fall within the selection.
+#' @param init (_SingleSelection_) Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and initial values.
+#' @param nearest (_SingleSelection_) When true, an invisible voronoi diagram is computed to accelerate discrete
+#' selection. The data value _nearest_ the mouse cursor is added to the selection.
+#' 
+#' See the [nearest transform](https://vega.github.io/vega-lite/docs/nearest.html) documentation for more information.
+#' @param on (_SingleSelection_) A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
+#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters).
+#' @param resolve (_SingleSelection_) With layered and multi-view displays, a strategy that determines how
+#' selections' data queries are resolved when applied in a filter transform,
+#' conditional encoding rule, or scale domain.
+#' @param type (_SingleSelection_) single
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_single_selection <- function(spec, selection_name, bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, type = NULL){
+  args <- .modify_args(NULL, c("bind", "clear", "empty", "encodings", "fields", "init", "nearest", "on", 
+  "resolve", "type"))
+  .add_selection(args$spec, args$object, '#/definitions/SingleSelection', type = 'single', selection_name = args$extra$selection_name)
+} 
+#' vl_add_multi_selection
+#' 
+#' Add MultiSelection to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param selection_name Name for selection
+#' @param clear (_MultiSelection_) Clears the selection, emptying it of all values. Can be an
+#' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
+#' 
+#' __Default value:__ `dblclick`.
+#' 
+#' See the [clear](https://vega.github.io/vega-lite/docs/clear.html) documentation for more information.
+#' @param empty (_MultiSelection_) By default, `all` data values are considered to lie within an empty selection.
+#' When set to `none`, empty selections contain no data values.
+#' @param encodings (_MultiSelection_) An array of encoding channels. The corresponding data field values
+#' must match for a data tuple to fall within the selection.
+#' @param fields (_MultiSelection_) An array of field names whose values must match for a data tuple to
+#' fall within the selection.
+#' @param init (_MultiSelection_) Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and an initial
+#' value (or array of values).
+#' @param nearest (_MultiSelection_) When true, an invisible voronoi diagram is computed to accelerate discrete
+#' selection. The data value _nearest_ the mouse cursor is added to the selection.
+#' 
+#' See the [nearest transform](https://vega.github.io/vega-lite/docs/nearest.html) documentation for more information.
+#' @param on (_MultiSelection_) A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
+#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters).
+#' @param resolve (_MultiSelection_) With layered and multi-view displays, a strategy that determines how
+#' selections' data queries are resolved when applied in a filter transform,
+#' conditional encoding rule, or scale domain.
+#' @param toggle (_MultiSelection_) Controls whether data values should be toggled or only ever inserted into
+#' multi selections. Can be `true`, `false` (for insertion only), or a
+#' [Vega expression](https://vega.github.io/vega/docs/expressions/).
+#' 
+#' __Default value:__ `true`, which corresponds to `event.shiftKey` (i.e.,
+#' data values are toggled when a user interacts with the shift-key pressed).
+#' 
+#' See the [toggle transform](https://vega.github.io/vega-lite/docs/toggle.html) documentation for more information.
+#' @param type (_MultiSelection_) multi
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_multi_selection <- function(spec, selection_name, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL, type = NULL){
+  args <- .modify_args(NULL, c("clear", "empty", "encodings", "fields", "init", "nearest", "on", "resolve", 
+  "toggle", "type"))
+  .add_selection(args$spec, args$object, '#/definitions/MultiSelection', type = 'multi', selection_name = args$extra$selection_name)
+} 
+#' vl_add_interval_selection
+#' 
+#' Add IntervalSelection to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param selection_name Name for selection
+#' @param bind (_IntervalSelection_) Establishes a two-way binding between the interval selection and the scales
+#' used within the same view. This allows a user to interactively pan and
+#' zoom the view.
+#' @param clear (_IntervalSelection_) Clears the selection, emptying it of all values. Can be an
+#' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
+#' 
+#' __Default value:__ `dblclick`.
+#' 
+#' See the [clear](https://vega.github.io/vega-lite/docs/clear.html) documentation for more information.
+#' @param empty (_IntervalSelection_) By default, `all` data values are considered to lie within an empty selection.
+#' When set to `none`, empty selections contain no data values.
+#' @param encodings (_IntervalSelection_) An array of encoding channels. The corresponding data field values
+#' must match for a data tuple to fall within the selection.
+#' @param fields (_IntervalSelection_) An array of field names whose values must match for a data tuple to
+#' fall within the selection.
+#' @param init (_IntervalSelection_) Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and arrays of
+#' initial values.
+#' @param mark (_IntervalSelection_) An interval selection also adds a rectangle mark to depict the
+#' extents of the interval. The `mark` property can be used to customize the
+#' appearance of the mark.
+#' @param on (_IntervalSelection_) A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
+#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters).
+#' @param resolve (_IntervalSelection_) With layered and multi-view displays, a strategy that determines how
+#' selections' data queries are resolved when applied in a filter transform,
+#' conditional encoding rule, or scale domain.
+#' @param translate (_IntervalSelection_) When truthy, allows a user to interactively move an interval selection
+#' back-and-forth. Can be `true`, `false` (to disable panning), or a
+#' [Vega event stream definition](https://vega.github.io/vega/docs/event-streams/)
+#' which must include a start and end event to trigger continuous panning.
+#' 
+#' __Default value:__ `true`, which corresponds to
+#' `[mousedown, window:mouseup] > window:mousemove!` which corresponds to
+#' clicks and dragging within an interval selection to reposition it.
+#' @param type (_IntervalSelection_) interval
+#' @param zoom (_IntervalSelection_) When truthy, allows a user to interactively resize an interval selection.
+#' Can be `true`, `false` (to disable zooming), or a [Vega event stream
+#' definition](https://vega.github.io/vega/docs/event-streams/). Currently,
+#' only `wheel` events are supported.
+#' 
+#' 
+#' __Default value:__ `true`, which corresponds to `wheel!`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_interval_selection <- function(spec, selection_name, bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, type = NULL, zoom = NULL){
+  args <- .modify_args(NULL, c("bind", "clear", "empty", "encodings", "fields", "init", "mark", "on", "resolve", 
+  "translate", "type", "zoom"))
+  .add_selection(args$spec, args$object, '#/definitions/IntervalSelection', type = 'interval', selection_name = args$extra$selection_name)
+} #' vl_make_SingleSelection
+#' 
+#' Create spec for SingleSelection.
+#' @param bind (_SingleSelection_) Establish a two-way binding between a single selection and input elements
+#' (also known as dynamic query widgets). A binding takes the form of
+#' Vega's [input element binding definition](https://vega.github.io/vega/docs/signals/#bind)
+#' or can be a mapping between projected field/encodings and binding definitions.
+#' 
+#' See the [bind transform](https://vega.github.io/vega-lite/docs/bind.html) documentation for more information.
+#' @param clear (_SingleSelection_) Clears the selection, emptying it of all values. Can be an
+#' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
+#' 
+#' __Default value:__ `dblclick`.
+#' 
+#' See the [clear](https://vega.github.io/vega-lite/docs/clear.html) documentation for more information.
+#' @param empty (_SingleSelection_) By default, `all` data values are considered to lie within an empty selection.
+#' When set to `none`, empty selections contain no data values.
+#' @param encodings (_SingleSelection_) An array of encoding channels. The corresponding data field values
+#' must match for a data tuple to fall within the selection.
+#' @param fields (_SingleSelection_) An array of field names whose values must match for a data tuple to
+#' fall within the selection.
+#' @param init (_SingleSelection_) Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and initial values.
+#' @param nearest (_SingleSelection_) When true, an invisible voronoi diagram is computed to accelerate discrete
+#' selection. The data value _nearest_ the mouse cursor is added to the selection.
+#' 
+#' See the [nearest transform](https://vega.github.io/vega-lite/docs/nearest.html) documentation for more information.
+#' @param on (_SingleSelection_) A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
+#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters).
+#' @param resolve (_SingleSelection_) With layered and multi-view displays, a strategy that determines how
+#' selections' data queries are resolved when applied in a filter transform,
+#' conditional encoding rule, or scale domain.
+#' @param type (_SingleSelection_) single
+#' @return A modified spec
+#' @export
+vl_make_SingleSelection <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ #' vl_make_MultiSelection
+#' 
+#' Create spec for MultiSelection.
+#' @param clear (_MultiSelection_) Clears the selection, emptying it of all values. Can be an
+#' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
+#' 
+#' __Default value:__ `dblclick`.
+#' 
+#' See the [clear](https://vega.github.io/vega-lite/docs/clear.html) documentation for more information.
+#' @param empty (_MultiSelection_) By default, `all` data values are considered to lie within an empty selection.
+#' When set to `none`, empty selections contain no data values.
+#' @param encodings (_MultiSelection_) An array of encoding channels. The corresponding data field values
+#' must match for a data tuple to fall within the selection.
+#' @param fields (_MultiSelection_) An array of field names whose values must match for a data tuple to
+#' fall within the selection.
+#' @param init (_MultiSelection_) Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and an initial
+#' value (or array of values).
+#' @param nearest (_MultiSelection_) When true, an invisible voronoi diagram is computed to accelerate discrete
+#' selection. The data value _nearest_ the mouse cursor is added to the selection.
+#' 
+#' See the [nearest transform](https://vega.github.io/vega-lite/docs/nearest.html) documentation for more information.
+#' @param on (_MultiSelection_) A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
+#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters).
+#' @param resolve (_MultiSelection_) With layered and multi-view displays, a strategy that determines how
+#' selections' data queries are resolved when applied in a filter transform,
+#' conditional encoding rule, or scale domain.
+#' @param toggle (_MultiSelection_) Controls whether data values should be toggled or only ever inserted into
+#' multi selections. Can be `true`, `false` (for insertion only), or a
+#' [Vega expression](https://vega.github.io/vega/docs/expressions/).
+#' 
+#' __Default value:__ `true`, which corresponds to `event.shiftKey` (i.e.,
+#' data values are toggled when a user interacts with the shift-key pressed).
+#' 
+#' See the [toggle transform](https://vega.github.io/vega-lite/docs/toggle.html) documentation for more information.
+#' @param type (_MultiSelection_) multi
+#' @return A modified spec
+#' @export
+vl_make_MultiSelection <- function(clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL, type = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ #' vl_make_IntervalSelection
+#' 
+#' Create spec for IntervalSelection.
+#' @param bind (_IntervalSelection_) Establishes a two-way binding between the interval selection and the scales
+#' used within the same view. This allows a user to interactively pan and
+#' zoom the view.
+#' @param clear (_IntervalSelection_) Clears the selection, emptying it of all values. Can be an
+#' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
+#' 
+#' __Default value:__ `dblclick`.
+#' 
+#' See the [clear](https://vega.github.io/vega-lite/docs/clear.html) documentation for more information.
+#' @param empty (_IntervalSelection_) By default, `all` data values are considered to lie within an empty selection.
+#' When set to `none`, empty selections contain no data values.
+#' @param encodings (_IntervalSelection_) An array of encoding channels. The corresponding data field values
+#' must match for a data tuple to fall within the selection.
+#' @param fields (_IntervalSelection_) An array of field names whose values must match for a data tuple to
+#' fall within the selection.
+#' @param init (_IntervalSelection_) Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and arrays of
+#' initial values.
+#' @param mark (_IntervalSelection_) An interval selection also adds a rectangle mark to depict the
+#' extents of the interval. The `mark` property can be used to customize the
+#' appearance of the mark.
+#' @param on (_IntervalSelection_) A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
+#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters).
+#' @param resolve (_IntervalSelection_) With layered and multi-view displays, a strategy that determines how
+#' selections' data queries are resolved when applied in a filter transform,
+#' conditional encoding rule, or scale domain.
+#' @param translate (_IntervalSelection_) When truthy, allows a user to interactively move an interval selection
+#' back-and-forth. Can be `true`, `false` (to disable panning), or a
+#' [Vega event stream definition](https://vega.github.io/vega/docs/event-streams/)
+#' which must include a start and end event to trigger continuous panning.
+#' 
+#' __Default value:__ `true`, which corresponds to
+#' `[mousedown, window:mouseup] > window:mousemove!` which corresponds to
+#' clicks and dragging within an interval selection to reposition it.
+#' @param type (_IntervalSelection_) interval
+#' @param zoom (_IntervalSelection_) When truthy, allows a user to interactively resize an interval selection.
+#' Can be `true`, `false` (to disable zooming), or a [Vega event stream
+#' definition](https://vega.github.io/vega/docs/event-streams/). Currently,
+#' only `wheel` events are supported.
+#' 
+#' 
+#' __Default value:__ `true`, which corresponds to `wheel!`.
+#' @return A modified spec
+#' @export
+vl_make_IntervalSelection <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, type = NULL, zoom = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ 
+#' vl_bind_radio_input
+#' 
+#' Add radio binding to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param selection_name Name of selection to add binding to
+#' @param projection_name Name of projection (field or encoding) within selection
+#' @param debounce (_BindRadioSelect_)  
+#' @param element (_BindRadioSelect_)  
+#' @param name (_BindRadioSelect_)  
+#' @param options (_BindRadioSelect_)  
+#' @param type (_BindRadioSelect_)  
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_bind_radio_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, name = NULL, options = NULL, type = NULL){
+  args <- .modify_args(NULL, c("debounce", "element", "name", "options", "type"))
+  .add_binding(args$spec, args$object, '#/definitions/BindRadioSelect', selection_name = args$extra$selection_name,
+projection_name = args$extra$projection_name)
+} 
+#' vl_bind_select_input
+#' 
+#' Add select binding to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param selection_name Name of selection to add binding to
+#' @param projection_name Name of projection (field or encoding) within selection
+#' @param debounce (_BindRadioSelect_)  
+#' @param element (_BindRadioSelect_)  
+#' @param name (_BindRadioSelect_)  
+#' @param options (_BindRadioSelect_)  
+#' @param type (_BindRadioSelect_)  
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_bind_select_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, name = NULL, options = NULL, type = NULL){
+  args <- .modify_args(NULL, c("debounce", "element", "name", "options", "type"))
+  .add_binding(args$spec, args$object, '#/definitions/BindRadioSelect', selection_name = args$extra$selection_name,
+projection_name = args$extra$projection_name)
+} 
+#' vl_bind_checkbox_input
+#' 
+#' Add checkbox binding to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param selection_name Name of selection to add binding to
+#' @param projection_name Name of projection (field or encoding) within selection
+#' @param debounce (_BindCheckbox_)  
+#' @param element (_BindCheckbox_)  
+#' @param name (_BindCheckbox_)  
+#' @param type (_BindCheckbox_)  
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_bind_checkbox_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, name = NULL, type = NULL){
+  args <- .modify_args(NULL, c("debounce", "element", "name", "type"))
+  .add_binding(args$spec, args$object, '#/definitions/BindCheckbox', selection_name = args$extra$selection_name,
+projection_name = args$extra$projection_name)
+} 
+#' vl_bind_range_input
+#' 
+#' Add range binding to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param selection_name Name of selection to add binding to
+#' @param projection_name Name of projection (field or encoding) within selection
+#' @param debounce (_BindRange_)  
+#' @param element (_BindRange_)  
+#' @param max (_BindRange_)  
+#' @param min (_BindRange_)  
+#' @param name (_BindRange_)  
+#' @param step (_BindRange_)  
+#' @param type (_BindRange_)  
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_bind_range_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, max = NULL, min = NULL, name = NULL, step = NULL, type = NULL){
+  args <- .modify_args(NULL, c("debounce", "element", "max", "min", "name", "step", "type"))
+  .add_binding(args$spec, args$object, '#/definitions/BindRange', selection_name = args$extra$selection_name,
+projection_name = args$extra$projection_name)
 }

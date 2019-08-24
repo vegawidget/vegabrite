@@ -91,15 +91,17 @@ ENCODE_MAPPING <- list(
            "\nAdd encoding first before adding condition.")
     }
     
+    validate_sub_schema(obj, ref)
+    
     if (hasName(spec[["encoding"]][[encoding]],"condition")) {
       # Check if named
       if (is.null(names(spec[["encoding"]][[encoding]][["condition"]]))) {
-        value <- c(spec[["encoding"]][[encoding]][["condition"]], list(list(...)))
+        value <- c(spec[["encoding"]][[encoding]][["condition"]], list(obj))
       } else {
-        value <- c(list(spec[["encoding"]][[encoding]][["condition"]]), list(list(...)))
+        value <- c(list(spec[["encoding"]][[encoding]][["condition"]]), list(obj))
       }
     } else {
-      value <- list(...)
+      value <- obj
     }
     
     spec[["encoding"]][[encoding]][["condition"]] <- value
