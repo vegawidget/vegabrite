@@ -141,7 +141,115 @@ vl_chart <- function(data = NULL, `$schema` = vegawidget::vega_schema(), align =
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   vegawidget::as_vegaspec(args_out)
 }
- #' vl_add_data
+ #' vl_add_properties
+#'
+#' Add properties to top level of a vega-lite spec. Allows adding properties
+#' like width,height, background which don't have a specific function for
+#' adding them (unlike `mark`or `encoding`).
+#' @param spec An input vega-lite spec
+#' @param align (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec_) The alignment to apply to grid rows and columns.
+#' The supported string values are `"all"`, `"each"`, and `"none"`.
+#' 
+#' - For `"none"`, a flow layout will be used, in which adjacent subviews are simply placed one after the other.
+#' - For `"each"`, subviews will be aligned into a clean grid structure, but each row or column may be of variable size.
+#' - For `"all"`, subviews will be aligned and each row or column will be sized identically based on the maximum observed size. String values for this property will be applied to both grid rows and columns.
+#' 
+#' Alternatively, an object value of the form `{"row": string, "column": string}` can be used to supply different alignments for rows and columns.
+#' 
+#' __Default value:__ `"all"`.
+#' @param autosize (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec_) Sets how the visualization size should be determined. If a string, should be one of `"pad"`, `"fit"` or `"none"`.
+#' Object values can additionally specify parameters for content sizing and automatic resizing.
+#' `"fit"` is only supported for single and layered views that don't use `rangeStep`.
+#' 
+#' __Default value__: `pad`
+#' @param background (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec_) CSS color property to use as the background of the entire view.
+#' 
+#' __Default value:__ none (transparent)
+#' @param bounds (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec_) The bounds calculation method to use for determining the extent of a sub-plot. One of `full` (the default) or `flush`.
+#' 
+#' - If set to `full`, the entire calculated bounds (including axes, title, and legend) will be used.
+#' - If set to `flush`, only the specified width and height values for the sub-view will be used. The `flush` setting can be useful when attempting to place sub-plots without axes or legends into a uniform grid structure.
+#' 
+#' __Default value:__ `"full"`
+#' @param center (_TopLevelVConcatSpec, TopLevelHConcatSpec_) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
+#' 
+#' __Default value:__ `false`
+#' 
+#' (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec_) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
+#' 
+#' An object value of the form `{"row": boolean, "column": boolean}` can be used to supply different centering values for rows and columns.
+#' 
+#' __Default value:__ `false`
+#' @param columns (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec_) The number of columns to include in the view composition layout.
+#' 
+#' __Default value__: `undefined` -- An infinite number of columns (a single row) will be assumed. This is equivalent to
+#' `hconcat` (for `concat`) and to using the `column` channel (for `facet` and `repeat`).
+#' 
+#' __Note__:
+#' 
+#' 1) This property is only for:
+#' - the general (wrappable) `concat` operator (not `hconcat`/`vconcat`)
+#' - the `facet` and `repeat` operator with one field/repetition definition (without row/column nesting)
+#' 
+#' 2) Setting the `columns` to `1` is equivalent to `vconcat` (for `concat`) and to using the `row` channel (for `facet` and `repeat`).
+#' @param datasets (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec_) A global data store for named datasets. This is a mapping from names to inline datasets.
+#' This can be an array of objects or primitive values or a string. Arrays of primitive values are ingested as objects with a `data` property.
+#' @param description (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec_) Description of this mark for commenting purpose.
+#' @param height (_TopLevelUnitSpec, TopLevelLayerSpec_) The height of a visualization.
+#' 
+#' __Default value:__
+#' - If a view's [`autosize`](https://vega.github.io/vega-lite/docs/size.html#autosize) type is `"fit"` or its y-channel has a [continuous scale](https://vega.github.io/vega-lite/docs/scale.html#continuous), the height will be the value of [`config.view.height`](https://vega.github.io/vega-lite/docs/spec.html#config).
+#' - For y-axis with a band or point scale: if [`rangeStep`](https://vega.github.io/vega-lite/docs/scale.html#band) is a numeric value or unspecified, the height is [determined by the range step, paddings, and the cardinality of the field mapped to y-channel](https://vega.github.io/vega-lite/docs/scale.html#band). Otherwise, if the `rangeStep` is `null`, the height will be the value of [`config.view.height`](https://vega.github.io/vega-lite/docs/spec.html#config).
+#' - If no field is mapped to `y` channel, the `height` will be the value of `rangeStep`.
+#' 
+#' __Note__: For plots with [`row` and `column` channels](https://vega.github.io/vega-lite/docs/encoding.html#facet), this represents the height of a single view.
+#' 
+#' __See also:__ The documentation for [width and height](https://vega.github.io/vega-lite/docs/size.html) contains more examples.
+#' @param name (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec_) Name of the visualization for later reference.
+#' @param padding (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec_) The default visualization padding, in pixels, from the edge of the visualization canvas to the data rectangle.  If a number, specifies padding for all sides.
+#' If an object, the value should have the format `{"left": 5, "top": 5, "right": 5, "bottom": 5}` to specify padding for each side of the visualization.
+#' 
+#' __Default value__: `5`
+#' @param projection (_TopLevelUnitSpec_) An object defining properties of geographic projection, which will be applied to `shape` path for `"geoshape"` marks
+#' and to `latitude` and `"longitude"` channels for other marks.
+#' 
+#' (_TopLevelLayerSpec_) An object defining properties of the geographic projection shared by underlying layers.
+#' @param spacing (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec_) The spacing in pixels between sub-views of the composition operator.
+#' An object of the form `{"row": number, "column": number}` can be used to set
+#' different spacing values for rows and columns.
+#' 
+#' __Default value__: Depends on `"spacing"` property of [the view composition configuration](https://vega.github.io/vega-lite/docs/config.html#view-config) (`20` by default)
+#' 
+#' (_TopLevelVConcatSpec, TopLevelHConcatSpec_) The spacing in pixels between sub-views of the concat operator.
+#' 
+#' __Default value__: `10`
+#' @param title (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec_) Title for the plot.
+#' @param usermeta (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec_) Optional metadata that will be passed to Vega.
+#' This object is completely ignored by Vega and Vega-Lite and can be used for custom metadata.
+#' @param view (_TopLevelUnitSpec, TopLevelLayerSpec_) An object defining the view background's fill and stroke.
+#' 
+#' __Default value:__ none (transparent)
+#' @param width (_TopLevelUnitSpec, TopLevelLayerSpec_) The width of a visualization.
+#' 
+#' __Default value:__ This will be determined by the following rules:
+#' 
+#' - If a view's [`autosize`](https://vega.github.io/vega-lite/docs/size.html#autosize) type is `"fit"` or its x-channel has a [continuous scale](https://vega.github.io/vega-lite/docs/scale.html#continuous), the width will be the value of [`config.view.width`](https://vega.github.io/vega-lite/docs/spec.html#config).
+#' - For x-axis with a band or point scale: if [`rangeStep`](https://vega.github.io/vega-lite/docs/scale.html#band) is a numeric value or unspecified, the width is [determined by the range step, paddings, and the cardinality of the field mapped to x-channel](https://vega.github.io/vega-lite/docs/scale.html#band).   Otherwise, if the `rangeStep` is `null`, the width will be the value of [`config.view.width`](https://vega.github.io/vega-lite/docs/spec.html#config).
+#' - If no field is mapped to `x` channel, the `width` will be the value of [`config.scale.textXRangeStep`](https://vega.github.io/vega-lite/docs/size.html#default-width-and-height) for `text` mark and the value of `rangeStep` for other marks.
+#' 
+#' __Note:__ For plots with [`row` and `column` channels](https://vega.github.io/vega-lite/docs/encoding.html#facet), this represents the width of a single view.
+#' 
+#' __See also:__ The documentation for [width and height](https://vega.github.io/vega-lite/docs/size.html) contains more examples.
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_add_properties <- function(spec, align = NULL, autosize = NULL, background = NULL, bounds = NULL, center = NULL, columns = NULL, datasets = NULL, description = NULL, height = NULL, name = NULL, padding = NULL, projection = NULL, spacing = NULL, title = NULL, usermeta = NULL, view = NULL, width = NULL){
+  args <- .modify_args(NULL, c("$schema", "align", "autosize", "background", "bounds", "center", "columns", 
+  "config", "data", "datasets", "description", "encoding", "height", "mark", "name", 
+  "padding", "projection", "resolve", "selection", "spacing", "title", "transform", 
+  "usermeta", "view", "width", "facet", "spec", "layer", "repeat", "concat", "vconcat", 
+  "hconcat"))
+  .add_properties(args$spec, args$object, '#/definitions/TopLevelSpec')
+} #' vl_add_data
 #'
 #' Add data to a vega-lite spec
 #' @param spec An input vega-lite spec
@@ -158,7 +266,7 @@ vl_chart <- function(data = NULL, `$schema` = vegawidget::vega_schema(), align =
 #' @export
 vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = NULL, sequence = NULL, sphere = NULL, graticule = NULL){
   args <- .modify_args(NULL, c("format", "name", "url", "values", "sequence", "sphere", "graticule"))
-  .add_data(args$spec, args$object, '#/definitions/Data', args$extra)
+  .add_data(args$spec, args$object, '#/definitions/Data')
 } #' vl_mark_area
 #'
 #'
@@ -316,7 +424,7 @@ vl_mark_area <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
   "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef', args$extra)
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
 } #' vl_mark_bar
 #'
 #'
@@ -474,7 +582,7 @@ vl_mark_bar <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSp
   "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef', args$extra)
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
 } #' vl_mark_line
 #'
 #'
@@ -632,7 +740,7 @@ vl_mark_line <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
   "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef', args$extra)
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
 } #' vl_mark_trail
 #'
 #'
@@ -790,7 +898,7 @@ vl_mark_trail <- function(spec, align = NULL, angle = NULL, baseline = NULL, bin
   "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef', args$extra)
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
 } #' vl_mark_point
 #'
 #'
@@ -948,7 +1056,7 @@ vl_mark_point <- function(spec, align = NULL, angle = NULL, baseline = NULL, bin
   "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef', args$extra)
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
 } #' vl_mark_text
 #'
 #'
@@ -1106,7 +1214,7 @@ vl_mark_text <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
   "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef', args$extra)
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
 } #' vl_mark_tick
 #'
 #'
@@ -1264,7 +1372,7 @@ vl_mark_tick <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
   "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef', args$extra)
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
 } #' vl_mark_rect
 #'
 #'
@@ -1422,7 +1530,7 @@ vl_mark_rect <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
   "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef', args$extra)
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
 } #' vl_mark_rule
 #'
 #'
@@ -1580,7 +1688,7 @@ vl_mark_rule <- function(spec, align = NULL, angle = NULL, baseline = NULL, binS
   "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef', args$extra)
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
 } #' vl_mark_circle
 #'
 #'
@@ -1738,7 +1846,7 @@ vl_mark_circle <- function(spec, align = NULL, angle = NULL, baseline = NULL, bi
   "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef', args$extra)
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
 } #' vl_mark_square
 #'
 #'
@@ -1896,7 +2004,7 @@ vl_mark_square <- function(spec, align = NULL, angle = NULL, baseline = NULL, bi
   "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef', args$extra)
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
 } #' vl_mark_geoshape
 #'
 #'
@@ -2054,7 +2162,7 @@ vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, baseline = NULL, 
   "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
   "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
   "yOffset"))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef', args$extra)
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
 } #' vl_mark_boxplot
 #'
 #'
@@ -2085,7 +2193,7 @@ vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, baseline = NULL, 
 vl_mark_boxplot <- function(spec, box = NULL, clip = NULL, color = NULL, extent = NULL, median = NULL, opacity = NULL, orient = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL, type = NULL){
   args <- .modify_args(list(type = "boxplot"), c("box", "clip", "color", "extent", "median", "opacity", "orient", "outliers", 
   "rule", "size", "ticks", "type"))
-  .add_mark(args$spec, args$object, '#/definitions/BoxPlotDef', args$extra)
+  .add_mark(args$spec, args$object, '#/definitions/BoxPlotDef')
 } #' vl_mark_errorbar
 #'
 #'
@@ -2111,7 +2219,7 @@ vl_mark_boxplot <- function(spec, box = NULL, clip = NULL, color = NULL, extent 
 #' @export
 vl_mark_errorbar <- function(spec, clip = NULL, color = NULL, extent = NULL, opacity = NULL, orient = NULL, rule = NULL, ticks = NULL, type = NULL){
   args <- .modify_args(list(type = "errorbar"), c("clip", "color", "extent", "opacity", "orient", "rule", "ticks", "type"))
-  .add_mark(args$spec, args$object, '#/definitions/ErrorBarDef', args$extra)
+  .add_mark(args$spec, args$object, '#/definitions/ErrorBarDef')
 } #' vl_mark_errorband
 #'
 #'
@@ -2153,7 +2261,7 @@ vl_mark_errorbar <- function(spec, clip = NULL, color = NULL, extent = NULL, opa
 vl_mark_errorband <- function(spec, band = NULL, borders = NULL, clip = NULL, color = NULL, extent = NULL, interpolate = NULL, opacity = NULL, orient = NULL, tension = NULL, type = NULL){
   args <- .modify_args(list(type = "errorband"), c("band", "borders", "clip", "color", "extent", "interpolate", "opacity", "orient", 
   "tension", "type"))
-  .add_mark(args$spec, args$object, '#/definitions/ErrorBandDef', args$extra)
+  .add_mark(args$spec, args$object, '#/definitions/ErrorBandDef')
 } #' vl_encode_color
 #'
 #' Add encoding for color to a vega-lite spec.
@@ -2237,7 +2345,7 @@ vl_mark_errorband <- function(spec, band = NULL, borders = NULL, clip = NULL, co
 vl_encode_color <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/color', args$extra, encoding = "color")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/color' , encoding = "color")
 } #' vl_encode_detail
 #'
 #' Add encoding for detail to a vega-lite spec.
@@ -2290,7 +2398,7 @@ vl_encode_color <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' @export
 vl_encode_detail <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/detail', args$extra, encoding = "detail")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/detail' , encoding = "detail")
 } #' vl_encode_fill
 #'
 #' Add encoding for fill to a vega-lite spec.
@@ -2374,7 +2482,7 @@ vl_encode_detail <- function(spec, field = NULL, type = NULL, aggregate = NULL, 
 vl_encode_fill <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/fill', args$extra, encoding = "fill")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/fill' , encoding = "fill")
 } #' vl_encode_fillOpacity
 #'
 #' Add encoding for fillOpacity to a vega-lite spec.
@@ -2458,7 +2566,7 @@ vl_encode_fill <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/fillOpacity', args$extra, encoding = "fillOpacity")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/fillOpacity' , encoding = "fillOpacity")
 } #' vl_encode_href
 #'
 #' Add encoding for href to a vega-lite spec.
@@ -2532,7 +2640,7 @@ vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = N
 vl_encode_href <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/href', args$extra, encoding = "href")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/href' , encoding = "href")
 } #' vl_encode_key
 #'
 #' Add encoding for key to a vega-lite spec.
@@ -2585,7 +2693,7 @@ vl_encode_href <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' @export
 vl_encode_key <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/key', args$extra, encoding = "key")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/key' , encoding = "key")
 } #' vl_encode_latitude
 #'
 #' Add encoding for latitude to a vega-lite spec.
@@ -2639,7 +2747,7 @@ vl_encode_key <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin
 #' @export
 vl_encode_latitude <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/latitude', args$extra, encoding = "latitude")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/latitude' , encoding = "latitude")
 } #' vl_encode_latitude2
 #'
 #' Add encoding for latitude2 to a vega-lite spec.
@@ -2681,7 +2789,7 @@ vl_encode_latitude <- function(spec, field = NULL, type = NULL, aggregate = NULL
 #' @export
 vl_encode_latitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/latitude2', args$extra, encoding = "latitude2")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/latitude2' , encoding = "latitude2")
 } #' vl_encode_longitude
 #'
 #' Add encoding for longitude to a vega-lite spec.
@@ -2735,7 +2843,7 @@ vl_encode_latitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL
 #' @export
 vl_encode_longitude <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/longitude', args$extra, encoding = "longitude")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/longitude' , encoding = "longitude")
 } #' vl_encode_longitude2
 #'
 #' Add encoding for longitude2 to a vega-lite spec.
@@ -2777,7 +2885,7 @@ vl_encode_longitude <- function(spec, field = NULL, type = NULL, aggregate = NUL
 #' @export
 vl_encode_longitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/longitude2', args$extra, encoding = "longitude2")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/longitude2' , encoding = "longitude2")
 } #' vl_encode_opacity
 #'
 #' Add encoding for opacity to a vega-lite spec.
@@ -2861,7 +2969,7 @@ vl_encode_longitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NUL
 vl_encode_opacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/opacity', args$extra, encoding = "opacity")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/opacity' , encoding = "opacity")
 } #' vl_encode_order
 #'
 #' Add encoding for order to a vega-lite spec.
@@ -2916,7 +3024,7 @@ vl_encode_opacity <- function(spec, field = NULL, type = NULL, aggregate = NULL,
 #' @export
 vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "sort", "timeUnit", "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/order', args$extra, encoding = "order")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/order' , encoding = "order")
 } #' vl_encode_shape
 #'
 #' Add encoding for shape to a vega-lite spec.
@@ -3000,7 +3108,7 @@ vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 vl_encode_shape <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/shape', args$extra, encoding = "shape")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/shape' , encoding = "shape")
 } #' vl_encode_size
 #'
 #' Add encoding for size to a vega-lite spec.
@@ -3084,7 +3192,7 @@ vl_encode_shape <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 vl_encode_size <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/size', args$extra, encoding = "size")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/size' , encoding = "size")
 } #' vl_encode_stroke
 #'
 #' Add encoding for stroke to a vega-lite spec.
@@ -3168,7 +3276,7 @@ vl_encode_size <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 vl_encode_stroke <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/stroke', args$extra, encoding = "stroke")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/stroke' , encoding = "stroke")
 } #' vl_encode_strokeOpacity
 #'
 #' Add encoding for strokeOpacity to a vega-lite spec.
@@ -3252,7 +3360,7 @@ vl_encode_stroke <- function(spec, field = NULL, type = NULL, aggregate = NULL, 
 vl_encode_strokeOpacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/strokeOpacity', args$extra, encoding = "strokeOpacity")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/strokeOpacity' , encoding = "strokeOpacity")
 } #' vl_encode_strokeWidth
 #'
 #' Add encoding for strokeWidth to a vega-lite spec.
@@ -3336,7 +3444,7 @@ vl_encode_strokeOpacity <- function(spec, field = NULL, type = NULL, aggregate =
 vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/strokeWidth', args$extra, encoding = "strokeWidth")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/strokeWidth' , encoding = "strokeWidth")
 } #' vl_encode_text
 #'
 #' Add encoding for text to a vega-lite spec.
@@ -3410,7 +3518,7 @@ vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = N
 vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/text', args$extra, encoding = "text")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/text' , encoding = "text")
 } #' vl_encode_tooltip
 #'
 #' Add encoding for tooltip to a vega-lite spec.
@@ -3484,7 +3592,7 @@ vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 vl_encode_tooltip <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/tooltip', args$extra, encoding = "tooltip")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/tooltip' , encoding = "tooltip")
 } #' vl_encode_x
 #'
 #' Add encoding for x to a vega-lite spec.
@@ -3579,7 +3687,7 @@ vl_encode_tooltip <- function(spec, field = NULL, type = NULL, aggregate = NULL,
 vl_encode_x <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "axis", "bin", "field", "impute", "scale", "sort", "stack", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/x', args$extra, encoding = "x")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/x' , encoding = "x")
 } #' vl_encode_x2
 #'
 #' Add encoding for x2 to a vega-lite spec.
@@ -3621,7 +3729,7 @@ vl_encode_x <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis 
 #' @export
 vl_encode_x2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/x2', args$extra, encoding = "x2")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/x2' , encoding = "x2")
 } #' vl_encode_xError
 #'
 #' Add encoding for xError to a vega-lite spec.
@@ -3663,7 +3771,7 @@ vl_encode_x2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeU
 #' @export
 vl_encode_xError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/xError', args$extra, encoding = "xError")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/xError' , encoding = "xError")
 } #' vl_encode_xError2
 #'
 #' Add encoding for xError2 to a vega-lite spec.
@@ -3705,7 +3813,7 @@ vl_encode_xError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, t
 #' @export
 vl_encode_xError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/xError2', args$extra, encoding = "xError2")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/xError2' , encoding = "xError2")
 } #' vl_encode_y
 #'
 #' Add encoding for y to a vega-lite spec.
@@ -3800,7 +3908,7 @@ vl_encode_xError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, 
 vl_encode_y <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "axis", "bin", "field", "impute", "scale", "sort", "stack", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/y', args$extra, encoding = "y")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/y' , encoding = "y")
 } #' vl_encode_y2
 #'
 #' Add encoding for y2 to a vega-lite spec.
@@ -3842,7 +3950,7 @@ vl_encode_y <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis 
 #' @export
 vl_encode_y2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/y2', args$extra, encoding = "y2")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/y2' , encoding = "y2")
 } #' vl_encode_yError
 #'
 #' Add encoding for yError to a vega-lite spec.
@@ -3884,7 +3992,7 @@ vl_encode_y2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeU
 #' @export
 vl_encode_yError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/yError', args$extra, encoding = "yError")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/yError' , encoding = "yError")
 } #' vl_encode_yError2
 #'
 #' Add encoding for yError2 to a vega-lite spec.
@@ -3926,7 +4034,7 @@ vl_encode_yError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, t
 #' @export
 vl_encode_yError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/yError2', args$extra, encoding = "yError2")
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/yError2' , encoding = "yError2")
 } #' vl_make_Color
 #' 
 #' Create spec for Color.
@@ -5739,4 +5847,1944 @@ vl_make_YError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit
   args_eval <- lapply(args_in,eval, env = rlang::current_env())
   args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_out
+}
+ #' vl_aggregate
+#'
+#' Add AggregateTransform to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param aggregate (_AggregateTransform_) Array of objects that define fields to aggregate.
+#' @param groupby (_AggregateTransform_) The data fields to group by. If not specified, a single group containing all data objects will be used.
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_aggregate <- function(spec, aggregate = NULL, groupby = NULL){
+  args <- .modify_args(NULL, c("aggregate", "groupby"))
+  .add_transform(args$spec, args$object, '#/definitions/AggregateTransform')
+} #' vl_bin
+#'
+#' Add BinTransform to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param as (_BinTransform_) The output fields at which to write the start and end bin values.
+#' @param bin (_BinTransform_) An object indicating bin properties, or simply `true` for using default bin parameters.
+#' @param field (_BinTransform_) The data field to bin.
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_bin <- function(spec, as = NULL, bin = NULL, field = NULL){
+  args <- .modify_args(NULL, c("as", "bin", "field"))
+  .add_transform(args$spec, args$object, '#/definitions/BinTransform')
+} #' vl_calculate
+#'
+#' Add CalculateTransform to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param as (_CalculateTransform_) The field for storing the computed formula value.
+#' @param calculate (_CalculateTransform_) A [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string. Use the variable `datum` to refer to the current data object.
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_calculate <- function(spec, as = NULL, calculate = NULL){
+  args <- .modify_args(NULL, c("as", "calculate"))
+  .add_transform(args$spec, args$object, '#/definitions/CalculateTransform')
+} #' vl_filter
+#'
+#' Add FilterTransform to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param filter (_FilterTransform_) The `filter` property must be one of the predicate definitions:
+#' 
+#' 1) an [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string,
+#' where `datum` can be used to refer to the current data object
+#' 
+#' 2) one of the field predicates: [`equal`](https://vega.github.io/vega-lite/docs/filter.html#equal-predicate),
+#' [`lt`](https://vega.github.io/vega-lite/docs/filter.html#lt-predicate),
+#' [`lte`](https://vega.github.io/vega-lite/docs/filter.html#lte-predicate),
+#' [`gt`](https://vega.github.io/vega-lite/docs/filter.html#gt-predicate),
+#' [`gte`](https://vega.github.io/vega-lite/docs/filter.html#gte-predicate),
+#' [`range`](https://vega.github.io/vega-lite/docs/filter.html#range-predicate),
+#' [`oneOf`](https://vega.github.io/vega-lite/docs/filter.html#one-of-predicate),
+#' or [`valid`](https://vega.github.io/vega-lite/docs/filter.html#valid-predicate),
+#' 
+#' 3) a [selection predicate](https://vega.github.io/vega-lite/docs/filter.html#selection-predicate)
+#' 
+#' 4) a logical operand that combines (1), (2), or (3).
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_filter <- function(spec, filter = NULL){
+  args <- .modify_args(NULL, "filter")
+  .add_transform(args$spec, args$object, '#/definitions/FilterTransform')
+} #' vl_flatten
+#'
+#' Add FlattenTransform to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param as (_FlattenTransform_) The output field names for extracted array values.
+#' 
+#' __Default value:__ The field name of the corresponding array field
+#' @param flatten (_FlattenTransform_) An array of one or more data fields containing arrays to flatten.
+#' If multiple fields are specified, their array values should have a parallel structure, ideally with the same length.
+#' If the lengths of parallel arrays do not match,
+#' the longest array will be used with `null` values added for missing entries.
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_flatten <- function(spec, as = NULL, flatten = NULL){
+  args <- .modify_args(NULL, c("as", "flatten"))
+  .add_transform(args$spec, args$object, '#/definitions/FlattenTransform')
+} #' vl_fold
+#'
+#' Add FoldTransform to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param as (_FoldTransform_) The output field names for the key and value properties produced by the fold transform.
+#' __Default value:__ `["key", "value"]`
+#' @param fold (_FoldTransform_) An array of data fields indicating the properties to fold.
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_fold <- function(spec, as = NULL, fold = NULL){
+  args <- .modify_args(NULL, c("as", "fold"))
+  .add_transform(args$spec, args$object, '#/definitions/FoldTransform')
+} #' vl_impute
+#'
+#' Add ImputeTransform to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param frame (_ImputeTransform_) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
+#' 
+#' __Default value:__:  `[null, null]` indicating that the window includes all objects.
+#' @param groupby (_ImputeTransform_) An optional array of fields by which to group the values.
+#' Imputation will then be performed on a per-group basis.
+#' @param impute (_ImputeTransform_) The data field for which the missing values should be imputed.
+#' @param key (_ImputeTransform_) A key field that uniquely identifies data objects within a group.
+#' Missing key values (those occurring in the data but not in the current group) will be imputed.
+#' @param keyvals (_ImputeTransform_) Defines the key values that should be considered for imputation.
+#' An array of key values or an object defining a [number sequence](https://vega.github.io/vega-lite/docs/impute.html#sequence-def).
+#' 
+#' If provided, this will be used in addition to the key values observed within the input data.  If not provided, the values will be derived from all unique values of the `key` field. For `impute` in `encoding`, the key field is the x-field if the y-field is imputed, or vice versa.
+#' 
+#' If there is no impute grouping, this property _must_ be specified.
+#' @param method (_ImputeTransform_) The imputation method to use for the field value of imputed data objects.
+#' One of `value`, `mean`, `median`, `max` or `min`.
+#' 
+#' __Default value:__  `"value"`
+#' @param value (_ImputeTransform_) The field value to use when the imputation `method` is `"value"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_impute <- function(spec, frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL){
+  args <- .modify_args(NULL, c("frame", "groupby", "impute", "key", "keyvals", "method", "value"))
+  .add_transform(args$spec, args$object, '#/definitions/ImputeTransform')
+} #' vl_joinaggregate
+#'
+#' Add JoinAggregateTransform to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param groupby (_JoinAggregateTransform_) The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group.
+#' @param joinaggregate (_JoinAggregateTransform_) The definition of the fields in the join aggregate, and what calculations to use.
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL){
+  args <- .modify_args(NULL, c("groupby", "joinaggregate"))
+  .add_transform(args$spec, args$object, '#/definitions/JoinAggregateTransform')
+} #' vl_lookup
+#'
+#' Add LookupTransform to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param as (_LookupTransform_) The field or fields for storing the computed formula value.
+#' If `from.fields` is specified, the transform will use the same names for `as`.
+#' If `from.fields` is not specified, `as` has to be a string and we put the whole object into the data under the specified name.
+#' @param default (_LookupTransform_) The default value to use if lookup fails.
+#' 
+#' __Default value:__ `null`
+#' @param from (_LookupTransform_) Secondary data reference.
+#' @param lookup (_LookupTransform_) Key in primary data source.
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_lookup <- function(spec, as = NULL, default = NULL, from = NULL, lookup = NULL){
+  args <- .modify_args(NULL, c("as", "default", "from", "lookup"))
+  .add_transform(args$spec, args$object, '#/definitions/LookupTransform')
+} #' vl_timeunit
+#'
+#' Add TimeUnitTransform to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param as (_TimeUnitTransform_) The output field to write the timeUnit value.
+#' @param field (_TimeUnitTransform_) The data field to apply time unit.
+#' @param timeUnit (_TimeUnitTransform_) The timeUnit.
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL){
+  args <- .modify_args(NULL, c("as", "field", "timeUnit"))
+  .add_transform(args$spec, args$object, '#/definitions/TimeUnitTransform')
+} #' vl_sample
+#'
+#' Add SampleTransform to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param sample (_SampleTransform_) The maximum number of data objects to include in the sample.
+#' 
+#' __Default value:__ `1000`
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_sample <- function(spec, sample = NULL){
+  args <- .modify_args(NULL, "sample")
+  .add_transform(args$spec, args$object, '#/definitions/SampleTransform')
+} #' vl_stack
+#'
+#' Add StackTransform to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param as (_StackTransform_) Output field names. This can be either a string or an array of strings with
+#' two elements denoting the name for the fields for stack start and stack end
+#' respectively.
+#' If a single string(eg."val") is provided, the end field will be "val_end".
+#' @param groupby (_StackTransform_) The data fields to group by.
+#' @param offset (_StackTransform_) Mode for stacking marks.
+#' __Default value:__ `"zero"`
+#' @param sort (_StackTransform_) Field that determines the order of leaves in the stacked charts.
+#' @param stack (_StackTransform_) The field which is stacked.
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL){
+  args <- .modify_args(NULL, c("as", "groupby", "offset", "sort", "stack"))
+  .add_transform(args$spec, args$object, '#/definitions/StackTransform')
+} #' vl_window
+#'
+#' Add WindowTransform to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param frame (_WindowTransform_) A frame specification as a two-element array indicating how the sliding window should proceed. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. The default value is `[null, 0]`, indicating that the sliding window includes the current object and all preceding objects. The value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object. Finally, `[null, null]` indicates that the window frame should always include all data objects. If you this frame and want to assign the same value to add objects, you can use the simpler [join aggregate transform](https://vega.github.io/vega-lite/docs/joinaggregate.html). The only operators affected are the aggregation operations and the `first_value`, `last_value`, and `nth_value` window operations. The other window operations are not affected by this.
+#' 
+#' __Default value:__:  `[null, 0]` (includes the current object and all preceding objects)
+#' @param groupby (_WindowTransform_) The data fields for partitioning the data objects into separate windows. If unspecified, all data points will be in a single window.
+#' @param ignorePeers (_WindowTransform_) Indicates if the sliding window frame should ignore peer values (data that are considered identical by the sort criteria). The default is false, causing the window frame to expand to include all peer values. If set to true, the window frame will be defined by offset values only. This setting only affects those operations that depend on the window frame, namely aggregation operations and the first_value, last_value, and nth_value window operations.
+#' 
+#' __Default value:__ `false`
+#' @param sort (_WindowTransform_) A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered “peer” values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to `true`).
+#' @param window (_WindowTransform_) The definition of the fields in the window, and what calculations to use.
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL){
+  args <- .modify_args(NULL, c("frame", "groupby", "ignorePeers", "sort", "window"))
+  .add_transform(args$spec, args$object, '#/definitions/WindowTransform')
+} #' vl_make_AggregateTransform
+#' 
+#' Create spec for AggregateTransform.
+#' @param aggregate (_AggregateTransform_) Array of objects that define fields to aggregate.
+#' @param groupby (_AggregateTransform_) The data fields to group by. If not specified, a single group containing all data objects will be used.
+#' @return A modified spec
+#' @export
+vl_make_AggregateTransform <- function(aggregate = NULL, groupby = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ #' vl_make_BinTransform
+#' 
+#' Create spec for BinTransform.
+#' @param as (_BinTransform_) The output fields at which to write the start and end bin values.
+#' @param bin (_BinTransform_) An object indicating bin properties, or simply `true` for using default bin parameters.
+#' @param field (_BinTransform_) The data field to bin.
+#' @return A modified spec
+#' @export
+vl_make_BinTransform <- function(as = NULL, bin = NULL, field = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ #' vl_make_CalculateTransform
+#' 
+#' Create spec for CalculateTransform.
+#' @param as (_CalculateTransform_) The field for storing the computed formula value.
+#' @param calculate (_CalculateTransform_) A [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string. Use the variable `datum` to refer to the current data object.
+#' @return A modified spec
+#' @export
+vl_make_CalculateTransform <- function(as = NULL, calculate = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ #' vl_make_FilterTransform
+#' 
+#' Create spec for FilterTransform.
+#' @param filter (_FilterTransform_) The `filter` property must be one of the predicate definitions:
+#' 
+#' 1) an [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string,
+#' where `datum` can be used to refer to the current data object
+#' 
+#' 2) one of the field predicates: [`equal`](https://vega.github.io/vega-lite/docs/filter.html#equal-predicate),
+#' [`lt`](https://vega.github.io/vega-lite/docs/filter.html#lt-predicate),
+#' [`lte`](https://vega.github.io/vega-lite/docs/filter.html#lte-predicate),
+#' [`gt`](https://vega.github.io/vega-lite/docs/filter.html#gt-predicate),
+#' [`gte`](https://vega.github.io/vega-lite/docs/filter.html#gte-predicate),
+#' [`range`](https://vega.github.io/vega-lite/docs/filter.html#range-predicate),
+#' [`oneOf`](https://vega.github.io/vega-lite/docs/filter.html#one-of-predicate),
+#' or [`valid`](https://vega.github.io/vega-lite/docs/filter.html#valid-predicate),
+#' 
+#' 3) a [selection predicate](https://vega.github.io/vega-lite/docs/filter.html#selection-predicate)
+#' 
+#' 4) a logical operand that combines (1), (2), or (3).
+#' @return A modified spec
+#' @export
+vl_make_FilterTransform <- function(filter = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ #' vl_make_FlattenTransform
+#' 
+#' Create spec for FlattenTransform.
+#' @param as (_FlattenTransform_) The output field names for extracted array values.
+#' 
+#' __Default value:__ The field name of the corresponding array field
+#' @param flatten (_FlattenTransform_) An array of one or more data fields containing arrays to flatten.
+#' If multiple fields are specified, their array values should have a parallel structure, ideally with the same length.
+#' If the lengths of parallel arrays do not match,
+#' the longest array will be used with `null` values added for missing entries.
+#' @return A modified spec
+#' @export
+vl_make_FlattenTransform <- function(as = NULL, flatten = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ #' vl_make_FoldTransform
+#' 
+#' Create spec for FoldTransform.
+#' @param as (_FoldTransform_) The output field names for the key and value properties produced by the fold transform.
+#' __Default value:__ `["key", "value"]`
+#' @param fold (_FoldTransform_) An array of data fields indicating the properties to fold.
+#' @return A modified spec
+#' @export
+vl_make_FoldTransform <- function(as = NULL, fold = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ #' vl_make_ImputeTransform
+#' 
+#' Create spec for ImputeTransform.
+#' @param frame (_ImputeTransform_) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
+#' 
+#' __Default value:__:  `[null, null]` indicating that the window includes all objects.
+#' @param groupby (_ImputeTransform_) An optional array of fields by which to group the values.
+#' Imputation will then be performed on a per-group basis.
+#' @param impute (_ImputeTransform_) The data field for which the missing values should be imputed.
+#' @param key (_ImputeTransform_) A key field that uniquely identifies data objects within a group.
+#' Missing key values (those occurring in the data but not in the current group) will be imputed.
+#' @param keyvals (_ImputeTransform_) Defines the key values that should be considered for imputation.
+#' An array of key values or an object defining a [number sequence](https://vega.github.io/vega-lite/docs/impute.html#sequence-def).
+#' 
+#' If provided, this will be used in addition to the key values observed within the input data.  If not provided, the values will be derived from all unique values of the `key` field. For `impute` in `encoding`, the key field is the x-field if the y-field is imputed, or vice versa.
+#' 
+#' If there is no impute grouping, this property _must_ be specified.
+#' @param method (_ImputeTransform_) The imputation method to use for the field value of imputed data objects.
+#' One of `value`, `mean`, `median`, `max` or `min`.
+#' 
+#' __Default value:__  `"value"`
+#' @param value (_ImputeTransform_) The field value to use when the imputation `method` is `"value"`.
+#' @return A modified spec
+#' @export
+vl_make_ImputeTransform <- function(frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ #' vl_make_JoinAggregateTransform
+#' 
+#' Create spec for JoinAggregateTransform.
+#' @param groupby (_JoinAggregateTransform_) The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group.
+#' @param joinaggregate (_JoinAggregateTransform_) The definition of the fields in the join aggregate, and what calculations to use.
+#' @return A modified spec
+#' @export
+vl_make_JoinAggregateTransform <- function(groupby = NULL, joinaggregate = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ #' vl_make_LookupTransform
+#' 
+#' Create spec for LookupTransform.
+#' @param as (_LookupTransform_) The field or fields for storing the computed formula value.
+#' If `from.fields` is specified, the transform will use the same names for `as`.
+#' If `from.fields` is not specified, `as` has to be a string and we put the whole object into the data under the specified name.
+#' @param default (_LookupTransform_) The default value to use if lookup fails.
+#' 
+#' __Default value:__ `null`
+#' @param from (_LookupTransform_) Secondary data reference.
+#' @param lookup (_LookupTransform_) Key in primary data source.
+#' @return A modified spec
+#' @export
+vl_make_LookupTransform <- function(as = NULL, default = NULL, from = NULL, lookup = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ #' vl_make_TimeUnitTransform
+#' 
+#' Create spec for TimeUnitTransform.
+#' @param as (_TimeUnitTransform_) The output field to write the timeUnit value.
+#' @param field (_TimeUnitTransform_) The data field to apply time unit.
+#' @param timeUnit (_TimeUnitTransform_) The timeUnit.
+#' @return A modified spec
+#' @export
+vl_make_TimeUnitTransform <- function(as = NULL, field = NULL, timeUnit = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ #' vl_make_SampleTransform
+#' 
+#' Create spec for SampleTransform.
+#' @param sample (_SampleTransform_) The maximum number of data objects to include in the sample.
+#' 
+#' __Default value:__ `1000`
+#' @return A modified spec
+#' @export
+vl_make_SampleTransform <- function(sample = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ #' vl_make_StackTransform
+#' 
+#' Create spec for StackTransform.
+#' @param as (_StackTransform_) Output field names. This can be either a string or an array of strings with
+#' two elements denoting the name for the fields for stack start and stack end
+#' respectively.
+#' If a single string(eg."val") is provided, the end field will be "val_end".
+#' @param groupby (_StackTransform_) The data fields to group by.
+#' @param offset (_StackTransform_) Mode for stacking marks.
+#' __Default value:__ `"zero"`
+#' @param sort (_StackTransform_) Field that determines the order of leaves in the stacked charts.
+#' @param stack (_StackTransform_) The field which is stacked.
+#' @return A modified spec
+#' @export
+vl_make_StackTransform <- function(as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ #' vl_make_WindowTransform
+#' 
+#' Create spec for WindowTransform.
+#' @param frame (_WindowTransform_) A frame specification as a two-element array indicating how the sliding window should proceed. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. The default value is `[null, 0]`, indicating that the sliding window includes the current object and all preceding objects. The value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object. Finally, `[null, null]` indicates that the window frame should always include all data objects. If you this frame and want to assign the same value to add objects, you can use the simpler [join aggregate transform](https://vega.github.io/vega-lite/docs/joinaggregate.html). The only operators affected are the aggregation operations and the `first_value`, `last_value`, and `nth_value` window operations. The other window operations are not affected by this.
+#' 
+#' __Default value:__:  `[null, 0]` (includes the current object and all preceding objects)
+#' @param groupby (_WindowTransform_) The data fields for partitioning the data objects into separate windows. If unspecified, all data points will be in a single window.
+#' @param ignorePeers (_WindowTransform_) Indicates if the sliding window frame should ignore peer values (data that are considered identical by the sort criteria). The default is false, causing the window frame to expand to include all peer values. If set to true, the window frame will be defined by offset values only. This setting only affects those operations that depend on the window frame, namely aggregation operations and the first_value, last_value, and nth_value window operations.
+#' 
+#' __Default value:__ `false`
+#' @param sort (_WindowTransform_) A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered “peer” values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to `true`).
+#' @param window (_WindowTransform_) The definition of the fields in the window, and what calculations to use.
+#' @return A modified spec
+#' @export
+vl_make_WindowTransform <- function(frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL) {
+  args_in <- rlang::fn_fmls_syms()
+  args_eval <- lapply(args_in,eval, env = rlang::current_env())
+  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_out
+}
+ 
+#' Add bin to encoding
+#' 
+#' Add bin parameters to an encoding
+#' @param spec An input vega-lite spec
+#' @param anchor (_BinParams_) A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value
+#' @param base (_BinParams_) The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10`
+#' @param binned (_BinParams_) When set to true, Vega-Lite treats the input data as already binned.
+#' @param divide (_BinParams_) Scale factors indicating allowable subdivisions. The default value is \[5, 2\], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]`
+#' @param extent (_BinParams_) A two-element (`[min, max]`) array indicating the range of desired bin values.
+#' @param maxbins (_BinParams_) Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels
+#' @param minstep (_BinParams_) A minimum allowable step size (particularly useful for integer values).
+#' @param nice (_BinParams_) If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten.
+#' @param step (_BinParams_) An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored.
+#' @param steps (_BinParams_) An array of allowable step sizes to choose from.
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name bin_encoding
+ 
+#' @name bin_encoding
+#' @export
+vl_bin_color <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "color")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_detail <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "detail")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_fill <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "fill")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_fillOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "fillOpacity")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_href <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "href")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_key <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "key")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_latitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "latitude")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_latitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "latitude2")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_longitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "longitude")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_longitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "longitude2")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_opacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "opacity")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_order <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "order")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_shape <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "shape")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_size <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "size")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_stroke <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "stroke")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_strokeOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "strokeOpacity")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_strokeWidth <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "strokeWidth")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_text <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "text")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_tooltip <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "tooltip")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_x <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "x")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_x2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "x2")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_xError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "xError")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_xError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "xError2")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_y <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "y")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_y2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "y2")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_yError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "yError")
+} 
+#' @name bin_encoding
+#' @export
+vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "yError2")
+} 
+#' Add impute to encoding
+#' 
+#' Add impute parameters to an encoding
+#' @param spec An input vega-lite spec
+#' @param frame (_ImputeParams_) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
+#' 
+#' __Default value:__:  `[null, null]` indicating that the window includes all objects.
+#' @param keyvals (_ImputeParams_) Defines the key values that should be considered for imputation.
+#' An array of key values or an object defining a [number sequence](https://vega.github.io/vega-lite/docs/impute.html#sequence-def).
+#' 
+#' If provided, this will be used in addition to the key values observed within the input data.  If not provided, the values will be derived from all unique values of the `key` field. For `impute` in `encoding`, the key field is the x-field if the y-field is imputed, or vice versa.
+#' 
+#' If there is no impute grouping, this property _must_ be specified.
+#' @param method (_ImputeParams_) The imputation method to use for the field value of imputed data objects.
+#' One of `value`, `mean`, `median`, `max` or `min`.
+#' 
+#' __Default value:__  `"value"`
+#' @param value (_ImputeParams_) The field value to use when the imputation `method` is `"value"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name impute_encoding
+ 
+#' @name impute_encoding
+#' @export
+vl_impute_x <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL){
+  args <- .modify_args(NULL, c("frame", "keyvals", "method", "value"))
+  .add_impute_to_encoding(args$spec, args$object, '#/definitions/ImputeParams' , encoding = "x")
+} 
+#' @name impute_encoding
+#' @export
+vl_impute_y <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL){
+  args <- .modify_args(NULL, c("frame", "keyvals", "method", "value"))
+  .add_impute_to_encoding(args$spec, args$object, '#/definitions/ImputeParams' , encoding = "y")
+} 
+#' Add axis to encoding
+#' 
+#' Add axis parameters to an encoding
+#' @param spec An input vega-lite spec
+#' @param bandPosition (_Axis_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
+#' 
+#'   __Default value:__ `0.5`
+#' @param domain (_Axis_) A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.
+#' 
+#' __Default value:__ `true`
+#' @param domainColor (_Axis_) Color of axis domain line.
+#' 
+#' __Default value:__ `"gray"`.
+#' @param domainDash (_Axis_) An array of alternating \[stroke, space\] lengths for dashed domain lines.
+#' @param domainDashOffset (_Axis_) The pixel offset at which to start drawing with the domain dash array.
+#' @param domainOpacity (_Axis_) Opacity of the axis domain line.
+#' @param domainWidth (_Axis_) Stroke width of axis domain line
+#' 
+#' __Default value:__ `1`
+#' @param format (_Axis_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+#' 
+#' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
+#' - If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
+#' 
+#' __Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format.
+#' @param formatType (_Axis_) The format type for labels (`"number"` or `"time"`).
+#' 
+#' __Default value:__
+#' - `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
+#' - `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`.
+#' @param grid (_Axis_) A boolean flag indicating if grid lines should be included as part of the axis
+#' 
+#' __Default value:__ `true` for [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous) that are not binned; otherwise, `false`.
+#' @param gridColor (_Axis_) Color of gridlines.
+#' 
+#' __Default value:__ `"lightGray"`.
+#' @param gridDash (_Axis_) An array of alternating \[stroke, space\] lengths for dashed grid lines.
+#' @param gridDashOffset (_Axis_) The pixel offset at which to start drawing with the grid dash array.
+#' @param gridOpacity (_Axis_) The stroke opacity of grid (value between \[0,1\])
+#' 
+#' __Default value:__ `1`
+#' @param gridWidth (_Axis_) The grid width, in pixels.
+#' 
+#' __Default value:__ `1`
+#' @param labelAlign (_Axis_) Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation.
+#' @param labelAngle (_Axis_) The rotation angle of the axis labels.
+#' 
+#' __Default value:__ `-90` for nominal and ordinal fields; `0` otherwise.
+#' @param labelBaseline (_Axis_) Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' @param labelBound (_Axis_) Indicates if labels should be hidden if they exceed the axis range. If `false` (the default) no bounds overlap analysis is performed. If `true`, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.
+#' 
+#' __Default value:__ `false`.
+#' @param labelColor (_Axis_) The color of the tick label, can be in hex color code or regular color name.
+#' @param labelFlush (_Axis_) Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `true` for axis of a continuous x-scale. Otherwise, `false`.
+#' @param labelFlushOffset (_Axis_) Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of `2` will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `0`.
+#' @param labelFont (_Axis_) The font of the tick label.
+#' @param labelFontSize (_Axis_) The font size of the label, in pixels.
+#' @param labelFontStyle (_Axis_) Font style of the title.
+#' @param labelFontWeight (_Axis_) Font weight of axis tick labels.
+#' @param labelLimit (_Axis_) Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `180`
+#' @param labelOpacity (_Axis_) The opacity of the labels.
+#' @param labelOverlap (_Axis_) The strategy to use for resolving overlap of axis labels. If `false` (the default), no overlap reduction is attempted. If set to `true` or `"parity"`, a strategy of removing every other label is used (this works well for standard linear axes). If set to `"greedy"`, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true` for non-nominal fields with non-log scales; `"greedy"` for log scales; otherwise `false`.
+#' @param labelPadding (_Axis_) The padding, in pixels, between axis and text labels.
+#' 
+#' __Default value:__ `2`
+#' @param labelSeparation (_Axis_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param labels (_Axis_) A boolean flag indicating if labels should be included as part of the axis.
+#' 
+#' __Default value:__ `true`.
+#' @param maxExtent (_Axis_) The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.
+#' 
+#' __Default value:__ `undefined`.
+#' @param minExtent (_Axis_) The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.
+#' 
+#' __Default value:__ `30` for y-axis; `undefined` for x-axis.
+#' @param offset (_Axis_) The offset, in pixels, by which to displace the axis from the edge of the enclosing group or data rectangle.
+#' 
+#' __Default value:__ derived from the [axis config](https://vega.github.io/vega-lite/docs/config.html#facet-scale-config)'s `offset` (`0` by default)
+#' @param orient (_Axis_) The orientation of the axis. One of `"top"`, `"bottom"`, `"left"` or `"right"`. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).
+#' 
+#' __Default value:__ `"bottom"` for x-axes and `"left"` for y-axes.
+#' @param position (_Axis_) The anchor position of the axis in pixels. For x-axes with top or bottom orientation, this sets the axis group x coordinate. For y-axes with left or right orientation, this sets the axis group y coordinate.
+#' 
+#' __Default value__: `0`
+#' @param tickColor (_Axis_) The color of the axis's tick.
+#' 
+#' __Default value:__ `"gray"`
+#' @param tickCount (_Axis_) A desired number of ticks, for axes visualizing quantitative scales. The resulting number may be different so that values are "nice" (multiples of 2, 5, 10) and lie within the underlying scale's range.
+#' @param tickDash (_Axis_) An array of alternating \[stroke, space\] lengths for dashed tick mark lines.
+#' @param tickDashOffset (_Axis_) The pixel offset at which to start drawing with the tick mark dash array.
+#' @param tickExtra (_Axis_) Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for `band` scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with `"bandPosition": 1` and an axis `"padding"` value of `0`.
+#' @param tickMinStep (_Axis_) The minimum desired step between axis ticks, in terms of scale domain values. For example, a value of `1` indicates that ticks should not be less than 1 unit apart. If `tickMinStep` is specified, the `tickCount` value will be adjusted, if necessary, to enforce the minimum step value.
+#' 
+#' __Default value__: `undefined`
+#' @param tickOffset (_Axis_) Position offset in pixels to apply to ticks, labels, and gridlines.
+#' @param tickOpacity (_Axis_) Opacity of the ticks.
+#' @param tickRound (_Axis_) Boolean flag indicating if pixel position values should be rounded to the nearest integer.
+#' 
+#' __Default value:__ `true`
+#' @param tickSize (_Axis_) The size in pixels of axis ticks.
+#' 
+#' __Default value:__ `5`
+#' @param tickWidth (_Axis_) The width, in pixels, of ticks.
+#' 
+#' __Default value:__ `1`
+#' @param ticks (_Axis_) Boolean value that determines whether the axis should include ticks.
+#' 
+#' __Default value:__ `true`
+#' @param title (_Axis_) A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
+#' @param titleAlign (_Axis_) Horizontal text alignment of axis titles.
+#' @param titleAnchor (_Axis_) Text anchor position for placing axis titles.
+#' @param titleAngle (_Axis_) Angle in degrees of axis titles.
+#' @param titleBaseline (_Axis_) Vertical text baseline for axis titles.
+#' @param titleColor (_Axis_) Color of the title, can be in hex color code or regular color name.
+#' @param titleFont (_Axis_) Font of the title. (e.g., `"Helvetica Neue"`).
+#' @param titleFontSize (_Axis_) Font size of the title.
+#' @param titleFontStyle (_Axis_) Font style of the title.
+#' @param titleFontWeight (_Axis_) Font weight of the title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_Axis_) Maximum allowed pixel width of axis titles.
+#' @param titleOpacity (_Axis_) Opacity of the axis title.
+#' @param titlePadding (_Axis_) The padding, in pixels, between title and axis.
+#' @param titleX (_Axis_) X-coordinate of the axis title relative to the axis group.
+#' @param titleY (_Axis_) Y-coordinate of the axis title relative to the axis group.
+#' @param values (_Axis_) Explicitly set the visible axis tick values.
+#' @param zindex (_Axis_) A non-positive integer indicating z-index of the axis.
+#' If zindex is 0, axes should be drawn behind all chart elements.
+#' To put them in front, use `"zindex = 1"`.
+#' 
+#' __Default value:__ `1` (in front of the marks) for actual axis and `0` (behind the marks) for grids.
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name axis_encoding
+ 
+#' @name axis_encoding
+#' @export
+vl_axis_x <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "format", "formatType", "grid", "gridColor", 
+  "gridDash", "gridDashOffset", "gridOpacity", "gridWidth", "labelAlign", "labelAngle", 
+  "labelBaseline", "labelBound", "labelColor", "labelFlush", "labelFlushOffset", 
+  "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", "labelLimit", 
+  "labelOpacity", "labelOverlap", "labelPadding", "labelSeparation", "labels", 
+  "maxExtent", "minExtent", "offset", "orient", "position", "tickColor", "tickCount", 
+  "tickDash", "tickDashOffset", "tickExtra", "tickMinStep", "tickOffset", "tickOpacity", 
+  "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", "titleAnchor", 
+  "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
+  "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", "titleX", "titleY", 
+  "values", "zindex"))
+  .add_axis_to_encoding(args$spec, args$object, '#/definitions/Axis' , encoding = "x")
+} 
+#' @name axis_encoding
+#' @export
+vl_axis_y <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "format", "formatType", "grid", "gridColor", 
+  "gridDash", "gridDashOffset", "gridOpacity", "gridWidth", "labelAlign", "labelAngle", 
+  "labelBaseline", "labelBound", "labelColor", "labelFlush", "labelFlushOffset", 
+  "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", "labelLimit", 
+  "labelOpacity", "labelOverlap", "labelPadding", "labelSeparation", "labels", 
+  "maxExtent", "minExtent", "offset", "orient", "position", "tickColor", "tickCount", 
+  "tickDash", "tickDashOffset", "tickExtra", "tickMinStep", "tickOffset", "tickOpacity", 
+  "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", "titleAnchor", 
+  "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
+  "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", "titleX", "titleY", 
+  "values", "zindex"))
+  .add_axis_to_encoding(args$spec, args$object, '#/definitions/Axis' , encoding = "y")
+} 
+#' Add scale to encoding
+#' 
+#' Add scale parameters to an encoding
+#' @param spec An input vega-lite spec
+#' @param base (_Scale_) The logarithm base of the `log` scale (default `10`).
+#' @param bins (_Scale_) An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels.
+#' @param clamp (_Scale_) If `true`, values that exceed the data domain are clamped to either the minimum or maximum range value
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `clamp` (`true` by default).
+#' @param constant (_Scale_) A constant determining the slope of the symlog function around zero. Only used for `symlog` scales.
+#' 
+#' __Default value:__ `1`
+#' @param domain (_Scale_) Customized domain values.
+#' 
+#' For _quantitative_ fields, `domain` can take the form of a two-element array with minimum and maximum values.  [Piecewise scales](https://vega.github.io/vega-lite/docs/scale.html#piecewise) can be created by providing a `domain` with more than two entries.
+#' If the input field is aggregated, `domain` can also be a string value `"unaggregated"`, indicating that the domain should include the raw data values prior to the aggregation.
+#' 
+#' For _temporal_ fields, `domain` can be a two-element array minimum and maximum values, in the form of either timestamps or the [DateTime definition objects](https://vega.github.io/vega-lite/docs/types.html#datetime).
+#' 
+#' For _ordinal_ and _nominal_ fields, `domain` can be an array that lists valid input values.
+#' 
+#' The `selection` property can be used to [interactively determine](https://vega.github.io/vega-lite/docs/selection.html#scale-domains) the scale domain.
+#' @param exponent (_Scale_) The exponent of the `pow` scale.
+#' @param interpolate (_Scale_) The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors (in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal values include `rgb`, `hsl`, `hsl-long`, `lab`, `hcl`, `hcl-long`, `cubehelix` and `cubehelix-long` ('-long' variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a string-valued _type_ property and an optional numeric _gamma_ property applicable to rgb and cubehelix interpolators. For more, see the [d3-interpolate documentation](https://github.com/d3/d3-interpolate).
+#' 
+#' * __Default value:__ `hcl`
+#' @param nice (_Scale_) Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of _\[0.201479…, 0.996679…\]_, a nice domain might be _\[0.2, 1.0\]_.
+#' 
+#' For quantitative scales such as linear, `nice` can be either a boolean flag or a number. If `nice` is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
+#' 
+#' For temporal fields with time and utc scales, the `nice` value can be a string indicating the desired time interval. Legal values are `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`. Alternatively, `time` and `utc` scales can accept an object-valued interval specifier of the form `{"interval": "month", "step": 3}`, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
+#' 
+#' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise.
+#' @param padding (_Scale_) For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+#' 
+#' For _[band](https://vega.github.io/vega-lite/docs/scale.html#band)_ scales, shortcut for setting `paddingInner` and `paddingOuter` to the same value.
+#' 
+#' For _[point](https://vega.github.io/vega-lite/docs/scale.html#point)_ scales, alias for `paddingOuter`.
+#' 
+#' __Default value:__ For _continuous_ scales, derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `continuousPadding`.
+#' For _band and point_ scales, see `paddingInner` and `paddingOuter`.
+#' @param paddingInner (_Scale_) The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range \[0,1\].
+#' 
+#' For point scale, this property is invalid as point scales do not have internal band widths (only step sizes between bands).
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingInner`.
+#' @param paddingOuter (_Scale_) The outer padding (spacing) at the ends of the range of band and point scales,
+#' as a fraction of the step size. This value must lie in the range \[0,1\].
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingOuter` for band scales and `pointPadding` for point scales.
+#' @param range (_Scale_) The range of the scale. One of:
+#' 
+#' - A string indicating a [pre-defined named scale range](https://vega.github.io/vega-lite/docs/scale.html#range-config) (e.g., example, `"symbol"`, or `"diverging"`).
+#' 
+#' - For [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous), two-element array indicating  minimum and maximum values, or an array with more than two entries for specifying a [piecewise scale](https://vega.github.io/vega-lite/docs/scale.html#piecewise).
+#' 
+#' - For [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) and [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales, an array of desired output values.
+#' 
+#' __Notes:__
+#' 
+#' 1) For color scales you can also specify a color [`scheme`](https://vega.github.io/vega-lite/docs/scale.html#scheme) instead of `range`.
+#' 
+#' 2) Any directly specified `range` for `x` and `y` channels will be ignored. Range can be customized via the view's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` and `height`) or via [range steps and paddings properties](#range-step) for [band](#band) and [point](#point) scales.
+#' @param rangeStep (_Scale_) The distance between the starts of adjacent bands or points in [band](https://vega.github.io/vega-lite/docs/scale.html#band) and [point](https://vega.github.io/vega-lite/docs/scale.html#point) scales.
+#' 
+#' If `rangeStep` is `null` or if the view contains the scale's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` for `x` scales and `height` for `y` scales), `rangeStep` will be automatically determined to fit the size of the view.
+#' 
+#' __Default value:__  derived the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `textXRangeStep` (`90` by default) for x-scales of `text` marks and `rangeStep` (`21` by default) for x-scales of other marks and y-scales.
+#' 
+#' __Warning__: If `rangeStep` is `null` and the cardinality of the scale's domain is higher than `width` or `height`, the rangeStep might become less than one pixel and the mark might not appear correctly.
+#' @param round (_Scale_) If `true`, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.
+#' 
+#' __Default value:__ `false`.
+#' @param scheme (_Scale_) A string indicating a color [scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme) name (e.g., `"category10"` or `"blues"`) or a [scheme parameter object](https://vega.github.io/vega-lite/docs/scale.html#scheme-params).
+#' 
+#' Discrete color schemes may be used with [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) or [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales. Continuous color schemes are intended for use with color scales.
+#' 
+#' For the full list of supported schemes, please refer to the [Vega Scheme](https://vega.github.io/vega/docs/schemes/#reference) reference.
+#' @param type (_Scale_) The type of scale.  Vega-Lite supports the following categories of scale types:
+#' 
+#' 1) [**Continuous Scales**](https://vega.github.io/vega-lite/docs/scale.html#continuous) -- mapping continuous domains to continuous output ranges ([`"linear"`](https://vega.github.io/vega-lite/docs/scale.html#linear), [`"pow"`](https://vega.github.io/vega-lite/docs/scale.html#pow), [`"sqrt"`](https://vega.github.io/vega-lite/docs/scale.html#sqrt), [`"symlog"`](https://vega.github.io/vega-lite/docs/scale.html#symlog), [`"log"`](https://vega.github.io/vega-lite/docs/scale.html#log), [`"time"`](https://vega.github.io/vega-lite/docs/scale.html#time), [`"utc"`](https://vega.github.io/vega-lite/docs/scale.html#utc).
+#' 
+#' 2) [**Discrete Scales**](https://vega.github.io/vega-lite/docs/scale.html#discrete) -- mapping discrete domains to discrete ([`"ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#ordinal)) or continuous ([`"band"`](https://vega.github.io/vega-lite/docs/scale.html#band) and [`"point"`](https://vega.github.io/vega-lite/docs/scale.html#point)) output ranges.
+#' 
+#' 3) [**Discretizing Scales**](https://vega.github.io/vega-lite/docs/scale.html#discretizing) -- mapping continuous domains to discrete output ranges [`"bin-ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal), [`"quantile"`](https://vega.github.io/vega-lite/docs/scale.html#quantile), [`"quantize"`](https://vega.github.io/vega-lite/docs/scale.html#quantize) and [`"threshold"`](https://vega.github.io/vega-lite/docs/scale.html#threshold).
+#' 
+#' __Default value:__ please see the [scale type table](https://vega.github.io/vega-lite/docs/scale.html#type).
+#' @param zero (_Scale_) If `true`, ensures that a zero baseline value is included in the scale domain.
+#' 
+#' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
+#' 
+#' __Note:__ Log, time, and utc scales do not support `zero`.
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name scale_encoding
+ 
+#' @name scale_encoding
+#' @export
+vl_scale_color <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "color")
+} 
+#' @name scale_encoding
+#' @export
+vl_scale_fill <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "fill")
+} 
+#' @name scale_encoding
+#' @export
+vl_scale_fillOpacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "fillOpacity")
+} 
+#' @name scale_encoding
+#' @export
+vl_scale_opacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "opacity")
+} 
+#' @name scale_encoding
+#' @export
+vl_scale_shape <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "shape")
+} 
+#' @name scale_encoding
+#' @export
+vl_scale_size <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "size")
+} 
+#' @name scale_encoding
+#' @export
+vl_scale_stroke <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "stroke")
+} 
+#' @name scale_encoding
+#' @export
+vl_scale_strokeOpacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "strokeOpacity")
+} 
+#' @name scale_encoding
+#' @export
+vl_scale_strokeWidth <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "strokeWidth")
+} 
+#' @name scale_encoding
+#' @export
+vl_scale_x <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "x")
+} 
+#' @name scale_encoding
+#' @export
+vl_scale_y <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "y")
+} 
+#' Add legend to encoding
+#' 
+#' Add legend parameters to an encoding
+#' @param spec An input vega-lite spec
+#' @param clipHeight (_Legend_) The height in pixels to clip symbol legend entries and limit their size.
+#' @param columnPadding (_Legend_) The horizontal padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `10`.
+#' @param columns (_Legend_) The number of columns in which to arrange symbol legend entries. A value of `0` or lower indicates a single row with one column per entry.
+#' @param cornerRadius (_Legend_) Corner radius for the full legend.
+#' @param direction (_Legend_) The direction of the legend, one of `"vertical"` or `"horizontal"`.
+#' 
+#' __Default value:__
+#' - For top-/bottom-`orient`ed legends, `"horizontal"`
+#' - For left-/right-`orient`ed legends, `"vertical"`
+#' - For top/bottom-left/right-`orient`ed legends, `"horizontal"` for gradient legends and `"vertical"` for symbol legends.
+#' @param fillColor (_Legend_) Background fill color for the full legend.
+#' @param format (_Legend_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+#' 
+#' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
+#' - If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
+#' 
+#' __Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format.
+#' @param formatType (_Legend_) The format type for labels (`"number"` or `"time"`).
+#' 
+#' __Default value:__
+#' - `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
+#' - `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`.
+#' @param gradientLength (_Legend_) The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+#' 
+#' __Default value:__ `200`.
+#' @param gradientOpacity (_Legend_) Opacity of the color gradient.
+#' @param gradientStrokeColor (_Legend_) The color of the gradient stroke, can be in hex color code or regular color name.
+#' 
+#' __Default value:__ `"lightGray"`.
+#' @param gradientStrokeWidth (_Legend_) The width of the gradient stroke, in pixels.
+#' 
+#' __Default value:__ `0`.
+#' @param gradientThickness (_Legend_) The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
+#' 
+#' __Default value:__ `16`.
+#' @param gridAlign (_Legend_) The alignment to apply to symbol legends rows and columns. The supported string values are `"all"`, `"each"` (the default), and `none`. For more information, see the [grid layout documentation](https://vega.github.io/vega/docs/layout).
+#' 
+#' __Default value:__ `"each"`.
+#' @param labelAlign (_Legend_) The alignment of the legend label, can be left, center, or right.
+#' @param labelBaseline (_Legend_) The position of the baseline of legend label, can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' 
+#' __Default value:__ `"middle"`.
+#' @param labelColor (_Legend_) The color of the legend label, can be in hex color code or regular color name.
+#' @param labelFont (_Legend_) The font of the legend label.
+#' @param labelFontSize (_Legend_) The font size of legend label.
+#' 
+#' __Default value:__ `10`.
+#' @param labelFontStyle (_Legend_) The font style of legend label.
+#' @param labelFontWeight (_Legend_) The font weight of legend label.
+#' @param labelLimit (_Legend_) Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `160`.
+#' @param labelOffset (_Legend_) The offset of the legend label.
+#' @param labelOpacity (_Legend_) Opacity of labels.
+#' @param labelOverlap (_Legend_) The strategy to use for resolving overlap of labels in gradient legends. If `false`, no overlap reduction is attempted. If set to `true` (default) or `"parity"`, a strategy of removing every other label is used. If set to `"greedy"`, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true`.
+#' @param labelPadding (_Legend_) Padding in pixels between the legend and legend labels.
+#' @param labelSeparation (_Legend_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param offset (_Legend_) The offset in pixels by which to displace the legend from the data rectangle and axes.
+#' 
+#' __Default value:__ `18`.
+#' @param orient (_Legend_) The orientation of the legend, which determines how the legend is positioned within the scene. One of `"left"`, `"right"`, `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"`, `"none"`.
+#' 
+#' __Default value:__ `"right"`
+#' @param padding (_Legend_) The padding between the border and content of the legend group.
+#' 
+#' __Default value:__ `0`.
+#' @param rowPadding (_Legend_) The vertical padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `2`.
+#' @param strokeColor (_Legend_) Border stroke color for the full legend.
+#' @param symbolDash (_Legend_) An array of alternating \[stroke, space\] lengths for dashed symbol strokes.
+#' @param symbolDashOffset (_Legend_) The pixel offset at which to start drawing with the symbol stroke dash array.
+#' @param symbolFillColor (_Legend_) The color of the legend symbol,
+#' @param symbolOffset (_Legend_) Horizontal pixel offset for legend symbols.
+#' 
+#' __Default value:__ `0`.
+#' @param symbolOpacity (_Legend_) Opacity of the legend symbols.
+#' @param symbolSize (_Legend_) The size of the legend symbol, in pixels.
+#' 
+#' __Default value:__ `100`.
+#' @param symbolStrokeColor (_Legend_) Stroke color for legend symbols.
+#' @param symbolStrokeWidth (_Legend_) The width of the symbol's stroke.
+#' 
+#' __Default value:__ `1.5`.
+#' @param symbolType (_Legend_) Default shape type (such as "circle") for legend symbols.
+#' Can be one of ``"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#'    * In addition to a set of built-in shapes, custom shapes can be defined using [SVG path strings](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths).
+#'    *
+#'    * __Default value:__ `"circle"`.
+#'    *
+#' @param tickCount (_Legend_) The desired number of tick values for quantitative legends.
+#' @param tickMinStep (_Legend_) The minimum desired step between legend ticks, in terms of scale domain values. For example, a value of `1` indicates that ticks should not be less than 1 unit apart. If `tickMinStep` is specified, the `tickCount` value will be adjusted, if necessary, to enforce the minimum step value.
+#' 
+#' __Default value__: `undefined`
+#' @param title (_Legend_) A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
+#' @param titleAlign (_Legend_) Horizontal text alignment for legend titles.
+#' 
+#' __Default value:__ `"left"`.
+#' @param titleAnchor (_Legend_) Text anchor position for placing legend titles.
+#' @param titleBaseline (_Legend_) Vertical text baseline for legend titles.
+#' 
+#' __Default value:__ `"top"`.
+#' @param titleColor (_Legend_) The color of the legend title, can be in hex color code or regular color name.
+#' @param titleFont (_Legend_) The font of the legend title.
+#' @param titleFontSize (_Legend_) The font size of the legend title.
+#' @param titleFontStyle (_Legend_) The font style of the legend title.
+#' @param titleFontWeight (_Legend_) The font weight of the legend title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_Legend_) Maximum allowed pixel width of axis titles.
+#' 
+#' __Default value:__ `180`.
+#' @param titleOpacity (_Legend_) Opacity of the legend title.
+#' @param titleOrient (_Legend_) Orientation of the legend title.
+#' @param titlePadding (_Legend_) The padding, in pixels, between title and legend.
+#' 
+#' __Default value:__ `5`.
+#' @param type (_Legend_) The type of the legend. Use `"symbol"` to create a discrete legend and `"gradient"` for a continuous color gradient.
+#' 
+#' __Default value:__ `"gradient"` for non-binned quantitative fields and temporal fields; `"symbol"` otherwise.
+#' @param values (_Legend_) Explicitly set the visible legend values.
+#' @param zindex (_Legend_) A non-positive integer indicating z-index of the legend.
+#' If zindex is 0, legend should be drawn behind all chart elements.
+#' To put them in front, use zindex = 1.
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name legend_encoding
+ 
+#' @name legend_encoding
+#' @export
+vl_legend_color <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "color")
+} 
+#' @name legend_encoding
+#' @export
+vl_legend_fill <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "fill")
+} 
+#' @name legend_encoding
+#' @export
+vl_legend_fillOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "fillOpacity")
+} 
+#' @name legend_encoding
+#' @export
+vl_legend_opacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "opacity")
+} 
+#' @name legend_encoding
+#' @export
+vl_legend_shape <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "shape")
+} 
+#' @name legend_encoding
+#' @export
+vl_legend_size <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "size")
+} 
+#' @name legend_encoding
+#' @export
+vl_legend_stroke <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "stroke")
+} 
+#' @name legend_encoding
+#' @export
+vl_legend_strokeOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "strokeOpacity")
+} 
+#' @name legend_encoding
+#' @export
+vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "strokeWidth")
+} 
+#' Add condition to encoding
+#' 
+#' Add condition parameters to an encoding
+#' @param spec An input vega-lite spec
+#' @param aggregate (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
+#' 
+#' __Default value:__ `undefined` (None)
+#' @param bin (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false`
+#' @param field (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\\[0\\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`.
+#' @param legend (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) An object defining properties of the legend.
+#' If `null`, the legend for the encoding channel will be removed.
+#' 
+#' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied.
+#' @param scale (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' 
+#' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
+#' 
+#' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied.
+#' @param sort (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort-by-encoding definition](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding) for sorting by another encoding channel. (This type of sort definition is not available for `row` and `column` channels.)
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`.
+#' @param test (_ConditionalPredicate<MarkPropFieldDef>, ConditionalPredicate<ValueDef>_) Predicate for triggering the condition
+#' @param timeUnit (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None)
+#' @param title (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
+#' @param type (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
+#' @param selection (_ConditionalSelection<MarkPropFieldDef>, ConditionalSelection<ValueDef>_) A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose).
+#' @param value (_ConditionalPredicate<ValueDef>, ConditionalSelection<ValueDef>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name condition_encoding
+ 
+#' @name condition_encoding
+#' @export
+vl_condition_color <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "color")
+} 
+#' @name condition_encoding
+#' @export
+vl_condition_fill <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "fill")
+} 
+#' @name condition_encoding
+#' @export
+vl_condition_fillOpacity <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "fillOpacity")
+} 
+#' @name condition_encoding
+#' @export
+vl_condition_href <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "href")
+} 
+#' @name condition_encoding
+#' @export
+vl_condition_opacity <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "opacity")
+} 
+#' @name condition_encoding
+#' @export
+vl_condition_shape <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "shape")
+} 
+#' @name condition_encoding
+#' @export
+vl_condition_size <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "size")
+} 
+#' @name condition_encoding
+#' @export
+vl_condition_stroke <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "stroke")
+} 
+#' @name condition_encoding
+#' @export
+vl_condition_strokeOpacity <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "strokeOpacity")
+} 
+#' @name condition_encoding
+#' @export
+vl_condition_strokeWidth <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "strokeWidth")
+} 
+#' @name condition_encoding
+#' @export
+vl_condition_text <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "text")
+} 
+#' @name condition_encoding
+#' @export
+vl_condition_tooltip <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "tooltip")
+} 
+#' Add stack transform to encoding
+#' 
+#' Add stack parameters to an encoding
+#' @param spec An input vega-lite spec
+#' @param stack One of 'zero', 'center', 'normalize', NA
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name stack_encoding
+ 
+#' @name stack_encoding
+#' @export
+vl_stack_x <- function(spec, stack = c('zero', 'center', 'normalize', NA)){
+  stack <- match.arg(stack)
+  .add_stack_to_encoding(spec, stack, '#/definitions/StackOffset' , encoding = "x")
+} 
+#' @name stack_encoding
+#' @export
+vl_stack_y <- function(spec, stack = c('zero', 'center', 'normalize', NA)){
+  stack <- match.arg(stack)
+  .add_stack_to_encoding(spec, stack, '#/definitions/StackOffset' , encoding = "y")
+} 
+#' Add aggregate transform to encoding
+#' 
+#' Add aggregate parameters to an encoding
+#' @param spec An input vega-lite spec
+#' @param aggregate One of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name aggregate_encoding
+ 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_color <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "color")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_detail <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "detail")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_fill <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "fill")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_fillOpacity <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "fillOpacity")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_href <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "href")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_key <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "key")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_latitude <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "latitude")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_latitude2 <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "latitude2")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_longitude <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "longitude")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_longitude2 <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "longitude2")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_opacity <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "opacity")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_order <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "order")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_shape <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "shape")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_size <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "size")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_stroke <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "stroke")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_strokeOpacity <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "strokeOpacity")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_strokeWidth <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "strokeWidth")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_text <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "text")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_tooltip <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "tooltip")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_x <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "x")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_x2 <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "x2")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_xError <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "xError")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_xError2 <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "xError2")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_y <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "y")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_y2 <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "y2")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_yError <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "yError")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_yError2 <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "yError2")
+} 
+#' Add sorting to an encoding
+#' 
+#' Sort an encoding in 'ascending' or 'descending' order, or by given array
+#' @param spec An input vega-lite spec
+#' @param value One of 'ascending', 'descending', a list with a custom ordering, or NA to specify no sorting
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name sort_encoding 
+#' @name sort_encoding
+#' @export
+vl_sort_color <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = color)
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_fill <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = fill)
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_fillOpacity <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = fillOpacity)
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_opacity <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = opacity)
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_order <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = order)
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_shape <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = shape)
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_size <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = size)
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_stroke <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = stroke)
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_strokeOpacity <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = strokeOpacity)
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_strokeWidth <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = strokeWidth)
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_x <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = x)
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_y <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = y)
+} 
+#' Add sort transform by field to encoding
+#' 
+#' Add sort by field parameters to an encoding
+#' @param spec An input vega-lite spec
+#' @param field (_EncodingSortField_) The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
+#' 
+#' __Default value:__ If unspecified, defaults to the field specified in the outer data reference.
+#' @param op (_EncodingSortField_) An [aggregate operation](https://vega.github.io/vega-lite/docs/aggregate.html#ops) to perform on the field prior to sorting (e.g., `"count"`, `"mean"` and `"median"`).
+#' An aggregation is required when there are multiple values of the sort field for each encoded data field.
+#' The input data objects will be aggregated, grouped by the encoded data field.
+#' 
+#' For a full list of operations, please see the documentation for [aggregate](https://vega.github.io/vega-lite/docs/aggregate.html#ops).
+#' 
+#' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`.
+#' @param order (_EncodingSortField_) The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort).
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name sort_encoding_by_field
+ 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_color_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "color")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_fill_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "fill")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_fillOpacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "fillOpacity")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_opacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "opacity")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_order_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "order")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_shape_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "shape")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_size_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "size")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_stroke_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "stroke")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_strokeOpacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "strokeOpacity")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_strokeWidth_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "strokeWidth")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_x_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "x")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_y_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "y")
+} 
+#' Add sort transform by encoding to encoding
+#' 
+#' Add sort by encoding parameters to an encoding
+#' @param spec An input vega-lite spec
+#' @param encoding (_SortByEncoding_) The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`)
+#' @param order (_SortByEncoding_) The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort).
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name sort_encoding_by_encoding
+ 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_color_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "color")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_fill_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "fill")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_fillOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "fillOpacity")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_opacity_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "opacity")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_order_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "order")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_shape_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "shape")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_size_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "size")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_stroke_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "stroke")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_strokeOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "strokeOpacity")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_strokeWidth_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "strokeWidth")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_x_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "x")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_y_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "y")
 }

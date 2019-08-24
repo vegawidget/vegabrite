@@ -1,10 +1,6 @@
 TOP_LEVEL_KEYS <- c("$schema", "autosize", "background", "config", "datasets", 
   "padding", "usermeta")
 
-.make_object <- function(ref, x) {
-  
-  x
-}            
 
 .modify_args <- function(override, valid_names) {
   args_in <- rlang::fn_fmls_syms(rlang::caller_fn(n = 1))
@@ -24,9 +20,6 @@ TOP_LEVEL_KEYS <- c("$schema", "autosize", "background", "config", "datasets",
   how <- match.arg(how)
   
   res <- validate_sub_schema(x, ref)
-  if (!res$result) {
-    stop("Invalid specification for ",ref)
-  }
 
   if (how == "replace") {
     spec[[name]] <- x
