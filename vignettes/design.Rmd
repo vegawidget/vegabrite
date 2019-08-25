@@ -72,7 +72,7 @@ What **is** automated includes:
 * Adding the right parameters to a function based on the requirements in the schema
 * Adding documentation for parameters based on descriptions from the schema
 
-The parts that are automated would be extremely tedious to do manually. Potentially more of the API construction could be automated, however, 
+The parts that are automated would be extremely tedious to do manually. Potentially more of the API construction could be automated, however, the difficulty of the automation would increase substantially and/or the resulting API might be clunkier.
 
 
 ## Details
