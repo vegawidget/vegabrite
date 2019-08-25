@@ -149,7 +149,7 @@ For a full list of scale range configuration options, please see the \href{https
 \item{view}{(\emph{Config}) Default properties for \href{https://vega.github.io/vega-lite/docs/spec.html#single}{single view plots}.}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a Config.
 }
 \description{
 Create spec for {obj}

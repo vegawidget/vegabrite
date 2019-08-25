@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
       </span>
     </div>
 
@@ -85,6 +85,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/design.html">Design</a>
+    </li>
     <li>
       <a href="../articles/examples.html">Examples</a>
     </li>
@@ -119,18 +122,19 @@
 
     <pre class="usage"><span class='fu'>vl_add_multi_selection</span>(<span class='no'>spec</span>, <span class='no'>selection_name</span>, <span class='kw'>clear</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>empty</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>encodings</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nearest</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>on</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>resolve</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>toggle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>nearest</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>on</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>resolve</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>toggle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>spec</th>
-      <td><p>A vega-lite spec.</p></td>
+      <td><p>An input vega-lite spec</p></td>
     </tr>
     <tr>
       <th>selection_name</th>
-      <td><p>Name of selection</p></td>
+      <td><p>Name for selection</p></td>
     </tr>
     <tr>
       <th>clear</th>
@@ -185,11 +189,15 @@ multi selections. Can be <code>true</code>, <code>false</code> (for insertion on
 data values are toggled when a user interacts with the shift-key pressed).</p>
 <p>See the <a href='https://vega.github.io/vega-lite/docs/toggle.html'>toggle transform</a> documentation for more information.</p></td>
     </tr>
+    <tr>
+      <th>type</th>
+      <td><p>(<em>MultiSelection</em>) multi</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A modified spec</p>
+    <p>A modified Vega-Lite Spec</p>
     
 
   </div>

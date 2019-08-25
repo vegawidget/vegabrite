@@ -14,7 +14,7 @@
 \alias{vl_sort_strokeWidth}
 \alias{vl_sort_x}
 \alias{vl_sort_y}
-\title{Add sorting to an encoding}
+\title{#' Add sorting to an encoding}
 \usage{
 vl_sort_color(spec, value)
 
@@ -49,5 +49,5 @@ vl_sort_y(spec, value)
 A modified Vega-Lite Spec
 }
 \description{
-Sort an encoding in 'ascending' or 'descending' order, or by given array
+#' Sort an encoding in 'ascending' or 'descending' order, or by given array
 }

@@ -232,7 +232,7 @@ If zindex is 0, legend should be drawn behind all chart elements.
 To put them in front, use zindex = 1.}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a Legend.
 }
 \description{
 Create spec for {obj}

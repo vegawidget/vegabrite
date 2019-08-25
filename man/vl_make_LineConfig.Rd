@@ -190,7 +190,7 @@ therefore explicitly specified value will be ignored.
 \item{y2}{(\emph{LineConfig}) Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a LineConfig.
 }
 \description{
 Create spec for {obj}

@@ -62,7 +62,7 @@ vl_make_ViewConfig(clip = NULL, cornerRadius = NULL, fill = NULL,
 \strong{Default value:} \code{200}}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a ViewConfig.
 }
 \description{
 Create spec for {obj}

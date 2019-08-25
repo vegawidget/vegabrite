@@ -49,7 +49,7 @@ conditional encoding rule, or scale domain.}
 \item{type}{(\emph{SingleSelection}) single}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a SingleSelection.
 }
 \description{
 Create spec for {obj}

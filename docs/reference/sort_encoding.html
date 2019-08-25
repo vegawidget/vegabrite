@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add sort transform to encoding — sort_encoding • vlbuildr</title>
+<title>#' Add sorting to an encoding — sort_encoding • vlbuildr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Add sort transform to encoding — sort_encoding" />
+<meta property="og:title" content="#' Add sorting to an encoding — sort_encoding" />
 
-<meta property="og:description" content="Add sort parameters to an encoding" />
+<meta property="og:description" content="#' Sort an encoding in 'ascending' or 'descending' order, or by given array" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
       </span>
     </div>
 
@@ -86,6 +86,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/design.html">Design</a>
+    </li>
+    <li>
       <a href="../articles/examples.html">Examples</a>
     </li>
   </ul>
@@ -106,14 +109,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add sort transform to encoding</h1>
+    <h1>#' Add sorting to an encoding</h1>
     
     <div class="hidden name"><code>sort_encoding.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Add sort parameters to an encoding</p>
+    <p>#' Sort an encoding in 'ascending' or 'descending' order, or by given array</p>
     
     </div>
 
@@ -146,22 +149,17 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>spec</th>
-      <td><p>A vega-lite spec.</p></td>
+      <td><p>An input vega-lite spec</p></td>
     </tr>
     <tr>
       <th>value</th>
-      <td><p>either 'ascending' or 'descending' to specify sort order (using
-this encoding), a list with a custom ordering, or NA to specify no sorting</p></td>
+      <td><p>One of 'ascending', 'descending', a list with a custom ordering, or NA to specify no sorting</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A modified spec</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='sort_encoding_by_field.html'>sort_encoding_by_field()</a></code> and <code><a href='sort_encoding_by_encoding.html'>sort_encoding_by_encoding()</a></code></p></div>
+    <p>A modified Vega-Lite Spec</p>
     
 
   </div>
@@ -171,8 +169,6 @@ this encoding), a list with a custom ordering, or NA to specify no sorting</p></
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>

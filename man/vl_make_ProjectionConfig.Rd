@@ -57,7 +57,7 @@ vl_make_ProjectionConfig(center = NULL, clipAngle = NULL,
 \strong{Default value:} \code{mercator}}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a ProjectionConfig.
 }
 \description{
 Create spec for {obj}

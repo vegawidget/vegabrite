@@ -14,7 +14,7 @@ vl_make_BinTransform(as = NULL, bin = NULL, field = NULL)
 \item{field}{(\emph{BinTransform}) The data field to bin.}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a BinTransform.
 }
 \description{
 Create spec for {obj}

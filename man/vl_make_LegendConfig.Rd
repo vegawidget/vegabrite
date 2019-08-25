@@ -233,7 +233,7 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \strong{Default value:} \code{5}.}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a LegendConfig.
 }
 \description{
 Create spec for {obj}

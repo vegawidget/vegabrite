@@ -32,9 +32,9 @@
 
 <meta property="og:title" content="vl_add_properties — vl_add_properties" />
 
-<meta property="og:description" content="Add properties to top level of a vega-lite spec. Allows adding
-properties like width, height, background which don't have a
-a specific function for adding them (unlike mark or encoding)." />
+<meta property="og:description" content="Add properties to top level of a vega-lite spec. Allows adding properties
+like width,height, background which don't have a specific function for
+adding them (unlike markor encoding)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -65,7 +65,7 @@ a specific function for adding them (unlike mark or encoding)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
       </span>
     </div>
 
@@ -87,6 +87,9 @@ a specific function for adding them (unlike mark or encoding)." />
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/design.html">Design</a>
+    </li>
     <li>
       <a href="../articles/examples.html">Examples</a>
     </li>
@@ -115,9 +118,9 @@ a specific function for adding them (unlike mark or encoding)." />
 
     <div class="ref-description">
     
-    <p>Add properties to top level of a vega-lite spec. Allows adding
-properties like width, height, background which don't have a
-a specific function for adding them (unlike <code>mark</code> or <code>encoding</code>).</p>
+    <p>Add properties to top level of a vega-lite spec. Allows adding properties
+like width,height, background which don't have a specific function for
+adding them (unlike <code>mark</code>or <code>encoding</code>).</p>
     
     </div>
 
@@ -132,7 +135,7 @@ a specific function for adding them (unlike <code>mark</code> or <code>encoding<
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>spec</th>
-      <td><p>A vega-lite spec.</p></td>
+      <td><p>An input vega-lite spec</p></td>
     </tr>
     <tr>
       <th>align</th>
@@ -169,10 +172,10 @@ Object values can additionally specify parameters for content sizing and automat
     </tr>
     <tr>
       <th>center</th>
-      <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
-<p>An object value of the form <code>{"row": boolean, "column": boolean}</code> can be used to supply different centering values for rows and columns.</p>
+      <td><p>(<em>TopLevelVConcatSpec, TopLevelHConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
 <p><strong>Default value:</strong> <code>false</code></p>
-<p>(<em>TopLevelVConcatSpec, TopLevelHConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
+<p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
+<p>An object value of the form <code>{"row": boolean, "column": boolean}</code> can be used to supply different centering values for rows and columns.</p>
 <p><strong>Default value:</strong> <code>false</code></p></td>
     </tr>
     <tr>
@@ -267,11 +270,7 @@ This object is completely ignored by Vega and Vega-Lite and can be used for cust
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A modified spec</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='vl_chart.html'>vl_chart()</a></code>, <code><a href='vl_add_config.html'>vl_add_config()</a></code></p></div>
+    <p>A modified Vega-Lite Spec</p>
     
 
   </div>
@@ -281,8 +280,6 @@ This object is completely ignored by Vega and Vega-Lite and can be used for cust
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>

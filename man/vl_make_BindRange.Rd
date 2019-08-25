@@ -25,7 +25,7 @@ vl_make_BindRange(debounce = NULL, element = NULL, input = NULL,
 \item{type}{(\emph{BindRange})}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a BindRange.
 }
 \description{
 Create spec for {obj}

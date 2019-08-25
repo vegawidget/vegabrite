@@ -23,7 +23,7 @@ vl_make_WindowTransform(frame = NULL, groupby = NULL,
 \item{window}{(\emph{WindowTransform}) The definition of the fields in the window, and what calculations to use.}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a WindowTransform.
 }
 \description{
 Create spec for {obj}

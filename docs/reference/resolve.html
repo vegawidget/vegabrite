@@ -32,9 +32,9 @@
 
 <meta property="og:title" content="Resolve axes, legends, or scales for composite charts — resolve" />
 
-<meta property="og:description" content="When faceting, layering, repeating, or concatenating a chart, one
-can choose whether axes, legends, or scales are shared or independent
-using the resolve specification" />
+<meta property="og:description" content="When faceting, layering, repeating, or concatenating a chart, one can choose
+whether axes, legends, or scales are shared or independent using the resolve
+specification" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -65,7 +65,7 @@ using the resolve specification" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
       </span>
     </div>
 
@@ -87,6 +87,9 @@ using the resolve specification" />
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/design.html">Design</a>
+    </li>
     <li>
       <a href="../articles/examples.html">Examples</a>
     </li>
@@ -115,76 +118,76 @@ using the resolve specification" />
 
     <div class="ref-description">
     
-    <p>When faceting, layering, repeating, or concatenating a chart, one
-can choose whether axes, legends, or scales are shared or independent
-using the resolve specification</p>
+    <p>When faceting, layering, repeating, or concatenating a chart, one can choose
+whether axes, legends, or scales are shared or independent using the resolve
+specification</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>vl_resolve_axis_x</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+    <pre class="usage"><span class='fu'>vl_resolvle_axis</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_axis_y</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_axis</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_legend_color</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_legend</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_legend_fill</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_legend</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_legend_fillOpacity</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_legend</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_legend_opacity</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_legend</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_legend_shape</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_legend</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_legend_size</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_legend</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_legend_stroke</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_legend</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_legend_strokeOpacity</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_legend</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_legend_strokeWidth</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_legend</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_legend_x</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_legend</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_legend_y</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_legend</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_scale_color</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_scale</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_scale_fill</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_scale</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_scale_fillOpacity</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_scale</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_scale_opacity</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_scale</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_scale_shape</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_scale</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_scale_size</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_scale</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_scale_stroke</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_scale</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_scale_strokeOpacity</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_scale</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_scale_strokeWidth</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_scale</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_scale_x</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
+<span class='fu'>vl_resolvle_scale</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))
 
-<span class='fu'>vl_resolve_scale_y</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))</pre>
+<span class='fu'>vl_resolvle_scale</span>(<span class='no'>spec</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"independent"</span>, <span class='st'>"shared"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>spec</th>
-      <td><p>A vega-lite spec.</p></td>
+      <td><p>An input vega-lite spec</p></td>
     </tr>
     <tr>
       <th>how</th>
-      <td><p>how to resolve, one of: 'independent', 'shared'</p></td>
+      <td><p>One of 'independent', 'shared'</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A modified spec</p>
+    <p>A modified Vega-Lite Spec</p>
     
 
   </div>

@@ -95,7 +95,7 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \strong{Default value:} \code{10}}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a HeaderConfig.
 }
 \description{
 Create spec for {obj}

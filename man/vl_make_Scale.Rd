@@ -117,7 +117,7 @@ For the full list of supported schemes, please refer to the \href{https://vega.g
 \strong{Note:} Log, time, and utc scales do not support \code{zero}.}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a Scale.
 }
 \description{
 Create spec for {obj}

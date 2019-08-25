@@ -22,7 +22,7 @@ vl_make_ErrorBarConfig(extent = NULL, rule = NULL, ticks = NULL)
 \item{ticks}{(\emph{ErrorBarConfig})}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a ErrorBarConfig.
 }
 \description{
 Create spec for {obj}

@@ -17,7 +17,7 @@ If the lengths of parallel arrays do not match,
 the longest array will be used with \code{null} values added for missing entries.}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a FlattenTransform.
 }
 \description{
 Create spec for {obj}

@@ -48,7 +48,7 @@ or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field 
 \item{value}{(\emph{NumberValueDef}) A constant value in visual domain (e.g., \code{"red"} / "#0099ff" for color, values between \code{0} to \code{1} for opacity).}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a Latitude2.
 }
 \description{
 Create spec for {obj}

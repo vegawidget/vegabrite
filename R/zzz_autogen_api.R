@@ -4185,7 +4185,7 @@ vl_encode_yError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, 
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Color.
 #' @export
 
 vl_make_Color <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -4240,7 +4240,7 @@ args$obj
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Detail.
 #' @export
 
 vl_make_Detail <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL){
@@ -4324,7 +4324,7 @@ args$obj
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Fill.
 #' @export
 
 vl_make_Fill <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -4409,7 +4409,7 @@ args$obj
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a FillOpacity.
 #' @export
 
 vl_make_FillOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -4484,7 +4484,7 @@ args$obj
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Href.
 #' @export
 
 vl_make_Href <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -4539,7 +4539,7 @@ args$obj
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Key.
 #' @export
 
 vl_make_Key <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL){
@@ -4594,7 +4594,7 @@ args$obj
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Latitude.
 #' @export
 
 vl_make_Latitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -4637,7 +4637,7 @@ args$obj
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Latitude2.
 #' @export
 
 vl_make_Latitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
@@ -4692,7 +4692,7 @@ args$obj
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Longitude.
 #' @export
 
 vl_make_Longitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -4735,7 +4735,7 @@ args$obj
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Longitude2.
 #' @export
 
 vl_make_Longitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
@@ -4819,7 +4819,7 @@ args$obj
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Opacity.
 #' @export
 
 vl_make_Opacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -4876,7 +4876,7 @@ args$obj
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Order.
 #' @export
 
 vl_make_Order <- function(aggregate = NULL, bin = NULL, field = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -4960,7 +4960,7 @@ args$obj
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef<TypeForShape>,string>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Shape.
 #' @export
 
 vl_make_Shape <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -5045,7 +5045,7 @@ args$obj
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Size.
 #' @export
 
 vl_make_Size <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -5130,7 +5130,7 @@ args$obj
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Stroke.
 #' @export
 
 vl_make_Stroke <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -5215,7 +5215,7 @@ args$obj
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a StrokeOpacity.
 #' @export
 
 vl_make_StrokeOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -5300,7 +5300,7 @@ args$obj
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a StrokeWidth.
 #' @export
 
 vl_make_StrokeWidth <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -5375,7 +5375,7 @@ args$obj
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Text.
 #' @export
 
 vl_make_Text <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -5450,7 +5450,7 @@ args$obj
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Tooltip.
 #' @export
 
 vl_make_Tooltip <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -5546,7 +5546,7 @@ args$obj
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_XValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a X.
 #' @export
 
 vl_make_X <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -5590,7 +5590,7 @@ args$obj
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_XValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a X2.
 #' @export
 
 vl_make_X2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
@@ -5633,7 +5633,7 @@ args$obj
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a XError.
 #' @export
 
 vl_make_XError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
@@ -5676,7 +5676,7 @@ args$obj
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a XError2.
 #' @export
 
 vl_make_XError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
@@ -5771,7 +5771,7 @@ args$obj
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_YValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Y.
 #' @export
 
 vl_make_Y <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
@@ -5815,7 +5815,7 @@ args$obj
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_YValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Y2.
 #' @export
 
 vl_make_Y2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
@@ -5858,7 +5858,7 @@ args$obj
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a YError.
 #' @export
 
 vl_make_YError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
@@ -5901,7 +5901,7 @@ args$obj
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a YError2.
 #' @export
 
 vl_make_YError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
@@ -6143,7 +6143,7 @@ vl_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers = NULL, so
 #' Create spec for {obj}
 #' @param aggregate (_AggregateTransform_) Array of objects that define fields to aggregate.
 #' @param groupby (_AggregateTransform_) The data fields to group by. If not specified, a single group containing all data objects will be used.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a AggregateTransform.
 #' @export
 
 vl_make_AggregateTransform <- function(aggregate = NULL, groupby = NULL){
@@ -6156,7 +6156,7 @@ args$obj
 #' @param as (_BinTransform_) The output fields at which to write the start and end bin values.
 #' @param bin (_BinTransform_) An object indicating bin properties, or simply `true` for using default bin parameters.
 #' @param field (_BinTransform_) The data field to bin.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a BinTransform.
 #' @export
 
 vl_make_BinTransform <- function(as = NULL, bin = NULL, field = NULL){
@@ -6168,7 +6168,7 @@ args$obj
 #' Create spec for {obj}
 #' @param as (_CalculateTransform_) The field for storing the computed formula value.
 #' @param calculate (_CalculateTransform_) A [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string. Use the variable `datum` to refer to the current data object.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a CalculateTransform.
 #' @export
 
 vl_make_CalculateTransform <- function(as = NULL, calculate = NULL){
@@ -6195,7 +6195,7 @@ args$obj
 #' 3) a [selection predicate](https://vega.github.io/vega-lite/docs/filter.html#selection-predicate)
 #' 
 #' 4) a logical operand that combines (1), (2), or (3).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a FilterTransform.
 #' @export
 
 vl_make_FilterTransform <- function(filter = NULL){
@@ -6212,7 +6212,7 @@ args$obj
 #' If multiple fields are specified, their array values should have a parallel structure, ideally with the same length.
 #' If the lengths of parallel arrays do not match,
 #' the longest array will be used with `null` values added for missing entries.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a FlattenTransform.
 #' @export
 
 vl_make_FlattenTransform <- function(as = NULL, flatten = NULL){
@@ -6225,7 +6225,7 @@ args$obj
 #' @param as (_FoldTransform_) The output field names for the key and value properties produced by the fold transform.
 #' __Default value:__ `["key", "value"]`
 #' @param fold (_FoldTransform_) An array of data fields indicating the properties to fold.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a FoldTransform.
 #' @export
 
 vl_make_FoldTransform <- function(as = NULL, fold = NULL){
@@ -6254,7 +6254,7 @@ args$obj
 #' 
 #' __Default value:__  `"value"`
 #' @param value (_ImputeTransform_) The field value to use when the imputation `method` is `"value"`.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a ImputeTransform.
 #' @export
 
 vl_make_ImputeTransform <- function(frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL){
@@ -6266,7 +6266,7 @@ args$obj
 #' Create spec for {obj}
 #' @param groupby (_JoinAggregateTransform_) The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group.
 #' @param joinaggregate (_JoinAggregateTransform_) The definition of the fields in the join aggregate, and what calculations to use.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a JoinAggregateTransform.
 #' @export
 
 vl_make_JoinAggregateTransform <- function(groupby = NULL, joinaggregate = NULL){
@@ -6284,7 +6284,7 @@ args$obj
 #' __Default value:__ `null`
 #' @param from (_LookupTransform_) Secondary data reference.
 #' @param lookup (_LookupTransform_) Key in primary data source.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a LookupTransform.
 #' @export
 
 vl_make_LookupTransform <- function(as = NULL, default = NULL, from = NULL, lookup = NULL){
@@ -6297,7 +6297,7 @@ args$obj
 #' @param as (_TimeUnitTransform_) The output field to write the timeUnit value.
 #' @param field (_TimeUnitTransform_) The data field to apply time unit.
 #' @param timeUnit (_TimeUnitTransform_) The timeUnit.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a TimeUnitTransform.
 #' @export
 
 vl_make_TimeUnitTransform <- function(as = NULL, field = NULL, timeUnit = NULL){
@@ -6310,7 +6310,7 @@ args$obj
 #' @param sample (_SampleTransform_) The maximum number of data objects to include in the sample.
 #' 
 #' __Default value:__ `1000`
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a SampleTransform.
 #' @export
 
 vl_make_SampleTransform <- function(sample = NULL){
@@ -6329,7 +6329,7 @@ args$obj
 #' __Default value:__ `"zero"`
 #' @param sort (_StackTransform_) Field that determines the order of leaves in the stacked charts.
 #' @param stack (_StackTransform_) The field which is stacked.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a StackTransform.
 #' @export
 
 vl_make_StackTransform <- function(as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL){
@@ -6348,7 +6348,7 @@ args$obj
 #' __Default value:__ `false`
 #' @param sort (_WindowTransform_) A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered “peer” values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to `true`).
 #' @param window (_WindowTransform_) The definition of the fields in the window, and what calculations to use.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a WindowTransform.
 #' @export
 
 vl_make_WindowTransform <- function(frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL){
@@ -7611,9 +7611,9 @@ vl_aggregate_yError2 <- function(spec, aggregate = c('argmax', 'argmin', 'averag
   aggregate <- match.arg(aggregate)
   .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "yError2")
 } 
-#' Add sorting to an encoding
+#' #' Add sorting to an encoding
 #' 
-#' Sort an encoding in 'ascending' or 'descending' order, or by given array
+#' #' Sort an encoding in 'ascending' or 'descending' order, or by given array
 #' @param spec An input vega-lite spec
 #' @param value One of 'ascending', 'descending', a list with a custom ordering, or NA to specify no sorting
 #' @return A modified Vega-Lite Spec
@@ -8033,7 +8033,7 @@ vl_add_interval_selection <- function(spec, selection_name, bind = NULL, clear =
 #' selections' data queries are resolved when applied in a filter transform,
 #' conditional encoding rule, or scale domain.
 #' @param type (_SingleSelection_) single
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a SingleSelection.
 #' @export
 
 vl_make_SingleSelection <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, type = NULL){
@@ -8076,7 +8076,7 @@ args$obj
 #' 
 #' See the [toggle transform](https://vega.github.io/vega-lite/docs/toggle.html) documentation for more information.
 #' @param type (_MultiSelection_) multi
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a MultiSelection.
 #' @export
 
 vl_make_MultiSelection <- function(clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL, type = NULL){
@@ -8128,7 +8128,7 @@ args$obj
 #' 
 #' 
 #' __Default value:__ `true`, which corresponds to `wheel!`.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a IntervalSelection.
 #' @export
 
 vl_make_IntervalSelection <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, type = NULL, zoom = NULL){
@@ -12416,7 +12416,7 @@ vl_add_view_config <- function(spec, clip = NULL, cornerRadius = NULL, fill = NU
 #' @param x2 (_AreaConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_AreaConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_AreaConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a AreaConfig.
 #' @export
 
 vl_make_AreaConfig <- function(align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
@@ -12541,7 +12541,7 @@ args$obj
 #' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a AxisConfig.
 #' @export
 
 vl_make_AxisConfig <- function(bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
@@ -12680,7 +12680,7 @@ args$obj
 #' @param x2 (_BarConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_BarConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_BarConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a BarConfig.
 #' @export
 
 vl_make_BarConfig <- function(align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
@@ -12790,7 +12790,7 @@ args$obj
 #' @param x2 (_BaseMarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_BaseMarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_BaseMarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a BaseMarkConfig.
 #' @export
 
 vl_make_BaseMarkConfig <- function(align = NULL, angle = NULL, baseline = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
@@ -12823,7 +12823,7 @@ args$obj
 #' @param limit (_BaseTitleConfig_) The maximum allowed length in pixels of legend labels.
 #' @param offset (_BaseTitleConfig_) The orthogonal offset in pixels by which to displace the title from its position along the edge of the chart.
 #' @param orient (_BaseTitleConfig_) Default title orientation (`"top"`, `"bottom"`, `"left"`, or `"right"`)
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a BaseTitleConfig.
 #' @export
 
 vl_make_BaseTitleConfig <- function(align = NULL, anchor = NULL, angle = NULL, baseline = NULL, color = NULL, dx = NULL, dy = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, frame = NULL, limit = NULL, offset = NULL, orient = NULL){
@@ -12845,7 +12845,7 @@ args$obj
 #' @param rule (_BoxPlotConfig_)  
 #' @param size (_BoxPlotConfig_) Size of the box and median tick of a box plot
 #' @param ticks (_BoxPlotConfig_)  
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a BoxPlotConfig.
 #' @export
 
 vl_make_BoxPlotConfig <- function(box = NULL, extent = NULL, median = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL){
@@ -12869,7 +12869,7 @@ args$obj
 #' @param strokeDashOffset (_BrushConfig_) The offset (in pixels) with which to begin drawing the stroke dash array.
 #' @param strokeOpacity (_BrushConfig_) The stroke opacity of the interval mark (a value between 0 and 1).
 #' @param strokeWidth (_BrushConfig_) The stroke width of the interval mark.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a BrushConfig.
 #' @export
 
 vl_make_BrushConfig <- function(fill = NULL, fillOpacity = NULL, stroke = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL){
@@ -12895,7 +12895,7 @@ args$obj
 #' @param spacing (_CompositionConfig_) The default spacing in pixels between composed sub-views.
 #' 
 #' __Default value__: `20`
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a CompositionConfig.
 #' @export
 
 vl_make_CompositionConfig <- function(columns = NULL, spacing = NULL){
@@ -12981,7 +12981,7 @@ args$obj
 #' @param title (_Config_) Title configuration, which determines default properties for all [titles](https://vega.github.io/vega-lite/docs/title.html). For a full list of title configuration options, please see the [corresponding section of the title documentation](https://vega.github.io/vega-lite/docs/title.html#config).
 #' @param trail (_Config_) Trail-Specific Config
 #' @param view (_Config_) Default properties for [single view plots](https://vega.github.io/vega-lite/docs/spec.html#single).
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Config.
 #' @export
 
 vl_make_Config <- function(area = NULL, autosize = NULL, axis = NULL, axisBand = NULL, axisBottom = NULL, axisLeft = NULL, axisRight = NULL, axisTop = NULL, axisX = NULL, axisY = NULL, background = NULL, bar = NULL, boxplot = NULL, circle = NULL, concat = NULL, countTitle = NULL, errorband = NULL, errorbar = NULL, facet = NULL, fieldTitle = NULL, geoshape = NULL, header = NULL, headerColumn = NULL, headerFacet = NULL, headerRow = NULL, invalidValues = NULL, legend = NULL, line = NULL, mark = NULL, numberFormat = NULL, padding = NULL, point = NULL, projection = NULL, range = NULL, rect = NULL, `repeat` = NULL, rule = NULL, scale = NULL, selection = NULL, square = NULL, stack = NULL, style = NULL, text = NULL, tick = NULL, timeFormat = NULL, title = NULL, trail = NULL, view = NULL){
@@ -13021,7 +13021,7 @@ args$obj
 #' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
 #' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
 #' @param tension (_ErrorBandConfig_) The tension parameter for the interpolation type of the error band.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a ErrorBandConfig.
 #' @export
 
 vl_make_ErrorBandConfig <- function(band = NULL, borders = NULL, extent = NULL, interpolate = NULL, tension = NULL){
@@ -13040,7 +13040,7 @@ args$obj
 #' __Default value:__ `"stderr"`.
 #' @param rule (_ErrorBarConfig_)  
 #' @param ticks (_ErrorBarConfig_)  
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a ErrorBarConfig.
 #' @export
 
 vl_make_ErrorBarConfig <- function(extent = NULL, rule = NULL, ticks = NULL){
@@ -13102,7 +13102,7 @@ args$obj
 #' @param titlePadding (_HeaderConfig_) The padding, in pixel, between facet header's title and the label.
 #' 
 #' __Default value:__ `10`
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a HeaderConfig.
 #' @export
 
 vl_make_HeaderConfig <- function(format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, shortTimeLabels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL, titlePadding = NULL){
@@ -13156,7 +13156,7 @@ args$obj
 #' 
 #' 
 #' __Default value:__ `true`, which corresponds to `wheel!`.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a IntervalSelectionConfig.
 #' @export
 
 vl_make_IntervalSelectionConfig <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, zoom = NULL){
@@ -13301,7 +13301,7 @@ args$obj
 #' @param titlePadding (_LegendConfig_) The padding, in pixels, between title and legend.
 #' 
 #' __Default value:__ `5`.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a LegendConfig.
 #' @export
 
 vl_make_LegendConfig <- function(clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, fillColor = NULL, gradientDirection = NULL, gradientHorizontalMaxLength = NULL, gradientHorizontalMinLength = NULL, gradientLabelLimit = NULL, gradientLabelOffset = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gradientVerticalMaxLength = NULL, gradientVerticalMinLength = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, layout = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, shortTimeLabels = NULL, strokeColor = NULL, strokeDash = NULL, strokeWidth = NULL, symbolBaseFillColor = NULL, symbolBaseStrokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolDirection = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL){
@@ -13444,7 +13444,7 @@ args$obj
 #' @param x2 (_LineConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_LineConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_LineConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a LineConfig.
 #' @export
 
 vl_make_LineConfig <- function(align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
@@ -13570,7 +13570,7 @@ args$obj
 #' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a MarkConfig.
 #' @export
 
 vl_make_MarkConfig <- function(align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
@@ -13616,7 +13616,7 @@ args$obj
 #' data values are toggled when a user interacts with the shift-key pressed).
 #' 
 #' See the [toggle transform](https://vega.github.io/vega-lite/docs/toggle.html) documentation for more information.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a MultiSelectionConfig.
 #' @export
 
 vl_make_MultiSelectionConfig <- function(clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL){
@@ -13652,7 +13652,7 @@ args$obj
 #' @param type (_Projection_) The cartographic projection to use. This value is case-insensitive, for example `"albers"` and `"Albers"` indicate the same projection type. You can find all valid projection types [in the documentation](https://vega.github.io/vega-lite/docs/projection.html#projection-types).
 #' 
 #' __Default value:__ `mercator`
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a ProjectionConfig.
 #' @export
 
 vl_make_ProjectionConfig <- function(center = NULL, clipAngle = NULL, clipExtent = NULL, coefficient = NULL, distance = NULL, fraction = NULL, lobes = NULL, parallel = NULL, precision = NULL, radius = NULL, ratio = NULL, reflectX = NULL, reflectY = NULL, rotate = NULL, scale = NULL, spacing = NULL, tilt = NULL, translate = NULL, type = NULL){
@@ -13670,7 +13670,7 @@ args$obj
 #' @param ordinal (_RangeConfig_) Default range for _ordinal_ fields.
 #' @param ramp (_RangeConfig_) Default range for _quantitative_ and _temporal_ fields.
 #' @param symbol (_RangeConfig_) Default range palette for the `shape` channel.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a RangeConfig.
 #' @export
 
 vl_make_RangeConfig <- function(category = NULL, diverging = NULL, heatmap = NULL, ordinal = NULL, ramp = NULL, symbol = NULL){
@@ -13756,7 +13756,7 @@ args$obj
 #' This property only works with aggregate functions that produce values within the raw data domain (`"mean"`, `"average"`, `"median"`, `"q1"`, `"q3"`, `"min"`, `"max"`). For other aggregations that produce values outside of the raw data domain (e.g. `"count"`, `"sum"`), this property is ignored.
 #' 
 #' __Default value:__ `false`
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a ScaleConfig.
 #' @export
 
 vl_make_ScaleConfig <- function(bandPaddingInner = NULL, bandPaddingOuter = NULL, barBandPaddingInner = NULL, barBandPaddingOuter = NULL, clamp = NULL, continuousPadding = NULL, maxBandSize = NULL, maxFontSize = NULL, maxOpacity = NULL, maxSize = NULL, maxStrokeWidth = NULL, minBandSize = NULL, minFontSize = NULL, minOpacity = NULL, minSize = NULL, minStrokeWidth = NULL, pointPadding = NULL, quantileCount = NULL, quantizeCount = NULL, rangeStep = NULL, rectBandPaddingInner = NULL, rectBandPaddingOuter = NULL, round = NULL, textXRangeStep = NULL, useUnaggregatedDomain = NULL){
@@ -13773,7 +13773,7 @@ args$obj
 #' @param count (_SchemeConfig_)  
 #' @param extent (_SchemeConfig_)  
 #' @param scheme (_SchemeConfig_)  
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a SchemeConfig.
 #' @export
 
 vl_make_SchemeConfig <- function(count = NULL, extent = NULL, scheme = NULL){
@@ -13797,7 +13797,7 @@ args$obj
 #'   for a single selection definition (except `type`) may be specified here.
 #' 
 #' For instance, setting `single` to `{"on": "dblclick"}` populates single selections on double-click by default.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a SelectionConfig.
 #' @export
 
 vl_make_SelectionConfig <- function(interval = NULL, multi = NULL, single = NULL){
@@ -13835,7 +13835,7 @@ args$obj
 #' @param resolve (_SingleSelectionConfig_) With layered and multi-view displays, a strategy that determines how
 #' selections' data queries are resolved when applied in a filter transform,
 #' conditional encoding rule, or scale domain.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a SingleSelectionConfig.
 #' @export
 
 vl_make_SingleSelectionConfig <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL){
@@ -13958,7 +13958,7 @@ args$obj
 #' @param x2 (_TextConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_TextConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_TextConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a TextConfig.
 #' @export
 
 vl_make_TextConfig <- function(align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, shortTimeLabels = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
@@ -14090,7 +14090,7 @@ args$obj
 #' @param x2 (_TickConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_TickConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_TickConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a TickConfig.
 #' @export
 
 vl_make_TickConfig <- function(align = NULL, angle = NULL, bandSize = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
@@ -14123,7 +14123,7 @@ args$obj
 #' @param limit (_BaseTitleConfig_) The maximum allowed length in pixels of legend labels.
 #' @param offset (_BaseTitleConfig_) The orthogonal offset in pixels by which to displace the title from its position along the edge of the chart.
 #' @param orient (_BaseTitleConfig_) Default title orientation (`"top"`, `"bottom"`, `"left"`, or `"right"`)
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a TitleConfig.
 #' @export
 
 vl_make_TitleConfig <- function(align = NULL, anchor = NULL, angle = NULL, baseline = NULL, color = NULL, dx = NULL, dy = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, frame = NULL, limit = NULL, offset = NULL, orient = NULL){
@@ -14169,7 +14169,7 @@ args$obj
 #' @param width (_ViewConfig_) The default width of the single plot or each plot in a trellis plot when the visualization has a continuous (non-ordinal) x-scale or ordinal x-scale with `rangeStep` = `null`.
 #' 
 #' __Default value:__ `200`
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a ViewConfig.
 #' @export
 
 vl_make_ViewConfig <- function(clip = NULL, cornerRadius = NULL, fill = NULL, fillOpacity = NULL, height = NULL, opacity = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, width = NULL){
@@ -14201,7 +14201,7 @@ args$obj
 #' 
 #' __Note:__ If provided, options such as maxbins will be ignored.
 #' @param steps (_BinParams_) An array of allowable step sizes to choose from.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a BinParams.
 #' @export
 
 vl_make_BinParams <- function(anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
@@ -14356,7 +14356,7 @@ args$obj
 #' To put them in front, use `"zindex = 1"`.
 #' 
 #' __Default value:__ `1` (in front of the marks) for actual axis and `0` (behind the marks) for grids.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Axis.
 #' @export
 
 vl_make_Axis <- function(bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, values = NULL, zindex = NULL){
@@ -14465,7 +14465,7 @@ args$obj
 #' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
 #' 
 #' __Note:__ Log, time, and utc scales do not support `zero`.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Scale.
 #' @export
 
 vl_make_Scale <- function(base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
@@ -14614,7 +14614,7 @@ args$obj
 #' @param zindex (_Legend_) A non-positive integer indicating z-index of the legend.
 #' If zindex is 0, legend should be drawn behind all chart elements.
 #' To put them in front, use zindex = 1.
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a Legend.
 #' @export
 
 vl_make_Legend <- function(clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
@@ -14639,7 +14639,7 @@ args$obj
 #' @param input (_BindCheckbox_) checkbox
 #' @param name (_BindCheckbox_)  
 #' @param type (_BindCheckbox_)  
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a BindCheckbox.
 #' @export
 
 vl_make_BindCheckbox <- function(debounce = NULL, element = NULL, input = NULL, name = NULL, type = NULL){
@@ -14657,7 +14657,7 @@ args$obj
 #' @param name (_BindRange_)  
 #' @param step (_BindRange_)  
 #' @param type (_BindRange_)  
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a BindRange.
 #' @export
 
 vl_make_BindRange <- function(debounce = NULL, element = NULL, input = NULL, max = NULL, min = NULL, name = NULL, step = NULL, type = NULL){
@@ -14673,7 +14673,7 @@ args$obj
 #' @param name (_BindRadioSelect_)  
 #' @param options (_BindRadioSelect_)  
 #' @param type (_BindRadioSelect_)  
-#' @return A modified Vega-Lite Spec
+#' @return A component of a Vega-Lite spec, corresponding to a BindRadioSelect.
 #' @export
 
 vl_make_BindRadioSelect <- function(debounce = NULL, element = NULL, input = NULL, name = NULL, options = NULL, type = NULL){

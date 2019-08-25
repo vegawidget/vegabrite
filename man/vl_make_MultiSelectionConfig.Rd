@@ -50,7 +50,7 @@ data values are toggled when a user interacts with the shift-key pressed).
 See the \href{https://vega.github.io/vega-lite/docs/toggle.html}{toggle transform} documentation for more information.}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a MultiSelectionConfig.
 }
 \description{
 Create spec for {obj}

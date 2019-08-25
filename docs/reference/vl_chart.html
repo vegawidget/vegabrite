@@ -66,7 +66,7 @@ pieces of the chart spec." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
       </span>
     </div>
 
@@ -88,6 +88,9 @@ pieces of the chart spec." />
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/design.html">Design</a>
+    </li>
     <li>
       <a href="../articles/examples.html">Examples</a>
     </li>
@@ -118,7 +121,7 @@ pieces of the chart spec." />
     
     <p>Initialize a Vega-Lite specification! Can add any top level configuration
 parameters, or simply call without arguments to initialize and then use other
-function (like <code><a href='vl_mark.html'>vl_mark_point()</a></code>, <code><a href='vl_encode_x.html'>vl_encode_x()</a></code>, etc) to add on the various
+function (like <code><a href='vl_mark_point.html'>vl_mark_point()</a></code>, <code><a href='vl_encode_x.html'>vl_encode_x()</a></code>, etc) to add on the various
 pieces of the chart spec.</p>
     
     </div>
@@ -179,10 +182,10 @@ Object values can additionally specify parameters for content sizing and automat
     </tr>
     <tr>
       <th>center</th>
-      <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
-<p>An object value of the form <code>{"row": boolean, "column": boolean}</code> can be used to supply different centering values for rows and columns.</p>
+      <td><p>(<em>TopLevelVConcatSpec, TopLevelHConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
 <p><strong>Default value:</strong> <code>false</code></p>
-<p>(<em>TopLevelVConcatSpec, TopLevelHConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
+<p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
+<p>An object value of the form <code>{"row": boolean, "column": boolean}</code> can be used to supply different centering values for rows and columns.</p>
 <p><strong>Default value:</strong> <code>false</code></p></td>
     </tr>
     <tr>
@@ -347,7 +350,7 @@ using <code><a href='https://www.rdocumentation.org/packages/vegawidget/topics/a
     <pre class="examples"><div class='input'>
 <span class='fu'>vl_chart</span>() <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='vl_add_data.html'>vl_add_data</a></span>(<span class='kw'>values</span> <span class='kw'>=</span> <span class='no'>mtcars</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='vl_mark.html'>vl_mark_point</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='vl_mark_point.html'>vl_mark_point</a></span>() <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='vl_encode_x.html'>vl_encode_x</a></span>(<span class='st'>"wt"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='vl_encode_y.html'>vl_encode_y</a></span>(<span class='st'>"mpg"</span>)</div></pre>
   </div>

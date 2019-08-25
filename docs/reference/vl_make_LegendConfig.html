@@ -32,7 +32,7 @@
 
 <meta property="og:title" content="vl_make_LegendConfig — vl_make_LegendConfig" />
 
-<meta property="og:description" content="Create spec for LegendConfig." />
+<meta property="og:description" content="Create spec for obj" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
       </span>
     </div>
 
@@ -85,6 +85,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/design.html">Design</a>
+    </li>
     <li>
       <a href="../articles/examples.html">Examples</a>
     </li>
@@ -113,7 +116,7 @@
 
     <div class="ref-description">
     
-    <p>Create spec for LegendConfig.</p>
+    <p>Create spec for obj</p>
     
     </div>
 
@@ -276,7 +279,7 @@
     <tr>
       <th>labelOverlap</th>
       <td><p>(<em>LegendConfig</em>) The strategy to use for resolving overlap of labels in gradient legends. If <code>false</code>, no overlap reduction is attempted. If set to <code>true</code> or <code>"parity"</code>, a strategy of removing every other label is used. If set to <code>"greedy"</code>, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).</p>
-<p><strong>Default value:</strong> <code>"greedy"</code> for <code>log scales otherwise</code>true`.
+<p><strong>Default value:</strong> <code>"greedy"</code> for <code>log scales otherwise </code>true`.
 *</p></td>
     </tr>
     <tr>
@@ -381,7 +384,7 @@
     <tr>
       <th>symbolType</th>
       <td><p>(<em>LegendConfig</em>) Default shape type (such as "circle") for legend symbols.
-Can be one of ``"circle"<code>,</code>"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.</p><ul>
+Can be one of ``"circle"<code>, </code>"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.</p><ul>
 <li><p>In addition to a set of built-in shapes, custom shapes can be defined using <a href='https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths'>SVG path strings</a>.</p></li>
 <li><p></p></li>
 <li><p><strong>Default value:</strong> <code>"circle"</code>.</p></li>
@@ -449,7 +452,7 @@ This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or 
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A modified spec</p>
+    <p>A component of a Vega-Lite spec, corresponding to a LegendConfig.</p>
     
 
   </div>

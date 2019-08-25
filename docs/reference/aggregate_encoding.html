@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
       </span>
     </div>
 
@@ -85,6 +85,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/design.html">Design</a>
+    </li>
     <li>
       <a href="../articles/examples.html">Examples</a>
     </li>
@@ -117,161 +120,157 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>vl_aggregate_color</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
-
-<span class='fu'>vl_aggregate_detail</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
-
-<span class='fu'>vl_aggregate_fill</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
-
-<span class='fu'>vl_aggregate_fillOpacity</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+    <pre class="usage"><span class='fu'>vl_aggregate_color</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
   <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
   <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
   <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_href</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
-
-<span class='fu'>vl_aggregate_key</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
-
-<span class='fu'>vl_aggregate_latitude</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+<span class='fu'>vl_aggregate_detail</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
   <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
   <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
   <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_latitude2</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+<span class='fu'>vl_aggregate_fill</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
   <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
   <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
   <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_longitude</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+<span class='fu'>vl_aggregate_fillOpacity</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>,
+  <span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>,
+  <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>,
+  <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+
+<span class='fu'>vl_aggregate_href</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
   <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
   <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
   <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_longitude2</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+<span class='fu'>vl_aggregate_key</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
   <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
   <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
   <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_opacity</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
-
-<span class='fu'>vl_aggregate_order</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
-
-<span class='fu'>vl_aggregate_shape</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
-
-<span class='fu'>vl_aggregate_size</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
-
-<span class='fu'>vl_aggregate_stroke</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
-
-<span class='fu'>vl_aggregate_strokeOpacity</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+<span class='fu'>vl_aggregate_latitude</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
   <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
   <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
   <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_strokeWidth</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+<span class='fu'>vl_aggregate_latitude2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
   <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
   <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
   <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_text</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_longitude</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
+  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
+  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_tooltip</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_longitude2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>,
+  <span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>,
+  <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>,
+  <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_x</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_opacity</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
+  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
+  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_x2</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_order</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
+  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
+  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_xError</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_shape</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
+  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
+  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_xError2</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_size</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
+  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
+  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_y</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_stroke</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
+  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
+  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_y2</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_strokeOpacity</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>,
+  <span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>,
+  <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>,
+  <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_yError</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_strokeWidth</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>,
+  <span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>,
+  <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>,
+  <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_yError2</span>(<span class='no'>spec</span>, <span class='kw'>op</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>, <span class='st'>"count"</span>,
-  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
-  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
-  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))</pre>
+<span class='fu'>vl_aggregate_text</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
+  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
+  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+
+<span class='fu'>vl_aggregate_tooltip</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
+  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
+  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+
+<span class='fu'>vl_aggregate_x</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
+  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
+  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+
+<span class='fu'>vl_aggregate_x2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
+  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
+  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+
+<span class='fu'>vl_aggregate_xError</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
+  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
+  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+
+<span class='fu'>vl_aggregate_xError2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
+  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
+  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+
+<span class='fu'>vl_aggregate_y</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
+  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
+  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+
+<span class='fu'>vl_aggregate_y2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
+  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
+  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+
+<span class='fu'>vl_aggregate_yError</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
+  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
+  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+
+<span class='fu'>vl_aggregate_yError2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
+  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
+  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
+  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>spec</th>
-      <td><p>A vega-lite spec.</p></td>
+      <td><p>An input vega-lite spec</p></td>
     </tr>
     <tr>
-      <th>op</th>
-      <td><p>Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA</p></td>
+      <th>aggregate</th>
+      <td><p>One of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A modified spec</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='vl_aggregate.html'>vl_aggregate()</a></code> to add a top level aggregate transform</p></div>
+    <p>A modified Vega-Lite Spec</p>
     
 
   </div>
@@ -281,8 +280,6 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>

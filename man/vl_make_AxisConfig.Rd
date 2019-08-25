@@ -196,7 +196,7 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item{titleY}{(\emph{AxisConfig}) Y-coordinate of the axis title relative to the axis group.}
 }
 \value{
-A modified Vega-Lite Spec
+A component of a Vega-Lite spec, corresponding to a AxisConfig.
 }
 \description{
 Create spec for {obj}

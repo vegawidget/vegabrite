@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
       </span>
     </div>
 
@@ -85,6 +85,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/design.html">Design</a>
+    </li>
     <li>
       <a href="../articles/examples.html">Examples</a>
     </li>
@@ -138,7 +141,7 @@
   <span class='kw'>titleColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleFont</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleFontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>titleFontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleFontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>titleOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titlePadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleX</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>values</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zindex</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>remove</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+  <span class='kw'>titleY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>values</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zindex</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>vl_axis_y</span>(<span class='no'>spec</span>, <span class='kw'>bandPosition</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>domainColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domainDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domainDashOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -161,14 +164,18 @@
   <span class='kw'>titleColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleFont</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleFontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>titleFontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleFontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>titleOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titlePadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleX</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>values</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zindex</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>remove</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>titleY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>values</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zindex</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>vl_remove_axis_x</span>(<span class='no'>spec</span>)
+
+<span class='fu'>vl_remove_axis_y</span>(<span class='no'>spec</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>spec</th>
-      <td><p>A vega-lite spec.</p></td>
+      <td><p>An input vega-lite spec</p></td>
     </tr>
     <tr>
       <th>bandPosition</th>
@@ -480,20 +487,11 @@ If zindex is 0, axes should be drawn behind all chart elements.
 To put them in front, use <code>"zindex = 1"</code>.</p>
 <p><strong>Default value:</strong> <code>1</code> (in front of the marks) for actual axis and <code>0</code> (behind the marks) for grids.</p></td>
     </tr>
-    <tr>
-      <th>remove</th>
-      <td><p>Remove the axis?</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A modified spec</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='vl_encode_x.html'>vl_encode_x()</a></code></p>
-<p><code><a href='vl_encode_y.html'>vl_encode_y()</a></code></p></div>
+    <p>A modified Vega-Lite Spec</p>
     
 
   </div>
@@ -503,8 +501,6 @@ To put them in front, use <code>"zindex = 1"</code>.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>
