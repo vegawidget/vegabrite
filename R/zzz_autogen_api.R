@@ -7853,12 +7853,12 @@ vl_sort_y_by_encoding <- function(spec, encoding = NULL, order = NULL){
 #' @name axis_encoding
 #' @export
 vl_remove_axis_x <- function(spec){
-  .add_axis_to_encoding(spec, NA, '#/definitions/Axis', encoding = 'x') 
+  .add_axis_to_encoding(spec, NA, '#/definitions/PositionFieldDef/properties/axis', encoding = 'x') 
 } 
 #' @name axis_encoding
 #' @export
 vl_remove_axis_y <- function(spec){
-  .add_axis_to_encoding(spec, NA, '#/definitions/Axis', encoding = 'y') 
+  .add_axis_to_encoding(spec, NA, '#/definitions/PositionFieldDef/properties/axis', encoding = 'y') 
 } 
 #' vl_add_single_selection
 #' 

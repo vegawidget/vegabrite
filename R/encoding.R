@@ -136,7 +136,7 @@ ENCODE_MAPPING <- list(
 vl_encode <- function(spec, ...){
   inputs <- list(...)
   for (n in names(inputs)){
-    args <- list(spec = spec, obj = inputs[[n]], ref = glue("#/definitions/Encoding/properties/{n}"), encoding = n)
+    args <- list(spec = spec, obj = inputs[[n]], ref = paste0("#/definitions/Encoding/properties/",n), encoding = n)
     spec <- rlang::exec(.add_encoding, !!!args)
   }
   spec
