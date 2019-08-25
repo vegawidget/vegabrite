@@ -1,7 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
+<!-- badges: start -->
+
+![Lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
+[![Travis build
+status](https://travis-ci.org/vegawidget/vlbuildr.svg?branch=master)](https://travis-ci.org/vegawidget/vlbuildr)
+<!-- badges: end -->
 
 # vlbuildr
 
@@ -50,7 +55,6 @@ more examples, including interactive ones.
 
 ``` r
 library(vlbuildr)
-library(vegawidget)
 vl_chart() %>%
    vl_add_data(values = mtcars) %>%
    vl_mark_point() %>%
