@@ -13,8 +13,8 @@ vl_make_FoldTransform(as = NULL, fold = NULL)
 \item{fold}{(\emph{FoldTransform}) An array of data fields indicating the properties to fold.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Create spec for FoldTransform.
+Create spec for {obj}
 }

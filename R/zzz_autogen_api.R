@@ -1,9 +1,3 @@
-#' vl_chart
-#'
-#' Initialize a Vega-Lite specification! Can add any top level configuration 
-#' parameters, or simply call without arguments to initialize and then use other
-#' function (like [vl_mark_point()], [vl_encode_x()], etc) to add on the various
-#' pieces of the chart spec. 
 #' @param $schema (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec_) URL to [JSON schema](http://json-schema.org/) for a Vega-Lite specification. Unless you have a reason to change this, use `https://vega.github.io/schema/vega-lite/v3.json`. Setting the `$schema` property allows automatic validation and autocomplete in editors that support JSON schema.
 #' @param align (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec_) The alignment to apply to grid rows and columns.
 #' The supported string values are `"all"`, `"each"`, and `"none"`.
@@ -123,25 +117,15 @@
 #' @param concat (_TopLevelConcatSpec_) A list of views to be concatenated.
 #' @param vconcat (_TopLevelVConcatSpec_) A list of views to be concatenated and put into a column.
 #' @param hconcat (_TopLevelHConcatSpec_) A list of views to be concatenated and put into a row.
-#'
-#' @return A vega-lite spec, as an S3 object of class vegaspec_vega_lite
-#'  using [vegawidget::as_vegaspec()]
-#' @export
-#' @importFrom utils hasName
-#' @examples 
-#' 
-#' vl_chart() %>%
-#'   vl_add_data(values = mtcars) %>%
-#'   vl_mark_point() %>%
-#'   vl_encode_x("wt") %>%
-#'   vl_encode_y("mpg") 
-vl_chart <- function(data = NULL, `$schema` = vegawidget::vega_schema(), align = NULL, autosize = NULL, background = NULL, bounds = NULL, center = NULL, columns = NULL, config = NULL, datasets = NULL, description = NULL, encoding = NULL, height = NULL, mark = NULL, name = NULL, padding = NULL, projection = NULL, resolve = NULL, selection = NULL, spacing = NULL, title = NULL, transform = NULL, usermeta = NULL, view = NULL, width = NULL, facet = NULL, spec = NULL, layer = NULL, `repeat` = NULL, concat = NULL, vconcat = NULL, hconcat = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  vegawidget::as_vegaspec(args_out)
-}
- 
+#' @name vl_chart
+vl_chart <- function(data = NULL, `$schema` = vegawidget::vega_schema(), align = NULL, autosize = NULL, background = NULL, bounds = NULL, center = NULL, columns = NULL, config = NULL, datasets = NULL, description = NULL, encoding = NULL, height = NULL, mark = NULL, name = NULL, padding = NULL, projection = NULL, resolve = NULL, selection = NULL, spacing = NULL, title = NULL, transform = NULL, usermeta = NULL, view = NULL, width = NULL, facet = NULL, spec = NULL, layer = NULL, `repeat` = NULL, concat = NULL, vconcat = NULL, hconcat = NULL){
+args <- .modify_args(NULL, c("$schema", "align", "autosize", "background", "bounds", "center", "columns", 
+  "config", "data", "datasets", "description", "encoding", "height", "mark", "name", 
+  "padding", "projection", "resolve", "selection", "spacing", "title", "transform", 
+  "usermeta", "view", "width", "facet", "spec", "layer", "repeat", "concat", "vconcat", 
+  "hconcat"))
+as_vegaspec(args$obj)
+} 
 #' vl_add_properties
 #' 
 #' Add properties to top level of a vega-lite spec. Allows adding properties
@@ -4123,9 +4107,10 @@ vl_encode_yError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, t
 vl_encode_yError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/yError2' , encoding = "yError2")
-} #' vl_make_Color
+} 
+#' vl_make_Color
 #' 
-#' Create spec for Color.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,(string|null)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4200,17 +4185,17 @@ vl_encode_yError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, 
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Color <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Detail
+
+vl_make_Color <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Detail
 #' 
-#' Create spec for Detail.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4255,17 +4240,16 @@ vl_make_Color <- function(aggregate = NULL, bin = NULL, condition = NULL, field 
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Detail <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Fill
+
+vl_make_Detail <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type"))
+args$obj
+} 
+#' vl_make_Fill
 #' 
-#' Create spec for Fill.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,(string|null)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4340,17 +4324,17 @@ vl_make_Detail <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit 
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Fill <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_FillOpacity
+
+vl_make_Fill <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_FillOpacity
 #' 
-#' Create spec for FillOpacity.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4425,17 +4409,17 @@ vl_make_Fill <- function(aggregate = NULL, bin = NULL, condition = NULL, field =
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_FillOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Href
+
+vl_make_FillOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Href
 #' 
-#' Create spec for Href.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4500,17 +4484,17 @@ vl_make_FillOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, 
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Href <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Key
+
+vl_make_Href <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Key
 #' 
-#' Create spec for Key.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4555,17 +4539,16 @@ vl_make_Href <- function(aggregate = NULL, bin = NULL, condition = NULL, field =
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Key <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Latitude
+
+vl_make_Key <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type"))
+args$obj
+} 
+#' vl_make_Latitude
 #' 
-#' Create spec for Latitude.
+#' Create spec for {obj}
 #' @param aggregate (_LatLongFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4611,17 +4594,16 @@ vl_make_Key <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = N
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Latitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Latitude2
+
+vl_make_Latitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Latitude2
 #' 
-#' Create spec for Latitude2.
+#' Create spec for {obj}
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4655,17 +4637,16 @@ vl_make_Latitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUni
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Latitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Longitude
+
+vl_make_Latitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+args$obj
+} 
+#' vl_make_Longitude
 #' 
-#' Create spec for Longitude.
+#' Create spec for {obj}
 #' @param aggregate (_LatLongFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4711,17 +4692,16 @@ vl_make_Latitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUn
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Longitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Longitude2
+
+vl_make_Longitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Longitude2
 #' 
-#' Create spec for Longitude2.
+#' Create spec for {obj}
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4755,17 +4735,16 @@ vl_make_Longitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUn
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Longitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Opacity
+
+vl_make_Longitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+args$obj
+} 
+#' vl_make_Opacity
 #' 
-#' Create spec for Opacity.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4840,17 +4819,17 @@ vl_make_Longitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeU
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Opacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Order
+
+vl_make_Opacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Order
 #' 
-#' Create spec for Order.
+#' Create spec for {obj}
 #' @param aggregate (_OrderFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4897,17 +4876,16 @@ vl_make_Opacity <- function(aggregate = NULL, bin = NULL, condition = NULL, fiel
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Order <- function(aggregate = NULL, bin = NULL, field = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Shape
+
+vl_make_Order <- function(aggregate = NULL, bin = NULL, field = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "sort", "timeUnit", "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Shape
 #' 
-#' Create spec for Shape.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4982,17 +4960,17 @@ vl_make_Order <- function(aggregate = NULL, bin = NULL, field = NULL, sort = NUL
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef<TypeForShape>,string>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Shape <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Size
+
+vl_make_Shape <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Size
 #' 
-#' Create spec for Size.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -5067,17 +5045,17 @@ vl_make_Shape <- function(aggregate = NULL, bin = NULL, condition = NULL, field 
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Size <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Stroke
+
+vl_make_Size <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Stroke
 #' 
-#' Create spec for Stroke.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,(string|null)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -5152,17 +5130,17 @@ vl_make_Size <- function(aggregate = NULL, bin = NULL, condition = NULL, field =
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Stroke <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_StrokeOpacity
+
+vl_make_Stroke <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_StrokeOpacity
 #' 
-#' Create spec for StrokeOpacity.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -5237,17 +5215,17 @@ vl_make_Stroke <- function(aggregate = NULL, bin = NULL, condition = NULL, field
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_StrokeOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_StrokeWidth
+
+vl_make_StrokeOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_StrokeWidth
 #' 
-#' Create spec for StrokeWidth.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -5322,17 +5300,17 @@ vl_make_StrokeOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_StrokeWidth <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Text
+
+vl_make_StrokeWidth <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Text
 #' 
-#' Create spec for Text.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -5397,17 +5375,17 @@ vl_make_StrokeWidth <- function(aggregate = NULL, bin = NULL, condition = NULL, 
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Text <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Tooltip
+
+vl_make_Text <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Tooltip
 #' 
-#' Create spec for Tooltip.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -5472,17 +5450,17 @@ vl_make_Text <- function(aggregate = NULL, bin = NULL, condition = NULL, field =
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Tooltip <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_X
+
+vl_make_Tooltip <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_X
 #' 
-#' Create spec for X.
+#' Create spec for {obj}
 #' @param aggregate (_PositionFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -5568,17 +5546,17 @@ vl_make_Tooltip <- function(aggregate = NULL, bin = NULL, condition = NULL, fiel
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_XValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_X <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_X2
+
+vl_make_X <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "axis", "bin", "field", "impute", "scale", "sort", "stack", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_X2
 #' 
-#' Create spec for X2.
+#' Create spec for {obj}
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -5612,17 +5590,16 @@ vl_make_X <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, i
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_XValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_X2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_XError
+
+vl_make_X2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+args$obj
+} 
+#' vl_make_XError
 #' 
-#' Create spec for XError.
+#' Create spec for {obj}
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -5656,17 +5633,16 @@ vl_make_X2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NU
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_XError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_XError2
+
+vl_make_XError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+args$obj
+} 
+#' vl_make_XError2
 #' 
-#' Create spec for XError2.
+#' Create spec for {obj}
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -5700,17 +5676,16 @@ vl_make_XError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit 
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_XError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Y
+
+vl_make_XError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+args$obj
+} 
+#' vl_make_Y
 #' 
-#' Create spec for Y.
+#' Create spec for {obj}
 #' @param aggregate (_PositionFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -5796,17 +5771,17 @@ vl_make_XError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_YValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Y <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Y2
+
+vl_make_Y <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "axis", "bin", "field", "impute", "scale", "sort", "stack", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Y2
 #' 
-#' Create spec for Y2.
+#' Create spec for {obj}
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -5840,17 +5815,16 @@ vl_make_Y <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, i
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_YValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_Y2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_YError
+
+vl_make_Y2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+args$obj
+} 
+#' vl_make_YError
 #' 
-#' Create spec for YError.
+#' Create spec for {obj}
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -5884,17 +5858,16 @@ vl_make_Y2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NU
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_YError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_YError2
+
+vl_make_YError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+args$obj
+} 
+#' vl_make_YError2
 #' 
-#' Create spec for YError2.
+#' Create spec for {obj}
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -5928,15 +5901,13 @@ vl_make_YError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit 
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_YError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- 
+
+vl_make_YError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+args$obj
+} 
 #' vl_aggregate
 #' 
 #' Add AggregateTransform to a vega-lite spec.
@@ -6166,49 +6137,47 @@ vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL
 vl_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL){
   args <- .modify_args(NULL, c("frame", "groupby", "ignorePeers", "sort", "window"))
   .add_transform(args$spec, args$object, '#/definitions/WindowTransform')
-} #' vl_make_AggregateTransform
+} 
+#' vl_make_AggregateTransform
 #' 
-#' Create spec for AggregateTransform.
+#' Create spec for {obj}
 #' @param aggregate (_AggregateTransform_) Array of objects that define fields to aggregate.
 #' @param groupby (_AggregateTransform_) The data fields to group by. If not specified, a single group containing all data objects will be used.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_AggregateTransform <- function(aggregate = NULL, groupby = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_BinTransform
+
+vl_make_AggregateTransform <- function(aggregate = NULL, groupby = NULL){
+args <- .modify_args(NULL, c("aggregate", "groupby"))
+args$obj
+} 
+#' vl_make_BinTransform
 #' 
-#' Create spec for BinTransform.
+#' Create spec for {obj}
 #' @param as (_BinTransform_) The output fields at which to write the start and end bin values.
 #' @param bin (_BinTransform_) An object indicating bin properties, or simply `true` for using default bin parameters.
 #' @param field (_BinTransform_) The data field to bin.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_BinTransform <- function(as = NULL, bin = NULL, field = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_CalculateTransform
+
+vl_make_BinTransform <- function(as = NULL, bin = NULL, field = NULL){
+args <- .modify_args(NULL, c("as", "bin", "field"))
+args$obj
+} 
+#' vl_make_CalculateTransform
 #' 
-#' Create spec for CalculateTransform.
+#' Create spec for {obj}
 #' @param as (_CalculateTransform_) The field for storing the computed formula value.
 #' @param calculate (_CalculateTransform_) A [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string. Use the variable `datum` to refer to the current data object.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_CalculateTransform <- function(as = NULL, calculate = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_FilterTransform
+
+vl_make_CalculateTransform <- function(as = NULL, calculate = NULL){
+args <- .modify_args(NULL, c("as", "calculate"))
+args$obj
+} 
+#' vl_make_FilterTransform
 #' 
-#' Create spec for FilterTransform.
+#' Create spec for {obj}
 #' @param filter (_FilterTransform_) The `filter` property must be one of the predicate definitions:
 #' 
 #' 1) an [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string,
@@ -6226,17 +6195,16 @@ vl_make_CalculateTransform <- function(as = NULL, calculate = NULL) {
 #' 3) a [selection predicate](https://vega.github.io/vega-lite/docs/filter.html#selection-predicate)
 #' 
 #' 4) a logical operand that combines (1), (2), or (3).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_FilterTransform <- function(filter = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_FlattenTransform
+
+vl_make_FilterTransform <- function(filter = NULL){
+args <- .modify_args(NULL, "filter")
+args$obj
+} 
+#' vl_make_FlattenTransform
 #' 
-#' Create spec for FlattenTransform.
+#' Create spec for {obj}
 #' @param as (_FlattenTransform_) The output field names for extracted array values.
 #' 
 #' __Default value:__ The field name of the corresponding array field
@@ -6244,31 +6212,29 @@ vl_make_FilterTransform <- function(filter = NULL) {
 #' If multiple fields are specified, their array values should have a parallel structure, ideally with the same length.
 #' If the lengths of parallel arrays do not match,
 #' the longest array will be used with `null` values added for missing entries.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_FlattenTransform <- function(as = NULL, flatten = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_FoldTransform
+
+vl_make_FlattenTransform <- function(as = NULL, flatten = NULL){
+args <- .modify_args(NULL, c("as", "flatten"))
+args$obj
+} 
+#' vl_make_FoldTransform
 #' 
-#' Create spec for FoldTransform.
+#' Create spec for {obj}
 #' @param as (_FoldTransform_) The output field names for the key and value properties produced by the fold transform.
 #' __Default value:__ `["key", "value"]`
 #' @param fold (_FoldTransform_) An array of data fields indicating the properties to fold.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_FoldTransform <- function(as = NULL, fold = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_ImputeTransform
+
+vl_make_FoldTransform <- function(as = NULL, fold = NULL){
+args <- .modify_args(NULL, c("as", "fold"))
+args$obj
+} 
+#' vl_make_ImputeTransform
 #' 
-#' Create spec for ImputeTransform.
+#' Create spec for {obj}
 #' @param frame (_ImputeTransform_) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
 #' 
 #' __Default value:__:  `[null, null]` indicating that the window includes all objects.
@@ -6288,30 +6254,28 @@ vl_make_FoldTransform <- function(as = NULL, fold = NULL) {
 #' 
 #' __Default value:__  `"value"`
 #' @param value (_ImputeTransform_) The field value to use when the imputation `method` is `"value"`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_ImputeTransform <- function(frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_JoinAggregateTransform
+
+vl_make_ImputeTransform <- function(frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL){
+args <- .modify_args(NULL, c("frame", "groupby", "impute", "key", "keyvals", "method", "value"))
+args$obj
+} 
+#' vl_make_JoinAggregateTransform
 #' 
-#' Create spec for JoinAggregateTransform.
+#' Create spec for {obj}
 #' @param groupby (_JoinAggregateTransform_) The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group.
 #' @param joinaggregate (_JoinAggregateTransform_) The definition of the fields in the join aggregate, and what calculations to use.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_JoinAggregateTransform <- function(groupby = NULL, joinaggregate = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_LookupTransform
+
+vl_make_JoinAggregateTransform <- function(groupby = NULL, joinaggregate = NULL){
+args <- .modify_args(NULL, c("groupby", "joinaggregate"))
+args$obj
+} 
+#' vl_make_LookupTransform
 #' 
-#' Create spec for LookupTransform.
+#' Create spec for {obj}
 #' @param as (_LookupTransform_) The field or fields for storing the computed formula value.
 #' If `from.fields` is specified, the transform will use the same names for `as`.
 #' If `from.fields` is not specified, `as` has to be a string and we put the whole object into the data under the specified name.
@@ -6320,45 +6284,42 @@ vl_make_JoinAggregateTransform <- function(groupby = NULL, joinaggregate = NULL)
 #' __Default value:__ `null`
 #' @param from (_LookupTransform_) Secondary data reference.
 #' @param lookup (_LookupTransform_) Key in primary data source.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_LookupTransform <- function(as = NULL, default = NULL, from = NULL, lookup = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_TimeUnitTransform
+
+vl_make_LookupTransform <- function(as = NULL, default = NULL, from = NULL, lookup = NULL){
+args <- .modify_args(NULL, c("as", "default", "from", "lookup"))
+args$obj
+} 
+#' vl_make_TimeUnitTransform
 #' 
-#' Create spec for TimeUnitTransform.
+#' Create spec for {obj}
 #' @param as (_TimeUnitTransform_) The output field to write the timeUnit value.
 #' @param field (_TimeUnitTransform_) The data field to apply time unit.
 #' @param timeUnit (_TimeUnitTransform_) The timeUnit.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_TimeUnitTransform <- function(as = NULL, field = NULL, timeUnit = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_SampleTransform
+
+vl_make_TimeUnitTransform <- function(as = NULL, field = NULL, timeUnit = NULL){
+args <- .modify_args(NULL, c("as", "field", "timeUnit"))
+args$obj
+} 
+#' vl_make_SampleTransform
 #' 
-#' Create spec for SampleTransform.
+#' Create spec for {obj}
 #' @param sample (_SampleTransform_) The maximum number of data objects to include in the sample.
 #' 
 #' __Default value:__ `1000`
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_SampleTransform <- function(sample = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_StackTransform
+
+vl_make_SampleTransform <- function(sample = NULL){
+args <- .modify_args(NULL, "sample")
+args$obj
+} 
+#' vl_make_StackTransform
 #' 
-#' Create spec for StackTransform.
+#' Create spec for {obj}
 #' @param as (_StackTransform_) Output field names. This can be either a string or an array of strings with
 #' two elements denoting the name for the fields for stack start and stack end
 #' respectively.
@@ -6368,17 +6329,16 @@ vl_make_SampleTransform <- function(sample = NULL) {
 #' __Default value:__ `"zero"`
 #' @param sort (_StackTransform_) Field that determines the order of leaves in the stacked charts.
 #' @param stack (_StackTransform_) The field which is stacked.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_StackTransform <- function(as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_WindowTransform
+
+vl_make_StackTransform <- function(as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL){
+args <- .modify_args(NULL, c("as", "groupby", "offset", "sort", "stack"))
+args$obj
+} 
+#' vl_make_WindowTransform
 #' 
-#' Create spec for WindowTransform.
+#' Create spec for {obj}
 #' @param frame (_WindowTransform_) A frame specification as a two-element array indicating how the sliding window should proceed. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. The default value is `[null, 0]`, indicating that the sliding window includes the current object and all preceding objects. The value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object. Finally, `[null, null]` indicates that the window frame should always include all data objects. If you this frame and want to assign the same value to add objects, you can use the simpler [join aggregate transform](https://vega.github.io/vega-lite/docs/joinaggregate.html). The only operators affected are the aggregation operations and the `first_value`, `last_value`, and `nth_value` window operations. The other window operations are not affected by this.
 #' 
 #' __Default value:__:  `[null, 0]` (includes the current object and all preceding objects)
@@ -6388,15 +6348,13 @@ vl_make_StackTransform <- function(as = NULL, groupby = NULL, offset = NULL, sor
 #' __Default value:__ `false`
 #' @param sort (_WindowTransform_) A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered “peer” values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to `true`).
 #' @param window (_WindowTransform_) The definition of the fields in the window, and what calculations to use.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_WindowTransform <- function(frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- 
+
+vl_make_WindowTransform <- function(frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL){
+args <- .modify_args(NULL, c("frame", "groupby", "ignorePeers", "sort", "window"))
+args$obj
+} 
 #' Add bin to encoding
 #' 
 #' Add bin parameters to an encoding
@@ -7664,62 +7622,62 @@ vl_aggregate_yError2 <- function(spec, aggregate = c('argmax', 'argmin', 'averag
 #' @name sort_encoding
 #' @export
 vl_sort_color <- function(spec, value){
-  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = color)
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'color')
 } 
 #' @name sort_encoding
 #' @export
 vl_sort_fill <- function(spec, value){
-  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = fill)
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'fill')
 } 
 #' @name sort_encoding
 #' @export
 vl_sort_fillOpacity <- function(spec, value){
-  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = fillOpacity)
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'fillOpacity')
 } 
 #' @name sort_encoding
 #' @export
 vl_sort_opacity <- function(spec, value){
-  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = opacity)
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'opacity')
 } 
 #' @name sort_encoding
 #' @export
 vl_sort_order <- function(spec, value){
-  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = order)
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'order')
 } 
 #' @name sort_encoding
 #' @export
 vl_sort_shape <- function(spec, value){
-  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = shape)
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'shape')
 } 
 #' @name sort_encoding
 #' @export
 vl_sort_size <- function(spec, value){
-  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = size)
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'size')
 } 
 #' @name sort_encoding
 #' @export
 vl_sort_stroke <- function(spec, value){
-  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = stroke)
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'stroke')
 } 
 #' @name sort_encoding
 #' @export
 vl_sort_strokeOpacity <- function(spec, value){
-  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = strokeOpacity)
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'strokeOpacity')
 } 
 #' @name sort_encoding
 #' @export
 vl_sort_strokeWidth <- function(spec, value){
-  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = strokeWidth)
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'strokeWidth')
 } 
 #' @name sort_encoding
 #' @export
 vl_sort_x <- function(spec, value){
-  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = x)
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'x')
 } 
 #' @name sort_encoding
 #' @export
 vl_sort_y <- function(spec, value){
-  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = y)
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'y')
 } 
 #' Add sort transform by field to encoding
 #' 
@@ -7892,6 +7850,16 @@ vl_sort_y_by_encoding <- function(spec, encoding = NULL, order = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
   .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "y")
 } 
+#' @name axis_encoding
+#' @export
+vl_remove_axis_x <- function(spec){
+  .add_axis_to_encoding(spec, NA, '#/definitions/Axis', encoding = 'x') 
+} 
+#' @name axis_encoding
+#' @export
+vl_remove_axis_y <- function(spec){
+  .add_axis_to_encoding(spec, NA, '#/definitions/Axis', encoding = 'y') 
+} 
 #' vl_add_single_selection
 #' 
 #' Add SingleSelection to a vega-lite spec.
@@ -8032,9 +8000,10 @@ vl_add_interval_selection <- function(spec, selection_name, bind = NULL, clear =
   args <- .modify_args(NULL, c("bind", "clear", "empty", "encodings", "fields", "init", "mark", "on", "resolve", 
   "translate", "type", "zoom"))
   .add_selection(args$spec, args$object, '#/definitions/IntervalSelection', type = 'interval', selection_name = args$extra$selection_name)
-} #' vl_make_SingleSelection
+} 
+#' vl_make_SingleSelection
 #' 
-#' Create spec for SingleSelection.
+#' Create spec for {obj}
 #' @param bind (_SingleSelection_) Establish a two-way binding between a single selection and input elements
 #' (also known as dynamic query widgets). A binding takes the form of
 #' Vega's [input element binding definition](https://vega.github.io/vega/docs/signals/#bind)
@@ -8064,17 +8033,17 @@ vl_add_interval_selection <- function(spec, selection_name, bind = NULL, clear =
 #' selections' data queries are resolved when applied in a filter transform,
 #' conditional encoding rule, or scale domain.
 #' @param type (_SingleSelection_) single
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_SingleSelection <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_MultiSelection
+
+vl_make_SingleSelection <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, type = NULL){
+args <- .modify_args(NULL, c("bind", "clear", "empty", "encodings", "fields", "init", "nearest", "on", 
+  "resolve", "type"))
+args$obj
+} 
+#' vl_make_MultiSelection
 #' 
-#' Create spec for MultiSelection.
+#' Create spec for {obj}
 #' @param clear (_MultiSelection_) Clears the selection, emptying it of all values. Can be an
 #' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
 #' 
@@ -8107,17 +8076,17 @@ vl_make_SingleSelection <- function(bind = NULL, clear = NULL, empty = NULL, enc
 #' 
 #' See the [toggle transform](https://vega.github.io/vega-lite/docs/toggle.html) documentation for more information.
 #' @param type (_MultiSelection_) multi
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_MultiSelection <- function(clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_IntervalSelection
+
+vl_make_MultiSelection <- function(clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL, type = NULL){
+args <- .modify_args(NULL, c("clear", "empty", "encodings", "fields", "init", "nearest", "on", "resolve", 
+  "toggle", "type"))
+args$obj
+} 
+#' vl_make_IntervalSelection
 #' 
-#' Create spec for IntervalSelection.
+#' Create spec for {obj}
 #' @param bind (_IntervalSelection_) Establishes a two-way binding between the interval selection and the scales
 #' used within the same view. This allows a user to interactively pan and
 #' zoom the view.
@@ -8159,15 +8128,14 @@ vl_make_MultiSelection <- function(clear = NULL, empty = NULL, encodings = NULL,
 #' 
 #' 
 #' __Default value:__ `true`, which corresponds to `wheel!`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_IntervalSelection <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, type = NULL, zoom = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- 
+
+vl_make_IntervalSelection <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, type = NULL, zoom = NULL){
+args <- .modify_args(NULL, c("bind", "clear", "empty", "encodings", "fields", "init", "mark", "on", "resolve", 
+  "translate", "type", "zoom"))
+args$obj
+} 
 #' vl_bind_radio_input
 #' 
 #' Add radio binding to a vega-lite spec.
@@ -8183,7 +8151,7 @@ vl_make_IntervalSelection <- function(bind = NULL, clear = NULL, empty = NULL, e
 #' @export
 
 vl_bind_radio_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, name = NULL, options = NULL, type = NULL){
-  args <- .modify_args(NULL, c("debounce", "element", "name", "options", "type"))
+  args <- .modify_args(list(input = 'radio'), c("debounce", "element", "input", "name", "options", "type"))
   .add_binding(args$spec, args$object, '#/definitions/BindRadioSelect', selection_name = args$extra$selection_name,
 projection_name = args$extra$projection_name)
 } 
@@ -8202,7 +8170,7 @@ projection_name = args$extra$projection_name)
 #' @export
 
 vl_bind_select_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, name = NULL, options = NULL, type = NULL){
-  args <- .modify_args(NULL, c("debounce", "element", "name", "options", "type"))
+  args <- .modify_args(list(input = 'select'), c("debounce", "element", "input", "name", "options", "type"))
   .add_binding(args$spec, args$object, '#/definitions/BindRadioSelect', selection_name = args$extra$selection_name,
 projection_name = args$extra$projection_name)
 } 
@@ -8220,7 +8188,7 @@ projection_name = args$extra$projection_name)
 #' @export
 
 vl_bind_checkbox_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, name = NULL, type = NULL){
-  args <- .modify_args(NULL, c("debounce", "element", "name", "type"))
+  args <- .modify_args(list(input = 'checkbox'), c("debounce", "element", "input", "name", "type"))
   .add_binding(args$spec, args$object, '#/definitions/BindCheckbox', selection_name = args$extra$selection_name,
 projection_name = args$extra$projection_name)
 } 
@@ -8241,7 +8209,7 @@ projection_name = args$extra$projection_name)
 #' @export
 
 vl_bind_range_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, max = NULL, min = NULL, name = NULL, step = NULL, type = NULL){
-  args <- .modify_args(NULL, c("debounce", "element", "max", "min", "name", "step", "type"))
+  args <- .modify_args(list(input = 'range'), c("debounce", "element", "input", "max", "min", "name", "step", "type"))
   .add_binding(args$spec, args$object, '#/definitions/BindRange', selection_name = args$extra$selection_name,
 projection_name = args$extra$projection_name)
 } 
@@ -8455,4 +8423,6260 @@ vl_facet_wrap <- function(spec, columns = 2, aggregate = NULL, bin = NULL, field
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "header", "sort", "timeUnit", "title", "type"
   ))
   .add_facet_wrap(args$spec, args$object, '#/definitions/FacetFieldDef', columns = args$extra$columns)
+} 
+#' vl_repeat_row
+#' 
+#' Add repeat to a vega-lite spec.
+#' @param spec An input vega-lite spec
+
+#' @param ... fields to use for repeat (strings)
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_repeat_row <- function(spec, ...){
+  .add_repeat(spec, list(...), '#/definitions/RepeatSpec/properties/repeat', .type = 'row')
+} 
+#' vl_repeat_col
+#' 
+#' Add repeat to a vega-lite spec.
+#' @param spec An input vega-lite spec
+
+#' @param ... fields to use for repeat (strings)
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_repeat_col <- function(spec, ...){
+  .add_repeat(spec, list(...), '#/definitions/RepeatSpec/properties/repeat', .type = 'col')
+} 
+#' vl_repeat_wrap
+#' 
+#' Add repeat to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param columns number of columns to add
+#' @param ... fields to use for repeat (strings)
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_repeat_wrap <- function(spec, columns = 2, ...){
+  .add_repeat(spec, list(...), '#/definitions/RepeatSpec/properties/repeat', columns = columns, .type = 'wrap')
+} 
+#' Resolve axes, legends, or scales for composite charts
+#' 
+#' When faceting, layering, repeating, or concatenating a chart, one can choose
+#' whether axes, legends, or scales are shared or independent using the resolve
+#' specification
+#' @param spec An input vega-lite spec
+#' @param how One of 'independent', 'shared'
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name resolve 
+#' @name resolve
+#' @export
+vl_resolvle_axis <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "x", type = "axis")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_axis <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "y", type = "axis")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "color", type = "legend")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "fill", type = "legend")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "fillOpacity", type = "legend")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "opacity", type = "legend")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "shape", type = "legend")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "size", type = "legend")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "stroke", type = "legend")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "strokeOpacity", type = "legend")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "strokeWidth", type = "legend")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "x", type = "legend")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "y", type = "legend")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "color", type = "scale")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "fill", type = "scale")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "fillOpacity", type = "scale")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "opacity", type = "scale")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "shape", type = "scale")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "size", type = "scale")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "stroke", type = "scale")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "strokeOpacity", type = "scale")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "strokeWidth", type = "scale")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "x", type = "scale")
+} 
+#' @name resolve
+#' @export
+vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "y", type = "scale")
+} 
+#' vl_add_config
+#' 
+#' Add top-level config to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param area (_Config_) Area-Specific Config
+#' @param autosize (_Config_) Sets how the visualization size should be determined. If a string, should be one of `"pad"`, `"fit"` or `"none"`.
+#' Object values can additionally specify parameters for content sizing and automatic resizing.
+#' `"fit"` is only supported for single and layered views that don't use `rangeStep`.
+#' 
+#' __Default value__: `pad`
+#' @param axis (_Config_) Axis configuration, which determines default properties for all `x` and `y` [axes](https://vega.github.io/vega-lite/docs/axis.html). For a full list of axis configuration options, please see the [corresponding section of the axis documentation](https://vega.github.io/vega-lite/docs/axis.html#config).
+#' @param axisBand (_Config_) Specific axis config for axes with "band" scales.
+#' @param axisBottom (_Config_) Specific axis config for x-axis along the bottom edge of the chart.
+#' @param axisLeft (_Config_) Specific axis config for y-axis along the left edge of the chart.
+#' @param axisRight (_Config_) Specific axis config for y-axis along the right edge of the chart.
+#' @param axisTop (_Config_) Specific axis config for x-axis along the top edge of the chart.
+#' @param axisX (_Config_) X-axis specific config.
+#' @param axisY (_Config_) Y-axis specific config.
+#' @param background (_Config_) CSS color property to use as the background of the whole Vega-Lite view
+#' 
+#' __Default value:__ none (transparent)
+#' @param bar (_Config_) Bar-Specific Config
+#' @param boxplot (_Config_) Box Config
+#' @param circle (_Config_) Circle-Specific Config
+#' @param concat (_Config_) Default configuration for all concatenation view composition operators (`concat`, `hconcat`, and `vconcat`)
+#' @param countTitle (_Config_) Default axis and legend title for count fields.
+#' 
+#' __Default value:__ `Count of Records`.
+#' @param errorband (_Config_) ErrorBand Config
+#' @param errorbar (_Config_) ErrorBar Config
+#' @param facet (_Config_) Default configuration for the `facet` view composition operator
+#' @param fieldTitle (_Config_) Defines how Vega-Lite generates title for fields.  There are three possible styles:
+#' - `"verbal"` (Default) - displays function in a verbal style (e.g., "Sum of field", "Year-month of date", "field (binned)").
+#' - `"function"` - displays function using parentheses and capitalized texts (e.g., "SUM(field)", "YEARMONTH(date)", "BIN(field)").
+#' - `"plain"` - displays only the field name without functions (e.g., "field", "date", "field").
+#' @param geoshape (_Config_) Geoshape-Specific Config
+#' @param header (_Config_) Header configuration, which determines default properties for all [headers](https://vega.github.io/vega-lite/docs/header.html).
+#' 
+#' For a full list of header configuration options, please see the [corresponding section of in the header documentation](https://vega.github.io/vega-lite/docs/header.html#config).
+#' @param headerColumn (_Config_) Header configuration, which determines default properties for column [headers](https://vega.github.io/vega-lite/docs/header.html).
+#' 
+#' For a full list of header configuration options, please see the [corresponding section of in the header documentation](https://vega.github.io/vega-lite/docs/header.html#config).
+#' @param headerFacet (_Config_) Header configuration, which determines default properties for non-row/column facet [headers](https://vega.github.io/vega-lite/docs/header.html).
+#' 
+#' For a full list of header configuration options, please see the [corresponding section of in the header documentation](https://vega.github.io/vega-lite/docs/header.html#config).
+#' @param headerRow (_Config_) Header configuration, which determines default properties for row [headers](https://vega.github.io/vega-lite/docs/header.html).
+#' 
+#' For a full list of header configuration options, please see the [corresponding section of in the header documentation](https://vega.github.io/vega-lite/docs/header.html#config).
+#' @param invalidValues (_Config_) Defines how Vega-Lite should handle invalid values (`null` and `NaN`).
+#' - If set to `"filter"` (default), all data items with null values will be skipped (for line, trail, and area marks) or filtered (for other marks).
+#' - If `null`, all data items are included. In this case, invalid values will be interpreted as zeroes.
+#' @param legend (_Config_) Legend configuration, which determines default properties for all [legends](https://vega.github.io/vega-lite/docs/legend.html). For a full list of legend configuration options, please see the [corresponding section of in the legend documentation](https://vega.github.io/vega-lite/docs/legend.html#config).
+#' @param line (_Config_) Line-Specific Config
+#' @param mark (_Config_) Mark Config
+#' @param numberFormat (_Config_) D3 Number format for guide labels and text marks. For example "s" for SI units. Use [D3's number format pattern](https://github.com/d3/d3-format#locale_format).
+#' @param padding (_Config_) The default visualization padding, in pixels, from the edge of the visualization canvas to the data rectangle.  If a number, specifies padding for all sides.
+#' If an object, the value should have the format `{"left": 5, "top": 5, "right": 5, "bottom": 5}` to specify padding for each side of the visualization.
+#' 
+#' __Default value__: `5`
+#' @param point (_Config_) Point-Specific Config
+#' @param projection (_Config_) Projection configuration, which determines default properties for all [projections](https://vega.github.io/vega-lite/docs/projection.html). For a full list of projection configuration options, please see the [corresponding section of the projection documentation](https://vega.github.io/vega-lite/docs/projection.html#config).
+#' @param range (_Config_) An object hash that defines default range arrays or schemes for using with scales.
+#' For a full list of scale range configuration options, please see the [corresponding section of the scale documentation](https://vega.github.io/vega-lite/docs/scale.html#config).
+#' @param rect (_Config_) Rect-Specific Config
+#' @param repeat (_Config_) Default configuration for the `repeat` view composition operator
+#' @param rule (_Config_) Rule-Specific Config
+#' @param scale (_Config_) Scale configuration determines default properties for all [scales](https://vega.github.io/vega-lite/docs/scale.html). For a full list of scale configuration options, please see the [corresponding section of the scale documentation](https://vega.github.io/vega-lite/docs/scale.html#config).
+#' @param selection (_Config_) An object hash for defining default properties for each type of selections.
+#' @param square (_Config_) Square-Specific Config
+#' @param stack (_Config_) Default stack offset for stackable mark.
+#' @param style (_Config_) An object hash that defines key-value mappings to determine default properties for marks with a given [style](https://vega.github.io/vega-lite/docs/mark.html#mark-def).  The keys represent styles names; the values have to be valid [mark configuration objects](https://vega.github.io/vega-lite/docs/mark.html#config).
+#' @param text (_Config_) Text-Specific Config
+#' @param tick (_Config_) Tick-Specific Config
+#' @param timeFormat (_Config_) Default time format for raw time values (without time units) in text marks, legend labels and header labels.
+#' 
+#' __Default value:__ `"%b %d, %Y"`
+#' __Note:__ Axes automatically determine format each label automatically so this config would not affect axes.
+#' @param title (_Config_) Title configuration, which determines default properties for all [titles](https://vega.github.io/vega-lite/docs/title.html). For a full list of title configuration options, please see the [corresponding section of the title documentation](https://vega.github.io/vega-lite/docs/title.html#config).
+#' @param trail (_Config_) Trail-Specific Config
+#' @param view (_Config_) Default properties for [single view plots](https://vega.github.io/vega-lite/docs/spec.html#single).
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_config <- function(spec, area = NULL, autosize = NULL, axis = NULL, axisBand = NULL, axisBottom = NULL, axisLeft = NULL, axisRight = NULL, axisTop = NULL, axisX = NULL, axisY = NULL, background = NULL, bar = NULL, boxplot = NULL, circle = NULL, concat = NULL, countTitle = NULL, errorband = NULL, errorbar = NULL, facet = NULL, fieldTitle = NULL, geoshape = NULL, header = NULL, headerColumn = NULL, headerFacet = NULL, headerRow = NULL, invalidValues = NULL, legend = NULL, line = NULL, mark = NULL, numberFormat = NULL, padding = NULL, point = NULL, projection = NULL, range = NULL, rect = NULL, `repeat` = NULL, rule = NULL, scale = NULL, selection = NULL, square = NULL, stack = NULL, style = NULL, text = NULL, tick = NULL, timeFormat = NULL, title = NULL, trail = NULL, view = NULL){
+  args <- .modify_args(NULL, c("area", "autosize", "axis", "axisBand", "axisBottom", "axisLeft", "axisRight", 
+  "axisTop", "axisX", "axisY", "background", "bar", "boxplot", "circle", "concat", 
+  "countTitle", "errorband", "errorbar", "facet", "fieldTitle", "geoshape", "header", 
+  "headerColumn", "headerFacet", "headerRow", "invalidValues", "legend", "line", 
+  "mark", "numberFormat", "padding", "point", "projection", "range", "rect", "repeat", 
+  "rule", "scale", "selection", "square", "stack", "style", "text", "tick", "timeFormat", 
+  "title", "trail", "view"))
+  .add_config(args$spec, args$object, '#/definitions/Config')
+} 
+#' vl_add_area_config
+#' 
+#' Add area config (AreaConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param align (_AreaConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_AreaConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_AreaConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_AreaConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_AreaConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_AreaConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_AreaConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_AreaConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_AreaConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_AreaConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_AreaConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_AreaConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_AreaConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_AreaConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_AreaConfig_) The font size, in pixels.
+#' @param fontStyle (_AreaConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_AreaConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_AreaConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_AreaConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_AreaConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param line (_AreaConfig_) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
+#' 
+#' - If this value is an empty object (`{}`) or `true`, lines with default properties will be used.
+#' 
+#' - If this value is `false`, no lines would be automatically added to area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param opacity (_AreaConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_AreaConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_AreaConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param point (_AreaConfig_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param radius (_AreaConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_AreaConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_AreaConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_AreaConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_AreaConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_AreaConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_AreaConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_AreaConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_AreaConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_AreaConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_AreaConfig_) The stroke width, in pixels.
+#' @param tension (_AreaConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_AreaConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_AreaConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_AreaConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_AreaConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_AreaConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_AreaConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_AreaConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_area_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "line", "opacity", "order", "orient", 
+  "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AreaConfig' , .config = "area")
+} 
+#' vl_add_axis_config
+#' 
+#' Add axis config (AxisConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
+#' 
+#'   __Default value:__ `0.5`
+#' @param domain (_AxisConfig_) A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.
+#' 
+#' __Default value:__ `true`
+#' @param domainColor (_AxisConfig_) Color of axis domain line.
+#' 
+#' __Default value:__ `"gray"`.
+#' @param domainDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed domain lines.
+#' @param domainDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the domain dash array.
+#' @param domainOpacity (_AxisConfig_) Opacity of the axis domain line.
+#' @param domainWidth (_AxisConfig_) Stroke width of axis domain line
+#' 
+#' __Default value:__ `1`
+#' @param grid (_AxisConfig_) A boolean flag indicating if grid lines should be included as part of the axis
+#' 
+#' __Default value:__ `true` for [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous) that are not binned; otherwise, `false`.
+#' @param gridColor (_AxisConfig_) Color of gridlines.
+#' 
+#' __Default value:__ `"lightGray"`.
+#' @param gridDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed grid lines.
+#' @param gridDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the grid dash array.
+#' @param gridOpacity (_AxisConfig_) The stroke opacity of grid (value between \[0,1\])
+#' 
+#' __Default value:__ `1`
+#' @param gridWidth (_AxisConfig_) The grid width, in pixels.
+#' 
+#' __Default value:__ `1`
+#' @param labelAlign (_AxisConfig_) Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation.
+#' @param labelAngle (_AxisConfig_) The rotation angle of the axis labels.
+#' 
+#' __Default value:__ `-90` for nominal and ordinal fields; `0` otherwise.
+#' @param labelBaseline (_AxisConfig_) Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' @param labelBound (_AxisConfig_) Indicates if labels should be hidden if they exceed the axis range. If `false` (the default) no bounds overlap analysis is performed. If `true`, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.
+#' 
+#' __Default value:__ `false`.
+#' @param labelColor (_AxisConfig_) The color of the tick label, can be in hex color code or regular color name.
+#' @param labelFlush (_AxisConfig_) Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `true` for axis of a continuous x-scale. Otherwise, `false`.
+#' @param labelFlushOffset (_AxisConfig_) Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of `2` will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `0`.
+#' @param labelFont (_AxisConfig_) The font of the tick label.
+#' @param labelFontSize (_AxisConfig_) The font size of the label, in pixels.
+#' @param labelFontStyle (_AxisConfig_) Font style of the title.
+#' @param labelFontWeight (_AxisConfig_) Font weight of axis tick labels.
+#' @param labelLimit (_AxisConfig_) Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `180`
+#' @param labelOpacity (_AxisConfig_) The opacity of the labels.
+#' @param labelOverlap (_AxisConfig_) The strategy to use for resolving overlap of axis labels. If `false` (the default), no overlap reduction is attempted. If set to `true` or `"parity"`, a strategy of removing every other label is used (this works well for standard linear axes). If set to `"greedy"`, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true` for non-nominal fields with non-log scales; `"greedy"` for log scales; otherwise `false`.
+#' @param labelPadding (_AxisConfig_) The padding, in pixels, between axis and text labels.
+#' 
+#' __Default value:__ `2`
+#' @param labelSeparation (_AxisConfig_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param labels (_AxisConfig_) A boolean flag indicating if labels should be included as part of the axis.
+#' 
+#' __Default value:__ `true`.
+#' @param maxExtent (_AxisConfig_) The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.
+#' 
+#' __Default value:__ `undefined`.
+#' @param minExtent (_AxisConfig_) The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.
+#' 
+#' __Default value:__ `30` for y-axis; `undefined` for x-axis.
+#' @param orient (_AxisConfig_) The orientation of the axis. One of `"top"`, `"bottom"`, `"left"` or `"right"`. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).
+#' 
+#' __Default value:__ `"bottom"` for x-axes and `"left"` for y-axes.
+#' @param shortTimeLabels (_AxisConfig_) Whether month names and weekday names should be abbreviated.
+#' 
+#' __Default value:__  `false`
+#' @param tickColor (_AxisConfig_) The color of the axis's tick.
+#' 
+#' __Default value:__ `"gray"`
+#' @param tickDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed tick mark lines.
+#' @param tickDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the tick mark dash array.
+#' @param tickExtra (_AxisConfig_) Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for `band` scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with `"bandPosition": 1` and an axis `"padding"` value of `0`.
+#' @param tickOffset (_AxisConfig_) Position offset in pixels to apply to ticks, labels, and gridlines.
+#' @param tickOpacity (_AxisConfig_) Opacity of the ticks.
+#' @param tickRound (_AxisConfig_) Boolean flag indicating if pixel position values should be rounded to the nearest integer.
+#' 
+#' __Default value:__ `true`
+#' @param tickSize (_AxisConfig_) The size in pixels of axis ticks.
+#' 
+#' __Default value:__ `5`
+#' @param tickWidth (_AxisConfig_) The width, in pixels, of ticks.
+#' 
+#' __Default value:__ `1`
+#' @param ticks (_AxisConfig_) Boolean value that determines whether the axis should include ticks.
+#' 
+#' __Default value:__ `true`
+#' @param title (_AxisConfig_) Set to null to disable title for the axis, legend, or header.
+#' @param titleAlign (_AxisConfig_) Horizontal text alignment of axis titles.
+#' @param titleAnchor (_AxisConfig_) Text anchor position for placing axis titles.
+#' @param titleAngle (_AxisConfig_) Angle in degrees of axis titles.
+#' @param titleBaseline (_AxisConfig_) Vertical text baseline for axis titles.
+#' @param titleColor (_AxisConfig_) Color of the title, can be in hex color code or regular color name.
+#' @param titleFont (_AxisConfig_) Font of the title. (e.g., `"Helvetica Neue"`).
+#' @param titleFontSize (_AxisConfig_) Font size of the title.
+#' @param titleFontStyle (_AxisConfig_) Font style of the title.
+#' @param titleFontWeight (_AxisConfig_) Font weight of the title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_AxisConfig_) Maximum allowed pixel width of axis titles.
+#' @param titleOpacity (_AxisConfig_) Opacity of the axis title.
+#' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
+#' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
+#' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_axis_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axis")
+} 
+#' vl_add_axisBand_config
+#' 
+#' Add axisBand config (AxisConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
+#' 
+#'   __Default value:__ `0.5`
+#' @param domain (_AxisConfig_) A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.
+#' 
+#' __Default value:__ `true`
+#' @param domainColor (_AxisConfig_) Color of axis domain line.
+#' 
+#' __Default value:__ `"gray"`.
+#' @param domainDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed domain lines.
+#' @param domainDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the domain dash array.
+#' @param domainOpacity (_AxisConfig_) Opacity of the axis domain line.
+#' @param domainWidth (_AxisConfig_) Stroke width of axis domain line
+#' 
+#' __Default value:__ `1`
+#' @param grid (_AxisConfig_) A boolean flag indicating if grid lines should be included as part of the axis
+#' 
+#' __Default value:__ `true` for [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous) that are not binned; otherwise, `false`.
+#' @param gridColor (_AxisConfig_) Color of gridlines.
+#' 
+#' __Default value:__ `"lightGray"`.
+#' @param gridDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed grid lines.
+#' @param gridDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the grid dash array.
+#' @param gridOpacity (_AxisConfig_) The stroke opacity of grid (value between \[0,1\])
+#' 
+#' __Default value:__ `1`
+#' @param gridWidth (_AxisConfig_) The grid width, in pixels.
+#' 
+#' __Default value:__ `1`
+#' @param labelAlign (_AxisConfig_) Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation.
+#' @param labelAngle (_AxisConfig_) The rotation angle of the axis labels.
+#' 
+#' __Default value:__ `-90` for nominal and ordinal fields; `0` otherwise.
+#' @param labelBaseline (_AxisConfig_) Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' @param labelBound (_AxisConfig_) Indicates if labels should be hidden if they exceed the axis range. If `false` (the default) no bounds overlap analysis is performed. If `true`, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.
+#' 
+#' __Default value:__ `false`.
+#' @param labelColor (_AxisConfig_) The color of the tick label, can be in hex color code or regular color name.
+#' @param labelFlush (_AxisConfig_) Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `true` for axis of a continuous x-scale. Otherwise, `false`.
+#' @param labelFlushOffset (_AxisConfig_) Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of `2` will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `0`.
+#' @param labelFont (_AxisConfig_) The font of the tick label.
+#' @param labelFontSize (_AxisConfig_) The font size of the label, in pixels.
+#' @param labelFontStyle (_AxisConfig_) Font style of the title.
+#' @param labelFontWeight (_AxisConfig_) Font weight of axis tick labels.
+#' @param labelLimit (_AxisConfig_) Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `180`
+#' @param labelOpacity (_AxisConfig_) The opacity of the labels.
+#' @param labelOverlap (_AxisConfig_) The strategy to use for resolving overlap of axis labels. If `false` (the default), no overlap reduction is attempted. If set to `true` or `"parity"`, a strategy of removing every other label is used (this works well for standard linear axes). If set to `"greedy"`, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true` for non-nominal fields with non-log scales; `"greedy"` for log scales; otherwise `false`.
+#' @param labelPadding (_AxisConfig_) The padding, in pixels, between axis and text labels.
+#' 
+#' __Default value:__ `2`
+#' @param labelSeparation (_AxisConfig_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param labels (_AxisConfig_) A boolean flag indicating if labels should be included as part of the axis.
+#' 
+#' __Default value:__ `true`.
+#' @param maxExtent (_AxisConfig_) The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.
+#' 
+#' __Default value:__ `undefined`.
+#' @param minExtent (_AxisConfig_) The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.
+#' 
+#' __Default value:__ `30` for y-axis; `undefined` for x-axis.
+#' @param orient (_AxisConfig_) The orientation of the axis. One of `"top"`, `"bottom"`, `"left"` or `"right"`. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).
+#' 
+#' __Default value:__ `"bottom"` for x-axes and `"left"` for y-axes.
+#' @param shortTimeLabels (_AxisConfig_) Whether month names and weekday names should be abbreviated.
+#' 
+#' __Default value:__  `false`
+#' @param tickColor (_AxisConfig_) The color of the axis's tick.
+#' 
+#' __Default value:__ `"gray"`
+#' @param tickDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed tick mark lines.
+#' @param tickDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the tick mark dash array.
+#' @param tickExtra (_AxisConfig_) Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for `band` scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with `"bandPosition": 1` and an axis `"padding"` value of `0`.
+#' @param tickOffset (_AxisConfig_) Position offset in pixels to apply to ticks, labels, and gridlines.
+#' @param tickOpacity (_AxisConfig_) Opacity of the ticks.
+#' @param tickRound (_AxisConfig_) Boolean flag indicating if pixel position values should be rounded to the nearest integer.
+#' 
+#' __Default value:__ `true`
+#' @param tickSize (_AxisConfig_) The size in pixels of axis ticks.
+#' 
+#' __Default value:__ `5`
+#' @param tickWidth (_AxisConfig_) The width, in pixels, of ticks.
+#' 
+#' __Default value:__ `1`
+#' @param ticks (_AxisConfig_) Boolean value that determines whether the axis should include ticks.
+#' 
+#' __Default value:__ `true`
+#' @param title (_AxisConfig_) Set to null to disable title for the axis, legend, or header.
+#' @param titleAlign (_AxisConfig_) Horizontal text alignment of axis titles.
+#' @param titleAnchor (_AxisConfig_) Text anchor position for placing axis titles.
+#' @param titleAngle (_AxisConfig_) Angle in degrees of axis titles.
+#' @param titleBaseline (_AxisConfig_) Vertical text baseline for axis titles.
+#' @param titleColor (_AxisConfig_) Color of the title, can be in hex color code or regular color name.
+#' @param titleFont (_AxisConfig_) Font of the title. (e.g., `"Helvetica Neue"`).
+#' @param titleFontSize (_AxisConfig_) Font size of the title.
+#' @param titleFontStyle (_AxisConfig_) Font style of the title.
+#' @param titleFontWeight (_AxisConfig_) Font weight of the title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_AxisConfig_) Maximum allowed pixel width of axis titles.
+#' @param titleOpacity (_AxisConfig_) Opacity of the axis title.
+#' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
+#' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
+#' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_axisBand_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisBand")
+} 
+#' vl_add_axisBottom_config
+#' 
+#' Add axisBottom config (AxisConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
+#' 
+#'   __Default value:__ `0.5`
+#' @param domain (_AxisConfig_) A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.
+#' 
+#' __Default value:__ `true`
+#' @param domainColor (_AxisConfig_) Color of axis domain line.
+#' 
+#' __Default value:__ `"gray"`.
+#' @param domainDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed domain lines.
+#' @param domainDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the domain dash array.
+#' @param domainOpacity (_AxisConfig_) Opacity of the axis domain line.
+#' @param domainWidth (_AxisConfig_) Stroke width of axis domain line
+#' 
+#' __Default value:__ `1`
+#' @param grid (_AxisConfig_) A boolean flag indicating if grid lines should be included as part of the axis
+#' 
+#' __Default value:__ `true` for [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous) that are not binned; otherwise, `false`.
+#' @param gridColor (_AxisConfig_) Color of gridlines.
+#' 
+#' __Default value:__ `"lightGray"`.
+#' @param gridDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed grid lines.
+#' @param gridDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the grid dash array.
+#' @param gridOpacity (_AxisConfig_) The stroke opacity of grid (value between \[0,1\])
+#' 
+#' __Default value:__ `1`
+#' @param gridWidth (_AxisConfig_) The grid width, in pixels.
+#' 
+#' __Default value:__ `1`
+#' @param labelAlign (_AxisConfig_) Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation.
+#' @param labelAngle (_AxisConfig_) The rotation angle of the axis labels.
+#' 
+#' __Default value:__ `-90` for nominal and ordinal fields; `0` otherwise.
+#' @param labelBaseline (_AxisConfig_) Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' @param labelBound (_AxisConfig_) Indicates if labels should be hidden if they exceed the axis range. If `false` (the default) no bounds overlap analysis is performed. If `true`, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.
+#' 
+#' __Default value:__ `false`.
+#' @param labelColor (_AxisConfig_) The color of the tick label, can be in hex color code or regular color name.
+#' @param labelFlush (_AxisConfig_) Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `true` for axis of a continuous x-scale. Otherwise, `false`.
+#' @param labelFlushOffset (_AxisConfig_) Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of `2` will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `0`.
+#' @param labelFont (_AxisConfig_) The font of the tick label.
+#' @param labelFontSize (_AxisConfig_) The font size of the label, in pixels.
+#' @param labelFontStyle (_AxisConfig_) Font style of the title.
+#' @param labelFontWeight (_AxisConfig_) Font weight of axis tick labels.
+#' @param labelLimit (_AxisConfig_) Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `180`
+#' @param labelOpacity (_AxisConfig_) The opacity of the labels.
+#' @param labelOverlap (_AxisConfig_) The strategy to use for resolving overlap of axis labels. If `false` (the default), no overlap reduction is attempted. If set to `true` or `"parity"`, a strategy of removing every other label is used (this works well for standard linear axes). If set to `"greedy"`, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true` for non-nominal fields with non-log scales; `"greedy"` for log scales; otherwise `false`.
+#' @param labelPadding (_AxisConfig_) The padding, in pixels, between axis and text labels.
+#' 
+#' __Default value:__ `2`
+#' @param labelSeparation (_AxisConfig_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param labels (_AxisConfig_) A boolean flag indicating if labels should be included as part of the axis.
+#' 
+#' __Default value:__ `true`.
+#' @param maxExtent (_AxisConfig_) The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.
+#' 
+#' __Default value:__ `undefined`.
+#' @param minExtent (_AxisConfig_) The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.
+#' 
+#' __Default value:__ `30` for y-axis; `undefined` for x-axis.
+#' @param orient (_AxisConfig_) The orientation of the axis. One of `"top"`, `"bottom"`, `"left"` or `"right"`. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).
+#' 
+#' __Default value:__ `"bottom"` for x-axes and `"left"` for y-axes.
+#' @param shortTimeLabels (_AxisConfig_) Whether month names and weekday names should be abbreviated.
+#' 
+#' __Default value:__  `false`
+#' @param tickColor (_AxisConfig_) The color of the axis's tick.
+#' 
+#' __Default value:__ `"gray"`
+#' @param tickDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed tick mark lines.
+#' @param tickDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the tick mark dash array.
+#' @param tickExtra (_AxisConfig_) Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for `band` scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with `"bandPosition": 1` and an axis `"padding"` value of `0`.
+#' @param tickOffset (_AxisConfig_) Position offset in pixels to apply to ticks, labels, and gridlines.
+#' @param tickOpacity (_AxisConfig_) Opacity of the ticks.
+#' @param tickRound (_AxisConfig_) Boolean flag indicating if pixel position values should be rounded to the nearest integer.
+#' 
+#' __Default value:__ `true`
+#' @param tickSize (_AxisConfig_) The size in pixels of axis ticks.
+#' 
+#' __Default value:__ `5`
+#' @param tickWidth (_AxisConfig_) The width, in pixels, of ticks.
+#' 
+#' __Default value:__ `1`
+#' @param ticks (_AxisConfig_) Boolean value that determines whether the axis should include ticks.
+#' 
+#' __Default value:__ `true`
+#' @param title (_AxisConfig_) Set to null to disable title for the axis, legend, or header.
+#' @param titleAlign (_AxisConfig_) Horizontal text alignment of axis titles.
+#' @param titleAnchor (_AxisConfig_) Text anchor position for placing axis titles.
+#' @param titleAngle (_AxisConfig_) Angle in degrees of axis titles.
+#' @param titleBaseline (_AxisConfig_) Vertical text baseline for axis titles.
+#' @param titleColor (_AxisConfig_) Color of the title, can be in hex color code or regular color name.
+#' @param titleFont (_AxisConfig_) Font of the title. (e.g., `"Helvetica Neue"`).
+#' @param titleFontSize (_AxisConfig_) Font size of the title.
+#' @param titleFontStyle (_AxisConfig_) Font style of the title.
+#' @param titleFontWeight (_AxisConfig_) Font weight of the title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_AxisConfig_) Maximum allowed pixel width of axis titles.
+#' @param titleOpacity (_AxisConfig_) Opacity of the axis title.
+#' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
+#' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
+#' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_axisBottom_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisBottom")
+} 
+#' vl_add_axisLeft_config
+#' 
+#' Add axisLeft config (AxisConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
+#' 
+#'   __Default value:__ `0.5`
+#' @param domain (_AxisConfig_) A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.
+#' 
+#' __Default value:__ `true`
+#' @param domainColor (_AxisConfig_) Color of axis domain line.
+#' 
+#' __Default value:__ `"gray"`.
+#' @param domainDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed domain lines.
+#' @param domainDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the domain dash array.
+#' @param domainOpacity (_AxisConfig_) Opacity of the axis domain line.
+#' @param domainWidth (_AxisConfig_) Stroke width of axis domain line
+#' 
+#' __Default value:__ `1`
+#' @param grid (_AxisConfig_) A boolean flag indicating if grid lines should be included as part of the axis
+#' 
+#' __Default value:__ `true` for [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous) that are not binned; otherwise, `false`.
+#' @param gridColor (_AxisConfig_) Color of gridlines.
+#' 
+#' __Default value:__ `"lightGray"`.
+#' @param gridDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed grid lines.
+#' @param gridDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the grid dash array.
+#' @param gridOpacity (_AxisConfig_) The stroke opacity of grid (value between \[0,1\])
+#' 
+#' __Default value:__ `1`
+#' @param gridWidth (_AxisConfig_) The grid width, in pixels.
+#' 
+#' __Default value:__ `1`
+#' @param labelAlign (_AxisConfig_) Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation.
+#' @param labelAngle (_AxisConfig_) The rotation angle of the axis labels.
+#' 
+#' __Default value:__ `-90` for nominal and ordinal fields; `0` otherwise.
+#' @param labelBaseline (_AxisConfig_) Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' @param labelBound (_AxisConfig_) Indicates if labels should be hidden if they exceed the axis range. If `false` (the default) no bounds overlap analysis is performed. If `true`, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.
+#' 
+#' __Default value:__ `false`.
+#' @param labelColor (_AxisConfig_) The color of the tick label, can be in hex color code or regular color name.
+#' @param labelFlush (_AxisConfig_) Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `true` for axis of a continuous x-scale. Otherwise, `false`.
+#' @param labelFlushOffset (_AxisConfig_) Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of `2` will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `0`.
+#' @param labelFont (_AxisConfig_) The font of the tick label.
+#' @param labelFontSize (_AxisConfig_) The font size of the label, in pixels.
+#' @param labelFontStyle (_AxisConfig_) Font style of the title.
+#' @param labelFontWeight (_AxisConfig_) Font weight of axis tick labels.
+#' @param labelLimit (_AxisConfig_) Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `180`
+#' @param labelOpacity (_AxisConfig_) The opacity of the labels.
+#' @param labelOverlap (_AxisConfig_) The strategy to use for resolving overlap of axis labels. If `false` (the default), no overlap reduction is attempted. If set to `true` or `"parity"`, a strategy of removing every other label is used (this works well for standard linear axes). If set to `"greedy"`, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true` for non-nominal fields with non-log scales; `"greedy"` for log scales; otherwise `false`.
+#' @param labelPadding (_AxisConfig_) The padding, in pixels, between axis and text labels.
+#' 
+#' __Default value:__ `2`
+#' @param labelSeparation (_AxisConfig_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param labels (_AxisConfig_) A boolean flag indicating if labels should be included as part of the axis.
+#' 
+#' __Default value:__ `true`.
+#' @param maxExtent (_AxisConfig_) The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.
+#' 
+#' __Default value:__ `undefined`.
+#' @param minExtent (_AxisConfig_) The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.
+#' 
+#' __Default value:__ `30` for y-axis; `undefined` for x-axis.
+#' @param orient (_AxisConfig_) The orientation of the axis. One of `"top"`, `"bottom"`, `"left"` or `"right"`. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).
+#' 
+#' __Default value:__ `"bottom"` for x-axes and `"left"` for y-axes.
+#' @param shortTimeLabels (_AxisConfig_) Whether month names and weekday names should be abbreviated.
+#' 
+#' __Default value:__  `false`
+#' @param tickColor (_AxisConfig_) The color of the axis's tick.
+#' 
+#' __Default value:__ `"gray"`
+#' @param tickDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed tick mark lines.
+#' @param tickDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the tick mark dash array.
+#' @param tickExtra (_AxisConfig_) Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for `band` scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with `"bandPosition": 1` and an axis `"padding"` value of `0`.
+#' @param tickOffset (_AxisConfig_) Position offset in pixels to apply to ticks, labels, and gridlines.
+#' @param tickOpacity (_AxisConfig_) Opacity of the ticks.
+#' @param tickRound (_AxisConfig_) Boolean flag indicating if pixel position values should be rounded to the nearest integer.
+#' 
+#' __Default value:__ `true`
+#' @param tickSize (_AxisConfig_) The size in pixels of axis ticks.
+#' 
+#' __Default value:__ `5`
+#' @param tickWidth (_AxisConfig_) The width, in pixels, of ticks.
+#' 
+#' __Default value:__ `1`
+#' @param ticks (_AxisConfig_) Boolean value that determines whether the axis should include ticks.
+#' 
+#' __Default value:__ `true`
+#' @param title (_AxisConfig_) Set to null to disable title for the axis, legend, or header.
+#' @param titleAlign (_AxisConfig_) Horizontal text alignment of axis titles.
+#' @param titleAnchor (_AxisConfig_) Text anchor position for placing axis titles.
+#' @param titleAngle (_AxisConfig_) Angle in degrees of axis titles.
+#' @param titleBaseline (_AxisConfig_) Vertical text baseline for axis titles.
+#' @param titleColor (_AxisConfig_) Color of the title, can be in hex color code or regular color name.
+#' @param titleFont (_AxisConfig_) Font of the title. (e.g., `"Helvetica Neue"`).
+#' @param titleFontSize (_AxisConfig_) Font size of the title.
+#' @param titleFontStyle (_AxisConfig_) Font style of the title.
+#' @param titleFontWeight (_AxisConfig_) Font weight of the title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_AxisConfig_) Maximum allowed pixel width of axis titles.
+#' @param titleOpacity (_AxisConfig_) Opacity of the axis title.
+#' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
+#' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
+#' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_axisLeft_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisLeft")
+} 
+#' vl_add_axisRight_config
+#' 
+#' Add axisRight config (AxisConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
+#' 
+#'   __Default value:__ `0.5`
+#' @param domain (_AxisConfig_) A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.
+#' 
+#' __Default value:__ `true`
+#' @param domainColor (_AxisConfig_) Color of axis domain line.
+#' 
+#' __Default value:__ `"gray"`.
+#' @param domainDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed domain lines.
+#' @param domainDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the domain dash array.
+#' @param domainOpacity (_AxisConfig_) Opacity of the axis domain line.
+#' @param domainWidth (_AxisConfig_) Stroke width of axis domain line
+#' 
+#' __Default value:__ `1`
+#' @param grid (_AxisConfig_) A boolean flag indicating if grid lines should be included as part of the axis
+#' 
+#' __Default value:__ `true` for [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous) that are not binned; otherwise, `false`.
+#' @param gridColor (_AxisConfig_) Color of gridlines.
+#' 
+#' __Default value:__ `"lightGray"`.
+#' @param gridDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed grid lines.
+#' @param gridDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the grid dash array.
+#' @param gridOpacity (_AxisConfig_) The stroke opacity of grid (value between \[0,1\])
+#' 
+#' __Default value:__ `1`
+#' @param gridWidth (_AxisConfig_) The grid width, in pixels.
+#' 
+#' __Default value:__ `1`
+#' @param labelAlign (_AxisConfig_) Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation.
+#' @param labelAngle (_AxisConfig_) The rotation angle of the axis labels.
+#' 
+#' __Default value:__ `-90` for nominal and ordinal fields; `0` otherwise.
+#' @param labelBaseline (_AxisConfig_) Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' @param labelBound (_AxisConfig_) Indicates if labels should be hidden if they exceed the axis range. If `false` (the default) no bounds overlap analysis is performed. If `true`, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.
+#' 
+#' __Default value:__ `false`.
+#' @param labelColor (_AxisConfig_) The color of the tick label, can be in hex color code or regular color name.
+#' @param labelFlush (_AxisConfig_) Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `true` for axis of a continuous x-scale. Otherwise, `false`.
+#' @param labelFlushOffset (_AxisConfig_) Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of `2` will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `0`.
+#' @param labelFont (_AxisConfig_) The font of the tick label.
+#' @param labelFontSize (_AxisConfig_) The font size of the label, in pixels.
+#' @param labelFontStyle (_AxisConfig_) Font style of the title.
+#' @param labelFontWeight (_AxisConfig_) Font weight of axis tick labels.
+#' @param labelLimit (_AxisConfig_) Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `180`
+#' @param labelOpacity (_AxisConfig_) The opacity of the labels.
+#' @param labelOverlap (_AxisConfig_) The strategy to use for resolving overlap of axis labels. If `false` (the default), no overlap reduction is attempted. If set to `true` or `"parity"`, a strategy of removing every other label is used (this works well for standard linear axes). If set to `"greedy"`, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true` for non-nominal fields with non-log scales; `"greedy"` for log scales; otherwise `false`.
+#' @param labelPadding (_AxisConfig_) The padding, in pixels, between axis and text labels.
+#' 
+#' __Default value:__ `2`
+#' @param labelSeparation (_AxisConfig_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param labels (_AxisConfig_) A boolean flag indicating if labels should be included as part of the axis.
+#' 
+#' __Default value:__ `true`.
+#' @param maxExtent (_AxisConfig_) The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.
+#' 
+#' __Default value:__ `undefined`.
+#' @param minExtent (_AxisConfig_) The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.
+#' 
+#' __Default value:__ `30` for y-axis; `undefined` for x-axis.
+#' @param orient (_AxisConfig_) The orientation of the axis. One of `"top"`, `"bottom"`, `"left"` or `"right"`. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).
+#' 
+#' __Default value:__ `"bottom"` for x-axes and `"left"` for y-axes.
+#' @param shortTimeLabels (_AxisConfig_) Whether month names and weekday names should be abbreviated.
+#' 
+#' __Default value:__  `false`
+#' @param tickColor (_AxisConfig_) The color of the axis's tick.
+#' 
+#' __Default value:__ `"gray"`
+#' @param tickDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed tick mark lines.
+#' @param tickDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the tick mark dash array.
+#' @param tickExtra (_AxisConfig_) Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for `band` scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with `"bandPosition": 1` and an axis `"padding"` value of `0`.
+#' @param tickOffset (_AxisConfig_) Position offset in pixels to apply to ticks, labels, and gridlines.
+#' @param tickOpacity (_AxisConfig_) Opacity of the ticks.
+#' @param tickRound (_AxisConfig_) Boolean flag indicating if pixel position values should be rounded to the nearest integer.
+#' 
+#' __Default value:__ `true`
+#' @param tickSize (_AxisConfig_) The size in pixels of axis ticks.
+#' 
+#' __Default value:__ `5`
+#' @param tickWidth (_AxisConfig_) The width, in pixels, of ticks.
+#' 
+#' __Default value:__ `1`
+#' @param ticks (_AxisConfig_) Boolean value that determines whether the axis should include ticks.
+#' 
+#' __Default value:__ `true`
+#' @param title (_AxisConfig_) Set to null to disable title for the axis, legend, or header.
+#' @param titleAlign (_AxisConfig_) Horizontal text alignment of axis titles.
+#' @param titleAnchor (_AxisConfig_) Text anchor position for placing axis titles.
+#' @param titleAngle (_AxisConfig_) Angle in degrees of axis titles.
+#' @param titleBaseline (_AxisConfig_) Vertical text baseline for axis titles.
+#' @param titleColor (_AxisConfig_) Color of the title, can be in hex color code or regular color name.
+#' @param titleFont (_AxisConfig_) Font of the title. (e.g., `"Helvetica Neue"`).
+#' @param titleFontSize (_AxisConfig_) Font size of the title.
+#' @param titleFontStyle (_AxisConfig_) Font style of the title.
+#' @param titleFontWeight (_AxisConfig_) Font weight of the title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_AxisConfig_) Maximum allowed pixel width of axis titles.
+#' @param titleOpacity (_AxisConfig_) Opacity of the axis title.
+#' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
+#' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
+#' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_axisRight_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisRight")
+} 
+#' vl_add_axisTop_config
+#' 
+#' Add axisTop config (AxisConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
+#' 
+#'   __Default value:__ `0.5`
+#' @param domain (_AxisConfig_) A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.
+#' 
+#' __Default value:__ `true`
+#' @param domainColor (_AxisConfig_) Color of axis domain line.
+#' 
+#' __Default value:__ `"gray"`.
+#' @param domainDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed domain lines.
+#' @param domainDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the domain dash array.
+#' @param domainOpacity (_AxisConfig_) Opacity of the axis domain line.
+#' @param domainWidth (_AxisConfig_) Stroke width of axis domain line
+#' 
+#' __Default value:__ `1`
+#' @param grid (_AxisConfig_) A boolean flag indicating if grid lines should be included as part of the axis
+#' 
+#' __Default value:__ `true` for [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous) that are not binned; otherwise, `false`.
+#' @param gridColor (_AxisConfig_) Color of gridlines.
+#' 
+#' __Default value:__ `"lightGray"`.
+#' @param gridDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed grid lines.
+#' @param gridDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the grid dash array.
+#' @param gridOpacity (_AxisConfig_) The stroke opacity of grid (value between \[0,1\])
+#' 
+#' __Default value:__ `1`
+#' @param gridWidth (_AxisConfig_) The grid width, in pixels.
+#' 
+#' __Default value:__ `1`
+#' @param labelAlign (_AxisConfig_) Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation.
+#' @param labelAngle (_AxisConfig_) The rotation angle of the axis labels.
+#' 
+#' __Default value:__ `-90` for nominal and ordinal fields; `0` otherwise.
+#' @param labelBaseline (_AxisConfig_) Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' @param labelBound (_AxisConfig_) Indicates if labels should be hidden if they exceed the axis range. If `false` (the default) no bounds overlap analysis is performed. If `true`, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.
+#' 
+#' __Default value:__ `false`.
+#' @param labelColor (_AxisConfig_) The color of the tick label, can be in hex color code or regular color name.
+#' @param labelFlush (_AxisConfig_) Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `true` for axis of a continuous x-scale. Otherwise, `false`.
+#' @param labelFlushOffset (_AxisConfig_) Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of `2` will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `0`.
+#' @param labelFont (_AxisConfig_) The font of the tick label.
+#' @param labelFontSize (_AxisConfig_) The font size of the label, in pixels.
+#' @param labelFontStyle (_AxisConfig_) Font style of the title.
+#' @param labelFontWeight (_AxisConfig_) Font weight of axis tick labels.
+#' @param labelLimit (_AxisConfig_) Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `180`
+#' @param labelOpacity (_AxisConfig_) The opacity of the labels.
+#' @param labelOverlap (_AxisConfig_) The strategy to use for resolving overlap of axis labels. If `false` (the default), no overlap reduction is attempted. If set to `true` or `"parity"`, a strategy of removing every other label is used (this works well for standard linear axes). If set to `"greedy"`, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true` for non-nominal fields with non-log scales; `"greedy"` for log scales; otherwise `false`.
+#' @param labelPadding (_AxisConfig_) The padding, in pixels, between axis and text labels.
+#' 
+#' __Default value:__ `2`
+#' @param labelSeparation (_AxisConfig_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param labels (_AxisConfig_) A boolean flag indicating if labels should be included as part of the axis.
+#' 
+#' __Default value:__ `true`.
+#' @param maxExtent (_AxisConfig_) The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.
+#' 
+#' __Default value:__ `undefined`.
+#' @param minExtent (_AxisConfig_) The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.
+#' 
+#' __Default value:__ `30` for y-axis; `undefined` for x-axis.
+#' @param orient (_AxisConfig_) The orientation of the axis. One of `"top"`, `"bottom"`, `"left"` or `"right"`. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).
+#' 
+#' __Default value:__ `"bottom"` for x-axes and `"left"` for y-axes.
+#' @param shortTimeLabels (_AxisConfig_) Whether month names and weekday names should be abbreviated.
+#' 
+#' __Default value:__  `false`
+#' @param tickColor (_AxisConfig_) The color of the axis's tick.
+#' 
+#' __Default value:__ `"gray"`
+#' @param tickDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed tick mark lines.
+#' @param tickDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the tick mark dash array.
+#' @param tickExtra (_AxisConfig_) Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for `band` scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with `"bandPosition": 1` and an axis `"padding"` value of `0`.
+#' @param tickOffset (_AxisConfig_) Position offset in pixels to apply to ticks, labels, and gridlines.
+#' @param tickOpacity (_AxisConfig_) Opacity of the ticks.
+#' @param tickRound (_AxisConfig_) Boolean flag indicating if pixel position values should be rounded to the nearest integer.
+#' 
+#' __Default value:__ `true`
+#' @param tickSize (_AxisConfig_) The size in pixels of axis ticks.
+#' 
+#' __Default value:__ `5`
+#' @param tickWidth (_AxisConfig_) The width, in pixels, of ticks.
+#' 
+#' __Default value:__ `1`
+#' @param ticks (_AxisConfig_) Boolean value that determines whether the axis should include ticks.
+#' 
+#' __Default value:__ `true`
+#' @param title (_AxisConfig_) Set to null to disable title for the axis, legend, or header.
+#' @param titleAlign (_AxisConfig_) Horizontal text alignment of axis titles.
+#' @param titleAnchor (_AxisConfig_) Text anchor position for placing axis titles.
+#' @param titleAngle (_AxisConfig_) Angle in degrees of axis titles.
+#' @param titleBaseline (_AxisConfig_) Vertical text baseline for axis titles.
+#' @param titleColor (_AxisConfig_) Color of the title, can be in hex color code or regular color name.
+#' @param titleFont (_AxisConfig_) Font of the title. (e.g., `"Helvetica Neue"`).
+#' @param titleFontSize (_AxisConfig_) Font size of the title.
+#' @param titleFontStyle (_AxisConfig_) Font style of the title.
+#' @param titleFontWeight (_AxisConfig_) Font weight of the title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_AxisConfig_) Maximum allowed pixel width of axis titles.
+#' @param titleOpacity (_AxisConfig_) Opacity of the axis title.
+#' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
+#' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
+#' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_axisTop_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisTop")
+} 
+#' vl_add_axisX_config
+#' 
+#' Add axisX config (AxisConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
+#' 
+#'   __Default value:__ `0.5`
+#' @param domain (_AxisConfig_) A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.
+#' 
+#' __Default value:__ `true`
+#' @param domainColor (_AxisConfig_) Color of axis domain line.
+#' 
+#' __Default value:__ `"gray"`.
+#' @param domainDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed domain lines.
+#' @param domainDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the domain dash array.
+#' @param domainOpacity (_AxisConfig_) Opacity of the axis domain line.
+#' @param domainWidth (_AxisConfig_) Stroke width of axis domain line
+#' 
+#' __Default value:__ `1`
+#' @param grid (_AxisConfig_) A boolean flag indicating if grid lines should be included as part of the axis
+#' 
+#' __Default value:__ `true` for [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous) that are not binned; otherwise, `false`.
+#' @param gridColor (_AxisConfig_) Color of gridlines.
+#' 
+#' __Default value:__ `"lightGray"`.
+#' @param gridDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed grid lines.
+#' @param gridDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the grid dash array.
+#' @param gridOpacity (_AxisConfig_) The stroke opacity of grid (value between \[0,1\])
+#' 
+#' __Default value:__ `1`
+#' @param gridWidth (_AxisConfig_) The grid width, in pixels.
+#' 
+#' __Default value:__ `1`
+#' @param labelAlign (_AxisConfig_) Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation.
+#' @param labelAngle (_AxisConfig_) The rotation angle of the axis labels.
+#' 
+#' __Default value:__ `-90` for nominal and ordinal fields; `0` otherwise.
+#' @param labelBaseline (_AxisConfig_) Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' @param labelBound (_AxisConfig_) Indicates if labels should be hidden if they exceed the axis range. If `false` (the default) no bounds overlap analysis is performed. If `true`, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.
+#' 
+#' __Default value:__ `false`.
+#' @param labelColor (_AxisConfig_) The color of the tick label, can be in hex color code or regular color name.
+#' @param labelFlush (_AxisConfig_) Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `true` for axis of a continuous x-scale. Otherwise, `false`.
+#' @param labelFlushOffset (_AxisConfig_) Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of `2` will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `0`.
+#' @param labelFont (_AxisConfig_) The font of the tick label.
+#' @param labelFontSize (_AxisConfig_) The font size of the label, in pixels.
+#' @param labelFontStyle (_AxisConfig_) Font style of the title.
+#' @param labelFontWeight (_AxisConfig_) Font weight of axis tick labels.
+#' @param labelLimit (_AxisConfig_) Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `180`
+#' @param labelOpacity (_AxisConfig_) The opacity of the labels.
+#' @param labelOverlap (_AxisConfig_) The strategy to use for resolving overlap of axis labels. If `false` (the default), no overlap reduction is attempted. If set to `true` or `"parity"`, a strategy of removing every other label is used (this works well for standard linear axes). If set to `"greedy"`, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true` for non-nominal fields with non-log scales; `"greedy"` for log scales; otherwise `false`.
+#' @param labelPadding (_AxisConfig_) The padding, in pixels, between axis and text labels.
+#' 
+#' __Default value:__ `2`
+#' @param labelSeparation (_AxisConfig_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param labels (_AxisConfig_) A boolean flag indicating if labels should be included as part of the axis.
+#' 
+#' __Default value:__ `true`.
+#' @param maxExtent (_AxisConfig_) The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.
+#' 
+#' __Default value:__ `undefined`.
+#' @param minExtent (_AxisConfig_) The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.
+#' 
+#' __Default value:__ `30` for y-axis; `undefined` for x-axis.
+#' @param orient (_AxisConfig_) The orientation of the axis. One of `"top"`, `"bottom"`, `"left"` or `"right"`. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).
+#' 
+#' __Default value:__ `"bottom"` for x-axes and `"left"` for y-axes.
+#' @param shortTimeLabels (_AxisConfig_) Whether month names and weekday names should be abbreviated.
+#' 
+#' __Default value:__  `false`
+#' @param tickColor (_AxisConfig_) The color of the axis's tick.
+#' 
+#' __Default value:__ `"gray"`
+#' @param tickDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed tick mark lines.
+#' @param tickDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the tick mark dash array.
+#' @param tickExtra (_AxisConfig_) Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for `band` scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with `"bandPosition": 1` and an axis `"padding"` value of `0`.
+#' @param tickOffset (_AxisConfig_) Position offset in pixels to apply to ticks, labels, and gridlines.
+#' @param tickOpacity (_AxisConfig_) Opacity of the ticks.
+#' @param tickRound (_AxisConfig_) Boolean flag indicating if pixel position values should be rounded to the nearest integer.
+#' 
+#' __Default value:__ `true`
+#' @param tickSize (_AxisConfig_) The size in pixels of axis ticks.
+#' 
+#' __Default value:__ `5`
+#' @param tickWidth (_AxisConfig_) The width, in pixels, of ticks.
+#' 
+#' __Default value:__ `1`
+#' @param ticks (_AxisConfig_) Boolean value that determines whether the axis should include ticks.
+#' 
+#' __Default value:__ `true`
+#' @param title (_AxisConfig_) Set to null to disable title for the axis, legend, or header.
+#' @param titleAlign (_AxisConfig_) Horizontal text alignment of axis titles.
+#' @param titleAnchor (_AxisConfig_) Text anchor position for placing axis titles.
+#' @param titleAngle (_AxisConfig_) Angle in degrees of axis titles.
+#' @param titleBaseline (_AxisConfig_) Vertical text baseline for axis titles.
+#' @param titleColor (_AxisConfig_) Color of the title, can be in hex color code or regular color name.
+#' @param titleFont (_AxisConfig_) Font of the title. (e.g., `"Helvetica Neue"`).
+#' @param titleFontSize (_AxisConfig_) Font size of the title.
+#' @param titleFontStyle (_AxisConfig_) Font style of the title.
+#' @param titleFontWeight (_AxisConfig_) Font weight of the title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_AxisConfig_) Maximum allowed pixel width of axis titles.
+#' @param titleOpacity (_AxisConfig_) Opacity of the axis title.
+#' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
+#' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
+#' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_axisX_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisX")
+} 
+#' vl_add_axisY_config
+#' 
+#' Add axisY config (AxisConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
+#' 
+#'   __Default value:__ `0.5`
+#' @param domain (_AxisConfig_) A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.
+#' 
+#' __Default value:__ `true`
+#' @param domainColor (_AxisConfig_) Color of axis domain line.
+#' 
+#' __Default value:__ `"gray"`.
+#' @param domainDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed domain lines.
+#' @param domainDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the domain dash array.
+#' @param domainOpacity (_AxisConfig_) Opacity of the axis domain line.
+#' @param domainWidth (_AxisConfig_) Stroke width of axis domain line
+#' 
+#' __Default value:__ `1`
+#' @param grid (_AxisConfig_) A boolean flag indicating if grid lines should be included as part of the axis
+#' 
+#' __Default value:__ `true` for [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous) that are not binned; otherwise, `false`.
+#' @param gridColor (_AxisConfig_) Color of gridlines.
+#' 
+#' __Default value:__ `"lightGray"`.
+#' @param gridDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed grid lines.
+#' @param gridDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the grid dash array.
+#' @param gridOpacity (_AxisConfig_) The stroke opacity of grid (value between \[0,1\])
+#' 
+#' __Default value:__ `1`
+#' @param gridWidth (_AxisConfig_) The grid width, in pixels.
+#' 
+#' __Default value:__ `1`
+#' @param labelAlign (_AxisConfig_) Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation.
+#' @param labelAngle (_AxisConfig_) The rotation angle of the axis labels.
+#' 
+#' __Default value:__ `-90` for nominal and ordinal fields; `0` otherwise.
+#' @param labelBaseline (_AxisConfig_) Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' @param labelBound (_AxisConfig_) Indicates if labels should be hidden if they exceed the axis range. If `false` (the default) no bounds overlap analysis is performed. If `true`, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.
+#' 
+#' __Default value:__ `false`.
+#' @param labelColor (_AxisConfig_) The color of the tick label, can be in hex color code or regular color name.
+#' @param labelFlush (_AxisConfig_) Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `true` for axis of a continuous x-scale. Otherwise, `false`.
+#' @param labelFlushOffset (_AxisConfig_) Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of `2` will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `0`.
+#' @param labelFont (_AxisConfig_) The font of the tick label.
+#' @param labelFontSize (_AxisConfig_) The font size of the label, in pixels.
+#' @param labelFontStyle (_AxisConfig_) Font style of the title.
+#' @param labelFontWeight (_AxisConfig_) Font weight of axis tick labels.
+#' @param labelLimit (_AxisConfig_) Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `180`
+#' @param labelOpacity (_AxisConfig_) The opacity of the labels.
+#' @param labelOverlap (_AxisConfig_) The strategy to use for resolving overlap of axis labels. If `false` (the default), no overlap reduction is attempted. If set to `true` or `"parity"`, a strategy of removing every other label is used (this works well for standard linear axes). If set to `"greedy"`, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true` for non-nominal fields with non-log scales; `"greedy"` for log scales; otherwise `false`.
+#' @param labelPadding (_AxisConfig_) The padding, in pixels, between axis and text labels.
+#' 
+#' __Default value:__ `2`
+#' @param labelSeparation (_AxisConfig_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param labels (_AxisConfig_) A boolean flag indicating if labels should be included as part of the axis.
+#' 
+#' __Default value:__ `true`.
+#' @param maxExtent (_AxisConfig_) The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.
+#' 
+#' __Default value:__ `undefined`.
+#' @param minExtent (_AxisConfig_) The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.
+#' 
+#' __Default value:__ `30` for y-axis; `undefined` for x-axis.
+#' @param orient (_AxisConfig_) The orientation of the axis. One of `"top"`, `"bottom"`, `"left"` or `"right"`. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).
+#' 
+#' __Default value:__ `"bottom"` for x-axes and `"left"` for y-axes.
+#' @param shortTimeLabels (_AxisConfig_) Whether month names and weekday names should be abbreviated.
+#' 
+#' __Default value:__  `false`
+#' @param tickColor (_AxisConfig_) The color of the axis's tick.
+#' 
+#' __Default value:__ `"gray"`
+#' @param tickDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed tick mark lines.
+#' @param tickDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the tick mark dash array.
+#' @param tickExtra (_AxisConfig_) Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for `band` scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with `"bandPosition": 1` and an axis `"padding"` value of `0`.
+#' @param tickOffset (_AxisConfig_) Position offset in pixels to apply to ticks, labels, and gridlines.
+#' @param tickOpacity (_AxisConfig_) Opacity of the ticks.
+#' @param tickRound (_AxisConfig_) Boolean flag indicating if pixel position values should be rounded to the nearest integer.
+#' 
+#' __Default value:__ `true`
+#' @param tickSize (_AxisConfig_) The size in pixels of axis ticks.
+#' 
+#' __Default value:__ `5`
+#' @param tickWidth (_AxisConfig_) The width, in pixels, of ticks.
+#' 
+#' __Default value:__ `1`
+#' @param ticks (_AxisConfig_) Boolean value that determines whether the axis should include ticks.
+#' 
+#' __Default value:__ `true`
+#' @param title (_AxisConfig_) Set to null to disable title for the axis, legend, or header.
+#' @param titleAlign (_AxisConfig_) Horizontal text alignment of axis titles.
+#' @param titleAnchor (_AxisConfig_) Text anchor position for placing axis titles.
+#' @param titleAngle (_AxisConfig_) Angle in degrees of axis titles.
+#' @param titleBaseline (_AxisConfig_) Vertical text baseline for axis titles.
+#' @param titleColor (_AxisConfig_) Color of the title, can be in hex color code or regular color name.
+#' @param titleFont (_AxisConfig_) Font of the title. (e.g., `"Helvetica Neue"`).
+#' @param titleFontSize (_AxisConfig_) Font size of the title.
+#' @param titleFontStyle (_AxisConfig_) Font style of the title.
+#' @param titleFontWeight (_AxisConfig_) Font weight of the title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_AxisConfig_) Maximum allowed pixel width of axis titles.
+#' @param titleOpacity (_AxisConfig_) Opacity of the axis title.
+#' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
+#' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
+#' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_axisY_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisY")
+} 
+#' vl_add_bar_config
+#' 
+#' Add bar config (BarConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param align (_BarConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_BarConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_BarConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param binSpacing (_BarConfig_) Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
+#' 
+#' __Default value:__ `1`
+#' @param color (_BarConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param continuousBandSize (_BarConfig_) The default size of the bars on continuous scales.
+#' 
+#' __Default value:__ `5`
+#' @param cornerRadius (_BarConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_BarConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_BarConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param discreteBandSize (_BarConfig_) The default size of the bars with discrete dimensions.  If unspecified, the default size is  `bandSize-1`,
+#' which provides 1 pixel offset between bars.
+#' @param dx (_BarConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_BarConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_BarConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_BarConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_BarConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_BarConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_BarConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_BarConfig_) The font size, in pixels.
+#' @param fontStyle (_BarConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_BarConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_BarConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_BarConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_BarConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_BarConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_BarConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_BarConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param radius (_BarConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_BarConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_BarConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_BarConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_BarConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_BarConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_BarConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_BarConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_BarConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_BarConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_BarConfig_) The stroke width, in pixels.
+#' @param tension (_BarConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_BarConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_BarConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_BarConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_BarConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_BarConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_BarConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_BarConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_bar_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "binSpacing", "color", "continuousBandSize", 
+  "cornerRadius", "cursor", "dir", "discreteBandSize", "dx", "dy", "ellipsis", 
+  "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", 
+  "href", "interpolate", "limit", "opacity", "order", "orient", "radius", "shape", 
+  "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", 
+  "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", "text", "theta", 
+  "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/BarConfig' , .config = "bar")
+} 
+#' vl_add_boxplot_config
+#' 
+#' Add boxplot config (BoxPlotConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param box (_BoxPlotConfig_)  
+#' @param extent (_BoxPlotConfig_) The extent of the whiskers. Available options include:
+#' - `"min-max"`: min and max are the lower and upper whiskers respectively.
+#' - A number representing multiple of the interquartile range.  This number will be multiplied by the IQR to determine whisker boundary, which spans from the smallest data to the largest data within the range _\[Q1 - k * IQR, Q3 + k * IQR\]_ where _Q1_ and _Q3_ are the first and third quartiles while _IQR_ is the interquartile range (_Q3-Q1_).
+#' 
+#' __Default value:__ `1.5`.
+#' @param median (_BoxPlotConfig_)  
+#' @param outliers (_BoxPlotConfig_)  
+#' @param rule (_BoxPlotConfig_)  
+#' @param size (_BoxPlotConfig_) Size of the box and median tick of a box plot
+#' @param ticks (_BoxPlotConfig_)  
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_boxplot_config <- function(spec, box = NULL, extent = NULL, median = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL){
+  args <- .modify_args(NULL, c("box", "extent", "median", "outliers", "rule", "size", "ticks"))
+  .add_sub_config(args$spec, args$object, '#/definitions/BoxPlotConfig' , .config = "boxplot")
+} 
+#' vl_add_circle_config
+#' 
+#' Add circle config (MarkConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param align (_MarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_MarkConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkConfig_) The font size, in pixels.
+#' @param fontStyle (_MarkConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_MarkConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param radius (_MarkConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkConfig_) The stroke width, in pixels.
+#' @param tension (_MarkConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_MarkConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_circle_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "circle")
+} 
+#' vl_add_concat_config
+#' 
+#' Add concat config (CompositionConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param columns (_CompositionConfig_) The number of columns to include in the view composition layout.
+#' 
+#' __Default value__: `undefined` -- An infinite number of columns (a single row) will be assumed. This is equivalent to
+#' `hconcat` (for `concat`) and to using the `column` channel (for `facet` and `repeat`).
+#' 
+#' __Note__:
+#' 
+#' 1) This property is only for:
+#' - the general (wrappable) `concat` operator (not `hconcat`/`vconcat`)
+#' - the `facet` and `repeat` operator with one field/repetition definition (without row/column nesting)
+#' 
+#' 2) Setting the `columns` to `1` is equivalent to `vconcat` (for `concat`) and to using the `row` channel (for `facet` and `repeat`).
+#' @param spacing (_CompositionConfig_) The default spacing in pixels between composed sub-views.
+#' 
+#' __Default value__: `20`
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_concat_config <- function(spec, columns = NULL, spacing = NULL){
+  args <- .modify_args(NULL, c("columns", "spacing"))
+  .add_sub_config(args$spec, args$object, '#/definitions/CompositionConfig' , .config = "concat")
+} 
+#' vl_add_errorband_config
+#' 
+#' Add errorband config (ErrorBandConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param band (_ErrorBandConfig_)  
+#' @param borders (_ErrorBandConfig_)  
+#' @param extent (_ErrorBandConfig_) The extent of the band. Available options include:
+#' - `"ci"`: Extend the band to the confidence interval of the mean.
+#' - `"stderr"`: The size of band are set to the value of standard error, extending from the mean.
+#' - `"stdev"`: The size of band are set to the value of standard deviation, extending from the mean.
+#' - `"iqr"`: Extend the band to the q1 and q3.
+#' 
+#' __Default value:__ `"stderr"`.
+#' @param interpolate (_ErrorBandConfig_) The line interpolation method for the error band. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: a piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes at the midpoint of each pair of adjacent x-values.
+#' - `"step-before"`: a piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes before the x-value.
+#' - `"step-after"`: a piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes after the x-value.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param tension (_ErrorBandConfig_) The tension parameter for the interpolation type of the error band.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_errorband_config <- function(spec, band = NULL, borders = NULL, extent = NULL, interpolate = NULL, tension = NULL){
+  args <- .modify_args(NULL, c("band", "borders", "extent", "interpolate", "tension"))
+  .add_sub_config(args$spec, args$object, '#/definitions/ErrorBandConfig' , .config = "errorband")
+} 
+#' vl_add_errorbar_config
+#' 
+#' Add errorbar config (ErrorBarConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param extent (_ErrorBarConfig_) The extent of the rule. Available options include:
+#' - `"ci"`: Extend the rule to the confidence interval of the mean.
+#' - `"stderr"`: The size of rule are set to the value of standard error, extending from the mean.
+#' - `"stdev"`: The size of rule are set to the value of standard deviation, extending from the mean.
+#' - `"iqr"`: Extend the rule to the q1 and q3.
+#' 
+#' __Default value:__ `"stderr"`.
+#' @param rule (_ErrorBarConfig_)  
+#' @param ticks (_ErrorBarConfig_)  
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_errorbar_config <- function(spec, extent = NULL, rule = NULL, ticks = NULL){
+  args <- .modify_args(NULL, c("extent", "rule", "ticks"))
+  .add_sub_config(args$spec, args$object, '#/definitions/ErrorBarConfig' , .config = "errorbar")
+} 
+#' vl_add_facet_config
+#' 
+#' Add facet config (CompositionConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param columns (_CompositionConfig_) The number of columns to include in the view composition layout.
+#' 
+#' __Default value__: `undefined` -- An infinite number of columns (a single row) will be assumed. This is equivalent to
+#' `hconcat` (for `concat`) and to using the `column` channel (for `facet` and `repeat`).
+#' 
+#' __Note__:
+#' 
+#' 1) This property is only for:
+#' - the general (wrappable) `concat` operator (not `hconcat`/`vconcat`)
+#' - the `facet` and `repeat` operator with one field/repetition definition (without row/column nesting)
+#' 
+#' 2) Setting the `columns` to `1` is equivalent to `vconcat` (for `concat`) and to using the `row` channel (for `facet` and `repeat`).
+#' @param spacing (_CompositionConfig_) The default spacing in pixels between composed sub-views.
+#' 
+#' __Default value__: `20`
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_facet_config <- function(spec, columns = NULL, spacing = NULL){
+  args <- .modify_args(NULL, c("columns", "spacing"))
+  .add_sub_config(args$spec, args$object, '#/definitions/CompositionConfig' , .config = "facet")
+} 
+#' vl_add_geoshape_config
+#' 
+#' Add geoshape config (MarkConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param align (_MarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_MarkConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkConfig_) The font size, in pixels.
+#' @param fontStyle (_MarkConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_MarkConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param radius (_MarkConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkConfig_) The stroke width, in pixels.
+#' @param tension (_MarkConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_MarkConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_geoshape_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "geoshape")
+} 
+#' vl_add_header_config
+#' 
+#' Add header config (HeaderConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param format (_HeaderConfig_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+#' 
+#' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
+#' - If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
+#' 
+#' __Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format.
+#' @param formatType (_HeaderConfig_) The format type for labels (`"number"` or `"time"`).
+#' 
+#' __Default value:__
+#' - `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
+#' - `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`.
+#' @param labelAlign (_HeaderConfig_) Horizontal text alignment of header labels.
+#' @param labelAnchor (_HeaderConfig_) The anchor position for placing the labels. One of `"start"`, `"middle"`, or `"end"`. For example, with a label orientation of top these anchor positions map to a left-, center-, or right-aligned label.
+#' @param labelAngle (_HeaderConfig_) The rotation angle of the header labels.
+#' 
+#' __Default value:__ `0` for column header, `-90` for row header.
+#' @param labelColor (_HeaderConfig_) The color of the header label, can be in hex color code or regular color name.
+#' @param labelFont (_HeaderConfig_) The font of the header label.
+#' @param labelFontSize (_HeaderConfig_) The font size of the header label, in pixels.
+#' @param labelLimit (_HeaderConfig_) The maximum length of the header label in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param labelOrient (_HeaderConfig_) The orientation of the header label. One of `"top"`, `"bottom"`, `"left"` or `"right"`.
+#' @param labelPadding (_HeaderConfig_) The padding, in pixel, between facet header's label and the plot.
+#' 
+#' __Default value:__ `10`
+#' @param shortTimeLabels (_HeaderConfig_) Whether month names and weekday names should be abbreviated.
+#' 
+#' __Default value:__  `false`
+#' @param title (_HeaderConfig_) Set to null to disable title for the axis, legend, or header.
+#' @param titleAlign (_HeaderConfig_) Horizontal text alignment (to the anchor) of header titles.
+#' @param titleAnchor (_HeaderConfig_) The anchor position for placing the title. One of `"start"`, `"middle"`, or `"end"`. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.
+#' @param titleAngle (_HeaderConfig_) The rotation angle of the header title.
+#' 
+#' __Default value:__ `0`.
+#' @param titleBaseline (_HeaderConfig_) Vertical text baseline for the header title. One of `"top"`, `"bottom"`, `"middle"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param titleColor (_HeaderConfig_) Color of the header title, can be in hex color code or regular color name.
+#' @param titleFont (_HeaderConfig_) Font of the header title. (e.g., `"Helvetica Neue"`).
+#' @param titleFontSize (_HeaderConfig_) Font size of the header title.
+#' @param titleFontWeight (_HeaderConfig_) Font weight of the header title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_HeaderConfig_) The maximum length of the header title in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param titleOrient (_HeaderConfig_) The orientation of the header title. One of `"top"`, `"bottom"`, `"left"` or `"right"`.
+#' @param titlePadding (_HeaderConfig_) The padding, in pixel, between facet header's title and the label.
+#' 
+#' __Default value:__ `10`
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_header_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, shortTimeLabels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL, titlePadding = NULL){
+  args <- .modify_args(NULL, c("format", "formatType", "labelAlign", "labelAnchor", "labelAngle", "labelColor", 
+  "labelFont", "labelFontSize", "labelLimit", "labelOrient", "labelPadding", "shortTimeLabels", 
+  "title", "titleAlign", "titleAnchor", "titleAngle", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontWeight", "titleLimit", "titleOrient", 
+  "titlePadding"))
+  .add_sub_config(args$spec, args$object, '#/definitions/HeaderConfig' , .config = "header")
+} 
+#' vl_add_headerColumn_config
+#' 
+#' Add headerColumn config (HeaderConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param format (_HeaderConfig_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+#' 
+#' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
+#' - If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
+#' 
+#' __Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format.
+#' @param formatType (_HeaderConfig_) The format type for labels (`"number"` or `"time"`).
+#' 
+#' __Default value:__
+#' - `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
+#' - `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`.
+#' @param labelAlign (_HeaderConfig_) Horizontal text alignment of header labels.
+#' @param labelAnchor (_HeaderConfig_) The anchor position for placing the labels. One of `"start"`, `"middle"`, or `"end"`. For example, with a label orientation of top these anchor positions map to a left-, center-, or right-aligned label.
+#' @param labelAngle (_HeaderConfig_) The rotation angle of the header labels.
+#' 
+#' __Default value:__ `0` for column header, `-90` for row header.
+#' @param labelColor (_HeaderConfig_) The color of the header label, can be in hex color code or regular color name.
+#' @param labelFont (_HeaderConfig_) The font of the header label.
+#' @param labelFontSize (_HeaderConfig_) The font size of the header label, in pixels.
+#' @param labelLimit (_HeaderConfig_) The maximum length of the header label in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param labelOrient (_HeaderConfig_) The orientation of the header label. One of `"top"`, `"bottom"`, `"left"` or `"right"`.
+#' @param labelPadding (_HeaderConfig_) The padding, in pixel, between facet header's label and the plot.
+#' 
+#' __Default value:__ `10`
+#' @param shortTimeLabels (_HeaderConfig_) Whether month names and weekday names should be abbreviated.
+#' 
+#' __Default value:__  `false`
+#' @param title (_HeaderConfig_) Set to null to disable title for the axis, legend, or header.
+#' @param titleAlign (_HeaderConfig_) Horizontal text alignment (to the anchor) of header titles.
+#' @param titleAnchor (_HeaderConfig_) The anchor position for placing the title. One of `"start"`, `"middle"`, or `"end"`. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.
+#' @param titleAngle (_HeaderConfig_) The rotation angle of the header title.
+#' 
+#' __Default value:__ `0`.
+#' @param titleBaseline (_HeaderConfig_) Vertical text baseline for the header title. One of `"top"`, `"bottom"`, `"middle"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param titleColor (_HeaderConfig_) Color of the header title, can be in hex color code or regular color name.
+#' @param titleFont (_HeaderConfig_) Font of the header title. (e.g., `"Helvetica Neue"`).
+#' @param titleFontSize (_HeaderConfig_) Font size of the header title.
+#' @param titleFontWeight (_HeaderConfig_) Font weight of the header title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_HeaderConfig_) The maximum length of the header title in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param titleOrient (_HeaderConfig_) The orientation of the header title. One of `"top"`, `"bottom"`, `"left"` or `"right"`.
+#' @param titlePadding (_HeaderConfig_) The padding, in pixel, between facet header's title and the label.
+#' 
+#' __Default value:__ `10`
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_headerColumn_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, shortTimeLabels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL, titlePadding = NULL){
+  args <- .modify_args(NULL, c("format", "formatType", "labelAlign", "labelAnchor", "labelAngle", "labelColor", 
+  "labelFont", "labelFontSize", "labelLimit", "labelOrient", "labelPadding", "shortTimeLabels", 
+  "title", "titleAlign", "titleAnchor", "titleAngle", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontWeight", "titleLimit", "titleOrient", 
+  "titlePadding"))
+  .add_sub_config(args$spec, args$object, '#/definitions/HeaderConfig' , .config = "headerColumn")
+} 
+#' vl_add_headerFacet_config
+#' 
+#' Add headerFacet config (HeaderConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param format (_HeaderConfig_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+#' 
+#' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
+#' - If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
+#' 
+#' __Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format.
+#' @param formatType (_HeaderConfig_) The format type for labels (`"number"` or `"time"`).
+#' 
+#' __Default value:__
+#' - `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
+#' - `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`.
+#' @param labelAlign (_HeaderConfig_) Horizontal text alignment of header labels.
+#' @param labelAnchor (_HeaderConfig_) The anchor position for placing the labels. One of `"start"`, `"middle"`, or `"end"`. For example, with a label orientation of top these anchor positions map to a left-, center-, or right-aligned label.
+#' @param labelAngle (_HeaderConfig_) The rotation angle of the header labels.
+#' 
+#' __Default value:__ `0` for column header, `-90` for row header.
+#' @param labelColor (_HeaderConfig_) The color of the header label, can be in hex color code or regular color name.
+#' @param labelFont (_HeaderConfig_) The font of the header label.
+#' @param labelFontSize (_HeaderConfig_) The font size of the header label, in pixels.
+#' @param labelLimit (_HeaderConfig_) The maximum length of the header label in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param labelOrient (_HeaderConfig_) The orientation of the header label. One of `"top"`, `"bottom"`, `"left"` or `"right"`.
+#' @param labelPadding (_HeaderConfig_) The padding, in pixel, between facet header's label and the plot.
+#' 
+#' __Default value:__ `10`
+#' @param shortTimeLabels (_HeaderConfig_) Whether month names and weekday names should be abbreviated.
+#' 
+#' __Default value:__  `false`
+#' @param title (_HeaderConfig_) Set to null to disable title for the axis, legend, or header.
+#' @param titleAlign (_HeaderConfig_) Horizontal text alignment (to the anchor) of header titles.
+#' @param titleAnchor (_HeaderConfig_) The anchor position for placing the title. One of `"start"`, `"middle"`, or `"end"`. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.
+#' @param titleAngle (_HeaderConfig_) The rotation angle of the header title.
+#' 
+#' __Default value:__ `0`.
+#' @param titleBaseline (_HeaderConfig_) Vertical text baseline for the header title. One of `"top"`, `"bottom"`, `"middle"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param titleColor (_HeaderConfig_) Color of the header title, can be in hex color code or regular color name.
+#' @param titleFont (_HeaderConfig_) Font of the header title. (e.g., `"Helvetica Neue"`).
+#' @param titleFontSize (_HeaderConfig_) Font size of the header title.
+#' @param titleFontWeight (_HeaderConfig_) Font weight of the header title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_HeaderConfig_) The maximum length of the header title in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param titleOrient (_HeaderConfig_) The orientation of the header title. One of `"top"`, `"bottom"`, `"left"` or `"right"`.
+#' @param titlePadding (_HeaderConfig_) The padding, in pixel, between facet header's title and the label.
+#' 
+#' __Default value:__ `10`
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_headerFacet_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, shortTimeLabels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL, titlePadding = NULL){
+  args <- .modify_args(NULL, c("format", "formatType", "labelAlign", "labelAnchor", "labelAngle", "labelColor", 
+  "labelFont", "labelFontSize", "labelLimit", "labelOrient", "labelPadding", "shortTimeLabels", 
+  "title", "titleAlign", "titleAnchor", "titleAngle", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontWeight", "titleLimit", "titleOrient", 
+  "titlePadding"))
+  .add_sub_config(args$spec, args$object, '#/definitions/HeaderConfig' , .config = "headerFacet")
+} 
+#' vl_add_headerRow_config
+#' 
+#' Add headerRow config (HeaderConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param format (_HeaderConfig_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+#' 
+#' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
+#' - If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
+#' 
+#' __Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format.
+#' @param formatType (_HeaderConfig_) The format type for labels (`"number"` or `"time"`).
+#' 
+#' __Default value:__
+#' - `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
+#' - `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`.
+#' @param labelAlign (_HeaderConfig_) Horizontal text alignment of header labels.
+#' @param labelAnchor (_HeaderConfig_) The anchor position for placing the labels. One of `"start"`, `"middle"`, or `"end"`. For example, with a label orientation of top these anchor positions map to a left-, center-, or right-aligned label.
+#' @param labelAngle (_HeaderConfig_) The rotation angle of the header labels.
+#' 
+#' __Default value:__ `0` for column header, `-90` for row header.
+#' @param labelColor (_HeaderConfig_) The color of the header label, can be in hex color code or regular color name.
+#' @param labelFont (_HeaderConfig_) The font of the header label.
+#' @param labelFontSize (_HeaderConfig_) The font size of the header label, in pixels.
+#' @param labelLimit (_HeaderConfig_) The maximum length of the header label in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param labelOrient (_HeaderConfig_) The orientation of the header label. One of `"top"`, `"bottom"`, `"left"` or `"right"`.
+#' @param labelPadding (_HeaderConfig_) The padding, in pixel, between facet header's label and the plot.
+#' 
+#' __Default value:__ `10`
+#' @param shortTimeLabels (_HeaderConfig_) Whether month names and weekday names should be abbreviated.
+#' 
+#' __Default value:__  `false`
+#' @param title (_HeaderConfig_) Set to null to disable title for the axis, legend, or header.
+#' @param titleAlign (_HeaderConfig_) Horizontal text alignment (to the anchor) of header titles.
+#' @param titleAnchor (_HeaderConfig_) The anchor position for placing the title. One of `"start"`, `"middle"`, or `"end"`. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.
+#' @param titleAngle (_HeaderConfig_) The rotation angle of the header title.
+#' 
+#' __Default value:__ `0`.
+#' @param titleBaseline (_HeaderConfig_) Vertical text baseline for the header title. One of `"top"`, `"bottom"`, `"middle"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param titleColor (_HeaderConfig_) Color of the header title, can be in hex color code or regular color name.
+#' @param titleFont (_HeaderConfig_) Font of the header title. (e.g., `"Helvetica Neue"`).
+#' @param titleFontSize (_HeaderConfig_) Font size of the header title.
+#' @param titleFontWeight (_HeaderConfig_) Font weight of the header title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_HeaderConfig_) The maximum length of the header title in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param titleOrient (_HeaderConfig_) The orientation of the header title. One of `"top"`, `"bottom"`, `"left"` or `"right"`.
+#' @param titlePadding (_HeaderConfig_) The padding, in pixel, between facet header's title and the label.
+#' 
+#' __Default value:__ `10`
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_headerRow_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, shortTimeLabels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL, titlePadding = NULL){
+  args <- .modify_args(NULL, c("format", "formatType", "labelAlign", "labelAnchor", "labelAngle", "labelColor", 
+  "labelFont", "labelFontSize", "labelLimit", "labelOrient", "labelPadding", "shortTimeLabels", 
+  "title", "titleAlign", "titleAnchor", "titleAngle", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontWeight", "titleLimit", "titleOrient", 
+  "titlePadding"))
+  .add_sub_config(args$spec, args$object, '#/definitions/HeaderConfig' , .config = "headerRow")
+} 
+#' vl_add_legend_config
+#' 
+#' Add legend config (LegendConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param clipHeight (_LegendConfig_) The height in pixels to clip symbol legend entries and limit their size.
+#' @param columnPadding (_LegendConfig_) The horizontal padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `10`.
+#' @param columns (_LegendConfig_) The number of columns in which to arrange symbol legend entries. A value of `0` or lower indicates a single row with one column per entry.
+#' @param cornerRadius (_LegendConfig_) Corner radius for the full legend.
+#' @param fillColor (_LegendConfig_) Background fill color for the full legend.
+#' @param gradientDirection (_LegendConfig_) The default direction (`"horizontal"` or `"vertical"`) for gradient legends.
+#' 
+#' __Default value:__ `"vertical"`.
+#' @param gradientHorizontalMaxLength (_LegendConfig_) Max legend length for a horizontal gradient when `config.legend.gradientLength` is undefined.
+#' 
+#' __Default value:__ `200`
+#' @param gradientHorizontalMinLength (_LegendConfig_) Min legend length for a horizontal gradient when `config.legend.gradientLength` is undefined.
+#' 
+#' __Default value:__ `100`
+#' @param gradientLabelLimit (_LegendConfig_) The maximum allowed length in pixels of color ramp gradient labels.
+#' @param gradientLabelOffset (_LegendConfig_) Vertical offset in pixels for color ramp gradient labels.
+#' 
+#' __Default value:__ `2`.
+#' @param gradientLength (_LegendConfig_) The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+#' 
+#' __Default value:__ `200`.
+#' @param gradientOpacity (_LegendConfig_) Opacity of the color gradient.
+#' @param gradientStrokeColor (_LegendConfig_) The color of the gradient stroke, can be in hex color code or regular color name.
+#' 
+#' __Default value:__ `"lightGray"`.
+#' @param gradientStrokeWidth (_LegendConfig_) The width of the gradient stroke, in pixels.
+#' 
+#' __Default value:__ `0`.
+#' @param gradientThickness (_LegendConfig_) The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
+#' 
+#' __Default value:__ `16`.
+#' @param gradientVerticalMaxLength (_LegendConfig_) Max legend length for a vertical gradient when `config.legend.gradientLength` is undefined.
+#' 
+#' __Default value:__ `200`
+#' @param gradientVerticalMinLength (_LegendConfig_) Min legend length for a vertical gradient when `config.legend.gradientLength` is undefined.
+#' 
+#' __Default value:__ `100`
+#' @param gridAlign (_LegendConfig_) The alignment to apply to symbol legends rows and columns. The supported string values are `"all"`, `"each"` (the default), and `none`. For more information, see the [grid layout documentation](https://vega.github.io/vega/docs/layout).
+#' 
+#' __Default value:__ `"each"`.
+#' @param labelAlign (_LegendConfig_) The alignment of the legend label, can be left, center, or right.
+#' @param labelBaseline (_LegendConfig_) The position of the baseline of legend label, can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' 
+#' __Default value:__ `"middle"`.
+#' @param labelColor (_LegendConfig_) The color of the legend label, can be in hex color code or regular color name.
+#' @param labelFont (_LegendConfig_) The font of the legend label.
+#' @param labelFontSize (_LegendConfig_) The font size of legend label.
+#' 
+#' __Default value:__ `10`.
+#' @param labelFontStyle (_LegendConfig_) The font style of legend label.
+#' @param labelFontWeight (_LegendConfig_) The font weight of legend label.
+#' @param labelLimit (_LegendConfig_) Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `160`.
+#' @param labelOffset (_LegendConfig_) The offset of the legend label.
+#' @param labelOpacity (_LegendConfig_) Opacity of labels.
+#' @param labelOverlap (_LegendConfig_) The strategy to use for resolving overlap of labels in gradient legends. If `false`, no overlap reduction is attempted. If set to `true` or `"parity"`, a strategy of removing every other label is used. If set to `"greedy"`, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `"greedy"` for `log scales otherwise `true`.
+#'    *
+#' @param labelPadding (_LegendConfig_) Padding in pixels between the legend and legend labels.
+#' @param labelSeparation (_LegendConfig_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param layout (_LegendConfig_) Legend orient group layout parameters.
+#' @param offset (_LegendConfig_) The offset in pixels by which to displace the legend from the data rectangle and axes.
+#' 
+#' __Default value:__ `18`.
+#' @param orient (_LegendConfig_) The orientation of the legend, which determines how the legend is positioned within the scene. One of "left", "right", "top-left", "top-right", "bottom-left", "bottom-right", "none".
+#' 
+#' __Default value:__ `"right"`
+#' @param padding (_LegendConfig_) The padding between the border and content of the legend group.
+#' 
+#' __Default value:__ `0`.
+#' @param rowPadding (_LegendConfig_) The vertical padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `2`.
+#' @param shortTimeLabels (_LegendConfig_) Whether month names and weekday names should be abbreviated.
+#' 
+#' __Default value:__  `false`
+#' @param strokeColor (_LegendConfig_) Border stroke color for the full legend.
+#' @param strokeDash (_LegendConfig_) Border stroke dash pattern for the full legend.
+#' @param strokeWidth (_LegendConfig_) Border stroke width for the full legend.
+#' @param symbolBaseFillColor (_LegendConfig_) Default fill color for legend symbols. Only applied if there is no `"fill"` scale color encoding for the legend.
+#' 
+#' __Default value:__ `"transparent"`.
+#' @param symbolBaseStrokeColor (_LegendConfig_) Default stroke color for legend symbols. Only applied if there is no `"fill"` scale color encoding for the legend.
+#' 
+#' __Default value:__ `"gray"`.
+#' @param symbolDash (_LegendConfig_) An array of alternating \[stroke, space\] lengths for dashed symbol strokes.
+#' @param symbolDashOffset (_LegendConfig_) The pixel offset at which to start drawing with the symbol stroke dash array.
+#' @param symbolDirection (_LegendConfig_) The default direction (`"horizontal"` or `"vertical"`) for symbol legends.
+#' 
+#' __Default value:__ `"vertical"`.
+#' @param symbolFillColor (_LegendConfig_) The color of the legend symbol,
+#' @param symbolOffset (_LegendConfig_) Horizontal pixel offset for legend symbols.
+#' 
+#' __Default value:__ `0`.
+#' @param symbolOpacity (_LegendConfig_) Opacity of the legend symbols.
+#' @param symbolSize (_LegendConfig_) The size of the legend symbol, in pixels.
+#' 
+#' __Default value:__ `100`.
+#' @param symbolStrokeColor (_LegendConfig_) Stroke color for legend symbols.
+#' @param symbolStrokeWidth (_LegendConfig_) The width of the symbol's stroke.
+#' 
+#' __Default value:__ `1.5`.
+#' @param symbolType (_LegendConfig_) Default shape type (such as "circle") for legend symbols.
+#' Can be one of ``"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#'    * In addition to a set of built-in shapes, custom shapes can be defined using [SVG path strings](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths).
+#'    *
+#'    * __Default value:__ `"circle"`.
+#'    *
+#' @param title (_LegendConfig_) Set to null to disable title for the axis, legend, or header.
+#' @param titleAlign (_LegendConfig_) Horizontal text alignment for legend titles.
+#' 
+#' __Default value:__ `"left"`.
+#' @param titleAnchor (_LegendConfig_) Text anchor position for placing legend titles.
+#' @param titleBaseline (_LegendConfig_) Vertical text baseline for legend titles.
+#' 
+#' __Default value:__ `"top"`.
+#' @param titleColor (_LegendConfig_) The color of the legend title, can be in hex color code or regular color name.
+#' @param titleFont (_LegendConfig_) The font of the legend title.
+#' @param titleFontSize (_LegendConfig_) The font size of the legend title.
+#' @param titleFontStyle (_LegendConfig_) The font style of the legend title.
+#' @param titleFontWeight (_LegendConfig_) The font weight of the legend title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_LegendConfig_) Maximum allowed pixel width of axis titles.
+#' 
+#' __Default value:__ `180`.
+#' @param titleOpacity (_LegendConfig_) Opacity of the legend title.
+#' @param titleOrient (_LegendConfig_) Orientation of the legend title.
+#' @param titlePadding (_LegendConfig_) The padding, in pixels, between title and legend.
+#' 
+#' __Default value:__ `5`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_legend_config <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, fillColor = NULL, gradientDirection = NULL, gradientHorizontalMaxLength = NULL, gradientHorizontalMinLength = NULL, gradientLabelLimit = NULL, gradientLabelOffset = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gradientVerticalMaxLength = NULL, gradientVerticalMinLength = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, layout = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, shortTimeLabels = NULL, strokeColor = NULL, strokeDash = NULL, strokeWidth = NULL, symbolBaseFillColor = NULL, symbolBaseStrokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolDirection = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "fillColor", "gradientDirection", 
+  "gradientHorizontalMaxLength", "gradientHorizontalMinLength", "gradientLabelLimit", 
+  "gradientLabelOffset", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gradientVerticalMaxLength", "gradientVerticalMinLength", 
+  "gridAlign", "labelAlign", "labelBaseline", "labelColor", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOffset", "labelOpacity", 
+  "labelOverlap", "labelPadding", "labelSeparation", "layout", "offset", "orient", 
+  "padding", "rowPadding", "shortTimeLabels", "strokeColor", "strokeDash", "strokeWidth", 
+  "symbolBaseFillColor", "symbolBaseStrokeColor", "symbolDash", "symbolDashOffset", 
+  "symbolDirection", "symbolFillColor", "symbolOffset", "symbolOpacity", "symbolSize", 
+  "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "title", "titleAlign", 
+  "titleAnchor", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titleOrient", 
+  "titlePadding"))
+  .add_sub_config(args$spec, args$object, '#/definitions/LegendConfig' , .config = "legend")
+} 
+#' vl_add_line_config
+#' 
+#' Add line config (LineConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param align (_LineConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_LineConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_LineConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_LineConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_LineConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_LineConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_LineConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_LineConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_LineConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_LineConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_LineConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_LineConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_LineConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_LineConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_LineConfig_) The font size, in pixels.
+#' @param fontStyle (_LineConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_LineConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_LineConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_LineConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_LineConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_LineConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_LineConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_LineConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param point (_LineConfig_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param radius (_LineConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_LineConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_LineConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_LineConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_LineConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_LineConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_LineConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_LineConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_LineConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_LineConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_LineConfig_) The stroke width, in pixels.
+#' @param tension (_LineConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_LineConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_LineConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_LineConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_LineConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_LineConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_LineConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_LineConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_line_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/LineConfig' , .config = "line")
+} 
+#' vl_add_mark_config
+#' 
+#' Add mark config (MarkConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param align (_MarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_MarkConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkConfig_) The font size, in pixels.
+#' @param fontStyle (_MarkConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_MarkConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param radius (_MarkConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkConfig_) The stroke width, in pixels.
+#' @param tension (_MarkConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_MarkConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_mark_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "mark")
+} 
+#' vl_add_point_config
+#' 
+#' Add point config (MarkConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param align (_MarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_MarkConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkConfig_) The font size, in pixels.
+#' @param fontStyle (_MarkConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_MarkConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param radius (_MarkConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkConfig_) The stroke width, in pixels.
+#' @param tension (_MarkConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_MarkConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_point_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "point")
+} 
+#' vl_add_projection_config
+#' 
+#' Add projection config (ProjectionConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param center (_Projection_) Sets the projection’s center to the specified center, a two-element array of longitude and latitude in degrees.
+#' 
+#' __Default value:__ `[0, 0]`
+#' @param clipAngle (_Projection_) Sets the projection’s clipping circle radius to the specified angle in degrees. If `null`, switches to [antimeridian](http://bl.ocks.org/mbostock/3788999) cutting rather than small-circle clipping.
+#' @param clipExtent (_Projection_) Sets the projection’s viewport clip extent to the specified bounds in pixels. The extent bounds are specified as an array `[\[x0, y0\], \[x1, y1\]]`, where `x0` is the left-side of the viewport, `y0` is the top, `x1` is the right and `y1` is the bottom. If `null`, no viewport clipping is performed.
+#' @param coefficient (_Projection_)  
+#' @param distance (_Projection_)  
+#' @param fraction (_Projection_)  
+#' @param lobes (_Projection_)  
+#' @param parallel (_Projection_)  
+#' @param precision (_Projection_) Sets the threshold for the projection’s [adaptive resampling](http://bl.ocks.org/mbostock/3795544) to the specified value in pixels. This value corresponds to the [Douglas–Peucker distance](http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm). If precision is not specified, returns the projection’s current resampling precision which defaults to `√0.5 ≅ 0.70710…`.
+#' @param radius (_Projection_)  
+#' @param ratio (_Projection_)  
+#' @param reflectX (_Projection_)  
+#' @param reflectY (_Projection_)  
+#' @param rotate (_Projection_) Sets the projection’s three-axis rotation to the specified angles, which must be a two- or three-element array of numbers \[`lambda`, `phi`, `gamma`\] specifying the rotation angles in degrees about each spherical axis. (These correspond to yaw, pitch and roll.)
+#' 
+#' __Default value:__ `[0, 0, 0]`
+#' @param scale (_Projection_) Sets the projection's scale (zoom) value, overriding automatic fitting.
+#' @param spacing (_Projection_)  
+#' @param tilt (_Projection_)  
+#' @param translate (_Projection_) Sets the projection's translation (pan) value, overriding automatic fitting.
+#' @param type (_Projection_) The cartographic projection to use. This value is case-insensitive, for example `"albers"` and `"Albers"` indicate the same projection type. You can find all valid projection types [in the documentation](https://vega.github.io/vega-lite/docs/projection.html#projection-types).
+#' 
+#' __Default value:__ `mercator`
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_projection_config <- function(spec, center = NULL, clipAngle = NULL, clipExtent = NULL, coefficient = NULL, distance = NULL, fraction = NULL, lobes = NULL, parallel = NULL, precision = NULL, radius = NULL, ratio = NULL, reflectX = NULL, reflectY = NULL, rotate = NULL, scale = NULL, spacing = NULL, tilt = NULL, translate = NULL, type = NULL){
+  args <- .modify_args(NULL, c("center", "clipAngle", "clipExtent", "coefficient", "distance", "fraction", 
+  "lobes", "parallel", "precision", "radius", "ratio", "reflectX", "reflectY", 
+  "rotate", "scale", "spacing", "tilt", "translate", "type"))
+  .add_sub_config(args$spec, args$object, '#/definitions/ProjectionConfig' , .config = "projection")
+} 
+#' vl_add_range_config
+#' 
+#' Add range config (RangeConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param category (_RangeConfig_) Default range for _nominal_ (categorical) fields.
+#' @param diverging (_RangeConfig_) Default range for diverging _quantitative_ fields.
+#' @param heatmap (_RangeConfig_) Default range for _quantitative_ heatmaps.
+#' @param ordinal (_RangeConfig_) Default range for _ordinal_ fields.
+#' @param ramp (_RangeConfig_) Default range for _quantitative_ and _temporal_ fields.
+#' @param symbol (_RangeConfig_) Default range palette for the `shape` channel.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_range_config <- function(spec, category = NULL, diverging = NULL, heatmap = NULL, ordinal = NULL, ramp = NULL, symbol = NULL){
+  args <- .modify_args(NULL, c("category", "diverging", "heatmap", "ordinal", "ramp", "symbol"))
+  .add_sub_config(args$spec, args$object, '#/definitions/RangeConfig' , .config = "range")
+} 
+#' vl_add_rect_config
+#' 
+#' Add rect config (MarkConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param align (_MarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_MarkConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkConfig_) The font size, in pixels.
+#' @param fontStyle (_MarkConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_MarkConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param radius (_MarkConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkConfig_) The stroke width, in pixels.
+#' @param tension (_MarkConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_MarkConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_rect_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "rect")
+} 
+#' vl_add_repeat_config
+#' 
+#' Add repeat config (CompositionConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param columns (_CompositionConfig_) The number of columns to include in the view composition layout.
+#' 
+#' __Default value__: `undefined` -- An infinite number of columns (a single row) will be assumed. This is equivalent to
+#' `hconcat` (for `concat`) and to using the `column` channel (for `facet` and `repeat`).
+#' 
+#' __Note__:
+#' 
+#' 1) This property is only for:
+#' - the general (wrappable) `concat` operator (not `hconcat`/`vconcat`)
+#' - the `facet` and `repeat` operator with one field/repetition definition (without row/column nesting)
+#' 
+#' 2) Setting the `columns` to `1` is equivalent to `vconcat` (for `concat`) and to using the `row` channel (for `facet` and `repeat`).
+#' @param spacing (_CompositionConfig_) The default spacing in pixels between composed sub-views.
+#' 
+#' __Default value__: `20`
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_repeat_config <- function(spec, columns = NULL, spacing = NULL){
+  args <- .modify_args(NULL, c("columns", "spacing"))
+  .add_sub_config(args$spec, args$object, '#/definitions/CompositionConfig' , .config = "repeat")
+} 
+#' vl_add_rule_config
+#' 
+#' Add rule config (MarkConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param align (_MarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_MarkConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkConfig_) The font size, in pixels.
+#' @param fontStyle (_MarkConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_MarkConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param radius (_MarkConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkConfig_) The stroke width, in pixels.
+#' @param tension (_MarkConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_MarkConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_rule_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "rule")
+} 
+#' vl_add_scale_config
+#' 
+#' Add scale config (ScaleConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param bandPaddingInner (_ScaleConfig_) Default inner padding for `x` and `y` band-ordinal scales.
+#' 
+#' __Default value:__
+#' - `barBandPaddingInner` for bar marks (`0.1` by default)
+#' - `rectBandPaddingInner` for rect and other marks (`0` by default)
+#' @param bandPaddingOuter (_ScaleConfig_) Default outer padding for `x` and `y` band-ordinal scales.
+#' 
+#' If not specified, by default, band scale's paddingOuter is paddingInner/2.
+#' @param barBandPaddingInner (_ScaleConfig_) Default inner padding for `x` and `y` band-ordinal scales of `"bar"` marks.
+#' 
+#' __Default value:__ `0.1`
+#' @param barBandPaddingOuter (_ScaleConfig_) Default outer padding for `x` and `y` band-ordinal scales of `"bar"` marks.
+#' If not specified, by default, band scale's paddingOuter is paddingInner/2.
+#' @param clamp (_ScaleConfig_) If true, values that exceed the data domain are clamped to either the minimum or maximum range value
+#' @param continuousPadding (_ScaleConfig_) Default padding for continuous scales.
+#' 
+#' __Default:__ `5` for continuous x-scale of a vertical bar and continuous y-scale of a horizontal bar.; `0` otherwise.
+#' @param maxBandSize (_ScaleConfig_) The default max value for mapping quantitative fields to bar's size/bandSize.
+#' 
+#' If undefined (default), we will use the scale's `rangeStep` - 1.
+#' @param maxFontSize (_ScaleConfig_) The default max value for mapping quantitative fields to text's size/fontSize.
+#' 
+#' __Default value:__ `40`
+#' @param maxOpacity (_ScaleConfig_) Default max opacity for mapping a field to opacity.
+#' 
+#' __Default value:__ `0.8`
+#' @param maxSize (_ScaleConfig_) Default max value for point size scale.
+#' @param maxStrokeWidth (_ScaleConfig_) Default max strokeWidth for the scale of strokeWidth for rule and line marks and of size for trail marks.
+#' 
+#' __Default value:__ `4`
+#' @param minBandSize (_ScaleConfig_) The default min value for mapping quantitative fields to bar and tick's size/bandSize scale with zero=false.
+#' 
+#' __Default value:__ `2`
+#' @param minFontSize (_ScaleConfig_) The default min value for mapping quantitative fields to tick's size/fontSize scale with zero=false
+#' 
+#' __Default value:__ `8`
+#' @param minOpacity (_ScaleConfig_) Default minimum opacity for mapping a field to opacity.
+#' 
+#' __Default value:__ `0.3`
+#' @param minSize (_ScaleConfig_) Default minimum value for point size scale with zero=false.
+#' 
+#' __Default value:__ `9`
+#' @param minStrokeWidth (_ScaleConfig_) Default minimum strokeWidth for the scale of strokeWidth for rule and line marks and of size for trail marks with zero=false.
+#' 
+#' __Default value:__ `1`
+#' @param pointPadding (_ScaleConfig_) Default outer padding for `x` and `y` point-ordinal scales.
+#' 
+#' __Default value:__ `0.5`
+#' @param quantileCount (_ScaleConfig_) Default range cardinality for [`quantile`](https://vega.github.io/vega-lite/docs/scale.html#quantile) scale.
+#' 
+#' __Default value:__ `4`
+#' @param quantizeCount (_ScaleConfig_) Default range cardinality for [`quantize`](https://vega.github.io/vega-lite/docs/scale.html#quantize) scale.
+#' 
+#' __Default value:__ `4`
+#' @param rangeStep (_ScaleConfig_) Default range step for band and point scales of (1) the `y` channel
+#' and (2) the `x` channel when the mark is not `text`.
+#' 
+#' __Default value:__ `20`
+#' @param rectBandPaddingInner (_ScaleConfig_) Default inner padding for `x` and `y` band-ordinal scales of `"rect"` marks.
+#' 
+#' __Default value:__ `0`
+#' @param rectBandPaddingOuter (_ScaleConfig_) Default outer padding for `x` and `y` band-ordinal scales of `"rect"` marks.
+#' If not specified, by default, band scale's paddingOuter is paddingInner/2.
+#' @param round (_ScaleConfig_) If true, rounds numeric output values to integers.
+#' This can be helpful for snapping to the pixel grid.
+#' (Only available for `x`, `y`, and `size` scales.)
+#' @param textXRangeStep (_ScaleConfig_) Default range step for `x` band and point scales of text marks.
+#' 
+#' __Default value:__ `90`
+#' @param useUnaggregatedDomain (_ScaleConfig_) Use the source data range before aggregation as scale domain instead of aggregated data for aggregate axis.
+#' 
+#' This is equivalent to setting `domain` to `"unaggregate"` for aggregated _quantitative_ fields by default.
+#' 
+#' This property only works with aggregate functions that produce values within the raw data domain (`"mean"`, `"average"`, `"median"`, `"q1"`, `"q3"`, `"min"`, `"max"`). For other aggregations that produce values outside of the raw data domain (e.g. `"count"`, `"sum"`), this property is ignored.
+#' 
+#' __Default value:__ `false`
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_scale_config <- function(spec, bandPaddingInner = NULL, bandPaddingOuter = NULL, barBandPaddingInner = NULL, barBandPaddingOuter = NULL, clamp = NULL, continuousPadding = NULL, maxBandSize = NULL, maxFontSize = NULL, maxOpacity = NULL, maxSize = NULL, maxStrokeWidth = NULL, minBandSize = NULL, minFontSize = NULL, minOpacity = NULL, minSize = NULL, minStrokeWidth = NULL, pointPadding = NULL, quantileCount = NULL, quantizeCount = NULL, rangeStep = NULL, rectBandPaddingInner = NULL, rectBandPaddingOuter = NULL, round = NULL, textXRangeStep = NULL, useUnaggregatedDomain = NULL){
+  args <- .modify_args(NULL, c("bandPaddingInner", "bandPaddingOuter", "barBandPaddingInner", "barBandPaddingOuter", 
+  "clamp", "continuousPadding", "maxBandSize", "maxFontSize", "maxOpacity", "maxSize", 
+  "maxStrokeWidth", "minBandSize", "minFontSize", "minOpacity", "minSize", "minStrokeWidth", 
+  "pointPadding", "quantileCount", "quantizeCount", "rangeStep", "rectBandPaddingInner", 
+  "rectBandPaddingOuter", "round", "textXRangeStep", "useUnaggregatedDomain"))
+  .add_sub_config(args$spec, args$object, '#/definitions/ScaleConfig' , .config = "scale")
+} 
+#' vl_add_selection_config
+#' 
+#' Add selection config (SelectionConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param interval (_SelectionConfig_) The default definition for an [`interval`](https://vega.github.io/vega-lite/docs/selection.html#type) selection. All properties and transformations
+#' for an interval selection definition (except `type`) may be specified here.
+#' 
+#' For instance, setting `interval` to `{"translate": false}` disables the ability to move
+#' interval selections by default.
+#' @param multi (_SelectionConfig_) The default definition for a [`multi`](https://vega.github.io/vega-lite/docs/selection.html#type) selection. All properties and transformations
+#' for a multi selection definition (except `type`) may be specified here.
+#' 
+#' For instance, setting `multi` to `{"toggle": "event.altKey"}` adds additional values to
+#' multi selections when clicking with the alt-key pressed by default.
+#' @param single (_SelectionConfig_) The default definition for a [`single`](https://vega.github.io/vega-lite/docs/selection.html#type) selection. All properties and transformations
+#'   for a single selection definition (except `type`) may be specified here.
+#' 
+#' For instance, setting `single` to `{"on": "dblclick"}` populates single selections on double-click by default.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_selection_config <- function(spec, interval = NULL, multi = NULL, single = NULL){
+  args <- .modify_args(NULL, c("interval", "multi", "single"))
+  .add_sub_config(args$spec, args$object, '#/definitions/SelectionConfig' , .config = "selection")
+} 
+#' vl_add_square_config
+#' 
+#' Add square config (MarkConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param align (_MarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_MarkConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkConfig_) The font size, in pixels.
+#' @param fontStyle (_MarkConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_MarkConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param radius (_MarkConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkConfig_) The stroke width, in pixels.
+#' @param tension (_MarkConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_MarkConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_square_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "square")
+} 
+#' vl_add_text_config
+#' 
+#' Add text config (TextConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param align (_TextConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_TextConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_TextConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_TextConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_TextConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_TextConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_TextConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_TextConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_TextConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_TextConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_TextConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_TextConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_TextConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_TextConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_TextConfig_) The font size, in pixels.
+#' @param fontStyle (_TextConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_TextConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_TextConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_TextConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_TextConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_TextConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_TextConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_TextConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param radius (_TextConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_TextConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param shortTimeLabels (_TextConfig_) Whether month names and weekday names should be abbreviated.
+#' @param size (_TextConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_TextConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_TextConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_TextConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_TextConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_TextConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_TextConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_TextConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_TextConfig_) The stroke width, in pixels.
+#' @param tension (_TextConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_TextConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_TextConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_TextConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_TextConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_TextConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_TextConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_TextConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_text_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, shortTimeLabels = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "shortTimeLabels", "size", "stroke", "strokeCap", "strokeDash", 
+  "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", 
+  "tension", "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/TextConfig' , .config = "text")
+} 
+#' vl_add_tick_config
+#' 
+#' Add tick config (TickConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param align (_TickConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_TickConfig_) The rotation angle of the text, in degrees.
+#' @param bandSize (_TickConfig_) The width of the ticks.
+#' 
+#' __Default value:__  3/4 of rangeStep.
+#' @param baseline (_TickConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_TickConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_TickConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_TickConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_TickConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_TickConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_TickConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_TickConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_TickConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_TickConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_TickConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_TickConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_TickConfig_) The font size, in pixels.
+#' @param fontStyle (_TickConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_TickConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_TickConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_TickConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_TickConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_TickConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_TickConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_TickConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param radius (_TickConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_TickConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_TickConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_TickConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_TickConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_TickConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_TickConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_TickConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_TickConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_TickConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_TickConfig_) The stroke width, in pixels.
+#' @param tension (_TickConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_TickConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_TickConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param thickness (_TickConfig_) Thickness of the tick mark.
+#' 
+#' __Default value:__  `1`
+#' @param tooltip (_TickConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_TickConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_TickConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_TickConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_TickConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_tick_config <- function(spec, align = NULL, angle = NULL, bandSize = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "bandSize", "baseline", "color", "cornerRadius", "cursor", 
+  "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", 
+  "fontStyle", "fontWeight", "href", "interpolate", "limit", "opacity", "order", 
+  "orient", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "thickness", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/TickConfig' , .config = "tick")
+} 
+#' vl_add_title_config
+#' 
+#' Add title config (TitleConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param align (_BaseTitleConfig_)  
+#' @param anchor (_BaseTitleConfig_) The anchor position for placing the title. One of `"start"`, `"middle"`, or `"end"`. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.
+#' @param angle (_BaseTitleConfig_) Angle in degrees of title text.
+#' @param baseline (_BaseTitleConfig_) Vertical text baseline for title text. One of `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' @param color (_BaseTitleConfig_) Text color for title text.
+#' @param dx (_BaseTitleConfig_) Delta offset for title text x-coordinate.
+#' @param dy (_BaseTitleConfig_) Delta offset for title text y-coordinate.
+#' @param font (_BaseTitleConfig_) Font name for title text.
+#' @param fontSize (_BaseTitleConfig_) Font size in pixels for title text.
+#' 
+#' __Default value:__ `10`.
+#' @param fontStyle (_BaseTitleConfig_) Font style for title text.
+#' @param fontWeight (_BaseTitleConfig_) Font weight for title text.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param frame (_BaseTitleConfig_) The reference frame for the anchor position, one of `"bounds"` (to anchor relative to the full bounding box) or `"group"` (to anchor relative to the group width or height).
+#' @param limit (_BaseTitleConfig_) The maximum allowed length in pixels of legend labels.
+#' @param offset (_BaseTitleConfig_) The orthogonal offset in pixels by which to displace the title from its position along the edge of the chart.
+#' @param orient (_BaseTitleConfig_) Default title orientation (`"top"`, `"bottom"`, `"left"`, or `"right"`)
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_title_config <- function(spec, align = NULL, anchor = NULL, angle = NULL, baseline = NULL, color = NULL, dx = NULL, dy = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, frame = NULL, limit = NULL, offset = NULL, orient = NULL){
+  args <- .modify_args(NULL, c("align", "anchor", "angle", "baseline", "color", "dx", "dy", "font", "fontSize", 
+  "fontStyle", "fontWeight", "frame", "limit", "offset", "orient"))
+  .add_sub_config(args$spec, args$object, '#/definitions/TitleConfig' , .config = "title")
+} 
+#' vl_add_trail_config
+#' 
+#' Add trail config (LineConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param align (_LineConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_LineConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_LineConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_LineConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_LineConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_LineConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_LineConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_LineConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_LineConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_LineConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_LineConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_LineConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_LineConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_LineConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_LineConfig_) The font size, in pixels.
+#' @param fontStyle (_LineConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_LineConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_LineConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_LineConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_LineConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_LineConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_LineConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_LineConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param point (_LineConfig_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param radius (_LineConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_LineConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_LineConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_LineConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_LineConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_LineConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_LineConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_LineConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_LineConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_LineConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_LineConfig_) The stroke width, in pixels.
+#' @param tension (_LineConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_LineConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_LineConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_LineConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_LineConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_LineConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_LineConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_LineConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_trail_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/LineConfig' , .config = "trail")
+} 
+#' vl_add_view_config
+#' 
+#' Add view config (ViewConfig) to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param clip (_ViewConfig_) Whether the view should be clipped.
+#' @param cornerRadius (_ViewConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param fill (_ViewConfig_) The fill color.
+#' 
+#' __Default value:__ `undefined`
+#' @param fillOpacity (_ViewConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param height (_ViewConfig_) The default height of the single plot or each plot in a trellis plot when the visualization has a continuous (non-ordinal) y-scale with `rangeStep` = `null`.
+#' 
+#' __Default value:__ `200`
+#' @param opacity (_ViewConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param stroke (_ViewConfig_) The stroke color.
+#' 
+#' __Default value:__ `"#ddd"`
+#' @param strokeCap (_ViewConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_ViewConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_ViewConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_ViewConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_ViewConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_ViewConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_ViewConfig_) The stroke width, in pixels.
+#' @param width (_ViewConfig_) The default width of the single plot or each plot in a trellis plot when the visualization has a continuous (non-ordinal) x-scale or ordinal x-scale with `rangeStep` = `null`.
+#' 
+#' __Default value:__ `200`
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_add_view_config <- function(spec, clip = NULL, cornerRadius = NULL, fill = NULL, fillOpacity = NULL, height = NULL, opacity = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, width = NULL){
+  args <- .modify_args(NULL, c("clip", "cornerRadius", "fill", "fillOpacity", "height", "opacity", "stroke", 
+  "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "width"))
+  .add_sub_config(args$spec, args$object, '#/definitions/ViewConfig' , .config = "view")
+} 
+#' vl_make_AreaConfig
+#' 
+#' Create spec for {obj}
+#' @param align (_AreaConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_AreaConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_AreaConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_AreaConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_AreaConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_AreaConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_AreaConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_AreaConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_AreaConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_AreaConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_AreaConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_AreaConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_AreaConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_AreaConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_AreaConfig_) The font size, in pixels.
+#' @param fontStyle (_AreaConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_AreaConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_AreaConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_AreaConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_AreaConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param line (_AreaConfig_) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
+#' 
+#' - If this value is an empty object (`{}`) or `true`, lines with default properties will be used.
+#' 
+#' - If this value is `false`, no lines would be automatically added to area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param opacity (_AreaConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_AreaConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_AreaConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param point (_AreaConfig_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param radius (_AreaConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_AreaConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_AreaConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_AreaConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_AreaConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_AreaConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_AreaConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_AreaConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_AreaConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_AreaConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_AreaConfig_) The stroke width, in pixels.
+#' @param tension (_AreaConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_AreaConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_AreaConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_AreaConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_AreaConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_AreaConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_AreaConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_AreaConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_AreaConfig <- function(align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "line", "opacity", "order", "orient", 
+  "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+args$obj
+} 
+#' vl_make_AxisConfig
+#' 
+#' Create spec for {obj}
+#' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
+#' 
+#'   __Default value:__ `0.5`
+#' @param domain (_AxisConfig_) A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.
+#' 
+#' __Default value:__ `true`
+#' @param domainColor (_AxisConfig_) Color of axis domain line.
+#' 
+#' __Default value:__ `"gray"`.
+#' @param domainDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed domain lines.
+#' @param domainDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the domain dash array.
+#' @param domainOpacity (_AxisConfig_) Opacity of the axis domain line.
+#' @param domainWidth (_AxisConfig_) Stroke width of axis domain line
+#' 
+#' __Default value:__ `1`
+#' @param grid (_AxisConfig_) A boolean flag indicating if grid lines should be included as part of the axis
+#' 
+#' __Default value:__ `true` for [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous) that are not binned; otherwise, `false`.
+#' @param gridColor (_AxisConfig_) Color of gridlines.
+#' 
+#' __Default value:__ `"lightGray"`.
+#' @param gridDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed grid lines.
+#' @param gridDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the grid dash array.
+#' @param gridOpacity (_AxisConfig_) The stroke opacity of grid (value between \[0,1\])
+#' 
+#' __Default value:__ `1`
+#' @param gridWidth (_AxisConfig_) The grid width, in pixels.
+#' 
+#' __Default value:__ `1`
+#' @param labelAlign (_AxisConfig_) Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation.
+#' @param labelAngle (_AxisConfig_) The rotation angle of the axis labels.
+#' 
+#' __Default value:__ `-90` for nominal and ordinal fields; `0` otherwise.
+#' @param labelBaseline (_AxisConfig_) Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' @param labelBound (_AxisConfig_) Indicates if labels should be hidden if they exceed the axis range. If `false` (the default) no bounds overlap analysis is performed. If `true`, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.
+#' 
+#' __Default value:__ `false`.
+#' @param labelColor (_AxisConfig_) The color of the tick label, can be in hex color code or regular color name.
+#' @param labelFlush (_AxisConfig_) Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `true` for axis of a continuous x-scale. Otherwise, `false`.
+#' @param labelFlushOffset (_AxisConfig_) Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of `2` will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `0`.
+#' @param labelFont (_AxisConfig_) The font of the tick label.
+#' @param labelFontSize (_AxisConfig_) The font size of the label, in pixels.
+#' @param labelFontStyle (_AxisConfig_) Font style of the title.
+#' @param labelFontWeight (_AxisConfig_) Font weight of axis tick labels.
+#' @param labelLimit (_AxisConfig_) Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `180`
+#' @param labelOpacity (_AxisConfig_) The opacity of the labels.
+#' @param labelOverlap (_AxisConfig_) The strategy to use for resolving overlap of axis labels. If `false` (the default), no overlap reduction is attempted. If set to `true` or `"parity"`, a strategy of removing every other label is used (this works well for standard linear axes). If set to `"greedy"`, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true` for non-nominal fields with non-log scales; `"greedy"` for log scales; otherwise `false`.
+#' @param labelPadding (_AxisConfig_) The padding, in pixels, between axis and text labels.
+#' 
+#' __Default value:__ `2`
+#' @param labelSeparation (_AxisConfig_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param labels (_AxisConfig_) A boolean flag indicating if labels should be included as part of the axis.
+#' 
+#' __Default value:__ `true`.
+#' @param maxExtent (_AxisConfig_) The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.
+#' 
+#' __Default value:__ `undefined`.
+#' @param minExtent (_AxisConfig_) The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.
+#' 
+#' __Default value:__ `30` for y-axis; `undefined` for x-axis.
+#' @param orient (_AxisConfig_) The orientation of the axis. One of `"top"`, `"bottom"`, `"left"` or `"right"`. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).
+#' 
+#' __Default value:__ `"bottom"` for x-axes and `"left"` for y-axes.
+#' @param shortTimeLabels (_AxisConfig_) Whether month names and weekday names should be abbreviated.
+#' 
+#' __Default value:__  `false`
+#' @param tickColor (_AxisConfig_) The color of the axis's tick.
+#' 
+#' __Default value:__ `"gray"`
+#' @param tickDash (_AxisConfig_) An array of alternating \[stroke, space\] lengths for dashed tick mark lines.
+#' @param tickDashOffset (_AxisConfig_) The pixel offset at which to start drawing with the tick mark dash array.
+#' @param tickExtra (_AxisConfig_) Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for `band` scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with `"bandPosition": 1` and an axis `"padding"` value of `0`.
+#' @param tickOffset (_AxisConfig_) Position offset in pixels to apply to ticks, labels, and gridlines.
+#' @param tickOpacity (_AxisConfig_) Opacity of the ticks.
+#' @param tickRound (_AxisConfig_) Boolean flag indicating if pixel position values should be rounded to the nearest integer.
+#' 
+#' __Default value:__ `true`
+#' @param tickSize (_AxisConfig_) The size in pixels of axis ticks.
+#' 
+#' __Default value:__ `5`
+#' @param tickWidth (_AxisConfig_) The width, in pixels, of ticks.
+#' 
+#' __Default value:__ `1`
+#' @param ticks (_AxisConfig_) Boolean value that determines whether the axis should include ticks.
+#' 
+#' __Default value:__ `true`
+#' @param title (_AxisConfig_) Set to null to disable title for the axis, legend, or header.
+#' @param titleAlign (_AxisConfig_) Horizontal text alignment of axis titles.
+#' @param titleAnchor (_AxisConfig_) Text anchor position for placing axis titles.
+#' @param titleAngle (_AxisConfig_) Angle in degrees of axis titles.
+#' @param titleBaseline (_AxisConfig_) Vertical text baseline for axis titles.
+#' @param titleColor (_AxisConfig_) Color of the title, can be in hex color code or regular color name.
+#' @param titleFont (_AxisConfig_) Font of the title. (e.g., `"Helvetica Neue"`).
+#' @param titleFontSize (_AxisConfig_) Font size of the title.
+#' @param titleFontStyle (_AxisConfig_) Font style of the title.
+#' @param titleFontWeight (_AxisConfig_) Font weight of the title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_AxisConfig_) Maximum allowed pixel width of axis titles.
+#' @param titleOpacity (_AxisConfig_) Opacity of the axis title.
+#' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
+#' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
+#' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_AxisConfig <- function(bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+args$obj
+} 
+#' vl_make_BarConfig
+#' 
+#' Create spec for {obj}
+#' @param align (_BarConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_BarConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_BarConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param binSpacing (_BarConfig_) Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
+#' 
+#' __Default value:__ `1`
+#' @param color (_BarConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param continuousBandSize (_BarConfig_) The default size of the bars on continuous scales.
+#' 
+#' __Default value:__ `5`
+#' @param cornerRadius (_BarConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_BarConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_BarConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param discreteBandSize (_BarConfig_) The default size of the bars with discrete dimensions.  If unspecified, the default size is  `bandSize-1`,
+#' which provides 1 pixel offset between bars.
+#' @param dx (_BarConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_BarConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_BarConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_BarConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_BarConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_BarConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_BarConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_BarConfig_) The font size, in pixels.
+#' @param fontStyle (_BarConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_BarConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_BarConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_BarConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_BarConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_BarConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_BarConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_BarConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param radius (_BarConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_BarConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_BarConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_BarConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_BarConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_BarConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_BarConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_BarConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_BarConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_BarConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_BarConfig_) The stroke width, in pixels.
+#' @param tension (_BarConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_BarConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_BarConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_BarConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_BarConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_BarConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_BarConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_BarConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_BarConfig <- function(align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+args <- .modify_args(NULL, c("align", "angle", "baseline", "binSpacing", "color", "continuousBandSize", 
+  "cornerRadius", "cursor", "dir", "discreteBandSize", "dx", "dy", "ellipsis", 
+  "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", 
+  "href", "interpolate", "limit", "opacity", "order", "orient", "radius", "shape", 
+  "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", 
+  "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", "text", "theta", 
+  "tooltip", "x", "x2", "y", "y2"))
+args$obj
+} 
+#' vl_make_BaseMarkConfig
+#' 
+#' Create spec for {obj}
+#' @param align (_BaseMarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_BaseMarkConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_BaseMarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param cornerRadius (_BaseMarkConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_BaseMarkConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_BaseMarkConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_BaseMarkConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_BaseMarkConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_BaseMarkConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_BaseMarkConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_BaseMarkConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param font (_BaseMarkConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_BaseMarkConfig_) The font size, in pixels.
+#' @param fontStyle (_BaseMarkConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_BaseMarkConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_BaseMarkConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_BaseMarkConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_BaseMarkConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_BaseMarkConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param orient (_BaseMarkConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param radius (_BaseMarkConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_BaseMarkConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_BaseMarkConfig_) The pixel area each the point/circle/square.
+#' For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' 
+#' __Default value:__ `30`
+#' @param stroke (_BaseMarkConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_BaseMarkConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_BaseMarkConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_BaseMarkConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_BaseMarkConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_BaseMarkConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_BaseMarkConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_BaseMarkConfig_) The stroke width, in pixels.
+#' @param tension (_BaseMarkConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_BaseMarkConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_BaseMarkConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_BaseMarkConfig_) The tooltip text to show upon mouse hover.
+#' @param x (_BaseMarkConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_BaseMarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_BaseMarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_BaseMarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_BaseMarkConfig <- function(align = NULL, angle = NULL, baseline = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+args <- .modify_args(NULL, c("align", "angle", "baseline", "cornerRadius", "cursor", "dir", "dx", "dy", 
+  "ellipsis", "fill", "fillOpacity", "font", "fontSize", "fontStyle", "fontWeight", 
+  "href", "interpolate", "limit", "opacity", "orient", "radius", "shape", "size", 
+  "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "tension", "text", "theta", "tooltip", "x", 
+  "x2", "y", "y2"))
+args$obj
+} 
+#' vl_make_BaseTitleConfig
+#' 
+#' Create spec for {obj}
+#' @param align (_BaseTitleConfig_)  
+#' @param anchor (_BaseTitleConfig_) The anchor position for placing the title. One of `"start"`, `"middle"`, or `"end"`. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.
+#' @param angle (_BaseTitleConfig_) Angle in degrees of title text.
+#' @param baseline (_BaseTitleConfig_) Vertical text baseline for title text. One of `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' @param color (_BaseTitleConfig_) Text color for title text.
+#' @param dx (_BaseTitleConfig_) Delta offset for title text x-coordinate.
+#' @param dy (_BaseTitleConfig_) Delta offset for title text y-coordinate.
+#' @param font (_BaseTitleConfig_) Font name for title text.
+#' @param fontSize (_BaseTitleConfig_) Font size in pixels for title text.
+#' 
+#' __Default value:__ `10`.
+#' @param fontStyle (_BaseTitleConfig_) Font style for title text.
+#' @param fontWeight (_BaseTitleConfig_) Font weight for title text.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param frame (_BaseTitleConfig_) The reference frame for the anchor position, one of `"bounds"` (to anchor relative to the full bounding box) or `"group"` (to anchor relative to the group width or height).
+#' @param limit (_BaseTitleConfig_) The maximum allowed length in pixels of legend labels.
+#' @param offset (_BaseTitleConfig_) The orthogonal offset in pixels by which to displace the title from its position along the edge of the chart.
+#' @param orient (_BaseTitleConfig_) Default title orientation (`"top"`, `"bottom"`, `"left"`, or `"right"`)
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_BaseTitleConfig <- function(align = NULL, anchor = NULL, angle = NULL, baseline = NULL, color = NULL, dx = NULL, dy = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, frame = NULL, limit = NULL, offset = NULL, orient = NULL){
+args <- .modify_args(NULL, c("align", "anchor", "angle", "baseline", "color", "dx", "dy", "font", "fontSize", 
+  "fontStyle", "fontWeight", "frame", "limit", "offset", "orient"))
+args$obj
+} 
+#' vl_make_BoxPlotConfig
+#' 
+#' Create spec for {obj}
+#' @param box (_BoxPlotConfig_)  
+#' @param extent (_BoxPlotConfig_) The extent of the whiskers. Available options include:
+#' - `"min-max"`: min and max are the lower and upper whiskers respectively.
+#' - A number representing multiple of the interquartile range.  This number will be multiplied by the IQR to determine whisker boundary, which spans from the smallest data to the largest data within the range _\[Q1 - k * IQR, Q3 + k * IQR\]_ where _Q1_ and _Q3_ are the first and third quartiles while _IQR_ is the interquartile range (_Q3-Q1_).
+#' 
+#' __Default value:__ `1.5`.
+#' @param median (_BoxPlotConfig_)  
+#' @param outliers (_BoxPlotConfig_)  
+#' @param rule (_BoxPlotConfig_)  
+#' @param size (_BoxPlotConfig_) Size of the box and median tick of a box plot
+#' @param ticks (_BoxPlotConfig_)  
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_BoxPlotConfig <- function(box = NULL, extent = NULL, median = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL){
+args <- .modify_args(NULL, c("box", "extent", "median", "outliers", "rule", "size", "ticks"))
+args$obj
+} 
+#' vl_make_BrushConfig
+#' 
+#' Create spec for {obj}
+#' @param fill (_BrushConfig_) The fill color of the interval mark.
+#' 
+#' __Default value:__ `#333333`
+#' @param fillOpacity (_BrushConfig_) The fill opacity of the interval mark (a value between 0 and 1).
+#' 
+#' __Default value:__ `0.125`
+#' @param stroke (_BrushConfig_) The stroke color of the interval mark.
+#' 
+#' __Default value:__ `#ffffff`
+#' @param strokeDash (_BrushConfig_) An array of alternating stroke and space lengths,
+#' for creating dashed or dotted lines.
+#' @param strokeDashOffset (_BrushConfig_) The offset (in pixels) with which to begin drawing the stroke dash array.
+#' @param strokeOpacity (_BrushConfig_) The stroke opacity of the interval mark (a value between 0 and 1).
+#' @param strokeWidth (_BrushConfig_) The stroke width of the interval mark.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_BrushConfig <- function(fill = NULL, fillOpacity = NULL, stroke = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL){
+args <- .modify_args(NULL, c("fill", "fillOpacity", "stroke", "strokeDash", "strokeDashOffset", "strokeOpacity", 
+  "strokeWidth"))
+args$obj
+} 
+#' vl_make_CompositionConfig
+#' 
+#' Create spec for {obj}
+#' @param columns (_CompositionConfig_) The number of columns to include in the view composition layout.
+#' 
+#' __Default value__: `undefined` -- An infinite number of columns (a single row) will be assumed. This is equivalent to
+#' `hconcat` (for `concat`) and to using the `column` channel (for `facet` and `repeat`).
+#' 
+#' __Note__:
+#' 
+#' 1) This property is only for:
+#' - the general (wrappable) `concat` operator (not `hconcat`/`vconcat`)
+#' - the `facet` and `repeat` operator with one field/repetition definition (without row/column nesting)
+#' 
+#' 2) Setting the `columns` to `1` is equivalent to `vconcat` (for `concat`) and to using the `row` channel (for `facet` and `repeat`).
+#' @param spacing (_CompositionConfig_) The default spacing in pixels between composed sub-views.
+#' 
+#' __Default value__: `20`
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_CompositionConfig <- function(columns = NULL, spacing = NULL){
+args <- .modify_args(NULL, c("columns", "spacing"))
+args$obj
+} 
+#' vl_make_Config
+#' 
+#' Create spec for {obj}
+#' @param area (_Config_) Area-Specific Config
+#' @param autosize (_Config_) Sets how the visualization size should be determined. If a string, should be one of `"pad"`, `"fit"` or `"none"`.
+#' Object values can additionally specify parameters for content sizing and automatic resizing.
+#' `"fit"` is only supported for single and layered views that don't use `rangeStep`.
+#' 
+#' __Default value__: `pad`
+#' @param axis (_Config_) Axis configuration, which determines default properties for all `x` and `y` [axes](https://vega.github.io/vega-lite/docs/axis.html). For a full list of axis configuration options, please see the [corresponding section of the axis documentation](https://vega.github.io/vega-lite/docs/axis.html#config).
+#' @param axisBand (_Config_) Specific axis config for axes with "band" scales.
+#' @param axisBottom (_Config_) Specific axis config for x-axis along the bottom edge of the chart.
+#' @param axisLeft (_Config_) Specific axis config for y-axis along the left edge of the chart.
+#' @param axisRight (_Config_) Specific axis config for y-axis along the right edge of the chart.
+#' @param axisTop (_Config_) Specific axis config for x-axis along the top edge of the chart.
+#' @param axisX (_Config_) X-axis specific config.
+#' @param axisY (_Config_) Y-axis specific config.
+#' @param background (_Config_) CSS color property to use as the background of the whole Vega-Lite view
+#' 
+#' __Default value:__ none (transparent)
+#' @param bar (_Config_) Bar-Specific Config
+#' @param boxplot (_Config_) Box Config
+#' @param circle (_Config_) Circle-Specific Config
+#' @param concat (_Config_) Default configuration for all concatenation view composition operators (`concat`, `hconcat`, and `vconcat`)
+#' @param countTitle (_Config_) Default axis and legend title for count fields.
+#' 
+#' __Default value:__ `Count of Records`.
+#' @param errorband (_Config_) ErrorBand Config
+#' @param errorbar (_Config_) ErrorBar Config
+#' @param facet (_Config_) Default configuration for the `facet` view composition operator
+#' @param fieldTitle (_Config_) Defines how Vega-Lite generates title for fields.  There are three possible styles:
+#' - `"verbal"` (Default) - displays function in a verbal style (e.g., "Sum of field", "Year-month of date", "field (binned)").
+#' - `"function"` - displays function using parentheses and capitalized texts (e.g., "SUM(field)", "YEARMONTH(date)", "BIN(field)").
+#' - `"plain"` - displays only the field name without functions (e.g., "field", "date", "field").
+#' @param geoshape (_Config_) Geoshape-Specific Config
+#' @param header (_Config_) Header configuration, which determines default properties for all [headers](https://vega.github.io/vega-lite/docs/header.html).
+#' 
+#' For a full list of header configuration options, please see the [corresponding section of in the header documentation](https://vega.github.io/vega-lite/docs/header.html#config).
+#' @param headerColumn (_Config_) Header configuration, which determines default properties for column [headers](https://vega.github.io/vega-lite/docs/header.html).
+#' 
+#' For a full list of header configuration options, please see the [corresponding section of in the header documentation](https://vega.github.io/vega-lite/docs/header.html#config).
+#' @param headerFacet (_Config_) Header configuration, which determines default properties for non-row/column facet [headers](https://vega.github.io/vega-lite/docs/header.html).
+#' 
+#' For a full list of header configuration options, please see the [corresponding section of in the header documentation](https://vega.github.io/vega-lite/docs/header.html#config).
+#' @param headerRow (_Config_) Header configuration, which determines default properties for row [headers](https://vega.github.io/vega-lite/docs/header.html).
+#' 
+#' For a full list of header configuration options, please see the [corresponding section of in the header documentation](https://vega.github.io/vega-lite/docs/header.html#config).
+#' @param invalidValues (_Config_) Defines how Vega-Lite should handle invalid values (`null` and `NaN`).
+#' - If set to `"filter"` (default), all data items with null values will be skipped (for line, trail, and area marks) or filtered (for other marks).
+#' - If `null`, all data items are included. In this case, invalid values will be interpreted as zeroes.
+#' @param legend (_Config_) Legend configuration, which determines default properties for all [legends](https://vega.github.io/vega-lite/docs/legend.html). For a full list of legend configuration options, please see the [corresponding section of in the legend documentation](https://vega.github.io/vega-lite/docs/legend.html#config).
+#' @param line (_Config_) Line-Specific Config
+#' @param mark (_Config_) Mark Config
+#' @param numberFormat (_Config_) D3 Number format for guide labels and text marks. For example "s" for SI units. Use [D3's number format pattern](https://github.com/d3/d3-format#locale_format).
+#' @param padding (_Config_) The default visualization padding, in pixels, from the edge of the visualization canvas to the data rectangle.  If a number, specifies padding for all sides.
+#' If an object, the value should have the format `{"left": 5, "top": 5, "right": 5, "bottom": 5}` to specify padding for each side of the visualization.
+#' 
+#' __Default value__: `5`
+#' @param point (_Config_) Point-Specific Config
+#' @param projection (_Config_) Projection configuration, which determines default properties for all [projections](https://vega.github.io/vega-lite/docs/projection.html). For a full list of projection configuration options, please see the [corresponding section of the projection documentation](https://vega.github.io/vega-lite/docs/projection.html#config).
+#' @param range (_Config_) An object hash that defines default range arrays or schemes for using with scales.
+#' For a full list of scale range configuration options, please see the [corresponding section of the scale documentation](https://vega.github.io/vega-lite/docs/scale.html#config).
+#' @param rect (_Config_) Rect-Specific Config
+#' @param repeat (_Config_) Default configuration for the `repeat` view composition operator
+#' @param rule (_Config_) Rule-Specific Config
+#' @param scale (_Config_) Scale configuration determines default properties for all [scales](https://vega.github.io/vega-lite/docs/scale.html). For a full list of scale configuration options, please see the [corresponding section of the scale documentation](https://vega.github.io/vega-lite/docs/scale.html#config).
+#' @param selection (_Config_) An object hash for defining default properties for each type of selections.
+#' @param square (_Config_) Square-Specific Config
+#' @param stack (_Config_) Default stack offset for stackable mark.
+#' @param style (_Config_) An object hash that defines key-value mappings to determine default properties for marks with a given [style](https://vega.github.io/vega-lite/docs/mark.html#mark-def).  The keys represent styles names; the values have to be valid [mark configuration objects](https://vega.github.io/vega-lite/docs/mark.html#config).
+#' @param text (_Config_) Text-Specific Config
+#' @param tick (_Config_) Tick-Specific Config
+#' @param timeFormat (_Config_) Default time format for raw time values (without time units) in text marks, legend labels and header labels.
+#' 
+#' __Default value:__ `"%b %d, %Y"`
+#' __Note:__ Axes automatically determine format each label automatically so this config would not affect axes.
+#' @param title (_Config_) Title configuration, which determines default properties for all [titles](https://vega.github.io/vega-lite/docs/title.html). For a full list of title configuration options, please see the [corresponding section of the title documentation](https://vega.github.io/vega-lite/docs/title.html#config).
+#' @param trail (_Config_) Trail-Specific Config
+#' @param view (_Config_) Default properties for [single view plots](https://vega.github.io/vega-lite/docs/spec.html#single).
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_Config <- function(area = NULL, autosize = NULL, axis = NULL, axisBand = NULL, axisBottom = NULL, axisLeft = NULL, axisRight = NULL, axisTop = NULL, axisX = NULL, axisY = NULL, background = NULL, bar = NULL, boxplot = NULL, circle = NULL, concat = NULL, countTitle = NULL, errorband = NULL, errorbar = NULL, facet = NULL, fieldTitle = NULL, geoshape = NULL, header = NULL, headerColumn = NULL, headerFacet = NULL, headerRow = NULL, invalidValues = NULL, legend = NULL, line = NULL, mark = NULL, numberFormat = NULL, padding = NULL, point = NULL, projection = NULL, range = NULL, rect = NULL, `repeat` = NULL, rule = NULL, scale = NULL, selection = NULL, square = NULL, stack = NULL, style = NULL, text = NULL, tick = NULL, timeFormat = NULL, title = NULL, trail = NULL, view = NULL){
+args <- .modify_args(NULL, c("area", "autosize", "axis", "axisBand", "axisBottom", "axisLeft", "axisRight", 
+  "axisTop", "axisX", "axisY", "background", "bar", "boxplot", "circle", "concat", 
+  "countTitle", "errorband", "errorbar", "facet", "fieldTitle", "geoshape", "header", 
+  "headerColumn", "headerFacet", "headerRow", "invalidValues", "legend", "line", 
+  "mark", "numberFormat", "padding", "point", "projection", "range", "rect", "`repeat`", 
+  "rule", "scale", "selection", "square", "stack", "style", "text", "tick", "timeFormat", 
+  "title", "trail", "view"))
+args$obj
+} 
+#' vl_make_ErrorBandConfig
+#' 
+#' Create spec for {obj}
+#' @param band (_ErrorBandConfig_)  
+#' @param borders (_ErrorBandConfig_)  
+#' @param extent (_ErrorBandConfig_) The extent of the band. Available options include:
+#' - `"ci"`: Extend the band to the confidence interval of the mean.
+#' - `"stderr"`: The size of band are set to the value of standard error, extending from the mean.
+#' - `"stdev"`: The size of band are set to the value of standard deviation, extending from the mean.
+#' - `"iqr"`: Extend the band to the q1 and q3.
+#' 
+#' __Default value:__ `"stderr"`.
+#' @param interpolate (_ErrorBandConfig_) The line interpolation method for the error band. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: a piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes at the midpoint of each pair of adjacent x-values.
+#' - `"step-before"`: a piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes before the x-value.
+#' - `"step-after"`: a piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes after the x-value.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param tension (_ErrorBandConfig_) The tension parameter for the interpolation type of the error band.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_ErrorBandConfig <- function(band = NULL, borders = NULL, extent = NULL, interpolate = NULL, tension = NULL){
+args <- .modify_args(NULL, c("band", "borders", "extent", "interpolate", "tension"))
+args$obj
+} 
+#' vl_make_ErrorBarConfig
+#' 
+#' Create spec for {obj}
+#' @param extent (_ErrorBarConfig_) The extent of the rule. Available options include:
+#' - `"ci"`: Extend the rule to the confidence interval of the mean.
+#' - `"stderr"`: The size of rule are set to the value of standard error, extending from the mean.
+#' - `"stdev"`: The size of rule are set to the value of standard deviation, extending from the mean.
+#' - `"iqr"`: Extend the rule to the q1 and q3.
+#' 
+#' __Default value:__ `"stderr"`.
+#' @param rule (_ErrorBarConfig_)  
+#' @param ticks (_ErrorBarConfig_)  
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_ErrorBarConfig <- function(extent = NULL, rule = NULL, ticks = NULL){
+args <- .modify_args(NULL, c("extent", "rule", "ticks"))
+args$obj
+} 
+#' vl_make_HeaderConfig
+#' 
+#' Create spec for {obj}
+#' @param format (_HeaderConfig_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+#' 
+#' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
+#' - If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
+#' 
+#' __Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format.
+#' @param formatType (_HeaderConfig_) The format type for labels (`"number"` or `"time"`).
+#' 
+#' __Default value:__
+#' - `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
+#' - `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`.
+#' @param labelAlign (_HeaderConfig_) Horizontal text alignment of header labels.
+#' @param labelAnchor (_HeaderConfig_) The anchor position for placing the labels. One of `"start"`, `"middle"`, or `"end"`. For example, with a label orientation of top these anchor positions map to a left-, center-, or right-aligned label.
+#' @param labelAngle (_HeaderConfig_) The rotation angle of the header labels.
+#' 
+#' __Default value:__ `0` for column header, `-90` for row header.
+#' @param labelColor (_HeaderConfig_) The color of the header label, can be in hex color code or regular color name.
+#' @param labelFont (_HeaderConfig_) The font of the header label.
+#' @param labelFontSize (_HeaderConfig_) The font size of the header label, in pixels.
+#' @param labelLimit (_HeaderConfig_) The maximum length of the header label in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param labelOrient (_HeaderConfig_) The orientation of the header label. One of `"top"`, `"bottom"`, `"left"` or `"right"`.
+#' @param labelPadding (_HeaderConfig_) The padding, in pixel, between facet header's label and the plot.
+#' 
+#' __Default value:__ `10`
+#' @param shortTimeLabels (_HeaderConfig_) Whether month names and weekday names should be abbreviated.
+#' 
+#' __Default value:__  `false`
+#' @param title (_HeaderConfig_) Set to null to disable title for the axis, legend, or header.
+#' @param titleAlign (_HeaderConfig_) Horizontal text alignment (to the anchor) of header titles.
+#' @param titleAnchor (_HeaderConfig_) The anchor position for placing the title. One of `"start"`, `"middle"`, or `"end"`. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.
+#' @param titleAngle (_HeaderConfig_) The rotation angle of the header title.
+#' 
+#' __Default value:__ `0`.
+#' @param titleBaseline (_HeaderConfig_) Vertical text baseline for the header title. One of `"top"`, `"bottom"`, `"middle"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param titleColor (_HeaderConfig_) Color of the header title, can be in hex color code or regular color name.
+#' @param titleFont (_HeaderConfig_) Font of the header title. (e.g., `"Helvetica Neue"`).
+#' @param titleFontSize (_HeaderConfig_) Font size of the header title.
+#' @param titleFontWeight (_HeaderConfig_) Font weight of the header title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_HeaderConfig_) The maximum length of the header title in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param titleOrient (_HeaderConfig_) The orientation of the header title. One of `"top"`, `"bottom"`, `"left"` or `"right"`.
+#' @param titlePadding (_HeaderConfig_) The padding, in pixel, between facet header's title and the label.
+#' 
+#' __Default value:__ `10`
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_HeaderConfig <- function(format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, shortTimeLabels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL, titlePadding = NULL){
+args <- .modify_args(NULL, c("format", "formatType", "labelAlign", "labelAnchor", "labelAngle", "labelColor", 
+  "labelFont", "labelFontSize", "labelLimit", "labelOrient", "labelPadding", "shortTimeLabels", 
+  "title", "titleAlign", "titleAnchor", "titleAngle", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontWeight", "titleLimit", "titleOrient", 
+  "titlePadding"))
+args$obj
+} 
+#' vl_make_IntervalSelectionConfig
+#' 
+#' Create spec for {obj}
+#' @param bind (_IntervalSelectionConfig_) Establishes a two-way binding between the interval selection and the scales
+#' used within the same view. This allows a user to interactively pan and
+#' zoom the view.
+#' @param clear (_IntervalSelectionConfig_) Clears the selection, emptying it of all values. Can be an
+#' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
+#' 
+#' __Default value:__ `dblclick`.
+#' 
+#' See the [clear](https://vega.github.io/vega-lite/docs/clear.html) documentation for more information.
+#' @param empty (_IntervalSelectionConfig_) By default, `all` data values are considered to lie within an empty selection.
+#' When set to `none`, empty selections contain no data values.
+#' @param encodings (_IntervalSelectionConfig_) An array of encoding channels. The corresponding data field values
+#' must match for a data tuple to fall within the selection.
+#' @param fields (_IntervalSelectionConfig_) An array of field names whose values must match for a data tuple to
+#' fall within the selection.
+#' @param init (_IntervalSelectionConfig_) Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and arrays of
+#' initial values.
+#' @param mark (_IntervalSelectionConfig_) An interval selection also adds a rectangle mark to depict the
+#' extents of the interval. The `mark` property can be used to customize the
+#' appearance of the mark.
+#' @param on (_IntervalSelectionConfig_) A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
+#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters).
+#' @param resolve (_IntervalSelectionConfig_) With layered and multi-view displays, a strategy that determines how
+#' selections' data queries are resolved when applied in a filter transform,
+#' conditional encoding rule, or scale domain.
+#' @param translate (_IntervalSelectionConfig_) When truthy, allows a user to interactively move an interval selection
+#' back-and-forth. Can be `true`, `false` (to disable panning), or a
+#' [Vega event stream definition](https://vega.github.io/vega/docs/event-streams/)
+#' which must include a start and end event to trigger continuous panning.
+#' 
+#' __Default value:__ `true`, which corresponds to
+#' `[mousedown, window:mouseup] > window:mousemove!` which corresponds to
+#' clicks and dragging within an interval selection to reposition it.
+#' @param zoom (_IntervalSelectionConfig_) When truthy, allows a user to interactively resize an interval selection.
+#' Can be `true`, `false` (to disable zooming), or a [Vega event stream
+#' definition](https://vega.github.io/vega/docs/event-streams/). Currently,
+#' only `wheel` events are supported.
+#' 
+#' 
+#' __Default value:__ `true`, which corresponds to `wheel!`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_IntervalSelectionConfig <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, zoom = NULL){
+args <- .modify_args(NULL, c("bind", "clear", "empty", "encodings", "fields", "init", "mark", "on", "resolve", 
+  "translate", "zoom"))
+args$obj
+} 
+#' vl_make_LegendConfig
+#' 
+#' Create spec for {obj}
+#' @param clipHeight (_LegendConfig_) The height in pixels to clip symbol legend entries and limit their size.
+#' @param columnPadding (_LegendConfig_) The horizontal padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `10`.
+#' @param columns (_LegendConfig_) The number of columns in which to arrange symbol legend entries. A value of `0` or lower indicates a single row with one column per entry.
+#' @param cornerRadius (_LegendConfig_) Corner radius for the full legend.
+#' @param fillColor (_LegendConfig_) Background fill color for the full legend.
+#' @param gradientDirection (_LegendConfig_) The default direction (`"horizontal"` or `"vertical"`) for gradient legends.
+#' 
+#' __Default value:__ `"vertical"`.
+#' @param gradientHorizontalMaxLength (_LegendConfig_) Max legend length for a horizontal gradient when `config.legend.gradientLength` is undefined.
+#' 
+#' __Default value:__ `200`
+#' @param gradientHorizontalMinLength (_LegendConfig_) Min legend length for a horizontal gradient when `config.legend.gradientLength` is undefined.
+#' 
+#' __Default value:__ `100`
+#' @param gradientLabelLimit (_LegendConfig_) The maximum allowed length in pixels of color ramp gradient labels.
+#' @param gradientLabelOffset (_LegendConfig_) Vertical offset in pixels for color ramp gradient labels.
+#' 
+#' __Default value:__ `2`.
+#' @param gradientLength (_LegendConfig_) The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+#' 
+#' __Default value:__ `200`.
+#' @param gradientOpacity (_LegendConfig_) Opacity of the color gradient.
+#' @param gradientStrokeColor (_LegendConfig_) The color of the gradient stroke, can be in hex color code or regular color name.
+#' 
+#' __Default value:__ `"lightGray"`.
+#' @param gradientStrokeWidth (_LegendConfig_) The width of the gradient stroke, in pixels.
+#' 
+#' __Default value:__ `0`.
+#' @param gradientThickness (_LegendConfig_) The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
+#' 
+#' __Default value:__ `16`.
+#' @param gradientVerticalMaxLength (_LegendConfig_) Max legend length for a vertical gradient when `config.legend.gradientLength` is undefined.
+#' 
+#' __Default value:__ `200`
+#' @param gradientVerticalMinLength (_LegendConfig_) Min legend length for a vertical gradient when `config.legend.gradientLength` is undefined.
+#' 
+#' __Default value:__ `100`
+#' @param gridAlign (_LegendConfig_) The alignment to apply to symbol legends rows and columns. The supported string values are `"all"`, `"each"` (the default), and `none`. For more information, see the [grid layout documentation](https://vega.github.io/vega/docs/layout).
+#' 
+#' __Default value:__ `"each"`.
+#' @param labelAlign (_LegendConfig_) The alignment of the legend label, can be left, center, or right.
+#' @param labelBaseline (_LegendConfig_) The position of the baseline of legend label, can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' 
+#' __Default value:__ `"middle"`.
+#' @param labelColor (_LegendConfig_) The color of the legend label, can be in hex color code or regular color name.
+#' @param labelFont (_LegendConfig_) The font of the legend label.
+#' @param labelFontSize (_LegendConfig_) The font size of legend label.
+#' 
+#' __Default value:__ `10`.
+#' @param labelFontStyle (_LegendConfig_) The font style of legend label.
+#' @param labelFontWeight (_LegendConfig_) The font weight of legend label.
+#' @param labelLimit (_LegendConfig_) Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `160`.
+#' @param labelOffset (_LegendConfig_) The offset of the legend label.
+#' @param labelOpacity (_LegendConfig_) Opacity of labels.
+#' @param labelOverlap (_LegendConfig_) The strategy to use for resolving overlap of labels in gradient legends. If `false`, no overlap reduction is attempted. If set to `true` or `"parity"`, a strategy of removing every other label is used. If set to `"greedy"`, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `"greedy"` for `log scales otherwise `true`.
+#'    *
+#' @param labelPadding (_LegendConfig_) Padding in pixels between the legend and legend labels.
+#' @param labelSeparation (_LegendConfig_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param layout (_LegendConfig_) Legend orient group layout parameters.
+#' @param offset (_LegendConfig_) The offset in pixels by which to displace the legend from the data rectangle and axes.
+#' 
+#' __Default value:__ `18`.
+#' @param orient (_LegendConfig_) The orientation of the legend, which determines how the legend is positioned within the scene. One of "left", "right", "top-left", "top-right", "bottom-left", "bottom-right", "none".
+#' 
+#' __Default value:__ `"right"`
+#' @param padding (_LegendConfig_) The padding between the border and content of the legend group.
+#' 
+#' __Default value:__ `0`.
+#' @param rowPadding (_LegendConfig_) The vertical padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `2`.
+#' @param shortTimeLabels (_LegendConfig_) Whether month names and weekday names should be abbreviated.
+#' 
+#' __Default value:__  `false`
+#' @param strokeColor (_LegendConfig_) Border stroke color for the full legend.
+#' @param strokeDash (_LegendConfig_) Border stroke dash pattern for the full legend.
+#' @param strokeWidth (_LegendConfig_) Border stroke width for the full legend.
+#' @param symbolBaseFillColor (_LegendConfig_) Default fill color for legend symbols. Only applied if there is no `"fill"` scale color encoding for the legend.
+#' 
+#' __Default value:__ `"transparent"`.
+#' @param symbolBaseStrokeColor (_LegendConfig_) Default stroke color for legend symbols. Only applied if there is no `"fill"` scale color encoding for the legend.
+#' 
+#' __Default value:__ `"gray"`.
+#' @param symbolDash (_LegendConfig_) An array of alternating \[stroke, space\] lengths for dashed symbol strokes.
+#' @param symbolDashOffset (_LegendConfig_) The pixel offset at which to start drawing with the symbol stroke dash array.
+#' @param symbolDirection (_LegendConfig_) The default direction (`"horizontal"` or `"vertical"`) for symbol legends.
+#' 
+#' __Default value:__ `"vertical"`.
+#' @param symbolFillColor (_LegendConfig_) The color of the legend symbol,
+#' @param symbolOffset (_LegendConfig_) Horizontal pixel offset for legend symbols.
+#' 
+#' __Default value:__ `0`.
+#' @param symbolOpacity (_LegendConfig_) Opacity of the legend symbols.
+#' @param symbolSize (_LegendConfig_) The size of the legend symbol, in pixels.
+#' 
+#' __Default value:__ `100`.
+#' @param symbolStrokeColor (_LegendConfig_) Stroke color for legend symbols.
+#' @param symbolStrokeWidth (_LegendConfig_) The width of the symbol's stroke.
+#' 
+#' __Default value:__ `1.5`.
+#' @param symbolType (_LegendConfig_) Default shape type (such as "circle") for legend symbols.
+#' Can be one of ``"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#'    * In addition to a set of built-in shapes, custom shapes can be defined using [SVG path strings](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths).
+#'    *
+#'    * __Default value:__ `"circle"`.
+#'    *
+#' @param title (_LegendConfig_) Set to null to disable title for the axis, legend, or header.
+#' @param titleAlign (_LegendConfig_) Horizontal text alignment for legend titles.
+#' 
+#' __Default value:__ `"left"`.
+#' @param titleAnchor (_LegendConfig_) Text anchor position for placing legend titles.
+#' @param titleBaseline (_LegendConfig_) Vertical text baseline for legend titles.
+#' 
+#' __Default value:__ `"top"`.
+#' @param titleColor (_LegendConfig_) The color of the legend title, can be in hex color code or regular color name.
+#' @param titleFont (_LegendConfig_) The font of the legend title.
+#' @param titleFontSize (_LegendConfig_) The font size of the legend title.
+#' @param titleFontStyle (_LegendConfig_) The font style of the legend title.
+#' @param titleFontWeight (_LegendConfig_) The font weight of the legend title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_LegendConfig_) Maximum allowed pixel width of axis titles.
+#' 
+#' __Default value:__ `180`.
+#' @param titleOpacity (_LegendConfig_) Opacity of the legend title.
+#' @param titleOrient (_LegendConfig_) Orientation of the legend title.
+#' @param titlePadding (_LegendConfig_) The padding, in pixels, between title and legend.
+#' 
+#' __Default value:__ `5`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_LegendConfig <- function(clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, fillColor = NULL, gradientDirection = NULL, gradientHorizontalMaxLength = NULL, gradientHorizontalMinLength = NULL, gradientLabelLimit = NULL, gradientLabelOffset = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gradientVerticalMaxLength = NULL, gradientVerticalMinLength = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, layout = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, shortTimeLabels = NULL, strokeColor = NULL, strokeDash = NULL, strokeWidth = NULL, symbolBaseFillColor = NULL, symbolBaseStrokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolDirection = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL){
+args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "fillColor", "gradientDirection", 
+  "gradientHorizontalMaxLength", "gradientHorizontalMinLength", "gradientLabelLimit", 
+  "gradientLabelOffset", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gradientVerticalMaxLength", "gradientVerticalMinLength", 
+  "gridAlign", "labelAlign", "labelBaseline", "labelColor", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOffset", "labelOpacity", 
+  "labelOverlap", "labelPadding", "labelSeparation", "layout", "offset", "orient", 
+  "padding", "rowPadding", "shortTimeLabels", "strokeColor", "strokeDash", "strokeWidth", 
+  "symbolBaseFillColor", "symbolBaseStrokeColor", "symbolDash", "symbolDashOffset", 
+  "symbolDirection", "symbolFillColor", "symbolOffset", "symbolOpacity", "symbolSize", 
+  "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "title", "titleAlign", 
+  "titleAnchor", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titleOrient", 
+  "titlePadding"))
+args$obj
+} 
+#' vl_make_LineConfig
+#' 
+#' Create spec for {obj}
+#' @param align (_LineConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_LineConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_LineConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_LineConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_LineConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_LineConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_LineConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_LineConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_LineConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_LineConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_LineConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_LineConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_LineConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_LineConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_LineConfig_) The font size, in pixels.
+#' @param fontStyle (_LineConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_LineConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_LineConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_LineConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_LineConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_LineConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_LineConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_LineConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param point (_LineConfig_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param radius (_LineConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_LineConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_LineConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_LineConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_LineConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_LineConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_LineConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_LineConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_LineConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_LineConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_LineConfig_) The stroke width, in pixels.
+#' @param tension (_LineConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_LineConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_LineConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_LineConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_LineConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_LineConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_LineConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_LineConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_LineConfig <- function(align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+args$obj
+} 
+#' vl_make_MarkConfig
+#' 
+#' Create spec for {obj}
+#' @param align (_MarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_MarkConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkConfig_) The font size, in pixels.
+#' @param fontStyle (_MarkConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_MarkConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param radius (_MarkConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkConfig_) The stroke width, in pixels.
+#' @param tension (_MarkConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_MarkConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_MarkConfig <- function(align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+args$obj
+} 
+#' vl_make_MultiSelectionConfig
+#' 
+#' Create spec for {obj}
+#' @param clear (_MultiSelectionConfig_) Clears the selection, emptying it of all values. Can be an
+#' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
+#' 
+#' __Default value:__ `dblclick`.
+#' 
+#' See the [clear](https://vega.github.io/vega-lite/docs/clear.html) documentation for more information.
+#' @param empty (_MultiSelectionConfig_) By default, `all` data values are considered to lie within an empty selection.
+#' When set to `none`, empty selections contain no data values.
+#' @param encodings (_MultiSelectionConfig_) An array of encoding channels. The corresponding data field values
+#' must match for a data tuple to fall within the selection.
+#' @param fields (_MultiSelectionConfig_) An array of field names whose values must match for a data tuple to
+#' fall within the selection.
+#' @param init (_MultiSelectionConfig_) Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and an initial
+#' value (or array of values).
+#' @param nearest (_MultiSelectionConfig_) When true, an invisible voronoi diagram is computed to accelerate discrete
+#' selection. The data value _nearest_ the mouse cursor is added to the selection.
+#' 
+#' See the [nearest transform](https://vega.github.io/vega-lite/docs/nearest.html) documentation for more information.
+#' @param on (_MultiSelectionConfig_) A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
+#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters).
+#' @param resolve (_MultiSelectionConfig_) With layered and multi-view displays, a strategy that determines how
+#' selections' data queries are resolved when applied in a filter transform,
+#' conditional encoding rule, or scale domain.
+#' @param toggle (_MultiSelectionConfig_) Controls whether data values should be toggled or only ever inserted into
+#' multi selections. Can be `true`, `false` (for insertion only), or a
+#' [Vega expression](https://vega.github.io/vega/docs/expressions/).
+#' 
+#' __Default value:__ `true`, which corresponds to `event.shiftKey` (i.e.,
+#' data values are toggled when a user interacts with the shift-key pressed).
+#' 
+#' See the [toggle transform](https://vega.github.io/vega-lite/docs/toggle.html) documentation for more information.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_MultiSelectionConfig <- function(clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL){
+args <- .modify_args(NULL, c("clear", "empty", "encodings", "fields", "init", "nearest", "on", "resolve", 
+  "toggle"))
+args$obj
+} 
+#' vl_make_ProjectionConfig
+#' 
+#' Create spec for {obj}
+#' @param center (_Projection_) Sets the projection’s center to the specified center, a two-element array of longitude and latitude in degrees.
+#' 
+#' __Default value:__ `[0, 0]`
+#' @param clipAngle (_Projection_) Sets the projection’s clipping circle radius to the specified angle in degrees. If `null`, switches to [antimeridian](http://bl.ocks.org/mbostock/3788999) cutting rather than small-circle clipping.
+#' @param clipExtent (_Projection_) Sets the projection’s viewport clip extent to the specified bounds in pixels. The extent bounds are specified as an array `[\[x0, y0\], \[x1, y1\]]`, where `x0` is the left-side of the viewport, `y0` is the top, `x1` is the right and `y1` is the bottom. If `null`, no viewport clipping is performed.
+#' @param coefficient (_Projection_)  
+#' @param distance (_Projection_)  
+#' @param fraction (_Projection_)  
+#' @param lobes (_Projection_)  
+#' @param parallel (_Projection_)  
+#' @param precision (_Projection_) Sets the threshold for the projection’s [adaptive resampling](http://bl.ocks.org/mbostock/3795544) to the specified value in pixels. This value corresponds to the [Douglas–Peucker distance](http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm). If precision is not specified, returns the projection’s current resampling precision which defaults to `√0.5 ≅ 0.70710…`.
+#' @param radius (_Projection_)  
+#' @param ratio (_Projection_)  
+#' @param reflectX (_Projection_)  
+#' @param reflectY (_Projection_)  
+#' @param rotate (_Projection_) Sets the projection’s three-axis rotation to the specified angles, which must be a two- or three-element array of numbers \[`lambda`, `phi`, `gamma`\] specifying the rotation angles in degrees about each spherical axis. (These correspond to yaw, pitch and roll.)
+#' 
+#' __Default value:__ `[0, 0, 0]`
+#' @param scale (_Projection_) Sets the projection's scale (zoom) value, overriding automatic fitting.
+#' @param spacing (_Projection_)  
+#' @param tilt (_Projection_)  
+#' @param translate (_Projection_) Sets the projection's translation (pan) value, overriding automatic fitting.
+#' @param type (_Projection_) The cartographic projection to use. This value is case-insensitive, for example `"albers"` and `"Albers"` indicate the same projection type. You can find all valid projection types [in the documentation](https://vega.github.io/vega-lite/docs/projection.html#projection-types).
+#' 
+#' __Default value:__ `mercator`
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_ProjectionConfig <- function(center = NULL, clipAngle = NULL, clipExtent = NULL, coefficient = NULL, distance = NULL, fraction = NULL, lobes = NULL, parallel = NULL, precision = NULL, radius = NULL, ratio = NULL, reflectX = NULL, reflectY = NULL, rotate = NULL, scale = NULL, spacing = NULL, tilt = NULL, translate = NULL, type = NULL){
+args <- .modify_args(NULL, c("center", "clipAngle", "clipExtent", "coefficient", "distance", "fraction", 
+  "lobes", "parallel", "precision", "radius", "ratio", "reflectX", "reflectY", 
+  "rotate", "scale", "spacing", "tilt", "translate", "type"))
+args$obj
+} 
+#' vl_make_RangeConfig
+#' 
+#' Create spec for {obj}
+#' @param category (_RangeConfig_) Default range for _nominal_ (categorical) fields.
+#' @param diverging (_RangeConfig_) Default range for diverging _quantitative_ fields.
+#' @param heatmap (_RangeConfig_) Default range for _quantitative_ heatmaps.
+#' @param ordinal (_RangeConfig_) Default range for _ordinal_ fields.
+#' @param ramp (_RangeConfig_) Default range for _quantitative_ and _temporal_ fields.
+#' @param symbol (_RangeConfig_) Default range palette for the `shape` channel.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_RangeConfig <- function(category = NULL, diverging = NULL, heatmap = NULL, ordinal = NULL, ramp = NULL, symbol = NULL){
+args <- .modify_args(NULL, c("category", "diverging", "heatmap", "ordinal", "ramp", "symbol"))
+args$obj
+} 
+#' vl_make_ScaleConfig
+#' 
+#' Create spec for {obj}
+#' @param bandPaddingInner (_ScaleConfig_) Default inner padding for `x` and `y` band-ordinal scales.
+#' 
+#' __Default value:__
+#' - `barBandPaddingInner` for bar marks (`0.1` by default)
+#' - `rectBandPaddingInner` for rect and other marks (`0` by default)
+#' @param bandPaddingOuter (_ScaleConfig_) Default outer padding for `x` and `y` band-ordinal scales.
+#' 
+#' If not specified, by default, band scale's paddingOuter is paddingInner/2.
+#' @param barBandPaddingInner (_ScaleConfig_) Default inner padding for `x` and `y` band-ordinal scales of `"bar"` marks.
+#' 
+#' __Default value:__ `0.1`
+#' @param barBandPaddingOuter (_ScaleConfig_) Default outer padding for `x` and `y` band-ordinal scales of `"bar"` marks.
+#' If not specified, by default, band scale's paddingOuter is paddingInner/2.
+#' @param clamp (_ScaleConfig_) If true, values that exceed the data domain are clamped to either the minimum or maximum range value
+#' @param continuousPadding (_ScaleConfig_) Default padding for continuous scales.
+#' 
+#' __Default:__ `5` for continuous x-scale of a vertical bar and continuous y-scale of a horizontal bar.; `0` otherwise.
+#' @param maxBandSize (_ScaleConfig_) The default max value for mapping quantitative fields to bar's size/bandSize.
+#' 
+#' If undefined (default), we will use the scale's `rangeStep` - 1.
+#' @param maxFontSize (_ScaleConfig_) The default max value for mapping quantitative fields to text's size/fontSize.
+#' 
+#' __Default value:__ `40`
+#' @param maxOpacity (_ScaleConfig_) Default max opacity for mapping a field to opacity.
+#' 
+#' __Default value:__ `0.8`
+#' @param maxSize (_ScaleConfig_) Default max value for point size scale.
+#' @param maxStrokeWidth (_ScaleConfig_) Default max strokeWidth for the scale of strokeWidth for rule and line marks and of size for trail marks.
+#' 
+#' __Default value:__ `4`
+#' @param minBandSize (_ScaleConfig_) The default min value for mapping quantitative fields to bar and tick's size/bandSize scale with zero=false.
+#' 
+#' __Default value:__ `2`
+#' @param minFontSize (_ScaleConfig_) The default min value for mapping quantitative fields to tick's size/fontSize scale with zero=false
+#' 
+#' __Default value:__ `8`
+#' @param minOpacity (_ScaleConfig_) Default minimum opacity for mapping a field to opacity.
+#' 
+#' __Default value:__ `0.3`
+#' @param minSize (_ScaleConfig_) Default minimum value for point size scale with zero=false.
+#' 
+#' __Default value:__ `9`
+#' @param minStrokeWidth (_ScaleConfig_) Default minimum strokeWidth for the scale of strokeWidth for rule and line marks and of size for trail marks with zero=false.
+#' 
+#' __Default value:__ `1`
+#' @param pointPadding (_ScaleConfig_) Default outer padding for `x` and `y` point-ordinal scales.
+#' 
+#' __Default value:__ `0.5`
+#' @param quantileCount (_ScaleConfig_) Default range cardinality for [`quantile`](https://vega.github.io/vega-lite/docs/scale.html#quantile) scale.
+#' 
+#' __Default value:__ `4`
+#' @param quantizeCount (_ScaleConfig_) Default range cardinality for [`quantize`](https://vega.github.io/vega-lite/docs/scale.html#quantize) scale.
+#' 
+#' __Default value:__ `4`
+#' @param rangeStep (_ScaleConfig_) Default range step for band and point scales of (1) the `y` channel
+#' and (2) the `x` channel when the mark is not `text`.
+#' 
+#' __Default value:__ `20`
+#' @param rectBandPaddingInner (_ScaleConfig_) Default inner padding for `x` and `y` band-ordinal scales of `"rect"` marks.
+#' 
+#' __Default value:__ `0`
+#' @param rectBandPaddingOuter (_ScaleConfig_) Default outer padding for `x` and `y` band-ordinal scales of `"rect"` marks.
+#' If not specified, by default, band scale's paddingOuter is paddingInner/2.
+#' @param round (_ScaleConfig_) If true, rounds numeric output values to integers.
+#' This can be helpful for snapping to the pixel grid.
+#' (Only available for `x`, `y`, and `size` scales.)
+#' @param textXRangeStep (_ScaleConfig_) Default range step for `x` band and point scales of text marks.
+#' 
+#' __Default value:__ `90`
+#' @param useUnaggregatedDomain (_ScaleConfig_) Use the source data range before aggregation as scale domain instead of aggregated data for aggregate axis.
+#' 
+#' This is equivalent to setting `domain` to `"unaggregate"` for aggregated _quantitative_ fields by default.
+#' 
+#' This property only works with aggregate functions that produce values within the raw data domain (`"mean"`, `"average"`, `"median"`, `"q1"`, `"q3"`, `"min"`, `"max"`). For other aggregations that produce values outside of the raw data domain (e.g. `"count"`, `"sum"`), this property is ignored.
+#' 
+#' __Default value:__ `false`
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_ScaleConfig <- function(bandPaddingInner = NULL, bandPaddingOuter = NULL, barBandPaddingInner = NULL, barBandPaddingOuter = NULL, clamp = NULL, continuousPadding = NULL, maxBandSize = NULL, maxFontSize = NULL, maxOpacity = NULL, maxSize = NULL, maxStrokeWidth = NULL, minBandSize = NULL, minFontSize = NULL, minOpacity = NULL, minSize = NULL, minStrokeWidth = NULL, pointPadding = NULL, quantileCount = NULL, quantizeCount = NULL, rangeStep = NULL, rectBandPaddingInner = NULL, rectBandPaddingOuter = NULL, round = NULL, textXRangeStep = NULL, useUnaggregatedDomain = NULL){
+args <- .modify_args(NULL, c("bandPaddingInner", "bandPaddingOuter", "barBandPaddingInner", "barBandPaddingOuter", 
+  "clamp", "continuousPadding", "maxBandSize", "maxFontSize", "maxOpacity", "maxSize", 
+  "maxStrokeWidth", "minBandSize", "minFontSize", "minOpacity", "minSize", "minStrokeWidth", 
+  "pointPadding", "quantileCount", "quantizeCount", "rangeStep", "rectBandPaddingInner", 
+  "rectBandPaddingOuter", "round", "textXRangeStep", "useUnaggregatedDomain"))
+args$obj
+} 
+#' vl_make_SchemeConfig
+#' 
+#' Create spec for {obj}
+#' @param count (_SchemeConfig_)  
+#' @param extent (_SchemeConfig_)  
+#' @param scheme (_SchemeConfig_)  
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_SchemeConfig <- function(count = NULL, extent = NULL, scheme = NULL){
+args <- .modify_args(NULL, c("count", "extent", "scheme"))
+args$obj
+} 
+#' vl_make_SelectionConfig
+#' 
+#' Create spec for {obj}
+#' @param interval (_SelectionConfig_) The default definition for an [`interval`](https://vega.github.io/vega-lite/docs/selection.html#type) selection. All properties and transformations
+#' for an interval selection definition (except `type`) may be specified here.
+#' 
+#' For instance, setting `interval` to `{"translate": false}` disables the ability to move
+#' interval selections by default.
+#' @param multi (_SelectionConfig_) The default definition for a [`multi`](https://vega.github.io/vega-lite/docs/selection.html#type) selection. All properties and transformations
+#' for a multi selection definition (except `type`) may be specified here.
+#' 
+#' For instance, setting `multi` to `{"toggle": "event.altKey"}` adds additional values to
+#' multi selections when clicking with the alt-key pressed by default.
+#' @param single (_SelectionConfig_) The default definition for a [`single`](https://vega.github.io/vega-lite/docs/selection.html#type) selection. All properties and transformations
+#'   for a single selection definition (except `type`) may be specified here.
+#' 
+#' For instance, setting `single` to `{"on": "dblclick"}` populates single selections on double-click by default.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_SelectionConfig <- function(interval = NULL, multi = NULL, single = NULL){
+args <- .modify_args(NULL, c("interval", "multi", "single"))
+args$obj
+} 
+#' vl_make_SingleSelectionConfig
+#' 
+#' Create spec for {obj}
+#' @param bind (_SingleSelectionConfig_) Establish a two-way binding between a single selection and input elements
+#' (also known as dynamic query widgets). A binding takes the form of
+#' Vega's [input element binding definition](https://vega.github.io/vega/docs/signals/#bind)
+#' or can be a mapping between projected field/encodings and binding definitions.
+#' 
+#' See the [bind transform](https://vega.github.io/vega-lite/docs/bind.html) documentation for more information.
+#' @param clear (_SingleSelectionConfig_) Clears the selection, emptying it of all values. Can be an
+#' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
+#' 
+#' __Default value:__ `dblclick`.
+#' 
+#' See the [clear](https://vega.github.io/vega-lite/docs/clear.html) documentation for more information.
+#' @param empty (_SingleSelectionConfig_) By default, `all` data values are considered to lie within an empty selection.
+#' When set to `none`, empty selections contain no data values.
+#' @param encodings (_SingleSelectionConfig_) An array of encoding channels. The corresponding data field values
+#' must match for a data tuple to fall within the selection.
+#' @param fields (_SingleSelectionConfig_) An array of field names whose values must match for a data tuple to
+#' fall within the selection.
+#' @param init (_SingleSelectionConfig_) Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and initial values.
+#' @param nearest (_SingleSelectionConfig_) When true, an invisible voronoi diagram is computed to accelerate discrete
+#' selection. The data value _nearest_ the mouse cursor is added to the selection.
+#' 
+#' See the [nearest transform](https://vega.github.io/vega-lite/docs/nearest.html) documentation for more information.
+#' @param on (_SingleSelectionConfig_) A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
+#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters).
+#' @param resolve (_SingleSelectionConfig_) With layered and multi-view displays, a strategy that determines how
+#' selections' data queries are resolved when applied in a filter transform,
+#' conditional encoding rule, or scale domain.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_SingleSelectionConfig <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL){
+args <- .modify_args(NULL, c("bind", "clear", "empty", "encodings", "fields", "init", "nearest", "on", 
+  "resolve"))
+args$obj
+} 
+#' vl_make_TextConfig
+#' 
+#' Create spec for {obj}
+#' @param align (_TextConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_TextConfig_) The rotation angle of the text, in degrees.
+#' @param baseline (_TextConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_TextConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_TextConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_TextConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_TextConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_TextConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_TextConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_TextConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_TextConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_TextConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_TextConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_TextConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_TextConfig_) The font size, in pixels.
+#' @param fontStyle (_TextConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_TextConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_TextConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_TextConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_TextConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_TextConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_TextConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_TextConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param radius (_TextConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_TextConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param shortTimeLabels (_TextConfig_) Whether month names and weekday names should be abbreviated.
+#' @param size (_TextConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_TextConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_TextConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_TextConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_TextConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_TextConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_TextConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_TextConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_TextConfig_) The stroke width, in pixels.
+#' @param tension (_TextConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_TextConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_TextConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param tooltip (_TextConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_TextConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_TextConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_TextConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_TextConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_TextConfig <- function(align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, shortTimeLabels = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "shortTimeLabels", "size", "stroke", "strokeCap", "strokeDash", 
+  "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", 
+  "tension", "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+args$obj
+} 
+#' vl_make_TickConfig
+#' 
+#' Create spec for {obj}
+#' @param align (_TickConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_TickConfig_) The rotation angle of the text, in degrees.
+#' @param bandSize (_TickConfig_) The width of the ticks.
+#' 
+#' __Default value:__  3/4 of rangeStep.
+#' @param baseline (_TickConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param color (_TickConfig_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_TickConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_TickConfig_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_TickConfig_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_TickConfig_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_TickConfig_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_TickConfig_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_TickConfig_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_TickConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_TickConfig_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_TickConfig_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_TickConfig_) The font size, in pixels.
+#' @param fontStyle (_TickConfig_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_TickConfig_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_TickConfig_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_TickConfig_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_TickConfig_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param opacity (_TickConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_TickConfig_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_TickConfig_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param radius (_TickConfig_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_TickConfig_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_TickConfig_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_TickConfig_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_TickConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_TickConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_TickConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_TickConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_TickConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_TickConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_TickConfig_) The stroke width, in pixels.
+#' @param tension (_TickConfig_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_TickConfig_) Placeholder text if the `text` channel is not specified
+#' @param theta (_TickConfig_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param thickness (_TickConfig_) Thickness of the tick mark.
+#' 
+#' __Default value:__  `1`
+#' @param tooltip (_TickConfig_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_TickConfig_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_TickConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y (_TickConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_TickConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_TickConfig <- function(align = NULL, angle = NULL, bandSize = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+args <- .modify_args(NULL, c("align", "angle", "bandSize", "baseline", "color", "cornerRadius", "cursor", 
+  "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", 
+  "fontStyle", "fontWeight", "href", "interpolate", "limit", "opacity", "order", 
+  "orient", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "thickness", "tooltip", "x", "x2", "y", "y2"))
+args$obj
+} 
+#' vl_make_TitleConfig
+#' 
+#' Create spec for {obj}
+#' @param align (_BaseTitleConfig_)  
+#' @param anchor (_BaseTitleConfig_) The anchor position for placing the title. One of `"start"`, `"middle"`, or `"end"`. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.
+#' @param angle (_BaseTitleConfig_) Angle in degrees of title text.
+#' @param baseline (_BaseTitleConfig_) Vertical text baseline for title text. One of `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' @param color (_BaseTitleConfig_) Text color for title text.
+#' @param dx (_BaseTitleConfig_) Delta offset for title text x-coordinate.
+#' @param dy (_BaseTitleConfig_) Delta offset for title text y-coordinate.
+#' @param font (_BaseTitleConfig_) Font name for title text.
+#' @param fontSize (_BaseTitleConfig_) Font size in pixels for title text.
+#' 
+#' __Default value:__ `10`.
+#' @param fontStyle (_BaseTitleConfig_) Font style for title text.
+#' @param fontWeight (_BaseTitleConfig_) Font weight for title text.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param frame (_BaseTitleConfig_) The reference frame for the anchor position, one of `"bounds"` (to anchor relative to the full bounding box) or `"group"` (to anchor relative to the group width or height).
+#' @param limit (_BaseTitleConfig_) The maximum allowed length in pixels of legend labels.
+#' @param offset (_BaseTitleConfig_) The orthogonal offset in pixels by which to displace the title from its position along the edge of the chart.
+#' @param orient (_BaseTitleConfig_) Default title orientation (`"top"`, `"bottom"`, `"left"`, or `"right"`)
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_TitleConfig <- function(align = NULL, anchor = NULL, angle = NULL, baseline = NULL, color = NULL, dx = NULL, dy = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, frame = NULL, limit = NULL, offset = NULL, orient = NULL){
+args <- .modify_args(NULL, c("align", "anchor", "angle", "baseline", "color", "dx", "dy", "font", "fontSize", 
+  "fontStyle", "fontWeight", "frame", "limit", "offset", "orient"))
+args$obj
+} 
+#' vl_make_ViewConfig
+#' 
+#' Create spec for {obj}
+#' @param clip (_ViewConfig_) Whether the view should be clipped.
+#' @param cornerRadius (_ViewConfig_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param fill (_ViewConfig_) The fill color.
+#' 
+#' __Default value:__ `undefined`
+#' @param fillOpacity (_ViewConfig_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param height (_ViewConfig_) The default height of the single plot or each plot in a trellis plot when the visualization has a continuous (non-ordinal) y-scale with `rangeStep` = `null`.
+#' 
+#' __Default value:__ `200`
+#' @param opacity (_ViewConfig_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param stroke (_ViewConfig_) The stroke color.
+#' 
+#' __Default value:__ `"#ddd"`
+#' @param strokeCap (_ViewConfig_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_ViewConfig_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_ViewConfig_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_ViewConfig_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_ViewConfig_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_ViewConfig_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_ViewConfig_) The stroke width, in pixels.
+#' @param width (_ViewConfig_) The default width of the single plot or each plot in a trellis plot when the visualization has a continuous (non-ordinal) x-scale or ordinal x-scale with `rangeStep` = `null`.
+#' 
+#' __Default value:__ `200`
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_ViewConfig <- function(clip = NULL, cornerRadius = NULL, fill = NULL, fillOpacity = NULL, height = NULL, opacity = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, width = NULL){
+args <- .modify_args(NULL, c("clip", "cornerRadius", "fill", "fillOpacity", "height", "opacity", "stroke", 
+  "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "width"))
+args$obj
+} 
+#' vl_make_BinParams
+#' 
+#' Create spec for {obj}
+#' @param anchor (_BinParams_) A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+#' 
+#' __Default Value:__ the minimum bin extent value
+#' @param base (_BinParams_) The number base to use for automatic bin determination (default is base 10).
+#' 
+#' __Default value:__ `10`
+#' @param binned (_BinParams_) When set to true, Vega-Lite treats the input data as already binned.
+#' @param divide (_BinParams_) Scale factors indicating allowable subdivisions. The default value is \[5, 2\], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+#' 
+#' __Default value:__ `[5, 2]`
+#' @param extent (_BinParams_) A two-element (`[min, max]`) array indicating the range of desired bin values.
+#' @param maxbins (_BinParams_) Maximum number of bins.
+#' 
+#' __Default value:__ `6` for `row`, `column` and `shape` channels; `10` for other channels
+#' @param minstep (_BinParams_) A minimum allowable step size (particularly useful for integer values).
+#' @param nice (_BinParams_) If true (the default), attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten.
+#' @param step (_BinParams_) An exact step size to use between bins.
+#' 
+#' __Note:__ If provided, options such as maxbins will be ignored.
+#' @param steps (_BinParams_) An array of allowable step sizes to choose from.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_BinParams <- function(anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+args$obj
+} 
+#' vl_make_Axis
+#' 
+#' Create spec for {obj}
+#' @param bandPosition (_Axis_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
+#' 
+#'   __Default value:__ `0.5`
+#' @param domain (_Axis_) A boolean flag indicating if the domain (the axis baseline) should be included as part of the axis.
+#' 
+#' __Default value:__ `true`
+#' @param domainColor (_Axis_) Color of axis domain line.
+#' 
+#' __Default value:__ `"gray"`.
+#' @param domainDash (_Axis_) An array of alternating \[stroke, space\] lengths for dashed domain lines.
+#' @param domainDashOffset (_Axis_) The pixel offset at which to start drawing with the domain dash array.
+#' @param domainOpacity (_Axis_) Opacity of the axis domain line.
+#' @param domainWidth (_Axis_) Stroke width of axis domain line
+#' 
+#' __Default value:__ `1`
+#' @param format (_Axis_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+#' 
+#' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
+#' - If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
+#' 
+#' __Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format.
+#' @param formatType (_Axis_) The format type for labels (`"number"` or `"time"`).
+#' 
+#' __Default value:__
+#' - `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
+#' - `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`.
+#' @param grid (_Axis_) A boolean flag indicating if grid lines should be included as part of the axis
+#' 
+#' __Default value:__ `true` for [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous) that are not binned; otherwise, `false`.
+#' @param gridColor (_Axis_) Color of gridlines.
+#' 
+#' __Default value:__ `"lightGray"`.
+#' @param gridDash (_Axis_) An array of alternating \[stroke, space\] lengths for dashed grid lines.
+#' @param gridDashOffset (_Axis_) The pixel offset at which to start drawing with the grid dash array.
+#' @param gridOpacity (_Axis_) The stroke opacity of grid (value between \[0,1\])
+#' 
+#' __Default value:__ `1`
+#' @param gridWidth (_Axis_) The grid width, in pixels.
+#' 
+#' __Default value:__ `1`
+#' @param labelAlign (_Axis_) Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation.
+#' @param labelAngle (_Axis_) The rotation angle of the axis labels.
+#' 
+#' __Default value:__ `-90` for nominal and ordinal fields; `0` otherwise.
+#' @param labelBaseline (_Axis_) Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' @param labelBound (_Axis_) Indicates if labels should be hidden if they exceed the axis range. If `false` (the default) no bounds overlap analysis is performed. If `true`, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.
+#' 
+#' __Default value:__ `false`.
+#' @param labelColor (_Axis_) The color of the tick label, can be in hex color code or regular color name.
+#' @param labelFlush (_Axis_) Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `true` for axis of a continuous x-scale. Otherwise, `false`.
+#' @param labelFlushOffset (_Axis_) Indicates the number of pixels by which to offset flush-adjusted labels. For example, a value of `2` will push flush-adjusted labels 2 pixels outward from the center of the axis. Offsets can help the labels better visually group with corresponding axis ticks.
+#' 
+#' __Default value:__ `0`.
+#' @param labelFont (_Axis_) The font of the tick label.
+#' @param labelFontSize (_Axis_) The font size of the label, in pixels.
+#' @param labelFontStyle (_Axis_) Font style of the title.
+#' @param labelFontWeight (_Axis_) Font weight of axis tick labels.
+#' @param labelLimit (_Axis_) Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `180`
+#' @param labelOpacity (_Axis_) The opacity of the labels.
+#' @param labelOverlap (_Axis_) The strategy to use for resolving overlap of axis labels. If `false` (the default), no overlap reduction is attempted. If set to `true` or `"parity"`, a strategy of removing every other label is used (this works well for standard linear axes). If set to `"greedy"`, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true` for non-nominal fields with non-log scales; `"greedy"` for log scales; otherwise `false`.
+#' @param labelPadding (_Axis_) The padding, in pixels, between axis and text labels.
+#' 
+#' __Default value:__ `2`
+#' @param labelSeparation (_Axis_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param labels (_Axis_) A boolean flag indicating if labels should be included as part of the axis.
+#' 
+#' __Default value:__ `true`.
+#' @param maxExtent (_Axis_) The maximum extent in pixels that axis ticks and labels should use. This determines a maximum offset value for axis titles.
+#' 
+#' __Default value:__ `undefined`.
+#' @param minExtent (_Axis_) The minimum extent in pixels that axis ticks and labels should use. This determines a minimum offset value for axis titles.
+#' 
+#' __Default value:__ `30` for y-axis; `undefined` for x-axis.
+#' @param offset (_Axis_) The offset, in pixels, by which to displace the axis from the edge of the enclosing group or data rectangle.
+#' 
+#' __Default value:__ derived from the [axis config](https://vega.github.io/vega-lite/docs/config.html#facet-scale-config)'s `offset` (`0` by default)
+#' @param orient (_Axis_) The orientation of the axis. One of `"top"`, `"bottom"`, `"left"` or `"right"`. The orientation can be used to further specialize the axis type (e.g., a y-axis oriented towards the right edge of the chart).
+#' 
+#' __Default value:__ `"bottom"` for x-axes and `"left"` for y-axes.
+#' @param position (_Axis_) The anchor position of the axis in pixels. For x-axes with top or bottom orientation, this sets the axis group x coordinate. For y-axes with left or right orientation, this sets the axis group y coordinate.
+#' 
+#' __Default value__: `0`
+#' @param tickColor (_Axis_) The color of the axis's tick.
+#' 
+#' __Default value:__ `"gray"`
+#' @param tickCount (_Axis_) A desired number of ticks, for axes visualizing quantitative scales. The resulting number may be different so that values are "nice" (multiples of 2, 5, 10) and lie within the underlying scale's range.
+#' @param tickDash (_Axis_) An array of alternating \[stroke, space\] lengths for dashed tick mark lines.
+#' @param tickDashOffset (_Axis_) The pixel offset at which to start drawing with the tick mark dash array.
+#' @param tickExtra (_Axis_) Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for `band` scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with `"bandPosition": 1` and an axis `"padding"` value of `0`.
+#' @param tickMinStep (_Axis_) The minimum desired step between axis ticks, in terms of scale domain values. For example, a value of `1` indicates that ticks should not be less than 1 unit apart. If `tickMinStep` is specified, the `tickCount` value will be adjusted, if necessary, to enforce the minimum step value.
+#' 
+#' __Default value__: `undefined`
+#' @param tickOffset (_Axis_) Position offset in pixels to apply to ticks, labels, and gridlines.
+#' @param tickOpacity (_Axis_) Opacity of the ticks.
+#' @param tickRound (_Axis_) Boolean flag indicating if pixel position values should be rounded to the nearest integer.
+#' 
+#' __Default value:__ `true`
+#' @param tickSize (_Axis_) The size in pixels of axis ticks.
+#' 
+#' __Default value:__ `5`
+#' @param tickWidth (_Axis_) The width, in pixels, of ticks.
+#' 
+#' __Default value:__ `1`
+#' @param ticks (_Axis_) Boolean value that determines whether the axis should include ticks.
+#' 
+#' __Default value:__ `true`
+#' @param title (_Axis_) A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
+#' @param titleAlign (_Axis_) Horizontal text alignment of axis titles.
+#' @param titleAnchor (_Axis_) Text anchor position for placing axis titles.
+#' @param titleAngle (_Axis_) Angle in degrees of axis titles.
+#' @param titleBaseline (_Axis_) Vertical text baseline for axis titles.
+#' @param titleColor (_Axis_) Color of the title, can be in hex color code or regular color name.
+#' @param titleFont (_Axis_) Font of the title. (e.g., `"Helvetica Neue"`).
+#' @param titleFontSize (_Axis_) Font size of the title.
+#' @param titleFontStyle (_Axis_) Font style of the title.
+#' @param titleFontWeight (_Axis_) Font weight of the title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_Axis_) Maximum allowed pixel width of axis titles.
+#' @param titleOpacity (_Axis_) Opacity of the axis title.
+#' @param titlePadding (_Axis_) The padding, in pixels, between title and axis.
+#' @param titleX (_Axis_) X-coordinate of the axis title relative to the axis group.
+#' @param titleY (_Axis_) Y-coordinate of the axis title relative to the axis group.
+#' @param values (_Axis_) Explicitly set the visible axis tick values.
+#' @param zindex (_Axis_) A non-positive integer indicating z-index of the axis.
+#' If zindex is 0, axes should be drawn behind all chart elements.
+#' To put them in front, use `"zindex = 1"`.
+#' 
+#' __Default value:__ `1` (in front of the marks) for actual axis and `0` (behind the marks) for grids.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_Axis <- function(bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, values = NULL, zindex = NULL){
+args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "format", "formatType", "grid", "gridColor", 
+  "gridDash", "gridDashOffset", "gridOpacity", "gridWidth", "labelAlign", "labelAngle", 
+  "labelBaseline", "labelBound", "labelColor", "labelFlush", "labelFlushOffset", 
+  "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", "labelLimit", 
+  "labelOpacity", "labelOverlap", "labelPadding", "labelSeparation", "labels", 
+  "maxExtent", "minExtent", "offset", "orient", "position", "tickColor", "tickCount", 
+  "tickDash", "tickDashOffset", "tickExtra", "tickMinStep", "tickOffset", "tickOpacity", 
+  "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", "titleAnchor", 
+  "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
+  "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", "titleX", "titleY", 
+  "values", "zindex"))
+args$obj
+} 
+#' vl_make_Scale
+#' 
+#' Create spec for {obj}
+#' @param base (_Scale_) The logarithm base of the `log` scale (default `10`).
+#' @param bins (_Scale_) An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels.
+#' @param clamp (_Scale_) If `true`, values that exceed the data domain are clamped to either the minimum or maximum range value
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `clamp` (`true` by default).
+#' @param constant (_Scale_) A constant determining the slope of the symlog function around zero. Only used for `symlog` scales.
+#' 
+#' __Default value:__ `1`
+#' @param domain (_Scale_) Customized domain values.
+#' 
+#' For _quantitative_ fields, `domain` can take the form of a two-element array with minimum and maximum values.  [Piecewise scales](https://vega.github.io/vega-lite/docs/scale.html#piecewise) can be created by providing a `domain` with more than two entries.
+#' If the input field is aggregated, `domain` can also be a string value `"unaggregated"`, indicating that the domain should include the raw data values prior to the aggregation.
+#' 
+#' For _temporal_ fields, `domain` can be a two-element array minimum and maximum values, in the form of either timestamps or the [DateTime definition objects](https://vega.github.io/vega-lite/docs/types.html#datetime).
+#' 
+#' For _ordinal_ and _nominal_ fields, `domain` can be an array that lists valid input values.
+#' 
+#' The `selection` property can be used to [interactively determine](https://vega.github.io/vega-lite/docs/selection.html#scale-domains) the scale domain.
+#' @param exponent (_Scale_) The exponent of the `pow` scale.
+#' @param interpolate (_Scale_) The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors (in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal values include `rgb`, `hsl`, `hsl-long`, `lab`, `hcl`, `hcl-long`, `cubehelix` and `cubehelix-long` ('-long' variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a string-valued _type_ property and an optional numeric _gamma_ property applicable to rgb and cubehelix interpolators. For more, see the [d3-interpolate documentation](https://github.com/d3/d3-interpolate).
+#' 
+#' * __Default value:__ `hcl`
+#' @param nice (_Scale_) Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data and may be irregular. For example, for a domain of _\[0.201479…, 0.996679…\]_, a nice domain might be _\[0.2, 1.0\]_.
+#' 
+#' For quantitative scales such as linear, `nice` can be either a boolean flag or a number. If `nice` is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
+#' 
+#' For temporal fields with time and utc scales, the `nice` value can be a string indicating the desired time interval. Legal values are `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`. Alternatively, `time` and `utc` scales can accept an object-valued interval specifier of the form `{"interval": "month", "step": 3}`, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
+#' 
+#' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise.
+#' @param padding (_Scale_) For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+#' 
+#' For _[band](https://vega.github.io/vega-lite/docs/scale.html#band)_ scales, shortcut for setting `paddingInner` and `paddingOuter` to the same value.
+#' 
+#' For _[point](https://vega.github.io/vega-lite/docs/scale.html#point)_ scales, alias for `paddingOuter`.
+#' 
+#' __Default value:__ For _continuous_ scales, derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `continuousPadding`.
+#' For _band and point_ scales, see `paddingInner` and `paddingOuter`.
+#' @param paddingInner (_Scale_) The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range \[0,1\].
+#' 
+#' For point scale, this property is invalid as point scales do not have internal band widths (only step sizes between bands).
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingInner`.
+#' @param paddingOuter (_Scale_) The outer padding (spacing) at the ends of the range of band and point scales,
+#' as a fraction of the step size. This value must lie in the range \[0,1\].
+#' 
+#' __Default value:__ derived from the [scale config](https://vega.github.io/vega-lite/docs/scale.html#config)'s `bandPaddingOuter` for band scales and `pointPadding` for point scales.
+#' @param range (_Scale_) The range of the scale. One of:
+#' 
+#' - A string indicating a [pre-defined named scale range](https://vega.github.io/vega-lite/docs/scale.html#range-config) (e.g., example, `"symbol"`, or `"diverging"`).
+#' 
+#' - For [continuous scales](https://vega.github.io/vega-lite/docs/scale.html#continuous), two-element array indicating  minimum and maximum values, or an array with more than two entries for specifying a [piecewise scale](https://vega.github.io/vega-lite/docs/scale.html#piecewise).
+#' 
+#' - For [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) and [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales, an array of desired output values.
+#' 
+#' __Notes:__
+#' 
+#' 1) For color scales you can also specify a color [`scheme`](https://vega.github.io/vega-lite/docs/scale.html#scheme) instead of `range`.
+#' 
+#' 2) Any directly specified `range` for `x` and `y` channels will be ignored. Range can be customized via the view's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` and `height`) or via [range steps and paddings properties](#range-step) for [band](#band) and [point](#point) scales.
+#' @param rangeStep (_Scale_) The distance between the starts of adjacent bands or points in [band](https://vega.github.io/vega-lite/docs/scale.html#band) and [point](https://vega.github.io/vega-lite/docs/scale.html#point) scales.
+#' 
+#' If `rangeStep` is `null` or if the view contains the scale's corresponding [size](https://vega.github.io/vega-lite/docs/size.html) (`width` for `x` scales and `height` for `y` scales), `rangeStep` will be automatically determined to fit the size of the view.
+#' 
+#' __Default value:__  derived the [scale config](https://vega.github.io/vega-lite/docs/config.html#scale-config)'s `textXRangeStep` (`90` by default) for x-scales of `text` marks and `rangeStep` (`21` by default) for x-scales of other marks and y-scales.
+#' 
+#' __Warning__: If `rangeStep` is `null` and the cardinality of the scale's domain is higher than `width` or `height`, the rangeStep might become less than one pixel and the mark might not appear correctly.
+#' @param round (_Scale_) If `true`, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.
+#' 
+#' __Default value:__ `false`.
+#' @param scheme (_Scale_) A string indicating a color [scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme) name (e.g., `"category10"` or `"blues"`) or a [scheme parameter object](https://vega.github.io/vega-lite/docs/scale.html#scheme-params).
+#' 
+#' Discrete color schemes may be used with [discrete](https://vega.github.io/vega-lite/docs/scale.html#discrete) or [discretizing](https://vega.github.io/vega-lite/docs/scale.html#discretizing) scales. Continuous color schemes are intended for use with color scales.
+#' 
+#' For the full list of supported schemes, please refer to the [Vega Scheme](https://vega.github.io/vega/docs/schemes/#reference) reference.
+#' @param type (_Scale_) The type of scale.  Vega-Lite supports the following categories of scale types:
+#' 
+#' 1) [**Continuous Scales**](https://vega.github.io/vega-lite/docs/scale.html#continuous) -- mapping continuous domains to continuous output ranges ([`"linear"`](https://vega.github.io/vega-lite/docs/scale.html#linear), [`"pow"`](https://vega.github.io/vega-lite/docs/scale.html#pow), [`"sqrt"`](https://vega.github.io/vega-lite/docs/scale.html#sqrt), [`"symlog"`](https://vega.github.io/vega-lite/docs/scale.html#symlog), [`"log"`](https://vega.github.io/vega-lite/docs/scale.html#log), [`"time"`](https://vega.github.io/vega-lite/docs/scale.html#time), [`"utc"`](https://vega.github.io/vega-lite/docs/scale.html#utc).
+#' 
+#' 2) [**Discrete Scales**](https://vega.github.io/vega-lite/docs/scale.html#discrete) -- mapping discrete domains to discrete ([`"ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#ordinal)) or continuous ([`"band"`](https://vega.github.io/vega-lite/docs/scale.html#band) and [`"point"`](https://vega.github.io/vega-lite/docs/scale.html#point)) output ranges.
+#' 
+#' 3) [**Discretizing Scales**](https://vega.github.io/vega-lite/docs/scale.html#discretizing) -- mapping continuous domains to discrete output ranges [`"bin-ordinal"`](https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal), [`"quantile"`](https://vega.github.io/vega-lite/docs/scale.html#quantile), [`"quantize"`](https://vega.github.io/vega-lite/docs/scale.html#quantize) and [`"threshold"`](https://vega.github.io/vega-lite/docs/scale.html#threshold).
+#' 
+#' __Default value:__ please see the [scale type table](https://vega.github.io/vega-lite/docs/scale.html#type).
+#' @param zero (_Scale_) If `true`, ensures that a zero baseline value is included in the scale domain.
+#' 
+#' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
+#' 
+#' __Note:__ Log, time, and utc scales do not support `zero`.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_Scale <- function(base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+args$obj
+} 
+#' vl_make_Legend
+#' 
+#' Create spec for {obj}
+#' @param clipHeight (_Legend_) The height in pixels to clip symbol legend entries and limit their size.
+#' @param columnPadding (_Legend_) The horizontal padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `10`.
+#' @param columns (_Legend_) The number of columns in which to arrange symbol legend entries. A value of `0` or lower indicates a single row with one column per entry.
+#' @param cornerRadius (_Legend_) Corner radius for the full legend.
+#' @param direction (_Legend_) The direction of the legend, one of `"vertical"` or `"horizontal"`.
+#' 
+#' __Default value:__
+#' - For top-/bottom-`orient`ed legends, `"horizontal"`
+#' - For left-/right-`orient`ed legends, `"vertical"`
+#' - For top/bottom-left/right-`orient`ed legends, `"horizontal"` for gradient legends and `"vertical"` for symbol legends.
+#' @param fillColor (_Legend_) Background fill color for the full legend.
+#' @param format (_Legend_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+#' 
+#' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
+#' - If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
+#' 
+#' __Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format.
+#' @param formatType (_Legend_) The format type for labels (`"number"` or `"time"`).
+#' 
+#' __Default value:__
+#' - `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
+#' - `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`.
+#' @param gradientLength (_Legend_) The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+#' 
+#' __Default value:__ `200`.
+#' @param gradientOpacity (_Legend_) Opacity of the color gradient.
+#' @param gradientStrokeColor (_Legend_) The color of the gradient stroke, can be in hex color code or regular color name.
+#' 
+#' __Default value:__ `"lightGray"`.
+#' @param gradientStrokeWidth (_Legend_) The width of the gradient stroke, in pixels.
+#' 
+#' __Default value:__ `0`.
+#' @param gradientThickness (_Legend_) The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
+#' 
+#' __Default value:__ `16`.
+#' @param gridAlign (_Legend_) The alignment to apply to symbol legends rows and columns. The supported string values are `"all"`, `"each"` (the default), and `none`. For more information, see the [grid layout documentation](https://vega.github.io/vega/docs/layout).
+#' 
+#' __Default value:__ `"each"`.
+#' @param labelAlign (_Legend_) The alignment of the legend label, can be left, center, or right.
+#' @param labelBaseline (_Legend_) The position of the baseline of legend label, can be `"top"`, `"middle"`, `"bottom"`, or `"alphabetic"`.
+#' 
+#' __Default value:__ `"middle"`.
+#' @param labelColor (_Legend_) The color of the legend label, can be in hex color code or regular color name.
+#' @param labelFont (_Legend_) The font of the legend label.
+#' @param labelFontSize (_Legend_) The font size of legend label.
+#' 
+#' __Default value:__ `10`.
+#' @param labelFontStyle (_Legend_) The font style of legend label.
+#' @param labelFontWeight (_Legend_) The font weight of legend label.
+#' @param labelLimit (_Legend_) Maximum allowed pixel width of axis tick labels.
+#' 
+#' __Default value:__ `160`.
+#' @param labelOffset (_Legend_) The offset of the legend label.
+#' @param labelOpacity (_Legend_) Opacity of labels.
+#' @param labelOverlap (_Legend_) The strategy to use for resolving overlap of labels in gradient legends. If `false`, no overlap reduction is attempted. If set to `true` (default) or `"parity"`, a strategy of removing every other label is used. If set to `"greedy"`, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+#' 
+#' __Default value:__ `true`.
+#' @param labelPadding (_Legend_) Padding in pixels between the legend and legend labels.
+#' @param labelSeparation (_Legend_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param offset (_Legend_) The offset in pixels by which to displace the legend from the data rectangle and axes.
+#' 
+#' __Default value:__ `18`.
+#' @param orient (_Legend_) The orientation of the legend, which determines how the legend is positioned within the scene. One of `"left"`, `"right"`, `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"`, `"none"`.
+#' 
+#' __Default value:__ `"right"`
+#' @param padding (_Legend_) The padding between the border and content of the legend group.
+#' 
+#' __Default value:__ `0`.
+#' @param rowPadding (_Legend_) The vertical padding in pixels between symbol legend entries.
+#' 
+#' __Default value:__ `2`.
+#' @param strokeColor (_Legend_) Border stroke color for the full legend.
+#' @param symbolDash (_Legend_) An array of alternating \[stroke, space\] lengths for dashed symbol strokes.
+#' @param symbolDashOffset (_Legend_) The pixel offset at which to start drawing with the symbol stroke dash array.
+#' @param symbolFillColor (_Legend_) The color of the legend symbol,
+#' @param symbolOffset (_Legend_) Horizontal pixel offset for legend symbols.
+#' 
+#' __Default value:__ `0`.
+#' @param symbolOpacity (_Legend_) Opacity of the legend symbols.
+#' @param symbolSize (_Legend_) The size of the legend symbol, in pixels.
+#' 
+#' __Default value:__ `100`.
+#' @param symbolStrokeColor (_Legend_) Stroke color for legend symbols.
+#' @param symbolStrokeWidth (_Legend_) The width of the symbol's stroke.
+#' 
+#' __Default value:__ `1.5`.
+#' @param symbolType (_Legend_) Default shape type (such as "circle") for legend symbols.
+#' Can be one of ``"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#'    * In addition to a set of built-in shapes, custom shapes can be defined using [SVG path strings](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths).
+#'    *
+#'    * __Default value:__ `"circle"`.
+#'    *
+#' @param tickCount (_Legend_) The desired number of tick values for quantitative legends.
+#' @param tickMinStep (_Legend_) The minimum desired step between legend ticks, in terms of scale domain values. For example, a value of `1` indicates that ticks should not be less than 1 unit apart. If `tickMinStep` is specified, the `tickCount` value will be adjusted, if necessary, to enforce the minimum step value.
+#' 
+#' __Default value__: `undefined`
+#' @param title (_Legend_) A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
+#' @param titleAlign (_Legend_) Horizontal text alignment for legend titles.
+#' 
+#' __Default value:__ `"left"`.
+#' @param titleAnchor (_Legend_) Text anchor position for placing legend titles.
+#' @param titleBaseline (_Legend_) Vertical text baseline for legend titles.
+#' 
+#' __Default value:__ `"top"`.
+#' @param titleColor (_Legend_) The color of the legend title, can be in hex color code or regular color name.
+#' @param titleFont (_Legend_) The font of the legend title.
+#' @param titleFontSize (_Legend_) The font size of the legend title.
+#' @param titleFontStyle (_Legend_) The font style of the legend title.
+#' @param titleFontWeight (_Legend_) The font weight of the legend title.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param titleLimit (_Legend_) Maximum allowed pixel width of axis titles.
+#' 
+#' __Default value:__ `180`.
+#' @param titleOpacity (_Legend_) Opacity of the legend title.
+#' @param titleOrient (_Legend_) Orientation of the legend title.
+#' @param titlePadding (_Legend_) The padding, in pixels, between title and legend.
+#' 
+#' __Default value:__ `5`.
+#' @param type (_Legend_) The type of the legend. Use `"symbol"` to create a discrete legend and `"gradient"` for a continuous color gradient.
+#' 
+#' __Default value:__ `"gradient"` for non-binned quantitative fields and temporal fields; `"symbol"` otherwise.
+#' @param values (_Legend_) Explicitly set the visible legend values.
+#' @param zindex (_Legend_) A non-positive integer indicating z-index of the legend.
+#' If zindex is 0, legend should be drawn behind all chart elements.
+#' To put them in front, use zindex = 1.
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_Legend <- function(clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+args$obj
+} 
+#' vl_make_BindCheckbox
+#' 
+#' Create spec for {obj}
+#' @param debounce (_BindCheckbox_)  
+#' @param element (_BindCheckbox_)  
+#' @param input (_BindCheckbox_) checkbox
+#' @param name (_BindCheckbox_)  
+#' @param type (_BindCheckbox_)  
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_BindCheckbox <- function(debounce = NULL, element = NULL, input = NULL, name = NULL, type = NULL){
+args <- .modify_args(NULL, c("debounce", "element", "input", "name", "type"))
+args$obj
+} 
+#' vl_make_BindRange
+#' 
+#' Create spec for {obj}
+#' @param debounce (_BindRange_)  
+#' @param element (_BindRange_)  
+#' @param input (_BindRange_) range
+#' @param max (_BindRange_)  
+#' @param min (_BindRange_)  
+#' @param name (_BindRange_)  
+#' @param step (_BindRange_)  
+#' @param type (_BindRange_)  
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_BindRange <- function(debounce = NULL, element = NULL, input = NULL, max = NULL, min = NULL, name = NULL, step = NULL, type = NULL){
+args <- .modify_args(NULL, c("debounce", "element", "input", "max", "min", "name", "step", "type"))
+args$obj
+} 
+#' vl_make_BindRadioSelect
+#' 
+#' Create spec for {obj}
+#' @param debounce (_BindRadioSelect_)  
+#' @param element (_BindRadioSelect_)  
+#' @param input (_BindRadioSelect_) radio, select
+#' @param name (_BindRadioSelect_)  
+#' @param options (_BindRadioSelect_)  
+#' @param type (_BindRadioSelect_)  
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_make_BindRadioSelect <- function(debounce = NULL, element = NULL, input = NULL, name = NULL, options = NULL, type = NULL){
+args <- .modify_args(NULL, c("debounce", "element", "input", "name", "options", "type"))
+args$obj
 }

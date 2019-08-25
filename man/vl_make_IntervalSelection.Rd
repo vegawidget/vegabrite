@@ -62,8 +62,8 @@ only \code{wheel} events are supported.
 \strong{Default value:} \code{true}, which corresponds to \code{wheel!}.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Create spec for IntervalSelection.
+Create spec for {obj}
 }

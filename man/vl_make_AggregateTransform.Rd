@@ -12,8 +12,8 @@ vl_make_AggregateTransform(aggregate = NULL, groupby = NULL)
 \item{groupby}{(\emph{AggregateTransform}) The data fields to group by. If not specified, a single group containing all data objects will be used.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Create spec for AggregateTransform.
+Create spec for {obj}
 }

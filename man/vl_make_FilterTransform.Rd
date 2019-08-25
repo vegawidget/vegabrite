@@ -24,8 +24,8 @@ or \href{https://vega.github.io/vega-lite/docs/filter.html#valid-predicate}{vali
 }}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Create spec for FilterTransform.
+Create spec for {obj}
 }

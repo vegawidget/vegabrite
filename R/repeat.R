@@ -2,7 +2,7 @@
   UseMethod(".add_repeat", spec)
 }
 
-.add_repeat.vegaspec_repeat <- function(spec, obj, ref, .type) {
+.add_repeat.vegaspec_repeat <- function(spec, obj, ref, .type, columns = 2) {
   
   if (.type == "row") {
     spec[["repeat"]][["row"]] <- obj
@@ -21,7 +21,7 @@
 }
 
 
-.add_repeat.vegaspec_unit <- function(spec, obj, ref, .type) {
+.add_repeat.vegaspec_unit <- function(spec, obj, ref, .type, columns = 2) {
   
   keep <- c('$schema','data')
   move <- names(spec)[which(!(names(spec) %in% keep))]

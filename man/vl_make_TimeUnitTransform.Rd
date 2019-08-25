@@ -14,8 +14,8 @@ vl_make_TimeUnitTransform(as = NULL, field = NULL, timeUnit = NULL)
 \item{timeUnit}{(\emph{TimeUnitTransform}) The timeUnit.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Create spec for TimeUnitTransform.
+Create spec for {obj}
 }

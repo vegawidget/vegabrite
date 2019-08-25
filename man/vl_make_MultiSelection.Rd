@@ -52,8 +52,8 @@ See the \href{https://vega.github.io/vega-lite/docs/toggle.html}{toggle transfor
 \item{type}{(\emph{MultiSelection}) multi}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Create spec for MultiSelection.
+Create spec for {obj}
 }

@@ -64,8 +64,8 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 \item{value}{(\emph{NumberValueDef}) A constant value in visual domain (e.g., \code{"red"} / "#0099ff" for color, values between \code{0} to \code{1} for opacity).}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Create spec for Order.
+Create spec for {obj}
 }

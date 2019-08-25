@@ -35,8 +35,8 @@ One of \code{value}, \code{mean}, \code{median}, \code{max} or \code{min}.
 \item{value}{(\emph{ImputeTransform}) The field value to use when the imputation \code{method} is \code{"value"}.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Create spec for ImputeTransform.
+Create spec for {obj}
 }

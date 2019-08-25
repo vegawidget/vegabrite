@@ -21,8 +21,8 @@ If \code{from.fields} is not specified, \code{as} has to be a string and we put 
 \item{lookup}{(\emph{LookupTransform}) Key in primary data source.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Create spec for LookupTransform.
+Create spec for {obj}
 }

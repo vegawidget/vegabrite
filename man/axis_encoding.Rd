@@ -4,6 +4,8 @@
 \alias{axis_encoding}
 \alias{vl_axis_x}
 \alias{vl_axis_y}
+\alias{vl_remove_axis_x}
+\alias{vl_remove_axis_y}
 \title{Add axis to encoding}
 \usage{
 vl_axis_x(spec, bandPosition = NULL, domain = NULL,
@@ -51,6 +53,10 @@ vl_axis_y(spec, bandPosition = NULL, domain = NULL,
   titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL,
   titleOpacity = NULL, titlePadding = NULL, titleX = NULL,
   titleY = NULL, values = NULL, zindex = NULL)
+
+vl_remove_axis_x(spec)
+
+vl_remove_axis_y(spec)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
