@@ -11,13 +11,14 @@ vl_mark_point(spec, align = NULL, angle = NULL, baseline = NULL,
   filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL,
   fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL,
   line = NULL, opacity = NULL, order = NULL, orient = NULL,
-  radius = NULL, shape = NULL, size = NULL, stroke = NULL,
-  strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL,
-  strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL,
-  strokeWidth = NULL, style = NULL, tension = NULL, text = NULL,
-  theta = NULL, thickness = NULL, tooltip = NULL, type = NULL,
-  x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL,
-  y2 = NULL, y2Offset = NULL, yOffset = NULL)
+  point = NULL, radius = NULL, shape = NULL, size = NULL,
+  stroke = NULL, strokeCap = NULL, strokeDash = NULL,
+  strokeDashOffset = NULL, strokeJoin = NULL,
+  strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
+  style = NULL, tension = NULL, text = NULL, theta = NULL,
+  thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL,
+  x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
+  y2Offset = NULL, yOffset = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -132,6 +133,15 @@ For stacked charts, this is always determined by the orientation of the stack;
 therefore explicitly specified value will be ignored.
 }}
 
+\item{point}{(\emph{MarkDef}) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+\itemize{
+\item If this property is \code{"transparent"}, transparent points will be used (for enhancing tooltips and selections).
+\item If this property is an empty object (\code{{}}) or \code{true}, filled points with default properties will be used.
+\item If this property is \code{false}, no points would be automatically added to line or area marks.
+}
+
+\strong{Default value:} \code{false}.}
+
 \item{radius}{(\emph{MarkDef}) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the \code{x} and \code{y} properties.}
 
 \item{shape}{(\emph{MarkDef}) Shape of the point marks. Supported values include:
@@ -214,15 +224,6 @@ therefore explicitly specified value will be ignored.
 \item{y2Offset}{(\emph{MarkDef}) Offset for y2-position.}
 
 \item{yOffset}{(\emph{MarkDef}) Offset for y-position.}
-
-\item{point}{(\emph{MarkDef}) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
-\itemize{
-\item If this property is \code{"transparent"}, transparent points will be used (for enhancing tooltips and selections).
-\item If this property is an empty object (\code{{}}) or \code{true}, filled points with default properties will be used.
-\item If this property is \code{false}, no points would be automatically added to line or area marks.
-}
-
-\strong{Default value:} \code{false}.}
 }
 \value{
 A modified Vega-Lite Spec

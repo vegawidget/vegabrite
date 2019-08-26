@@ -1,5 +1,6 @@
 #' @keywords internal
 #' @importFrom utils hasName
+#' @importFrom utils modifyList
 "_PACKAGE"
 
 # The following block is used by usethis to automatically manage

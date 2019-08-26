@@ -6,7 +6,7 @@
 \usage{
 vl_mark_errorband(spec, band = NULL, borders = NULL, clip = NULL,
   color = NULL, extent = NULL, interpolate = NULL, opacity = NULL,
-  orient = NULL, tension = NULL, type = NULL)
+  orient = NULL, tension = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

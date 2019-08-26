@@ -4,7 +4,7 @@ Version: 0.0.1.9000
 Authors@R: person("Aicia", "Schep", email = "aschep@gmail.com", role = c("aut", "cre"))
 Description: Build vegalite specs in R. Inspired by vegalite package as well as 
   vega-lite-api and altair. Dependent on vegawidget for actually rendering specs!
-Depends: R (>= 3.4.4)
+Depends: R (>= 3.4.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -14,7 +14,10 @@ Imports:
     magrittr,
     rlang,
     vegawidget,
-    V8
+    V8,
+    jsonvalidate,
+    jsonlite
+Remotes: AliciaSchep/jsonvalidate
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr

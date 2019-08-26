@@ -16,9 +16,9 @@ vl_mark_circle(spec, align = NULL, angle = NULL, baseline = NULL,
   strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
   style = NULL, tension = NULL, text = NULL, theta = NULL,
-  thickness = NULL, tooltip = NULL, type = NULL, x = NULL,
-  x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL,
-  y2 = NULL, y2Offset = NULL, yOffset = NULL)
+  thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL,
+  x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
+  y2Offset = NULL, yOffset = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

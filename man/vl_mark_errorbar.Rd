@@ -5,8 +5,7 @@
 \title{vl_mark_errorbar}
 \usage{
 vl_mark_errorbar(spec, clip = NULL, color = NULL, extent = NULL,
-  opacity = NULL, orient = NULL, rule = NULL, ticks = NULL,
-  type = NULL)
+  opacity = NULL, orient = NULL, rule = NULL, ticks = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

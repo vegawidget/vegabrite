@@ -10,14 +10,15 @@ vl_mark_line(spec, align = NULL, angle = NULL, baseline = NULL,
   dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL,
   filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL,
   fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL,
-  opacity = NULL, order = NULL, orient = NULL, point = NULL,
-  radius = NULL, shape = NULL, size = NULL, stroke = NULL,
-  strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL,
-  strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL,
-  strokeWidth = NULL, style = NULL, tension = NULL, text = NULL,
-  theta = NULL, thickness = NULL, tooltip = NULL, type = NULL,
-  x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL,
-  y2 = NULL, y2Offset = NULL, yOffset = NULL)
+  line = NULL, opacity = NULL, order = NULL, orient = NULL,
+  point = NULL, radius = NULL, shape = NULL, size = NULL,
+  stroke = NULL, strokeCap = NULL, strokeDash = NULL,
+  strokeDashOffset = NULL, strokeJoin = NULL,
+  strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
+  style = NULL, tension = NULL, text = NULL, theta = NULL,
+  thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL,
+  x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
+  y2Offset = NULL, yOffset = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -105,6 +106,14 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item{limit}{(\emph{MarkDef}) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
 
 \strong{Default value:} \code{0}, indicating no limit}
+
+\item{line}{(\emph{MarkDef}) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
+\itemize{
+\item If this value is an empty object (\code{{}}) or \code{true}, lines with default properties will be used.
+\item If this value is \code{false}, no lines would be automatically added to area marks.
+}
+
+\strong{Default value:} \code{false}.}
 
 \item{opacity}{(\emph{MarkDef}) The overall opacity (value between [0,1]).
 
@@ -215,14 +224,6 @@ therefore explicitly specified value will be ignored.
 \item{y2Offset}{(\emph{MarkDef}) Offset for y2-position.}
 
 \item{yOffset}{(\emph{MarkDef}) Offset for y-position.}
-
-\item{line}{(\emph{MarkDef}) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
-\itemize{
-\item If this value is an empty object (\code{{}}) or \code{true}, lines with default properties will be used.
-\item If this value is \code{false}, no lines would be automatically added to area marks.
-}
-
-\strong{Default value:} \code{false}.}
 }
 \value{
 A modified Vega-Lite Spec

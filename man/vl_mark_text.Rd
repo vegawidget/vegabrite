@@ -15,8 +15,8 @@ vl_mark_text(spec, align = NULL, angle = NULL, baseline = NULL,
   stroke = NULL, strokeCap = NULL, strokeDash = NULL,
   strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
-  style = NULL, tension = NULL, theta = NULL, thickness = NULL,
-  tooltip = NULL, type = NULL, x = NULL, x2 = NULL,
+  style = NULL, tension = NULL, text = NULL, theta = NULL,
+  thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL,
   x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
   y2Offset = NULL, yOffset = NULL)
 }
@@ -194,6 +194,8 @@ therefore explicitly specified value will be ignored.
 
 \item{tension}{(\emph{MarkDef}) Depending on the interpolation type, sets the tension parameter (for line and area marks).}
 
+\item{text}{(\emph{MarkDef}) Placeholder text if the \code{text} channel is not specified}
+
 \item{theta}{(\emph{MarkDef}) Polar coordinate angle, in radians, of the text label from the origin determined by the \code{x} and \code{y} properties. Values for \code{theta} follow the same convention of \code{arc} mark \code{startAngle} and \code{endAngle} properties: angles are measured in radians, with \code{0} indicating "north".}
 
 \item{thickness}{(\emph{MarkDef}) Thickness of the tick mark.
@@ -222,8 +224,6 @@ therefore explicitly specified value will be ignored.
 \item{y2Offset}{(\emph{MarkDef}) Offset for y2-position.}
 
 \item{yOffset}{(\emph{MarkDef}) Offset for y-position.}
-
-\item{text}{(\emph{MarkDef}) Placeholder text if the \code{text} channel is not specified}
 }
 \value{
 A modified Vega-Lite Spec
