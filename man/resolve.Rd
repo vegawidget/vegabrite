@@ -2,58 +2,79 @@
 % Please edit documentation in R/zzz_autogen_api.R
 \name{resolve}
 \alias{resolve}
-\alias{vl_resolve_axis}
-\alias{vl_resolve_legend}
-\alias{vl_resolve_scale}
+\alias{vl_resolve_axis_x}
+\alias{vl_resolve_axis_y}
+\alias{vl_resolve_legend_color}
+\alias{vl_resolve_legend_fill}
+\alias{vl_resolve_legend_fillOpacity}
+\alias{vl_resolve_legend_opacity}
+\alias{vl_resolve_legend_shape}
+\alias{vl_resolve_legend_size}
+\alias{vl_resolve_legend_stroke}
+\alias{vl_resolve_legend_strokeOpacity}
+\alias{vl_resolve_legend_strokeWidth}
+\alias{vl_resolve_legend_x}
+\alias{vl_resolve_legend_y}
+\alias{vl_resolve_scale_color}
+\alias{vl_resolve_scale_fill}
+\alias{vl_resolve_scale_fillOpacity}
+\alias{vl_resolve_scale_opacity}
+\alias{vl_resolve_scale_shape}
+\alias{vl_resolve_scale_size}
+\alias{vl_resolve_scale_stroke}
+\alias{vl_resolve_scale_strokeOpacity}
+\alias{vl_resolve_scale_strokeWidth}
+\alias{vl_resolve_scale_x}
+\alias{vl_resolve_scale_y}
 \title{Resolve axes, legends, or scales for composite charts}
 \usage{
-vl_resolve_axis(spec, how = c("independent", "shared"))
+vl_resolve_axis_x(spec, how = c("independent", "shared"))
 
-vl_resolve_axis(spec, how = c("independent", "shared"))
+vl_resolve_axis_y(spec, how = c("independent", "shared"))
 
-vl_resolve_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend_color(spec, how = c("independent", "shared"))
 
-vl_resolve_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend_fill(spec, how = c("independent", "shared"))
 
-vl_resolve_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend_fillOpacity(spec, how = c("independent", "shared"))
 
-vl_resolve_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend_opacity(spec, how = c("independent", "shared"))
 
-vl_resolve_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend_shape(spec, how = c("independent", "shared"))
 
-vl_resolve_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend_size(spec, how = c("independent", "shared"))
 
-vl_resolve_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend_stroke(spec, how = c("independent", "shared"))
 
-vl_resolve_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend_strokeOpacity(spec, how = c("independent", "shared"))
 
-vl_resolve_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend_strokeWidth(spec, how = c("independent", "shared"))
 
-vl_resolve_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend_x(spec, how = c("independent", "shared"))
 
-vl_resolve_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend_y(spec, how = c("independent", "shared"))
 
-vl_resolve_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale_color(spec, how = c("independent", "shared"))
 
-vl_resolve_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale_fill(spec, how = c("independent", "shared"))
 
-vl_resolve_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale_fillOpacity(spec, how = c("independent", "shared"))
 
-vl_resolve_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale_opacity(spec, how = c("independent", "shared"))
 
-vl_resolve_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale_shape(spec, how = c("independent", "shared"))
 
-vl_resolve_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale_size(spec, how = c("independent", "shared"))
 
-vl_resolve_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale_stroke(spec, how = c("independent", "shared"))
 
-vl_resolve_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale_strokeOpacity(spec, how = c("independent", "shared"))
 
-vl_resolve_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale_strokeWidth(spec, how = c("independent", "shared"))
 
-vl_resolve_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale_x(spec, how = c("independent", "shared"))
 
-vl_resolve_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale_y(spec, how = c("independent", "shared"))
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
