@@ -8472,145 +8472,145 @@ vl_repeat_wrap <- function(spec, columns = 2, ...){
 #' @name resolve 
 #' @name resolve
 #' @export
-vl_resolvle_axis <- function(spec, how = c('independent', 'shared')){
+vl_resolve_axis <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "x", type = "axis")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_axis <- function(spec, how = c('independent', 'shared')){
+vl_resolve_axis <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "y", type = "axis")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+vl_resolve_legend <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "color", type = "legend")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+vl_resolve_legend <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "fill", type = "legend")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+vl_resolve_legend <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "fillOpacity", type = "legend")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+vl_resolve_legend <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "opacity", type = "legend")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+vl_resolve_legend <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "shape", type = "legend")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+vl_resolve_legend <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "size", type = "legend")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+vl_resolve_legend <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "stroke", type = "legend")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+vl_resolve_legend <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "strokeOpacity", type = "legend")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+vl_resolve_legend <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "strokeWidth", type = "legend")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+vl_resolve_legend <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "x", type = "legend")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_legend <- function(spec, how = c('independent', 'shared')){
+vl_resolve_legend <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "y", type = "legend")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+vl_resolve_scale <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "color", type = "scale")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+vl_resolve_scale <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "fill", type = "scale")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+vl_resolve_scale <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "fillOpacity", type = "scale")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+vl_resolve_scale <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "opacity", type = "scale")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+vl_resolve_scale <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "shape", type = "scale")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+vl_resolve_scale <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "size", type = "scale")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+vl_resolve_scale <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "stroke", type = "scale")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+vl_resolve_scale <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "strokeOpacity", type = "scale")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+vl_resolve_scale <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "strokeWidth", type = "scale")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+vl_resolve_scale <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "x", type = "scale")
 } 
 #' @name resolve
 #' @export
-vl_resolvle_scale <- function(spec, how = c('independent', 'shared')){
+vl_resolve_scale <- function(spec, how = c('independent', 'shared')){
   how <- match.arg(how)
   .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "y", type = "scale")
 } 

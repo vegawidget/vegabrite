@@ -2,58 +2,58 @@
 % Please edit documentation in R/zzz_autogen_api.R
 \name{resolve}
 \alias{resolve}
-\alias{vl_resolvle_axis}
-\alias{vl_resolvle_legend}
-\alias{vl_resolvle_scale}
+\alias{vl_resolve_axis}
+\alias{vl_resolve_legend}
+\alias{vl_resolve_scale}
 \title{Resolve axes, legends, or scales for composite charts}
 \usage{
-vl_resolvle_axis(spec, how = c("independent", "shared"))
+vl_resolve_axis(spec, how = c("independent", "shared"))
 
-vl_resolvle_axis(spec, how = c("independent", "shared"))
+vl_resolve_axis(spec, how = c("independent", "shared"))
 
-vl_resolvle_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend(spec, how = c("independent", "shared"))
 
-vl_resolvle_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend(spec, how = c("independent", "shared"))
 
-vl_resolvle_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend(spec, how = c("independent", "shared"))
 
-vl_resolvle_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend(spec, how = c("independent", "shared"))
 
-vl_resolvle_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend(spec, how = c("independent", "shared"))
 
-vl_resolvle_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend(spec, how = c("independent", "shared"))
 
-vl_resolvle_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend(spec, how = c("independent", "shared"))
 
-vl_resolvle_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend(spec, how = c("independent", "shared"))
 
-vl_resolvle_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend(spec, how = c("independent", "shared"))
 
-vl_resolvle_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend(spec, how = c("independent", "shared"))
 
-vl_resolvle_legend(spec, how = c("independent", "shared"))
+vl_resolve_legend(spec, how = c("independent", "shared"))
 
-vl_resolvle_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale(spec, how = c("independent", "shared"))
 
-vl_resolvle_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale(spec, how = c("independent", "shared"))
 
-vl_resolvle_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale(spec, how = c("independent", "shared"))
 
-vl_resolvle_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale(spec, how = c("independent", "shared"))
 
-vl_resolvle_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale(spec, how = c("independent", "shared"))
 
-vl_resolvle_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale(spec, how = c("independent", "shared"))
 
-vl_resolvle_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale(spec, how = c("independent", "shared"))
 
-vl_resolvle_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale(spec, how = c("independent", "shared"))
 
-vl_resolvle_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale(spec, how = c("independent", "shared"))
 
-vl_resolvle_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale(spec, how = c("independent", "shared"))
 
-vl_resolvle_scale(spec, how = c("independent", "shared"))
+vl_resolve_scale(spec, how = c("independent", "shared"))
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
