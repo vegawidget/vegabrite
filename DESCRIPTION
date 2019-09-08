@@ -18,6 +18,8 @@ Imports:
     jsonvalidate,
     jsonlite
 Remotes: ropensci/jsonvalidate
-Suggests: knitr,
-    rmarkdown
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 2.1.0)
 VignetteBuilder: knitr
