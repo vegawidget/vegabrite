@@ -111,8 +111,8 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 \item{value}{(\emph{YValueDef}) A constant value in visual domain (e.g., \code{"red"} / "#0099ff" for color, values between \code{0} to \code{1} for opacity).}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a Y.
 }
 \description{
-Create spec for Y.
+Create spec for {obj}
 }

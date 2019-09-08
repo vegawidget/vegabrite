@@ -8,7 +8,7 @@ vl_window(spec, frame = NULL, groupby = NULL, ignorePeers = NULL,
   sort = NULL, window = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{frame}{(\emph{WindowTransform}) A frame specification as a two-element array indicating how the sliding window should proceed. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. The default value is \code{[null, 0]}, indicating that the sliding window includes the current object and all preceding objects. The value \code{[-5, 5]} indicates that the window should include five objects preceding and five objects following the current object. Finally, \code{[null, null]} indicates that the window frame should always include all data objects. If you this frame and want to assign the same value to add objects, you can use the simpler \href{https://vega.github.io/vega-lite/docs/joinaggregate.html}{join aggregate transform}. The only operators affected are the aggregation operations and the \code{first_value}, \code{last_value}, and \code{nth_value} window operations. The other window operations are not affected by this.
 
@@ -25,7 +25,7 @@ vl_window(spec, frame = NULL, groupby = NULL, ignorePeers = NULL,
 \item{window}{(\emph{WindowTransform}) The definition of the fields in the window, and what calculations to use.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add WindowTransform to a vega-lite spec.

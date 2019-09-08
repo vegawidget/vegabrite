@@ -4,21 +4,18 @@
 \alias{vl_repeat_wrap}
 \title{vl_repeat_wrap}
 \usage{
-vl_repeat_wrap(spec, ..., columns = 2)
+vl_repeat_wrap(spec, columns = 2, ...)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
+
+\item{columns}{number of columns to add}
 
 \item{...}{fields to use for repeat (strings)}
-
-\item{columns}{number of columns to use}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Add repeating by wrap to a vega-lite spec.
-}
-\seealso{
-\code{\link[=vl_repeat_col]{vl_repeat_col()}}, \code{\link[=vl_repeat_row]{vl_repeat_row()}}
+Add repeat to a vega-lite spec.
 }

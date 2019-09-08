@@ -98,13 +98,3 @@ NULL
 #'
 NULL
 
-#### specs ####
-
-#' Example vegaspecs
-#'
-#' See \code{vegawidget::\link[vegawidget]{spec_mtcars}} for details.
-#'
-#' @name spec_mtcars
-#' @export
-#'
-spec_mtcars <- vegawidget::spec_mtcars

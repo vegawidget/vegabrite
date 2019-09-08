@@ -12,7 +12,7 @@ vl_add_view_config(spec, clip = NULL, cornerRadius = NULL,
   width = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{clip}{(\emph{ViewConfig}) Whether the view should be clipped.}
 
@@ -65,7 +65,7 @@ vl_add_view_config(spec, clip = NULL, cornerRadius = NULL,
 \strong{Default value:} \code{200}}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add view config (ViewConfig) to a vega-lite spec.

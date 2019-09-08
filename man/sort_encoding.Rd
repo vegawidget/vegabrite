@@ -14,7 +14,7 @@
 \alias{vl_sort_strokeWidth}
 \alias{vl_sort_x}
 \alias{vl_sort_y}
-\title{Add sort transform to encoding}
+\title{#' Add sorting to an encoding}
 \usage{
 vl_sort_color(spec, value)
 
@@ -41,17 +41,13 @@ vl_sort_x(spec, value)
 vl_sort_y(spec, value)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
-\item{value}{either 'ascending' or 'descending' to specify sort order (using
-this encoding), a list with a custom ordering, or NA to specify no sorting}
+\item{value}{One of 'ascending', 'descending', a list with a custom ordering, or NA to specify no sorting}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Add sort parameters to an encoding
-}
-\seealso{
-\code{\link[=sort_encoding_by_field]{sort_encoding_by_field()}} and \code{\link[=sort_encoding_by_encoding]{sort_encoding_by_encoding()}}
+#' Sort an encoding in 'ascending' or 'descending' order, or by given array
 }

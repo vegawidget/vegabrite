@@ -157,8 +157,8 @@ For example: in the case of circles, the radius is determined in part by the squ
 \item{y2}{(\emph{BaseMarkConfig}) Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a BaseMarkConfig.
 }
 \description{
-Create spec for BaseMarkConfig.
+Create spec for {obj}
 }

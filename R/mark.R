@@ -2,25 +2,11 @@
   UseMethod(".add_mark", spec)
 }
 
-.add_mark.default <- function(spec, .mark = NULL, ...){
-
-  fn <- function(spec) {
-    def <- list(...)
-    if (length(def) == 0){
-      spec[["mark"]] <- .mark
-    } else {
-      if (!is.null(.mark)) def$type <- .mark
-      spec[["mark"]] <- def
-    }
-    spec
-  }
-  
-  modify_inner_spec(spec, fn)
-  
-  return(spec)
+.add_mark.default <- function(spec, obj, ref, ...){
+  .add_to_inner_spec(spec, obj, "mark", ref, how = "replace")
 }
 
-.add_mark.vegaspec_unit <- function(spec, .mark = NULL, ...){
+.add_mark.vegaspec_unit <- function(spec, obj, ref, ...){
   
   if (hasName(spec,"mark")) {
     if (hasName(spec, "selection")) {
@@ -33,32 +19,17 @@
     old_mark <- spec$mark
     spec$mark <- NULL
     spec$layer <- list(list(mark = old_mark))
-    return(.add_mark(vegawidget::as_vegaspec(spec), .mark, ...))
+    return(.add_mark(vegawidget::as_vegaspec(spec), obj))
   } 
   
-  def <- list(...)
-  if (length(def) == 0) {
-    spec[["mark"]] <- .mark
-  } else {
-    if (!is.null(.mark)) def$type <- .mark
-    spec[["mark"]] <- def
+  .add_to_inner_spec(spec, obj, "mark", ref, how = "replace")
+
   }
-  
-  return(spec)
-}
 
 
-.add_mark.vegaspec_layer <- function(spec, .mark = NULL, ...){
+.add_mark.vegaspec_layer <- function(spec, obj, ref, ...){
   
-  new_spec <- list()
-  def <- list(...)
-  if (length(def) == 0) {
-    new_spec[["mark"]] <- .mark
-  } else {
-    if (!is.null(.mark)) def$type <- .mark
-    new_spec[["mark"]] <- def
-  }
-  
+  new_spec <- list("mark" = obj)
   spec$layer <- c(spec$layer, list(new_spec))
   
   return(vegawidget::as_vegaspec(spec))

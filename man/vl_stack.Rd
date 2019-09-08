@@ -8,7 +8,7 @@ vl_stack(spec, as = NULL, groupby = NULL, offset = NULL,
   sort = NULL, stack = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{as}{(\emph{StackTransform}) Output field names. This can be either a string or an array of strings with
 two elements denoting the name for the fields for stack start and stack end
@@ -25,7 +25,7 @@ If a single string(eg."val") is provided, the end field will be "val_end".}
 \item{stack}{(\emph{StackTransform}) The field which is stacked.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add StackTransform to a vega-lite spec.

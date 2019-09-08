@@ -59,8 +59,8 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 }}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a Detail.
 }
 \description{
-Create spec for Detail.
+Create spec for {obj}
 }

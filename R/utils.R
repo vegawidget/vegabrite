@@ -1,15 +1,54 @@
 TOP_LEVEL_KEYS <- c("$schema", "autosize", "background", "config", "datasets", 
   "padding", "usermeta")
 
-is_composite <- function(spec){
 
-  if (hasName(spec, "spec")) {
-    any(c("vconcat","hconcat","concat","layer") %in% names(spec[["spec"]]))
-  } else{
-    any(c("vconcat","hconcat","concat","layer") %in% names(spec))
+.modify_args <- function(override, valid_names) {
+  args_in <- rlang::fn_fmls_syms(rlang::caller_fn(n = 1))
+  args_eval <- lapply(args_in, eval, env = rlang::caller_env(n = 1))
+  args_nn <- args_eval[!vapply(args_eval,is.null,FALSE)]
+  args_nn <- c(args_nn, override)
+  is_obj <- names(args_nn) %in% valid_names
+  args_obj <- args_nn[is_obj]
+  is_extra <- !is_obj & names(args_nn) != "spec"
+  args_extra <- args_nn[is_extra]
+  list(object = args_obj, extra = args_extra, spec = args_nn[['spec']])
+}
+
+
+.add_to_top_spec <- function(spec, x, name, ref,
+                          how = c("replace","append","match")) {
+
+  how <- match.arg(how)
+  
+  res <- validate_sub_schema(x, ref)
+
+  if (how == "replace") {
+    spec[[name]] <- x
+  } else if (how == "append") {
+    if (!hasName(spec, name)) {
+      spec[[name]] <- list()
+    }
+    spec[[name]] <- c(spec[[name]], list(x))
+  } else {
+    spec[[name]] <- modifyList(spec[[name]], x)
   }
 
+  spec
 }
+
+.add_to_inner_spec <- function(spec, x, name, ref,
+                                 how = c("replace","append","match")) {
+  
+  how <- match.arg(how)
+  
+  fn <- function(spec){
+    .add_to_top_spec(spec, x, name, ref, how)
+  }
+  
+  modify_inner_spec(spec, fn)
+}
+
+
 
 modify_inner_spec <- function(spec, ...) {
   UseMethod("modify_inner_spec", spec)
@@ -29,7 +68,7 @@ modify_inner_spec.vegaspec_vconcat <- function(spec, fn) {
 
 modify_inner_spec.vegaspec_layer <- function(spec, fn) {
   # Layer spec can have most 'inner' spec properties...
-  # Excpetions: mark & selection
+  # Exceptions: mark & selection
   # Functions calling this helper should have a separate
   # layer spec function if needed...
   fn(spec)

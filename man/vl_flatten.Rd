@@ -7,7 +7,7 @@
 vl_flatten(spec, as = NULL, flatten = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{as}{(\emph{FlattenTransform}) The output field names for extracted array values.
 
@@ -19,7 +19,7 @@ If the lengths of parallel arrays do not match,
 the longest array will be used with \code{null} values added for missing entries.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add FlattenTransform to a vega-lite spec.

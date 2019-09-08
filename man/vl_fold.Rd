@@ -7,7 +7,7 @@
 vl_fold(spec, as = NULL, fold = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{as}{(\emph{FoldTransform}) The output field names for the key and value properties produced by the fold transform.
 \strong{Default value:} \code{["key", "value"]}}
@@ -15,7 +15,7 @@ vl_fold(spec, as = NULL, fold = NULL)
 \item{fold}{(\emph{FoldTransform}) An array of data fields indicating the properties to fold.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add FoldTransform to a vega-lite spec.

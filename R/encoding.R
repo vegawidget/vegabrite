@@ -5,12 +5,12 @@ ENCODE_MAPPING <- list(
   "O" = "ordinal"
 )
 
-.add_encoding <- function(spec, .enc, ...){
+.add_encoding <- function(spec, obj, ref, encoding){
 
   fn <- function(spec) {
     
     # Handle shorthand
-    enc <- list(...)
+    enc <- obj
     if (is.null(names(enc)) && length(enc) == 1) {
       enc <- list(field = enc[[1]])
     }
@@ -36,7 +36,8 @@ ENCODE_MAPPING <- list(
     }
     
     if (!hasName(spec,"encoding")) spec$encoding <- list()
-    spec[["encoding"]][[.enc]] <- enc
+    validate_sub_schema(enc, ref)
+    spec[["encoding"]][[encoding]] <- enc
     spec
   }
   
@@ -44,16 +45,16 @@ ENCODE_MAPPING <- list(
   
 }
 
-.add_param_to_encoding <- function(spec, .enc, param, value){
+.add_param_to_encoding <- function(spec, obj, ref, encoding, param, ...){
   
   fn <- function(spec) {
-    if (!hasName(spec,"encoding") || !hasName(spec[["encoding"]], .enc)) {
-      stop("Error in adding ", param, " to ", .enc, 
-           "\nCould not find ",.enc," encoding in spec.",
+    if (!hasName(spec,"encoding") || !hasName(spec[["encoding"]], encoding)) {
+      stop("Error in adding ", param, " to ", encoding, 
+           "\nCould not find ", encoding," encoding in spec.",
            "\nAdd encoding first before adding, ", param, ".")
     }
-    
-    spec[["encoding"]][[.enc]][[param]] <- value
+    validate_sub_schema(obj, ref)
+    spec[["encoding"]][[encoding]][[param]] <- obj
     spec
   }
   
@@ -61,59 +62,49 @@ ENCODE_MAPPING <- list(
   
 }
 
-.add_sort_to_encoding <- function(spec, .enc, value){
-  
-  .add_param_to_encoding(spec, .enc, "sort", value)
+.add_sort_to_encoding <- function(spec, obj, ref, encoding, ...){
+  .add_param_to_encoding(spec, obj, ref, encoding, param = "sort", ...)
 }
 
-.add_sort_obj_to_encoding <- function(spec, .enc, ...) {
-  
-  .add_sort_to_encoding(spec, .enc, list(...))
- 
+
+.add_axis_to_encoding <- function(spec, obj, ref, encoding, ...){
+  .add_param_to_encoding(spec, obj, ref, encoding, param = "axis", ...)
 }
 
-.add_axis_to_encoding <- function(spec, .enc, ...){
-  axis_params <- list(...)
-  if (hasName(axis_params,"remove") && axis_params[["remove"]]) {
-    .add_param_to_encoding(spec, .enc, "axis", NA)
-  } else {
-    axis_params[["remove"]] <- NULL
-    .add_param_to_encoding(spec, .enc, "axis", axis_params)
-  }
+.add_scale_to_encoding <- function(spec, obj, ref, encoding, ...){
+  .add_param_to_encoding(spec, obj, ref, encoding, param = "scale", ...)
 }
 
-.add_scale_to_encoding <- function(spec, .enc, ...){
-  .add_param_to_encoding(spec, .enc, "scale", list(...))
+.add_legend_to_encoding <- function(spec, obj, ref, encoding, ...){
+  .add_param_to_encoding(spec, obj, ref, encoding, param = "legend", ...)
 }
 
-.add_legend_to_encoding <- function(spec, .enc, ...){
-  .add_param_to_encoding(spec, .enc, "legend", list(...))
-}
-
-.add_condition_to_encoding <- function(spec, .enc, ...) {
+.add_condition_to_encoding <- function(spec, obj, ref, encoding, ...) {
   
   # adds to an array, so not use standard func...
   
   fn <- function(spec) {
   
-    if (!hasName(spec,"encoding") || !hasName(spec[["encoding"]], .enc)) {
-      stop("Error in adding condition to ", .enc, 
-           "\nCould not find ",.enc," encoding in spec.",
-           "\nAdd encoding first before adding condigion.")
+    if (!hasName(spec,"encoding") || !hasName(spec[["encoding"]], encoding)) {
+      stop("Error in adding condition to ", encoding, 
+           "\nCould not find ",encoding," encoding in spec.",
+           "\nAdd encoding first before adding condition.")
     }
     
-    if (hasName(spec[["encoding"]][[.enc]],"condition")) {
+    validate_sub_schema(obj, ref)
+    
+    if (hasName(spec[["encoding"]][[encoding]],"condition")) {
       # Check if named
-      if (is.null(names(spec[["encoding"]][[.enc]][["condition"]]))) {
-        value <- c(spec[["encoding"]][[.enc]][["condition"]], list(list(...)))
+      if (is.null(names(spec[["encoding"]][[encoding]][["condition"]]))) {
+        value <- c(spec[["encoding"]][[encoding]][["condition"]], list(obj))
       } else {
-        value <- c(list(spec[["encoding"]][[.enc]][["condition"]]), list(list(...)))
+        value <- c(list(spec[["encoding"]][[encoding]][["condition"]]), list(obj))
       }
     } else {
-      value <- list(...)
+      value <- obj
     }
     
-    spec[["encoding"]][[.enc]][["condition"]] <- value
+    spec[["encoding"]][[encoding]][["condition"]] <- value
     spec
   }
   
@@ -145,7 +136,7 @@ ENCODE_MAPPING <- list(
 vl_encode <- function(spec, ...){
   inputs <- list(...)
   for (n in names(inputs)){
-    args <- c(list(spec = spec, .enc = n), inputs[[n]])
+    args <- list(spec = spec, obj = inputs[[n]], ref = paste0("#/definitions/Encoding/properties/",n), encoding = n)
     spec <- rlang::exec(.add_encoding, !!!args)
   }
   spec

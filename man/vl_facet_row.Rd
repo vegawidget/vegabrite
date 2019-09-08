@@ -9,7 +9,7 @@ vl_facet_row(spec, aggregate = NULL, bin = NULL, field = NULL,
   type = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{aggregate}{(\emph{FacetFieldDef}) Aggregation function for the field
 (e.g., \code{mean}, \code{sum}, \code{median}, \code{min}, \code{max}, \code{count}).
@@ -80,11 +80,8 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 }}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add faceting by row to a vega-lite spec.
-}
-\seealso{
-\code{\link[=vl_facet_column]{vl_facet_column()}}, \code{\link[=vl_facet_wrap]{vl_facet_wrap()}}
 }

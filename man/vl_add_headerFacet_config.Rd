@@ -15,7 +15,7 @@ vl_add_headerFacet_config(spec, format = NULL, formatType = NULL,
   titlePadding = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{format}{(\emph{HeaderConfig}) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 \itemize{
@@ -97,7 +97,7 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \strong{Default value:} \code{10}}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add headerFacet config (HeaderConfig) to a vega-lite spec.

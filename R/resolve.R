@@ -1,6 +1,7 @@
-.add_resolve <- function(spec, .type, .enc, how){
+.add_resolve <- function(spec, obj, ref, type, encoding){
   
-  spec[["resolve"]][[.type]][[.enc]] <- how
+  validate_sub_schema(obj, ref)
+  spec[["resolve"]][[type]][[encoding]] <- obj$how
   
   return(spec)
 }

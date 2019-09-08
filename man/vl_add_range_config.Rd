@@ -8,7 +8,7 @@ vl_add_range_config(spec, category = NULL, diverging = NULL,
   heatmap = NULL, ordinal = NULL, ramp = NULL, symbol = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{category}{(\emph{RangeConfig}) Default range for \emph{nominal} (categorical) fields.}
 
@@ -23,7 +23,7 @@ vl_add_range_config(spec, category = NULL, diverging = NULL,
 \item{symbol}{(\emph{RangeConfig}) Default range palette for the \code{shape} channel.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add range config (RangeConfig) to a vega-lite spec.

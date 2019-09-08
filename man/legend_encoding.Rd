@@ -221,7 +221,7 @@ vl_legend_strokeWidth(spec, clipHeight = NULL, columnPadding = NULL,
   values = NULL, zindex = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{clipHeight}{(\emph{Legend}) The height in pixels to clip symbol legend entries and limit their size.}
 
@@ -359,7 +359,7 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 \strong{Default value:} \code{1.5}.}
 
 \item{symbolType}{(\emph{Legend}) Default shape type (such as "circle") for legend symbols.
-Can be one of ``"circle"\code{,}"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+Can be one of ``"circle"\code{, }"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
 \itemize{
 \item In addition to a set of built-in shapes, custom shapes can be defined using \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path strings}.
 \item 
@@ -427,27 +427,8 @@ If zindex is 0, legend should be drawn behind all chart elements.
 To put them in front, use zindex = 1.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add legend parameters to an encoding
-}
-\seealso{
-\code{\link[=vl_encode_color]{vl_encode_color()}}
-
-\code{\link[=vl_encode_fill]{vl_encode_fill()}}
-
-\code{\link[=vl_encode_fillOpacity]{vl_encode_fillOpacity()}}
-
-\code{\link[=vl_encode_opacity]{vl_encode_opacity()}}
-
-\code{\link[=vl_encode_shape]{vl_encode_shape()}}
-
-\code{\link[=vl_encode_size]{vl_encode_size()}}
-
-\code{\link[=vl_encode_stroke]{vl_encode_stroke()}}
-
-\code{\link[=vl_encode_strokeOpacity]{vl_encode_strokeOpacity()}}
-
-\code{\link[=vl_encode_strokeWidth]{vl_encode_strokeWidth()}}
 }

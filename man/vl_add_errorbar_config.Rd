@@ -8,7 +8,7 @@ vl_add_errorbar_config(spec, extent = NULL, rule = NULL,
   ticks = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{extent}{(\emph{ErrorBarConfig}) The extent of the rule. Available options include:
 \itemize{
@@ -25,7 +25,7 @@ vl_add_errorbar_config(spec, extent = NULL, rule = NULL,
 \item{ticks}{(\emph{ErrorBarConfig})}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add errorbar config (ErrorBarConfig) to a vega-lite spec.

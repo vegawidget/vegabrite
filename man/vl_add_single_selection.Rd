@@ -6,12 +6,13 @@
 \usage{
 vl_add_single_selection(spec, selection_name, bind = NULL,
   clear = NULL, empty = NULL, encodings = NULL, fields = NULL,
-  init = NULL, nearest = NULL, on = NULL, resolve = NULL)
+  init = NULL, nearest = NULL, on = NULL, resolve = NULL,
+  type = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
-\item{selection_name}{Name of selection}
+\item{selection_name}{Name for selection}
 
 \item{bind}{(\emph{SingleSelection}) Establish a two-way binding between a single selection and input elements
 (also known as dynamic query widgets). A binding takes the form of
@@ -49,9 +50,11 @@ For interval selections, the event stream must specify a \href{https://vega.gith
 \item{resolve}{(\emph{SingleSelection}) With layered and multi-view displays, a strategy that determines how
 selections' data queries are resolved when applied in a filter transform,
 conditional encoding rule, or scale domain.}
+
+\item{type}{(\emph{SingleSelection}) single}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add SingleSelection to a vega-lite spec.

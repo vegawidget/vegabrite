@@ -45,8 +45,8 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item{orient}{(\emph{BaseTitleConfig}) Default title orientation (\code{"top"}, \code{"bottom"}, \code{"left"}, or \code{"right"})}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a BaseTitleConfig.
 }
 \description{
-Create spec for BaseTitleConfig.
+Create spec for {obj}
 }

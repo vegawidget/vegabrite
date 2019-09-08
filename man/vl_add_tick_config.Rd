@@ -18,7 +18,7 @@ vl_add_tick_config(spec, align = NULL, angle = NULL, bandSize = NULL,
   tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{align}{(\emph{TickConfig}) The horizontal alignment of the text. One of \code{"left"}, \code{"right"}, \code{"center"}.}
 
@@ -191,7 +191,7 @@ therefore explicitly specified value will be ignored.
 \item{y2}{(\emph{TickConfig}) Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add tick config (TickConfig) to a vega-lite spec.

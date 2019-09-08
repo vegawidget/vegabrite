@@ -29,8 +29,8 @@ vl_make_BoxPlotConfig(box = NULL, extent = NULL, median = NULL,
 \item{ticks}{(\emph{BoxPlotConfig})}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a BoxPlotConfig.
 }
 \description{
-Create spec for BoxPlotConfig.
+Create spec for {obj}
 }

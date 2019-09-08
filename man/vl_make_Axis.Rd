@@ -242,8 +242,8 @@ To put them in front, use \code{"zindex = 1"}.
 \strong{Default value:} \code{1} (in front of the marks) for actual axis and \code{0} (behind the marks) for grids.}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a Axis.
 }
 \description{
-Create spec for Axis.
+Create spec for {obj}
 }

@@ -12,8 +12,8 @@ vl_make_SampleTransform(sample = NULL)
 \strong{Default value:} \code{1000}}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a SampleTransform.
 }
 \description{
-Create spec for SampleTransform.
+Create spec for {obj}
 }

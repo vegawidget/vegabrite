@@ -11,7 +11,7 @@ vl_add_properties(spec, align = NULL, autosize = NULL,
   usermeta = NULL, view = NULL, width = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{align}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) The alignment to apply to grid rows and columns.
 The supported string values are \code{"all"}, \code{"each"}, and \code{"none"}.
@@ -43,13 +43,13 @@ Object values can additionally specify parameters for content sizing and automat
 
 \strong{Default value:} \code{"full"}}
 
-\item{center}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
-
-An object value of the form \code{{"row": boolean, "column": boolean}} can be used to supply different centering values for rows and columns.
+\item{center}{(\emph{TopLevelVConcatSpec, TopLevelHConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
 
 \strong{Default value:} \code{false}
 
-(\emph{TopLevelVConcatSpec, TopLevelHConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
+(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
+
+An object value of the form \code{{"row": boolean, "column": boolean}} can be used to supply different centering values for rows and columns.
 
 \strong{Default value:} \code{false}}
 
@@ -133,13 +133,10 @@ This object is completely ignored by Vega and Vega-Lite and can be used for cust
 \strong{See also:} The documentation for \href{https://vega.github.io/vega-lite/docs/size.html}{width and height} contains more examples.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Add properties to top level of a vega-lite spec. Allows adding
-properties like width, height, background which don't have a
-a specific function for adding them (unlike \code{mark} or \code{encoding}).
-}
-\seealso{
-\code{\link[=vl_chart]{vl_chart()}}, \code{\link[=vl_add_config]{vl_add_config()}}
+Add properties to top level of a vega-lite spec. Allows adding properties
+like width,height, background which don't have a specific function for
+adding them (unlike \code{mark}or \code{encoding}).
 }

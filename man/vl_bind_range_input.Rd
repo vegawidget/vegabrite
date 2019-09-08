@@ -9,7 +9,7 @@ vl_bind_range_input(spec, selection_name, projection_name = NULL,
   name = NULL, step = NULL, type = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{selection_name}{Name of selection to add binding to}
 
@@ -30,8 +30,8 @@ vl_bind_range_input(spec, selection_name, projection_name = NULL,
 \item{type}{(\emph{BindRange})}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Add binding to a range input to a vega-lite spec.
+Add range binding to a vega-lite spec.
 }

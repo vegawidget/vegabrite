@@ -11,7 +11,7 @@ vl_add_title_config(spec, align = NULL, anchor = NULL, angle = NULL,
   orient = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{align}{(\emph{BaseTitleConfig})}
 
@@ -47,7 +47,7 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item{orient}{(\emph{BaseTitleConfig}) Default title orientation (\code{"top"}, \code{"bottom"}, \code{"left"}, or \code{"right"})}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add title config (TitleConfig) to a vega-lite spec.

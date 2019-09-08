@@ -4,6 +4,8 @@
 \alias{axis_encoding}
 \alias{vl_axis_x}
 \alias{vl_axis_y}
+\alias{vl_remove_axis_x}
+\alias{vl_remove_axis_y}
 \title{Add axis to encoding}
 \usage{
 vl_axis_x(spec, bandPosition = NULL, domain = NULL,
@@ -27,7 +29,7 @@ vl_axis_x(spec, bandPosition = NULL, domain = NULL,
   titleColor = NULL, titleFont = NULL, titleFontSize = NULL,
   titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL,
   titleOpacity = NULL, titlePadding = NULL, titleX = NULL,
-  titleY = NULL, values = NULL, zindex = NULL, remove = FALSE)
+  titleY = NULL, values = NULL, zindex = NULL)
 
 vl_axis_y(spec, bandPosition = NULL, domain = NULL,
   domainColor = NULL, domainDash = NULL, domainDashOffset = NULL,
@@ -50,10 +52,14 @@ vl_axis_y(spec, bandPosition = NULL, domain = NULL,
   titleColor = NULL, titleFont = NULL, titleFontSize = NULL,
   titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL,
   titleOpacity = NULL, titlePadding = NULL, titleX = NULL,
-  titleY = NULL, values = NULL, zindex = NULL, remove = FALSE)
+  titleY = NULL, values = NULL, zindex = NULL)
+
+vl_remove_axis_x(spec)
+
+vl_remove_axis_y(spec)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{bandPosition}{(\emph{Axis}) An interpolation fraction indicating where, for \code{band} scales, axis ticks should be positioned. A value of \code{0} places ticks at the left edge of their bands. A value of \code{0.5} places ticks in the middle of their bands.
 
@@ -267,17 +273,10 @@ If zindex is 0, axes should be drawn behind all chart elements.
 To put them in front, use \code{"zindex = 1"}.
 
 \strong{Default value:} \code{1} (in front of the marks) for actual axis and \code{0} (behind the marks) for grids.}
-
-\item{remove}{Remove the axis?}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add axis parameters to an encoding
-}
-\seealso{
-\code{\link[=vl_encode_x]{vl_encode_x()}}
-
-\code{\link[=vl_encode_y]{vl_encode_y()}}
 }

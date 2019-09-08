@@ -12,8 +12,8 @@ vl_make_CalculateTransform(as = NULL, calculate = NULL)
 \item{calculate}{(\emph{CalculateTransform}) A \href{https://vega.github.io/vega-lite/docs/types.html#expression}{expression} string. Use the variable \code{datum} to refer to the current data object.}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a CalculateTransform.
 }
 \description{
-Create spec for CalculateTransform.
+Create spec for {obj}
 }

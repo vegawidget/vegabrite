@@ -29,7 +29,7 @@
 \alias{vl_bin_y2}
 \alias{vl_bin_yError}
 \alias{vl_bin_yError2}
-\title{Add bin transform to encoding}
+\title{Add bin to encoding}
 \usage{
 vl_bin_color(spec, anchor = NULL, base = NULL, binned = NULL,
   divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
@@ -140,7 +140,7 @@ vl_bin_yError2(spec, anchor = NULL, base = NULL, binned = NULL,
   nice = NULL, step = NULL, steps = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{anchor}{(\emph{BinParams}) A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
 
@@ -173,63 +173,8 @@ vl_bin_yError2(spec, anchor = NULL, base = NULL, binned = NULL,
 \item{steps}{(\emph{BinParams}) An array of allowable step sizes to choose from.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Add binning or bin parameters to an encoding
-}
-\seealso{
-\code{\link[=vl_encode_color]{vl_encode_color()}}
-
-\code{\link[=vl_encode_detail]{vl_encode_detail()}}
-
-\code{\link[=vl_encode_fill]{vl_encode_fill()}}
-
-\code{\link[=vl_encode_fillOpacity]{vl_encode_fillOpacity()}}
-
-\code{\link[=vl_encode_href]{vl_encode_href()}}
-
-\code{\link[=vl_encode_key]{vl_encode_key()}}
-
-\code{\link[=vl_encode_latitude]{vl_encode_latitude()}}
-
-\code{\link[=vl_encode_latitude2]{vl_encode_latitude2()}}
-
-\code{\link[=vl_encode_longitude]{vl_encode_longitude()}}
-
-\code{\link[=vl_encode_longitude2]{vl_encode_longitude2()}}
-
-\code{\link[=vl_encode_opacity]{vl_encode_opacity()}}
-
-\code{\link[=vl_encode_order]{vl_encode_order()}}
-
-\code{\link[=vl_encode_shape]{vl_encode_shape()}}
-
-\code{\link[=vl_encode_size]{vl_encode_size()}}
-
-\code{\link[=vl_encode_stroke]{vl_encode_stroke()}}
-
-\code{\link[=vl_encode_strokeOpacity]{vl_encode_strokeOpacity()}}
-
-\code{\link[=vl_encode_strokeWidth]{vl_encode_strokeWidth()}}
-
-\code{\link[=vl_encode_text]{vl_encode_text()}}
-
-\code{\link[=vl_encode_tooltip]{vl_encode_tooltip()}}
-
-\code{\link[=vl_encode_x]{vl_encode_x()}}
-
-\code{\link[=vl_encode_x2]{vl_encode_x2()}}
-
-\code{\link[=vl_encode_xError]{vl_encode_xError()}}
-
-\code{\link[=vl_encode_xError2]{vl_encode_xError2()}}
-
-\code{\link[=vl_encode_y]{vl_encode_y()}}
-
-\code{\link[=vl_encode_y2]{vl_encode_y2()}}
-
-\code{\link[=vl_encode_yError]{vl_encode_yError()}}
-
-\code{\link[=vl_encode_yError2]{vl_encode_yError2()}}
+Add bin parameters to an encoding
 }

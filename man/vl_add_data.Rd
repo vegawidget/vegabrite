@@ -8,7 +8,7 @@ vl_add_data(spec, format = NULL, name = NULL, url = NULL,
   values = NULL, sequence = NULL, sphere = NULL, graticule = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{format}{(\emph{UrlData, InlineData, NamedData}) An object that specifies the format for parsing the data.}
 
@@ -27,8 +27,8 @@ Arrays of primitive values are ingested as objects with a \code{data} property. 
 \item{graticule}{(\emph{GraticuleGenerator}) Generate graticule GeoJSON data for geographic reference lines.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Add data to a vega-lite spec.
+Add data to a vega-lite spec
 }

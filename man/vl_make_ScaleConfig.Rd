@@ -120,8 +120,8 @@ This property only works with aggregate functions that produce values within the
 \strong{Default value:} \code{false}}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a ScaleConfig.
 }
 \description{
-Create spec for ScaleConfig.
+Create spec for {obj}
 }

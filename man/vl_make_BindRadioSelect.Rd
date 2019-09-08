@@ -21,8 +21,8 @@ vl_make_BindRadioSelect(debounce = NULL, element = NULL,
 \item{type}{(\emph{BindRadioSelect})}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a BindRadioSelect.
 }
 \description{
-Create spec for BindRadioSelect.
+Create spec for {obj}
 }

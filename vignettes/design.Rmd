@@ -1,0 +1,87 @@
+---
+title: "Design"
+author: "Alicia Schep"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Design}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# A functional approach to buidling up specs
+
+This package seeks to build up a library of functions that can iteratively build up a Vega-Lite spec. There is an initializer function `vl_chart` that initializes the chart (and can optionally take in values for top-level spec attributes), and then subsequent functions can add various component to a spec -- they take in a spec as input as well as arguments relating to the new component and return a modified spec with the new component. 
+
+
+```{r, eval=FALSE}
+library(vlbuildr)
+
+vl_chart() %>%
+   vl_add_data(values = mtcars) %>%
+   vl_mark_point() %>%
+   vl_encode_x("wt") %>%
+   vl_encode_y("mpg")
+```
+
+
+
+## Underlying objects
+
+At the moment, the various top-level specs are S3 classes that are basically treated as lists.  A few of the internal functions take advantage of the classes to help determine the right way to add a component.
+
+There currently are no classes for any sub-components of a spec, e.g. a class that might correspond to an "Axis" definition from the Vega-Lite spec. Rather, functions build those components as lists, and the validity is checked using the schema.
+
+Moving to an approach where actual classes are defined for each potential object is a possibility. The motivation for such an approach would be cleaner internal handing rather than a substantially different API, as this package would seek to primarily present to users a functional interface for building up specs.  The user-facing aspect that would be most likely to change would be:
+
+
+### Making sub-components
+
+The package currently offer a number of functions prefixed with `vl_make_` such as `vl_make_BinParams` which make a given sub-component of a Vega-Lite spec (what could map to an object if taking a more Object-oriented approach).  These functions are intended to build sub-components that can be passed as arguments to functions that add to a spec. 
+
+However, the intention is to make the functions that add to a spec granular enough that in general most won't need complicated nested objects to be taken in as arguments, so that in most cases these `vl_make_` functions won't be needed.
+
+This part of the API might change, especially if the internal components are reworked to make use of objects corresponding to these sub-components.
+
+## Correctness of specs being built
+
+This package may build incorrect specs if given improper inputs or if not all needed components are added to a spec. Some protection against this has been added by adding sub-schema validation.  When a function adds a component to a spec, it checks that the component is correct. However, it may be possible to add invalid combinations of individual components to a spec.
+
+Potentially validation could also occur prior to printing (to check the validity of the entire spec), but that might be something to add to the vegawdiget package, which handles the printing.  
+
+
+# Construction of the package
+
+## A semi-automated approach to building an API
+
+The functions in this package are build up using a semi-automated approach. A companion package [vlmetabuildr](https://github.com/AliciaSchep/vlmetabuildr) is used to write the functions in the 'zzz_autogen_api.R' file.  
+
+Note that this process is very much **semi**-automated and not fully automated. vlmetabuildr has been made specific for the Vega-lite api and this package and is not a general purpose JSON Schema --> API package.  
+
+Specific patterns for building up an API (e.g. groups of functions) are identified, such as adding an encoding via `vl_encode_<channel>` functions for each channel.  A function for adding an encoding to a spec generally is hand-crafted and built within this package.  The vlmetabuildr package will then make functions for (1) identifying all channels that need such a function, and (2) building up a function for each channel that has the appropriate arguments and documentations pulled from the Vega-lite schema.  
+
+In summary, what **is not** automated includes:
+
+* Identifying what general groups of functions needed for adding to a spec
+* Mapping types of functions with where in the schema to pull the reqiurements
+* The internal functions for adding a category of components to a spec
+
+What **is** automated includes:
+
+* Figuring out all the varieties of a group of functions, e.g. what all the channels are that should get an encode function
+* Adding the right parameters to a function based on the requirements in the schema
+* Adding documentation for parameters based on descriptions from the schema
+
+The parts that are automated would be extremely tedious to do manually. Potentially more of the API construction could be automated, however, the difficulty of the automation would increase substantially and/or the resulting API might be clunkier.
+
+
+## Details
+
+### Build the auto-generated components
+
+There is a script 'build/build.R' that builds the auto-generated components of the package.
+
+### Stucture of 'adder' functions
+
+Most of the auto-generated functions will call an internal function to add the specified component to the spec. Those functions generally take as argument at least three arguments: (1) the old spec, (2) the new object to add (a list), (3) a reference within the schema of what the object corresponds to.  Additionally, more arguments needed to specify how the component should get added might also be included.  The adder function will generally validate the object.  
+

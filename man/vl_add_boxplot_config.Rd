@@ -8,7 +8,7 @@ vl_add_boxplot_config(spec, box = NULL, extent = NULL, median = NULL,
   outliers = NULL, rule = NULL, size = NULL, ticks = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{box}{(\emph{BoxPlotConfig})}
 
@@ -31,7 +31,7 @@ vl_add_boxplot_config(spec, box = NULL, extent = NULL, median = NULL,
 \item{ticks}{(\emph{BoxPlotConfig})}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add boxplot config (BoxPlotConfig) to a vega-lite spec.

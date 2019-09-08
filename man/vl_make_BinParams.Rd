@@ -40,8 +40,8 @@ vl_make_BinParams(anchor = NULL, base = NULL, binned = NULL,
 \item{steps}{(\emph{BinParams}) An array of allowable step sizes to choose from.}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a BinParams.
 }
 \description{
-Create spec for BinParams.
+Create spec for {obj}
 }

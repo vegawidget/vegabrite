@@ -31,8 +31,8 @@ for creating dashed or dotted lines.}
 \item{strokeWidth}{(\emph{BrushConfig}) The stroke width of the interval mark.}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a BrushConfig.
 }
 \description{
-Create spec for BrushConfig.
+Create spec for {obj}
 }

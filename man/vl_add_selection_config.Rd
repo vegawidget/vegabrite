@@ -8,7 +8,7 @@ vl_add_selection_config(spec, interval = NULL, multi = NULL,
   single = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{interval}{(\emph{SelectionConfig}) The default definition for an \href{https://vega.github.io/vega-lite/docs/selection.html#type}{interval} selection. All properties and transformations
 for an interval selection definition (except \code{type}) may be specified here.
@@ -28,7 +28,7 @@ for a single selection definition (except \code{type}) may be specified here.
 For instance, setting \code{single} to \code{{"on": "dblclick"}} populates single selections on double-click by default.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add selection config (SelectionConfig) to a vega-lite spec.

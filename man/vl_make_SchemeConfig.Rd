@@ -14,8 +14,8 @@ vl_make_SchemeConfig(count = NULL, extent = NULL, scheme = NULL)
 \item{scheme}{(\emph{SchemeConfig})}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a SchemeConfig.
 }
 \description{
-Create spec for SchemeConfig.
+Create spec for {obj}
 }

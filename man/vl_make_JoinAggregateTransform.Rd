@@ -12,8 +12,8 @@ vl_make_JoinAggregateTransform(groupby = NULL, joinaggregate = NULL)
 \item{joinaggregate}{(\emph{JoinAggregateTransform}) The definition of the fields in the join aggregate, and what calculations to use.}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a JoinAggregateTransform.
 }
 \description{
-Create spec for JoinAggregateTransform.
+Create spec for {obj}
 }

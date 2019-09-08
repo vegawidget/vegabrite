@@ -7,14 +7,14 @@
 vl_joinaggregate(spec, groupby = NULL, joinaggregate = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{groupby}{(\emph{JoinAggregateTransform}) The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group.}
 
 \item{joinaggregate}{(\emph{JoinAggregateTransform}) The definition of the fields in the join aggregate, and what calculations to use.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add JoinAggregateTransform to a vega-lite spec.

@@ -7,16 +7,13 @@
 vl_repeat_col(spec, ...)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{...}{fields to use for repeat (strings)}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Add repeating by col to a vega-lite spec.
-}
-\seealso{
-\code{\link[=vl_repeat_row]{vl_repeat_row()}}, \code{\link[=vl_repeat_wrap]{vl_repeat_wrap()}}
+Add repeat to a vega-lite spec.
 }

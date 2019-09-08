@@ -23,8 +23,8 @@ If a single string(eg."val") is provided, the end field will be "val_end".}
 \item{stack}{(\emph{StackTransform}) The field which is stacked.}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a StackTransform.
 }
 \description{
-Create spec for StackTransform.
+Create spec for {obj}
 }

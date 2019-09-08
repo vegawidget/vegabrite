@@ -25,8 +25,8 @@ for a single selection definition (except \code{type}) may be specified here.
 For instance, setting \code{single} to \code{{"on": "dblclick"}} populates single selections on double-click by default.}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a SelectionConfig.
 }
 \description{
-Create spec for SelectionConfig.
+Create spec for {obj}
 }

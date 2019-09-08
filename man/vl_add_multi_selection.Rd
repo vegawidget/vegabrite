@@ -6,12 +6,13 @@
 \usage{
 vl_add_multi_selection(spec, selection_name, clear = NULL,
   empty = NULL, encodings = NULL, fields = NULL, init = NULL,
-  nearest = NULL, on = NULL, resolve = NULL, toggle = NULL)
+  nearest = NULL, on = NULL, resolve = NULL, toggle = NULL,
+  type = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
-\item{selection_name}{Name of selection}
+\item{selection_name}{Name for selection}
 
 \item{clear}{(\emph{MultiSelection}) Clears the selection, emptying it of all values. Can be an
 \href{https://vega.github.io/vega/docs/event-streams/}{EventStream} or \code{false} to disable.
@@ -52,9 +53,11 @@ multi selections. Can be \code{true}, \code{false} (for insertion only), or a
 data values are toggled when a user interacts with the shift-key pressed).
 
 See the \href{https://vega.github.io/vega-lite/docs/toggle.html}{toggle transform} documentation for more information.}
+
+\item{type}{(\emph{MultiSelection}) multi}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add MultiSelection to a vega-lite spec.

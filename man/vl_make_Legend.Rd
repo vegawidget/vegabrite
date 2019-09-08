@@ -164,7 +164,7 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 \strong{Default value:} \code{1.5}.}
 
 \item{symbolType}{(\emph{Legend}) Default shape type (such as "circle") for legend symbols.
-Can be one of ``"circle"\code{,}"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+Can be one of ``"circle"\code{, }"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
 \itemize{
 \item In addition to a set of built-in shapes, custom shapes can be defined using \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path strings}.
 \item 
@@ -232,8 +232,8 @@ If zindex is 0, legend should be drawn behind all chart elements.
 To put them in front, use zindex = 1.}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a Legend.
 }
 \description{
-Create spec for Legend.
+Create spec for {obj}
 }

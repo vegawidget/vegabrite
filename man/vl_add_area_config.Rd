@@ -18,7 +18,7 @@ vl_add_area_config(spec, align = NULL, angle = NULL, baseline = NULL,
   x = NULL, x2 = NULL, y = NULL, y2 = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{align}{(\emph{AreaConfig}) The horizontal alignment of the text. One of \code{"left"}, \code{"right"}, \code{"center"}.}
 
@@ -200,7 +200,7 @@ therefore explicitly specified value will be ignored.
 \item{y2}{(\emph{AreaConfig}) Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add area config (AreaConfig) to a vega-lite spec.

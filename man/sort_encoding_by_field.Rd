@@ -44,7 +44,7 @@ vl_sort_x_by_field(spec, field = NULL, op = NULL, order = NULL)
 vl_sort_y_by_field(spec, field = NULL, op = NULL, order = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{field}{(\emph{EncodingSortField}) The data \href{https://vega.github.io/vega-lite/docs/field.html}{field} to sort by.
 
@@ -61,11 +61,8 @@ For a full list of operations, please see the documentation for \href{https://ve
 \item{order}{(\emph{EncodingSortField}) The sort order. One of \code{"ascending"} (default), \code{"descending"}, or \code{null} (no not sort).}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add sort by field parameters to an encoding
-}
-\seealso{
-\code{\link[=sort_encoding]{sort_encoding()}} and \code{\link[=sort_encoding_by_encoding]{sort_encoding_by_encoding()}}
 }

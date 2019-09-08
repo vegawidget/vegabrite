@@ -7,12 +7,12 @@
 vl_add_interval_selection(spec, selection_name, bind = NULL,
   clear = NULL, empty = NULL, encodings = NULL, fields = NULL,
   init = NULL, mark = NULL, on = NULL, resolve = NULL,
-  translate = NULL, zoom = NULL)
+  translate = NULL, type = NULL, zoom = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
-\item{selection_name}{Name of selection}
+\item{selection_name}{Name for selection}
 
 \item{bind}{(\emph{IntervalSelection}) Establishes a two-way binding between the interval selection and the scales
 used within the same view. This allows a user to interactively pan and
@@ -57,6 +57,8 @@ which must include a start and end event to trigger continuous panning.
 \code{[mousedown, window:mouseup] > window:mousemove!} which corresponds to
 clicks and dragging within an interval selection to reposition it.}
 
+\item{type}{(\emph{IntervalSelection}) interval}
+
 \item{zoom}{(\emph{IntervalSelection}) When truthy, allows a user to interactively resize an interval selection.
 Can be \code{true}, \code{false} (to disable zooming), or a \href{https://vega.github.io/vega/docs/event-streams/}{Vega event stream definition}. Currently,
 only \code{wheel} events are supported.
@@ -64,7 +66,7 @@ only \code{wheel} events are supported.
 \strong{Default value:} \code{true}, which corresponds to \code{wheel!}.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add IntervalSelection to a vega-lite spec.

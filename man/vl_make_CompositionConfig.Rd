@@ -29,8 +29,8 @@ vl_make_CompositionConfig(columns = NULL, spacing = NULL)
 \strong{Default value}: \code{20}}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a CompositionConfig.
 }
 \description{
-Create spec for CompositionConfig.
+Create spec for {obj}
 }

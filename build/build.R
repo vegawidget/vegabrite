@@ -1,6 +1,9 @@
 library("vlmetabuildr")
+library("here")
 
-schema_file <- Sys.glob(file.path(system.file("schema/vega-lite", package = "vegawidget"),"*.json"))
+dir_schema <- here("inst", "schema")
+
+schema_file <- Sys.glob(file.path(dir_schema,"*.json"))
 VL_SCHEMA <- jsonlite::read_json(schema_file)
 
 r_api <- create_api(VL_SCHEMA)

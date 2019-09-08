@@ -1,9 +1,3 @@
-#' vl_chart
-#'
-#' Initialize a Vega-Lite specification! Can add any top level configuration 
-#' parameters, or simply call without arguments to initialize and then use other
-#' function (like [vl_mark_point()], [vl_encode_x()], etc) to add on the various
-#' pieces of the chart spec. 
 #' @param $schema (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec_) URL to [JSON schema](http://json-schema.org/) for a Vega-Lite specification. Unless you have a reason to change this, use `https://vega.github.io/schema/vega-lite/v3.json`. Setting the `$schema` property allows automatic validation and autocomplete in editors that support JSON schema.
 #' @param align (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec_) The alignment to apply to grid rows and columns.
 #' The supported string values are `"all"`, `"each"`, and `"none"`.
@@ -29,13 +23,13 @@
 #' - If set to `flush`, only the specified width and height values for the sub-view will be used. The `flush` setting can be useful when attempting to place sub-plots without axes or legends into a uniform grid structure.
 #' 
 #' __Default value:__ `"full"`
-#' @param center (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec_) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
-#' 
-#' An object value of the form `{"row": boolean, "column": boolean}` can be used to supply different centering values for rows and columns.
+#' @param center (_TopLevelVConcatSpec, TopLevelHConcatSpec_) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
 #' 
 #' __Default value:__ `false`
 #' 
-#' (_TopLevelVConcatSpec, TopLevelHConcatSpec_) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
+#' (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec_) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
+#' 
+#' An object value of the form `{"row": boolean, "column": boolean}` can be used to supply different centering values for rows and columns.
 #' 
 #' __Default value:__ `false`
 #' @param columns (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec_) The number of columns to include in the view composition layout.
@@ -123,30 +117,21 @@
 #' @param concat (_TopLevelConcatSpec_) A list of views to be concatenated.
 #' @param vconcat (_TopLevelVConcatSpec_) A list of views to be concatenated and put into a column.
 #' @param hconcat (_TopLevelHConcatSpec_) A list of views to be concatenated and put into a row.
-#'
-#' @return A vega-lite spec, as an S3 object of class vegaspec_vega_lite
-#'  using [vegawidget::as_vegaspec()]
-#' @export
-#' @importFrom utils hasName
-#' @examples 
+#' @name vl_chart
+vl_chart <- function(data = NULL, `$schema` = vegawidget::vega_schema(), align = NULL, autosize = NULL, background = NULL, bounds = NULL, center = NULL, columns = NULL, config = NULL, datasets = NULL, description = NULL, encoding = NULL, height = NULL, mark = NULL, name = NULL, padding = NULL, projection = NULL, resolve = NULL, selection = NULL, spacing = NULL, title = NULL, transform = NULL, usermeta = NULL, view = NULL, width = NULL, facet = NULL, spec = NULL, layer = NULL, `repeat` = NULL, concat = NULL, vconcat = NULL, hconcat = NULL){
+args <- .modify_args(NULL, c("$schema", "align", "autosize", "background", "bounds", "center", "columns", 
+  "config", "data", "datasets", "description", "encoding", "height", "mark", "name", 
+  "padding", "projection", "resolve", "selection", "spacing", "title", "transform", 
+  "usermeta", "view", "width", "facet", "spec", "layer", "repeat", "concat", "vconcat", 
+  "hconcat"))
+as_vegaspec(args$obj)
+} 
+#' vl_add_properties
 #' 
-#' vl_chart() %>%
-#'   vl_add_data(values = mtcars) %>%
-#'   vl_mark_point() %>%
-#'   vl_encode_x("wt") %>%
-#'   vl_encode_y("mpg") 
-vl_chart <- function(data = NULL, `$schema` = vegawidget::vega_schema(), align = NULL, autosize = NULL, background = NULL, bounds = NULL, center = NULL, columns = NULL, config = NULL, datasets = NULL, description = NULL, encoding = NULL, height = NULL, mark = NULL, name = NULL, padding = NULL, projection = NULL, resolve = NULL, selection = NULL, spacing = NULL, title = NULL, transform = NULL, usermeta = NULL, view = NULL, width = NULL, facet = NULL, spec = NULL, layer = NULL, `repeat` = NULL, concat = NULL, vconcat = NULL, hconcat = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  vegawidget::as_vegaspec(args_out)
-}
- #' vl_add_properties
-#' 
-#' Add properties to top level of a vega-lite spec. Allows adding
-#' properties like width, height, background which don't have a
-#' a specific function for adding them (unlike `mark` or `encoding`).
-#' @param spec A vega-lite spec.
+#' Add properties to top level of a vega-lite spec. Allows adding properties
+#' like width,height, background which don't have a specific function for
+#' adding them (unlike `mark`or `encoding`).
+#' @param spec An input vega-lite spec
 #' @param align (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec_) The alignment to apply to grid rows and columns.
 #' The supported string values are `"all"`, `"each"`, and `"none"`.
 #' 
@@ -171,13 +156,13 @@ vl_chart <- function(data = NULL, `$schema` = vegawidget::vega_schema(), align =
 #' - If set to `flush`, only the specified width and height values for the sub-view will be used. The `flush` setting can be useful when attempting to place sub-plots without axes or legends into a uniform grid structure.
 #' 
 #' __Default value:__ `"full"`
-#' @param center (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec_) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
-#' 
-#' An object value of the form `{"row": boolean, "column": boolean}` can be used to supply different centering values for rows and columns.
+#' @param center (_TopLevelVConcatSpec, TopLevelHConcatSpec_) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
 #' 
 #' __Default value:__ `false`
 #' 
-#' (_TopLevelVConcatSpec, TopLevelHConcatSpec_) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
+#' (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec_) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
+#' 
+#' An object value of the form `{"row": boolean, "column": boolean}` can be used to supply different centering values for rows and columns.
 #' 
 #' __Default value:__ `false`
 #' @param columns (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec_) The number of columns to include in the view composition layout.
@@ -240,20 +225,21 @@ vl_chart <- function(data = NULL, `$schema` = vegawidget::vega_schema(), align =
 #' __Note:__ For plots with [`row` and `column` channels](https://vega.github.io/vega-lite/docs/encoding.html#facet), this represents the width of a single view.
 #' 
 #' __See also:__ The documentation for [width and height](https://vega.github.io/vega-lite/docs/size.html) contains more examples.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_chart()], [vl_add_config()]
-vl_add_properties <- function(spec, align = NULL, autosize = NULL, background = NULL, bounds = NULL, center = NULL, columns = NULL, datasets = NULL, description = NULL, height = NULL, name = NULL, padding = NULL, projection = NULL, spacing = NULL, title = NULL, usermeta = NULL, view = NULL, width = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  #'
-  rlang::exec(.add_properties, !!!args_out)
-}
- #' vl_add_data
+
+vl_add_properties <- function(spec, align = NULL, autosize = NULL, background = NULL, bounds = NULL, center = NULL, columns = NULL, datasets = NULL, description = NULL, height = NULL, name = NULL, padding = NULL, projection = NULL, spacing = NULL, title = NULL, usermeta = NULL, view = NULL, width = NULL){
+  args <- .modify_args(NULL, c("$schema", "align", "autosize", "background", "bounds", "center", "columns", 
+  "config", "data", "datasets", "description", "encoding", "height", "mark", "name", 
+  "padding", "projection", "resolve", "selection", "spacing", "title", "transform", 
+  "usermeta", "view", "width", "facet", "spec", "layer", "repeat", "concat", "vconcat", 
+  "hconcat"))
+  .add_properties(args$spec, args$object, '#/definitions/TopLevelSpec')
+} 
+#' vl_add_data
 #' 
-#' Add data to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' Add data to a vega-lite spec
+#' @param spec An input vega-lite spec
 #' @param format (_UrlData, InlineData, NamedData_) An object that specifies the format for parsing the data.
 #' @param name (_UrlData, InlineData, NamedData, SequenceGenerator, SphereGenerator, GraticuleGenerator_) Provide a placeholder name and bind data at runtime.
 #' @param url (_UrlData_) An URL from which to load the data set. Use the `format.type` property
@@ -263,123 +249,17 @@ vl_add_properties <- function(spec, align = NULL, autosize = NULL, background = 
 #' @param sequence (_SequenceGenerator_) Generate a sequence of numbers.
 #' @param sphere (_SphereGenerator_) Generate sphere GeoJSON data for the full globe.
 #' @param graticule (_GraticuleGenerator_) Generate graticule GeoJSON data for geographic reference lines.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
+
+vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = NULL, sequence = NULL, sphere = NULL, graticule = NULL){
+  args <- .modify_args(NULL, c("format", "name", "url", "values", "sequence", "sphere", "graticule"))
+  .add_data(args$spec, args$object, '#/definitions/Data')
+} 
+#' vl_mark_area
+#' 
 #'
-vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = NULL, sequence = NULL, sphere = NULL, graticule = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  #'
-  rlang::exec(.add_data, !!!args_out)
-}
- 
-#' vl_mark
-#' 
-#' Add a mark to a vega-lite spec.
-#' @param spec A vega-lite spec
-#' @param box (_BoxPlotDef_)  
-#' @param clip (_BoxPlotDef, ErrorBarDef, ErrorBandDef_) Whether a composite mark be clipped to the enclosing group’s width and height.
-#' 
-#' (_MarkDef_) Whether a mark be clipped to the enclosing group’s width and height.
-#' @param color (_BoxPlotDef, ErrorBarDef, ErrorBandDef, MarkDef_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
-#' 
-#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
-#' 
-#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
-#' @param extent (_ErrorBandDef_) The extent of the band. Available options include:
-#' - `"ci"`: Extend the band to the confidence interval of the mean.
-#' - `"stderr"`: The size of band are set to the value of standard error, extending from the mean.
-#' - `"stdev"`: The size of band are set to the value of standard deviation, extending from the mean.
-#' - `"iqr"`: Extend the band to the q1 and q3.
-#' 
-#' __Default value:__ `"stderr"`.
-#' 
-#' (_ErrorBarDef_) The extent of the rule. Available options include:
-#' - `"ci"`: Extend the rule to the confidence interval of the mean.
-#' - `"stderr"`: The size of rule are set to the value of standard error, extending from the mean.
-#' - `"stdev"`: The size of rule are set to the value of standard deviation, extending from the mean.
-#' - `"iqr"`: Extend the rule to the q1 and q3.
-#' 
-#' __Default value:__ `"stderr"`.
-#' 
-#' (_BoxPlotDef_) The extent of the whiskers. Available options include:
-#' - `"min-max"`: min and max are the lower and upper whiskers respectively.
-#' - A number representing multiple of the interquartile range.  This number will be multiplied by the IQR to determine whisker boundary, which spans from the smallest data to the largest data within the range _\[Q1 - k * IQR, Q3 + k * IQR\]_ where _Q1_ and _Q3_ are the first and third quartiles while _IQR_ is the interquartile range (_Q3-Q1_).
-#' 
-#' __Default value:__ `1.5`.
-#' @param median (_BoxPlotDef_)  
-#' @param opacity (_BoxPlotDef, ErrorBarDef, ErrorBandDef_) The opacity (value between \[0,1\]) of the mark.
-#' 
-#' (_MarkDef_) The overall opacity (value between \[0,1\]).
-#' 
-#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
-#' @param orient (_BoxPlotDef_) Orientation of the box plot.  This is normally automatically determined based on types of fields on x and y channels. However, an explicit `orient` be specified when the orientation is ambiguous.
-#' 
-#' __Default value:__ `"vertical"`.
-#' 
-#' (_ErrorBandDef_) Orientation of the error band. This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.
-#' 
-#' (_ErrorBarDef_) Orientation of the error bar.  This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.
-#' 
-#' (_MarkDef_) The orientation of a non-stacked bar, tick, area, and line charts.
-#' The value is either horizontal (default) or vertical.
-#' - For bar, rule and tick, this determines whether the size of the bar and tick
-#' should be applied to x or y dimension.
-#' - For area, this property determines the orient property of the Vega output.
-#' - For line and trail marks, this property determines the sort order of the points in the line
-#' if `config.sortLineBy` is not specified.
-#' For stacked charts, this is always determined by the orientation of the stack;
-#' therefore explicitly specified value will be ignored.
-#' @param outliers (_BoxPlotDef_)  
-#' @param rule (_BoxPlotDef, ErrorBarDef_)  
-#' @param size (_MarkDef_) Default size for marks.
-#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
-#' - For `bar`, this represents the band size of the bar, in pixels.
-#' - For `text`, this represents the font size, in pixels.
-#' 
-#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
-#' 
-#' (_BoxPlotDef_) Size of the box and median tick of a box plot
-#' @param ticks (_BoxPlotDef, ErrorBarDef_)  
-#' @param type (_BoxPlotDef, ErrorBarDef, ErrorBandDef, MarkDef_) The mark type. This could a primitive mark type
-#' (one of `"bar"`, `"circle"`, `"square"`, `"tick"`, `"line"`,
-#' `"area"`, `"point"`, `"geoshape"`, `"rule"`, and `"text"`)
-#' or a composite mark type (`"boxplot"`, `"errorband"`, `"errorbar"`).
-#' @param band (_ErrorBandDef_)  
-#' @param borders (_ErrorBandDef_)  
-#' @param interpolate (_ErrorBandDef_) The line interpolation method for the error band. One of the following:
-#' - `"linear"`: piecewise linear segments, as in a polyline.
-#' - `"linear-closed"`: close the linear segments to form a polygon.
-#' - `"step"`: a piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes at the midpoint of each pair of adjacent x-values.
-#' - `"step-before"`: a piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes before the x-value.
-#' - `"step-after"`: a piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes after the x-value.
-#' - `"basis"`: a B-spline, with control point duplication on the ends.
-#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
-#' - `"basis-closed"`: a closed B-spline, as in a loop.
-#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
-#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
-#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
-#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
-#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
-#' 
-#' (_MarkDef_) The line interpolation method to use for line and area marks. One of the following:
-#' - `"linear"`: piecewise linear segments, as in a polyline.
-#' - `"linear-closed"`: close the linear segments to form a polygon.
-#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
-#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
-#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
-#' - `"basis"`: a B-spline, with control point duplication on the ends.
-#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
-#' - `"basis-closed"`: a closed B-spline, as in a loop.
-#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
-#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
-#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
-#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
-#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
-#' @param tension (_MarkDef_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
-#' 
-#' (_ErrorBandDef_) The tension parameter for the interpolation type of the error band.
+#' @param spec An input vega-lite spec
 #' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_MarkDef_) The rotation angle of the text, in degrees.
 #' @param baseline (_MarkDef_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -388,6 +268,12 @@ vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = N
 #' @param binSpacing (_MarkDef_) Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
 #' 
 #' __Default value:__ `1`
+#' @param clip (_MarkDef_) Whether a mark be clipped to the enclosing group’s width and height.
+#' @param color (_MarkDef_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
 #' @param cornerRadius (_MarkDef_) The radius in pixels of rounded rectangle corners.
 #' 
 #' __Default value:__ `0`
@@ -417,6 +303,20 @@ vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = N
 #' @param fontWeight (_MarkDef_) The font weight.
 #' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
 #' @param href (_MarkDef_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkDef_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
 #' @param limit (_MarkDef_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
 #' 
 #' __Default value:__ `0`, indicating no limit
@@ -427,7 +327,19 @@ vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = N
 #' - If this value is `false`, no lines would be automatically added to area marks.
 #' 
 #' __Default value:__ `false`.
+#' @param opacity (_MarkDef_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
 #' @param order (_MarkDef_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkDef_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
 #' @param point (_MarkDef_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
 #' 
 #' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
@@ -445,6 +357,12 @@ vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = N
 #' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
 #' 
 #' __Default value:__ `"circle"`
+#' @param size (_MarkDef_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
 #' @param stroke (_MarkDef_) Default Stroke Color.  This has higher precedence than `config.color`
 #' 
 #' __Default value:__ (None)
@@ -465,6 +383,7 @@ vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = N
 #' 
 #' __Default value:__ The mark's name.  For example, a bar mark will have style `"bar"` by default.
 #' __Note:__ Any specified style will augment the default style. For example, a bar mark with `"style": "foo"` will receive from `config.style.bar` and `config.style.foo` (the specified style `"foo"` has higher precedence).
+#' @param tension (_MarkDef_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
 #' @param text (_MarkDef_) Placeholder text if the `text` channel is not specified
 #' @param theta (_MarkDef_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
 #' @param thickness (_MarkDef_) Thickness of the tick mark.
@@ -483,169 +402,1889 @@ vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = N
 #' @param y2 (_MarkDef_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y2Offset (_MarkDef_) Offset for y2-position.
 #' @param yOffset (_MarkDef_) Offset for y-position.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @name vl_mark
-vl_mark <- function(spec, box = NULL, clip = NULL, color = NULL, extent = NULL, median = NULL, opacity = NULL, orient = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL, type = NULL, band = NULL, borders = NULL, interpolate = NULL, tension = NULL, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, limit = NULL, line = NULL, order = NULL, point = NULL, radius = NULL, shape = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+
+vl_mark_area <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+  args <- .modify_args(list(type = "area"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
+  "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
+  "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", 
+  "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", 
+  "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
+  "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
+  "yOffset"))
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+} 
+#' vl_mark_bar
+#' 
+#'
+#' @param spec An input vega-lite spec
+#' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkDef_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkDef_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param binSpacing (_MarkDef_) Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
+#' 
+#' __Default value:__ `1`
+#' @param clip (_MarkDef_) Whether a mark be clipped to the enclosing group’s width and height.
+#' @param color (_MarkDef_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkDef_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkDef_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkDef_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkDef_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkDef_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkDef_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkDef_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkDef_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkDef_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkDef_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkDef_) The font size, in pixels.
+#' @param fontStyle (_MarkDef_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkDef_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkDef_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkDef_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkDef_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param line (_MarkDef_) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
+#' 
+#' - If this value is an empty object (`{}`) or `true`, lines with default properties will be used.
+#' 
+#' - If this value is `false`, no lines would be automatically added to area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param opacity (_MarkDef_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkDef_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkDef_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param point (_MarkDef_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param radius (_MarkDef_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkDef_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkDef_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkDef_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkDef_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkDef_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkDef_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkDef_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkDef_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkDef_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkDef_) The stroke width, in pixels.
+#' @param style (_MarkDef_) A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the [style configuration](https://vega.github.io/vega-lite/docs/mark.html#style-config). If style is an array, later styles will override earlier styles. Any [mark properties](https://vega.github.io/vega-lite/docs/encoding.html#mark-prop) explicitly defined within the `encoding` will override a style default.
+#' 
+#' __Default value:__ The mark's name.  For example, a bar mark will have style `"bar"` by default.
+#' __Note:__ Any specified style will augment the default style. For example, a bar mark with `"style": "foo"` will receive from `config.style.bar` and `config.style.foo` (the specified style `"foo"` has higher precedence).
+#' @param tension (_MarkDef_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkDef_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkDef_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param thickness (_MarkDef_) Thickness of the tick mark.
+#' 
+#' __Default value:__  `1`
+#' @param tooltip (_MarkDef_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkDef_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkDef_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param x2Offset (_MarkDef_) Offset for x2-position.
+#' @param xOffset (_MarkDef_) Offset for x-position.
+#' @param y (_MarkDef_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkDef_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y2Offset (_MarkDef_) Offset for y2-position.
+#' @param yOffset (_MarkDef_) Offset for y-position.
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_area <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'area'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+
+vl_mark_bar <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+  args <- .modify_args(list(type = "bar"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
+  "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
+  "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", 
+  "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", 
+  "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
+  "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
+  "yOffset"))
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+} 
+#' vl_mark_line
+#' 
+#'
+#' @param spec An input vega-lite spec
+#' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkDef_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkDef_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param binSpacing (_MarkDef_) Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
+#' 
+#' __Default value:__ `1`
+#' @param clip (_MarkDef_) Whether a mark be clipped to the enclosing group’s width and height.
+#' @param color (_MarkDef_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkDef_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkDef_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkDef_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkDef_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkDef_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkDef_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkDef_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkDef_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkDef_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkDef_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkDef_) The font size, in pixels.
+#' @param fontStyle (_MarkDef_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkDef_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkDef_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkDef_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkDef_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param line (_MarkDef_) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
+#' 
+#' - If this value is an empty object (`{}`) or `true`, lines with default properties will be used.
+#' 
+#' - If this value is `false`, no lines would be automatically added to area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param opacity (_MarkDef_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkDef_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkDef_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param point (_MarkDef_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param radius (_MarkDef_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkDef_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkDef_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkDef_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkDef_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkDef_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkDef_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkDef_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkDef_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkDef_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkDef_) The stroke width, in pixels.
+#' @param style (_MarkDef_) A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the [style configuration](https://vega.github.io/vega-lite/docs/mark.html#style-config). If style is an array, later styles will override earlier styles. Any [mark properties](https://vega.github.io/vega-lite/docs/encoding.html#mark-prop) explicitly defined within the `encoding` will override a style default.
+#' 
+#' __Default value:__ The mark's name.  For example, a bar mark will have style `"bar"` by default.
+#' __Note:__ Any specified style will augment the default style. For example, a bar mark with `"style": "foo"` will receive from `config.style.bar` and `config.style.foo` (the specified style `"foo"` has higher precedence).
+#' @param tension (_MarkDef_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkDef_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkDef_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param thickness (_MarkDef_) Thickness of the tick mark.
+#' 
+#' __Default value:__  `1`
+#' @param tooltip (_MarkDef_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkDef_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkDef_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param x2Offset (_MarkDef_) Offset for x2-position.
+#' @param xOffset (_MarkDef_) Offset for x-position.
+#' @param y (_MarkDef_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkDef_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y2Offset (_MarkDef_) Offset for y2-position.
+#' @param yOffset (_MarkDef_) Offset for y-position.
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_bar <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'bar'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+
+vl_mark_line <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+  args <- .modify_args(list(type = "line"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
+  "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
+  "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", 
+  "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", 
+  "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
+  "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
+  "yOffset"))
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+} 
+#' vl_mark_trail
+#' 
+#'
+#' @param spec An input vega-lite spec
+#' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkDef_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkDef_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param binSpacing (_MarkDef_) Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
+#' 
+#' __Default value:__ `1`
+#' @param clip (_MarkDef_) Whether a mark be clipped to the enclosing group’s width and height.
+#' @param color (_MarkDef_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkDef_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkDef_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkDef_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkDef_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkDef_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkDef_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkDef_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkDef_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkDef_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkDef_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkDef_) The font size, in pixels.
+#' @param fontStyle (_MarkDef_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkDef_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkDef_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkDef_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkDef_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param line (_MarkDef_) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
+#' 
+#' - If this value is an empty object (`{}`) or `true`, lines with default properties will be used.
+#' 
+#' - If this value is `false`, no lines would be automatically added to area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param opacity (_MarkDef_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkDef_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkDef_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param point (_MarkDef_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param radius (_MarkDef_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkDef_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkDef_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkDef_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkDef_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkDef_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkDef_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkDef_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkDef_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkDef_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkDef_) The stroke width, in pixels.
+#' @param style (_MarkDef_) A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the [style configuration](https://vega.github.io/vega-lite/docs/mark.html#style-config). If style is an array, later styles will override earlier styles. Any [mark properties](https://vega.github.io/vega-lite/docs/encoding.html#mark-prop) explicitly defined within the `encoding` will override a style default.
+#' 
+#' __Default value:__ The mark's name.  For example, a bar mark will have style `"bar"` by default.
+#' __Note:__ Any specified style will augment the default style. For example, a bar mark with `"style": "foo"` will receive from `config.style.bar` and `config.style.foo` (the specified style `"foo"` has higher precedence).
+#' @param tension (_MarkDef_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkDef_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkDef_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param thickness (_MarkDef_) Thickness of the tick mark.
+#' 
+#' __Default value:__  `1`
+#' @param tooltip (_MarkDef_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkDef_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkDef_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param x2Offset (_MarkDef_) Offset for x2-position.
+#' @param xOffset (_MarkDef_) Offset for x-position.
+#' @param y (_MarkDef_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkDef_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y2Offset (_MarkDef_) Offset for y2-position.
+#' @param yOffset (_MarkDef_) Offset for y-position.
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_line <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'line'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+
+vl_mark_trail <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+  args <- .modify_args(list(type = "trail"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
+  "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
+  "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", 
+  "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", 
+  "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
+  "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
+  "yOffset"))
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+} 
+#' vl_mark_point
+#' 
+#'
+#' @param spec An input vega-lite spec
+#' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkDef_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkDef_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param binSpacing (_MarkDef_) Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
+#' 
+#' __Default value:__ `1`
+#' @param clip (_MarkDef_) Whether a mark be clipped to the enclosing group’s width and height.
+#' @param color (_MarkDef_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkDef_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkDef_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkDef_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkDef_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkDef_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkDef_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkDef_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkDef_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkDef_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkDef_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkDef_) The font size, in pixels.
+#' @param fontStyle (_MarkDef_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkDef_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkDef_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkDef_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkDef_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param line (_MarkDef_) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
+#' 
+#' - If this value is an empty object (`{}`) or `true`, lines with default properties will be used.
+#' 
+#' - If this value is `false`, no lines would be automatically added to area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param opacity (_MarkDef_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkDef_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkDef_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param point (_MarkDef_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param radius (_MarkDef_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkDef_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkDef_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkDef_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkDef_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkDef_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkDef_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkDef_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkDef_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkDef_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkDef_) The stroke width, in pixels.
+#' @param style (_MarkDef_) A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the [style configuration](https://vega.github.io/vega-lite/docs/mark.html#style-config). If style is an array, later styles will override earlier styles. Any [mark properties](https://vega.github.io/vega-lite/docs/encoding.html#mark-prop) explicitly defined within the `encoding` will override a style default.
+#' 
+#' __Default value:__ The mark's name.  For example, a bar mark will have style `"bar"` by default.
+#' __Note:__ Any specified style will augment the default style. For example, a bar mark with `"style": "foo"` will receive from `config.style.bar` and `config.style.foo` (the specified style `"foo"` has higher precedence).
+#' @param tension (_MarkDef_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkDef_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkDef_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param thickness (_MarkDef_) Thickness of the tick mark.
+#' 
+#' __Default value:__  `1`
+#' @param tooltip (_MarkDef_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkDef_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkDef_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param x2Offset (_MarkDef_) Offset for x2-position.
+#' @param xOffset (_MarkDef_) Offset for x-position.
+#' @param y (_MarkDef_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkDef_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y2Offset (_MarkDef_) Offset for y2-position.
+#' @param yOffset (_MarkDef_) Offset for y-position.
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_trail <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'trail'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+
+vl_mark_point <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+  args <- .modify_args(list(type = "point"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
+  "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
+  "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", 
+  "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", 
+  "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
+  "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
+  "yOffset"))
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+} 
+#' vl_mark_text
+#' 
+#'
+#' @param spec An input vega-lite spec
+#' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkDef_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkDef_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param binSpacing (_MarkDef_) Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
+#' 
+#' __Default value:__ `1`
+#' @param clip (_MarkDef_) Whether a mark be clipped to the enclosing group’s width and height.
+#' @param color (_MarkDef_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkDef_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkDef_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkDef_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkDef_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkDef_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkDef_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkDef_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkDef_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkDef_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkDef_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkDef_) The font size, in pixels.
+#' @param fontStyle (_MarkDef_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkDef_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkDef_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkDef_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkDef_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param line (_MarkDef_) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
+#' 
+#' - If this value is an empty object (`{}`) or `true`, lines with default properties will be used.
+#' 
+#' - If this value is `false`, no lines would be automatically added to area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param opacity (_MarkDef_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkDef_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkDef_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param point (_MarkDef_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param radius (_MarkDef_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkDef_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkDef_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkDef_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkDef_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkDef_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkDef_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkDef_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkDef_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkDef_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkDef_) The stroke width, in pixels.
+#' @param style (_MarkDef_) A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the [style configuration](https://vega.github.io/vega-lite/docs/mark.html#style-config). If style is an array, later styles will override earlier styles. Any [mark properties](https://vega.github.io/vega-lite/docs/encoding.html#mark-prop) explicitly defined within the `encoding` will override a style default.
+#' 
+#' __Default value:__ The mark's name.  For example, a bar mark will have style `"bar"` by default.
+#' __Note:__ Any specified style will augment the default style. For example, a bar mark with `"style": "foo"` will receive from `config.style.bar` and `config.style.foo` (the specified style `"foo"` has higher precedence).
+#' @param tension (_MarkDef_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkDef_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkDef_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param thickness (_MarkDef_) Thickness of the tick mark.
+#' 
+#' __Default value:__  `1`
+#' @param tooltip (_MarkDef_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkDef_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkDef_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param x2Offset (_MarkDef_) Offset for x2-position.
+#' @param xOffset (_MarkDef_) Offset for x-position.
+#' @param y (_MarkDef_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkDef_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y2Offset (_MarkDef_) Offset for y2-position.
+#' @param yOffset (_MarkDef_) Offset for y-position.
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_point <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'point'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+
+vl_mark_text <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+  args <- .modify_args(list(type = "text"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
+  "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
+  "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", 
+  "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", 
+  "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
+  "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
+  "yOffset"))
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+} 
+#' vl_mark_tick
+#' 
+#'
+#' @param spec An input vega-lite spec
+#' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkDef_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkDef_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param binSpacing (_MarkDef_) Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
+#' 
+#' __Default value:__ `1`
+#' @param clip (_MarkDef_) Whether a mark be clipped to the enclosing group’s width and height.
+#' @param color (_MarkDef_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkDef_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkDef_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkDef_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkDef_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkDef_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkDef_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkDef_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkDef_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkDef_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkDef_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkDef_) The font size, in pixels.
+#' @param fontStyle (_MarkDef_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkDef_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkDef_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkDef_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkDef_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param line (_MarkDef_) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
+#' 
+#' - If this value is an empty object (`{}`) or `true`, lines with default properties will be used.
+#' 
+#' - If this value is `false`, no lines would be automatically added to area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param opacity (_MarkDef_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkDef_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkDef_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param point (_MarkDef_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param radius (_MarkDef_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkDef_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkDef_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkDef_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkDef_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkDef_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkDef_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkDef_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkDef_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkDef_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkDef_) The stroke width, in pixels.
+#' @param style (_MarkDef_) A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the [style configuration](https://vega.github.io/vega-lite/docs/mark.html#style-config). If style is an array, later styles will override earlier styles. Any [mark properties](https://vega.github.io/vega-lite/docs/encoding.html#mark-prop) explicitly defined within the `encoding` will override a style default.
+#' 
+#' __Default value:__ The mark's name.  For example, a bar mark will have style `"bar"` by default.
+#' __Note:__ Any specified style will augment the default style. For example, a bar mark with `"style": "foo"` will receive from `config.style.bar` and `config.style.foo` (the specified style `"foo"` has higher precedence).
+#' @param tension (_MarkDef_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkDef_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkDef_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param thickness (_MarkDef_) Thickness of the tick mark.
+#' 
+#' __Default value:__  `1`
+#' @param tooltip (_MarkDef_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkDef_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkDef_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param x2Offset (_MarkDef_) Offset for x2-position.
+#' @param xOffset (_MarkDef_) Offset for x-position.
+#' @param y (_MarkDef_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkDef_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y2Offset (_MarkDef_) Offset for y2-position.
+#' @param yOffset (_MarkDef_) Offset for y-position.
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_text <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'text'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+
+vl_mark_tick <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+  args <- .modify_args(list(type = "tick"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
+  "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
+  "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", 
+  "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", 
+  "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
+  "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
+  "yOffset"))
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+} 
+#' vl_mark_rect
+#' 
+#'
+#' @param spec An input vega-lite spec
+#' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkDef_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkDef_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param binSpacing (_MarkDef_) Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
+#' 
+#' __Default value:__ `1`
+#' @param clip (_MarkDef_) Whether a mark be clipped to the enclosing group’s width and height.
+#' @param color (_MarkDef_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkDef_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkDef_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkDef_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkDef_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkDef_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkDef_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkDef_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkDef_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkDef_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkDef_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkDef_) The font size, in pixels.
+#' @param fontStyle (_MarkDef_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkDef_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkDef_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkDef_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkDef_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param line (_MarkDef_) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
+#' 
+#' - If this value is an empty object (`{}`) or `true`, lines with default properties will be used.
+#' 
+#' - If this value is `false`, no lines would be automatically added to area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param opacity (_MarkDef_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkDef_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkDef_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param point (_MarkDef_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param radius (_MarkDef_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkDef_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkDef_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkDef_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkDef_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkDef_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkDef_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkDef_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkDef_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkDef_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkDef_) The stroke width, in pixels.
+#' @param style (_MarkDef_) A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the [style configuration](https://vega.github.io/vega-lite/docs/mark.html#style-config). If style is an array, later styles will override earlier styles. Any [mark properties](https://vega.github.io/vega-lite/docs/encoding.html#mark-prop) explicitly defined within the `encoding` will override a style default.
+#' 
+#' __Default value:__ The mark's name.  For example, a bar mark will have style `"bar"` by default.
+#' __Note:__ Any specified style will augment the default style. For example, a bar mark with `"style": "foo"` will receive from `config.style.bar` and `config.style.foo` (the specified style `"foo"` has higher precedence).
+#' @param tension (_MarkDef_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkDef_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkDef_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param thickness (_MarkDef_) Thickness of the tick mark.
+#' 
+#' __Default value:__  `1`
+#' @param tooltip (_MarkDef_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkDef_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkDef_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param x2Offset (_MarkDef_) Offset for x2-position.
+#' @param xOffset (_MarkDef_) Offset for x-position.
+#' @param y (_MarkDef_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkDef_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y2Offset (_MarkDef_) Offset for y2-position.
+#' @param yOffset (_MarkDef_) Offset for y-position.
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_tick <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'tick'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+
+vl_mark_rect <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+  args <- .modify_args(list(type = "rect"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
+  "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
+  "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", 
+  "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", 
+  "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
+  "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
+  "yOffset"))
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+} 
+#' vl_mark_rule
+#' 
+#'
+#' @param spec An input vega-lite spec
+#' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkDef_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkDef_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param binSpacing (_MarkDef_) Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
+#' 
+#' __Default value:__ `1`
+#' @param clip (_MarkDef_) Whether a mark be clipped to the enclosing group’s width and height.
+#' @param color (_MarkDef_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkDef_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkDef_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkDef_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkDef_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkDef_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkDef_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkDef_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkDef_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkDef_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkDef_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkDef_) The font size, in pixels.
+#' @param fontStyle (_MarkDef_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkDef_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkDef_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkDef_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkDef_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param line (_MarkDef_) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
+#' 
+#' - If this value is an empty object (`{}`) or `true`, lines with default properties will be used.
+#' 
+#' - If this value is `false`, no lines would be automatically added to area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param opacity (_MarkDef_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkDef_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkDef_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param point (_MarkDef_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param radius (_MarkDef_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkDef_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkDef_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkDef_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkDef_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkDef_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkDef_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkDef_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkDef_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkDef_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkDef_) The stroke width, in pixels.
+#' @param style (_MarkDef_) A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the [style configuration](https://vega.github.io/vega-lite/docs/mark.html#style-config). If style is an array, later styles will override earlier styles. Any [mark properties](https://vega.github.io/vega-lite/docs/encoding.html#mark-prop) explicitly defined within the `encoding` will override a style default.
+#' 
+#' __Default value:__ The mark's name.  For example, a bar mark will have style `"bar"` by default.
+#' __Note:__ Any specified style will augment the default style. For example, a bar mark with `"style": "foo"` will receive from `config.style.bar` and `config.style.foo` (the specified style `"foo"` has higher precedence).
+#' @param tension (_MarkDef_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkDef_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkDef_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param thickness (_MarkDef_) Thickness of the tick mark.
+#' 
+#' __Default value:__  `1`
+#' @param tooltip (_MarkDef_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkDef_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkDef_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param x2Offset (_MarkDef_) Offset for x2-position.
+#' @param xOffset (_MarkDef_) Offset for x-position.
+#' @param y (_MarkDef_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkDef_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y2Offset (_MarkDef_) Offset for y2-position.
+#' @param yOffset (_MarkDef_) Offset for y-position.
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_rect <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'rect'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+
+vl_mark_rule <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+  args <- .modify_args(list(type = "rule"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
+  "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
+  "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", 
+  "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", 
+  "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
+  "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
+  "yOffset"))
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+} 
+#' vl_mark_circle
+#' 
+#'
+#' @param spec An input vega-lite spec
+#' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkDef_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkDef_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param binSpacing (_MarkDef_) Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
+#' 
+#' __Default value:__ `1`
+#' @param clip (_MarkDef_) Whether a mark be clipped to the enclosing group’s width and height.
+#' @param color (_MarkDef_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkDef_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkDef_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkDef_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkDef_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkDef_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkDef_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkDef_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkDef_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkDef_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkDef_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkDef_) The font size, in pixels.
+#' @param fontStyle (_MarkDef_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkDef_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkDef_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkDef_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkDef_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param line (_MarkDef_) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
+#' 
+#' - If this value is an empty object (`{}`) or `true`, lines with default properties will be used.
+#' 
+#' - If this value is `false`, no lines would be automatically added to area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param opacity (_MarkDef_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkDef_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkDef_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param point (_MarkDef_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param radius (_MarkDef_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkDef_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkDef_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkDef_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkDef_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkDef_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkDef_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkDef_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkDef_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkDef_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkDef_) The stroke width, in pixels.
+#' @param style (_MarkDef_) A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the [style configuration](https://vega.github.io/vega-lite/docs/mark.html#style-config). If style is an array, later styles will override earlier styles. Any [mark properties](https://vega.github.io/vega-lite/docs/encoding.html#mark-prop) explicitly defined within the `encoding` will override a style default.
+#' 
+#' __Default value:__ The mark's name.  For example, a bar mark will have style `"bar"` by default.
+#' __Note:__ Any specified style will augment the default style. For example, a bar mark with `"style": "foo"` will receive from `config.style.bar` and `config.style.foo` (the specified style `"foo"` has higher precedence).
+#' @param tension (_MarkDef_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkDef_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkDef_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param thickness (_MarkDef_) Thickness of the tick mark.
+#' 
+#' __Default value:__  `1`
+#' @param tooltip (_MarkDef_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkDef_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkDef_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param x2Offset (_MarkDef_) Offset for x2-position.
+#' @param xOffset (_MarkDef_) Offset for x-position.
+#' @param y (_MarkDef_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkDef_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y2Offset (_MarkDef_) Offset for y2-position.
+#' @param yOffset (_MarkDef_) Offset for y-position.
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_rule <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'rule'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+
+vl_mark_circle <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+  args <- .modify_args(list(type = "circle"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
+  "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
+  "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", 
+  "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", 
+  "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
+  "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
+  "yOffset"))
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+} 
+#' vl_mark_square
+#' 
+#'
+#' @param spec An input vega-lite spec
+#' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkDef_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkDef_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param binSpacing (_MarkDef_) Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
+#' 
+#' __Default value:__ `1`
+#' @param clip (_MarkDef_) Whether a mark be clipped to the enclosing group’s width and height.
+#' @param color (_MarkDef_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkDef_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkDef_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkDef_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkDef_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkDef_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkDef_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkDef_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkDef_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkDef_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkDef_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkDef_) The font size, in pixels.
+#' @param fontStyle (_MarkDef_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkDef_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkDef_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkDef_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkDef_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param line (_MarkDef_) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
+#' 
+#' - If this value is an empty object (`{}`) or `true`, lines with default properties will be used.
+#' 
+#' - If this value is `false`, no lines would be automatically added to area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param opacity (_MarkDef_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkDef_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkDef_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param point (_MarkDef_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param radius (_MarkDef_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkDef_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkDef_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkDef_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkDef_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkDef_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkDef_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkDef_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkDef_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkDef_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkDef_) The stroke width, in pixels.
+#' @param style (_MarkDef_) A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the [style configuration](https://vega.github.io/vega-lite/docs/mark.html#style-config). If style is an array, later styles will override earlier styles. Any [mark properties](https://vega.github.io/vega-lite/docs/encoding.html#mark-prop) explicitly defined within the `encoding` will override a style default.
+#' 
+#' __Default value:__ The mark's name.  For example, a bar mark will have style `"bar"` by default.
+#' __Note:__ Any specified style will augment the default style. For example, a bar mark with `"style": "foo"` will receive from `config.style.bar` and `config.style.foo` (the specified style `"foo"` has higher precedence).
+#' @param tension (_MarkDef_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkDef_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkDef_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param thickness (_MarkDef_) Thickness of the tick mark.
+#' 
+#' __Default value:__  `1`
+#' @param tooltip (_MarkDef_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkDef_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkDef_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param x2Offset (_MarkDef_) Offset for x2-position.
+#' @param xOffset (_MarkDef_) Offset for x-position.
+#' @param y (_MarkDef_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkDef_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y2Offset (_MarkDef_) Offset for y2-position.
+#' @param yOffset (_MarkDef_) Offset for y-position.
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_circle <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'circle'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+
+vl_mark_square <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+  args <- .modify_args(list(type = "square"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
+  "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
+  "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", 
+  "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", 
+  "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
+  "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
+  "yOffset"))
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+} 
+#' vl_mark_geoshape
+#' 
+#'
+#' @param spec An input vega-lite spec
+#' @param align (_MarkDef_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
+#' @param angle (_MarkDef_) The rotation angle of the text, in degrees.
+#' @param baseline (_MarkDef_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
+#' 
+#' __Default value:__ `"middle"`
+#' @param binSpacing (_MarkDef_) Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
+#' 
+#' __Default value:__ `1`
+#' @param clip (_MarkDef_) Whether a mark be clipped to the enclosing group’s width and height.
+#' @param color (_MarkDef_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param cornerRadius (_MarkDef_) The radius in pixels of rounded rectangle corners.
+#' 
+#' __Default value:__ `0`
+#' @param cursor (_MarkDef_) The mouse cursor used over the mark. Any valid [CSS cursor type](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values) can be used.
+#' @param dir (_MarkDef_) The direction of the text. One of `"ltr"` (left-to-right) or `"rtl"` (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"ltr"`
+#' @param dx (_MarkDef_) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param dy (_MarkDef_) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the _angle_ property.
+#' @param ellipsis (_MarkDef_) The ellipsis string for text truncated in response to the limit parameter.
+#' 
+#' __Default value:__ `"…"`
+#' @param fill (_MarkDef_) Default Fill Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param fillOpacity (_MarkDef_) The fill opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param filled (_MarkDef_) Whether the mark's color should be used as fill color instead of stroke color.
+#' 
+#' __Default value:__ `false` for `point`, `line` and `rule`; otherwise, `true`.
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param font (_MarkDef_) The typeface to set the text in (e.g., `"Helvetica Neue"`).
+#' @param fontSize (_MarkDef_) The font size, in pixels.
+#' @param fontStyle (_MarkDef_) The font style (e.g., `"italic"`).
+#' @param fontWeight (_MarkDef_) The font weight.
+#' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
+#' @param href (_MarkDef_) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+#' @param interpolate (_MarkDef_) The line interpolation method to use for line and area marks. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"step-before"`: alternate between vertical and horizontal segments, as in a step function.
+#' - `"step-after"`: alternate between horizontal and vertical segments, as in a step function.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param limit (_MarkDef_) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+#' 
+#' __Default value:__ `0`, indicating no limit
+#' @param line (_MarkDef_) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
+#' 
+#' - If this value is an empty object (`{}`) or `true`, lines with default properties will be used.
+#' 
+#' - If this value is `false`, no lines would be automatically added to area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param opacity (_MarkDef_) The overall opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `0.7` for non-aggregate plots with `point`, `tick`, `circle`, or `square` marks or layered `bar` charts and `1` otherwise.
+#' @param order (_MarkDef_) For line and trail marks, this `order` property can be set to `null` or `false` to make the lines use the original order in the data sources.
+#' @param orient (_MarkDef_) The orientation of a non-stacked bar, tick, area, and line charts.
+#' The value is either horizontal (default) or vertical.
+#' - For bar, rule and tick, this determines whether the size of the bar and tick
+#' should be applied to x or y dimension.
+#' - For area, this property determines the orient property of the Vega output.
+#' - For line and trail marks, this property determines the sort order of the points in the line
+#' if `config.sortLineBy` is not specified.
+#' For stacked charts, this is always determined by the orientation of the stack;
+#' therefore explicitly specified value will be ignored.
+#' @param point (_MarkDef_) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
+#' 
+#' - If this property is `"transparent"`, transparent points will be used (for enhancing tooltips and selections).
+#' 
+#' - If this property is an empty object (`{}`) or `true`, filled points with default properties will be used.
+#' 
+#' - If this property is `false`, no points would be automatically added to line or area marks.
+#' 
+#' __Default value:__ `false`.
+#' @param radius (_MarkDef_) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the `x` and `y` properties.
+#' @param shape (_MarkDef_) Shape of the point marks. Supported values include:
+#' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+#' - the line symbol `"stroke"`
+#' - centered directional shapes `"arrow"`, `"wedge"`, or `"triangle"`
+#' - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+#' 
+#' __Default value:__ `"circle"`
+#' @param size (_MarkDef_) Default size for marks.
+#' - For `point`/`circle`/`square`, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
+#' - For `bar`, this represents the band size of the bar, in pixels.
+#' - For `text`, this represents the font size, in pixels.
+#' 
+#' __Default value:__ `30` for point, circle, square marks; `rangeStep` - 1 for bar marks with discrete dimensions; `5` for bar marks with continuous dimensions; `11` for text marks.
+#' @param stroke (_MarkDef_) Default Stroke Color.  This has higher precedence than `config.color`
+#' 
+#' __Default value:__ (None)
+#' @param strokeCap (_MarkDef_) The stroke cap for line ending style. One of `"butt"`, `"round"`, or `"square"`.
+#' 
+#' __Default value:__ `"square"`
+#' @param strokeDash (_MarkDef_) An array of alternating stroke, space lengths for creating dashed or dotted lines.
+#' @param strokeDashOffset (_MarkDef_) The offset (in pixels) into which to begin drawing with the stroke dash array.
+#' @param strokeJoin (_MarkDef_) The stroke line join method. One of `"miter"`, `"round"` or `"bevel"`.
+#' 
+#' __Default value:__ `"miter"`
+#' @param strokeMiterLimit (_MarkDef_) The miter limit at which to bevel a line join.
+#' @param strokeOpacity (_MarkDef_) The stroke opacity (value between \[0,1\]).
+#' 
+#' __Default value:__ `1`
+#' @param strokeWidth (_MarkDef_) The stroke width, in pixels.
+#' @param style (_MarkDef_) A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the [style configuration](https://vega.github.io/vega-lite/docs/mark.html#style-config). If style is an array, later styles will override earlier styles. Any [mark properties](https://vega.github.io/vega-lite/docs/encoding.html#mark-prop) explicitly defined within the `encoding` will override a style default.
+#' 
+#' __Default value:__ The mark's name.  For example, a bar mark will have style `"bar"` by default.
+#' __Note:__ Any specified style will augment the default style. For example, a bar mark with `"style": "foo"` will receive from `config.style.bar` and `config.style.foo` (the specified style `"foo"` has higher precedence).
+#' @param tension (_MarkDef_) Depending on the interpolation type, sets the tension parameter (for line and area marks).
+#' @param text (_MarkDef_) Placeholder text if the `text` channel is not specified
+#' @param theta (_MarkDef_) Polar coordinate angle, in radians, of the text label from the origin determined by the `x` and `y` properties. Values for `theta` follow the same convention of `arc` mark `startAngle` and `endAngle` properties: angles are measured in radians, with `0` indicating "north".
+#' @param thickness (_MarkDef_) Thickness of the tick mark.
+#' 
+#' __Default value:__  `1`
+#' @param tooltip (_MarkDef_) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' 
+#' - If `tooltip` is `{"content": "encoding"}`, then all fields from `encoding` will be used.
+#' - If `tooltip` is `{"content": "data"}`, then all fields that appear in the highlighted data point will be used.
+#' - If set to `null`, then no tooltip will be used.
+#' @param x (_MarkDef_) X coordinates of the marks, or width of horizontal `"bar"` and `"area"` without `x2`.
+#' @param x2 (_MarkDef_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param x2Offset (_MarkDef_) Offset for x2-position.
+#' @param xOffset (_MarkDef_) Offset for x-position.
+#' @param y (_MarkDef_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
+#' @param y2 (_MarkDef_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
+#' @param y2Offset (_MarkDef_) Offset for y2-position.
+#' @param yOffset (_MarkDef_) Offset for y-position.
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_square <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'square'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+
+vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+  args <- .modify_args(list(type = "geoshape"), c("align", "angle", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
+  "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", 
+  "fontSize", "fontStyle", "fontWeight", "href", "interpolate", "limit", "line", 
+  "opacity", "order", "orient", "point", "radius", "shape", "size", "stroke", 
+  "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "style", "tension", "text", "theta", "thickness", 
+  "tooltip", "type", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", 
+  "yOffset"))
+  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+} 
+#' vl_mark_boxplot
+#' 
+#'
+#' @param spec An input vega-lite spec
+#' @param box (_BoxPlotDef_)  
+#' @param clip (_BoxPlotDef_) Whether a composite mark be clipped to the enclosing group’s width and height.
+#' @param color (_BoxPlotDef_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param extent (_BoxPlotDef_) The extent of the whiskers. Available options include:
+#' - `"min-max"`: min and max are the lower and upper whiskers respectively.
+#' - A number representing multiple of the interquartile range.  This number will be multiplied by the IQR to determine whisker boundary, which spans from the smallest data to the largest data within the range _\[Q1 - k * IQR, Q3 + k * IQR\]_ where _Q1_ and _Q3_ are the first and third quartiles while _IQR_ is the interquartile range (_Q3-Q1_).
+#' 
+#' __Default value:__ `1.5`.
+#' @param median (_BoxPlotDef_)  
+#' @param opacity (_BoxPlotDef_) The opacity (value between \[0,1\]) of the mark.
+#' @param orient (_BoxPlotDef_) Orientation of the box plot.  This is normally automatically determined based on types of fields on x and y channels. However, an explicit `orient` be specified when the orientation is ambiguous.
+#' 
+#' __Default value:__ `"vertical"`.
+#' @param outliers (_BoxPlotDef_)  
+#' @param rule (_BoxPlotDef_)  
+#' @param size (_BoxPlotDef_) Size of the box and median tick of a box plot
+#' @param ticks (_BoxPlotDef_)  
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, type = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'geoshape'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+
+vl_mark_boxplot <- function(spec, box = NULL, clip = NULL, color = NULL, extent = NULL, median = NULL, opacity = NULL, orient = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL){
+  args <- .modify_args(list(type = "boxplot"), c("box", "clip", "color", "extent", "median", "opacity", "orient", "outliers", 
+  "rule", "size", "ticks", "type"))
+  .add_mark(args$spec, args$object, '#/definitions/BoxPlotDef')
+} 
+#' vl_mark_errorbar
+#' 
+#'
+#' @param spec An input vega-lite spec
+#' @param clip (_ErrorBarDef_) Whether a composite mark be clipped to the enclosing group’s width and height.
+#' @param color (_ErrorBarDef_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param extent (_ErrorBarDef_) The extent of the rule. Available options include:
+#' - `"ci"`: Extend the rule to the confidence interval of the mean.
+#' - `"stderr"`: The size of rule are set to the value of standard error, extending from the mean.
+#' - `"stdev"`: The size of rule are set to the value of standard deviation, extending from the mean.
+#' - `"iqr"`: Extend the rule to the q1 and q3.
+#' 
+#' __Default value:__ `"stderr"`.
+#' @param opacity (_ErrorBarDef_) The opacity (value between \[0,1\]) of the mark.
+#' @param orient (_ErrorBarDef_) Orientation of the error bar.  This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.
+#' @param rule (_ErrorBarDef_)  
+#' @param ticks (_ErrorBarDef_)  
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_boxplot <- function(spec, box = NULL, clip = NULL, color = NULL, extent = NULL, median = NULL, opacity = NULL, orient = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'boxplot'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
+
+vl_mark_errorbar <- function(spec, clip = NULL, color = NULL, extent = NULL, opacity = NULL, orient = NULL, rule = NULL, ticks = NULL){
+  args <- .modify_args(list(type = "errorbar"), c("clip", "color", "extent", "opacity", "orient", "rule", "ticks", "type"))
+  .add_mark(args$spec, args$object, '#/definitions/ErrorBarDef')
+} 
+#' vl_mark_errorband
+#' 
+#'
+#' @param spec An input vega-lite spec
+#' @param band (_ErrorBandDef_)  
+#' @param borders (_ErrorBandDef_)  
+#' @param clip (_ErrorBandDef_) Whether a composite mark be clipped to the enclosing group’s width and height.
+#' @param color (_ErrorBandDef_) Default color.  Note that `fill` and `stroke` have higher precedence than `color` and will override `color`.
+#' 
+#' __Default value:__ <span style="color: #4682b4;">&#9632;</span> `"#4682b4"`
+#' 
+#' __Note:__ This property cannot be used in a [style config](https://vega.github.io/vega-lite/docs/mark.html#style-config).
+#' @param extent (_ErrorBandDef_) The extent of the band. Available options include:
+#' - `"ci"`: Extend the band to the confidence interval of the mean.
+#' - `"stderr"`: The size of band are set to the value of standard error, extending from the mean.
+#' - `"stdev"`: The size of band are set to the value of standard deviation, extending from the mean.
+#' - `"iqr"`: Extend the band to the q1 and q3.
+#' 
+#' __Default value:__ `"stderr"`.
+#' @param interpolate (_ErrorBandDef_) The line interpolation method for the error band. One of the following:
+#' - `"linear"`: piecewise linear segments, as in a polyline.
+#' - `"linear-closed"`: close the linear segments to form a polygon.
+#' - `"step"`: a piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes at the midpoint of each pair of adjacent x-values.
+#' - `"step-before"`: a piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes before the x-value.
+#' - `"step-after"`: a piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes after the x-value.
+#' - `"basis"`: a B-spline, with control point duplication on the ends.
+#' - `"basis-open"`: an open B-spline; may not intersect the start or end.
+#' - `"basis-closed"`: a closed B-spline, as in a loop.
+#' - `"cardinal"`: a Cardinal spline, with control point duplication on the ends.
+#' - `"cardinal-open"`: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
+#' - `"cardinal-closed"`: a closed Cardinal spline, as in a loop.
+#' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
+#' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
+#' @param opacity (_ErrorBandDef_) The opacity (value between \[0,1\]) of the mark.
+#' @param orient (_ErrorBandDef_) Orientation of the error band. This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.
+#' @param tension (_ErrorBandDef_) The tension parameter for the interpolation type of the error band.
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_errorbar <- function(spec, clip = NULL, color = NULL, extent = NULL, opacity = NULL, orient = NULL, rule = NULL, ticks = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'errorbar'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- 
-#' @name vl_mark
-#' @export
-vl_mark_errorband <- function(spec, band = NULL, borders = NULL, clip = NULL, color = NULL, extent = NULL, interpolate = NULL, opacity = NULL, orient = NULL, tension = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.mark = 'errorband'))
-  rlang::exec(.add_mark, !!!args_out)
-}
- #' vl_encode_color
+
+vl_mark_errorband <- function(spec, band = NULL, borders = NULL, clip = NULL, color = NULL, extent = NULL, interpolate = NULL, opacity = NULL, orient = NULL, tension = NULL){
+  args <- .modify_args(list(type = "errorband"), c("band", "borders", "clip", "color", "extent", "interpolate", "opacity", "orient", 
+  "tension", "type"))
+  .add_mark(args$spec, args$object, '#/definitions/ErrorBandDef')
+} 
+#' vl_encode_color
 #' 
 #' Add encoding for color to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,(string|null)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -720,20 +2359,18 @@ vl_mark_errorband <- function(spec, band = NULL, borders = NULL, clip = NULL, co
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Color()]
-vl_encode_color <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'color'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_detail
+
+vl_encode_color <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/color' , encoding = "color")
+} 
+#' vl_encode_detail
 #' 
 #' Add encoding for detail to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -778,20 +2415,17 @@ vl_encode_color <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Detail()]
-vl_encode_detail <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'detail'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_fill
+
+vl_encode_detail <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/detail' , encoding = "detail")
+} 
+#' vl_encode_fill
 #' 
 #' Add encoding for fill to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,(string|null)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -866,20 +2500,18 @@ vl_encode_detail <- function(spec, field = NULL, type = NULL, aggregate = NULL, 
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Fill()]
-vl_encode_fill <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fill'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_fillOpacity
+
+vl_encode_fill <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/fill' , encoding = "fill")
+} 
+#' vl_encode_fillOpacity
 #' 
 #' Add encoding for fillOpacity to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -954,20 +2586,18 @@ vl_encode_fill <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_FillOpacity()]
-vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fillOpacity'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_href
+
+vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/fillOpacity' , encoding = "fillOpacity")
+} 
+#' vl_encode_href
 #' 
 #' Add encoding for href to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1032,20 +2662,18 @@ vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = N
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Href()]
-vl_encode_href <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'href'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_key
+
+vl_encode_href <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "timeUnit", 
+  "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/href' , encoding = "href")
+} 
+#' vl_encode_key
 #' 
 #' Add encoding for key to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1090,20 +2718,17 @@ vl_encode_href <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Key()]
-vl_encode_key <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'key'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_latitude
+
+vl_encode_key <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/key' , encoding = "key")
+} 
+#' vl_encode_latitude
 #' 
 #' Add encoding for latitude to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_LatLongFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1149,20 +2774,17 @@ vl_encode_key <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Latitude()]
-vl_encode_latitude <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'latitude'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_latitude2
+
+vl_encode_latitude <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/latitude' , encoding = "latitude")
+} 
+#' vl_encode_latitude2
 #' 
 #' Add encoding for latitude2 to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1196,20 +2818,17 @@ vl_encode_latitude <- function(spec, field = NULL, type = NULL, aggregate = NULL
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Latitude2()]
-vl_encode_latitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'latitude2'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_longitude
+
+vl_encode_latitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/latitude2' , encoding = "latitude2")
+} 
+#' vl_encode_longitude
 #' 
 #' Add encoding for longitude to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_LatLongFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1255,20 +2874,17 @@ vl_encode_latitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Longitude()]
-vl_encode_longitude <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'longitude'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_longitude2
+
+vl_encode_longitude <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/longitude' , encoding = "longitude")
+} 
+#' vl_encode_longitude2
 #' 
 #' Add encoding for longitude2 to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1302,20 +2918,17 @@ vl_encode_longitude <- function(spec, field = NULL, type = NULL, aggregate = NUL
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Longitude2()]
-vl_encode_longitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'longitude2'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_opacity
+
+vl_encode_longitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/longitude2' , encoding = "longitude2")
+} 
+#' vl_encode_opacity
 #' 
 #' Add encoding for opacity to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1390,20 +3003,18 @@ vl_encode_longitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NUL
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Opacity()]
-vl_encode_opacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'opacity'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_order
+
+vl_encode_opacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/opacity' , encoding = "opacity")
+} 
+#' vl_encode_order
 #' 
 #' Add encoding for order to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_OrderFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1450,20 +3061,17 @@ vl_encode_opacity <- function(spec, field = NULL, type = NULL, aggregate = NULL,
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Order()]
-vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'order'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_shape
+
+vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "sort", "timeUnit", "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/order' , encoding = "order")
+} 
+#' vl_encode_shape
 #' 
 #' Add encoding for shape to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1538,20 +3146,18 @@ vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef<TypeForShape>,string>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Shape()]
-vl_encode_shape <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'shape'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_size
+
+vl_encode_shape <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/shape' , encoding = "shape")
+} 
+#' vl_encode_size
 #' 
 #' Add encoding for size to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1626,20 +3232,18 @@ vl_encode_shape <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Size()]
-vl_encode_size <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'size'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_stroke
+
+vl_encode_size <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/size' , encoding = "size")
+} 
+#' vl_encode_stroke
 #' 
 #' Add encoding for stroke to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,(string|null)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1714,20 +3318,18 @@ vl_encode_size <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Stroke()]
-vl_encode_stroke <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'stroke'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_strokeOpacity
+
+vl_encode_stroke <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/stroke' , encoding = "stroke")
+} 
+#' vl_encode_strokeOpacity
 #' 
 #' Add encoding for strokeOpacity to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1802,20 +3404,18 @@ vl_encode_stroke <- function(spec, field = NULL, type = NULL, aggregate = NULL, 
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_StrokeOpacity()]
-vl_encode_strokeOpacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_strokeWidth
+
+vl_encode_strokeOpacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/strokeOpacity' , encoding = "strokeOpacity")
+} 
+#' vl_encode_strokeWidth
 #' 
 #' Add encoding for strokeWidth to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1890,20 +3490,18 @@ vl_encode_strokeOpacity <- function(spec, field = NULL, type = NULL, aggregate =
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_StrokeWidth()]
-vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeWidth'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_text
+
+vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/strokeWidth' , encoding = "strokeWidth")
+} 
+#' vl_encode_text
 #' 
 #' Add encoding for text to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -1968,20 +3566,18 @@ vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = N
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Text()]
-vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'text'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_tooltip
+
+vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "timeUnit", 
+  "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/text' , encoding = "text")
+} 
+#' vl_encode_tooltip
 #' 
 #' Add encoding for tooltip to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2046,20 +3642,18 @@ vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Tooltip()]
-vl_encode_tooltip <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'tooltip'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_x
+
+vl_encode_tooltip <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "timeUnit", 
+  "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/tooltip' , encoding = "tooltip")
+} 
+#' vl_encode_x
 #' 
 #' Add encoding for x to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_PositionFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2145,20 +3739,18 @@ vl_encode_tooltip <- function(spec, field = NULL, type = NULL, aggregate = NULL,
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_XValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_X()]
-vl_encode_x <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'x'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_x2
+
+vl_encode_x <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "axis", "bin", "field", "impute", "scale", "sort", "stack", "timeUnit", 
+  "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/x' , encoding = "x")
+} 
+#' vl_encode_x2
 #' 
 #' Add encoding for x2 to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2192,20 +3784,17 @@ vl_encode_x <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis 
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_XValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_X2()]
-vl_encode_x2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'x2'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_xError
+
+vl_encode_x2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/x2' , encoding = "x2")
+} 
+#' vl_encode_xError
 #' 
 #' Add encoding for xError to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2239,20 +3828,17 @@ vl_encode_x2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeU
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_XError()]
-vl_encode_xError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'xError'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_xError2
+
+vl_encode_xError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/xError' , encoding = "xError")
+} 
+#' vl_encode_xError2
 #' 
 #' Add encoding for xError2 to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2286,20 +3872,17 @@ vl_encode_xError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, t
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_XError2()]
-vl_encode_xError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'xError2'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_y
+
+vl_encode_xError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/xError2' , encoding = "xError2")
+} 
+#' vl_encode_y
 #' 
 #' Add encoding for y to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_PositionFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2385,20 +3968,18 @@ vl_encode_xError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, 
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_YValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Y()]
-vl_encode_y <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'y'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_y2
+
+vl_encode_y <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "axis", "bin", "field", "impute", "scale", "sort", "stack", "timeUnit", 
+  "title", "type", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/y' , encoding = "y")
+} 
+#' vl_encode_y2
 #' 
 #' Add encoding for y2 to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2432,20 +4013,17 @@ vl_encode_y <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis 
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_YValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_Y2()]
-vl_encode_y2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'y2'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_yError
+
+vl_encode_y2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/y2' , encoding = "y2")
+} 
+#' vl_encode_yError
 #' 
 #' Add encoding for yError to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2479,20 +4057,17 @@ vl_encode_y2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeU
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_YError()]
-vl_encode_yError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'yError'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_encode_yError2
+
+vl_encode_yError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/yError' , encoding = "yError")
+} 
+#' vl_encode_yError2
 #' 
 #' Add encoding for yError2 to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2526,19 +4101,16 @@ vl_encode_yError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, t
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_encode()], [vl_make_YError2()]
-vl_encode_yError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'yError2'))
-  rlang::exec(.add_encoding, !!!args_out)
-}
- #' vl_make_Color
+
+vl_encode_yError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/yError2' , encoding = "yError2")
+} 
+#' vl_make_Color
 #' 
-#' Create spec for Color.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,(string|null)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2613,17 +4185,17 @@ vl_encode_yError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, 
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Color.
 #' @export
-vl_make_Color <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Detail
+
+vl_make_Color <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Detail
 #' 
-#' Create spec for Detail.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2668,17 +4240,16 @@ vl_make_Color <- function(aggregate = NULL, bin = NULL, condition = NULL, field 
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Detail.
 #' @export
-vl_make_Detail <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Fill
+
+vl_make_Detail <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type"))
+args$obj
+} 
+#' vl_make_Fill
 #' 
-#' Create spec for Fill.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,(string|null)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2753,17 +4324,17 @@ vl_make_Detail <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit 
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Fill.
 #' @export
-vl_make_Fill <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_FillOpacity
+
+vl_make_Fill <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_FillOpacity
 #' 
-#' Create spec for FillOpacity.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2838,17 +4409,17 @@ vl_make_Fill <- function(aggregate = NULL, bin = NULL, condition = NULL, field =
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a FillOpacity.
 #' @export
-vl_make_FillOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Href
+
+vl_make_FillOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Href
 #' 
-#' Create spec for Href.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2913,17 +4484,17 @@ vl_make_FillOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, 
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Href.
 #' @export
-vl_make_Href <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Key
+
+vl_make_Href <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Key
 #' 
-#' Create spec for Key.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -2968,17 +4539,16 @@ vl_make_Href <- function(aggregate = NULL, bin = NULL, condition = NULL, field =
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Key.
 #' @export
-vl_make_Key <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Latitude
+
+vl_make_Key <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type"))
+args$obj
+} 
+#' vl_make_Latitude
 #' 
-#' Create spec for Latitude.
+#' Create spec for {obj}
 #' @param aggregate (_LatLongFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3024,17 +4594,16 @@ vl_make_Key <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = N
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Latitude.
 #' @export
-vl_make_Latitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Latitude2
+
+vl_make_Latitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Latitude2
 #' 
-#' Create spec for Latitude2.
+#' Create spec for {obj}
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3068,17 +4637,16 @@ vl_make_Latitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUni
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Latitude2.
 #' @export
-vl_make_Latitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Longitude
+
+vl_make_Latitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+args$obj
+} 
+#' vl_make_Longitude
 #' 
-#' Create spec for Longitude.
+#' Create spec for {obj}
 #' @param aggregate (_LatLongFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3124,17 +4692,16 @@ vl_make_Latitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUn
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Longitude.
 #' @export
-vl_make_Longitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Longitude2
+
+vl_make_Longitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Longitude2
 #' 
-#' Create spec for Longitude2.
+#' Create spec for {obj}
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3168,17 +4735,16 @@ vl_make_Longitude <- function(aggregate = NULL, bin = NULL, field = NULL, timeUn
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Longitude2.
 #' @export
-vl_make_Longitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Opacity
+
+vl_make_Longitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+args$obj
+} 
+#' vl_make_Opacity
 #' 
-#' Create spec for Opacity.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3253,17 +4819,17 @@ vl_make_Longitude2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeU
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Opacity.
 #' @export
-vl_make_Opacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Order
+
+vl_make_Opacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Order
 #' 
-#' Create spec for Order.
+#' Create spec for {obj}
 #' @param aggregate (_OrderFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3310,17 +4876,16 @@ vl_make_Opacity <- function(aggregate = NULL, bin = NULL, condition = NULL, fiel
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Order.
 #' @export
-vl_make_Order <- function(aggregate = NULL, bin = NULL, field = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Shape
+
+vl_make_Order <- function(aggregate = NULL, bin = NULL, field = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "sort", "timeUnit", "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Shape
 #' 
-#' Create spec for Shape.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3395,17 +4960,17 @@ vl_make_Order <- function(aggregate = NULL, bin = NULL, field = NULL, sort = NUL
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef<TypeForShape>,string>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Shape.
 #' @export
-vl_make_Shape <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Size
+
+vl_make_Shape <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Size
 #' 
-#' Create spec for Size.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3480,17 +5045,17 @@ vl_make_Shape <- function(aggregate = NULL, bin = NULL, condition = NULL, field 
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Size.
 #' @export
-vl_make_Size <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Stroke
+
+vl_make_Size <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Stroke
 #' 
-#' Create spec for Stroke.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,(string|null)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3565,17 +5130,17 @@ vl_make_Size <- function(aggregate = NULL, bin = NULL, condition = NULL, field =
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Stroke.
 #' @export
-vl_make_Stroke <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_StrokeOpacity
+
+vl_make_Stroke <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_StrokeOpacity
 #' 
-#' Create spec for StrokeOpacity.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3650,17 +5215,17 @@ vl_make_Stroke <- function(aggregate = NULL, bin = NULL, condition = NULL, field
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a StrokeOpacity.
 #' @export
-vl_make_StrokeOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_StrokeWidth
+
+vl_make_StrokeOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_StrokeWidth
 #' 
-#' Create spec for StrokeWidth.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3735,17 +5300,17 @@ vl_make_StrokeOpacity <- function(aggregate = NULL, bin = NULL, condition = NULL
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a StrokeWidth.
 #' @export
-vl_make_StrokeWidth <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Text
+
+vl_make_StrokeWidth <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Text
 #' 
-#' Create spec for Text.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3810,17 +5375,17 @@ vl_make_StrokeWidth <- function(aggregate = NULL, bin = NULL, condition = NULL, 
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Text.
 #' @export
-vl_make_Text <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Tooltip
+
+vl_make_Text <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Tooltip
 #' 
-#' Create spec for Tooltip.
+#' Create spec for {obj}
 #' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3885,17 +5450,17 @@ vl_make_Text <- function(aggregate = NULL, bin = NULL, condition = NULL, field =
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Tooltip.
 #' @export
-vl_make_Tooltip <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_X
+
+vl_make_Tooltip <- function(aggregate = NULL, bin = NULL, condition = NULL, field = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_X
 #' 
-#' Create spec for X.
+#' Create spec for {obj}
 #' @param aggregate (_PositionFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -3981,17 +5546,17 @@ vl_make_Tooltip <- function(aggregate = NULL, bin = NULL, condition = NULL, fiel
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_XValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a X.
 #' @export
-vl_make_X <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_X2
+
+vl_make_X <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "axis", "bin", "field", "impute", "scale", "sort", "stack", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_X2
 #' 
-#' Create spec for X2.
+#' Create spec for {obj}
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4025,17 +5590,16 @@ vl_make_X <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, i
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_XValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a X2.
 #' @export
-vl_make_X2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_XError
+
+vl_make_X2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+args$obj
+} 
+#' vl_make_XError
 #' 
-#' Create spec for XError.
+#' Create spec for {obj}
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4069,17 +5633,16 @@ vl_make_X2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NU
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a XError.
 #' @export
-vl_make_XError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_XError2
+
+vl_make_XError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+args$obj
+} 
+#' vl_make_XError2
 #' 
-#' Create spec for XError2.
+#' Create spec for {obj}
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4113,17 +5676,16 @@ vl_make_XError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit 
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a XError2.
 #' @export
-vl_make_XError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Y
+
+vl_make_XError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+args$obj
+} 
+#' vl_make_Y
 #' 
-#' Create spec for Y.
+#' Create spec for {obj}
 #' @param aggregate (_PositionFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4209,17 +5771,17 @@ vl_make_XError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' @param value (_YValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Y.
 #' @export
-vl_make_Y <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Y2
+
+vl_make_Y <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, type = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "axis", "bin", "field", "impute", "scale", "sort", "stack", "timeUnit", 
+  "title", "type", "value"))
+args$obj
+} 
+#' vl_make_Y2
 #' 
-#' Create spec for Y2.
+#' Create spec for {obj}
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4253,17 +5815,16 @@ vl_make_Y <- function(aggregate = NULL, axis = NULL, bin = NULL, field = NULL, i
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_YValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Y2.
 #' @export
-vl_make_Y2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_YError
+
+vl_make_Y2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+args$obj
+} 
+#' vl_make_YError
 #' 
-#' Create spec for YError.
+#' Create spec for {obj}
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4297,17 +5858,16 @@ vl_make_Y2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NU
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a YError.
 #' @export
-vl_make_YError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_YError2
+
+vl_make_YError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+args$obj
+} 
+#' vl_make_YError2
 #' 
-#' Create spec for YError2.
+#' Create spec for {obj}
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -4341,67 +5901,57 @@ vl_make_YError <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit 
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a YError2.
 #' @export
-vl_make_YError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_aggregate
+
+vl_make_YError2 <- function(aggregate = NULL, bin = NULL, field = NULL, timeUnit = NULL, title = NULL, value = NULL){
+args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
+args$obj
+} 
+#' vl_aggregate
 #' 
 #' Add AggregateTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_AggregateTransform_) Array of objects that define fields to aggregate.
 #' @param groupby (_AggregateTransform_) The data fields to group by. If not specified, a single group containing all data objects will be used.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_aggregate <- function(spec, aggregate = NULL, groupby = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'aggregate'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_bin
+
+vl_aggregate <- function(spec, aggregate = NULL, groupby = NULL){
+  args <- .modify_args(NULL, c("aggregate", "groupby"))
+  .add_transform(args$spec, args$object, '#/definitions/AggregateTransform')
+} 
+#' vl_bin
 #' 
 #' Add BinTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param as (_BinTransform_) The output fields at which to write the start and end bin values.
 #' @param bin (_BinTransform_) An object indicating bin properties, or simply `true` for using default bin parameters.
 #' @param field (_BinTransform_) The data field to bin.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_bin <- function(spec, as = NULL, bin = NULL, field = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'bin'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_calculate
+
+vl_bin <- function(spec, as = NULL, bin = NULL, field = NULL){
+  args <- .modify_args(NULL, c("as", "bin", "field"))
+  .add_transform(args$spec, args$object, '#/definitions/BinTransform')
+} 
+#' vl_calculate
 #' 
 #' Add CalculateTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param as (_CalculateTransform_) The field for storing the computed formula value.
 #' @param calculate (_CalculateTransform_) A [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string. Use the variable `datum` to refer to the current data object.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_calculate <- function(spec, as = NULL, calculate = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'calculate'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_filter
+
+vl_calculate <- function(spec, as = NULL, calculate = NULL){
+  args <- .modify_args(NULL, c("as", "calculate"))
+  .add_transform(args$spec, args$object, '#/definitions/CalculateTransform')
+} 
+#' vl_filter
 #' 
 #' Add FilterTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param filter (_FilterTransform_) The `filter` property must be one of the predicate definitions:
 #' 
 #' 1) an [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string,
@@ -4419,20 +5969,17 @@ vl_calculate <- function(spec, as = NULL, calculate = NULL) {
 #' 3) a [selection predicate](https://vega.github.io/vega-lite/docs/filter.html#selection-predicate)
 #' 
 #' 4) a logical operand that combines (1), (2), or (3).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_filter <- function(spec, filter = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'filter'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_flatten
+
+vl_filter <- function(spec, filter = NULL){
+  args <- .modify_args(NULL, "filter")
+  .add_transform(args$spec, args$object, '#/definitions/FilterTransform')
+} 
+#' vl_flatten
 #' 
 #' Add FlattenTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param as (_FlattenTransform_) The output field names for extracted array values.
 #' 
 #' __Default value:__ The field name of the corresponding array field
@@ -4440,37 +5987,31 @@ vl_filter <- function(spec, filter = NULL) {
 #' If multiple fields are specified, their array values should have a parallel structure, ideally with the same length.
 #' If the lengths of parallel arrays do not match,
 #' the longest array will be used with `null` values added for missing entries.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_flatten <- function(spec, as = NULL, flatten = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'flatten'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_fold
+
+vl_flatten <- function(spec, as = NULL, flatten = NULL){
+  args <- .modify_args(NULL, c("as", "flatten"))
+  .add_transform(args$spec, args$object, '#/definitions/FlattenTransform')
+} 
+#' vl_fold
 #' 
 #' Add FoldTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param as (_FoldTransform_) The output field names for the key and value properties produced by the fold transform.
 #' __Default value:__ `["key", "value"]`
 #' @param fold (_FoldTransform_) An array of data fields indicating the properties to fold.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_fold <- function(spec, as = NULL, fold = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'fold'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_impute
+
+vl_fold <- function(spec, as = NULL, fold = NULL){
+  args <- .modify_args(NULL, c("as", "fold"))
+  .add_transform(args$spec, args$object, '#/definitions/FoldTransform')
+} 
+#' vl_impute
 #' 
 #' Add ImputeTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param frame (_ImputeTransform_) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
 #' 
 #' __Default value:__:  `[null, null]` indicating that the window includes all objects.
@@ -4490,36 +6031,30 @@ vl_fold <- function(spec, as = NULL, fold = NULL) {
 #' 
 #' __Default value:__  `"value"`
 #' @param value (_ImputeTransform_) The field value to use when the imputation `method` is `"value"`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_impute <- function(spec, frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'impute'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_joinaggregate
+
+vl_impute <- function(spec, frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL){
+  args <- .modify_args(NULL, c("frame", "groupby", "impute", "key", "keyvals", "method", "value"))
+  .add_transform(args$spec, args$object, '#/definitions/ImputeTransform')
+} 
+#' vl_joinaggregate
 #' 
 #' Add JoinAggregateTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param groupby (_JoinAggregateTransform_) The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group.
 #' @param joinaggregate (_JoinAggregateTransform_) The definition of the fields in the join aggregate, and what calculations to use.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'joinaggregate'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_lookup
+
+vl_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL){
+  args <- .modify_args(NULL, c("groupby", "joinaggregate"))
+  .add_transform(args$spec, args$object, '#/definitions/JoinAggregateTransform')
+} 
+#' vl_lookup
 #' 
 #' Add LookupTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param as (_LookupTransform_) The field or fields for storing the computed formula value.
 #' If `from.fields` is specified, the transform will use the same names for `as`.
 #' If `from.fields` is not specified, `as` has to be a string and we put the whole object into the data under the specified name.
@@ -4528,54 +6063,45 @@ vl_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL) {
 #' __Default value:__ `null`
 #' @param from (_LookupTransform_) Secondary data reference.
 #' @param lookup (_LookupTransform_) Key in primary data source.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_lookup <- function(spec, as = NULL, default = NULL, from = NULL, lookup = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'lookup'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_timeunit
+
+vl_lookup <- function(spec, as = NULL, default = NULL, from = NULL, lookup = NULL){
+  args <- .modify_args(NULL, c("as", "default", "from", "lookup"))
+  .add_transform(args$spec, args$object, '#/definitions/LookupTransform')
+} 
+#' vl_timeunit
 #' 
 #' Add TimeUnitTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param as (_TimeUnitTransform_) The output field to write the timeUnit value.
 #' @param field (_TimeUnitTransform_) The data field to apply time unit.
 #' @param timeUnit (_TimeUnitTransform_) The timeUnit.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'timeunit'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_sample
+
+vl_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL){
+  args <- .modify_args(NULL, c("as", "field", "timeUnit"))
+  .add_transform(args$spec, args$object, '#/definitions/TimeUnitTransform')
+} 
+#' vl_sample
 #' 
 #' Add SampleTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param sample (_SampleTransform_) The maximum number of data objects to include in the sample.
 #' 
 #' __Default value:__ `1000`
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_sample <- function(spec, sample = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'sample'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_stack
+
+vl_sample <- function(spec, sample = NULL){
+  args <- .modify_args(NULL, "sample")
+  .add_transform(args$spec, args$object, '#/definitions/SampleTransform')
+} 
+#' vl_stack
 #' 
 #' Add StackTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param as (_StackTransform_) Output field names. This can be either a string or an array of strings with
 #' two elements denoting the name for the fields for stack start and stack end
 #' respectively.
@@ -4585,20 +6111,17 @@ vl_sample <- function(spec, sample = NULL) {
 #' __Default value:__ `"zero"`
 #' @param sort (_StackTransform_) Field that determines the order of leaves in the stacked charts.
 #' @param stack (_StackTransform_) The field which is stacked.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'stack'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_window
+
+vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL){
+  args <- .modify_args(NULL, c("as", "groupby", "offset", "sort", "stack"))
+  .add_transform(args$spec, args$object, '#/definitions/StackTransform')
+} 
+#' vl_window
 #' 
 #' Add WindowTransform to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param frame (_WindowTransform_) A frame specification as a two-element array indicating how the sliding window should proceed. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. The default value is `[null, 0]`, indicating that the sliding window includes the current object and all preceding objects. The value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object. Finally, `[null, null]` indicates that the window frame should always include all data objects. If you this frame and want to assign the same value to add objects, you can use the simpler [join aggregate transform](https://vega.github.io/vega-lite/docs/joinaggregate.html). The only operators affected are the aggregation operations and the `first_value`, `last_value`, and `nth_value` window operations. The other window operations are not affected by this.
 #' 
 #' __Default value:__:  `[null, 0]` (includes the current object and all preceding objects)
@@ -4608,59 +6131,53 @@ vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL
 #' __Default value:__ `false`
 #' @param sort (_WindowTransform_) A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered “peer” values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to `true`).
 #' @param window (_WindowTransform_) The definition of the fields in the window, and what calculations to use.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.trans = 'window'))
-  rlang::exec(.add_transform, !!!args_out)
-}
- #' vl_make_AggregateTransform
+
+vl_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL){
+  args <- .modify_args(NULL, c("frame", "groupby", "ignorePeers", "sort", "window"))
+  .add_transform(args$spec, args$object, '#/definitions/WindowTransform')
+} 
+#' vl_make_AggregateTransform
 #' 
-#' Create spec for AggregateTransform.
+#' Create spec for {obj}
 #' @param aggregate (_AggregateTransform_) Array of objects that define fields to aggregate.
 #' @param groupby (_AggregateTransform_) The data fields to group by. If not specified, a single group containing all data objects will be used.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a AggregateTransform.
 #' @export
-vl_make_AggregateTransform <- function(aggregate = NULL, groupby = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_BinTransform
+
+vl_make_AggregateTransform <- function(aggregate = NULL, groupby = NULL){
+args <- .modify_args(NULL, c("aggregate", "groupby"))
+args$obj
+} 
+#' vl_make_BinTransform
 #' 
-#' Create spec for BinTransform.
+#' Create spec for {obj}
 #' @param as (_BinTransform_) The output fields at which to write the start and end bin values.
 #' @param bin (_BinTransform_) An object indicating bin properties, or simply `true` for using default bin parameters.
 #' @param field (_BinTransform_) The data field to bin.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a BinTransform.
 #' @export
-vl_make_BinTransform <- function(as = NULL, bin = NULL, field = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_CalculateTransform
+
+vl_make_BinTransform <- function(as = NULL, bin = NULL, field = NULL){
+args <- .modify_args(NULL, c("as", "bin", "field"))
+args$obj
+} 
+#' vl_make_CalculateTransform
 #' 
-#' Create spec for CalculateTransform.
+#' Create spec for {obj}
 #' @param as (_CalculateTransform_) The field for storing the computed formula value.
 #' @param calculate (_CalculateTransform_) A [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string. Use the variable `datum` to refer to the current data object.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a CalculateTransform.
 #' @export
-vl_make_CalculateTransform <- function(as = NULL, calculate = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_FilterTransform
+
+vl_make_CalculateTransform <- function(as = NULL, calculate = NULL){
+args <- .modify_args(NULL, c("as", "calculate"))
+args$obj
+} 
+#' vl_make_FilterTransform
 #' 
-#' Create spec for FilterTransform.
+#' Create spec for {obj}
 #' @param filter (_FilterTransform_) The `filter` property must be one of the predicate definitions:
 #' 
 #' 1) an [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string,
@@ -4678,17 +6195,16 @@ vl_make_CalculateTransform <- function(as = NULL, calculate = NULL) {
 #' 3) a [selection predicate](https://vega.github.io/vega-lite/docs/filter.html#selection-predicate)
 #' 
 #' 4) a logical operand that combines (1), (2), or (3).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a FilterTransform.
 #' @export
-vl_make_FilterTransform <- function(filter = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_FlattenTransform
+
+vl_make_FilterTransform <- function(filter = NULL){
+args <- .modify_args(NULL, "filter")
+args$obj
+} 
+#' vl_make_FlattenTransform
 #' 
-#' Create spec for FlattenTransform.
+#' Create spec for {obj}
 #' @param as (_FlattenTransform_) The output field names for extracted array values.
 #' 
 #' __Default value:__ The field name of the corresponding array field
@@ -4696,31 +6212,29 @@ vl_make_FilterTransform <- function(filter = NULL) {
 #' If multiple fields are specified, their array values should have a parallel structure, ideally with the same length.
 #' If the lengths of parallel arrays do not match,
 #' the longest array will be used with `null` values added for missing entries.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a FlattenTransform.
 #' @export
-vl_make_FlattenTransform <- function(as = NULL, flatten = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_FoldTransform
+
+vl_make_FlattenTransform <- function(as = NULL, flatten = NULL){
+args <- .modify_args(NULL, c("as", "flatten"))
+args$obj
+} 
+#' vl_make_FoldTransform
 #' 
-#' Create spec for FoldTransform.
+#' Create spec for {obj}
 #' @param as (_FoldTransform_) The output field names for the key and value properties produced by the fold transform.
 #' __Default value:__ `["key", "value"]`
 #' @param fold (_FoldTransform_) An array of data fields indicating the properties to fold.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a FoldTransform.
 #' @export
-vl_make_FoldTransform <- function(as = NULL, fold = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_ImputeTransform
+
+vl_make_FoldTransform <- function(as = NULL, fold = NULL){
+args <- .modify_args(NULL, c("as", "fold"))
+args$obj
+} 
+#' vl_make_ImputeTransform
 #' 
-#' Create spec for ImputeTransform.
+#' Create spec for {obj}
 #' @param frame (_ImputeTransform_) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
 #' 
 #' __Default value:__:  `[null, null]` indicating that the window includes all objects.
@@ -4740,30 +6254,28 @@ vl_make_FoldTransform <- function(as = NULL, fold = NULL) {
 #' 
 #' __Default value:__  `"value"`
 #' @param value (_ImputeTransform_) The field value to use when the imputation `method` is `"value"`.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a ImputeTransform.
 #' @export
-vl_make_ImputeTransform <- function(frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_JoinAggregateTransform
+
+vl_make_ImputeTransform <- function(frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL){
+args <- .modify_args(NULL, c("frame", "groupby", "impute", "key", "keyvals", "method", "value"))
+args$obj
+} 
+#' vl_make_JoinAggregateTransform
 #' 
-#' Create spec for JoinAggregateTransform.
+#' Create spec for {obj}
 #' @param groupby (_JoinAggregateTransform_) The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group.
 #' @param joinaggregate (_JoinAggregateTransform_) The definition of the fields in the join aggregate, and what calculations to use.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a JoinAggregateTransform.
 #' @export
-vl_make_JoinAggregateTransform <- function(groupby = NULL, joinaggregate = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_LookupTransform
+
+vl_make_JoinAggregateTransform <- function(groupby = NULL, joinaggregate = NULL){
+args <- .modify_args(NULL, c("groupby", "joinaggregate"))
+args$obj
+} 
+#' vl_make_LookupTransform
 #' 
-#' Create spec for LookupTransform.
+#' Create spec for {obj}
 #' @param as (_LookupTransform_) The field or fields for storing the computed formula value.
 #' If `from.fields` is specified, the transform will use the same names for `as`.
 #' If `from.fields` is not specified, `as` has to be a string and we put the whole object into the data under the specified name.
@@ -4772,45 +6284,42 @@ vl_make_JoinAggregateTransform <- function(groupby = NULL, joinaggregate = NULL)
 #' __Default value:__ `null`
 #' @param from (_LookupTransform_) Secondary data reference.
 #' @param lookup (_LookupTransform_) Key in primary data source.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a LookupTransform.
 #' @export
-vl_make_LookupTransform <- function(as = NULL, default = NULL, from = NULL, lookup = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_TimeUnitTransform
+
+vl_make_LookupTransform <- function(as = NULL, default = NULL, from = NULL, lookup = NULL){
+args <- .modify_args(NULL, c("as", "default", "from", "lookup"))
+args$obj
+} 
+#' vl_make_TimeUnitTransform
 #' 
-#' Create spec for TimeUnitTransform.
+#' Create spec for {obj}
 #' @param as (_TimeUnitTransform_) The output field to write the timeUnit value.
 #' @param field (_TimeUnitTransform_) The data field to apply time unit.
 #' @param timeUnit (_TimeUnitTransform_) The timeUnit.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a TimeUnitTransform.
 #' @export
-vl_make_TimeUnitTransform <- function(as = NULL, field = NULL, timeUnit = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_SampleTransform
+
+vl_make_TimeUnitTransform <- function(as = NULL, field = NULL, timeUnit = NULL){
+args <- .modify_args(NULL, c("as", "field", "timeUnit"))
+args$obj
+} 
+#' vl_make_SampleTransform
 #' 
-#' Create spec for SampleTransform.
+#' Create spec for {obj}
 #' @param sample (_SampleTransform_) The maximum number of data objects to include in the sample.
 #' 
 #' __Default value:__ `1000`
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a SampleTransform.
 #' @export
-vl_make_SampleTransform <- function(sample = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_StackTransform
+
+vl_make_SampleTransform <- function(sample = NULL){
+args <- .modify_args(NULL, "sample")
+args$obj
+} 
+#' vl_make_StackTransform
 #' 
-#' Create spec for StackTransform.
+#' Create spec for {obj}
 #' @param as (_StackTransform_) Output field names. This can be either a string or an array of strings with
 #' two elements denoting the name for the fields for stack start and stack end
 #' respectively.
@@ -4820,17 +6329,16 @@ vl_make_SampleTransform <- function(sample = NULL) {
 #' __Default value:__ `"zero"`
 #' @param sort (_StackTransform_) Field that determines the order of leaves in the stacked charts.
 #' @param stack (_StackTransform_) The field which is stacked.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a StackTransform.
 #' @export
-vl_make_StackTransform <- function(as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_WindowTransform
+
+vl_make_StackTransform <- function(as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL){
+args <- .modify_args(NULL, c("as", "groupby", "offset", "sort", "stack"))
+args$obj
+} 
+#' vl_make_WindowTransform
 #' 
-#' Create spec for WindowTransform.
+#' Create spec for {obj}
 #' @param frame (_WindowTransform_) A frame specification as a two-element array indicating how the sliding window should proceed. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. The default value is `[null, 0]`, indicating that the sliding window includes the current object and all preceding objects. The value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object. Finally, `[null, null]` indicates that the window frame should always include all data objects. If you this frame and want to assign the same value to add objects, you can use the simpler [join aggregate transform](https://vega.github.io/vega-lite/docs/joinaggregate.html). The only operators affected are the aggregation operations and the `first_value`, `last_value`, and `nth_value` window operations. The other window operations are not affected by this.
 #' 
 #' __Default value:__:  `[null, 0]` (includes the current object and all preceding objects)
@@ -4840,18 +6348,17 @@ vl_make_StackTransform <- function(as = NULL, groupby = NULL, offset = NULL, sor
 #' __Default value:__ `false`
 #' @param sort (_WindowTransform_) A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered “peer” values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to `true`).
 #' @param window (_WindowTransform_) The definition of the fields in the window, and what calculations to use.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a WindowTransform.
 #' @export
-vl_make_WindowTransform <- function(frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' Add bin transform to encoding
-#'
-#' Add binning or bin parameters to an encoding
-#' @param spec A vega-lite spec.
+
+vl_make_WindowTransform <- function(frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL){
+args <- .modify_args(NULL, c("frame", "groupby", "ignorePeers", "sort", "window"))
+args$obj
+} 
+#' Add bin to encoding
+#' 
+#' Add bin parameters to an encoding
+#' @param spec An input vega-lite spec
 #' @param anchor (_BinParams_) A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
 #' 
 #' __Default Value:__ the minimum bin extent value
@@ -4872,284 +6379,202 @@ vl_make_WindowTransform <- function(frame = NULL, groupby = NULL, ignorePeers = 
 #' 
 #' __Note:__ If provided, options such as maxbins will be ignored.
 #' @param steps (_BinParams_) An array of allowable step sizes to choose from.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
+#' @export
 #' @name bin_encoding 
-#'
-NULL
- #' @name bin_encoding
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_color()]
-vl_bin_color <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'color'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_color <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "color")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_detail()]
-vl_bin_detail <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'detail'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_detail <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "detail")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_fill()]
-vl_bin_fill <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fill'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_fill <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "fill")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_fillOpacity()]
-vl_bin_fillOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fillOpacity'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_fillOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "fillOpacity")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_href()]
-vl_bin_href <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'href'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_href <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "href")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_key()]
-vl_bin_key <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'key'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_key <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "key")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_latitude()]
-vl_bin_latitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'latitude'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_latitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "latitude")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_latitude2()]
-vl_bin_latitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'latitude2'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_latitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "latitude2")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_longitude()]
-vl_bin_longitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'longitude'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_longitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "longitude")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_longitude2()]
-vl_bin_longitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'longitude2'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_longitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "longitude2")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_opacity()]
-vl_bin_opacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'opacity'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_opacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "opacity")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_order()]
-vl_bin_order <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'order'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_order <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "order")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_shape()]
-vl_bin_shape <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'shape'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_shape <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "shape")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_size()]
-vl_bin_size <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'size'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_size <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "size")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_stroke()]
-vl_bin_stroke <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'stroke'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_stroke <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "stroke")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_strokeOpacity()]
-vl_bin_strokeOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_strokeOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "strokeOpacity")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_strokeWidth()]
-vl_bin_strokeWidth <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeWidth'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_strokeWidth <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "strokeWidth")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_text()]
-vl_bin_text <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'text'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_text <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "text")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_tooltip()]
-vl_bin_tooltip <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'tooltip'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_tooltip <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "tooltip")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_x()]
-vl_bin_x <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'x'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_x <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "x")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_x2()]
-vl_bin_x2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'x2'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_x2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "x2")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_xError()]
-vl_bin_xError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'xError'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_xError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "xError")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_xError2()]
-vl_bin_xError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'xError2'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_xError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "xError2")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_y()]
-vl_bin_y <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'y'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_y <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "y")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_y2()]
-vl_bin_y2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'y2'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_y2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "y2")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_yError()]
-vl_bin_yError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'yError'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' @name bin_encoding
+vl_bin_yError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "yError")
+} 
+#' @name bin_encoding
 #' @export
-#' @seealso [vl_encode_yError2()]
-vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'yError2'))
-  rlang::exec(.add_bin_to_encoding, !!!args_out)
-}
- #' Add impute transform to encoding
-#'
+vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+  args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "yError2")
+} 
+#' Add impute to encoding
+#' 
 #' Add impute parameters to an encoding
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param frame (_ImputeParams_) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
 #' 
 #' __Default value:__:  `[null, null]` indicating that the window includes all objects.
@@ -5164,625 +6589,25 @@ vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divi
 #' 
 #' __Default value:__  `"value"`
 #' @param value (_ImputeParams_) The field value to use when the imputation `method` is `"value"`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
+#' @export
 #' @name impute_encoding 
-#'
-NULL
- #' @name impute_encoding
+#' @name impute_encoding
 #' @export
-#' @seealso [vl_encode_x()]
-vl_impute_x <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'x'))
-  rlang::exec(.add_impute_to_encoding, !!!args_out)
-}
- #' @name impute_encoding
+vl_impute_x <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL){
+  args <- .modify_args(NULL, c("frame", "keyvals", "method", "value"))
+  .add_impute_to_encoding(args$spec, args$object, '#/definitions/ImputeParams' , encoding = "x")
+} 
+#' @name impute_encoding
 #' @export
-#' @seealso [vl_encode_y()]
-vl_impute_y <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'y'))
-  rlang::exec(.add_impute_to_encoding, !!!args_out)
-}
- #' Add stack transform to encoding
-#'
-#' Add stack parameters to an encoding
-#' @param spec A vega-lite spec.
-#' @param stack one of 'zero', 'center', 'normalize', NA
-#' @return A modified spec
-#' @name stack_encoding 
-#' @seealso [vl_stack()] to add a top level stack transform
-NULL
- #' @name stack_encoding
-#' @export
-vl_stack_x <- function(spec, stack = c('zero', 'center', 'normalize', NA)) {
-  args_out <- list(spec = spec, .enc = 'x', stack = match.arg(stack))
-  rlang::exec(.add_stack_to_encoding, !!!args_out)
-}
- #' @name stack_encoding
-#' @export
-vl_stack_y <- function(spec, stack = c('zero', 'center', 'normalize', NA)) {
-  args_out <- list(spec = spec, .enc = 'y', stack = match.arg(stack))
-  rlang::exec(.add_stack_to_encoding, !!!args_out)
-}
- #' Add aggregate transform to encoding
-#'
-#' Add aggregate parameters to an encoding
-#' @param spec A vega-lite spec.
-#' @param op Aggregation op, one of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
-#' @return A modified spec
-#' @name aggregate_encoding 
-#' @seealso [vl_aggregate()] to add a top level aggregate transform
-NULL
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_color <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'color', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_detail <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'detail', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_fill <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'fill', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_fillOpacity <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'fillOpacity', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_href <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'href', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_key <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'key', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_latitude <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'latitude', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_latitude2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'latitude2', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_longitude <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'longitude', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_longitude2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'longitude2', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_opacity <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'opacity', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_order <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'order', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_shape <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'shape', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_size <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'size', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_stroke <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'stroke', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_strokeOpacity <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'strokeOpacity', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_strokeWidth <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'strokeWidth', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_text <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'text', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_tooltip <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'tooltip', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_x <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'x', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_x2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'x2', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_xError <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'xError', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_xError2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'xError2', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_y <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'y', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_y2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'y2', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_yError <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'yError', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' @name aggregate_encoding
-#' @export
-vl_aggregate_yError2 <- function(spec, op = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
-  args_out <- list(spec = spec, .enc = 'yError2', op = match.arg(op))
-  rlang::exec(.add_aggregate_to_encoding, !!!args_out)
-}
- #' Add sort transform to encoding
-#'
-#' Add sort parameters to an encoding
-#' @param spec A vega-lite spec.
-#' @param value either 'ascending' or 'descending' to specify sort order (using
-#' this encoding), a list with a custom ordering, or NA to specify no sorting
-#' @return A modified spec
-#' @name sort_encoding 
-#' @seealso [sort_encoding_by_field()] and [sort_encoding_by_encoding()]
-NULL
- #' Add sort transform by field to encoding
-#'
-#' Add sort by field parameters to an encoding
-#' @param spec A vega-lite spec.
-#' @param field (_EncodingSortField_) The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
+vl_impute_y <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL){
+  args <- .modify_args(NULL, c("frame", "keyvals", "method", "value"))
+  .add_impute_to_encoding(args$spec, args$object, '#/definitions/ImputeParams' , encoding = "y")
+} 
+#' Add axis to encoding
 #' 
-#' __Default value:__ If unspecified, defaults to the field specified in the outer data reference.
-#' @param op (_EncodingSortField_) An [aggregate operation](https://vega.github.io/vega-lite/docs/aggregate.html#ops) to perform on the field prior to sorting (e.g., `"count"`, `"mean"` and `"median"`).
-#' An aggregation is required when there are multiple values of the sort field for each encoded data field.
-#' The input data objects will be aggregated, grouped by the encoded data field.
-#' 
-#' For a full list of operations, please see the documentation for [aggregate](https://vega.github.io/vega-lite/docs/aggregate.html#ops).
-#' 
-#' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`.
-#' @param order (_EncodingSortField_) The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort).
-#' @return A modified spec
-#' @name sort_encoding_by_field 
-#' @seealso [sort_encoding()] and [sort_encoding_by_encoding()]
-NULL
- #' Add sort transform by encoding to encoding
-#'
-#' Add sort by encoding parameters to an encoding
-#' @param spec A vega-lite spec.
-#' @param encoding (_SortByEncoding_) The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`)
-#' @param order (_SortByEncoding_) The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort).
-#' @return A modified spec
-#' @name sort_encoding_by_encoding 
-#' @seealso [sort_encoding()] and [sort_encoding_by_field()]
-NULL
- #' @name sort_encoding
-#' @export
-#'
-vl_sort_color <- function(spec, value) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'color'))
-  rlang::exec(.add_sort_to_encoding, !!!args_out)
-}
- #' @name sort_encoding
-#' @export
-#'
-vl_sort_fill <- function(spec, value) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fill'))
-  rlang::exec(.add_sort_to_encoding, !!!args_out)
-}
- #' @name sort_encoding
-#' @export
-#'
-vl_sort_fillOpacity <- function(spec, value) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fillOpacity'))
-  rlang::exec(.add_sort_to_encoding, !!!args_out)
-}
- #' @name sort_encoding
-#' @export
-#'
-vl_sort_opacity <- function(spec, value) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'opacity'))
-  rlang::exec(.add_sort_to_encoding, !!!args_out)
-}
- #' @name sort_encoding
-#' @export
-#'
-vl_sort_order <- function(spec, value) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'order'))
-  rlang::exec(.add_sort_to_encoding, !!!args_out)
-}
- #' @name sort_encoding
-#' @export
-#'
-vl_sort_shape <- function(spec, value) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'shape'))
-  rlang::exec(.add_sort_to_encoding, !!!args_out)
-}
- #' @name sort_encoding
-#' @export
-#'
-vl_sort_size <- function(spec, value) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'size'))
-  rlang::exec(.add_sort_to_encoding, !!!args_out)
-}
- #' @name sort_encoding
-#' @export
-#'
-vl_sort_stroke <- function(spec, value) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'stroke'))
-  rlang::exec(.add_sort_to_encoding, !!!args_out)
-}
- #' @name sort_encoding
-#' @export
-#'
-vl_sort_strokeOpacity <- function(spec, value) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
-  rlang::exec(.add_sort_to_encoding, !!!args_out)
-}
- #' @name sort_encoding
-#' @export
-#'
-vl_sort_strokeWidth <- function(spec, value) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeWidth'))
-  rlang::exec(.add_sort_to_encoding, !!!args_out)
-}
- #' @name sort_encoding
-#' @export
-#'
-vl_sort_x <- function(spec, value) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'x'))
-  rlang::exec(.add_sort_to_encoding, !!!args_out)
-}
- #' @name sort_encoding
-#' @export
-#'
-vl_sort_y <- function(spec, value) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'y'))
-  rlang::exec(.add_sort_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_field
-#' @export
-#'
-vl_sort_color_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'color'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_field
-#' @export
-#'
-vl_sort_fill_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fill'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_field
-#' @export
-#'
-vl_sort_fillOpacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fillOpacity'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_field
-#' @export
-#'
-vl_sort_opacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'opacity'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_field
-#' @export
-#'
-vl_sort_order_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'order'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_field
-#' @export
-#'
-vl_sort_shape_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'shape'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_field
-#' @export
-#'
-vl_sort_size_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'size'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_field
-#' @export
-#'
-vl_sort_stroke_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'stroke'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_field
-#' @export
-#'
-vl_sort_strokeOpacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_field
-#' @export
-#'
-vl_sort_strokeWidth_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeWidth'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_field
-#' @export
-#'
-vl_sort_x_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'x'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_field
-#' @export
-#'
-vl_sort_y_by_field <- function(spec, field = NULL, op = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'y'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_encoding
-#' @export
-#'
-vl_sort_color_by_encoding <- function(spec, encoding = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'color'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_encoding
-#' @export
-#'
-vl_sort_fill_by_encoding <- function(spec, encoding = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fill'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_encoding
-#' @export
-#'
-vl_sort_fillOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fillOpacity'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_encoding
-#' @export
-#'
-vl_sort_opacity_by_encoding <- function(spec, encoding = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'opacity'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_encoding
-#' @export
-#'
-vl_sort_order_by_encoding <- function(spec, encoding = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'order'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_encoding
-#' @export
-#'
-vl_sort_shape_by_encoding <- function(spec, encoding = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'shape'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_encoding
-#' @export
-#'
-vl_sort_size_by_encoding <- function(spec, encoding = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'size'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_encoding
-#' @export
-#'
-vl_sort_stroke_by_encoding <- function(spec, encoding = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'stroke'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_encoding
-#' @export
-#'
-vl_sort_strokeOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_encoding
-#' @export
-#'
-vl_sort_strokeWidth_by_encoding <- function(spec, encoding = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeWidth'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_encoding
-#' @export
-#'
-vl_sort_x_by_encoding <- function(spec, encoding = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'x'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' @name sort_encoding_by_encoding
-#' @export
-#'
-vl_sort_y_by_encoding <- function(spec, encoding = NULL, order = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'y'))
-  rlang::exec(.add_sort_obj_to_encoding, !!!args_out)
-}
- #' Add axis to encoding
-#'
 #' Add axis parameters to an encoding
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param bandPosition (_Axis_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
 #' 
 #'   __Default value:__ `0.5`
@@ -5927,35 +6752,47 @@ vl_sort_y_by_encoding <- function(spec, encoding = NULL, order = NULL) {
 #' To put them in front, use `"zindex = 1"`.
 #' 
 #' __Default value:__ `1` (in front of the marks) for actual axis and `0` (behind the marks) for grids.
-#' @param remove Remove the axis?
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
+#' @export
 #' @name axis_encoding 
-#'
-NULL
- #' @name axis_encoding
+#' @name axis_encoding
 #' @export
-#' @seealso [vl_encode_x()]
-vl_axis_x <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, values = NULL, zindex = NULL, remove = FALSE) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'x'))
-  rlang::exec(.add_axis_to_encoding, !!!args_out)
-}
- #' @name axis_encoding
+vl_axis_x <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "format", "formatType", "grid", "gridColor", 
+  "gridDash", "gridDashOffset", "gridOpacity", "gridWidth", "labelAlign", "labelAngle", 
+  "labelBaseline", "labelBound", "labelColor", "labelFlush", "labelFlushOffset", 
+  "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", "labelLimit", 
+  "labelOpacity", "labelOverlap", "labelPadding", "labelSeparation", "labels", 
+  "maxExtent", "minExtent", "offset", "orient", "position", "tickColor", "tickCount", 
+  "tickDash", "tickDashOffset", "tickExtra", "tickMinStep", "tickOffset", "tickOpacity", 
+  "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", "titleAnchor", 
+  "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
+  "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", "titleX", "titleY", 
+  "values", "zindex"))
+  .add_axis_to_encoding(args$spec, args$object, '#/definitions/Axis' , encoding = "x")
+} 
+#' @name axis_encoding
 #' @export
-#' @seealso [vl_encode_y()]
-vl_axis_y <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, values = NULL, zindex = NULL, remove = FALSE) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'y'))
-  rlang::exec(.add_axis_to_encoding, !!!args_out)
-}
- #' Add scale to encoding
-#'
+vl_axis_y <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "format", "formatType", "grid", "gridColor", 
+  "gridDash", "gridDashOffset", "gridOpacity", "gridWidth", "labelAlign", "labelAngle", 
+  "labelBaseline", "labelBound", "labelColor", "labelFlush", "labelFlushOffset", 
+  "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", "labelLimit", 
+  "labelOpacity", "labelOverlap", "labelPadding", "labelSeparation", "labels", 
+  "maxExtent", "minExtent", "offset", "orient", "position", "tickColor", "tickCount", 
+  "tickDash", "tickDashOffset", "tickExtra", "tickMinStep", "tickOffset", "tickOpacity", 
+  "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", "titleAnchor", 
+  "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
+  "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", "titleX", "titleY", 
+  "values", "zindex"))
+  .add_axis_to_encoding(args$spec, args$object, '#/definitions/Axis' , encoding = "y")
+} 
+#' Add scale to encoding
+#' 
 #' Add scale parameters to an encoding
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param base (_Scale_) The logarithm base of the `log` scale (default `10`).
 #' @param bins (_Scale_) An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels.
 #' @param clamp (_Scale_) If `true`, values that exceed the data domain are clamped to either the minimum or maximum range value
@@ -6044,124 +6881,101 @@ vl_axis_y <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NU
 #' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
 #' 
 #' __Note:__ Log, time, and utc scales do not support `zero`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
+#' @export
 #' @name scale_encoding 
-#'
-NULL
- #' @name scale_encoding
+#' @name scale_encoding
 #' @export
-#' @seealso [vl_encode_color()]
-vl_scale_color <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'color'))
-  rlang::exec(.add_scale_to_encoding, !!!args_out)
-}
- #' @name scale_encoding
+vl_scale_color <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "color")
+} 
+#' @name scale_encoding
 #' @export
-#' @seealso [vl_encode_fill()]
-vl_scale_fill <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fill'))
-  rlang::exec(.add_scale_to_encoding, !!!args_out)
-}
- #' @name scale_encoding
+vl_scale_fill <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "fill")
+} 
+#' @name scale_encoding
 #' @export
-#' @seealso [vl_encode_fillOpacity()]
-vl_scale_fillOpacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fillOpacity'))
-  rlang::exec(.add_scale_to_encoding, !!!args_out)
-}
- #' @name scale_encoding
+vl_scale_fillOpacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "fillOpacity")
+} 
+#' @name scale_encoding
 #' @export
-#' @seealso [vl_encode_opacity()]
-vl_scale_opacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'opacity'))
-  rlang::exec(.add_scale_to_encoding, !!!args_out)
-}
- #' @name scale_encoding
+vl_scale_opacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "opacity")
+} 
+#' @name scale_encoding
 #' @export
-#' @seealso [vl_encode_shape()]
-vl_scale_shape <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'shape'))
-  rlang::exec(.add_scale_to_encoding, !!!args_out)
-}
- #' @name scale_encoding
+vl_scale_shape <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "shape")
+} 
+#' @name scale_encoding
 #' @export
-#' @seealso [vl_encode_size()]
-vl_scale_size <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'size'))
-  rlang::exec(.add_scale_to_encoding, !!!args_out)
-}
- #' @name scale_encoding
+vl_scale_size <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "size")
+} 
+#' @name scale_encoding
 #' @export
-#' @seealso [vl_encode_stroke()]
-vl_scale_stroke <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'stroke'))
-  rlang::exec(.add_scale_to_encoding, !!!args_out)
-}
- #' @name scale_encoding
+vl_scale_stroke <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "stroke")
+} 
+#' @name scale_encoding
 #' @export
-#' @seealso [vl_encode_strokeOpacity()]
-vl_scale_strokeOpacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
-  rlang::exec(.add_scale_to_encoding, !!!args_out)
-}
- #' @name scale_encoding
+vl_scale_strokeOpacity <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "strokeOpacity")
+} 
+#' @name scale_encoding
 #' @export
-#' @seealso [vl_encode_strokeWidth()]
-vl_scale_strokeWidth <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeWidth'))
-  rlang::exec(.add_scale_to_encoding, !!!args_out)
-}
- #' @name scale_encoding
+vl_scale_strokeWidth <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "strokeWidth")
+} 
+#' @name scale_encoding
 #' @export
-#' @seealso [vl_encode_x()]
-vl_scale_x <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'x'))
-  rlang::exec(.add_scale_to_encoding, !!!args_out)
-}
- #' @name scale_encoding
+vl_scale_x <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "x")
+} 
+#' @name scale_encoding
 #' @export
-#' @seealso [vl_encode_y()]
-vl_scale_y <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'y'))
-  rlang::exec(.add_scale_to_encoding, !!!args_out)
-}
- #' Add legend to encoding
-#'
+vl_scale_y <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+  args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "y")
+} 
+#' Add legend to encoding
+#' 
 #' Add legend parameters to an encoding
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param clipHeight (_Legend_) The height in pixels to clip symbol legend entries and limit their size.
 #' @param columnPadding (_Legend_) The horizontal padding in pixels between symbol legend entries.
 #' 
@@ -6299,107 +7113,157 @@ vl_scale_y <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = 
 #' @param zindex (_Legend_) A non-positive integer indicating z-index of the legend.
 #' If zindex is 0, legend should be drawn behind all chart elements.
 #' To put them in front, use zindex = 1.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
+#' @export
 #' @name legend_encoding 
-#'
-NULL
- #' @name legend_encoding
+#' @name legend_encoding
 #' @export
-#' @seealso [vl_encode_color()]
-vl_legend_color <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'color'))
-  rlang::exec(.add_legend_to_encoding, !!!args_out)
-}
- #' @name legend_encoding
+vl_legend_color <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "color")
+} 
+#' @name legend_encoding
 #' @export
-#' @seealso [vl_encode_fill()]
-vl_legend_fill <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fill'))
-  rlang::exec(.add_legend_to_encoding, !!!args_out)
-}
- #' @name legend_encoding
+vl_legend_fill <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "fill")
+} 
+#' @name legend_encoding
 #' @export
-#' @seealso [vl_encode_fillOpacity()]
-vl_legend_fillOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fillOpacity'))
-  rlang::exec(.add_legend_to_encoding, !!!args_out)
-}
- #' @name legend_encoding
+vl_legend_fillOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "fillOpacity")
+} 
+#' @name legend_encoding
 #' @export
-#' @seealso [vl_encode_opacity()]
-vl_legend_opacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'opacity'))
-  rlang::exec(.add_legend_to_encoding, !!!args_out)
-}
- #' @name legend_encoding
+vl_legend_opacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "opacity")
+} 
+#' @name legend_encoding
 #' @export
-#' @seealso [vl_encode_shape()]
-vl_legend_shape <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'shape'))
-  rlang::exec(.add_legend_to_encoding, !!!args_out)
-}
- #' @name legend_encoding
+vl_legend_shape <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "shape")
+} 
+#' @name legend_encoding
 #' @export
-#' @seealso [vl_encode_size()]
-vl_legend_size <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'size'))
-  rlang::exec(.add_legend_to_encoding, !!!args_out)
-}
- #' @name legend_encoding
+vl_legend_size <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "size")
+} 
+#' @name legend_encoding
 #' @export
-#' @seealso [vl_encode_stroke()]
-vl_legend_stroke <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'stroke'))
-  rlang::exec(.add_legend_to_encoding, !!!args_out)
-}
- #' @name legend_encoding
+vl_legend_stroke <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "stroke")
+} 
+#' @name legend_encoding
 #' @export
-#' @seealso [vl_encode_strokeOpacity()]
-vl_legend_strokeOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
-  rlang::exec(.add_legend_to_encoding, !!!args_out)
-}
- #' @name legend_encoding
+vl_legend_strokeOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "strokeOpacity")
+} 
+#' @name legend_encoding
 #' @export
-#' @seealso [vl_encode_strokeWidth()]
-vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeWidth'))
-  rlang::exec(.add_legend_to_encoding, !!!args_out)
-}
- #' Add condition to encoding
-#'
+vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "strokeWidth")
+} 
+#' Add condition to encoding
+#' 
 #' Add condition parameters to an encoding
-#' @param spec A vega-lite spec.
-#' @param test (_ConditionalPredicate<ValueDef>, ConditionalPredicate<MarkPropFieldDef>_) Predicate for triggering the condition
-#' @param value (_ConditionalPredicate<ValueDef>, ConditionalSelection<ValueDef>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
-#' @param selection (_ConditionalSelection<ValueDef>, ConditionalSelection<MarkPropFieldDef>_) A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose).
+#' @param spec An input vega-lite spec
 #' @param aggregate (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -6442,6 +7306,7 @@ vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL,
 #' __Default value:__ `"ascending"`
 #' 
 #' __Note:__ `null` is not supported for `row` and `column`.
+#' @param test (_ConditionalPredicate<MarkPropFieldDef>, ConditionalPredicate<ValueDef>_) Predicate for triggering the condition
 #' @param timeUnit (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 #' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
 #' 
@@ -6467,277 +7332,539 @@ vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL,
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @return A modified spec
+#' @param selection (_ConditionalSelection<MarkPropFieldDef>, ConditionalSelection<ValueDef>_) A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose).
+#' @param value (_ConditionalPredicate<ValueDef>, ConditionalSelection<ValueDef>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
+#' @return A modified Vega-Lite Spec
+#' @export
 #' @name condition_encoding 
-#'
-NULL
- #' @name condition_encoding
+#' @name condition_encoding
 #' @export
-#' @seealso [vl_encode_color()]
-vl_condition_color <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'color'))
-  rlang::exec(.add_condition_to_encoding, !!!args_out)
-}
- #' @name condition_encoding
+vl_condition_color <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "color")
+} 
+#' @name condition_encoding
 #' @export
-#' @seealso [vl_encode_fill()]
-vl_condition_fill <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fill'))
-  rlang::exec(.add_condition_to_encoding, !!!args_out)
-}
- #' @name condition_encoding
+vl_condition_fill <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "fill")
+} 
+#' @name condition_encoding
 #' @export
-#' @seealso [vl_encode_fillOpacity()]
-vl_condition_fillOpacity <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'fillOpacity'))
-  rlang::exec(.add_condition_to_encoding, !!!args_out)
-}
- #' @name condition_encoding
+vl_condition_fillOpacity <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "fillOpacity")
+} 
+#' @name condition_encoding
 #' @export
-#' @seealso [vl_encode_href()]
-vl_condition_href <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'href'))
-  rlang::exec(.add_condition_to_encoding, !!!args_out)
-}
- #' @name condition_encoding
+vl_condition_href <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "href")
+} 
+#' @name condition_encoding
 #' @export
-#' @seealso [vl_encode_opacity()]
-vl_condition_opacity <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'opacity'))
-  rlang::exec(.add_condition_to_encoding, !!!args_out)
-}
- #' @name condition_encoding
+vl_condition_opacity <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "opacity")
+} 
+#' @name condition_encoding
 #' @export
-#' @seealso [vl_encode_shape()]
-vl_condition_shape <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'shape'))
-  rlang::exec(.add_condition_to_encoding, !!!args_out)
-}
- #' @name condition_encoding
+vl_condition_shape <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "shape")
+} 
+#' @name condition_encoding
 #' @export
-#' @seealso [vl_encode_size()]
-vl_condition_size <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'size'))
-  rlang::exec(.add_condition_to_encoding, !!!args_out)
-}
- #' @name condition_encoding
+vl_condition_size <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "size")
+} 
+#' @name condition_encoding
 #' @export
-#' @seealso [vl_encode_stroke()]
-vl_condition_stroke <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'stroke'))
-  rlang::exec(.add_condition_to_encoding, !!!args_out)
-}
- #' @name condition_encoding
+vl_condition_stroke <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "stroke")
+} 
+#' @name condition_encoding
 #' @export
-#' @seealso [vl_encode_strokeOpacity()]
-vl_condition_strokeOpacity <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeOpacity'))
-  rlang::exec(.add_condition_to_encoding, !!!args_out)
-}
- #' @name condition_encoding
+vl_condition_strokeOpacity <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "strokeOpacity")
+} 
+#' @name condition_encoding
 #' @export
-#' @seealso [vl_encode_strokeWidth()]
-vl_condition_strokeWidth <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'strokeWidth'))
-  rlang::exec(.add_condition_to_encoding, !!!args_out)
-}
- #' @name condition_encoding
+vl_condition_strokeWidth <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "strokeWidth")
+} 
+#' @name condition_encoding
 #' @export
-#' @seealso [vl_encode_text()]
-vl_condition_text <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'text'))
-  rlang::exec(.add_condition_to_encoding, !!!args_out)
-}
- #' @name condition_encoding
+vl_condition_text <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "text")
+} 
+#' @name condition_encoding
 #' @export
-#' @seealso [vl_encode_tooltip()]
-vl_condition_tooltip <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.enc = 'tooltip'))
-  rlang::exec(.add_condition_to_encoding, !!!args_out)
-}
- #' vl_add_single_selection
+vl_condition_tooltip <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL, value = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
+  "title", "type", "selection", "value"))
+  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition' , encoding = "tooltip")
+} 
+#' Add stack transform to encoding
+#' 
+#' Add stack parameters to an encoding
+#' @param spec An input vega-lite spec
+#' @param stack One of 'zero', 'center', 'normalize', NA
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name stack_encoding 
+#' @name stack_encoding
+#' @export
+vl_stack_x <- function(spec, stack = c('zero', 'center', 'normalize', NA)){
+  stack <- match.arg(stack)
+  .add_stack_to_encoding(spec, stack, '#/definitions/StackOffset' , encoding = "x")
+} 
+#' @name stack_encoding
+#' @export
+vl_stack_y <- function(spec, stack = c('zero', 'center', 'normalize', NA)){
+  stack <- match.arg(stack)
+  .add_stack_to_encoding(spec, stack, '#/definitions/StackOffset' , encoding = "y")
+} 
+#' Add aggregate transform to encoding
+#' 
+#' Add aggregate parameters to an encoding
+#' @param spec An input vega-lite spec
+#' @param aggregate One of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name aggregate_encoding 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_color <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "color")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_detail <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "detail")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_fill <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "fill")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_fillOpacity <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "fillOpacity")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_href <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "href")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_key <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "key")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_latitude <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "latitude")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_latitude2 <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "latitude2")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_longitude <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "longitude")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_longitude2 <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "longitude2")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_opacity <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "opacity")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_order <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "order")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_shape <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "shape")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_size <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "size")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_stroke <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "stroke")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_strokeOpacity <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "strokeOpacity")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_strokeWidth <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "strokeWidth")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_text <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "text")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_tooltip <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "tooltip")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_x <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "x")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_x2 <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "x2")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_xError <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "xError")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_xError2 <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "xError2")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_y <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "y")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_y2 <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "y2")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_yError <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "yError")
+} 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_yError2 <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)){
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, '#/definitions/Aggregate' , encoding = "yError2")
+} 
+#' #' Add sorting to an encoding
+#' 
+#' #' Sort an encoding in 'ascending' or 'descending' order, or by given array
+#' @param spec An input vega-lite spec
+#' @param value One of 'ascending', 'descending', a list with a custom ordering, or NA to specify no sorting
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name sort_encoding 
+#' @name sort_encoding
+#' @export
+vl_sort_color <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'color')
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_fill <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'fill')
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_fillOpacity <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'fillOpacity')
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_opacity <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'opacity')
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_order <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'order')
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_shape <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'shape')
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_size <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'size')
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_stroke <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'stroke')
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_strokeOpacity <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'strokeOpacity')
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_strokeWidth <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'strokeWidth')
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_x <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'x')
+} 
+#' @name sort_encoding
+#' @export
+vl_sort_y <- function(spec, value){
+  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = 'y')
+} 
+#' Add sort transform by field to encoding
+#' 
+#' Add sort by field parameters to an encoding
+#' @param spec An input vega-lite spec
+#' @param field (_EncodingSortField_) The data [field](https://vega.github.io/vega-lite/docs/field.html) to sort by.
+#' 
+#' __Default value:__ If unspecified, defaults to the field specified in the outer data reference.
+#' @param op (_EncodingSortField_) An [aggregate operation](https://vega.github.io/vega-lite/docs/aggregate.html#ops) to perform on the field prior to sorting (e.g., `"count"`, `"mean"` and `"median"`).
+#' An aggregation is required when there are multiple values of the sort field for each encoded data field.
+#' The input data objects will be aggregated, grouped by the encoded data field.
+#' 
+#' For a full list of operations, please see the documentation for [aggregate](https://vega.github.io/vega-lite/docs/aggregate.html#ops).
+#' 
+#' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`.
+#' @param order (_EncodingSortField_) The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort).
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name sort_encoding_by_field 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_color_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "color")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_fill_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "fill")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_fillOpacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "fillOpacity")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_opacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "opacity")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_order_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "order")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_shape_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "shape")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_size_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "size")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_stroke_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "stroke")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_strokeOpacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "strokeOpacity")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_strokeWidth_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "strokeWidth")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_x_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "x")
+} 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_y_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+  args <- .modify_args(NULL, c("field", "op", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "y")
+} 
+#' Add sort transform by encoding to encoding
+#' 
+#' Add sort by encoding parameters to an encoding
+#' @param spec An input vega-lite spec
+#' @param encoding (_SortByEncoding_) The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`)
+#' @param order (_SortByEncoding_) The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort).
+#' @return A modified Vega-Lite Spec
+#' @export
+#' @name sort_encoding_by_encoding 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_color_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "color")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_fill_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "fill")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_fillOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "fillOpacity")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_opacity_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "opacity")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_order_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "order")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_shape_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "shape")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_size_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "size")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_stroke_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "stroke")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_strokeOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "strokeOpacity")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_strokeWidth_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "strokeWidth")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_x_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "x")
+} 
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_y_by_encoding <- function(spec, encoding = NULL, order = NULL){
+  args <- .modify_args(NULL, c("encoding", "order"))
+  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "y")
+} 
+#' @name axis_encoding
+#' @export
+vl_remove_axis_x <- function(spec){
+  .add_axis_to_encoding(spec, NA, '#/definitions/PositionFieldDef/properties/axis', encoding = 'x') 
+} 
+#' @name axis_encoding
+#' @export
+vl_remove_axis_y <- function(spec){
+  .add_axis_to_encoding(spec, NA, '#/definitions/PositionFieldDef/properties/axis', encoding = 'y') 
+} 
+#' vl_add_single_selection
 #' 
 #' Add SingleSelection to a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param selection_name Name of selection
-#' @param bind (_SingleSelection_) Establish a two-way binding between a single selection and input elements
-#' (also known as dynamic query widgets). A binding takes the form of
-#' Vega's [input element binding definition](https://vega.github.io/vega/docs/signals/#bind)
-#' or can be a mapping between projected field/encodings and binding definitions.
-#' 
-#' See the [bind transform](https://vega.github.io/vega-lite/docs/bind.html) documentation for more information.
-#' @param clear (_SingleSelection_) Clears the selection, emptying it of all values. Can be an
-#' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
-#' 
-#' __Default value:__ `dblclick`.
-#' 
-#' See the [clear](https://vega.github.io/vega-lite/docs/clear.html) documentation for more information.
-#' @param empty (_SingleSelection_) By default, `all` data values are considered to lie within an empty selection.
-#' When set to `none`, empty selections contain no data values.
-#' @param encodings (_SingleSelection_) An array of encoding channels. The corresponding data field values
-#' must match for a data tuple to fall within the selection.
-#' @param fields (_SingleSelection_) An array of field names whose values must match for a data tuple to
-#' fall within the selection.
-#' @param init (_SingleSelection_) Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and initial values.
-#' @param nearest (_SingleSelection_) When true, an invisible voronoi diagram is computed to accelerate discrete
-#' selection. The data value _nearest_ the mouse cursor is added to the selection.
-#' 
-#' See the [nearest transform](https://vega.github.io/vega-lite/docs/nearest.html) documentation for more information.
-#' @param on (_SingleSelection_) A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
-#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters).
-#' @param resolve (_SingleSelection_) With layered and multi-view displays, a strategy that determines how
-#' selections' data queries are resolved when applied in a filter transform,
-#' conditional encoding rule, or scale domain.
-#' @return A modified spec
-#' @export
-#'
-vl_add_single_selection <- function(spec, selection_name, bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(type = 'single'))
-  rlang::exec(.add_selection, !!!args_out)
-}
- #' vl_add_multi_selection
-#' 
-#' Add MultiSelection to a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param selection_name Name of selection
-#' @param clear (_MultiSelection_) Clears the selection, emptying it of all values. Can be an
-#' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
-#' 
-#' __Default value:__ `dblclick`.
-#' 
-#' See the [clear](https://vega.github.io/vega-lite/docs/clear.html) documentation for more information.
-#' @param empty (_MultiSelection_) By default, `all` data values are considered to lie within an empty selection.
-#' When set to `none`, empty selections contain no data values.
-#' @param encodings (_MultiSelection_) An array of encoding channels. The corresponding data field values
-#' must match for a data tuple to fall within the selection.
-#' @param fields (_MultiSelection_) An array of field names whose values must match for a data tuple to
-#' fall within the selection.
-#' @param init (_MultiSelection_) Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and an initial
-#' value (or array of values).
-#' @param nearest (_MultiSelection_) When true, an invisible voronoi diagram is computed to accelerate discrete
-#' selection. The data value _nearest_ the mouse cursor is added to the selection.
-#' 
-#' See the [nearest transform](https://vega.github.io/vega-lite/docs/nearest.html) documentation for more information.
-#' @param on (_MultiSelection_) A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
-#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters).
-#' @param resolve (_MultiSelection_) With layered and multi-view displays, a strategy that determines how
-#' selections' data queries are resolved when applied in a filter transform,
-#' conditional encoding rule, or scale domain.
-#' @param toggle (_MultiSelection_) Controls whether data values should be toggled or only ever inserted into
-#' multi selections. Can be `true`, `false` (for insertion only), or a
-#' [Vega expression](https://vega.github.io/vega/docs/expressions/).
-#' 
-#' __Default value:__ `true`, which corresponds to `event.shiftKey` (i.e.,
-#' data values are toggled when a user interacts with the shift-key pressed).
-#' 
-#' See the [toggle transform](https://vega.github.io/vega-lite/docs/toggle.html) documentation for more information.
-#' @return A modified spec
-#' @export
-#'
-vl_add_multi_selection <- function(spec, selection_name, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(type = 'multi'))
-  rlang::exec(.add_selection, !!!args_out)
-}
- #' vl_add_interval_selection
-#' 
-#' Add IntervalSelection to a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param selection_name Name of selection
-#' @param bind (_IntervalSelection_) Establishes a two-way binding between the interval selection and the scales
-#' used within the same view. This allows a user to interactively pan and
-#' zoom the view.
-#' @param clear (_IntervalSelection_) Clears the selection, emptying it of all values. Can be an
-#' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
-#' 
-#' __Default value:__ `dblclick`.
-#' 
-#' See the [clear](https://vega.github.io/vega-lite/docs/clear.html) documentation for more information.
-#' @param empty (_IntervalSelection_) By default, `all` data values are considered to lie within an empty selection.
-#' When set to `none`, empty selections contain no data values.
-#' @param encodings (_IntervalSelection_) An array of encoding channels. The corresponding data field values
-#' must match for a data tuple to fall within the selection.
-#' @param fields (_IntervalSelection_) An array of field names whose values must match for a data tuple to
-#' fall within the selection.
-#' @param init (_IntervalSelection_) Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and arrays of
-#' initial values.
-#' @param mark (_IntervalSelection_) An interval selection also adds a rectangle mark to depict the
-#' extents of the interval. The `mark` property can be used to customize the
-#' appearance of the mark.
-#' @param on (_IntervalSelection_) A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
-#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters).
-#' @param resolve (_IntervalSelection_) With layered and multi-view displays, a strategy that determines how
-#' selections' data queries are resolved when applied in a filter transform,
-#' conditional encoding rule, or scale domain.
-#' @param translate (_IntervalSelection_) When truthy, allows a user to interactively move an interval selection
-#' back-and-forth. Can be `true`, `false` (to disable panning), or a
-#' [Vega event stream definition](https://vega.github.io/vega/docs/event-streams/)
-#' which must include a start and end event to trigger continuous panning.
-#' 
-#' __Default value:__ `true`, which corresponds to
-#' `[mousedown, window:mouseup] > window:mousemove!` which corresponds to
-#' clicks and dragging within an interval selection to reposition it.
-#' @param zoom (_IntervalSelection_) When truthy, allows a user to interactively resize an interval selection.
-#' Can be `true`, `false` (to disable zooming), or a [Vega event stream
-#' definition](https://vega.github.io/vega/docs/event-streams/). Currently,
-#' only `wheel` events are supported.
-#' 
-#' 
-#' __Default value:__ `true`, which corresponds to `wheel!`.
-#' @return A modified spec
-#' @export
-#'
-vl_add_interval_selection <- function(spec, selection_name, bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, zoom = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(type = 'interval'))
-  rlang::exec(.add_selection, !!!args_out)
-}
- #' vl_make_SingleSelection
-#' 
-#' Create spec for SingleSelection.
+#' @param spec An input vega-lite spec
+#' @param selection_name Name for selection
 #' @param bind (_SingleSelection_) Establish a two-way binding between a single selection and input elements
 #' (also known as dynamic query widgets). A binding takes the form of
 #' Vega's [input element binding definition](https://vega.github.io/vega/docs/signals/#bind)
@@ -6767,17 +7894,19 @@ vl_add_interval_selection <- function(spec, selection_name, bind = NULL, clear =
 #' selections' data queries are resolved when applied in a filter transform,
 #' conditional encoding rule, or scale domain.
 #' @param type (_SingleSelection_) single
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_SingleSelection <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_MultiSelection
+
+vl_add_single_selection <- function(spec, selection_name, bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, type = NULL){
+  args <- .modify_args(NULL, c("bind", "clear", "empty", "encodings", "fields", "init", "nearest", "on", 
+  "resolve", "type"))
+  .add_selection(args$spec, args$object, '#/definitions/SingleSelection', type = 'single', selection_name = args$extra$selection_name)
+} 
+#' vl_add_multi_selection
 #' 
-#' Create spec for MultiSelection.
+#' Add MultiSelection to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param selection_name Name for selection
 #' @param clear (_MultiSelection_) Clears the selection, emptying it of all values. Can be an
 #' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
 #' 
@@ -6810,17 +7939,19 @@ vl_make_SingleSelection <- function(bind = NULL, clear = NULL, empty = NULL, enc
 #' 
 #' See the [toggle transform](https://vega.github.io/vega-lite/docs/toggle.html) documentation for more information.
 #' @param type (_MultiSelection_) multi
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_MultiSelection <- function(clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_IntervalSelection
+
+vl_add_multi_selection <- function(spec, selection_name, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL, type = NULL){
+  args <- .modify_args(NULL, c("clear", "empty", "encodings", "fields", "init", "nearest", "on", "resolve", 
+  "toggle", "type"))
+  .add_selection(args$spec, args$object, '#/definitions/MultiSelection', type = 'multi', selection_name = args$extra$selection_name)
+} 
+#' vl_add_interval_selection
 #' 
-#' Create spec for IntervalSelection.
+#' Add IntervalSelection to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param selection_name Name for selection
 #' @param bind (_IntervalSelection_) Establishes a two-way binding between the interval selection and the scales
 #' used within the same view. This allows a user to interactively pan and
 #' zoom the view.
@@ -6862,18 +7993,153 @@ vl_make_MultiSelection <- function(clear = NULL, empty = NULL, encodings = NULL,
 #' 
 #' 
 #' __Default value:__ `true`, which corresponds to `wheel!`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-vl_make_IntervalSelection <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, type = NULL, zoom = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_bind_radio_input
+
+vl_add_interval_selection <- function(spec, selection_name, bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, type = NULL, zoom = NULL){
+  args <- .modify_args(NULL, c("bind", "clear", "empty", "encodings", "fields", "init", "mark", "on", "resolve", 
+  "translate", "type", "zoom"))
+  .add_selection(args$spec, args$object, '#/definitions/IntervalSelection', type = 'interval', selection_name = args$extra$selection_name)
+} 
+#' vl_make_SingleSelection
 #' 
-#' Add binding to a radio input to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' Create spec for {obj}
+#' @param bind (_SingleSelection_) Establish a two-way binding between a single selection and input elements
+#' (also known as dynamic query widgets). A binding takes the form of
+#' Vega's [input element binding definition](https://vega.github.io/vega/docs/signals/#bind)
+#' or can be a mapping between projected field/encodings and binding definitions.
+#' 
+#' See the [bind transform](https://vega.github.io/vega-lite/docs/bind.html) documentation for more information.
+#' @param clear (_SingleSelection_) Clears the selection, emptying it of all values. Can be an
+#' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
+#' 
+#' __Default value:__ `dblclick`.
+#' 
+#' See the [clear](https://vega.github.io/vega-lite/docs/clear.html) documentation for more information.
+#' @param empty (_SingleSelection_) By default, `all` data values are considered to lie within an empty selection.
+#' When set to `none`, empty selections contain no data values.
+#' @param encodings (_SingleSelection_) An array of encoding channels. The corresponding data field values
+#' must match for a data tuple to fall within the selection.
+#' @param fields (_SingleSelection_) An array of field names whose values must match for a data tuple to
+#' fall within the selection.
+#' @param init (_SingleSelection_) Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and initial values.
+#' @param nearest (_SingleSelection_) When true, an invisible voronoi diagram is computed to accelerate discrete
+#' selection. The data value _nearest_ the mouse cursor is added to the selection.
+#' 
+#' See the [nearest transform](https://vega.github.io/vega-lite/docs/nearest.html) documentation for more information.
+#' @param on (_SingleSelection_) A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
+#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters).
+#' @param resolve (_SingleSelection_) With layered and multi-view displays, a strategy that determines how
+#' selections' data queries are resolved when applied in a filter transform,
+#' conditional encoding rule, or scale domain.
+#' @param type (_SingleSelection_) single
+#' @return A component of a Vega-Lite spec, corresponding to a SingleSelection.
+#' @export
+
+vl_make_SingleSelection <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, type = NULL){
+args <- .modify_args(NULL, c("bind", "clear", "empty", "encodings", "fields", "init", "nearest", "on", 
+  "resolve", "type"))
+args$obj
+} 
+#' vl_make_MultiSelection
+#' 
+#' Create spec for {obj}
+#' @param clear (_MultiSelection_) Clears the selection, emptying it of all values. Can be an
+#' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
+#' 
+#' __Default value:__ `dblclick`.
+#' 
+#' See the [clear](https://vega.github.io/vega-lite/docs/clear.html) documentation for more information.
+#' @param empty (_MultiSelection_) By default, `all` data values are considered to lie within an empty selection.
+#' When set to `none`, empty selections contain no data values.
+#' @param encodings (_MultiSelection_) An array of encoding channels. The corresponding data field values
+#' must match for a data tuple to fall within the selection.
+#' @param fields (_MultiSelection_) An array of field names whose values must match for a data tuple to
+#' fall within the selection.
+#' @param init (_MultiSelection_) Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and an initial
+#' value (or array of values).
+#' @param nearest (_MultiSelection_) When true, an invisible voronoi diagram is computed to accelerate discrete
+#' selection. The data value _nearest_ the mouse cursor is added to the selection.
+#' 
+#' See the [nearest transform](https://vega.github.io/vega-lite/docs/nearest.html) documentation for more information.
+#' @param on (_MultiSelection_) A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
+#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters).
+#' @param resolve (_MultiSelection_) With layered and multi-view displays, a strategy that determines how
+#' selections' data queries are resolved when applied in a filter transform,
+#' conditional encoding rule, or scale domain.
+#' @param toggle (_MultiSelection_) Controls whether data values should be toggled or only ever inserted into
+#' multi selections. Can be `true`, `false` (for insertion only), or a
+#' [Vega expression](https://vega.github.io/vega/docs/expressions/).
+#' 
+#' __Default value:__ `true`, which corresponds to `event.shiftKey` (i.e.,
+#' data values are toggled when a user interacts with the shift-key pressed).
+#' 
+#' See the [toggle transform](https://vega.github.io/vega-lite/docs/toggle.html) documentation for more information.
+#' @param type (_MultiSelection_) multi
+#' @return A component of a Vega-Lite spec, corresponding to a MultiSelection.
+#' @export
+
+vl_make_MultiSelection <- function(clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL, type = NULL){
+args <- .modify_args(NULL, c("clear", "empty", "encodings", "fields", "init", "nearest", "on", "resolve", 
+  "toggle", "type"))
+args$obj
+} 
+#' vl_make_IntervalSelection
+#' 
+#' Create spec for {obj}
+#' @param bind (_IntervalSelection_) Establishes a two-way binding between the interval selection and the scales
+#' used within the same view. This allows a user to interactively pan and
+#' zoom the view.
+#' @param clear (_IntervalSelection_) Clears the selection, emptying it of all values. Can be an
+#' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
+#' 
+#' __Default value:__ `dblclick`.
+#' 
+#' See the [clear](https://vega.github.io/vega-lite/docs/clear.html) documentation for more information.
+#' @param empty (_IntervalSelection_) By default, `all` data values are considered to lie within an empty selection.
+#' When set to `none`, empty selections contain no data values.
+#' @param encodings (_IntervalSelection_) An array of encoding channels. The corresponding data field values
+#' must match for a data tuple to fall within the selection.
+#' @param fields (_IntervalSelection_) An array of field names whose values must match for a data tuple to
+#' fall within the selection.
+#' @param init (_IntervalSelection_) Initialize the selection with a mapping between [projected channels or field names](https://vega.github.io/vega-lite/docs/project.html) and arrays of
+#' initial values.
+#' @param mark (_IntervalSelection_) An interval selection also adds a rectangle mark to depict the
+#' extents of the interval. The `mark` property can be used to customize the
+#' appearance of the mark.
+#' @param on (_IntervalSelection_) A [Vega event stream](https://vega.github.io/vega/docs/event-streams/) (object or selector) that triggers the selection.
+#' For interval selections, the event stream must specify a [start and end](https://vega.github.io/vega/docs/event-streams/#between-filters).
+#' @param resolve (_IntervalSelection_) With layered and multi-view displays, a strategy that determines how
+#' selections' data queries are resolved when applied in a filter transform,
+#' conditional encoding rule, or scale domain.
+#' @param translate (_IntervalSelection_) When truthy, allows a user to interactively move an interval selection
+#' back-and-forth. Can be `true`, `false` (to disable panning), or a
+#' [Vega event stream definition](https://vega.github.io/vega/docs/event-streams/)
+#' which must include a start and end event to trigger continuous panning.
+#' 
+#' __Default value:__ `true`, which corresponds to
+#' `[mousedown, window:mouseup] > window:mousemove!` which corresponds to
+#' clicks and dragging within an interval selection to reposition it.
+#' @param type (_IntervalSelection_) interval
+#' @param zoom (_IntervalSelection_) When truthy, allows a user to interactively resize an interval selection.
+#' Can be `true`, `false` (to disable zooming), or a [Vega event stream
+#' definition](https://vega.github.io/vega/docs/event-streams/). Currently,
+#' only `wheel` events are supported.
+#' 
+#' 
+#' __Default value:__ `true`, which corresponds to `wheel!`.
+#' @return A component of a Vega-Lite spec, corresponding to a IntervalSelection.
+#' @export
+
+vl_make_IntervalSelection <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, type = NULL, zoom = NULL){
+args <- .modify_args(NULL, c("bind", "clear", "empty", "encodings", "fields", "init", "mark", "on", "resolve", 
+  "translate", "type", "zoom"))
+args$obj
+} 
+#' vl_bind_radio_input
+#' 
+#' Add radio binding to a vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param selection_name Name of selection to add binding to
 #' @param projection_name Name of projection (field or encoding) within selection
 #' @param debounce (_BindRadioSelect_)  
@@ -6881,20 +8147,18 @@ vl_make_IntervalSelection <- function(bind = NULL, clear = NULL, empty = NULL, e
 #' @param name (_BindRadioSelect_)  
 #' @param options (_BindRadioSelect_)  
 #' @param type (_BindRadioSelect_)  
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_bind_radio_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, name = NULL, options = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out$input <- 'radio'
-  rlang::exec(.add_binding, !!!args_out)
-}
- #' vl_bind_select_input
+
+vl_bind_radio_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, name = NULL, options = NULL, type = NULL){
+  args <- .modify_args(list(input = 'radio'), c("debounce", "element", "input", "name", "options", "type"))
+  .add_binding(args$spec, args$object, '#/definitions/BindRadioSelect', selection_name = args$extra$selection_name,
+projection_name = args$extra$projection_name)
+} 
+#' vl_bind_select_input
 #' 
-#' Add binding to a select input to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' Add select binding to a vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param selection_name Name of selection to add binding to
 #' @param projection_name Name of projection (field or encoding) within selection
 #' @param debounce (_BindRadioSelect_)  
@@ -6902,40 +8166,36 @@ vl_bind_radio_input <- function(spec, selection_name, projection_name = NULL, de
 #' @param name (_BindRadioSelect_)  
 #' @param options (_BindRadioSelect_)  
 #' @param type (_BindRadioSelect_)  
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_bind_select_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, name = NULL, options = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out$input <- 'select'
-  rlang::exec(.add_binding, !!!args_out)
-}
- #' vl_bind_checkbox_input
+
+vl_bind_select_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, name = NULL, options = NULL, type = NULL){
+  args <- .modify_args(list(input = 'select'), c("debounce", "element", "input", "name", "options", "type"))
+  .add_binding(args$spec, args$object, '#/definitions/BindRadioSelect', selection_name = args$extra$selection_name,
+projection_name = args$extra$projection_name)
+} 
+#' vl_bind_checkbox_input
 #' 
-#' Add binding to a checkbox input to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' Add checkbox binding to a vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param selection_name Name of selection to add binding to
 #' @param projection_name Name of projection (field or encoding) within selection
 #' @param debounce (_BindCheckbox_)  
 #' @param element (_BindCheckbox_)  
 #' @param name (_BindCheckbox_)  
 #' @param type (_BindCheckbox_)  
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_bind_checkbox_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, name = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out$input <- 'checkbox'
-  rlang::exec(.add_binding, !!!args_out)
-}
- #' vl_bind_range_input
+
+vl_bind_checkbox_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, name = NULL, type = NULL){
+  args <- .modify_args(list(input = 'checkbox'), c("debounce", "element", "input", "name", "type"))
+  .add_binding(args$spec, args$object, '#/definitions/BindCheckbox', selection_name = args$extra$selection_name,
+projection_name = args$extra$projection_name)
+} 
+#' vl_bind_range_input
 #' 
-#' Add binding to a range input to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' Add range binding to a vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param selection_name Name of selection to add binding to
 #' @param projection_name Name of projection (field or encoding) within selection
 #' @param debounce (_BindRange_)  
@@ -6945,20 +8205,18 @@ vl_bind_checkbox_input <- function(spec, selection_name, projection_name = NULL,
 #' @param name (_BindRange_)  
 #' @param step (_BindRange_)  
 #' @param type (_BindRange_)  
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_bind_range_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, max = NULL, min = NULL, name = NULL, step = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out$input <- 'range'
-  rlang::exec(.add_binding, !!!args_out)
-}
- #' vl_facet_row
+
+vl_bind_range_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, max = NULL, min = NULL, name = NULL, step = NULL, type = NULL){
+  args <- .modify_args(list(input = 'range'), c("debounce", "element", "input", "max", "min", "name", "step", "type"))
+  .add_binding(args$spec, args$object, '#/definitions/BindRange', selection_name = args$extra$selection_name,
+projection_name = args$extra$projection_name)
+} 
+#' vl_facet_row
 #' 
 #' Add faceting by row to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_FacetFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -7017,20 +8275,18 @@ vl_bind_range_input <- function(spec, selection_name, projection_name = NULL, de
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_facet_column()], [vl_facet_wrap()]
-vl_facet_row <- function(spec, aggregate = NULL, bin = NULL, field = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  #'
-  rlang::exec(.add_facet_row, !!!args_out)
-}
- #' vl_facet_column
+
+vl_facet_row <- function(spec, aggregate = NULL, bin = NULL, field = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "header", "sort", "timeUnit", "title", "type"
+  ))
+  .add_facet_row(args$spec, args$object, '#/definitions/FacetFieldDef')
+} 
+#' vl_facet_column
 #' 
 #' Add faceting by column to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param aggregate (_FacetFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
@@ -7089,285 +8345,279 @@ vl_facet_row <- function(spec, aggregate = NULL, bin = NULL, field = NULL, heade
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_facet_row()], [vl_facet_wrap()]
-vl_facet_column <- function(spec, aggregate = NULL, bin = NULL, field = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  #'
-  rlang::exec(.add_facet_column, !!!args_out)
-}
- #' vl_facet_wrap
+
+vl_facet_column <- function(spec, aggregate = NULL, bin = NULL, field = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "header", "sort", "timeUnit", "title", "type"
+  ))
+  .add_facet_column(args$spec, args$object, '#/definitions/FacetFieldDef')
+} 
+#' vl_facet_wrap
 #' 
-#' Add faceting by column to a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param aggregate (_FacetFieldDef_) Aggregation function for the field
-#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
-#' 
-#' __Default value:__ `undefined` (None)
-#' @param bin (_FacetFieldDef_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
-#' 
-#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
-#' 
-#' - If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
-#' 
-#' __Default value:__ `false`
-#' @param field (_FacetFieldDef_) __Required.__ A string defining the name of the field from which to pull a data value
-#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
-#' 
-#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`).
-#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\\[0\\\]"`).
-#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
-#' 
-#' __Note:__ `field` is not required if `aggregate` is `count`.
-#' @param header (_FacetFieldDef_) An object defining properties of a facet's header.
-#' @param sort (_FacetFieldDef_) Sort order for the encoded field.
-#' 
-#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
-#' 
-#' For discrete fields, `sort` can be one of the following:
-#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
-#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
-#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
-#' - `null` indicating no sort.
-#' 
-#' __Default value:__ `"ascending"`
-#' 
-#' __Note:__ `null` is not supported for `row` and `column`.
-#' @param timeUnit (_FacetFieldDef_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
-#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
-#' 
-#' __Default value:__ `undefined` (None)
-#' @param title (_FacetFieldDef_) A title for the field. If `null`, the title will be removed.
-#' 
-#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
-#' 
-#' __Notes__:
-#' 
-#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
-#' 
-#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
-#' @param type (_FacetFieldDef_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
-#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
-#' 
-#' 
-#' __Note:__
-#' 
-#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
-#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
-#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
-#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
-#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
-#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
+#' Add wrap facetting to a vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param columns number of columns to add
-#' @return A modified spec
-#' @export
-#' @seealso [vl_facet_row()], [vl_facet_wrap()]
-vl_facet_wrap <- function(spec, columns = 2, aggregate = NULL, bin = NULL, field = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  #'
-  rlang::exec(.add_facet_wrap, !!!args_out)
-}
- #' vl_repeat_row
+#' @param aggregate (_FacetFieldDef_) Aggregation function for the field
+#' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
-#' Add repeating by row to a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param ... fields to use for repeat (strings)
-#' @return A modified spec
-#' @export
-#' @seealso [vl_repeat_col()], [vl_repeat_wrap()]
-vl_repeat_row <- function(spec, ...) {
-  args_out <- c(list(spec = spec, .type = 'row'),list(...))
-  rlang::exec(.add_repeat, !!!args_out)
-}
- #' vl_repeat_col
+#' __Default value:__ `undefined` (None)
+#' @param bin (_FacetFieldDef_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
 #' 
-#' Add repeating by col to a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param ... fields to use for repeat (strings)
-#' @return A modified spec
-#' @export
-#' @seealso [vl_repeat_row()], [vl_repeat_wrap()]
-vl_repeat_col <- function(spec, ...) {
-  args_out <- c(list(spec = spec, .type = 'col'),list(...))
-  rlang::exec(.add_repeat, !!!args_out)
-}
- #' vl_repeat_wrap
+#' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 #' 
-#' Add repeating by wrap to a vega-lite spec.
-#' @param spec A vega-lite spec.
-#' @param ... fields to use for repeat (strings)
-#' @param columns number of columns to use
-#' @return A modified spec
+#' - If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false`
+#' @param field (_FacetFieldDef_) __Required.__ A string defining the name of the field from which to pull a data value
+#' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`).
+#' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\\[0\\\]"`).
+#' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
+#' 
+#' __Note:__ `field` is not required if `aggregate` is `count`.
+#' @param header (_FacetFieldDef_) An object defining properties of a facet's header.
+#' @param sort (_FacetFieldDef_) Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in Javascript.
+#' - [A sort field definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for sorting by another field.
+#' - [An array specifying the field values in preferred order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order.  For discrete time field, values in the sort array can be [date-time definition objects](types#datetime). In addition, for time units `"month"` and `"day"`, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`, `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` is not supported for `row` and `column`.
+#' @param timeUnit (_FacetFieldDef_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None)
+#' @param title (_FacetFieldDef_) A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
+#' @param type (_FacetFieldDef_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' 
+#' __Note:__
+#' 
+#' - Data values for a temporal field can be either a date-time string (e.g., `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp number (e.g., `1552199579097`).
+#' - Data `type` describes the semantics of the data rather than the primitive data types (`number`, `string`, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html), the `type` property can be either `"quantitative"` (for using a linear bin scale) or [`"ordinal"` (for using an ordinal bin scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
+#' @return A modified Vega-Lite Spec
 #' @export
-#' @seealso [vl_repeat_col()], [vl_repeat_row()]
-vl_repeat_wrap <- function(spec, ..., columns = 2) {
-  args_out <- c(list(spec = spec, .type = 'wrap'),list(...), columns = columns)
-  rlang::exec(.add_repeat, !!!args_out)
-}
- #' Resolve axes, legends, or scales for composite charts
-#'
-#' When faceting, layering, repeating, or concatenating a chart, one
-#' can choose whether axes, legends, or scales are shared or independent
-#' using the resolve specification
-#' @param spec A vega-lite spec.
-#' @param how how to resolve, one of: 'independent', 'shared'
-#' @return A modified spec
+
+vl_facet_wrap <- function(spec, columns = 2, aggregate = NULL, bin = NULL, field = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+  args <- .modify_args(NULL, c("aggregate", "bin", "field", "header", "sort", "timeUnit", "title", "type"
+  ))
+  .add_facet_wrap(args$spec, args$object, '#/definitions/FacetFieldDef', columns = args$extra$columns)
+} 
+#' vl_repeat_row
+#' 
+#' Add repeat to a vega-lite spec.
+#' @param spec An input vega-lite spec
+
+#' @param ... fields to use for repeat (strings)
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_repeat_row <- function(spec, ...){
+  .add_repeat(spec, list(...), '#/definitions/RepeatSpec/properties/repeat', .type = 'row')
+} 
+#' vl_repeat_col
+#' 
+#' Add repeat to a vega-lite spec.
+#' @param spec An input vega-lite spec
+
+#' @param ... fields to use for repeat (strings)
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_repeat_col <- function(spec, ...){
+  .add_repeat(spec, list(...), '#/definitions/RepeatSpec/properties/repeat', .type = 'col')
+} 
+#' vl_repeat_wrap
+#' 
+#' Add repeat to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param columns number of columns to add
+#' @param ... fields to use for repeat (strings)
+#' @return A modified Vega-Lite Spec
+#' @export
+
+vl_repeat_wrap <- function(spec, columns = 2, ...){
+  .add_repeat(spec, list(...), '#/definitions/RepeatSpec/properties/repeat', columns = columns, .type = 'wrap')
+} 
+#' Resolve axes, legends, or scales for composite charts
+#' 
+#' When faceting, layering, repeating, or concatenating a chart, one can choose
+#' whether axes, legends, or scales are shared or independent using the resolve
+#' specification
+#' @param spec An input vega-lite spec
+#' @param how One of 'independent', 'shared'
+#' @return A modified Vega-Lite Spec
+#' @export
 #' @name resolve 
-#'
-NULL
- #' @name resolve
+#' @name resolve
 #' @export
-vl_resolve_axis_x <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'x', .type = 'axis', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_axis_x <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "x", type = "axis")
+} 
+#' @name resolve
 #' @export
-vl_resolve_axis_y <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'y', .type = 'axis', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_axis_y <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "y", type = "axis")
+} 
+#' @name resolve
 #' @export
-vl_resolve_legend_color <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'color', .type = 'legend', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_legend_color <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "color", type = "legend")
+} 
+#' @name resolve
 #' @export
-vl_resolve_legend_fill <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'fill', .type = 'legend', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_legend_fill <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "fill", type = "legend")
+} 
+#' @name resolve
 #' @export
-vl_resolve_legend_fillOpacity <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'fillOpacity', .type = 'legend', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_legend_fillOpacity <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "fillOpacity", type = "legend")
+} 
+#' @name resolve
 #' @export
-vl_resolve_legend_opacity <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'opacity', .type = 'legend', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_legend_opacity <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "opacity", type = "legend")
+} 
+#' @name resolve
 #' @export
-vl_resolve_legend_shape <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'shape', .type = 'legend', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_legend_shape <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "shape", type = "legend")
+} 
+#' @name resolve
 #' @export
-vl_resolve_legend_size <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'size', .type = 'legend', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_legend_size <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "size", type = "legend")
+} 
+#' @name resolve
 #' @export
-vl_resolve_legend_stroke <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'stroke', .type = 'legend', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_legend_stroke <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "stroke", type = "legend")
+} 
+#' @name resolve
 #' @export
-vl_resolve_legend_strokeOpacity <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'strokeOpacity', .type = 'legend', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_legend_strokeOpacity <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "strokeOpacity", type = "legend")
+} 
+#' @name resolve
 #' @export
-vl_resolve_legend_strokeWidth <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'strokeWidth', .type = 'legend', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_legend_strokeWidth <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "strokeWidth", type = "legend")
+} 
+#' @name resolve
 #' @export
-vl_resolve_legend_x <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'x', .type = 'legend', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_legend_x <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "x", type = "legend")
+} 
+#' @name resolve
 #' @export
-vl_resolve_legend_y <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'y', .type = 'legend', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_legend_y <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "y", type = "legend")
+} 
+#' @name resolve
 #' @export
-vl_resolve_scale_color <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'color', .type = 'scale', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_scale_color <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "color", type = "scale")
+} 
+#' @name resolve
 #' @export
-vl_resolve_scale_fill <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'fill', .type = 'scale', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_scale_fill <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "fill", type = "scale")
+} 
+#' @name resolve
 #' @export
-vl_resolve_scale_fillOpacity <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'fillOpacity', .type = 'scale', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_scale_fillOpacity <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "fillOpacity", type = "scale")
+} 
+#' @name resolve
 #' @export
-vl_resolve_scale_opacity <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'opacity', .type = 'scale', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_scale_opacity <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "opacity", type = "scale")
+} 
+#' @name resolve
 #' @export
-vl_resolve_scale_shape <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'shape', .type = 'scale', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_scale_shape <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "shape", type = "scale")
+} 
+#' @name resolve
 #' @export
-vl_resolve_scale_size <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'size', .type = 'scale', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_scale_size <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "size", type = "scale")
+} 
+#' @name resolve
 #' @export
-vl_resolve_scale_stroke <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'stroke', .type = 'scale', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_scale_stroke <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "stroke", type = "scale")
+} 
+#' @name resolve
 #' @export
-vl_resolve_scale_strokeOpacity <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'strokeOpacity', .type = 'scale', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_scale_strokeOpacity <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "strokeOpacity", type = "scale")
+} 
+#' @name resolve
 #' @export
-vl_resolve_scale_strokeWidth <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'strokeWidth', .type = 'scale', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_scale_strokeWidth <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "strokeWidth", type = "scale")
+} 
+#' @name resolve
 #' @export
-vl_resolve_scale_x <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'x', .type = 'scale', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' @name resolve
+vl_resolve_scale_x <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "x", type = "scale")
+} 
+#' @name resolve
 #' @export
-vl_resolve_scale_y <- function(spec, how = c('independent', 'shared')) {
-  args_out <- list(spec = spec, .enc = 'y', .type = 'scale', how = match.arg(how))
-  rlang::exec(.add_resolve, !!!args_out)
-}
- #' vl_add_config
+vl_resolve_scale_y <- function(spec, how = c('independent', 'shared')){
+  how <- match.arg(how)
+  .add_resolve(spec, how, '#/definitions/ResolveMode' , encoding = "y", type = "scale")
+} 
+#' vl_add_config
 #' 
 #' Add top-level config to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param area (_Config_) Area-Specific Config
 #' @param autosize (_Config_) Sets how the visualization size should be determined. If a string, should be one of `"pad"`, `"fit"` or `"none"`.
 #' Object values can additionally specify parameters for content sizing and automatic resizing.
@@ -7444,20 +8694,23 @@ vl_resolve_scale_y <- function(spec, how = c('independent', 'shared')) {
 #' @param title (_Config_) Title configuration, which determines default properties for all [titles](https://vega.github.io/vega-lite/docs/title.html). For a full list of title configuration options, please see the [corresponding section of the title documentation](https://vega.github.io/vega-lite/docs/title.html#config).
 #' @param trail (_Config_) Trail-Specific Config
 #' @param view (_Config_) Default properties for [single view plots](https://vega.github.io/vega-lite/docs/spec.html#single).
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_config <- function(spec, area = NULL, autosize = NULL, axis = NULL, axisBand = NULL, axisBottom = NULL, axisLeft = NULL, axisRight = NULL, axisTop = NULL, axisX = NULL, axisY = NULL, background = NULL, bar = NULL, boxplot = NULL, circle = NULL, concat = NULL, countTitle = NULL, errorband = NULL, errorbar = NULL, facet = NULL, fieldTitle = NULL, geoshape = NULL, header = NULL, headerColumn = NULL, headerFacet = NULL, headerRow = NULL, invalidValues = NULL, legend = NULL, line = NULL, mark = NULL, numberFormat = NULL, padding = NULL, point = NULL, projection = NULL, range = NULL, rect = NULL, `repeat` = NULL, rule = NULL, scale = NULL, selection = NULL, square = NULL, stack = NULL, style = NULL, text = NULL, tick = NULL, timeFormat = NULL, title = NULL, trail = NULL, view = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  #'
-  rlang::exec(.add_config, !!!args_out)
-}
- #' vl_add_area_config
+
+vl_add_config <- function(spec, area = NULL, autosize = NULL, axis = NULL, axisBand = NULL, axisBottom = NULL, axisLeft = NULL, axisRight = NULL, axisTop = NULL, axisX = NULL, axisY = NULL, background = NULL, bar = NULL, boxplot = NULL, circle = NULL, concat = NULL, countTitle = NULL, errorband = NULL, errorbar = NULL, facet = NULL, fieldTitle = NULL, geoshape = NULL, header = NULL, headerColumn = NULL, headerFacet = NULL, headerRow = NULL, invalidValues = NULL, legend = NULL, line = NULL, mark = NULL, numberFormat = NULL, padding = NULL, point = NULL, projection = NULL, range = NULL, rect = NULL, `repeat` = NULL, rule = NULL, scale = NULL, selection = NULL, square = NULL, stack = NULL, style = NULL, text = NULL, tick = NULL, timeFormat = NULL, title = NULL, trail = NULL, view = NULL){
+  args <- .modify_args(NULL, c("area", "autosize", "axis", "axisBand", "axisBottom", "axisLeft", "axisRight", 
+  "axisTop", "axisX", "axisY", "background", "bar", "boxplot", "circle", "concat", 
+  "countTitle", "errorband", "errorbar", "facet", "fieldTitle", "geoshape", "header", 
+  "headerColumn", "headerFacet", "headerRow", "invalidValues", "legend", "line", 
+  "mark", "numberFormat", "padding", "point", "projection", "range", "rect", "repeat", 
+  "rule", "scale", "selection", "square", "stack", "style", "text", "tick", "timeFormat", 
+  "title", "trail", "view"))
+  .add_config(args$spec, args$object, '#/definitions/Config')
+} 
+#' vl_add_area_config
 #' 
 #' Add area config (AreaConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param align (_AreaConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_AreaConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_AreaConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -7585,20 +8838,22 @@ vl_add_config <- function(spec, area = NULL, autosize = NULL, axis = NULL, axisB
 #' @param x2 (_AreaConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_AreaConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_AreaConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_area_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'area'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_axis_config
+
+vl_add_area_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "line", "opacity", "order", "orient", 
+  "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AreaConfig' , .config = "area")
+} 
+#' vl_add_axis_config
 #' 
 #' Add axis config (AxisConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
 #' 
 #'   __Default value:__ `0.5`
@@ -7709,20 +8964,27 @@ vl_add_area_config <- function(spec, align = NULL, angle = NULL, baseline = NULL
 #' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_axis_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'axis'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_axisBand_config
+
+vl_add_axis_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axis")
+} 
+#' vl_add_axisBand_config
 #' 
 #' Add axisBand config (AxisConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
 #' 
 #'   __Default value:__ `0.5`
@@ -7833,20 +9095,27 @@ vl_add_axis_config <- function(spec, bandPosition = NULL, domain = NULL, domainC
 #' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_axisBand_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'axisBand'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_axisBottom_config
+
+vl_add_axisBand_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisBand")
+} 
+#' vl_add_axisBottom_config
 #' 
 #' Add axisBottom config (AxisConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
 #' 
 #'   __Default value:__ `0.5`
@@ -7957,20 +9226,27 @@ vl_add_axisBand_config <- function(spec, bandPosition = NULL, domain = NULL, dom
 #' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_axisBottom_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'axisBottom'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_axisLeft_config
+
+vl_add_axisBottom_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisBottom")
+} 
+#' vl_add_axisLeft_config
 #' 
 #' Add axisLeft config (AxisConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
 #' 
 #'   __Default value:__ `0.5`
@@ -8081,20 +9357,27 @@ vl_add_axisBottom_config <- function(spec, bandPosition = NULL, domain = NULL, d
 #' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_axisLeft_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'axisLeft'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_axisRight_config
+
+vl_add_axisLeft_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisLeft")
+} 
+#' vl_add_axisRight_config
 #' 
 #' Add axisRight config (AxisConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
 #' 
 #'   __Default value:__ `0.5`
@@ -8205,20 +9488,27 @@ vl_add_axisLeft_config <- function(spec, bandPosition = NULL, domain = NULL, dom
 #' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_axisRight_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'axisRight'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_axisTop_config
+
+vl_add_axisRight_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisRight")
+} 
+#' vl_add_axisTop_config
 #' 
 #' Add axisTop config (AxisConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
 #' 
 #'   __Default value:__ `0.5`
@@ -8329,20 +9619,27 @@ vl_add_axisRight_config <- function(spec, bandPosition = NULL, domain = NULL, do
 #' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_axisTop_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'axisTop'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_axisX_config
+
+vl_add_axisTop_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisTop")
+} 
+#' vl_add_axisX_config
 #' 
 #' Add axisX config (AxisConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
 #' 
 #'   __Default value:__ `0.5`
@@ -8453,20 +9750,27 @@ vl_add_axisTop_config <- function(spec, bandPosition = NULL, domain = NULL, doma
 #' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_axisX_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'axisX'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_axisY_config
+
+vl_add_axisX_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisX")
+} 
+#' vl_add_axisY_config
 #' 
 #' Add axisY config (AxisConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
 #' 
 #'   __Default value:__ `0.5`
@@ -8577,20 +9881,27 @@ vl_add_axisX_config <- function(spec, bandPosition = NULL, domain = NULL, domain
 #' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_axisY_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'axisY'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_bar_config
+
+vl_add_axisY_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+  args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisY")
+} 
+#' vl_add_bar_config
 #' 
 #' Add bar config (BarConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param align (_BarConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_BarConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_BarConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -8710,20 +10021,23 @@ vl_add_axisY_config <- function(spec, bandPosition = NULL, domain = NULL, domain
 #' @param x2 (_BarConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_BarConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_BarConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_bar_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'bar'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_boxplot_config
+
+vl_add_bar_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "binSpacing", "color", "continuousBandSize", 
+  "cornerRadius", "cursor", "dir", "discreteBandSize", "dx", "dy", "ellipsis", 
+  "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", 
+  "href", "interpolate", "limit", "opacity", "order", "orient", "radius", "shape", 
+  "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", 
+  "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", "text", "theta", 
+  "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/BarConfig' , .config = "bar")
+} 
+#' vl_add_boxplot_config
 #' 
 #' Add boxplot config (BoxPlotConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param box (_BoxPlotConfig_)  
 #' @param extent (_BoxPlotConfig_) The extent of the whiskers. Available options include:
 #' - `"min-max"`: min and max are the lower and upper whiskers respectively.
@@ -8735,20 +10049,17 @@ vl_add_bar_config <- function(spec, align = NULL, angle = NULL, baseline = NULL,
 #' @param rule (_BoxPlotConfig_)  
 #' @param size (_BoxPlotConfig_) Size of the box and median tick of a box plot
 #' @param ticks (_BoxPlotConfig_)  
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_boxplot_config <- function(spec, box = NULL, extent = NULL, median = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'boxplot'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_circle_config
+
+vl_add_boxplot_config <- function(spec, box = NULL, extent = NULL, median = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL){
+  args <- .modify_args(NULL, c("box", "extent", "median", "outliers", "rule", "size", "ticks"))
+  .add_sub_config(args$spec, args$object, '#/definitions/BoxPlotConfig' , .config = "boxplot")
+} 
+#' vl_add_circle_config
 #' 
 #' Add circle config (MarkConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param align (_MarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_MarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -8860,20 +10171,22 @@ vl_add_boxplot_config <- function(spec, box = NULL, extent = NULL, median = NULL
 #' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_circle_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'circle'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_concat_config
+
+vl_add_circle_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "circle")
+} 
+#' vl_add_concat_config
 #' 
 #' Add concat config (CompositionConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param columns (_CompositionConfig_) The number of columns to include in the view composition layout.
 #' 
 #' __Default value__: `undefined` -- An infinite number of columns (a single row) will be assumed. This is equivalent to
@@ -8889,20 +10202,17 @@ vl_add_circle_config <- function(spec, align = NULL, angle = NULL, baseline = NU
 #' @param spacing (_CompositionConfig_) The default spacing in pixels between composed sub-views.
 #' 
 #' __Default value__: `20`
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_concat_config <- function(spec, columns = NULL, spacing = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'concat'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_errorband_config
+
+vl_add_concat_config <- function(spec, columns = NULL, spacing = NULL){
+  args <- .modify_args(NULL, c("columns", "spacing"))
+  .add_sub_config(args$spec, args$object, '#/definitions/CompositionConfig' , .config = "concat")
+} 
+#' vl_add_errorband_config
 #' 
 #' Add errorband config (ErrorBandConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param band (_ErrorBandConfig_)  
 #' @param borders (_ErrorBandConfig_)  
 #' @param extent (_ErrorBandConfig_) The extent of the band. Available options include:
@@ -8927,20 +10237,17 @@ vl_add_concat_config <- function(spec, columns = NULL, spacing = NULL) {
 #' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
 #' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
 #' @param tension (_ErrorBandConfig_) The tension parameter for the interpolation type of the error band.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_errorband_config <- function(spec, band = NULL, borders = NULL, extent = NULL, interpolate = NULL, tension = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'errorband'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_errorbar_config
+
+vl_add_errorband_config <- function(spec, band = NULL, borders = NULL, extent = NULL, interpolate = NULL, tension = NULL){
+  args <- .modify_args(NULL, c("band", "borders", "extent", "interpolate", "tension"))
+  .add_sub_config(args$spec, args$object, '#/definitions/ErrorBandConfig' , .config = "errorband")
+} 
+#' vl_add_errorbar_config
 #' 
 #' Add errorbar config (ErrorBarConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param extent (_ErrorBarConfig_) The extent of the rule. Available options include:
 #' - `"ci"`: Extend the rule to the confidence interval of the mean.
 #' - `"stderr"`: The size of rule are set to the value of standard error, extending from the mean.
@@ -8950,20 +10257,17 @@ vl_add_errorband_config <- function(spec, band = NULL, borders = NULL, extent = 
 #' __Default value:__ `"stderr"`.
 #' @param rule (_ErrorBarConfig_)  
 #' @param ticks (_ErrorBarConfig_)  
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_errorbar_config <- function(spec, extent = NULL, rule = NULL, ticks = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'errorbar'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_facet_config
+
+vl_add_errorbar_config <- function(spec, extent = NULL, rule = NULL, ticks = NULL){
+  args <- .modify_args(NULL, c("extent", "rule", "ticks"))
+  .add_sub_config(args$spec, args$object, '#/definitions/ErrorBarConfig' , .config = "errorbar")
+} 
+#' vl_add_facet_config
 #' 
 #' Add facet config (CompositionConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param columns (_CompositionConfig_) The number of columns to include in the view composition layout.
 #' 
 #' __Default value__: `undefined` -- An infinite number of columns (a single row) will be assumed. This is equivalent to
@@ -8979,20 +10283,17 @@ vl_add_errorbar_config <- function(spec, extent = NULL, rule = NULL, ticks = NUL
 #' @param spacing (_CompositionConfig_) The default spacing in pixels between composed sub-views.
 #' 
 #' __Default value__: `20`
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_facet_config <- function(spec, columns = NULL, spacing = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'facet'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_geoshape_config
+
+vl_add_facet_config <- function(spec, columns = NULL, spacing = NULL){
+  args <- .modify_args(NULL, c("columns", "spacing"))
+  .add_sub_config(args$spec, args$object, '#/definitions/CompositionConfig' , .config = "facet")
+} 
+#' vl_add_geoshape_config
 #' 
 #' Add geoshape config (MarkConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param align (_MarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_MarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -9104,20 +10405,22 @@ vl_add_facet_config <- function(spec, columns = NULL, spacing = NULL) {
 #' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_geoshape_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'geoshape'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_header_config
+
+vl_add_geoshape_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "geoshape")
+} 
+#' vl_add_header_config
 #' 
 #' Add header config (HeaderConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param format (_HeaderConfig_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 #' 
 #' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
@@ -9170,20 +10473,21 @@ vl_add_geoshape_config <- function(spec, align = NULL, angle = NULL, baseline = 
 #' @param titlePadding (_HeaderConfig_) The padding, in pixel, between facet header's title and the label.
 #' 
 #' __Default value:__ `10`
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_header_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, shortTimeLabels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL, titlePadding = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'header'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_headerColumn_config
+
+vl_add_header_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, shortTimeLabels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL, titlePadding = NULL){
+  args <- .modify_args(NULL, c("format", "formatType", "labelAlign", "labelAnchor", "labelAngle", "labelColor", 
+  "labelFont", "labelFontSize", "labelLimit", "labelOrient", "labelPadding", "shortTimeLabels", 
+  "title", "titleAlign", "titleAnchor", "titleAngle", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontWeight", "titleLimit", "titleOrient", 
+  "titlePadding"))
+  .add_sub_config(args$spec, args$object, '#/definitions/HeaderConfig' , .config = "header")
+} 
+#' vl_add_headerColumn_config
 #' 
 #' Add headerColumn config (HeaderConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param format (_HeaderConfig_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 #' 
 #' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
@@ -9236,20 +10540,21 @@ vl_add_header_config <- function(spec, format = NULL, formatType = NULL, labelAl
 #' @param titlePadding (_HeaderConfig_) The padding, in pixel, between facet header's title and the label.
 #' 
 #' __Default value:__ `10`
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_headerColumn_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, shortTimeLabels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL, titlePadding = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'headerColumn'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_headerFacet_config
+
+vl_add_headerColumn_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, shortTimeLabels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL, titlePadding = NULL){
+  args <- .modify_args(NULL, c("format", "formatType", "labelAlign", "labelAnchor", "labelAngle", "labelColor", 
+  "labelFont", "labelFontSize", "labelLimit", "labelOrient", "labelPadding", "shortTimeLabels", 
+  "title", "titleAlign", "titleAnchor", "titleAngle", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontWeight", "titleLimit", "titleOrient", 
+  "titlePadding"))
+  .add_sub_config(args$spec, args$object, '#/definitions/HeaderConfig' , .config = "headerColumn")
+} 
+#' vl_add_headerFacet_config
 #' 
 #' Add headerFacet config (HeaderConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param format (_HeaderConfig_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 #' 
 #' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
@@ -9302,20 +10607,21 @@ vl_add_headerColumn_config <- function(spec, format = NULL, formatType = NULL, l
 #' @param titlePadding (_HeaderConfig_) The padding, in pixel, between facet header's title and the label.
 #' 
 #' __Default value:__ `10`
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_headerFacet_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, shortTimeLabels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL, titlePadding = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'headerFacet'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_headerRow_config
+
+vl_add_headerFacet_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, shortTimeLabels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL, titlePadding = NULL){
+  args <- .modify_args(NULL, c("format", "formatType", "labelAlign", "labelAnchor", "labelAngle", "labelColor", 
+  "labelFont", "labelFontSize", "labelLimit", "labelOrient", "labelPadding", "shortTimeLabels", 
+  "title", "titleAlign", "titleAnchor", "titleAngle", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontWeight", "titleLimit", "titleOrient", 
+  "titlePadding"))
+  .add_sub_config(args$spec, args$object, '#/definitions/HeaderConfig' , .config = "headerFacet")
+} 
+#' vl_add_headerRow_config
 #' 
 #' Add headerRow config (HeaderConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param format (_HeaderConfig_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 #' 
 #' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
@@ -9368,20 +10674,21 @@ vl_add_headerFacet_config <- function(spec, format = NULL, formatType = NULL, la
 #' @param titlePadding (_HeaderConfig_) The padding, in pixel, between facet header's title and the label.
 #' 
 #' __Default value:__ `10`
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_headerRow_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, shortTimeLabels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL, titlePadding = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'headerRow'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_legend_config
+
+vl_add_headerRow_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, shortTimeLabels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL, titlePadding = NULL){
+  args <- .modify_args(NULL, c("format", "formatType", "labelAlign", "labelAnchor", "labelAngle", "labelColor", 
+  "labelFont", "labelFontSize", "labelLimit", "labelOrient", "labelPadding", "shortTimeLabels", 
+  "title", "titleAlign", "titleAnchor", "titleAngle", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontWeight", "titleLimit", "titleOrient", 
+  "titlePadding"))
+  .add_sub_config(args$spec, args$object, '#/definitions/HeaderConfig' , .config = "headerRow")
+} 
+#' vl_add_legend_config
 #' 
 #' Add legend config (LegendConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param clipHeight (_LegendConfig_) The height in pixels to clip symbol legend entries and limit their size.
 #' @param columnPadding (_LegendConfig_) The horizontal padding in pixels between symbol legend entries.
 #' 
@@ -9516,20 +10823,30 @@ vl_add_headerRow_config <- function(spec, format = NULL, formatType = NULL, labe
 #' @param titlePadding (_LegendConfig_) The padding, in pixels, between title and legend.
 #' 
 #' __Default value:__ `5`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_legend_config <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, fillColor = NULL, gradientDirection = NULL, gradientHorizontalMaxLength = NULL, gradientHorizontalMinLength = NULL, gradientLabelLimit = NULL, gradientLabelOffset = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gradientVerticalMaxLength = NULL, gradientVerticalMinLength = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, layout = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, shortTimeLabels = NULL, strokeColor = NULL, strokeDash = NULL, strokeWidth = NULL, symbolBaseFillColor = NULL, symbolBaseStrokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolDirection = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'legend'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_line_config
+
+vl_add_legend_config <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, fillColor = NULL, gradientDirection = NULL, gradientHorizontalMaxLength = NULL, gradientHorizontalMinLength = NULL, gradientLabelLimit = NULL, gradientLabelOffset = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gradientVerticalMaxLength = NULL, gradientVerticalMinLength = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, layout = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, shortTimeLabels = NULL, strokeColor = NULL, strokeDash = NULL, strokeWidth = NULL, symbolBaseFillColor = NULL, symbolBaseStrokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolDirection = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL){
+  args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "fillColor", "gradientDirection", 
+  "gradientHorizontalMaxLength", "gradientHorizontalMinLength", "gradientLabelLimit", 
+  "gradientLabelOffset", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gradientVerticalMaxLength", "gradientVerticalMinLength", 
+  "gridAlign", "labelAlign", "labelBaseline", "labelColor", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOffset", "labelOpacity", 
+  "labelOverlap", "labelPadding", "labelSeparation", "layout", "offset", "orient", 
+  "padding", "rowPadding", "shortTimeLabels", "strokeColor", "strokeDash", "strokeWidth", 
+  "symbolBaseFillColor", "symbolBaseStrokeColor", "symbolDash", "symbolDashOffset", 
+  "symbolDirection", "symbolFillColor", "symbolOffset", "symbolOpacity", "symbolSize", 
+  "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "title", "titleAlign", 
+  "titleAnchor", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titleOrient", 
+  "titlePadding"))
+  .add_sub_config(args$spec, args$object, '#/definitions/LegendConfig' , .config = "legend")
+} 
+#' vl_add_line_config
 #' 
 #' Add line config (LineConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param align (_LineConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_LineConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_LineConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -9650,20 +10967,22 @@ vl_add_legend_config <- function(spec, clipHeight = NULL, columnPadding = NULL, 
 #' @param x2 (_LineConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_LineConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_LineConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_line_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'line'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_mark_config
+
+vl_add_line_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/LineConfig' , .config = "line")
+} 
+#' vl_add_mark_config
 #' 
 #' Add mark config (MarkConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param align (_MarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_MarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -9775,20 +11094,22 @@ vl_add_line_config <- function(spec, align = NULL, angle = NULL, baseline = NULL
 #' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_mark_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'mark'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_point_config
+
+vl_add_mark_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "mark")
+} 
+#' vl_add_point_config
 #' 
 #' Add point config (MarkConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param align (_MarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_MarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -9900,20 +11221,22 @@ vl_add_mark_config <- function(spec, align = NULL, angle = NULL, baseline = NULL
 #' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_point_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'point'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_projection_config
+
+vl_add_point_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "point")
+} 
+#' vl_add_projection_config
 #' 
 #' Add projection config (ProjectionConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param center (_Projection_) Sets the projection’s center to the specified center, a two-element array of longitude and latitude in degrees.
 #' 
 #' __Default value:__ `[0, 0]`
@@ -9939,40 +11262,36 @@ vl_add_point_config <- function(spec, align = NULL, angle = NULL, baseline = NUL
 #' @param type (_Projection_) The cartographic projection to use. This value is case-insensitive, for example `"albers"` and `"Albers"` indicate the same projection type. You can find all valid projection types [in the documentation](https://vega.github.io/vega-lite/docs/projection.html#projection-types).
 #' 
 #' __Default value:__ `mercator`
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_projection_config <- function(spec, center = NULL, clipAngle = NULL, clipExtent = NULL, coefficient = NULL, distance = NULL, fraction = NULL, lobes = NULL, parallel = NULL, precision = NULL, radius = NULL, ratio = NULL, reflectX = NULL, reflectY = NULL, rotate = NULL, scale = NULL, spacing = NULL, tilt = NULL, translate = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'projection'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_range_config
+
+vl_add_projection_config <- function(spec, center = NULL, clipAngle = NULL, clipExtent = NULL, coefficient = NULL, distance = NULL, fraction = NULL, lobes = NULL, parallel = NULL, precision = NULL, radius = NULL, ratio = NULL, reflectX = NULL, reflectY = NULL, rotate = NULL, scale = NULL, spacing = NULL, tilt = NULL, translate = NULL, type = NULL){
+  args <- .modify_args(NULL, c("center", "clipAngle", "clipExtent", "coefficient", "distance", "fraction", 
+  "lobes", "parallel", "precision", "radius", "ratio", "reflectX", "reflectY", 
+  "rotate", "scale", "spacing", "tilt", "translate", "type"))
+  .add_sub_config(args$spec, args$object, '#/definitions/ProjectionConfig' , .config = "projection")
+} 
+#' vl_add_range_config
 #' 
 #' Add range config (RangeConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param category (_RangeConfig_) Default range for _nominal_ (categorical) fields.
 #' @param diverging (_RangeConfig_) Default range for diverging _quantitative_ fields.
 #' @param heatmap (_RangeConfig_) Default range for _quantitative_ heatmaps.
 #' @param ordinal (_RangeConfig_) Default range for _ordinal_ fields.
 #' @param ramp (_RangeConfig_) Default range for _quantitative_ and _temporal_ fields.
 #' @param symbol (_RangeConfig_) Default range palette for the `shape` channel.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_range_config <- function(spec, category = NULL, diverging = NULL, heatmap = NULL, ordinal = NULL, ramp = NULL, symbol = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'range'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_rect_config
+
+vl_add_range_config <- function(spec, category = NULL, diverging = NULL, heatmap = NULL, ordinal = NULL, ramp = NULL, symbol = NULL){
+  args <- .modify_args(NULL, c("category", "diverging", "heatmap", "ordinal", "ramp", "symbol"))
+  .add_sub_config(args$spec, args$object, '#/definitions/RangeConfig' , .config = "range")
+} 
+#' vl_add_rect_config
 #' 
 #' Add rect config (MarkConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param align (_MarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_MarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -10084,20 +11403,22 @@ vl_add_range_config <- function(spec, category = NULL, diverging = NULL, heatmap
 #' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_rect_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'rect'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_repeat_config
+
+vl_add_rect_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "rect")
+} 
+#' vl_add_repeat_config
 #' 
 #' Add repeat config (CompositionConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param columns (_CompositionConfig_) The number of columns to include in the view composition layout.
 #' 
 #' __Default value__: `undefined` -- An infinite number of columns (a single row) will be assumed. This is equivalent to
@@ -10113,20 +11434,17 @@ vl_add_rect_config <- function(spec, align = NULL, angle = NULL, baseline = NULL
 #' @param spacing (_CompositionConfig_) The default spacing in pixels between composed sub-views.
 #' 
 #' __Default value__: `20`
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_repeat_config <- function(spec, columns = NULL, spacing = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'repeat'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_rule_config
+
+vl_add_repeat_config <- function(spec, columns = NULL, spacing = NULL){
+  args <- .modify_args(NULL, c("columns", "spacing"))
+  .add_sub_config(args$spec, args$object, '#/definitions/CompositionConfig' , .config = "repeat")
+} 
+#' vl_add_rule_config
 #' 
 #' Add rule config (MarkConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param align (_MarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_MarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -10238,20 +11556,22 @@ vl_add_repeat_config <- function(spec, columns = NULL, spacing = NULL) {
 #' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_rule_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'rule'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_scale_config
+
+vl_add_rule_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "rule")
+} 
+#' vl_add_scale_config
 #' 
 #' Add scale config (ScaleConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param bandPaddingInner (_ScaleConfig_) Default inner padding for `x` and `y` band-ordinal scales.
 #' 
 #' __Default value:__
@@ -10328,20 +11648,21 @@ vl_add_rule_config <- function(spec, align = NULL, angle = NULL, baseline = NULL
 #' This property only works with aggregate functions that produce values within the raw data domain (`"mean"`, `"average"`, `"median"`, `"q1"`, `"q3"`, `"min"`, `"max"`). For other aggregations that produce values outside of the raw data domain (e.g. `"count"`, `"sum"`), this property is ignored.
 #' 
 #' __Default value:__ `false`
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_scale_config <- function(spec, bandPaddingInner = NULL, bandPaddingOuter = NULL, barBandPaddingInner = NULL, barBandPaddingOuter = NULL, clamp = NULL, continuousPadding = NULL, maxBandSize = NULL, maxFontSize = NULL, maxOpacity = NULL, maxSize = NULL, maxStrokeWidth = NULL, minBandSize = NULL, minFontSize = NULL, minOpacity = NULL, minSize = NULL, minStrokeWidth = NULL, pointPadding = NULL, quantileCount = NULL, quantizeCount = NULL, rangeStep = NULL, rectBandPaddingInner = NULL, rectBandPaddingOuter = NULL, round = NULL, textXRangeStep = NULL, useUnaggregatedDomain = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'scale'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_selection_config
+
+vl_add_scale_config <- function(spec, bandPaddingInner = NULL, bandPaddingOuter = NULL, barBandPaddingInner = NULL, barBandPaddingOuter = NULL, clamp = NULL, continuousPadding = NULL, maxBandSize = NULL, maxFontSize = NULL, maxOpacity = NULL, maxSize = NULL, maxStrokeWidth = NULL, minBandSize = NULL, minFontSize = NULL, minOpacity = NULL, minSize = NULL, minStrokeWidth = NULL, pointPadding = NULL, quantileCount = NULL, quantizeCount = NULL, rangeStep = NULL, rectBandPaddingInner = NULL, rectBandPaddingOuter = NULL, round = NULL, textXRangeStep = NULL, useUnaggregatedDomain = NULL){
+  args <- .modify_args(NULL, c("bandPaddingInner", "bandPaddingOuter", "barBandPaddingInner", "barBandPaddingOuter", 
+  "clamp", "continuousPadding", "maxBandSize", "maxFontSize", "maxOpacity", "maxSize", 
+  "maxStrokeWidth", "minBandSize", "minFontSize", "minOpacity", "minSize", "minStrokeWidth", 
+  "pointPadding", "quantileCount", "quantizeCount", "rangeStep", "rectBandPaddingInner", 
+  "rectBandPaddingOuter", "round", "textXRangeStep", "useUnaggregatedDomain"))
+  .add_sub_config(args$spec, args$object, '#/definitions/ScaleConfig' , .config = "scale")
+} 
+#' vl_add_selection_config
 #' 
 #' Add selection config (SelectionConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param interval (_SelectionConfig_) The default definition for an [`interval`](https://vega.github.io/vega-lite/docs/selection.html#type) selection. All properties and transformations
 #' for an interval selection definition (except `type`) may be specified here.
 #' 
@@ -10356,20 +11677,17 @@ vl_add_scale_config <- function(spec, bandPaddingInner = NULL, bandPaddingOuter 
 #'   for a single selection definition (except `type`) may be specified here.
 #' 
 #' For instance, setting `single` to `{"on": "dblclick"}` populates single selections on double-click by default.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_selection_config <- function(spec, interval = NULL, multi = NULL, single = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'selection'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_square_config
+
+vl_add_selection_config <- function(spec, interval = NULL, multi = NULL, single = NULL){
+  args <- .modify_args(NULL, c("interval", "multi", "single"))
+  .add_sub_config(args$spec, args$object, '#/definitions/SelectionConfig' , .config = "selection")
+} 
+#' vl_add_square_config
 #' 
 #' Add square config (MarkConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param align (_MarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_MarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -10481,20 +11799,22 @@ vl_add_selection_config <- function(spec, interval = NULL, multi = NULL, single 
 #' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_square_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'square'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_text_config
+
+vl_add_square_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "square")
+} 
+#' vl_add_text_config
 #' 
 #' Add text config (TextConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param align (_TextConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_TextConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_TextConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -10607,20 +11927,22 @@ vl_add_square_config <- function(spec, align = NULL, angle = NULL, baseline = NU
 #' @param x2 (_TextConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_TextConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_TextConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_text_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, shortTimeLabels = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'text'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_tick_config
+
+vl_add_text_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, shortTimeLabels = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "shortTimeLabels", "size", "stroke", "strokeCap", "strokeDash", 
+  "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", 
+  "tension", "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/TextConfig' , .config = "text")
+} 
+#' vl_add_tick_config
 #' 
 #' Add tick config (TickConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param align (_TickConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_TickConfig_) The rotation angle of the text, in degrees.
 #' @param bandSize (_TickConfig_) The width of the ticks.
@@ -10738,20 +12060,22 @@ vl_add_text_config <- function(spec, align = NULL, angle = NULL, baseline = NULL
 #' @param x2 (_TickConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_TickConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_TickConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_tick_config <- function(spec, align = NULL, angle = NULL, bandSize = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'tick'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_title_config
+
+vl_add_tick_config <- function(spec, align = NULL, angle = NULL, bandSize = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "bandSize", "baseline", "color", "cornerRadius", "cursor", 
+  "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", 
+  "fontStyle", "fontWeight", "href", "interpolate", "limit", "opacity", "order", 
+  "orient", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "thickness", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/TickConfig' , .config = "tick")
+} 
+#' vl_add_title_config
 #' 
 #' Add title config (TitleConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param align (_BaseTitleConfig_)  
 #' @param anchor (_BaseTitleConfig_) The anchor position for placing the title. One of `"start"`, `"middle"`, or `"end"`. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.
 #' @param angle (_BaseTitleConfig_) Angle in degrees of title text.
@@ -10770,20 +12094,18 @@ vl_add_tick_config <- function(spec, align = NULL, angle = NULL, bandSize = NULL
 #' @param limit (_BaseTitleConfig_) The maximum allowed length in pixels of legend labels.
 #' @param offset (_BaseTitleConfig_) The orthogonal offset in pixels by which to displace the title from its position along the edge of the chart.
 #' @param orient (_BaseTitleConfig_) Default title orientation (`"top"`, `"bottom"`, `"left"`, or `"right"`)
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_title_config <- function(spec, align = NULL, anchor = NULL, angle = NULL, baseline = NULL, color = NULL, dx = NULL, dy = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, frame = NULL, limit = NULL, offset = NULL, orient = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'title'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_trail_config
+
+vl_add_title_config <- function(spec, align = NULL, anchor = NULL, angle = NULL, baseline = NULL, color = NULL, dx = NULL, dy = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, frame = NULL, limit = NULL, offset = NULL, orient = NULL){
+  args <- .modify_args(NULL, c("align", "anchor", "angle", "baseline", "color", "dx", "dy", "font", "fontSize", 
+  "fontStyle", "fontWeight", "frame", "limit", "offset", "orient"))
+  .add_sub_config(args$spec, args$object, '#/definitions/TitleConfig' , .config = "title")
+} 
+#' vl_add_trail_config
 #' 
 #' Add trail config (LineConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param align (_LineConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_LineConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_LineConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -10904,20 +12226,22 @@ vl_add_title_config <- function(spec, align = NULL, anchor = NULL, angle = NULL,
 #' @param x2 (_LineConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_LineConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_LineConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_trail_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'trail'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_add_view_config
+
+vl_add_trail_config <- function(spec, align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+  args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+  .add_sub_config(args$spec, args$object, '#/definitions/LineConfig' , .config = "trail")
+} 
+#' vl_add_view_config
 #' 
 #' Add view config (ViewConfig) to a vega-lite spec.
-#' @param spec A vega-lite spec.
+#' @param spec An input vega-lite spec
 #' @param clip (_ViewConfig_) Whether the view should be clipped.
 #' @param cornerRadius (_ViewConfig_) The radius in pixels of rounded rectangle corners.
 #' 
@@ -10953,19 +12277,18 @@ vl_add_trail_config <- function(spec, align = NULL, angle = NULL, baseline = NUL
 #' @param width (_ViewConfig_) The default width of the single plot or each plot in a trellis plot when the visualization has a continuous (non-ordinal) x-scale or ordinal x-scale with `rangeStep` = `null`.
 #' 
 #' __Default value:__ `200`
-#' @return A modified spec
+#' @return A modified Vega-Lite Spec
 #' @export
-#'
-vl_add_view_config <- function(spec, clip = NULL, cornerRadius = NULL, fill = NULL, fillOpacity = NULL, height = NULL, opacity = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, width = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out <- c(args_out, list(.config = 'view'))
-  rlang::exec(.add_sub_config, !!!args_out)
-}
- #' vl_make_AreaConfig
+
+vl_add_view_config <- function(spec, clip = NULL, cornerRadius = NULL, fill = NULL, fillOpacity = NULL, height = NULL, opacity = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, width = NULL){
+  args <- .modify_args(NULL, c("clip", "cornerRadius", "fill", "fillOpacity", "height", "opacity", "stroke", 
+  "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "width"))
+  .add_sub_config(args$spec, args$object, '#/definitions/ViewConfig' , .config = "view")
+} 
+#' vl_make_AreaConfig
 #' 
-#' Create spec for AreaConfig.
+#' Create spec for {obj}
 #' @param align (_AreaConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_AreaConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_AreaConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -11093,17 +12416,21 @@ vl_add_view_config <- function(spec, clip = NULL, cornerRadius = NULL, fill = NU
 #' @param x2 (_AreaConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_AreaConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_AreaConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a AreaConfig.
 #' @export
-vl_make_AreaConfig <- function(align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_AxisConfig
+
+vl_make_AreaConfig <- function(align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, line = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "line", "opacity", "order", "orient", 
+  "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+args$obj
+} 
+#' vl_make_AxisConfig
 #' 
-#' Create spec for AxisConfig.
+#' Create spec for {obj}
 #' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
 #' 
 #'   __Default value:__ `0.5`
@@ -11214,17 +12541,26 @@ vl_make_AreaConfig <- function(align = NULL, angle = NULL, baseline = NULL, colo
 #' @param titlePadding (_AxisConfig_) The padding, in pixels, between title and axis.
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a AxisConfig.
 #' @export
-vl_make_AxisConfig <- function(bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_BarConfig
+
+vl_make_AxisConfig <- function(bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL){
+args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
+  "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
+  "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOpacity", "labelOverlap", 
+  "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "orient", 
+  "shortTimeLabels", "tickColor", "tickDash", "tickDashOffset", "tickExtra", "tickOffset", 
+  "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", 
+  "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", 
+  "titleX", "titleY"))
+args$obj
+} 
+#' vl_make_BarConfig
 #' 
-#' Create spec for BarConfig.
+#' Create spec for {obj}
 #' @param align (_BarConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_BarConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_BarConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -11344,17 +12680,22 @@ vl_make_AxisConfig <- function(bandPosition = NULL, domain = NULL, domainColor =
 #' @param x2 (_BarConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_BarConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_BarConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a BarConfig.
 #' @export
-vl_make_BarConfig <- function(align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_BaseMarkConfig
+
+vl_make_BarConfig <- function(align = NULL, angle = NULL, baseline = NULL, binSpacing = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+args <- .modify_args(NULL, c("align", "angle", "baseline", "binSpacing", "color", "continuousBandSize", 
+  "cornerRadius", "cursor", "dir", "discreteBandSize", "dx", "dy", "ellipsis", 
+  "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", "fontWeight", 
+  "href", "interpolate", "limit", "opacity", "order", "orient", "radius", "shape", 
+  "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", 
+  "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", "text", "theta", 
+  "tooltip", "x", "x2", "y", "y2"))
+args$obj
+} 
+#' vl_make_BaseMarkConfig
 #' 
-#' Create spec for BaseMarkConfig.
+#' Create spec for {obj}
 #' @param align (_BaseMarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_BaseMarkConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_BaseMarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -11449,17 +12790,21 @@ vl_make_BarConfig <- function(align = NULL, angle = NULL, baseline = NULL, binSp
 #' @param x2 (_BaseMarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_BaseMarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_BaseMarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a BaseMarkConfig.
 #' @export
-vl_make_BaseMarkConfig <- function(align = NULL, angle = NULL, baseline = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_BaseTitleConfig
+
+vl_make_BaseMarkConfig <- function(align = NULL, angle = NULL, baseline = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+args <- .modify_args(NULL, c("align", "angle", "baseline", "cornerRadius", "cursor", "dir", "dx", "dy", 
+  "ellipsis", "fill", "fillOpacity", "font", "fontSize", "fontStyle", "fontWeight", 
+  "href", "interpolate", "limit", "opacity", "orient", "radius", "shape", "size", 
+  "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "tension", "text", "theta", "tooltip", "x", 
+  "x2", "y", "y2"))
+args$obj
+} 
+#' vl_make_BaseTitleConfig
 #' 
-#' Create spec for BaseTitleConfig.
+#' Create spec for {obj}
 #' @param align (_BaseTitleConfig_)  
 #' @param anchor (_BaseTitleConfig_) The anchor position for placing the title. One of `"start"`, `"middle"`, or `"end"`. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.
 #' @param angle (_BaseTitleConfig_) Angle in degrees of title text.
@@ -11478,17 +12823,17 @@ vl_make_BaseMarkConfig <- function(align = NULL, angle = NULL, baseline = NULL, 
 #' @param limit (_BaseTitleConfig_) The maximum allowed length in pixels of legend labels.
 #' @param offset (_BaseTitleConfig_) The orthogonal offset in pixels by which to displace the title from its position along the edge of the chart.
 #' @param orient (_BaseTitleConfig_) Default title orientation (`"top"`, `"bottom"`, `"left"`, or `"right"`)
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a BaseTitleConfig.
 #' @export
-vl_make_BaseTitleConfig <- function(align = NULL, anchor = NULL, angle = NULL, baseline = NULL, color = NULL, dx = NULL, dy = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, frame = NULL, limit = NULL, offset = NULL, orient = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_BoxPlotConfig
+
+vl_make_BaseTitleConfig <- function(align = NULL, anchor = NULL, angle = NULL, baseline = NULL, color = NULL, dx = NULL, dy = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, frame = NULL, limit = NULL, offset = NULL, orient = NULL){
+args <- .modify_args(NULL, c("align", "anchor", "angle", "baseline", "color", "dx", "dy", "font", "fontSize", 
+  "fontStyle", "fontWeight", "frame", "limit", "offset", "orient"))
+args$obj
+} 
+#' vl_make_BoxPlotConfig
 #' 
-#' Create spec for BoxPlotConfig.
+#' Create spec for {obj}
 #' @param box (_BoxPlotConfig_)  
 #' @param extent (_BoxPlotConfig_) The extent of the whiskers. Available options include:
 #' - `"min-max"`: min and max are the lower and upper whiskers respectively.
@@ -11500,17 +12845,16 @@ vl_make_BaseTitleConfig <- function(align = NULL, anchor = NULL, angle = NULL, b
 #' @param rule (_BoxPlotConfig_)  
 #' @param size (_BoxPlotConfig_) Size of the box and median tick of a box plot
 #' @param ticks (_BoxPlotConfig_)  
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a BoxPlotConfig.
 #' @export
-vl_make_BoxPlotConfig <- function(box = NULL, extent = NULL, median = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_BrushConfig
+
+vl_make_BoxPlotConfig <- function(box = NULL, extent = NULL, median = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL){
+args <- .modify_args(NULL, c("box", "extent", "median", "outliers", "rule", "size", "ticks"))
+args$obj
+} 
+#' vl_make_BrushConfig
 #' 
-#' Create spec for BrushConfig.
+#' Create spec for {obj}
 #' @param fill (_BrushConfig_) The fill color of the interval mark.
 #' 
 #' __Default value:__ `#333333`
@@ -11525,17 +12869,17 @@ vl_make_BoxPlotConfig <- function(box = NULL, extent = NULL, median = NULL, outl
 #' @param strokeDashOffset (_BrushConfig_) The offset (in pixels) with which to begin drawing the stroke dash array.
 #' @param strokeOpacity (_BrushConfig_) The stroke opacity of the interval mark (a value between 0 and 1).
 #' @param strokeWidth (_BrushConfig_) The stroke width of the interval mark.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a BrushConfig.
 #' @export
-vl_make_BrushConfig <- function(fill = NULL, fillOpacity = NULL, stroke = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_CompositionConfig
+
+vl_make_BrushConfig <- function(fill = NULL, fillOpacity = NULL, stroke = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL){
+args <- .modify_args(NULL, c("fill", "fillOpacity", "stroke", "strokeDash", "strokeDashOffset", "strokeOpacity", 
+  "strokeWidth"))
+args$obj
+} 
+#' vl_make_CompositionConfig
 #' 
-#' Create spec for CompositionConfig.
+#' Create spec for {obj}
 #' @param columns (_CompositionConfig_) The number of columns to include in the view composition layout.
 #' 
 #' __Default value__: `undefined` -- An infinite number of columns (a single row) will be assumed. This is equivalent to
@@ -11551,17 +12895,16 @@ vl_make_BrushConfig <- function(fill = NULL, fillOpacity = NULL, stroke = NULL, 
 #' @param spacing (_CompositionConfig_) The default spacing in pixels between composed sub-views.
 #' 
 #' __Default value__: `20`
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a CompositionConfig.
 #' @export
-vl_make_CompositionConfig <- function(columns = NULL, spacing = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Config
+
+vl_make_CompositionConfig <- function(columns = NULL, spacing = NULL){
+args <- .modify_args(NULL, c("columns", "spacing"))
+args$obj
+} 
+#' vl_make_Config
 #' 
-#' Create spec for Config.
+#' Create spec for {obj}
 #' @param area (_Config_) Area-Specific Config
 #' @param autosize (_Config_) Sets how the visualization size should be determined. If a string, should be one of `"pad"`, `"fit"` or `"none"`.
 #' Object values can additionally specify parameters for content sizing and automatic resizing.
@@ -11638,17 +12981,22 @@ vl_make_CompositionConfig <- function(columns = NULL, spacing = NULL) {
 #' @param title (_Config_) Title configuration, which determines default properties for all [titles](https://vega.github.io/vega-lite/docs/title.html). For a full list of title configuration options, please see the [corresponding section of the title documentation](https://vega.github.io/vega-lite/docs/title.html#config).
 #' @param trail (_Config_) Trail-Specific Config
 #' @param view (_Config_) Default properties for [single view plots](https://vega.github.io/vega-lite/docs/spec.html#single).
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Config.
 #' @export
-vl_make_Config <- function(area = NULL, autosize = NULL, axis = NULL, axisBand = NULL, axisBottom = NULL, axisLeft = NULL, axisRight = NULL, axisTop = NULL, axisX = NULL, axisY = NULL, background = NULL, bar = NULL, boxplot = NULL, circle = NULL, concat = NULL, countTitle = NULL, errorband = NULL, errorbar = NULL, facet = NULL, fieldTitle = NULL, geoshape = NULL, header = NULL, headerColumn = NULL, headerFacet = NULL, headerRow = NULL, invalidValues = NULL, legend = NULL, line = NULL, mark = NULL, numberFormat = NULL, padding = NULL, point = NULL, projection = NULL, range = NULL, rect = NULL, `repeat` = NULL, rule = NULL, scale = NULL, selection = NULL, square = NULL, stack = NULL, style = NULL, text = NULL, tick = NULL, timeFormat = NULL, title = NULL, trail = NULL, view = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_ErrorBandConfig
+
+vl_make_Config <- function(area = NULL, autosize = NULL, axis = NULL, axisBand = NULL, axisBottom = NULL, axisLeft = NULL, axisRight = NULL, axisTop = NULL, axisX = NULL, axisY = NULL, background = NULL, bar = NULL, boxplot = NULL, circle = NULL, concat = NULL, countTitle = NULL, errorband = NULL, errorbar = NULL, facet = NULL, fieldTitle = NULL, geoshape = NULL, header = NULL, headerColumn = NULL, headerFacet = NULL, headerRow = NULL, invalidValues = NULL, legend = NULL, line = NULL, mark = NULL, numberFormat = NULL, padding = NULL, point = NULL, projection = NULL, range = NULL, rect = NULL, `repeat` = NULL, rule = NULL, scale = NULL, selection = NULL, square = NULL, stack = NULL, style = NULL, text = NULL, tick = NULL, timeFormat = NULL, title = NULL, trail = NULL, view = NULL){
+args <- .modify_args(NULL, c("area", "autosize", "axis", "axisBand", "axisBottom", "axisLeft", "axisRight", 
+  "axisTop", "axisX", "axisY", "background", "bar", "boxplot", "circle", "concat", 
+  "countTitle", "errorband", "errorbar", "facet", "fieldTitle", "geoshape", "header", 
+  "headerColumn", "headerFacet", "headerRow", "invalidValues", "legend", "line", 
+  "mark", "numberFormat", "padding", "point", "projection", "range", "rect", "`repeat`", 
+  "rule", "scale", "selection", "square", "stack", "style", "text", "tick", "timeFormat", 
+  "title", "trail", "view"))
+args$obj
+} 
+#' vl_make_ErrorBandConfig
 #' 
-#' Create spec for ErrorBandConfig.
+#' Create spec for {obj}
 #' @param band (_ErrorBandConfig_)  
 #' @param borders (_ErrorBandConfig_)  
 #' @param extent (_ErrorBandConfig_) The extent of the band. Available options include:
@@ -11673,17 +13021,16 @@ vl_make_Config <- function(area = NULL, autosize = NULL, axis = NULL, axisBand =
 #' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
 #' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
 #' @param tension (_ErrorBandConfig_) The tension parameter for the interpolation type of the error band.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a ErrorBandConfig.
 #' @export
-vl_make_ErrorBandConfig <- function(band = NULL, borders = NULL, extent = NULL, interpolate = NULL, tension = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_ErrorBarConfig
+
+vl_make_ErrorBandConfig <- function(band = NULL, borders = NULL, extent = NULL, interpolate = NULL, tension = NULL){
+args <- .modify_args(NULL, c("band", "borders", "extent", "interpolate", "tension"))
+args$obj
+} 
+#' vl_make_ErrorBarConfig
 #' 
-#' Create spec for ErrorBarConfig.
+#' Create spec for {obj}
 #' @param extent (_ErrorBarConfig_) The extent of the rule. Available options include:
 #' - `"ci"`: Extend the rule to the confidence interval of the mean.
 #' - `"stderr"`: The size of rule are set to the value of standard error, extending from the mean.
@@ -11693,17 +13040,16 @@ vl_make_ErrorBandConfig <- function(band = NULL, borders = NULL, extent = NULL, 
 #' __Default value:__ `"stderr"`.
 #' @param rule (_ErrorBarConfig_)  
 #' @param ticks (_ErrorBarConfig_)  
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a ErrorBarConfig.
 #' @export
-vl_make_ErrorBarConfig <- function(extent = NULL, rule = NULL, ticks = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_HeaderConfig
+
+vl_make_ErrorBarConfig <- function(extent = NULL, rule = NULL, ticks = NULL){
+args <- .modify_args(NULL, c("extent", "rule", "ticks"))
+args$obj
+} 
+#' vl_make_HeaderConfig
 #' 
-#' Create spec for HeaderConfig.
+#' Create spec for {obj}
 #' @param format (_HeaderConfig_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 #' 
 #' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
@@ -11756,17 +13102,20 @@ vl_make_ErrorBarConfig <- function(extent = NULL, rule = NULL, ticks = NULL) {
 #' @param titlePadding (_HeaderConfig_) The padding, in pixel, between facet header's title and the label.
 #' 
 #' __Default value:__ `10`
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a HeaderConfig.
 #' @export
-vl_make_HeaderConfig <- function(format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, shortTimeLabels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL, titlePadding = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_IntervalSelectionConfig
+
+vl_make_HeaderConfig <- function(format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, shortTimeLabels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL, titlePadding = NULL){
+args <- .modify_args(NULL, c("format", "formatType", "labelAlign", "labelAnchor", "labelAngle", "labelColor", 
+  "labelFont", "labelFontSize", "labelLimit", "labelOrient", "labelPadding", "shortTimeLabels", 
+  "title", "titleAlign", "titleAnchor", "titleAngle", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontWeight", "titleLimit", "titleOrient", 
+  "titlePadding"))
+args$obj
+} 
+#' vl_make_IntervalSelectionConfig
 #' 
-#' Create spec for IntervalSelectionConfig.
+#' Create spec for {obj}
 #' @param bind (_IntervalSelectionConfig_) Establishes a two-way binding between the interval selection and the scales
 #' used within the same view. This allows a user to interactively pan and
 #' zoom the view.
@@ -11807,17 +13156,17 @@ vl_make_HeaderConfig <- function(format = NULL, formatType = NULL, labelAlign = 
 #' 
 #' 
 #' __Default value:__ `true`, which corresponds to `wheel!`.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a IntervalSelectionConfig.
 #' @export
-vl_make_IntervalSelectionConfig <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, zoom = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_LegendConfig
+
+vl_make_IntervalSelectionConfig <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, zoom = NULL){
+args <- .modify_args(NULL, c("bind", "clear", "empty", "encodings", "fields", "init", "mark", "on", "resolve", 
+  "translate", "zoom"))
+args$obj
+} 
+#' vl_make_LegendConfig
 #' 
-#' Create spec for LegendConfig.
+#' Create spec for {obj}
 #' @param clipHeight (_LegendConfig_) The height in pixels to clip symbol legend entries and limit their size.
 #' @param columnPadding (_LegendConfig_) The horizontal padding in pixels between symbol legend entries.
 #' 
@@ -11952,17 +13301,29 @@ vl_make_IntervalSelectionConfig <- function(bind = NULL, clear = NULL, empty = N
 #' @param titlePadding (_LegendConfig_) The padding, in pixels, between title and legend.
 #' 
 #' __Default value:__ `5`.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a LegendConfig.
 #' @export
-vl_make_LegendConfig <- function(clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, fillColor = NULL, gradientDirection = NULL, gradientHorizontalMaxLength = NULL, gradientHorizontalMinLength = NULL, gradientLabelLimit = NULL, gradientLabelOffset = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gradientVerticalMaxLength = NULL, gradientVerticalMinLength = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, layout = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, shortTimeLabels = NULL, strokeColor = NULL, strokeDash = NULL, strokeWidth = NULL, symbolBaseFillColor = NULL, symbolBaseStrokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolDirection = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_LineConfig
+
+vl_make_LegendConfig <- function(clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, fillColor = NULL, gradientDirection = NULL, gradientHorizontalMaxLength = NULL, gradientHorizontalMinLength = NULL, gradientLabelLimit = NULL, gradientLabelOffset = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gradientVerticalMaxLength = NULL, gradientVerticalMinLength = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, layout = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, shortTimeLabels = NULL, strokeColor = NULL, strokeDash = NULL, strokeWidth = NULL, symbolBaseFillColor = NULL, symbolBaseStrokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolDirection = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL){
+args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "fillColor", "gradientDirection", 
+  "gradientHorizontalMaxLength", "gradientHorizontalMinLength", "gradientLabelLimit", 
+  "gradientLabelOffset", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gradientVerticalMaxLength", "gradientVerticalMinLength", 
+  "gridAlign", "labelAlign", "labelBaseline", "labelColor", "labelFont", "labelFontSize", 
+  "labelFontStyle", "labelFontWeight", "labelLimit", "labelOffset", "labelOpacity", 
+  "labelOverlap", "labelPadding", "labelSeparation", "layout", "offset", "orient", 
+  "padding", "rowPadding", "shortTimeLabels", "strokeColor", "strokeDash", "strokeWidth", 
+  "symbolBaseFillColor", "symbolBaseStrokeColor", "symbolDash", "symbolDashOffset", 
+  "symbolDirection", "symbolFillColor", "symbolOffset", "symbolOpacity", "symbolSize", 
+  "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "title", "titleAlign", 
+  "titleAnchor", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
+  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titleOrient", 
+  "titlePadding"))
+args$obj
+} 
+#' vl_make_LineConfig
 #' 
-#' Create spec for LineConfig.
+#' Create spec for {obj}
 #' @param align (_LineConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_LineConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_LineConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -12083,17 +13444,21 @@ vl_make_LegendConfig <- function(clipHeight = NULL, columnPadding = NULL, column
 #' @param x2 (_LineConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_LineConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_LineConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a LineConfig.
 #' @export
-vl_make_LineConfig <- function(align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_MarkConfig
+
+vl_make_LineConfig <- function(align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "point", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+args$obj
+} 
+#' vl_make_MarkConfig
 #' 
-#' Create spec for MarkConfig.
+#' Create spec for {obj}
 #' @param align (_MarkConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_MarkConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -12205,17 +13570,21 @@ vl_make_LineConfig <- function(align = NULL, angle = NULL, baseline = NULL, colo
 #' @param x2 (_MarkConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_MarkConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a MarkConfig.
 #' @export
-vl_make_MarkConfig <- function(align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_MultiSelectionConfig
+
+vl_make_MarkConfig <- function(align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+args$obj
+} 
+#' vl_make_MultiSelectionConfig
 #' 
-#' Create spec for MultiSelectionConfig.
+#' Create spec for {obj}
 #' @param clear (_MultiSelectionConfig_) Clears the selection, emptying it of all values. Can be an
 #' [EventStream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable.
 #' 
@@ -12247,17 +13616,17 @@ vl_make_MarkConfig <- function(align = NULL, angle = NULL, baseline = NULL, colo
 #' data values are toggled when a user interacts with the shift-key pressed).
 #' 
 #' See the [toggle transform](https://vega.github.io/vega-lite/docs/toggle.html) documentation for more information.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a MultiSelectionConfig.
 #' @export
-vl_make_MultiSelectionConfig <- function(clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_ProjectionConfig
+
+vl_make_MultiSelectionConfig <- function(clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL){
+args <- .modify_args(NULL, c("clear", "empty", "encodings", "fields", "init", "nearest", "on", "resolve", 
+  "toggle"))
+args$obj
+} 
+#' vl_make_ProjectionConfig
 #' 
-#' Create spec for ProjectionConfig.
+#' Create spec for {obj}
 #' @param center (_Projection_) Sets the projection’s center to the specified center, a two-element array of longitude and latitude in degrees.
 #' 
 #' __Default value:__ `[0, 0]`
@@ -12283,34 +13652,34 @@ vl_make_MultiSelectionConfig <- function(clear = NULL, empty = NULL, encodings =
 #' @param type (_Projection_) The cartographic projection to use. This value is case-insensitive, for example `"albers"` and `"Albers"` indicate the same projection type. You can find all valid projection types [in the documentation](https://vega.github.io/vega-lite/docs/projection.html#projection-types).
 #' 
 #' __Default value:__ `mercator`
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a ProjectionConfig.
 #' @export
-vl_make_ProjectionConfig <- function(center = NULL, clipAngle = NULL, clipExtent = NULL, coefficient = NULL, distance = NULL, fraction = NULL, lobes = NULL, parallel = NULL, precision = NULL, radius = NULL, ratio = NULL, reflectX = NULL, reflectY = NULL, rotate = NULL, scale = NULL, spacing = NULL, tilt = NULL, translate = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_RangeConfig
+
+vl_make_ProjectionConfig <- function(center = NULL, clipAngle = NULL, clipExtent = NULL, coefficient = NULL, distance = NULL, fraction = NULL, lobes = NULL, parallel = NULL, precision = NULL, radius = NULL, ratio = NULL, reflectX = NULL, reflectY = NULL, rotate = NULL, scale = NULL, spacing = NULL, tilt = NULL, translate = NULL, type = NULL){
+args <- .modify_args(NULL, c("center", "clipAngle", "clipExtent", "coefficient", "distance", "fraction", 
+  "lobes", "parallel", "precision", "radius", "ratio", "reflectX", "reflectY", 
+  "rotate", "scale", "spacing", "tilt", "translate", "type"))
+args$obj
+} 
+#' vl_make_RangeConfig
 #' 
-#' Create spec for RangeConfig.
+#' Create spec for {obj}
 #' @param category (_RangeConfig_) Default range for _nominal_ (categorical) fields.
 #' @param diverging (_RangeConfig_) Default range for diverging _quantitative_ fields.
 #' @param heatmap (_RangeConfig_) Default range for _quantitative_ heatmaps.
 #' @param ordinal (_RangeConfig_) Default range for _ordinal_ fields.
 #' @param ramp (_RangeConfig_) Default range for _quantitative_ and _temporal_ fields.
 #' @param symbol (_RangeConfig_) Default range palette for the `shape` channel.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a RangeConfig.
 #' @export
-vl_make_RangeConfig <- function(category = NULL, diverging = NULL, heatmap = NULL, ordinal = NULL, ramp = NULL, symbol = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_ScaleConfig
+
+vl_make_RangeConfig <- function(category = NULL, diverging = NULL, heatmap = NULL, ordinal = NULL, ramp = NULL, symbol = NULL){
+args <- .modify_args(NULL, c("category", "diverging", "heatmap", "ordinal", "ramp", "symbol"))
+args$obj
+} 
+#' vl_make_ScaleConfig
 #' 
-#' Create spec for ScaleConfig.
+#' Create spec for {obj}
 #' @param bandPaddingInner (_ScaleConfig_) Default inner padding for `x` and `y` band-ordinal scales.
 #' 
 #' __Default value:__
@@ -12387,31 +13756,33 @@ vl_make_RangeConfig <- function(category = NULL, diverging = NULL, heatmap = NUL
 #' This property only works with aggregate functions that produce values within the raw data domain (`"mean"`, `"average"`, `"median"`, `"q1"`, `"q3"`, `"min"`, `"max"`). For other aggregations that produce values outside of the raw data domain (e.g. `"count"`, `"sum"`), this property is ignored.
 #' 
 #' __Default value:__ `false`
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a ScaleConfig.
 #' @export
-vl_make_ScaleConfig <- function(bandPaddingInner = NULL, bandPaddingOuter = NULL, barBandPaddingInner = NULL, barBandPaddingOuter = NULL, clamp = NULL, continuousPadding = NULL, maxBandSize = NULL, maxFontSize = NULL, maxOpacity = NULL, maxSize = NULL, maxStrokeWidth = NULL, minBandSize = NULL, minFontSize = NULL, minOpacity = NULL, minSize = NULL, minStrokeWidth = NULL, pointPadding = NULL, quantileCount = NULL, quantizeCount = NULL, rangeStep = NULL, rectBandPaddingInner = NULL, rectBandPaddingOuter = NULL, round = NULL, textXRangeStep = NULL, useUnaggregatedDomain = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_SchemeConfig
+
+vl_make_ScaleConfig <- function(bandPaddingInner = NULL, bandPaddingOuter = NULL, barBandPaddingInner = NULL, barBandPaddingOuter = NULL, clamp = NULL, continuousPadding = NULL, maxBandSize = NULL, maxFontSize = NULL, maxOpacity = NULL, maxSize = NULL, maxStrokeWidth = NULL, minBandSize = NULL, minFontSize = NULL, minOpacity = NULL, minSize = NULL, minStrokeWidth = NULL, pointPadding = NULL, quantileCount = NULL, quantizeCount = NULL, rangeStep = NULL, rectBandPaddingInner = NULL, rectBandPaddingOuter = NULL, round = NULL, textXRangeStep = NULL, useUnaggregatedDomain = NULL){
+args <- .modify_args(NULL, c("bandPaddingInner", "bandPaddingOuter", "barBandPaddingInner", "barBandPaddingOuter", 
+  "clamp", "continuousPadding", "maxBandSize", "maxFontSize", "maxOpacity", "maxSize", 
+  "maxStrokeWidth", "minBandSize", "minFontSize", "minOpacity", "minSize", "minStrokeWidth", 
+  "pointPadding", "quantileCount", "quantizeCount", "rangeStep", "rectBandPaddingInner", 
+  "rectBandPaddingOuter", "round", "textXRangeStep", "useUnaggregatedDomain"))
+args$obj
+} 
+#' vl_make_SchemeConfig
 #' 
-#' Create spec for SchemeConfig.
+#' Create spec for {obj}
 #' @param count (_SchemeConfig_)  
 #' @param extent (_SchemeConfig_)  
 #' @param scheme (_SchemeConfig_)  
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a SchemeConfig.
 #' @export
-vl_make_SchemeConfig <- function(count = NULL, extent = NULL, scheme = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_SelectionConfig
+
+vl_make_SchemeConfig <- function(count = NULL, extent = NULL, scheme = NULL){
+args <- .modify_args(NULL, c("count", "extent", "scheme"))
+args$obj
+} 
+#' vl_make_SelectionConfig
 #' 
-#' Create spec for SelectionConfig.
+#' Create spec for {obj}
 #' @param interval (_SelectionConfig_) The default definition for an [`interval`](https://vega.github.io/vega-lite/docs/selection.html#type) selection. All properties and transformations
 #' for an interval selection definition (except `type`) may be specified here.
 #' 
@@ -12426,17 +13797,16 @@ vl_make_SchemeConfig <- function(count = NULL, extent = NULL, scheme = NULL) {
 #'   for a single selection definition (except `type`) may be specified here.
 #' 
 #' For instance, setting `single` to `{"on": "dblclick"}` populates single selections on double-click by default.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a SelectionConfig.
 #' @export
-vl_make_SelectionConfig <- function(interval = NULL, multi = NULL, single = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_SingleSelectionConfig
+
+vl_make_SelectionConfig <- function(interval = NULL, multi = NULL, single = NULL){
+args <- .modify_args(NULL, c("interval", "multi", "single"))
+args$obj
+} 
+#' vl_make_SingleSelectionConfig
 #' 
-#' Create spec for SingleSelectionConfig.
+#' Create spec for {obj}
 #' @param bind (_SingleSelectionConfig_) Establish a two-way binding between a single selection and input elements
 #' (also known as dynamic query widgets). A binding takes the form of
 #' Vega's [input element binding definition](https://vega.github.io/vega/docs/signals/#bind)
@@ -12465,17 +13835,17 @@ vl_make_SelectionConfig <- function(interval = NULL, multi = NULL, single = NULL
 #' @param resolve (_SingleSelectionConfig_) With layered and multi-view displays, a strategy that determines how
 #' selections' data queries are resolved when applied in a filter transform,
 #' conditional encoding rule, or scale domain.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a SingleSelectionConfig.
 #' @export
-vl_make_SingleSelectionConfig <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_TextConfig
+
+vl_make_SingleSelectionConfig <- function(bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL){
+args <- .modify_args(NULL, c("bind", "clear", "empty", "encodings", "fields", "init", "nearest", "on", 
+  "resolve"))
+args$obj
+} 
+#' vl_make_TextConfig
 #' 
-#' Create spec for TextConfig.
+#' Create spec for {obj}
 #' @param align (_TextConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_TextConfig_) The rotation angle of the text, in degrees.
 #' @param baseline (_TextConfig_) The vertical alignment of the text. One of `"top"`, `"middle"`, `"bottom"`.
@@ -12588,17 +13958,21 @@ vl_make_SingleSelectionConfig <- function(bind = NULL, clear = NULL, empty = NUL
 #' @param x2 (_TextConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_TextConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_TextConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a TextConfig.
 #' @export
-vl_make_TextConfig <- function(align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, shortTimeLabels = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_TickConfig
+
+vl_make_TextConfig <- function(align = NULL, angle = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, shortTimeLabels = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+args <- .modify_args(NULL, c("align", "angle", "baseline", "color", "cornerRadius", "cursor", "dir", "dx", 
+  "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", "fontStyle", 
+  "fontWeight", "href", "interpolate", "limit", "opacity", "order", "orient", 
+  "radius", "shape", "shortTimeLabels", "size", "stroke", "strokeCap", "strokeDash", 
+  "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", 
+  "tension", "text", "theta", "tooltip", "x", "x2", "y", "y2"))
+args$obj
+} 
+#' vl_make_TickConfig
 #' 
-#' Create spec for TickConfig.
+#' Create spec for {obj}
 #' @param align (_TickConfig_) The horizontal alignment of the text. One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_TickConfig_) The rotation angle of the text, in degrees.
 #' @param bandSize (_TickConfig_) The width of the ticks.
@@ -12716,17 +14090,21 @@ vl_make_TextConfig <- function(align = NULL, angle = NULL, baseline = NULL, colo
 #' @param x2 (_TickConfig_) X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' @param y (_TickConfig_) Y coordinates of the marks, or height of vertical `"bar"` and `"area"` without `y2`
 #' @param y2 (_TickConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a TickConfig.
 #' @export
-vl_make_TickConfig <- function(align = NULL, angle = NULL, bandSize = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_TitleConfig
+
+vl_make_TickConfig <- function(align = NULL, angle = NULL, bandSize = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+args <- .modify_args(NULL, c("align", "angle", "bandSize", "baseline", "color", "cornerRadius", "cursor", 
+  "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", 
+  "fontStyle", "fontWeight", "href", "interpolate", "limit", "opacity", "order", 
+  "orient", "radius", "shape", "size", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", 
+  "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
+  "text", "theta", "thickness", "tooltip", "x", "x2", "y", "y2"))
+args$obj
+} 
+#' vl_make_TitleConfig
 #' 
-#' Create spec for TitleConfig.
+#' Create spec for {obj}
 #' @param align (_BaseTitleConfig_)  
 #' @param anchor (_BaseTitleConfig_) The anchor position for placing the title. One of `"start"`, `"middle"`, or `"end"`. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.
 #' @param angle (_BaseTitleConfig_) Angle in degrees of title text.
@@ -12745,17 +14123,17 @@ vl_make_TickConfig <- function(align = NULL, angle = NULL, bandSize = NULL, base
 #' @param limit (_BaseTitleConfig_) The maximum allowed length in pixels of legend labels.
 #' @param offset (_BaseTitleConfig_) The orthogonal offset in pixels by which to displace the title from its position along the edge of the chart.
 #' @param orient (_BaseTitleConfig_) Default title orientation (`"top"`, `"bottom"`, `"left"`, or `"right"`)
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a TitleConfig.
 #' @export
-vl_make_TitleConfig <- function(align = NULL, anchor = NULL, angle = NULL, baseline = NULL, color = NULL, dx = NULL, dy = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, frame = NULL, limit = NULL, offset = NULL, orient = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_ViewConfig
+
+vl_make_TitleConfig <- function(align = NULL, anchor = NULL, angle = NULL, baseline = NULL, color = NULL, dx = NULL, dy = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, frame = NULL, limit = NULL, offset = NULL, orient = NULL){
+args <- .modify_args(NULL, c("align", "anchor", "angle", "baseline", "color", "dx", "dy", "font", "fontSize", 
+  "fontStyle", "fontWeight", "frame", "limit", "offset", "orient"))
+args$obj
+} 
+#' vl_make_ViewConfig
 #' 
-#' Create spec for ViewConfig.
+#' Create spec for {obj}
 #' @param clip (_ViewConfig_) Whether the view should be clipped.
 #' @param cornerRadius (_ViewConfig_) The radius in pixels of rounded rectangle corners.
 #' 
@@ -12791,17 +14169,18 @@ vl_make_TitleConfig <- function(align = NULL, anchor = NULL, angle = NULL, basel
 #' @param width (_ViewConfig_) The default width of the single plot or each plot in a trellis plot when the visualization has a continuous (non-ordinal) x-scale or ordinal x-scale with `rangeStep` = `null`.
 #' 
 #' __Default value:__ `200`
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a ViewConfig.
 #' @export
-vl_make_ViewConfig <- function(clip = NULL, cornerRadius = NULL, fill = NULL, fillOpacity = NULL, height = NULL, opacity = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, width = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_BinParams
+
+vl_make_ViewConfig <- function(clip = NULL, cornerRadius = NULL, fill = NULL, fillOpacity = NULL, height = NULL, opacity = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, width = NULL){
+args <- .modify_args(NULL, c("clip", "cornerRadius", "fill", "fillOpacity", "height", "opacity", "stroke", 
+  "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
+  "strokeOpacity", "strokeWidth", "width"))
+args$obj
+} 
+#' vl_make_BinParams
 #' 
-#' Create spec for BinParams.
+#' Create spec for {obj}
 #' @param anchor (_BinParams_) A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
 #' 
 #' __Default Value:__ the minimum bin extent value
@@ -12822,17 +14201,17 @@ vl_make_ViewConfig <- function(clip = NULL, cornerRadius = NULL, fill = NULL, fi
 #' 
 #' __Note:__ If provided, options such as maxbins will be ignored.
 #' @param steps (_BinParams_) An array of allowable step sizes to choose from.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a BinParams.
 #' @export
-vl_make_BinParams <- function(anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Axis
+
+vl_make_BinParams <- function(anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
+  "step", "steps"))
+args$obj
+} 
+#' vl_make_Axis
 #' 
-#' Create spec for Axis.
+#' Create spec for {obj}
 #' @param bandPosition (_Axis_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
 #' 
 #'   __Default value:__ `0.5`
@@ -12977,17 +14356,27 @@ vl_make_BinParams <- function(anchor = NULL, base = NULL, binned = NULL, divide 
 #' To put them in front, use `"zindex = 1"`.
 #' 
 #' __Default value:__ `1` (in front of the marks) for actual axis and `0` (behind the marks) for grids.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Axis.
 #' @export
-vl_make_Axis <- function(bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, values = NULL, zindex = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Scale
+
+vl_make_Axis <- function(bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, values = NULL, zindex = NULL){
+args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
+  "domainOpacity", "domainWidth", "format", "formatType", "grid", "gridColor", 
+  "gridDash", "gridDashOffset", "gridOpacity", "gridWidth", "labelAlign", "labelAngle", 
+  "labelBaseline", "labelBound", "labelColor", "labelFlush", "labelFlushOffset", 
+  "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", "labelLimit", 
+  "labelOpacity", "labelOverlap", "labelPadding", "labelSeparation", "labels", 
+  "maxExtent", "minExtent", "offset", "orient", "position", "tickColor", "tickCount", 
+  "tickDash", "tickDashOffset", "tickExtra", "tickMinStep", "tickOffset", "tickOpacity", 
+  "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", "titleAnchor", 
+  "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
+  "titleFontWeight", "titleLimit", "titleOpacity", "titlePadding", "titleX", "titleY", 
+  "values", "zindex"))
+args$obj
+} 
+#' vl_make_Scale
 #' 
-#' Create spec for Scale.
+#' Create spec for {obj}
 #' @param base (_Scale_) The logarithm base of the `log` scale (default `10`).
 #' @param bins (_Scale_) An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels.
 #' @param clamp (_Scale_) If `true`, values that exceed the data domain are clamped to either the minimum or maximum range value
@@ -13076,17 +14465,18 @@ vl_make_Axis <- function(bandPosition = NULL, domain = NULL, domainColor = NULL,
 #' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
 #' 
 #' __Note:__ Log, time, and utc scales do not support `zero`.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Scale.
 #' @export
-vl_make_Scale <- function(base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_Legend
+
+vl_make_Scale <- function(base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeStep = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+args <- .modify_args(NULL, c("base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
+  "nice", "padding", "paddingInner", "paddingOuter", "range", "rangeStep", "round", 
+  "scheme", "type", "zero"))
+args$obj
+} 
+#' vl_make_Legend
 #' 
-#' Create spec for Legend.
+#' Create spec for {obj}
 #' @param clipHeight (_Legend_) The height in pixels to clip symbol legend entries and limit their size.
 #' @param columnPadding (_Legend_) The horizontal padding in pixels between symbol legend entries.
 #' 
@@ -13224,33 +14614,41 @@ vl_make_Scale <- function(base = NULL, bins = NULL, clamp = NULL, constant = NUL
 #' @param zindex (_Legend_) A non-positive integer indicating z-index of the legend.
 #' If zindex is 0, legend should be drawn behind all chart elements.
 #' To put them in front, use zindex = 1.
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a Legend.
 #' @export
-vl_make_Legend <- function(clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_BindCheckbox
+
+vl_make_Legend <- function(clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
+  "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
+  "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
+  "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
+  "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
+  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
+  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
+  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
+  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
+  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+args$obj
+} 
+#' vl_make_BindCheckbox
 #' 
-#' Create spec for BindCheckbox.
+#' Create spec for {obj}
 #' @param debounce (_BindCheckbox_)  
 #' @param element (_BindCheckbox_)  
 #' @param input (_BindCheckbox_) checkbox
 #' @param name (_BindCheckbox_)  
 #' @param type (_BindCheckbox_)  
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a BindCheckbox.
 #' @export
-vl_make_BindCheckbox <- function(debounce = NULL, element = NULL, input = NULL, name = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_BindRange
+
+vl_make_BindCheckbox <- function(debounce = NULL, element = NULL, input = NULL, name = NULL, type = NULL){
+args <- .modify_args(NULL, c("debounce", "element", "input", "name", "type"))
+args$obj
+} 
+#' vl_make_BindRange
 #' 
-#' Create spec for BindRange.
+#' Create spec for {obj}
 #' @param debounce (_BindRange_)  
 #' @param element (_BindRange_)  
 #' @param input (_BindRange_) range
@@ -13259,28 +14657,26 @@ vl_make_BindCheckbox <- function(debounce = NULL, element = NULL, input = NULL, 
 #' @param name (_BindRange_)  
 #' @param step (_BindRange_)  
 #' @param type (_BindRange_)  
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a BindRange.
 #' @export
-vl_make_BindRange <- function(debounce = NULL, element = NULL, input = NULL, max = NULL, min = NULL, name = NULL, step = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
-}
- #' vl_make_BindRadioSelect
+
+vl_make_BindRange <- function(debounce = NULL, element = NULL, input = NULL, max = NULL, min = NULL, name = NULL, step = NULL, type = NULL){
+args <- .modify_args(NULL, c("debounce", "element", "input", "max", "min", "name", "step", "type"))
+args$obj
+} 
+#' vl_make_BindRadioSelect
 #' 
-#' Create spec for BindRadioSelect.
+#' Create spec for {obj}
 #' @param debounce (_BindRadioSelect_)  
 #' @param element (_BindRadioSelect_)  
 #' @param input (_BindRadioSelect_) radio, select
 #' @param name (_BindRadioSelect_)  
 #' @param options (_BindRadioSelect_)  
 #' @param type (_BindRadioSelect_)  
-#' @return A modified spec
+#' @return A component of a Vega-Lite spec, corresponding to a BindRadioSelect.
 #' @export
-vl_make_BindRadioSelect <- function(debounce = NULL, element = NULL, input = NULL, name = NULL, options = NULL, type = NULL) {
-  args_in <- rlang::fn_fmls_syms()
-  args_eval <- lapply(args_in,eval, env = rlang::current_env())
-  args_out <- args_eval[!vapply(args_eval,is.null,FALSE)]
-  args_out
+
+vl_make_BindRadioSelect <- function(debounce = NULL, element = NULL, input = NULL, name = NULL, options = NULL, type = NULL){
+args <- .modify_args(NULL, c("debounce", "element", "input", "name", "options", "type"))
+args$obj
 }

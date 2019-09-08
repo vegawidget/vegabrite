@@ -20,7 +20,7 @@ vl_add_config(spec, area = NULL, autosize = NULL, axis = NULL,
   trail = NULL, view = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{area}{(\emph{Config}) Area-Specific Config}
 
@@ -151,7 +151,7 @@ For a full list of scale range configuration options, please see the \href{https
 \item{view}{(\emph{Config}) Default properties for \href{https://vega.github.io/vega-lite/docs/spec.html#single}{single view plots}.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add top-level config to a vega-lite spec.

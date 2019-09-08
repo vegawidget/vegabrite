@@ -11,16 +11,13 @@ vl_stack_x(spec, stack = c("zero", "center", "normalize", NA))
 vl_stack_y(spec, stack = c("zero", "center", "normalize", NA))
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
-\item{stack}{one of 'zero', 'center', 'normalize', NA}
+\item{stack}{One of 'zero', 'center', 'normalize', NA}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add stack parameters to an encoding
-}
-\seealso{
-\code{\link[=vl_stack]{vl_stack()}} to add a top level stack transform
 }

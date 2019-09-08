@@ -21,8 +21,8 @@ vl_make_RangeConfig(category = NULL, diverging = NULL,
 \item{symbol}{(\emph{RangeConfig}) Default range palette for the \code{shape} channel.}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a RangeConfig.
 }
 \description{
-Create spec for RangeConfig.
+Create spec for {obj}
 }

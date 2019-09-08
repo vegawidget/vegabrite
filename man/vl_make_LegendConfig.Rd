@@ -119,7 +119,7 @@ vl_make_LegendConfig(clipHeight = NULL, columnPadding = NULL,
 
 \item{labelOverlap}{(\emph{LegendConfig}) The strategy to use for resolving overlap of labels in gradient legends. If \code{false}, no overlap reduction is attempted. If set to \code{true} or \code{"parity"}, a strategy of removing every other label is used. If set to \code{"greedy"}, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
 
-\strong{Default value:} \code{"greedy"} for \code{log scales otherwise}true`.
+\strong{Default value:} \code{"greedy"} for \code{log scales otherwise }true`.
 *}
 
 \item{labelPadding}{(\emph{LegendConfig}) Padding in pixels between the legend and legend labels.}
@@ -189,7 +189,7 @@ vl_make_LegendConfig(clipHeight = NULL, columnPadding = NULL,
 \strong{Default value:} \code{1.5}.}
 
 \item{symbolType}{(\emph{LegendConfig}) Default shape type (such as "circle") for legend symbols.
-Can be one of ``"circle"\code{,}"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
+Can be one of ``"circle"\code{, }"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
 \itemize{
 \item In addition to a set of built-in shapes, custom shapes can be defined using \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path strings}.
 \item 
@@ -233,8 +233,8 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \strong{Default value:} \code{5}.}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a LegendConfig.
 }
 \description{
-Create spec for LegendConfig.
+Create spec for {obj}
 }

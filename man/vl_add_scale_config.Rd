@@ -16,7 +16,7 @@ vl_add_scale_config(spec, bandPaddingInner = NULL,
   round = NULL, textXRangeStep = NULL, useUnaggregatedDomain = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{bandPaddingInner}{(\emph{ScaleConfig}) Default inner padding for \code{x} and \code{y} band-ordinal scales.
 
@@ -122,7 +122,7 @@ This property only works with aggregate functions that produce values within the
 \strong{Default value:} \code{false}}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add scale config (ScaleConfig) to a vega-lite spec.

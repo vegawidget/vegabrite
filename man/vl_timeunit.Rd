@@ -7,7 +7,7 @@
 vl_timeunit(spec, as = NULL, field = NULL, timeUnit = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{as}{(\emph{TimeUnitTransform}) The output field to write the timeUnit value.}
 
@@ -16,7 +16,7 @@ vl_timeunit(spec, as = NULL, field = NULL, timeUnit = NULL)
 \item{timeUnit}{(\emph{TimeUnitTransform}) The timeUnit.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add TimeUnitTransform to a vega-lite spec.

@@ -8,7 +8,7 @@ vl_encode_detail(spec, field = NULL, type = NULL, aggregate = NULL,
   bin = NULL, timeUnit = NULL, title = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{field}{(\emph{FieldDef}) \strong{Required.} A string defining the name of the field from which to pull a data value
 or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{repeat} operator.
@@ -61,11 +61,8 @@ or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field 
 }}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add encoding for detail to a vega-lite spec.
-}
-\seealso{
-\code{\link[=vl_encode]{vl_encode()}}, \code{\link[=vl_make_Detail]{vl_make_Detail()}}
 }

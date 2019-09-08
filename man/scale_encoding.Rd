@@ -93,7 +93,7 @@ vl_scale_y(spec, base = NULL, bins = NULL, clamp = NULL,
   zero = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{base}{(\emph{Scale}) The logarithm base of the \code{log} scale (default \code{10}).}
 
@@ -200,31 +200,8 @@ For the full list of supported schemes, please refer to the \href{https://vega.g
 \strong{Note:} Log, time, and utc scales do not support \code{zero}.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add scale parameters to an encoding
-}
-\seealso{
-\code{\link[=vl_encode_color]{vl_encode_color()}}
-
-\code{\link[=vl_encode_fill]{vl_encode_fill()}}
-
-\code{\link[=vl_encode_fillOpacity]{vl_encode_fillOpacity()}}
-
-\code{\link[=vl_encode_opacity]{vl_encode_opacity()}}
-
-\code{\link[=vl_encode_shape]{vl_encode_shape()}}
-
-\code{\link[=vl_encode_size]{vl_encode_size()}}
-
-\code{\link[=vl_encode_stroke]{vl_encode_stroke()}}
-
-\code{\link[=vl_encode_strokeOpacity]{vl_encode_strokeOpacity()}}
-
-\code{\link[=vl_encode_strokeWidth]{vl_encode_strokeWidth()}}
-
-\code{\link[=vl_encode_x]{vl_encode_x()}}
-
-\code{\link[=vl_encode_y]{vl_encode_y()}}
 }

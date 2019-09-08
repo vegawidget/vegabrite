@@ -7,7 +7,7 @@
 vl_bin(spec, as = NULL, bin = NULL, field = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{as}{(\emph{BinTransform}) The output fields at which to write the start and end bin values.}
 
@@ -16,7 +16,7 @@ vl_bin(spec, as = NULL, bin = NULL, field = NULL)
 \item{field}{(\emph{BinTransform}) The data field to bin.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add BinTransform to a vega-lite spec.

@@ -8,7 +8,7 @@ vl_lookup(spec, as = NULL, default = NULL, from = NULL,
   lookup = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{as}{(\emph{LookupTransform}) The field or fields for storing the computed formula value.
 If \code{from.fields} is specified, the transform will use the same names for \code{as}.
@@ -23,7 +23,7 @@ If \code{from.fields} is not specified, \code{as} has to be a string and we put 
 \item{lookup}{(\emph{LookupTransform}) Key in primary data source.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add LookupTransform to a vega-lite spec.

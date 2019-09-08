@@ -12,7 +12,7 @@ vl_add_projection_config(spec, center = NULL, clipAngle = NULL,
   translate = NULL, type = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{center}{(\emph{Projection}) Sets the projection’s center to the specified center, a two-element array of longitude and latitude in degrees.
 
@@ -59,7 +59,7 @@ vl_add_projection_config(spec, center = NULL, clipAngle = NULL,
 \strong{Default value:} \code{mercator}}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add projection config (ProjectionConfig) to a vega-lite spec.

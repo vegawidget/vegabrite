@@ -181,8 +181,8 @@ therefore explicitly specified value will be ignored.
 \item{y2}{(\emph{MarkConfig}) Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a MarkConfig.
 }
 \description{
-Create spec for MarkConfig.
+Create spec for {obj}
 }

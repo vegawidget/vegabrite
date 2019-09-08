@@ -4,7 +4,7 @@
 \alias{impute_encoding}
 \alias{vl_impute_x}
 \alias{vl_impute_y}
-\title{Add impute transform to encoding}
+\title{Add impute to encoding}
 \usage{
 vl_impute_x(spec, frame = NULL, keyvals = NULL, method = NULL,
   value = NULL)
@@ -13,7 +13,7 @@ vl_impute_y(spec, frame = NULL, keyvals = NULL, method = NULL,
   value = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{frame}{(\emph{ImputeParams}) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value \code{[-5, 5]} indicates that the window should include five objects preceding and five objects following the current object.
 
@@ -34,13 +34,8 @@ One of \code{value}, \code{mean}, \code{median}, \code{max} or \code{min}.
 \item{value}{(\emph{ImputeParams}) The field value to use when the imputation \code{method} is \code{"value"}.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add impute parameters to an encoding
-}
-\seealso{
-\code{\link[=vl_encode_x]{vl_encode_x()}}
-
-\code{\link[=vl_encode_y]{vl_encode_y()}}
 }

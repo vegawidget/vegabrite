@@ -8,7 +8,7 @@ vl_bind_checkbox_input(spec, selection_name, projection_name = NULL,
   debounce = NULL, element = NULL, name = NULL, type = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{selection_name}{Name of selection to add binding to}
 
@@ -23,8 +23,8 @@ vl_bind_checkbox_input(spec, selection_name, projection_name = NULL,
 \item{type}{(\emph{BindCheckbox})}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Add binding to a checkbox input to a vega-lite spec.
+Add checkbox binding to a vega-lite spec.
 }

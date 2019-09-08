@@ -4,9 +4,11 @@ author: "Alicia Schep"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Examples}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
@@ -20,7 +22,6 @@ This vignette at the moment is just a place to store some various example plots!
 
 ```{r }
 library(vlbuildr)
-library(vegawidget)
 
 vl_chart() %>%
    vl_add_data(values = mtcars) %>%
@@ -158,7 +159,7 @@ vl_chart() %>%
   vl_scale_x(rangeStep = 8) %>%
   vl_scale_color(range = c("#EA98D2", "#659CCA")) %>%
   vl_facet_column(field = "age", type = "ordinal") %>%
-  vl_axis_x(remove = TRUE) %>%
+  vl_remove_axis_x() %>%
   vl_axis_y(title = "population", grid = FALSE) %>%
   vl_add_view_config(strokeWidth = 0) %>%
   vl_mark_bar()

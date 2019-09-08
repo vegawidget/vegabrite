@@ -77,15 +77,15 @@ vl_resolve_scale_x(spec, how = c("independent", "shared"))
 vl_resolve_scale_y(spec, how = c("independent", "shared"))
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
-\item{how}{how to resolve, one of: 'independent', 'shared'}
+\item{how}{One of 'independent', 'shared'}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-When faceting, layering, repeating, or concatenating a chart, one
-can choose whether axes, legends, or scales are shared or independent
-using the resolve specification
+When faceting, layering, repeating, or concatenating a chart, one can choose
+whether axes, legends, or scales are shared or independent using the resolve
+specification
 }

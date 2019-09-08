@@ -26,7 +26,7 @@ vl_add_axisY_config(spec, bandPosition = NULL, domain = NULL,
   titleY = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{bandPosition}{(\emph{AxisConfig}) An interpolation fraction indicating where, for \code{band} scales, axis ticks should be positioned. A value of \code{0} places ticks at the left edge of their bands. A value of \code{0.5} places ticks in the middle of their bands.
 
@@ -198,7 +198,7 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item{titleY}{(\emph{AxisConfig}) Y-coordinate of the axis title relative to the axis group.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add axisY config (AxisConfig) to a vega-lite spec.

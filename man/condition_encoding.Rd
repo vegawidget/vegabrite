@@ -16,74 +16,68 @@
 \alias{vl_condition_tooltip}
 \title{Add condition to encoding}
 \usage{
-vl_condition_color(spec, test = NULL, value = NULL, selection = NULL,
-  aggregate = NULL, bin = NULL, field = NULL, legend = NULL,
-  scale = NULL, sort = NULL, timeUnit = NULL, title = NULL,
-  type = NULL)
+vl_condition_color(spec, aggregate = NULL, bin = NULL, field = NULL,
+  legend = NULL, scale = NULL, sort = NULL, test = NULL,
+  timeUnit = NULL, title = NULL, type = NULL, selection = NULL,
+  value = NULL)
 
-vl_condition_fill(spec, test = NULL, value = NULL, selection = NULL,
-  aggregate = NULL, bin = NULL, field = NULL, legend = NULL,
-  scale = NULL, sort = NULL, timeUnit = NULL, title = NULL,
-  type = NULL)
+vl_condition_fill(spec, aggregate = NULL, bin = NULL, field = NULL,
+  legend = NULL, scale = NULL, sort = NULL, test = NULL,
+  timeUnit = NULL, title = NULL, type = NULL, selection = NULL,
+  value = NULL)
 
-vl_condition_fillOpacity(spec, test = NULL, value = NULL,
-  selection = NULL, aggregate = NULL, bin = NULL, field = NULL,
-  legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL,
-  title = NULL, type = NULL)
+vl_condition_fillOpacity(spec, aggregate = NULL, bin = NULL,
+  field = NULL, legend = NULL, scale = NULL, sort = NULL,
+  test = NULL, timeUnit = NULL, title = NULL, type = NULL,
+  selection = NULL, value = NULL)
 
-vl_condition_href(spec, test = NULL, value = NULL, selection = NULL,
-  aggregate = NULL, bin = NULL, field = NULL, legend = NULL,
-  scale = NULL, sort = NULL, timeUnit = NULL, title = NULL,
-  type = NULL)
+vl_condition_href(spec, aggregate = NULL, bin = NULL, field = NULL,
+  legend = NULL, scale = NULL, sort = NULL, test = NULL,
+  timeUnit = NULL, title = NULL, type = NULL, selection = NULL,
+  value = NULL)
 
-vl_condition_opacity(spec, test = NULL, value = NULL,
-  selection = NULL, aggregate = NULL, bin = NULL, field = NULL,
-  legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL,
-  title = NULL, type = NULL)
+vl_condition_opacity(spec, aggregate = NULL, bin = NULL,
+  field = NULL, legend = NULL, scale = NULL, sort = NULL,
+  test = NULL, timeUnit = NULL, title = NULL, type = NULL,
+  selection = NULL, value = NULL)
 
-vl_condition_shape(spec, test = NULL, value = NULL, selection = NULL,
-  aggregate = NULL, bin = NULL, field = NULL, legend = NULL,
-  scale = NULL, sort = NULL, timeUnit = NULL, title = NULL,
-  type = NULL)
+vl_condition_shape(spec, aggregate = NULL, bin = NULL, field = NULL,
+  legend = NULL, scale = NULL, sort = NULL, test = NULL,
+  timeUnit = NULL, title = NULL, type = NULL, selection = NULL,
+  value = NULL)
 
-vl_condition_size(spec, test = NULL, value = NULL, selection = NULL,
-  aggregate = NULL, bin = NULL, field = NULL, legend = NULL,
-  scale = NULL, sort = NULL, timeUnit = NULL, title = NULL,
-  type = NULL)
+vl_condition_size(spec, aggregate = NULL, bin = NULL, field = NULL,
+  legend = NULL, scale = NULL, sort = NULL, test = NULL,
+  timeUnit = NULL, title = NULL, type = NULL, selection = NULL,
+  value = NULL)
 
-vl_condition_stroke(spec, test = NULL, value = NULL,
-  selection = NULL, aggregate = NULL, bin = NULL, field = NULL,
-  legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL,
-  title = NULL, type = NULL)
+vl_condition_stroke(spec, aggregate = NULL, bin = NULL, field = NULL,
+  legend = NULL, scale = NULL, sort = NULL, test = NULL,
+  timeUnit = NULL, title = NULL, type = NULL, selection = NULL,
+  value = NULL)
 
-vl_condition_strokeOpacity(spec, test = NULL, value = NULL,
-  selection = NULL, aggregate = NULL, bin = NULL, field = NULL,
-  legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL,
-  title = NULL, type = NULL)
+vl_condition_strokeOpacity(spec, aggregate = NULL, bin = NULL,
+  field = NULL, legend = NULL, scale = NULL, sort = NULL,
+  test = NULL, timeUnit = NULL, title = NULL, type = NULL,
+  selection = NULL, value = NULL)
 
-vl_condition_strokeWidth(spec, test = NULL, value = NULL,
-  selection = NULL, aggregate = NULL, bin = NULL, field = NULL,
-  legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL,
-  title = NULL, type = NULL)
+vl_condition_strokeWidth(spec, aggregate = NULL, bin = NULL,
+  field = NULL, legend = NULL, scale = NULL, sort = NULL,
+  test = NULL, timeUnit = NULL, title = NULL, type = NULL,
+  selection = NULL, value = NULL)
 
-vl_condition_text(spec, test = NULL, value = NULL, selection = NULL,
-  aggregate = NULL, bin = NULL, field = NULL, legend = NULL,
-  scale = NULL, sort = NULL, timeUnit = NULL, title = NULL,
-  type = NULL)
+vl_condition_text(spec, aggregate = NULL, bin = NULL, field = NULL,
+  legend = NULL, scale = NULL, sort = NULL, test = NULL,
+  timeUnit = NULL, title = NULL, type = NULL, selection = NULL,
+  value = NULL)
 
-vl_condition_tooltip(spec, test = NULL, value = NULL,
-  selection = NULL, aggregate = NULL, bin = NULL, field = NULL,
-  legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL,
-  title = NULL, type = NULL)
+vl_condition_tooltip(spec, aggregate = NULL, bin = NULL,
+  field = NULL, legend = NULL, scale = NULL, sort = NULL,
+  test = NULL, timeUnit = NULL, title = NULL, type = NULL,
+  selection = NULL, value = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
-
-\item{test}{(\emph{ConditionalPredicate<ValueDef>, ConditionalPredicate<MarkPropFieldDef>}) Predicate for triggering the condition}
-
-\item{value}{(\emph{ConditionalPredicate<ValueDef>, ConditionalSelection<ValueDef>}) A constant value in visual domain (e.g., \code{"red"} / "#0099ff" for color, values between \code{0} to \code{1} for opacity).}
-
-\item{selection}{(\emph{ConditionalSelection<ValueDef>, ConditionalSelection<MarkPropFieldDef>}) A \href{https://vega.github.io/vega-lite/docs/selection.html}{selection name}, or a series of \href{https://vega.github.io/vega-lite/docs/selection.html#compose}{composed selections}.}
+\item{spec}{An input vega-lite spec}
 
 \item{aggregate}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>}) Aggregation function for the field
 (e.g., \code{mean}, \code{sum}, \code{median}, \code{min}, \code{max}, \code{count}).
@@ -135,6 +129,8 @@ For discrete fields, \code{sort} can be one of the following:
 
 \strong{Note:} \code{null} is not supported for \code{row} and \code{column}.}
 
+\item{test}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalPredicate<ValueDef>}) Predicate for triggering the condition}
+
 \item{timeUnit}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>}) Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field.
 or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}.
 
@@ -162,35 +158,14 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 \item When using with \href{https://vega.github.io/vega-lite/docs/aggregate.html}{aggregate}, the \code{type} property refers to the post-aggregation data type. For example, we can calculate count \code{distinct} of a categorical field \code{"cat"} using \code{{"aggregate": "distinct", "field": "cat", "type": "quantitative"}}. The \code{"type"} of the aggregate output is \code{"quantitative"}.
 \item Secondary channels (e.g., \code{x2}, \code{y2}, \code{xError}, \code{yError}) do not have \code{type} as they have exactly the same type as their primary channels (e.g., \code{x}, \code{y}).
 }}
+
+\item{selection}{(\emph{ConditionalSelection<MarkPropFieldDef>, ConditionalSelection<ValueDef>}) A \href{https://vega.github.io/vega-lite/docs/selection.html}{selection name}, or a series of \href{https://vega.github.io/vega-lite/docs/selection.html#compose}{composed selections}.}
+
+\item{value}{(\emph{ConditionalPredicate<ValueDef>, ConditionalSelection<ValueDef>}) A constant value in visual domain (e.g., \code{"red"} / "#0099ff" for color, values between \code{0} to \code{1} for opacity).}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add condition parameters to an encoding
-}
-\seealso{
-\code{\link[=vl_encode_color]{vl_encode_color()}}
-
-\code{\link[=vl_encode_fill]{vl_encode_fill()}}
-
-\code{\link[=vl_encode_fillOpacity]{vl_encode_fillOpacity()}}
-
-\code{\link[=vl_encode_href]{vl_encode_href()}}
-
-\code{\link[=vl_encode_opacity]{vl_encode_opacity()}}
-
-\code{\link[=vl_encode_shape]{vl_encode_shape()}}
-
-\code{\link[=vl_encode_size]{vl_encode_size()}}
-
-\code{\link[=vl_encode_stroke]{vl_encode_stroke()}}
-
-\code{\link[=vl_encode_strokeOpacity]{vl_encode_strokeOpacity()}}
-
-\code{\link[=vl_encode_strokeWidth]{vl_encode_strokeWidth()}}
-
-\code{\link[=vl_encode_text]{vl_encode_text()}}
-
-\code{\link[=vl_encode_tooltip]{vl_encode_tooltip()}}
 }

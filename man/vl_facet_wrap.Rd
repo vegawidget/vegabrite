@@ -9,7 +9,7 @@ vl_facet_wrap(spec, columns = 2, aggregate = NULL, bin = NULL,
   title = NULL, type = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{columns}{number of columns to add}
 
@@ -82,11 +82,8 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 }}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
-Add faceting by column to a vega-lite spec.
-}
-\seealso{
-\code{\link[=vl_facet_row]{vl_facet_row()}}, \code{\link[=vl_facet_wrap]{vl_facet_wrap()}}
+Add wrap facetting to a vega-lite spec.
 }

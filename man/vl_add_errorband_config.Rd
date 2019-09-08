@@ -8,7 +8,7 @@ vl_add_errorband_config(spec, band = NULL, borders = NULL,
   extent = NULL, interpolate = NULL, tension = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{band}{(\emph{ErrorBandConfig})}
 
@@ -44,7 +44,7 @@ vl_add_errorband_config(spec, band = NULL, borders = NULL,
 \item{tension}{(\emph{ErrorBandConfig}) The tension parameter for the interpolation type of the error band.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add errorband config (ErrorBandConfig) to a vega-lite spec.

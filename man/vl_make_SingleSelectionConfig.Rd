@@ -47,8 +47,8 @@ selections' data queries are resolved when applied in a filter transform,
 conditional encoding rule, or scale domain.}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a SingleSelectionConfig.
 }
 \description{
-Create spec for SingleSelectionConfig.
+Create spec for {obj}
 }

@@ -19,8 +19,8 @@ vl_make_BindCheckbox(debounce = NULL, element = NULL, input = NULL,
 \item{type}{(\emph{BindCheckbox})}
 }
 \value{
-A modified spec
+A component of a Vega-Lite spec, corresponding to a BindCheckbox.
 }
 \description{
-Create spec for BindCheckbox.
+Create spec for {obj}
 }

@@ -7,7 +7,7 @@
 vl_add_repeat_config(spec, columns = NULL, spacing = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{columns}{(\emph{CompositionConfig}) The number of columns to include in the view composition layout.
 
@@ -31,7 +31,7 @@ vl_add_repeat_config(spec, columns = NULL, spacing = NULL)
 \strong{Default value}: \code{20}}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add repeat config (CompositionConfig) to a vega-lite spec.

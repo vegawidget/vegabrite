@@ -7,14 +7,14 @@
 vl_aggregate(spec, aggregate = NULL, groupby = NULL)
 }
 \arguments{
-\item{spec}{A vega-lite spec.}
+\item{spec}{An input vega-lite spec}
 
 \item{aggregate}{(\emph{AggregateTransform}) Array of objects that define fields to aggregate.}
 
 \item{groupby}{(\emph{AggregateTransform}) The data fields to group by. If not specified, a single group containing all data objects will be used.}
 }
 \value{
-A modified spec
+A modified Vega-Lite Spec
 }
 \description{
 Add AggregateTransform to a vega-lite spec.
