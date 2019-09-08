@@ -17,7 +17,7 @@ Imports:
     V8,
     jsonvalidate,
     jsonlite
-Remotes: AliciaSchep/jsonvalidate
+Remotes: ropensci/jsonvalidate
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
