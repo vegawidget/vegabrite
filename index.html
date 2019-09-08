@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Build vega-lite specs in R • vlbuildr</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Build vega-lite specs in R">
 <meta property="og:description" content="Build vegalite specs in R. Inspired by vegalite package as well as 
   vega-lite-api and altair. Dependent on vegawidget for actually rendering specs!">
@@ -19,7 +20,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-article">
+    <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -31,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
       </span>
     </div>
 
@@ -39,7 +40,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -54,6 +55,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/design.html">Design</a>
+    </li>
+    <li>
       <a href="articles/examples.html">Examples</a>
     </li>
   </ul>
@@ -68,15 +72,10 @@
 <!--/.navbar -->
 
       
-      </header><script src="index_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="index_files/vega-5.4.0/vega.min.js"></script><script src="index_files/vega-lite-3.3.0/vega-lite.min.js"></script><link href="index_files/vega-embed-4.2.0/vega-embed.css" rel="stylesheet">
-<script src="index_files/vega-embed-4.2.0/vega-embed.js"></script><script src="index_files/vegawidget-binding-0.2.1/vegawidget.js"></script><div class="row">
-  <div class="col-md-9 contents">
-    
 
-    
-    
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-<!-- badges: start -->
+      </header><div class="row">
+  <div class="contents col-md-9">
+
 <p><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle"><a href="https://travis-ci.org/vegawidget/vlbuildr"><img src="https://travis-ci.org/vegawidget/vlbuildr.svg?branch=master" alt="Travis build status"></a> <!-- badges: end --></p>
 <div id="vlbuildr" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
@@ -103,485 +102,14 @@
 <h2 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h2>
 <p>These are some examples showing current capabilities; see <a href="https://vegawidget.github.io/vlbuildr/articles/examples.html">pkgdown site</a> for more examples, including interactive ones.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(vlbuildr)</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(vlbuildr)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="st">   </span><span class="kw"><a href="reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="st">   </span><span class="kw"><a href="reference/vl_mark.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="st">   </span><span class="kw"><a href="reference/vl_mark_point.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb1-5" data-line-number="5"><span class="st">   </span><span class="kw"><a href="reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">"wt"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">   </span><span class="kw"><a href="reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">"mpg"</span>) </a></code></pre></div>
-<div id="htmlwidget-c4d6f01afeb886e1c332" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c4d6f01afeb886e1c332">{"x":{
-  "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
-    "data": {
-      "values": [
-        {
-          "mpg": 21,
-          "cyl": 6,
-          "disp": 160,
-          "hp": 110,
-          "drat": 3.9,
-          "wt": 2.62,
-          "qsec": 16.46,
-          "vs": 0,
-          "am": 1,
-          "gear": 4,
-          "carb": 4,
-          "_row": "Mazda RX4"
-        },
-        {
-          "mpg": 21,
-          "cyl": 6,
-          "disp": 160,
-          "hp": 110,
-          "drat": 3.9,
-          "wt": 2.875,
-          "qsec": 17.02,
-          "vs": 0,
-          "am": 1,
-          "gear": 4,
-          "carb": 4,
-          "_row": "Mazda RX4 Wag"
-        },
-        {
-          "mpg": 22.8,
-          "cyl": 4,
-          "disp": 108,
-          "hp": 93,
-          "drat": 3.85,
-          "wt": 2.32,
-          "qsec": 18.61,
-          "vs": 1,
-          "am": 1,
-          "gear": 4,
-          "carb": 1,
-          "_row": "Datsun 710"
-        },
-        {
-          "mpg": 21.4,
-          "cyl": 6,
-          "disp": 258,
-          "hp": 110,
-          "drat": 3.08,
-          "wt": 3.215,
-          "qsec": 19.44,
-          "vs": 1,
-          "am": 0,
-          "gear": 3,
-          "carb": 1,
-          "_row": "Hornet 4 Drive"
-        },
-        {
-          "mpg": 18.7,
-          "cyl": 8,
-          "disp": 360,
-          "hp": 175,
-          "drat": 3.15,
-          "wt": 3.44,
-          "qsec": 17.02,
-          "vs": 0,
-          "am": 0,
-          "gear": 3,
-          "carb": 2,
-          "_row": "Hornet Sportabout"
-        },
-        {
-          "mpg": 18.1,
-          "cyl": 6,
-          "disp": 225,
-          "hp": 105,
-          "drat": 2.76,
-          "wt": 3.46,
-          "qsec": 20.22,
-          "vs": 1,
-          "am": 0,
-          "gear": 3,
-          "carb": 1,
-          "_row": "Valiant"
-        },
-        {
-          "mpg": 14.3,
-          "cyl": 8,
-          "disp": 360,
-          "hp": 245,
-          "drat": 3.21,
-          "wt": 3.57,
-          "qsec": 15.84,
-          "vs": 0,
-          "am": 0,
-          "gear": 3,
-          "carb": 4,
-          "_row": "Duster 360"
-        },
-        {
-          "mpg": 24.4,
-          "cyl": 4,
-          "disp": 146.7,
-          "hp": 62,
-          "drat": 3.69,
-          "wt": 3.19,
-          "qsec": 20,
-          "vs": 1,
-          "am": 0,
-          "gear": 4,
-          "carb": 2,
-          "_row": "Merc 240D"
-        },
-        {
-          "mpg": 22.8,
-          "cyl": 4,
-          "disp": 140.8,
-          "hp": 95,
-          "drat": 3.92,
-          "wt": 3.15,
-          "qsec": 22.9,
-          "vs": 1,
-          "am": 0,
-          "gear": 4,
-          "carb": 2,
-          "_row": "Merc 230"
-        },
-        {
-          "mpg": 19.2,
-          "cyl": 6,
-          "disp": 167.6,
-          "hp": 123,
-          "drat": 3.92,
-          "wt": 3.44,
-          "qsec": 18.3,
-          "vs": 1,
-          "am": 0,
-          "gear": 4,
-          "carb": 4,
-          "_row": "Merc 280"
-        },
-        {
-          "mpg": 17.8,
-          "cyl": 6,
-          "disp": 167.6,
-          "hp": 123,
-          "drat": 3.92,
-          "wt": 3.44,
-          "qsec": 18.9,
-          "vs": 1,
-          "am": 0,
-          "gear": 4,
-          "carb": 4,
-          "_row": "Merc 280C"
-        },
-        {
-          "mpg": 16.4,
-          "cyl": 8,
-          "disp": 275.8,
-          "hp": 180,
-          "drat": 3.07,
-          "wt": 4.07,
-          "qsec": 17.4,
-          "vs": 0,
-          "am": 0,
-          "gear": 3,
-          "carb": 3,
-          "_row": "Merc 450SE"
-        },
-        {
-          "mpg": 17.3,
-          "cyl": 8,
-          "disp": 275.8,
-          "hp": 180,
-          "drat": 3.07,
-          "wt": 3.73,
-          "qsec": 17.6,
-          "vs": 0,
-          "am": 0,
-          "gear": 3,
-          "carb": 3,
-          "_row": "Merc 450SL"
-        },
-        {
-          "mpg": 15.2,
-          "cyl": 8,
-          "disp": 275.8,
-          "hp": 180,
-          "drat": 3.07,
-          "wt": 3.78,
-          "qsec": 18,
-          "vs": 0,
-          "am": 0,
-          "gear": 3,
-          "carb": 3,
-          "_row": "Merc 450SLC"
-        },
-        {
-          "mpg": 10.4,
-          "cyl": 8,
-          "disp": 472,
-          "hp": 205,
-          "drat": 2.93,
-          "wt": 5.25,
-          "qsec": 17.98,
-          "vs": 0,
-          "am": 0,
-          "gear": 3,
-          "carb": 4,
-          "_row": "Cadillac Fleetwood"
-        },
-        {
-          "mpg": 10.4,
-          "cyl": 8,
-          "disp": 460,
-          "hp": 215,
-          "drat": 3,
-          "wt": 5.424,
-          "qsec": 17.82,
-          "vs": 0,
-          "am": 0,
-          "gear": 3,
-          "carb": 4,
-          "_row": "Lincoln Continental"
-        },
-        {
-          "mpg": 14.7,
-          "cyl": 8,
-          "disp": 440,
-          "hp": 230,
-          "drat": 3.23,
-          "wt": 5.345,
-          "qsec": 17.42,
-          "vs": 0,
-          "am": 0,
-          "gear": 3,
-          "carb": 4,
-          "_row": "Chrysler Imperial"
-        },
-        {
-          "mpg": 32.4,
-          "cyl": 4,
-          "disp": 78.7,
-          "hp": 66,
-          "drat": 4.08,
-          "wt": 2.2,
-          "qsec": 19.47,
-          "vs": 1,
-          "am": 1,
-          "gear": 4,
-          "carb": 1,
-          "_row": "Fiat 128"
-        },
-        {
-          "mpg": 30.4,
-          "cyl": 4,
-          "disp": 75.7,
-          "hp": 52,
-          "drat": 4.93,
-          "wt": 1.615,
-          "qsec": 18.52,
-          "vs": 1,
-          "am": 1,
-          "gear": 4,
-          "carb": 2,
-          "_row": "Honda Civic"
-        },
-        {
-          "mpg": 33.9,
-          "cyl": 4,
-          "disp": 71.1,
-          "hp": 65,
-          "drat": 4.22,
-          "wt": 1.835,
-          "qsec": 19.9,
-          "vs": 1,
-          "am": 1,
-          "gear": 4,
-          "carb": 1,
-          "_row": "Toyota Corolla"
-        },
-        {
-          "mpg": 21.5,
-          "cyl": 4,
-          "disp": 120.1,
-          "hp": 97,
-          "drat": 3.7,
-          "wt": 2.465,
-          "qsec": 20.01,
-          "vs": 1,
-          "am": 0,
-          "gear": 3,
-          "carb": 1,
-          "_row": "Toyota Corona"
-        },
-        {
-          "mpg": 15.5,
-          "cyl": 8,
-          "disp": 318,
-          "hp": 150,
-          "drat": 2.76,
-          "wt": 3.52,
-          "qsec": 16.87,
-          "vs": 0,
-          "am": 0,
-          "gear": 3,
-          "carb": 2,
-          "_row": "Dodge Challenger"
-        },
-        {
-          "mpg": 15.2,
-          "cyl": 8,
-          "disp": 304,
-          "hp": 150,
-          "drat": 3.15,
-          "wt": 3.435,
-          "qsec": 17.3,
-          "vs": 0,
-          "am": 0,
-          "gear": 3,
-          "carb": 2,
-          "_row": "AMC Javelin"
-        },
-        {
-          "mpg": 13.3,
-          "cyl": 8,
-          "disp": 350,
-          "hp": 245,
-          "drat": 3.73,
-          "wt": 3.84,
-          "qsec": 15.41,
-          "vs": 0,
-          "am": 0,
-          "gear": 3,
-          "carb": 4,
-          "_row": "Camaro Z28"
-        },
-        {
-          "mpg": 19.2,
-          "cyl": 8,
-          "disp": 400,
-          "hp": 175,
-          "drat": 3.08,
-          "wt": 3.845,
-          "qsec": 17.05,
-          "vs": 0,
-          "am": 0,
-          "gear": 3,
-          "carb": 2,
-          "_row": "Pontiac Firebird"
-        },
-        {
-          "mpg": 27.3,
-          "cyl": 4,
-          "disp": 79,
-          "hp": 66,
-          "drat": 4.08,
-          "wt": 1.935,
-          "qsec": 18.9,
-          "vs": 1,
-          "am": 1,
-          "gear": 4,
-          "carb": 1,
-          "_row": "Fiat X1-9"
-        },
-        {
-          "mpg": 26,
-          "cyl": 4,
-          "disp": 120.3,
-          "hp": 91,
-          "drat": 4.43,
-          "wt": 2.14,
-          "qsec": 16.7,
-          "vs": 0,
-          "am": 1,
-          "gear": 5,
-          "carb": 2,
-          "_row": "Porsche 914-2"
-        },
-        {
-          "mpg": 30.4,
-          "cyl": 4,
-          "disp": 95.1,
-          "hp": 113,
-          "drat": 3.77,
-          "wt": 1.513,
-          "qsec": 16.9,
-          "vs": 1,
-          "am": 1,
-          "gear": 5,
-          "carb": 2,
-          "_row": "Lotus Europa"
-        },
-        {
-          "mpg": 15.8,
-          "cyl": 8,
-          "disp": 351,
-          "hp": 264,
-          "drat": 4.22,
-          "wt": 3.17,
-          "qsec": 14.5,
-          "vs": 0,
-          "am": 1,
-          "gear": 5,
-          "carb": 4,
-          "_row": "Ford Pantera L"
-        },
-        {
-          "mpg": 19.7,
-          "cyl": 6,
-          "disp": 145,
-          "hp": 175,
-          "drat": 3.62,
-          "wt": 2.77,
-          "qsec": 15.5,
-          "vs": 0,
-          "am": 1,
-          "gear": 5,
-          "carb": 6,
-          "_row": "Ferrari Dino"
-        },
-        {
-          "mpg": 15,
-          "cyl": 8,
-          "disp": 301,
-          "hp": 335,
-          "drat": 3.54,
-          "wt": 3.57,
-          "qsec": 14.6,
-          "vs": 0,
-          "am": 1,
-          "gear": 5,
-          "carb": 8,
-          "_row": "Maserati Bora"
-        },
-        {
-          "mpg": 21.4,
-          "cyl": 4,
-          "disp": 121,
-          "hp": 109,
-          "drat": 4.11,
-          "wt": 2.78,
-          "qsec": 18.6,
-          "vs": 1,
-          "am": 1,
-          "gear": 4,
-          "carb": 2,
-          "_row": "Volvo 142E"
-        }
-      ]
-    },
-    "mark": "point",
-    "encoding": {
-      "x": {
-        "field": "wt",
-        "type": "quantitative"
-      },
-      "y": {
-        "field": "mpg",
-        "type": "quantitative"
-      }
-    }
-  },
-  "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
-  }
-},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
+<p><img src="reference/figures/README-example-1.svg"><!-- --></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">url =</span> <span class="st">"https://vega.github.io/vega-editor/app/data/population.json"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="reference/vl_calculate.html">vl_calculate</a></span>(<span class="dt">calculate =</span> <span class="st">"datum.sex == 2 ? 'Female' : 'Male'"</span>, </a>
 <a class="sourceLine" id="cb2-4" data-line-number="4">               <span class="dt">as =</span> <span class="st">"gender"</span>) <span class="op">%&gt;%</span></a>
@@ -591,54 +119,11 @@
 <a class="sourceLine" id="cb2-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="reference/stack_encoding.html">vl_stack_y</a></span>(<span class="st">"normalize"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="reference/aggregate_encoding.html">vl_aggregate_y</a></span>(<span class="st">"sum"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="reference/axis_encoding.html">vl_axis_y</a></span>(<span class="dt">title =</span> <span class="st">"population"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="reference/vl_mark.html">vl_mark_bar</a></span>() </a></code></pre></div>
-<div id="htmlwidget-3898bc117055dd25cac9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3898bc117055dd25cac9">{"x":{
-  "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
-    "data": {
-      "url": "https://vega.github.io/vega-editor/app/data/population.json"
-    },
-    "transform": [
-      {
-        "as": "gender",
-        "calculate": "datum.sex == 2 ? 'Female' : 'Male'"
-      },
-      {
-        "filter": "datum.year == 2000"
-      }
-    ],
-    "encoding": {
-      "x": {
-        "field": "age",
-        "type": "ordinal",
-        "scale": {
-          "rangeStep": 17
-        }
-      },
-      "y": {
-        "field": "people",
-        "type": "quantitative",
-        "stack": "normalize",
-        "aggregate": "sum",
-        "axis": {
-          "title": "population"
-        }
-      },
-      "color": {
-        "field": "gender",
-        "type": "nominal"
-      }
-    },
-    "mark": "bar"
-  },
-  "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
-  }
-},"evals":[],"jsHooks":[]}</script>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="reference/vl_mark_bar.html">vl_mark_bar</a></span>() </a></code></pre></div>
+<p><img src="reference/figures/README-example2-1.svg"><!-- --></p>
 </div>
 </div>
+
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -657,8 +142,7 @@
 </ul>
 </div>
 
-      </div>
-
+  </div>
 </div>
 
 
@@ -667,12 +151,14 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
