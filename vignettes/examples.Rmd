@@ -182,6 +182,30 @@ vl_hconcat(bar_chart, point_chart) %>%
   vl_filter("datum.location === 'Seattle'")
 ```
 
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_mark_point() %>%
+  vl_encode_x(list("repeat" = "column"), "quantitative") %>%
+  vl_encode_y(list("repeat" = "row"), "quantitative") %>%
+  vl_add_interval_selection("brush", resolve = "global") %>%
+  vl_encode_color(value = "grey") %>%
+  vl_condition_color(selection = "brush", field = "Origin", type = "nominal") %>%
+  vl_repeat_row("Horsepower", "Acceleration", "Miles_per_Gallon") %>%
+  vl_repeat_col("Miles_per_Gallon", "Acceleration", "Horsepower")
+```
+
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_mark_point() %>%
+  vl_encode_x("Horsepower","quantitative") %>%
+  vl_encode_y("Miles_per_Gallon", "quantitative") %>%
+  vl_encode_color(list("repeat" = "column"), "nominal") %>%
+  vl_repeat_col("Origin","Cylinders") %>%
+  vl_resolve_scale_color("independent")
+```
+
 
 
 ### Multiple marks...

@@ -69,10 +69,10 @@ For example, \code{stack} of \code{y} can be used to customize stacking for a ve
 
 \code{stack} can be one of the following values:
 \itemize{
-\item \code{"zero"}: stacking with baseline offset at zero value of the scale (for creating typical stacked \href{https://vega.github.io/vega-lite/docs/stack.html#bar}{bar} and \href{https://vega.github.io/vega-lite/docs/stack.html#area}{area} chart).
+\item \code{"zero"} or \code{true}: stacking with baseline offset at zero value of the scale (for creating typical stacked \href{https://vega.github.io/vega-lite/docs/stack.html#bar}{bar} and \href{https://vega.github.io/vega-lite/docs/stack.html#area}{area} chart).
 \item \code{"normalize"} - stacking with normalized domain (for creating \href{https://vega.github.io/vega-lite/docs/stack.html#normalized}{normalized stacked bar and area charts}. <br/>
 -\code{"center"} - stacking with center baseline (for \href{https://vega.github.io/vega-lite/docs/stack.html#streamgraph}{streamgraph}).
-\item \code{null} - No-stacking. This will produce layered \href{https://vega.github.io/vega-lite/docs/stack.html#layered-bar-chart}{bar} and area chart.
+\item \code{null} or \code{false} - No-stacking. This will produce layered \href{https://vega.github.io/vega-lite/docs/stack.html#layered-bar-chart}{bar} and area chart.
 }
 
 \strong{Default value:} \code{zero} for plots with all of the following conditions are true:

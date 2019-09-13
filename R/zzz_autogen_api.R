@@ -2371,18 +2371,18 @@ vl_encode_color <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' 
 #' Add encoding for detail to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param aggregate (_FieldDef_) Aggregation function for the field
+#' @param aggregate (_TypedFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param bin (_FieldDef_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' @param bin (_TypedFieldDef_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
 #' 
 #' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 #' 
 #' - If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
 #' 
 #' __Default value:__ `false`
-#' @param field (_FieldDef_) __Required.__ A string defining the name of the field from which to pull a data value
+#' @param field (_TypedFieldDef_) __Required.__ A string defining the name of the field from which to pull a data value
 #' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
 #' 
 #' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`).
@@ -2390,11 +2390,11 @@ vl_encode_color <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
 #' 
 #' __Note:__ `field` is not required if `aggregate` is `count`.
-#' @param timeUnit (_FieldDef_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' @param timeUnit (_TypedFieldDef_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 #' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param title (_FieldDef_) A title for the field. If `null`, the title will be removed.
+#' @param title (_TypedFieldDef_) A title for the field. If `null`, the title will be removed.
 #' 
 #' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
 #' 
@@ -2403,7 +2403,7 @@ vl_encode_color <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
-#' @param type (_FieldDef_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' @param type (_TypedFieldDef_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
 #' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
 #' 
 #' 
@@ -2598,24 +2598,24 @@ vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = N
 #' 
 #' Add encoding for href to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
+#' @param aggregate (_FieldDefWithCondition<TextFieldDef,Value>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param bin (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' @param bin (_FieldDefWithCondition<TextFieldDef,Value>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
 #' 
 #' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 #' 
 #' - If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
 #' 
 #' __Default value:__ `false`
-#' @param condition (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>, ConditionOnlyDef<TextFieldDef>_) A field definition or one or more value definition(s) with a selection predicate.
+#' @param condition (_ValueDefWithOptionalCondition<TextFieldDef,Value>, ConditionOnlyDef<TextFieldDef>_) A field definition or one or more value definition(s) with a selection predicate.
 #' 
-#' (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
+#' (_FieldDefWithCondition<TextFieldDef,Value>_) One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
 #' 
 #' __Note:__ A field definition's `condition` property can only contain [conditional value definitions](https://vega.github.io/vega-lite/docs/condition.html#value)
 #' since Vega-Lite only allows at most one encoded field per encoding channel.
-#' @param field (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) __Required.__ A string defining the name of the field from which to pull a data value
+#' @param field (_FieldDefWithCondition<TextFieldDef,Value>_) __Required.__ A string defining the name of the field from which to pull a data value
 #' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
 #' 
 #' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`).
@@ -2623,7 +2623,7 @@ vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = N
 #' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
 #' 
 #' __Note:__ `field` is not required if `aggregate` is `count`.
-#' @param format (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+#' @param format (_FieldDefWithCondition<TextFieldDef,Value>_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 #' 
 #' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
 #' - If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
@@ -2631,16 +2631,16 @@ vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = N
 #' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
 #' 
 #' __Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format.
-#' @param formatType (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The format type for labels (`"number"` or `"time"`).
+#' @param formatType (_FieldDefWithCondition<TextFieldDef,Value>_) The format type for labels (`"number"` or `"time"`).
 #' 
 #' __Default value:__
 #' - `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
 #' - `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`.
-#' @param timeUnit (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' @param timeUnit (_FieldDefWithCondition<TextFieldDef,Value>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 #' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param title (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) A title for the field. If `null`, the title will be removed.
+#' @param title (_FieldDefWithCondition<TextFieldDef,Value>_) A title for the field. If `null`, the title will be removed.
 #' 
 #' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
 #' 
@@ -2649,7 +2649,7 @@ vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = N
 #' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
-#' @param type (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' @param type (_FieldDefWithCondition<TextFieldDef,Value>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
 #' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
 #' 
 #' 
@@ -2661,7 +2661,7 @@ vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = N
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
+#' @param value (_ValueDefWithOptionalCondition<TextFieldDef,Value>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
 
@@ -2674,18 +2674,18 @@ vl_encode_href <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' 
 #' Add encoding for key to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param aggregate (_FieldDef_) Aggregation function for the field
+#' @param aggregate (_TypedFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param bin (_FieldDef_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' @param bin (_TypedFieldDef_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
 #' 
 #' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 #' 
 #' - If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
 #' 
 #' __Default value:__ `false`
-#' @param field (_FieldDef_) __Required.__ A string defining the name of the field from which to pull a data value
+#' @param field (_TypedFieldDef_) __Required.__ A string defining the name of the field from which to pull a data value
 #' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
 #' 
 #' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`).
@@ -2693,11 +2693,11 @@ vl_encode_href <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
 #' 
 #' __Note:__ `field` is not required if `aggregate` is `count`.
-#' @param timeUnit (_FieldDef_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' @param timeUnit (_TypedFieldDef_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 #' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param title (_FieldDef_) A title for the field. If `null`, the title will be removed.
+#' @param title (_TypedFieldDef_) A title for the field. If `null`, the title will be removed.
 #' 
 #' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
 #' 
@@ -2706,7 +2706,7 @@ vl_encode_href <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
-#' @param type (_FieldDef_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' @param type (_TypedFieldDef_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
 #' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
 #' 
 #' 
@@ -3072,24 +3072,24 @@ vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' 
 #' Add encoding for shape to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) Aggregation function for the field
+#' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param bin (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' @param bin (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
 #' 
 #' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 #' 
 #' - If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
 #' 
 #' __Default value:__ `false`
-#' @param condition (_ValueDefWithOptionalCondition<MarkPropFieldDef<TypeForShape>,string>, ConditionOnlyDef<MarkPropFieldDef<TypeForShape>>_) A field definition or one or more value definition(s) with a selection predicate.
+#' @param condition (_ValueDefWithOptionalCondition<MarkPropFieldDef<TypeForShape>,(string|null)>, ConditionOnlyDef<MarkPropFieldDef<TypeForShape>>_) A field definition or one or more value definition(s) with a selection predicate.
 #' 
-#' (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
+#' (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
 #' 
 #' __Note:__ A field definition's `condition` property can only contain [conditional value definitions](https://vega.github.io/vega-lite/docs/condition.html#value)
 #' since Vega-Lite only allows at most one encoded field per encoding channel.
-#' @param field (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) __Required.__ A string defining the name of the field from which to pull a data value
+#' @param field (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) __Required.__ A string defining the name of the field from which to pull a data value
 #' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
 #' 
 #' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`).
@@ -3097,16 +3097,16 @@ vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
 #' 
 #' __Note:__ `field` is not required if `aggregate` is `count`.
-#' @param legend (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) An object defining properties of the legend.
+#' @param legend (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) An object defining properties of the legend.
 #' If `null`, the legend for the encoding channel will be removed.
 #' 
 #' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied.
-#' @param scale (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' @param scale (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
 #' 
 #' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
 #' 
 #' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied.
-#' @param sort (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) Sort order for the encoded field.
+#' @param sort (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) Sort order for the encoded field.
 #' 
 #' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
 #' 
@@ -3120,11 +3120,11 @@ vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' __Default value:__ `"ascending"`
 #' 
 #' __Note:__ `null` is not supported for `row` and `column`.
-#' @param timeUnit (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' @param timeUnit (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 #' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param title (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) A title for the field. If `null`, the title will be removed.
+#' @param title (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) A title for the field. If `null`, the title will be removed.
 #' 
 #' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
 #' 
@@ -3133,7 +3133,7 @@ vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
-#' @param type (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' @param type (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
 #' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
 #' 
 #' 
@@ -3145,7 +3145,7 @@ vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef<TypeForShape>,string>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
+#' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
 
@@ -3502,24 +3502,24 @@ vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = N
 #' 
 #' Add encoding for text to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
+#' @param aggregate (_FieldDefWithCondition<TextFieldDef,Value>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param bin (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' @param bin (_FieldDefWithCondition<TextFieldDef,Value>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
 #' 
 #' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 #' 
 #' - If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
 #' 
 #' __Default value:__ `false`
-#' @param condition (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>, ConditionOnlyDef<TextFieldDef>_) A field definition or one or more value definition(s) with a selection predicate.
+#' @param condition (_ValueDefWithOptionalCondition<TextFieldDef,Value>, ConditionOnlyDef<TextFieldDef>_) A field definition or one or more value definition(s) with a selection predicate.
 #' 
-#' (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
+#' (_FieldDefWithCondition<TextFieldDef,Value>_) One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
 #' 
 #' __Note:__ A field definition's `condition` property can only contain [conditional value definitions](https://vega.github.io/vega-lite/docs/condition.html#value)
 #' since Vega-Lite only allows at most one encoded field per encoding channel.
-#' @param field (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) __Required.__ A string defining the name of the field from which to pull a data value
+#' @param field (_FieldDefWithCondition<TextFieldDef,Value>_) __Required.__ A string defining the name of the field from which to pull a data value
 #' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
 #' 
 #' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`).
@@ -3527,7 +3527,7 @@ vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = N
 #' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
 #' 
 #' __Note:__ `field` is not required if `aggregate` is `count`.
-#' @param format (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+#' @param format (_FieldDefWithCondition<TextFieldDef,Value>_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 #' 
 #' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
 #' - If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
@@ -3535,16 +3535,16 @@ vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = N
 #' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
 #' 
 #' __Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format.
-#' @param formatType (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The format type for labels (`"number"` or `"time"`).
+#' @param formatType (_FieldDefWithCondition<TextFieldDef,Value>_) The format type for labels (`"number"` or `"time"`).
 #' 
 #' __Default value:__
 #' - `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
 #' - `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`.
-#' @param timeUnit (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' @param timeUnit (_FieldDefWithCondition<TextFieldDef,Value>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 #' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param title (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) A title for the field. If `null`, the title will be removed.
+#' @param title (_FieldDefWithCondition<TextFieldDef,Value>_) A title for the field. If `null`, the title will be removed.
 #' 
 #' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
 #' 
@@ -3553,7 +3553,7 @@ vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = N
 #' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
-#' @param type (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' @param type (_FieldDefWithCondition<TextFieldDef,Value>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
 #' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
 #' 
 #' 
@@ -3565,7 +3565,7 @@ vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = N
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
+#' @param value (_ValueDefWithOptionalCondition<TextFieldDef,Value>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
 
@@ -3578,24 +3578,24 @@ vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' 
 #' Add encoding for tooltip to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
+#' @param aggregate (_FieldDefWithCondition<TextFieldDef,Value>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param bin (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' @param bin (_FieldDefWithCondition<TextFieldDef,Value>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
 #' 
 #' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 #' 
 #' - If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
 #' 
 #' __Default value:__ `false`
-#' @param condition (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>, ConditionOnlyDef<TextFieldDef>_) A field definition or one or more value definition(s) with a selection predicate.
+#' @param condition (_ValueDefWithOptionalCondition<TextFieldDef,Value>, ConditionOnlyDef<TextFieldDef>_) A field definition or one or more value definition(s) with a selection predicate.
 #' 
-#' (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
+#' (_FieldDefWithCondition<TextFieldDef,Value>_) One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
 #' 
 #' __Note:__ A field definition's `condition` property can only contain [conditional value definitions](https://vega.github.io/vega-lite/docs/condition.html#value)
 #' since Vega-Lite only allows at most one encoded field per encoding channel.
-#' @param field (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) __Required.__ A string defining the name of the field from which to pull a data value
+#' @param field (_FieldDefWithCondition<TextFieldDef,Value>_) __Required.__ A string defining the name of the field from which to pull a data value
 #' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
 #' 
 #' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`).
@@ -3603,7 +3603,7 @@ vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
 #' 
 #' __Note:__ `field` is not required if `aggregate` is `count`.
-#' @param format (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+#' @param format (_FieldDefWithCondition<TextFieldDef,Value>_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 #' 
 #' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
 #' - If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
@@ -3611,16 +3611,16 @@ vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
 #' 
 #' __Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format.
-#' @param formatType (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The format type for labels (`"number"` or `"time"`).
+#' @param formatType (_FieldDefWithCondition<TextFieldDef,Value>_) The format type for labels (`"number"` or `"time"`).
 #' 
 #' __Default value:__
 #' - `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
 #' - `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`.
-#' @param timeUnit (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' @param timeUnit (_FieldDefWithCondition<TextFieldDef,Value>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 #' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param title (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) A title for the field. If `null`, the title will be removed.
+#' @param title (_FieldDefWithCondition<TextFieldDef,Value>_) A title for the field. If `null`, the title will be removed.
 #' 
 #' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
 #' 
@@ -3629,7 +3629,7 @@ vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
-#' @param type (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' @param type (_FieldDefWithCondition<TextFieldDef,Value>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
 #' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
 #' 
 #' 
@@ -3641,7 +3641,7 @@ vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
+#' @param value (_ValueDefWithOptionalCondition<TextFieldDef,Value>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A modified Vega-Lite Spec
 #' @export
 
@@ -3704,10 +3704,10 @@ vl_encode_tooltip <- function(spec, field = NULL, type = NULL, aggregate = NULL,
 #' For example, `stack` of `y` can be used to customize stacking for a vertical bar chart.
 #' 
 #' `stack` can be one of the following values:
-#' - `"zero"`: stacking with baseline offset at zero value of the scale (for creating typical stacked [bar](https://vega.github.io/vega-lite/docs/stack.html#bar) and [area](https://vega.github.io/vega-lite/docs/stack.html#area) chart).
+#' - `"zero"` or `true`: stacking with baseline offset at zero value of the scale (for creating typical stacked [bar](https://vega.github.io/vega-lite/docs/stack.html#bar) and [area](https://vega.github.io/vega-lite/docs/stack.html#area) chart).
 #' - `"normalize"` - stacking with normalized domain (for creating [normalized stacked bar and area charts](https://vega.github.io/vega-lite/docs/stack.html#normalized). <br/>
 #' -`"center"` - stacking with center baseline (for [streamgraph](https://vega.github.io/vega-lite/docs/stack.html#streamgraph)).
-#' - `null` - No-stacking. This will produce layered [bar](https://vega.github.io/vega-lite/docs/stack.html#layered-bar-chart) and area chart.
+#' - `null` or `false` - No-stacking. This will produce layered [bar](https://vega.github.io/vega-lite/docs/stack.html#layered-bar-chart) and area chart.
 #' 
 #' __Default value:__ `zero` for plots with all of the following conditions are true:
 #' (1) the mark is `bar` or `area`;
@@ -3933,10 +3933,10 @@ vl_encode_xError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, 
 #' For example, `stack` of `y` can be used to customize stacking for a vertical bar chart.
 #' 
 #' `stack` can be one of the following values:
-#' - `"zero"`: stacking with baseline offset at zero value of the scale (for creating typical stacked [bar](https://vega.github.io/vega-lite/docs/stack.html#bar) and [area](https://vega.github.io/vega-lite/docs/stack.html#area) chart).
+#' - `"zero"` or `true`: stacking with baseline offset at zero value of the scale (for creating typical stacked [bar](https://vega.github.io/vega-lite/docs/stack.html#bar) and [area](https://vega.github.io/vega-lite/docs/stack.html#area) chart).
 #' - `"normalize"` - stacking with normalized domain (for creating [normalized stacked bar and area charts](https://vega.github.io/vega-lite/docs/stack.html#normalized). <br/>
 #' -`"center"` - stacking with center baseline (for [streamgraph](https://vega.github.io/vega-lite/docs/stack.html#streamgraph)).
-#' - `null` - No-stacking. This will produce layered [bar](https://vega.github.io/vega-lite/docs/stack.html#layered-bar-chart) and area chart.
+#' - `null` or `false` - No-stacking. This will produce layered [bar](https://vega.github.io/vega-lite/docs/stack.html#layered-bar-chart) and area chart.
 #' 
 #' __Default value:__ `zero` for plots with all of the following conditions are true:
 #' (1) the mark is `bar` or `area`;
@@ -4196,18 +4196,18 @@ args$obj
 #' vl_make_Detail
 #' 
 #' Create spec for {obj}
-#' @param aggregate (_FieldDef_) Aggregation function for the field
+#' @param aggregate (_TypedFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param bin (_FieldDef_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' @param bin (_TypedFieldDef_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
 #' 
 #' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 #' 
 #' - If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
 #' 
 #' __Default value:__ `false`
-#' @param field (_FieldDef_) __Required.__ A string defining the name of the field from which to pull a data value
+#' @param field (_TypedFieldDef_) __Required.__ A string defining the name of the field from which to pull a data value
 #' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
 #' 
 #' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`).
@@ -4215,11 +4215,11 @@ args$obj
 #' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
 #' 
 #' __Note:__ `field` is not required if `aggregate` is `count`.
-#' @param timeUnit (_FieldDef_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' @param timeUnit (_TypedFieldDef_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 #' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param title (_FieldDef_) A title for the field. If `null`, the title will be removed.
+#' @param title (_TypedFieldDef_) A title for the field. If `null`, the title will be removed.
 #' 
 #' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
 #' 
@@ -4228,7 +4228,7 @@ args$obj
 #' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
-#' @param type (_FieldDef_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' @param type (_TypedFieldDef_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
 #' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
 #' 
 #' 
@@ -4420,24 +4420,24 @@ args$obj
 #' vl_make_Href
 #' 
 #' Create spec for {obj}
-#' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
+#' @param aggregate (_FieldDefWithCondition<TextFieldDef,Value>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param bin (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' @param bin (_FieldDefWithCondition<TextFieldDef,Value>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
 #' 
 #' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 #' 
 #' - If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
 #' 
 #' __Default value:__ `false`
-#' @param condition (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>, ConditionOnlyDef<TextFieldDef>_) A field definition or one or more value definition(s) with a selection predicate.
+#' @param condition (_ValueDefWithOptionalCondition<TextFieldDef,Value>, ConditionOnlyDef<TextFieldDef>_) A field definition or one or more value definition(s) with a selection predicate.
 #' 
-#' (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
+#' (_FieldDefWithCondition<TextFieldDef,Value>_) One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
 #' 
 #' __Note:__ A field definition's `condition` property can only contain [conditional value definitions](https://vega.github.io/vega-lite/docs/condition.html#value)
 #' since Vega-Lite only allows at most one encoded field per encoding channel.
-#' @param field (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) __Required.__ A string defining the name of the field from which to pull a data value
+#' @param field (_FieldDefWithCondition<TextFieldDef,Value>_) __Required.__ A string defining the name of the field from which to pull a data value
 #' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
 #' 
 #' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`).
@@ -4445,7 +4445,7 @@ args$obj
 #' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
 #' 
 #' __Note:__ `field` is not required if `aggregate` is `count`.
-#' @param format (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+#' @param format (_FieldDefWithCondition<TextFieldDef,Value>_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 #' 
 #' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
 #' - If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
@@ -4453,16 +4453,16 @@ args$obj
 #' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
 #' 
 #' __Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format.
-#' @param formatType (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The format type for labels (`"number"` or `"time"`).
+#' @param formatType (_FieldDefWithCondition<TextFieldDef,Value>_) The format type for labels (`"number"` or `"time"`).
 #' 
 #' __Default value:__
 #' - `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
 #' - `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`.
-#' @param timeUnit (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' @param timeUnit (_FieldDefWithCondition<TextFieldDef,Value>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 #' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param title (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) A title for the field. If `null`, the title will be removed.
+#' @param title (_FieldDefWithCondition<TextFieldDef,Value>_) A title for the field. If `null`, the title will be removed.
 #' 
 #' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
 #' 
@@ -4471,7 +4471,7 @@ args$obj
 #' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
-#' @param type (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' @param type (_FieldDefWithCondition<TextFieldDef,Value>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
 #' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
 #' 
 #' 
@@ -4483,7 +4483,7 @@ args$obj
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
+#' @param value (_ValueDefWithOptionalCondition<TextFieldDef,Value>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A component of a Vega-Lite spec, corresponding to a Href.
 #' @export
 
@@ -4495,18 +4495,18 @@ args$obj
 #' vl_make_Key
 #' 
 #' Create spec for {obj}
-#' @param aggregate (_FieldDef_) Aggregation function for the field
+#' @param aggregate (_TypedFieldDef_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param bin (_FieldDef_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' @param bin (_TypedFieldDef_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
 #' 
 #' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 #' 
 #' - If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
 #' 
 #' __Default value:__ `false`
-#' @param field (_FieldDef_) __Required.__ A string defining the name of the field from which to pull a data value
+#' @param field (_TypedFieldDef_) __Required.__ A string defining the name of the field from which to pull a data value
 #' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
 #' 
 #' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`).
@@ -4514,11 +4514,11 @@ args$obj
 #' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
 #' 
 #' __Note:__ `field` is not required if `aggregate` is `count`.
-#' @param timeUnit (_FieldDef_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' @param timeUnit (_TypedFieldDef_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 #' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param title (_FieldDef_) A title for the field. If `null`, the title will be removed.
+#' @param title (_TypedFieldDef_) A title for the field. If `null`, the title will be removed.
 #' 
 #' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
 #' 
@@ -4527,7 +4527,7 @@ args$obj
 #' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
-#' @param type (_FieldDef_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' @param type (_TypedFieldDef_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
 #' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
 #' 
 #' 
@@ -4886,24 +4886,24 @@ args$obj
 #' vl_make_Shape
 #' 
 #' Create spec for {obj}
-#' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) Aggregation function for the field
+#' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param bin (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' @param bin (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
 #' 
 #' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 #' 
 #' - If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
 #' 
 #' __Default value:__ `false`
-#' @param condition (_ValueDefWithOptionalCondition<MarkPropFieldDef<TypeForShape>,string>, ConditionOnlyDef<MarkPropFieldDef<TypeForShape>>_) A field definition or one or more value definition(s) with a selection predicate.
+#' @param condition (_ValueDefWithOptionalCondition<MarkPropFieldDef<TypeForShape>,(string|null)>, ConditionOnlyDef<MarkPropFieldDef<TypeForShape>>_) A field definition or one or more value definition(s) with a selection predicate.
 #' 
-#' (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
+#' (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
 #' 
 #' __Note:__ A field definition's `condition` property can only contain [conditional value definitions](https://vega.github.io/vega-lite/docs/condition.html#value)
 #' since Vega-Lite only allows at most one encoded field per encoding channel.
-#' @param field (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) __Required.__ A string defining the name of the field from which to pull a data value
+#' @param field (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) __Required.__ A string defining the name of the field from which to pull a data value
 #' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
 #' 
 #' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`).
@@ -4911,16 +4911,16 @@ args$obj
 #' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
 #' 
 #' __Note:__ `field` is not required if `aggregate` is `count`.
-#' @param legend (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) An object defining properties of the legend.
+#' @param legend (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) An object defining properties of the legend.
 #' If `null`, the legend for the encoding channel will be removed.
 #' 
 #' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied.
-#' @param scale (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' @param scale (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
 #' 
 #' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
 #' 
 #' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied.
-#' @param sort (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) Sort order for the encoded field.
+#' @param sort (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) Sort order for the encoded field.
 #' 
 #' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
 #' 
@@ -4934,11 +4934,11 @@ args$obj
 #' __Default value:__ `"ascending"`
 #' 
 #' __Note:__ `null` is not supported for `row` and `column`.
-#' @param timeUnit (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' @param timeUnit (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 #' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param title (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) A title for the field. If `null`, the title will be removed.
+#' @param title (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) A title for the field. If `null`, the title will be removed.
 #' 
 #' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
 #' 
@@ -4947,7 +4947,7 @@ args$obj
 #' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
-#' @param type (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,string>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' @param type (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
 #' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
 #' 
 #' 
@@ -4959,7 +4959,7 @@ args$obj
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef<TypeForShape>,string>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
+#' @param value (_ValueDefWithOptionalCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A component of a Vega-Lite spec, corresponding to a Shape.
 #' @export
 
@@ -5311,24 +5311,24 @@ args$obj
 #' vl_make_Text
 #' 
 #' Create spec for {obj}
-#' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
+#' @param aggregate (_FieldDefWithCondition<TextFieldDef,Value>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param bin (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' @param bin (_FieldDefWithCondition<TextFieldDef,Value>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
 #' 
 #' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 #' 
 #' - If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
 #' 
 #' __Default value:__ `false`
-#' @param condition (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>, ConditionOnlyDef<TextFieldDef>_) A field definition or one or more value definition(s) with a selection predicate.
+#' @param condition (_ValueDefWithOptionalCondition<TextFieldDef,Value>, ConditionOnlyDef<TextFieldDef>_) A field definition or one or more value definition(s) with a selection predicate.
 #' 
-#' (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
+#' (_FieldDefWithCondition<TextFieldDef,Value>_) One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
 #' 
 #' __Note:__ A field definition's `condition` property can only contain [conditional value definitions](https://vega.github.io/vega-lite/docs/condition.html#value)
 #' since Vega-Lite only allows at most one encoded field per encoding channel.
-#' @param field (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) __Required.__ A string defining the name of the field from which to pull a data value
+#' @param field (_FieldDefWithCondition<TextFieldDef,Value>_) __Required.__ A string defining the name of the field from which to pull a data value
 #' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
 #' 
 #' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`).
@@ -5336,7 +5336,7 @@ args$obj
 #' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
 #' 
 #' __Note:__ `field` is not required if `aggregate` is `count`.
-#' @param format (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+#' @param format (_FieldDefWithCondition<TextFieldDef,Value>_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 #' 
 #' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
 #' - If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
@@ -5344,16 +5344,16 @@ args$obj
 #' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
 #' 
 #' __Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format.
-#' @param formatType (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The format type for labels (`"number"` or `"time"`).
+#' @param formatType (_FieldDefWithCondition<TextFieldDef,Value>_) The format type for labels (`"number"` or `"time"`).
 #' 
 #' __Default value:__
 #' - `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
 #' - `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`.
-#' @param timeUnit (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' @param timeUnit (_FieldDefWithCondition<TextFieldDef,Value>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 #' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param title (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) A title for the field. If `null`, the title will be removed.
+#' @param title (_FieldDefWithCondition<TextFieldDef,Value>_) A title for the field. If `null`, the title will be removed.
 #' 
 #' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
 #' 
@@ -5362,7 +5362,7 @@ args$obj
 #' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
-#' @param type (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' @param type (_FieldDefWithCondition<TextFieldDef,Value>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
 #' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
 #' 
 #' 
@@ -5374,7 +5374,7 @@ args$obj
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
+#' @param value (_ValueDefWithOptionalCondition<TextFieldDef,Value>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A component of a Vega-Lite spec, corresponding to a Text.
 #' @export
 
@@ -5386,24 +5386,24 @@ args$obj
 #' vl_make_Tooltip
 #' 
 #' Create spec for {obj}
-#' @param aggregate (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Aggregation function for the field
+#' @param aggregate (_FieldDefWithCondition<TextFieldDef,Value>_) Aggregation function for the field
 #' (e.g., `mean`, `sum`, `median`, `min`, `max`, `count`).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param bin (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' @param bin (_FieldDefWithCondition<TextFieldDef,Value>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
 #' 
 #' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 #' 
 #' - If `"binned"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
 #' 
 #' __Default value:__ `false`
-#' @param condition (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>, ConditionOnlyDef<TextFieldDef>_) A field definition or one or more value definition(s) with a selection predicate.
+#' @param condition (_ValueDefWithOptionalCondition<TextFieldDef,Value>, ConditionOnlyDef<TextFieldDef>_) A field definition or one or more value definition(s) with a selection predicate.
 #' 
-#' (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
+#' (_FieldDefWithCondition<TextFieldDef,Value>_) One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).
 #' 
 #' __Note:__ A field definition's `condition` property can only contain [conditional value definitions](https://vega.github.io/vega-lite/docs/condition.html#value)
 #' since Vega-Lite only allows at most one encoded field per encoding channel.
-#' @param field (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) __Required.__ A string defining the name of the field from which to pull a data value
+#' @param field (_FieldDefWithCondition<TextFieldDef,Value>_) __Required.__ A string defining the name of the field from which to pull a data value
 #' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
 #' 
 #' __Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`).
@@ -5411,7 +5411,7 @@ args$obj
 #' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
 #' 
 #' __Note:__ `field` is not required if `aggregate` is `count`.
-#' @param format (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+#' @param format (_FieldDefWithCondition<TextFieldDef,Value>_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 #' 
 #' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
 #' - If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
@@ -5419,16 +5419,16 @@ args$obj
 #' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
 #' 
 #' __Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format.
-#' @param formatType (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The format type for labels (`"number"` or `"time"`).
+#' @param formatType (_FieldDefWithCondition<TextFieldDef,Value>_) The format type for labels (`"number"` or `"time"`).
 #' 
 #' __Default value:__
 #' - `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
 #' - `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`.
-#' @param timeUnit (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' @param timeUnit (_FieldDefWithCondition<TextFieldDef,Value>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 #' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
 #' 
 #' __Default value:__ `undefined` (None)
-#' @param title (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) A title for the field. If `null`, the title will be removed.
+#' @param title (_FieldDefWithCondition<TextFieldDef,Value>_) A title for the field. If `null`, the title will be removed.
 #' 
 #' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`).  If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).  Otherwise, the title is simply the field name.
 #' 
@@ -5437,7 +5437,7 @@ args$obj
 #' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
-#' @param type (_FieldDefWithCondition<TextFieldDef,(string|number|boolean)>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' @param type (_FieldDefWithCondition<TextFieldDef,Value>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
 #' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
 #' 
 #' 
@@ -5449,7 +5449,7 @@ args$obj
 #' - When using with [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html), the `type` property can be either `"temporal"` (for using a temporal scale) or [`"ordinal"` (for using an ordinal scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
 #' - When using with [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type` property refers to the post-aggregation data type. For example, we can calculate count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct", "field": "cat", "type": "quantitative"}`. The `"type"` of the aggregate output is `"quantitative"`.
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
-#' @param value (_ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
+#' @param value (_ValueDefWithOptionalCondition<TextFieldDef,Value>_) A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
 #' @return A component of a Vega-Lite spec, corresponding to a Tooltip.
 #' @export
 
@@ -5511,10 +5511,10 @@ args$obj
 #' For example, `stack` of `y` can be used to customize stacking for a vertical bar chart.
 #' 
 #' `stack` can be one of the following values:
-#' - `"zero"`: stacking with baseline offset at zero value of the scale (for creating typical stacked [bar](https://vega.github.io/vega-lite/docs/stack.html#bar) and [area](https://vega.github.io/vega-lite/docs/stack.html#area) chart).
+#' - `"zero"` or `true`: stacking with baseline offset at zero value of the scale (for creating typical stacked [bar](https://vega.github.io/vega-lite/docs/stack.html#bar) and [area](https://vega.github.io/vega-lite/docs/stack.html#area) chart).
 #' - `"normalize"` - stacking with normalized domain (for creating [normalized stacked bar and area charts](https://vega.github.io/vega-lite/docs/stack.html#normalized). <br/>
 #' -`"center"` - stacking with center baseline (for [streamgraph](https://vega.github.io/vega-lite/docs/stack.html#streamgraph)).
-#' - `null` - No-stacking. This will produce layered [bar](https://vega.github.io/vega-lite/docs/stack.html#layered-bar-chart) and area chart.
+#' - `null` or `false` - No-stacking. This will produce layered [bar](https://vega.github.io/vega-lite/docs/stack.html#layered-bar-chart) and area chart.
 #' 
 #' __Default value:__ `zero` for plots with all of the following conditions are true:
 #' (1) the mark is `bar` or `area`;
@@ -5736,10 +5736,10 @@ args$obj
 #' For example, `stack` of `y` can be used to customize stacking for a vertical bar chart.
 #' 
 #' `stack` can be one of the following values:
-#' - `"zero"`: stacking with baseline offset at zero value of the scale (for creating typical stacked [bar](https://vega.github.io/vega-lite/docs/stack.html#bar) and [area](https://vega.github.io/vega-lite/docs/stack.html#area) chart).
+#' - `"zero"` or `true`: stacking with baseline offset at zero value of the scale (for creating typical stacked [bar](https://vega.github.io/vega-lite/docs/stack.html#bar) and [area](https://vega.github.io/vega-lite/docs/stack.html#area) chart).
 #' - `"normalize"` - stacking with normalized domain (for creating [normalized stacked bar and area charts](https://vega.github.io/vega-lite/docs/stack.html#normalized). <br/>
 #' -`"center"` - stacking with center baseline (for [streamgraph](https://vega.github.io/vega-lite/docs/stack.html#streamgraph)).
-#' - `null` - No-stacking. This will produce layered [bar](https://vega.github.io/vega-lite/docs/stack.html#layered-bar-chart) and area chart.
+#' - `null` or `false` - No-stacking. This will produce layered [bar](https://vega.github.io/vega-lite/docs/stack.html#layered-bar-chart) and area chart.
 #' 
 #' __Default value:__ `zero` for plots with all of the following conditions are true:
 #' (1) the mark is `bar` or `area`;
@@ -6822,7 +6822,7 @@ vl_axis_y <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NU
 #' For temporal fields with time and utc scales, the `nice` value can be a string indicating the desired time interval. Legal values are `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`. Alternatively, `time` and `utc` scales can accept an object-valued interval specifier of the form `{"interval": "month", "step": 3}`, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
 #' 
 #' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise.
-#' @param padding (_Scale_) For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+#' @param padding (_Scale_) For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the `zero`, `nice`, `domainMin`, and `domainMax` properties.
 #' 
 #' For _[band](https://vega.github.io/vega-lite/docs/scale.html#band)_ scales, shortcut for setting `paddingInner` and `paddingOuter` to the same value.
 #' 
@@ -7039,6 +7039,8 @@ vl_scale_y <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = 
 #' __Default value:__ `true`.
 #' @param labelPadding (_Legend_) Padding in pixels between the legend and legend labels.
 #' @param labelSeparation (_Legend_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param legendX (_Legend_) Custom x-position for legend with orient "none".
+#' @param legendY (_Legend_) Custom y-position for legend with orient "none".
 #' @param offset (_Legend_) The offset in pixels by which to displace the legend from the data rectangle and axes.
 #' 
 #' __Default value:__ `18`.
@@ -7118,146 +7120,155 @@ vl_scale_y <- function(spec, base = NULL, bins = NULL, clamp = NULL, constant = 
 #' @name legend_encoding 
 #' @name legend_encoding
 #' @export
-vl_legend_color <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_color <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
   "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
   "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
-  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
-  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
-  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
-  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
-  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
-  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  "labelSeparation", "legendX", "legendY", "offset", "orient", "padding", "rowPadding", 
+  "strokeColor", "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", 
+  "symbolOpacity", "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", 
+  "tickCount", "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", 
+  "titleColor", "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", 
+  "titleLimit", "titleOpacity", "titleOrient", "titlePadding", "type", "values", 
+  "zindex"))
   .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "color")
 } 
 #' @name legend_encoding
 #' @export
-vl_legend_fill <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_fill <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
   "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
   "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
-  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
-  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
-  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
-  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
-  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
-  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  "labelSeparation", "legendX", "legendY", "offset", "orient", "padding", "rowPadding", 
+  "strokeColor", "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", 
+  "symbolOpacity", "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", 
+  "tickCount", "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", 
+  "titleColor", "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", 
+  "titleLimit", "titleOpacity", "titleOrient", "titlePadding", "type", "values", 
+  "zindex"))
   .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "fill")
 } 
 #' @name legend_encoding
 #' @export
-vl_legend_fillOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_fillOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
   "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
   "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
-  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
-  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
-  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
-  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
-  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
-  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  "labelSeparation", "legendX", "legendY", "offset", "orient", "padding", "rowPadding", 
+  "strokeColor", "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", 
+  "symbolOpacity", "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", 
+  "tickCount", "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", 
+  "titleColor", "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", 
+  "titleLimit", "titleOpacity", "titleOrient", "titlePadding", "type", "values", 
+  "zindex"))
   .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "fillOpacity")
 } 
 #' @name legend_encoding
 #' @export
-vl_legend_opacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_opacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
   "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
   "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
-  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
-  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
-  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
-  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
-  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
-  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  "labelSeparation", "legendX", "legendY", "offset", "orient", "padding", "rowPadding", 
+  "strokeColor", "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", 
+  "symbolOpacity", "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", 
+  "tickCount", "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", 
+  "titleColor", "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", 
+  "titleLimit", "titleOpacity", "titleOrient", "titlePadding", "type", "values", 
+  "zindex"))
   .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "opacity")
 } 
 #' @name legend_encoding
 #' @export
-vl_legend_shape <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_shape <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
   "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
   "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
-  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
-  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
-  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
-  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
-  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
-  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  "labelSeparation", "legendX", "legendY", "offset", "orient", "padding", "rowPadding", 
+  "strokeColor", "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", 
+  "symbolOpacity", "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", 
+  "tickCount", "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", 
+  "titleColor", "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", 
+  "titleLimit", "titleOpacity", "titleOrient", "titlePadding", "type", "values", 
+  "zindex"))
   .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "shape")
 } 
 #' @name legend_encoding
 #' @export
-vl_legend_size <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_size <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
   "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
   "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
-  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
-  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
-  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
-  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
-  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
-  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  "labelSeparation", "legendX", "legendY", "offset", "orient", "padding", "rowPadding", 
+  "strokeColor", "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", 
+  "symbolOpacity", "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", 
+  "tickCount", "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", 
+  "titleColor", "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", 
+  "titleLimit", "titleOpacity", "titleOrient", "titlePadding", "type", "values", 
+  "zindex"))
   .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "size")
 } 
 #' @name legend_encoding
 #' @export
-vl_legend_stroke <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_stroke <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
   "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
   "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
-  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
-  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
-  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
-  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
-  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
-  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  "labelSeparation", "legendX", "legendY", "offset", "orient", "padding", "rowPadding", 
+  "strokeColor", "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", 
+  "symbolOpacity", "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", 
+  "tickCount", "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", 
+  "titleColor", "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", 
+  "titleLimit", "titleOpacity", "titleOrient", "titlePadding", "type", "values", 
+  "zindex"))
   .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "stroke")
 } 
 #' @name legend_encoding
 #' @export
-vl_legend_strokeOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_strokeOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
   "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
   "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
-  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
-  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
-  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
-  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
-  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
-  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  "labelSeparation", "legendX", "legendY", "offset", "orient", "padding", "rowPadding", 
+  "strokeColor", "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", 
+  "symbolOpacity", "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", 
+  "tickCount", "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", 
+  "titleColor", "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", 
+  "titleLimit", "titleOpacity", "titleOrient", "titlePadding", "type", "values", 
+  "zindex"))
   .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "strokeOpacity")
 } 
 #' @name legend_encoding
 #' @export
-vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
   "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
   "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
-  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
-  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
-  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
-  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
-  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
-  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  "labelSeparation", "legendX", "legendY", "offset", "orient", "padding", "rowPadding", 
+  "strokeColor", "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", 
+  "symbolOpacity", "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", 
+  "tickCount", "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", 
+  "titleColor", "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", 
+  "titleLimit", "titleOpacity", "titleOrient", "titlePadding", "type", "values", 
+  "zindex"))
   .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "strokeWidth")
 } 
 #' Add condition to encoding
@@ -8457,7 +8468,7 @@ vl_repeat_col <- function(spec, ...){
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_repeat_wrap <- function(spec, columns = 2, ...){
+vl_repeat_wrap <- function(spec, ..., columns = 2){
   .add_repeat(spec, list(...), '#/definitions/RepeatSpec/properties/repeat', columns = columns, .type = 'wrap')
 } 
 #' Resolve axes, legends, or scales for composite charts
@@ -10754,6 +10765,8 @@ vl_add_headerRow_config <- function(spec, format = NULL, formatType = NULL, labe
 #' @param labelPadding (_LegendConfig_) Padding in pixels between the legend and legend labels.
 #' @param labelSeparation (_LegendConfig_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
 #' @param layout (_LegendConfig_) Legend orient group layout parameters.
+#' @param legendX (_LegendConfig_) Custom x-position for legend with orient "none".
+#' @param legendY (_LegendConfig_) Custom y-position for legend with orient "none".
 #' @param offset (_LegendConfig_) The offset in pixels by which to displace the legend from the data rectangle and axes.
 #' 
 #' __Default value:__ `18`.
@@ -10826,21 +10839,21 @@ vl_add_headerRow_config <- function(spec, format = NULL, formatType = NULL, labe
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_legend_config <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, fillColor = NULL, gradientDirection = NULL, gradientHorizontalMaxLength = NULL, gradientHorizontalMinLength = NULL, gradientLabelLimit = NULL, gradientLabelOffset = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gradientVerticalMaxLength = NULL, gradientVerticalMinLength = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, layout = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, shortTimeLabels = NULL, strokeColor = NULL, strokeDash = NULL, strokeWidth = NULL, symbolBaseFillColor = NULL, symbolBaseStrokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolDirection = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL){
+vl_add_legend_config <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, fillColor = NULL, gradientDirection = NULL, gradientHorizontalMaxLength = NULL, gradientHorizontalMinLength = NULL, gradientLabelLimit = NULL, gradientLabelOffset = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gradientVerticalMaxLength = NULL, gradientVerticalMinLength = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, layout = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, shortTimeLabels = NULL, strokeColor = NULL, strokeDash = NULL, strokeWidth = NULL, symbolBaseFillColor = NULL, symbolBaseStrokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolDirection = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "fillColor", "gradientDirection", 
   "gradientHorizontalMaxLength", "gradientHorizontalMinLength", "gradientLabelLimit", 
   "gradientLabelOffset", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gradientVerticalMaxLength", "gradientVerticalMinLength", 
   "gridAlign", "labelAlign", "labelBaseline", "labelColor", "labelFont", "labelFontSize", 
   "labelFontStyle", "labelFontWeight", "labelLimit", "labelOffset", "labelOpacity", 
-  "labelOverlap", "labelPadding", "labelSeparation", "layout", "offset", "orient", 
-  "padding", "rowPadding", "shortTimeLabels", "strokeColor", "strokeDash", "strokeWidth", 
-  "symbolBaseFillColor", "symbolBaseStrokeColor", "symbolDash", "symbolDashOffset", 
-  "symbolDirection", "symbolFillColor", "symbolOffset", "symbolOpacity", "symbolSize", 
-  "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "title", "titleAlign", 
-  "titleAnchor", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
-  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titleOrient", 
-  "titlePadding"))
+  "labelOverlap", "labelPadding", "labelSeparation", "layout", "legendX", "legendY", 
+  "offset", "orient", "padding", "rowPadding", "shortTimeLabels", "strokeColor", 
+  "strokeDash", "strokeWidth", "symbolBaseFillColor", "symbolBaseStrokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolDirection", "symbolFillColor", "symbolOffset", 
+  "symbolOpacity", "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", 
+  "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", "titleFont", 
+  "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", 
+  "titleOrient", "titlePadding"))
   .add_sub_config(args$spec, args$object, '#/definitions/LegendConfig' , .config = "legend")
 } 
 #' vl_add_line_config
@@ -13232,6 +13245,8 @@ args$obj
 #' @param labelPadding (_LegendConfig_) Padding in pixels between the legend and legend labels.
 #' @param labelSeparation (_LegendConfig_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
 #' @param layout (_LegendConfig_) Legend orient group layout parameters.
+#' @param legendX (_LegendConfig_) Custom x-position for legend with orient "none".
+#' @param legendY (_LegendConfig_) Custom y-position for legend with orient "none".
 #' @param offset (_LegendConfig_) The offset in pixels by which to displace the legend from the data rectangle and axes.
 #' 
 #' __Default value:__ `18`.
@@ -13304,21 +13319,21 @@ args$obj
 #' @return A component of a Vega-Lite spec, corresponding to a LegendConfig.
 #' @export
 
-vl_make_LegendConfig <- function(clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, fillColor = NULL, gradientDirection = NULL, gradientHorizontalMaxLength = NULL, gradientHorizontalMinLength = NULL, gradientLabelLimit = NULL, gradientLabelOffset = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gradientVerticalMaxLength = NULL, gradientVerticalMinLength = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, layout = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, shortTimeLabels = NULL, strokeColor = NULL, strokeDash = NULL, strokeWidth = NULL, symbolBaseFillColor = NULL, symbolBaseStrokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolDirection = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL){
+vl_make_LegendConfig <- function(clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, fillColor = NULL, gradientDirection = NULL, gradientHorizontalMaxLength = NULL, gradientHorizontalMinLength = NULL, gradientLabelLimit = NULL, gradientLabelOffset = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gradientVerticalMaxLength = NULL, gradientVerticalMinLength = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, layout = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, shortTimeLabels = NULL, strokeColor = NULL, strokeDash = NULL, strokeWidth = NULL, symbolBaseFillColor = NULL, symbolBaseStrokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolDirection = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL){
 args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "fillColor", "gradientDirection", 
   "gradientHorizontalMaxLength", "gradientHorizontalMinLength", "gradientLabelLimit", 
   "gradientLabelOffset", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gradientVerticalMaxLength", "gradientVerticalMinLength", 
   "gridAlign", "labelAlign", "labelBaseline", "labelColor", "labelFont", "labelFontSize", 
   "labelFontStyle", "labelFontWeight", "labelLimit", "labelOffset", "labelOpacity", 
-  "labelOverlap", "labelPadding", "labelSeparation", "layout", "offset", "orient", 
-  "padding", "rowPadding", "shortTimeLabels", "strokeColor", "strokeDash", "strokeWidth", 
-  "symbolBaseFillColor", "symbolBaseStrokeColor", "symbolDash", "symbolDashOffset", 
-  "symbolDirection", "symbolFillColor", "symbolOffset", "symbolOpacity", "symbolSize", 
-  "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "title", "titleAlign", 
-  "titleAnchor", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
-  "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", "titleOrient", 
-  "titlePadding"))
+  "labelOverlap", "labelPadding", "labelSeparation", "layout", "legendX", "legendY", 
+  "offset", "orient", "padding", "rowPadding", "shortTimeLabels", "strokeColor", 
+  "strokeDash", "strokeWidth", "symbolBaseFillColor", "symbolBaseStrokeColor", 
+  "symbolDash", "symbolDashOffset", "symbolDirection", "symbolFillColor", "symbolOffset", 
+  "symbolOpacity", "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", 
+  "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", "titleFont", 
+  "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", "titleOpacity", 
+  "titleOrient", "titlePadding"))
 args$obj
 } 
 #' vl_make_LineConfig
@@ -14406,7 +14421,7 @@ args$obj
 #' For temporal fields with time and utc scales, the `nice` value can be a string indicating the desired time interval. Legal values are `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`. Alternatively, `time` and `utc` scales can accept an object-valued interval specifier of the form `{"interval": "month", "step": 3}`, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
 #' 
 #' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise.
-#' @param padding (_Scale_) For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+#' @param padding (_Scale_) For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_ scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the `zero`, `nice`, `domainMin`, and `domainMax` properties.
 #' 
 #' For _[band](https://vega.github.io/vega-lite/docs/scale.html#band)_ scales, shortcut for setting `paddingInner` and `paddingOuter` to the same value.
 #' 
@@ -14540,6 +14555,8 @@ args$obj
 #' __Default value:__ `true`.
 #' @param labelPadding (_Legend_) Padding in pixels between the legend and legend labels.
 #' @param labelSeparation (_Legend_) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default `0`). This property is ignored if *labelOverlap* resolution is not enabled.
+#' @param legendX (_Legend_) Custom x-position for legend with orient "none".
+#' @param legendY (_Legend_) Custom y-position for legend with orient "none".
 #' @param offset (_Legend_) The offset in pixels by which to displace the legend from the data rectangle and axes.
 #' 
 #' __Default value:__ `18`.
@@ -14617,18 +14634,19 @@ args$obj
 #' @return A component of a Vega-Lite spec, corresponding to a Legend.
 #' @export
 
-vl_make_Legend <- function(clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_make_Legend <- function(clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
 args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
   "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", 
   "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", 
-  "labelSeparation", "offset", "orient", "padding", "rowPadding", "strokeColor", 
-  "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", "symbolOpacity", 
-  "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", 
-  "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", 
-  "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", 
-  "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"))
+  "labelSeparation", "legendX", "legendY", "offset", "orient", "padding", "rowPadding", 
+  "strokeColor", "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolOffset", 
+  "symbolOpacity", "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", 
+  "tickCount", "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", 
+  "titleColor", "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", 
+  "titleLimit", "titleOpacity", "titleOrient", "titlePadding", "type", "values", 
+  "zindex"))
 args$obj
 } 
 #' vl_make_BindCheckbox

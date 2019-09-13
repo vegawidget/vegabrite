@@ -14,15 +14,15 @@ vl_make_Legend(clipHeight = NULL, columnPadding = NULL,
   labelFontSize = NULL, labelFontStyle = NULL,
   labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL,
   labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL,
-  labelSeparation = NULL, offset = NULL, orient = NULL,
-  padding = NULL, rowPadding = NULL, strokeColor = NULL,
-  symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL,
-  symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL,
-  symbolStrokeColor = NULL, symbolStrokeWidth = NULL,
-  symbolType = NULL, tickCount = NULL, tickMinStep = NULL,
-  title = NULL, titleAlign = NULL, titleAnchor = NULL,
-  titleBaseline = NULL, titleColor = NULL, titleFont = NULL,
-  titleFontSize = NULL, titleFontStyle = NULL,
+  labelSeparation = NULL, legendX = NULL, legendY = NULL,
+  offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL,
+  strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL,
+  symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL,
+  symbolSize = NULL, symbolStrokeColor = NULL,
+  symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL,
+  tickMinStep = NULL, title = NULL, titleAlign = NULL,
+  titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL,
+  titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL,
   titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL,
   titleOrient = NULL, titlePadding = NULL, type = NULL,
   values = NULL, zindex = NULL)
@@ -122,6 +122,10 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 \item{labelPadding}{(\emph{Legend}) Padding in pixels between the legend and legend labels.}
 
 \item{labelSeparation}{(\emph{Legend}) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default \code{0}). This property is ignored if \emph{labelOverlap} resolution is not enabled.}
+
+\item{legendX}{(\emph{Legend}) Custom x-position for legend with orient "none".}
+
+\item{legendY}{(\emph{Legend}) Custom y-position for legend with orient "none".}
 
 \item{offset}{(\emph{Legend}) The offset in pixels by which to displace the legend from the data rectangle and axes.
 
