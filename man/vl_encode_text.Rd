@@ -11,7 +11,7 @@ vl_encode_text(spec, field = NULL, type = NULL, aggregate = NULL,
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{field}{(\emph{FieldDefWithCondition<TextFieldDef,(string|number|boolean)>}) \strong{Required.} A string defining the name of the field from which to pull a data value
+\item{field}{(\emph{FieldDefWithCondition<TextFieldDef,Value>}) \strong{Required.} A string defining the name of the field from which to pull a data value
 or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{repeat} operator.
 
 \strong{Note:} Dots (\code{.}) and brackets (\code{[} and \code{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \code{"field": "foo\['bar'\]"}).
@@ -20,7 +20,7 @@ See more details about escaping in the \href{https://vega.github.io/vega-lite/do
 
 \strong{Note:} \code{field} is not required if \code{aggregate} is \code{count}.}
 
-\item{type}{(\emph{FieldDefWithCondition<TextFieldDef,(string|number|boolean)>}) The encoded field's type of measurement (\code{"quantitative"}, \code{"temporal"}, \code{"ordinal"}, or \code{"nominal"}).
+\item{type}{(\emph{FieldDefWithCondition<TextFieldDef,Value>}) The encoded field's type of measurement (\code{"quantitative"}, \code{"temporal"}, \code{"ordinal"}, or \code{"nominal"}).
 It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io/vega-lite/docs/geoshape.html}{'geoshape'}.
 
 \strong{Note:}
@@ -33,12 +33,12 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 \item Secondary channels (e.g., \code{x2}, \code{y2}, \code{xError}, \code{yError}) do not have \code{type} as they have exactly the same type as their primary channels (e.g., \code{x}, \code{y}).
 }}
 
-\item{aggregate}{(\emph{FieldDefWithCondition<TextFieldDef,(string|number|boolean)>}) Aggregation function for the field
+\item{aggregate}{(\emph{FieldDefWithCondition<TextFieldDef,Value>}) Aggregation function for the field
 (e.g., \code{mean}, \code{sum}, \code{median}, \code{min}, \code{max}, \code{count}).
 
 \strong{Default value:} \code{undefined} (None)}
 
-\item{bin}{(\emph{FieldDefWithCondition<TextFieldDef,(string|number|boolean)>}) A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y} channel are binned before they are imported into Vega-Lite (\code{"binned"}).
+\item{bin}{(\emph{FieldDefWithCondition<TextFieldDef,Value>}) A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y} channel are binned before they are imported into Vega-Lite (\code{"binned"}).
 \itemize{
 \item If \code{true}, default \href{https://vega.github.io/vega-lite/docs/bin.html}{binning parameters} will be applied.
 \item If \code{"binned"}, this indicates that the data for the \code{x} (or \code{y}) channel are already binned. You can map the bin-start field to \code{x} (or \code{y}) and the bin-end field to \code{x2} (or \code{y2}). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's \href{https://vega.github.io/vega-lite/docs/axis.html#ticks}{tickMinStep} property.
@@ -46,14 +46,14 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 
 \strong{Default value:} \code{false}}
 
-\item{condition}{(\emph{ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>, ConditionOnlyDef<TextFieldDef>}) A field definition or one or more value definition(s) with a selection predicate.
+\item{condition}{(\emph{ValueDefWithOptionalCondition<TextFieldDef,Value>, ConditionOnlyDef<TextFieldDef>}) A field definition or one or more value definition(s) with a selection predicate.
 
-(\emph{FieldDefWithCondition<TextFieldDef,(string|number|boolean)>}) One or more value definition(s) with \href{https://vega.github.io/vega-lite/docs/condition.html}{a selection or a test predicate}.
+(\emph{FieldDefWithCondition<TextFieldDef,Value>}) One or more value definition(s) with \href{https://vega.github.io/vega-lite/docs/condition.html}{a selection or a test predicate}.
 
 \strong{Note:} A field definition's \code{condition} property can only contain \href{https://vega.github.io/vega-lite/docs/condition.html#value}{conditional value definitions}
 since Vega-Lite only allows at most one encoded field per encoding channel.}
 
-\item{format}{(\emph{FieldDefWithCondition<TextFieldDef,(string|number|boolean)>}) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+\item{format}{(\emph{FieldDefWithCondition<TextFieldDef,Value>}) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 \itemize{
 \item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern}.
 \item If the format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
@@ -63,7 +63,7 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \strong{Default value:}  Derived from \href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for number format and from \href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for time format.}
 
-\item{formatType}{(\emph{FieldDefWithCondition<TextFieldDef,(string|number|boolean)>}) The format type for labels (\code{"number"} or \code{"time"}).
+\item{formatType}{(\emph{FieldDefWithCondition<TextFieldDef,Value>}) The format type for labels (\code{"number"} or \code{"time"}).
 
 \strong{Default value:}
 \itemize{
@@ -71,12 +71,12 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 \item \code{"number"} for quantitative fields as well as ordinal and nomimal fields without \code{timeUnit}.
 }}
 
-\item{timeUnit}{(\emph{FieldDefWithCondition<TextFieldDef,(string|number|boolean)>}) Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field.
+\item{timeUnit}{(\emph{FieldDefWithCondition<TextFieldDef,Value>}) Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field.
 or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}.
 
 \strong{Default value:} \code{undefined} (None)}
 
-\item{title}{(\emph{FieldDefWithCondition<TextFieldDef,(string|number|boolean)>}) A title for the field. If \code{null}, the title will be removed.
+\item{title}{(\emph{FieldDefWithCondition<TextFieldDef,Value>}) A title for the field. If \code{null}, the title will be removed.
 
 \strong{Default value:}  derived from the field's name and transformation function (\code{aggregate}, \code{bin} and \code{timeUnit}).  If the field has an aggregate function, the function is displayed as part of the title (e.g., \code{"Sum of Profit"}). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., \code{"Profit (binned)"}, \code{"Transaction Date (year-month)"}).  Otherwise, the title is simply the field name.
 
@@ -86,7 +86,7 @@ or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field 
 \item If both field definition's \code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used.
 }}
 
-\item{value}{(\emph{ValueDefWithOptionalCondition<TextFieldDef,(string|number|boolean)>}) A constant value in visual domain (e.g., \code{"red"} / "#0099ff" for color, values between \code{0} to \code{1} for opacity).}
+\item{value}{(\emph{ValueDefWithOptionalCondition<TextFieldDef,Value>}) A constant value in visual domain (e.g., \code{"red"} / "#0099ff" for color, values between \code{0} to \code{1} for opacity).}
 }
 \value{
 A modified Vega-Lite Spec

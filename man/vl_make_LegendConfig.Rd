@@ -17,11 +17,11 @@ vl_make_LegendConfig(clipHeight = NULL, columnPadding = NULL,
   labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL,
   labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL,
   labelPadding = NULL, labelSeparation = NULL, layout = NULL,
-  offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL,
-  shortTimeLabels = NULL, strokeColor = NULL, strokeDash = NULL,
-  strokeWidth = NULL, symbolBaseFillColor = NULL,
-  symbolBaseStrokeColor = NULL, symbolDash = NULL,
-  symbolDashOffset = NULL, symbolDirection = NULL,
+  legendX = NULL, legendY = NULL, offset = NULL, orient = NULL,
+  padding = NULL, rowPadding = NULL, shortTimeLabels = NULL,
+  strokeColor = NULL, strokeDash = NULL, strokeWidth = NULL,
+  symbolBaseFillColor = NULL, symbolBaseStrokeColor = NULL,
+  symbolDash = NULL, symbolDashOffset = NULL, symbolDirection = NULL,
   symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL,
   symbolSize = NULL, symbolStrokeColor = NULL,
   symbolStrokeWidth = NULL, symbolType = NULL, title = NULL,
@@ -127,6 +127,10 @@ vl_make_LegendConfig(clipHeight = NULL, columnPadding = NULL,
 \item{labelSeparation}{(\emph{LegendConfig}) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default \code{0}). This property is ignored if \emph{labelOverlap} resolution is not enabled.}
 
 \item{layout}{(\emph{LegendConfig}) Legend orient group layout parameters.}
+
+\item{legendX}{(\emph{LegendConfig}) Custom x-position for legend with orient "none".}
+
+\item{legendY}{(\emph{LegendConfig}) Custom y-position for legend with orient "none".}
 
 \item{offset}{(\emph{LegendConfig}) The offset in pixels by which to displace the legend from the data rectangle and axes.
 

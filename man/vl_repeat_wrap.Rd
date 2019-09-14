@@ -4,14 +4,14 @@
 \alias{vl_repeat_wrap}
 \title{vl_repeat_wrap}
 \usage{
-vl_repeat_wrap(spec, columns = 2, ...)
+vl_repeat_wrap(spec, ..., columns = 2)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{columns}{number of columns to add}
-
 \item{...}{fields to use for repeat (strings)}
+
+\item{columns}{number of columns to add}
 }
 \value{
 A modified Vega-Lite Spec

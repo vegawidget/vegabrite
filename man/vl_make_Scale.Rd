@@ -50,7 +50,7 @@ For temporal fields with time and utc scales, the \code{nice} value can be a str
 
 \strong{Default value:} \code{true} for unbinned \emph{quantitative} fields; \code{false} otherwise.}
 
-\item{padding}{(\emph{Scale}) For \emph{\href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{continuous}} scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the zero, nice, domainMin, and domainMax properties.
+\item{padding}{(\emph{Scale}) For \emph{\href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{continuous}} scales, expands the scale domain to accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including the effects of the \code{zero}, \code{nice}, \code{domainMin}, and \code{domainMax} properties.
 
 For \emph{\href{https://vega.github.io/vega-lite/docs/scale.html#band}{band}} scales, shortcut for setting \code{paddingInner} and \code{paddingOuter} to the same value.
 

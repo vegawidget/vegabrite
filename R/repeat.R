@@ -7,10 +7,9 @@
   if (.type == "row") {
     spec[["repeat"]][["row"]] <- obj
   } else if (.type == "col") {
-    spec[["repeat"]][["col"]] <- obj 
+    spec[["repeat"]][["column"]] <- obj 
   } else{
     repeat_def <- obj
-    columns <- repeat_def$columns
     repeat_def$columns <- NULL
     names(repeat_def) <- NULL
     spec[["repeat"]] <- repeat_def
@@ -32,10 +31,9 @@
   if (.type == "row") {
     spec[["repeat"]][["row"]] <- obj
   } else if (.type == "col") {
-    spec[["repeat"]][["col"]] <- obj
+    spec[["repeat"]][["column"]] <- obj
   } else{
     repeat_def <- obj
-    columns <- repeat_def$columns
     repeat_def$columns <- NULL
     names(repeat_def) <- NULL
     spec[["repeat"]] <- repeat_def
