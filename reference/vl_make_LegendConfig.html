@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9001</span>
       </span>
     </div>
 
@@ -137,11 +137,11 @@
   <span class='kw'>labelFontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labelFontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labelLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>labelOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labelOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labelOverlap</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>labelPadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labelSeparation</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>layout</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>offset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>orient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>rowPadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>shortTimeLabels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>symbolBaseFillColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>symbolBaseStrokeColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>symbolDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>symbolDashOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>symbolDirection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>legendX</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legendY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>offset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>orient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>rowPadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>shortTimeLabels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>strokeColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>symbolBaseFillColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>symbolBaseStrokeColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>symbolDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>symbolDashOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>symbolDirection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>symbolFillColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>symbolOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>symbolOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>symbolSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>symbolStrokeColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>symbolStrokeWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>symbolType</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -297,6 +297,14 @@
     <tr>
       <th>layout</th>
       <td><p>(<em>LegendConfig</em>) Legend orient group layout parameters.</p></td>
+    </tr>
+    <tr>
+      <th>legendX</th>
+      <td><p>(<em>LegendConfig</em>) Custom x-position for legend with orient "none".</p></td>
+    </tr>
+    <tr>
+      <th>legendY</th>
+      <td><p>(<em>LegendConfig</em>) Custom y-position for legend with orient "none".</p></td>
     </tr>
     <tr>
       <th>offset</th>

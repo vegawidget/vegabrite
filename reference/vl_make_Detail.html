@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9001</span>
       </span>
     </div>
 
@@ -132,13 +132,13 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>aggregate</th>
-      <td><p>(<em>FieldDef</em>) Aggregation function for the field
+      <td><p>(<em>TypedFieldDef</em>) Aggregation function for the field
 (e.g., <code>mean</code>, <code>sum</code>, <code>median</code>, <code>min</code>, <code>max</code>, <code>count</code>).</p>
 <p><strong>Default value:</strong> <code>undefined</code> (None)</p></td>
     </tr>
     <tr>
       <th>bin</th>
-      <td><p>(<em>FieldDef</em>) A flag for binning a <code>quantitative</code> field, <a href='https://vega.github.io/vega-lite/docs/bin.html#params'>an object defining binning parameters</a>, or indicating that the data for <code>x</code> or <code>y</code> channel are binned before they are imported into Vega-Lite (<code>"binned"</code>).</p><ul>
+      <td><p>(<em>TypedFieldDef</em>) A flag for binning a <code>quantitative</code> field, <a href='https://vega.github.io/vega-lite/docs/bin.html#params'>an object defining binning parameters</a>, or indicating that the data for <code>x</code> or <code>y</code> channel are binned before they are imported into Vega-Lite (<code>"binned"</code>).</p><ul>
 <li><p>If <code>true</code>, default <a href='https://vega.github.io/vega-lite/docs/bin.html'>binning parameters</a> will be applied.</p></li>
 <li><p>If <code>"binned"</code>, this indicates that the data for the <code>x</code> (or <code>y</code>) channel are already binned. You can map the bin-start field to <code>x</code> (or <code>y</code>) and the bin-end field to <code>x2</code> (or <code>y2</code>). The scale and axis will be formatted similar to binning in Vega-lite.  To adjust the axis ticks based on the bin step, you can also set the axis's <a href='https://vega.github.io/vega-lite/docs/axis.html#ticks'>tickMinStep</a> property.</p></li>
 </ul>
@@ -147,7 +147,7 @@
     </tr>
     <tr>
       <th>field</th>
-      <td><p>(<em>FieldDef</em>) <strong>Required.</strong> A string defining the name of the field from which to pull a data value
+      <td><p>(<em>TypedFieldDef</em>) <strong>Required.</strong> A string defining the name of the field from which to pull a data value
 or an object defining iterated values from the <a href='https://vega.github.io/vega-lite/docs/repeat.html'>repeat</a> operator.</p>
 <p><strong>Note:</strong> Dots (<code>.</code>) and brackets (<code>[</code> and <code>]</code>) can be used to access nested objects (e.g., <code>"field": "foo.bar"</code> and <code>"field": "foo\['bar'\]"</code>).
 If field names contain dots or brackets but are not nested, you can use <code>\</code> to escape dots and brackets (e.g., <code>"a\.b"</code> and <code>"a\\[0\\]"</code>).
@@ -156,13 +156,13 @@ See more details about escaping in the <a href='https://vega.github.io/vega-lite
     </tr>
     <tr>
       <th>timeUnit</th>
-      <td><p>(<em>FieldDef</em>) Time unit (e.g., <code>year</code>, <code>yearmonth</code>, <code>month</code>, <code>hours</code>) for a temporal field.
+      <td><p>(<em>TypedFieldDef</em>) Time unit (e.g., <code>year</code>, <code>yearmonth</code>, <code>month</code>, <code>hours</code>) for a temporal field.
 or <a href='https://vega.github.io/vega-lite/docs/type.html#cast'>a temporal field that gets casted as ordinal</a>.</p>
 <p><strong>Default value:</strong> <code>undefined</code> (None)</p></td>
     </tr>
     <tr>
       <th>title</th>
-      <td><p>(<em>FieldDef</em>) A title for the field. If <code>null</code>, the title will be removed.</p>
+      <td><p>(<em>TypedFieldDef</em>) A title for the field. If <code>null</code>, the title will be removed.</p>
 <p><strong>Default value:</strong>  derived from the field's name and transformation function (<code>aggregate</code>, <code>bin</code> and <code>timeUnit</code>).  If the field has an aggregate function, the function is displayed as part of the title (e.g., <code>"Sum of Profit"</code>). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., <code>"Profit (binned)"</code>, <code>"Transaction Date (year-month)"</code>).  Otherwise, the title is simply the field name.</p>
 <p><strong>Notes</strong>:</p><ol>
 <li><p>You can customize the default field title format by providing the <a href='https://vega.github.io/vega-lite/docs/config.html#top-level-config'>fieldTitle</a> property in the <a href='https://vega.github.io/vega-lite/docs/config.html'>config</a> or <a href='https://vega.github.io/vega-lite/docs/compile.html#field-title'>fieldTitle function via the compile function's options</a>.</p></li>
@@ -171,7 +171,7 @@ or <a href='https://vega.github.io/vega-lite/docs/type.html#cast'>a temporal fie
     </tr>
     <tr>
       <th>type</th>
-      <td><p>(<em>FieldDef</em>) The encoded field's type of measurement (<code>"quantitative"</code>, <code>"temporal"</code>, <code>"ordinal"</code>, or <code>"nominal"</code>).
+      <td><p>(<em>TypedFieldDef</em>) The encoded field's type of measurement (<code>"quantitative"</code>, <code>"temporal"</code>, <code>"ordinal"</code>, or <code>"nominal"</code>).
 It can also be a <code>"geojson"</code> type for encoding <a href='https://vega.github.io/vega-lite/docs/geoshape.html'>'geoshape'</a>.</p>
 <p><strong>Note:</strong></p><ul>
 <li><p>Data values for a temporal field can be either a date-time string (e.g., <code>"2015-03-07 12:32:17"</code>, <code>"17:01"</code>, <code>"2015-03-16"</code>. <code>"2015"</code>) or a timestamp number (e.g., <code>1552199579097</code>).</p></li>

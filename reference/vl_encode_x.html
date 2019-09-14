@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9001</span>
       </span>
     </div>
 
@@ -212,10 +212,10 @@ The field of the <code>color</code> channel if specified is used as <code>groupb
 <code>stack</code> is only applicable for <code>x</code> and <code>y</code> channels with continuous domains.
 For example, <code>stack</code> of <code>y</code> can be used to customize stacking for a vertical bar chart.</p>
 <p><code>stack</code> can be one of the following values:</p><ul>
-<li><p><code>"zero"</code>: stacking with baseline offset at zero value of the scale (for creating typical stacked <a href='https://vega.github.io/vega-lite/docs/stack.html#bar'>bar</a> and <a href='https://vega.github.io/vega-lite/docs/stack.html#area'>area</a> chart).</p></li>
+<li><p><code>"zero"</code> or <code>true</code>: stacking with baseline offset at zero value of the scale (for creating typical stacked <a href='https://vega.github.io/vega-lite/docs/stack.html#bar'>bar</a> and <a href='https://vega.github.io/vega-lite/docs/stack.html#area'>area</a> chart).</p></li>
 <li><p><code>"normalize"</code> - stacking with normalized domain (for creating <a href='https://vega.github.io/vega-lite/docs/stack.html#normalized'>normalized stacked bar and area charts</a>. &lt;br/&gt;
 -<code>"center"</code> - stacking with center baseline (for <a href='https://vega.github.io/vega-lite/docs/stack.html#streamgraph'>streamgraph</a>).</p></li>
-<li><p><code>null</code> - No-stacking. This will produce layered <a href='https://vega.github.io/vega-lite/docs/stack.html#layered-bar-chart'>bar</a> and area chart.</p></li>
+<li><p><code>null</code> or <code>false</code> - No-stacking. This will produce layered <a href='https://vega.github.io/vega-lite/docs/stack.html#layered-bar-chart'>bar</a> and area chart.</p></li>
 </ul>
 
 <p><strong>Default value:</strong> <code>zero</code> for plots with all of the following conditions are true:
