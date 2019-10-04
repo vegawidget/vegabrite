@@ -21,9 +21,9 @@
 NULL
 
 
-.add_properties <- function(spec, ...) {
+.add_properties <- function(spec, object, ref) {
   
-  spec <- utils::modifyList(spec, list(...))
+  spec <- utils::modifyList(spec, object)
   
   return(vegawidget::as_vegaspec(spec))
 
