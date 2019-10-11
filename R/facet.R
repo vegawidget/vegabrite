@@ -4,7 +4,7 @@
 
 
 
-.add_facet.vegaspec_facet <- function(spec, obj, ref, .type) {
+.add_facet.vegaspec_facet <- function(spec, obj, ref, .type, columns) {
 
   validate_sub_schema(obj, ref)
   if (.type == "row") {
@@ -12,17 +12,14 @@
   } else if (.type == "column") {
     spec[["facet"]][["column"]] <- obj
   } else{
-    facet_def <- obj
-    columns <- facet_def$columns
-    facet_def$columns <- NULL
-    spec[["facet"]] <- facet_def
+    spec[["facet"]] <- obj
     spec[["columns"]] <- columns
   }
   
   return(vegawidget::as_vegaspec(spec))
 }
 
-.add_facet.vegaspec_unit <- function(spec, obj, ref, .type) {
+.add_facet.vegaspec_unit <- function(spec, obj, ref, .type, columns) {
   
   keep <- c('$schema','data')
   move <- names(spec)[which(!(names(spec) %in% keep))]
@@ -36,10 +33,7 @@
   } else if (.type == "column") {
     spec[["facet"]][["column"]] <- obj
   } else{
-    facet_def <- obj
-    columns <- facet_def$columns
-    facet_def$columns <- NULL
-    spec[["facet"]] <- facet_def
+    spec[["facet"]] <- obj
     spec[["columns"]] <- columns
   }
   
