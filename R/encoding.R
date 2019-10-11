@@ -19,6 +19,8 @@ ENCODE_MAPPING <- list(
       nc <- nchar(field)
       enc$type <- ENCODE_MAPPING[[substr(field, nc, nc)]]
       enc$field <- substr(field,1, nc - 2)
+    } else if (hasName(enc,"type") && enc$type %in% names(ENCODE_MAPPING)) { 
+      enc$type <- ENCODE_MAPPING[[enc$type]]
     } else if (!hasName(enc,"type") && hasName(enc,"field")) {
       dat <- .get_inline_data(spec)
       if (!is.null(dat)) {
@@ -136,8 +138,14 @@ ENCODE_MAPPING <- list(
 vl_encode <- function(spec, ...){
   inputs <- list(...)
   for (n in names(inputs)){
-    args <- list(spec = spec, obj = inputs[[n]], ref = paste0("#/definitions/Encoding/properties/",n), encoding = n)
-    spec <- rlang::exec(.add_encoding, !!!args)
+    if (n %in% c('row','column','facet')) {
+      args <- list(spec = spec, obj = inputs[[n]], ref = "#/definitions/FacetFieldDef", .type = n)
+      spec <- rlang::exec(.add_facet, !!!args)
+    } else {
+      args <- list(spec = spec, obj = inputs[[n]], ref = paste0("#/definitions/Encoding/properties/",n), encoding = n)
+      spec <- rlang::exec(.add_encoding, !!!args)
+    }
   }
   spec
 }
+
