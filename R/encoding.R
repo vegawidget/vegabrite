@@ -37,6 +37,11 @@ ENCODE_MAPPING <- list(
       }
     }
     
+    # Escape "." in feild
+    if (hasName(enc,"field")){
+      enc$field <- gsub("\\.","\\\\.", enc$field)
+    }
+    
     if (!hasName(spec,"encoding")) spec$encoding <- list()
     validate_sub_schema(enc, ref)
     spec[["encoding"]][[encoding]] <- enc
