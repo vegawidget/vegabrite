@@ -43,6 +43,15 @@ test_that("can use vl_encode with facet", {
   expect_equivalent(chart$facet, list(field = "x", type = "quantitative"))
 })
 
-
+test_that("encode functions escapes field names with .", {
+  
+  
+  chart <- vl_chart() %>% 
+    vl_encode_x(field = "abba.daba.doo", type = "quantitative" )
+  
+  expect_equivalent(chart$encoding$x$field, "abba\\.daba\\.doo")
+  
+  
+})
 
 
