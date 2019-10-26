@@ -38,7 +38,7 @@ ENCODE_MAPPING <- list(
     }
     
     # Escape "." in feild
-    if (hasName(enc,"field")){
+    if (hasName(enc,"field") && !is.list(enc$field)){
       enc$field <- gsub("\\.","\\\\.", enc$field)
     }
     
