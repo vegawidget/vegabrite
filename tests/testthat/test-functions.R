@@ -54,4 +54,15 @@ test_that("encode functions escapes field names with .", {
   
 })
 
+test_that("encode functions work with repeat", {
+  
+
+  chart <- vl_chart() %>% 
+    vl_encode_x(field = list("repeat" = "column"), type = "nominal" )
+  
+  expect_equivalent(chart$encoding$x$field, list("repeat" = "column"), type = "nominal")
+  
+  
+})
+
 
