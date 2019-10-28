@@ -39,6 +39,18 @@ test_that("regression example 2 works", {
   
 })
 
+test_that("regression example 3 works", {
+  
+  vl_chart() %>%
+    vl_add_data(values = mtcars) %>%
+    vl_mark_point() %>%
+    vl_encode_x("wt") %>%
+    vl_encode_y("mpg") %>%
+    vw_as_json() %>% 
+    expect_known_output("../regression/regression_example_3.json", print = TRUE)
+  
+})
+
 
 
 
