@@ -96,6 +96,19 @@ reqs <- function(schema, type) {
 
 #' @name schema
 #' @export
+reqs2 <- function(schema, type) {
+  search2(schema,
+          type,
+          function(x) {"type" %in% names(x) && x[["type"]] ==  'object'},
+          function(x) {x[["required"]]},
+          function(x) unlist(x, recursive = FALSE),
+          function() {NULL},
+          get_name_from_ref(type)
+  )
+}
+
+#' @name schema
+#' @export
 enums <- function(schema, type) {
   search(schema,
          type,

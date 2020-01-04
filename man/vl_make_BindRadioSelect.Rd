@@ -5,7 +5,8 @@
 \title{vl_make_BindRadioSelect}
 \usage{
 vl_make_BindRadioSelect(debounce = NULL, element = NULL,
-  input = NULL, name = NULL, options = NULL, type = NULL)
+  input = NULL, labels = NULL, name = NULL, options = NULL,
+  type = NULL)
 }
 \arguments{
 \item{debounce}{(\emph{BindRadioSelect})}
@@ -13,6 +14,8 @@ vl_make_BindRadioSelect(debounce = NULL, element = NULL,
 \item{element}{(\emph{BindRadioSelect})}
 
 \item{input}{(\emph{BindRadioSelect}) radio, select}
+
+\item{labels}{(\emph{BindRadioSelect})}
 
 \item{name}{(\emph{BindRadioSelect})}
 

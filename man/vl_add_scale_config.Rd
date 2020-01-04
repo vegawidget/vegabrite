@@ -5,15 +5,14 @@
 \title{vl_add_scale_config}
 \usage{
 vl_add_scale_config(spec, bandPaddingInner = NULL,
-  bandPaddingOuter = NULL, barBandPaddingInner = NULL,
-  barBandPaddingOuter = NULL, clamp = NULL, continuousPadding = NULL,
-  maxBandSize = NULL, maxFontSize = NULL, maxOpacity = NULL,
-  maxSize = NULL, maxStrokeWidth = NULL, minBandSize = NULL,
-  minFontSize = NULL, minOpacity = NULL, minSize = NULL,
-  minStrokeWidth = NULL, pointPadding = NULL, quantileCount = NULL,
-  quantizeCount = NULL, rangeStep = NULL,
-  rectBandPaddingInner = NULL, rectBandPaddingOuter = NULL,
-  round = NULL, textXRangeStep = NULL, useUnaggregatedDomain = NULL)
+  bandPaddingOuter = NULL, barBandPaddingInner = NULL, clamp = NULL,
+  continuousPadding = NULL, maxBandSize = NULL, maxFontSize = NULL,
+  maxOpacity = NULL, maxSize = NULL, maxStrokeWidth = NULL,
+  minBandSize = NULL, minFontSize = NULL, minOpacity = NULL,
+  minSize = NULL, minStrokeWidth = NULL, pointPadding = NULL,
+  quantileCount = NULL, quantizeCount = NULL,
+  rectBandPaddingInner = NULL, round = NULL,
+  useUnaggregatedDomain = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -28,14 +27,11 @@ vl_add_scale_config(spec, bandPaddingInner = NULL,
 
 \item{bandPaddingOuter}{(\emph{ScaleConfig}) Default outer padding for \code{x} and \code{y} band-ordinal scales.
 
-If not specified, by default, band scale's paddingOuter is paddingInner/2.}
+\strong{Default value:} \code{paddingInner/2} (which makes \emph{width/height = number of unique values * step})}
 
 \item{barBandPaddingInner}{(\emph{ScaleConfig}) Default inner padding for \code{x} and \code{y} band-ordinal scales of \code{"bar"} marks.
 
 \strong{Default value:} \code{0.1}}
-
-\item{barBandPaddingOuter}{(\emph{ScaleConfig}) Default outer padding for \code{x} and \code{y} band-ordinal scales of \code{"bar"} marks.
-If not specified, by default, band scale's paddingOuter is paddingInner/2.}
 
 \item{clamp}{(\emph{ScaleConfig}) If true, values that exceed the data domain are clamped to either the minimum or maximum range value}
 
@@ -45,7 +41,7 @@ If not specified, by default, band scale's paddingOuter is paddingInner/2.}
 
 \item{maxBandSize}{(\emph{ScaleConfig}) The default max value for mapping quantitative fields to bar's size/bandSize.
 
-If undefined (default), we will use the scale's \code{rangeStep} - 1.}
+If undefined (default), we will use the axis's size (width or height) - 1.}
 
 \item{maxFontSize}{(\emph{ScaleConfig}) The default max value for mapping quantitative fields to text's size/fontSize.
 
@@ -83,7 +79,7 @@ If undefined (default), we will use the scale's \code{rangeStep} - 1.}
 
 \item{pointPadding}{(\emph{ScaleConfig}) Default outer padding for \code{x} and \code{y} point-ordinal scales.
 
-\strong{Default value:} \code{0.5}}
+\strong{Default value:} \code{0.5} (which makes \emph{width/height = number of unique values * step})}
 
 \item{quantileCount}{(\emph{ScaleConfig}) Default range cardinality for \href{https://vega.github.io/vega-lite/docs/scale.html#quantile}{quantile} scale.
 
@@ -93,25 +89,13 @@ If undefined (default), we will use the scale's \code{rangeStep} - 1.}
 
 \strong{Default value:} \code{4}}
 
-\item{rangeStep}{(\emph{ScaleConfig}) Default range step for band and point scales of (1) the \code{y} channel
-and (2) the \code{x} channel when the mark is not \code{text}.
-
-\strong{Default value:} \code{20}}
-
 \item{rectBandPaddingInner}{(\emph{ScaleConfig}) Default inner padding for \code{x} and \code{y} band-ordinal scales of \code{"rect"} marks.
 
 \strong{Default value:} \code{0}}
 
-\item{rectBandPaddingOuter}{(\emph{ScaleConfig}) Default outer padding for \code{x} and \code{y} band-ordinal scales of \code{"rect"} marks.
-If not specified, by default, band scale's paddingOuter is paddingInner/2.}
-
 \item{round}{(\emph{ScaleConfig}) If true, rounds numeric output values to integers.
 This can be helpful for snapping to the pixel grid.
 (Only available for \code{x}, \code{y}, and \code{size} scales.)}
-
-\item{textXRangeStep}{(\emph{ScaleConfig}) Default range step for \code{x} band and point scales of text marks.
-
-\strong{Default value:} \code{90}}
 
 \item{useUnaggregatedDomain}{(\emph{ScaleConfig}) Use the source data range before aggregation as scale domain instead of aggregated data for aggregate axis.
 

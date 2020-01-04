@@ -4,21 +4,38 @@
 \alias{vl_add_view_config}
 \title{vl_add_view_config}
 \usage{
-vl_add_view_config(spec, clip = NULL, cornerRadius = NULL,
-  fill = NULL, fillOpacity = NULL, height = NULL, opacity = NULL,
-  stroke = NULL, strokeCap = NULL, strokeDash = NULL,
-  strokeDashOffset = NULL, strokeJoin = NULL,
-  strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
-  width = NULL)
+vl_add_view_config(spec, clip = NULL, continuousHeight = NULL,
+  continuousWidth = NULL, cornerRadius = NULL, discreteHeight = NULL,
+  discreteWidth = NULL, fill = NULL, fillOpacity = NULL,
+  height = NULL, opacity = NULL, step = NULL, stroke = NULL,
+  strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL,
+  strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL,
+  strokeWidth = NULL, width = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
 \item{clip}{(\emph{ViewConfig}) Whether the view should be clipped.}
 
+\item{continuousHeight}{(\emph{ViewConfig}) The default height when the plot has a continuous y-field.
+
+\strong{Default value:} \code{200}}
+
+\item{continuousWidth}{(\emph{ViewConfig}) The default width when the plot has a continuous x-field.
+
+\strong{Default value:} \code{200}}
+
 \item{cornerRadius}{(\emph{ViewConfig}) The radius in pixels of rounded rectangle corners.
 
 \strong{Default value:} \code{0}}
+
+\item{discreteHeight}{(\emph{ViewConfig}) The default height when the plot has either a discrete y-field or no y-field.
+
+\strong{Default value:} a step size based on \code{config.view.step}.}
+
+\item{discreteWidth}{(\emph{ViewConfig}) The default width when the plot has either a discrete x-field or no x-field.
+
+\strong{Default value:} a step size based on \code{config.view.step}.}
 
 \item{fill}{(\emph{ViewConfig}) The fill color.
 
@@ -28,13 +45,13 @@ vl_add_view_config(spec, clip = NULL, cornerRadius = NULL,
 
 \strong{Default value:} \code{1}}
 
-\item{height}{(\emph{ViewConfig}) The default height of the single plot or each plot in a trellis plot when the visualization has a continuous (non-ordinal) y-scale with \code{rangeStep} = \code{null}.
-
-\strong{Default value:} \code{200}}
+\item{height}{(\emph{ViewConfig}) Default height}
 
 \item{opacity}{(\emph{ViewConfig}) The overall opacity (value between [0,1]).
 
 \strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick}, \code{circle}, or \code{square} marks or layered \code{bar} charts and \code{1} otherwise.}
+
+\item{step}{(\emph{ViewConfig}) Default step size for x-/y- discrete fields.}
 
 \item{stroke}{(\emph{ViewConfig}) The stroke color.
 
@@ -60,9 +77,7 @@ vl_add_view_config(spec, clip = NULL, cornerRadius = NULL,
 
 \item{strokeWidth}{(\emph{ViewConfig}) The stroke width, in pixels.}
 
-\item{width}{(\emph{ViewConfig}) The default width of the single plot or each plot in a trellis plot when the visualization has a continuous (non-ordinal) x-scale or ordinal x-scale with \code{rangeStep} = \code{null}.
-
-\strong{Default value:} \code{200}}
+\item{width}{(\emph{ViewConfig}) Default width}
 }
 \value{
 A modified Vega-Lite Spec

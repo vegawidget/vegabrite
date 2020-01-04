@@ -17,11 +17,15 @@ vl_mark_errorband(spec, band = NULL, borders = NULL, clip = NULL,
 
 \item{clip}{(\emph{ErrorBandDef}) Whether a composite mark be clipped to the enclosing group’s width and height.}
 
-\item{color}{(\emph{ErrorBandDef}) Default color.  Note that \code{fill} and \code{stroke} have higher precedence than \code{color} and will override \code{color}.
+\item{color}{(\emph{ErrorBandDef}) Default color.
 
 \strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
 
-\strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.}
+\strong{Note:}
+\itemize{
+\item This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.
+\item The \code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.
+}}
 
 \item{extent}{(\emph{ErrorBandDef}) The extent of the band. Available options include:
 \itemize{

@@ -4,14 +4,19 @@
 \alias{vl_make_Scale}
 \title{vl_make_Scale}
 \usage{
-vl_make_Scale(base = NULL, bins = NULL, clamp = NULL,
+vl_make_Scale(align = NULL, base = NULL, bins = NULL, clamp = NULL,
   constant = NULL, domain = NULL, exponent = NULL,
   interpolate = NULL, nice = NULL, padding = NULL,
   paddingInner = NULL, paddingOuter = NULL, range = NULL,
-  rangeStep = NULL, round = NULL, scheme = NULL, type = NULL,
-  zero = NULL)
+  round = NULL, scheme = NULL, type = NULL, zero = NULL)
 }
 \arguments{
+\item{align}{(\emph{Scale}) The alignment of the steps within the scale range.
+
+This value must lie in the range \code{[0,1]}. A value of \code{0.5} indicates that the steps should be centered within the range. A value of \code{0} or \code{1} may be used to shift the bands to one side, say to position them adjacent to an axis.
+
+\strong{Default value:} \code{0.5}}
+
 \item{base}{(\emph{Scale}) The logarithm base of the \code{log} scale (default \code{10}).}
 
 \item{bins}{(\emph{Scale}) An array of bin boundaries over the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and text labels.}
@@ -26,7 +31,7 @@ vl_make_Scale(base = NULL, bins = NULL, clamp = NULL,
 
 \item{domain}{(\emph{Scale}) Customized domain values.
 
-For \emph{quantitative} fields, \code{domain} can take the form of a two-element array with minimum and maximum values.  \href{https://vega.github.io/vega-lite/docs/scale.html#piecewise}{Piecewise scales} can be created by providing a \code{domain} with more than two entries.
+For \emph{quantitative} fields, \code{domain} can take the form of a two-element array with minimum and maximum values. \href{https://vega.github.io/vega-lite/docs/scale.html#piecewise}{Piecewise scales} can be created by providing a \code{domain} with more than two entries.
 If the input field is aggregated, \code{domain} can also be a string value \code{"unaggregated"}, indicating that the domain should include the raw data values prior to the aggregation.
 
 For \emph{temporal} fields, \code{domain} can be a two-element array minimum and maximum values, in the form of either timestamps or the \href{https://vega.github.io/vega-lite/docs/types.html#datetime}{DateTime definition objects}.
@@ -57,7 +62,7 @@ For \emph{\href{https://vega.github.io/vega-lite/docs/scale.html#band}{band}} sc
 For \emph{\href{https://vega.github.io/vega-lite/docs/scale.html#point}{point}} scales, alias for \code{paddingOuter}.
 
 \strong{Default value:} For \emph{continuous} scales, derived from the \href{https://vega.github.io/vega-lite/docs/scale.html#config}{scale config}'s \code{continuousPadding}.
-For \emph{band and point} scales, see \code{paddingInner} and \code{paddingOuter}.}
+For \emph{band and point} scales, see \code{paddingInner} and \code{paddingOuter}. By default, Vega-Lite sets padding such that \emph{width/height = number of unique values * step}.}
 
 \item{paddingInner}{(\emph{Scale}) The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie in the range [0,1].
 
@@ -68,7 +73,8 @@ For point scale, this property is invalid as point scales do not have internal b
 \item{paddingOuter}{(\emph{Scale}) The outer padding (spacing) at the ends of the range of band and point scales,
 as a fraction of the step size. This value must lie in the range [0,1].
 
-\strong{Default value:} derived from the \href{https://vega.github.io/vega-lite/docs/scale.html#config}{scale config}'s \code{bandPaddingOuter} for band scales and \code{pointPadding} for point scales.}
+\strong{Default value:} derived from the \href{https://vega.github.io/vega-lite/docs/scale.html#config}{scale config}'s \code{bandPaddingOuter} for band scales and \code{pointPadding} for point scales.
+By default, Vega-Lite sets outer padding such that \emph{width/height = number of unique values * step}.}
 
 \item{range}{(\emph{Scale}) The range of the scale. One of:
 \itemize{
@@ -80,16 +86,8 @@ as a fraction of the step size. This value must lie in the range [0,1].
 \strong{Notes:}
 \enumerate{
 \item For color scales you can also specify a color \href{https://vega.github.io/vega-lite/docs/scale.html#scheme}{scheme} instead of \code{range}.
-\item Any directly specified \code{range} for \code{x} and \code{y} channels will be ignored. Range can be customized via the view's corresponding \href{https://vega.github.io/vega-lite/docs/size.html}{size} (\code{width} and \code{height}) or via \href{#range-step}{range steps and paddings properties} for \href{#band}{band} and \href{#point}{point} scales.
+\item Any directly specified \code{range} for \code{x} and \code{y} channels will be ignored. Range can be customized via the view's corresponding \href{https://vega.github.io/vega-lite/docs/size.html}{size} (\code{width} and \code{height}).
 }}
-
-\item{rangeStep}{(\emph{Scale}) The distance between the starts of adjacent bands or points in \href{https://vega.github.io/vega-lite/docs/scale.html#band}{band} and \href{https://vega.github.io/vega-lite/docs/scale.html#point}{point} scales.
-
-If \code{rangeStep} is \code{null} or if the view contains the scale's corresponding \href{https://vega.github.io/vega-lite/docs/size.html}{size} (\code{width} for \code{x} scales and \code{height} for \code{y} scales), \code{rangeStep} will be automatically determined to fit the size of the view.
-
-\strong{Default value:}  derived the \href{https://vega.github.io/vega-lite/docs/config.html#scale-config}{scale config}'s \code{textXRangeStep} (\code{90} by default) for x-scales of \code{text} marks and \code{rangeStep} (\code{21} by default) for x-scales of other marks and y-scales.
-
-\strong{Warning}: If \code{rangeStep} is \code{null} and the cardinality of the scale's domain is higher than \code{width} or \code{height}, the rangeStep might become less than one pixel and the mark might not appear correctly.}
 
 \item{round}{(\emph{Scale}) If \code{true}, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid.
 
@@ -101,7 +99,7 @@ Discrete color schemes may be used with \href{https://vega.github.io/vega-lite/d
 
 For the full list of supported schemes, please refer to the \href{https://vega.github.io/vega/docs/schemes/#reference}{Vega Scheme} reference.}
 
-\item{type}{(\emph{Scale}) The type of scale.  Vega-Lite supports the following categories of scale types:
+\item{type}{(\emph{Scale}) The type of scale. Vega-Lite supports the following categories of scale types:
 \enumerate{
 \item \href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{Continuous Scales} -- mapping continuous domains to continuous output ranges (\href{https://vega.github.io/vega-lite/docs/scale.html#linear}{"linear"}, \href{https://vega.github.io/vega-lite/docs/scale.html#pow}{"pow"}, \href{https://vega.github.io/vega-lite/docs/scale.html#sqrt}{"sqrt"}, \href{https://vega.github.io/vega-lite/docs/scale.html#symlog}{"symlog"}, \href{https://vega.github.io/vega-lite/docs/scale.html#log}{"log"}, \href{https://vega.github.io/vega-lite/docs/scale.html#time}{"time"}, \href{https://vega.github.io/vega-lite/docs/scale.html#utc}{"utc"}.
 \item \href{https://vega.github.io/vega-lite/docs/scale.html#discrete}{Discrete Scales} -- mapping discrete domains to discrete (\href{https://vega.github.io/vega-lite/docs/scale.html#ordinal}{"ordinal"}) or continuous (\href{https://vega.github.io/vega-lite/docs/scale.html#band}{"band"} and \href{https://vega.github.io/vega-lite/docs/scale.html#point}{"point"}) output ranges.

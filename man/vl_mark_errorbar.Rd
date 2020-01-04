@@ -12,11 +12,15 @@ vl_mark_errorbar(spec, clip = NULL, color = NULL, extent = NULL,
 
 \item{clip}{(\emph{ErrorBarDef}) Whether a composite mark be clipped to the enclosing group’s width and height.}
 
-\item{color}{(\emph{ErrorBarDef}) Default color.  Note that \code{fill} and \code{stroke} have higher precedence than \code{color} and will override \code{color}.
+\item{color}{(\emph{ErrorBarDef}) Default color.
 
 \strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
 
-\strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.}
+\strong{Note:}
+\itemize{
+\item This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.
+\item The \code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.
+}}
 
 \item{extent}{(\emph{ErrorBarDef}) The extent of the rule. Available options include:
 \itemize{
@@ -30,7 +34,7 @@ vl_mark_errorbar(spec, clip = NULL, color = NULL, extent = NULL,
 
 \item{opacity}{(\emph{ErrorBarDef}) The opacity (value between [0,1]) of the mark.}
 
-\item{orient}{(\emph{ErrorBarDef}) Orientation of the error bar.  This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.}
+\item{orient}{(\emph{ErrorBarDef}) Orientation of the error bar. This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.}
 
 \item{rule}{(\emph{ErrorBarDef})}
 

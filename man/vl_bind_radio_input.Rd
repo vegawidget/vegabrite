@@ -5,8 +5,8 @@
 \title{vl_bind_radio_input}
 \usage{
 vl_bind_radio_input(spec, selection_name, projection_name = NULL,
-  debounce = NULL, element = NULL, name = NULL, options = NULL,
-  type = NULL)
+  debounce = NULL, element = NULL, labels = NULL, name = NULL,
+  options = NULL, type = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -18,6 +18,8 @@ vl_bind_radio_input(spec, selection_name, projection_name = NULL,
 \item{debounce}{(\emph{BindRadioSelect})}
 
 \item{element}{(\emph{BindRadioSelect})}
+
+\item{labels}{(\emph{BindRadioSelect})}
 
 \item{name}{(\emph{BindRadioSelect})}
 

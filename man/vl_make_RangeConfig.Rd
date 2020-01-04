@@ -8,17 +8,17 @@ vl_make_RangeConfig(category = NULL, diverging = NULL,
   heatmap = NULL, ordinal = NULL, ramp = NULL, symbol = NULL)
 }
 \arguments{
-\item{category}{(\emph{RangeConfig}) Default range for \emph{nominal} (categorical) fields.}
+\item{category}{(\emph{RangeConfig}) Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for categorical data.}
 
-\item{diverging}{(\emph{RangeConfig}) Default range for diverging \emph{quantitative} fields.}
+\item{diverging}{(\emph{RangeConfig}) Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for diverging quantitative ramps.}
 
-\item{heatmap}{(\emph{RangeConfig}) Default range for \emph{quantitative} heatmaps.}
+\item{heatmap}{(\emph{RangeConfig}) Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for quantitative heatmaps.}
 
-\item{ordinal}{(\emph{RangeConfig}) Default range for \emph{ordinal} fields.}
+\item{ordinal}{(\emph{RangeConfig}) Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for rank-ordered data.}
 
-\item{ramp}{(\emph{RangeConfig}) Default range for \emph{quantitative} and \emph{temporal} fields.}
+\item{ramp}{(\emph{RangeConfig}) Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for sequential quantitative ramps.}
 
-\item{symbol}{(\emph{RangeConfig}) Default range palette for the \code{shape} channel.}
+\item{symbol}{(\emph{RangeConfig}) Array of \href{https://vega.github.io/vega/docs/marks/symbol/}{symbol} names or paths for the default shape palette.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a RangeConfig.

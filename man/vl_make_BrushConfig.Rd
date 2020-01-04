@@ -11,7 +11,7 @@ vl_make_BrushConfig(fill = NULL, fillOpacity = NULL, stroke = NULL,
 \arguments{
 \item{fill}{(\emph{BrushConfig}) The fill color of the interval mark.
 
-\strong{Default value:} \code{#333333}}
+\strong{Default value:} \code{"#333333"}}
 
 \item{fillOpacity}{(\emph{BrushConfig}) The fill opacity of the interval mark (a value between 0 and 1).
 
@@ -19,14 +19,14 @@ vl_make_BrushConfig(fill = NULL, fillOpacity = NULL, stroke = NULL,
 
 \item{stroke}{(\emph{BrushConfig}) The stroke color of the interval mark.
 
-\strong{Default value:} \code{#ffffff}}
+\strong{Default value:} \code{"#ffffff"}}
 
 \item{strokeDash}{(\emph{BrushConfig}) An array of alternating stroke and space lengths,
 for creating dashed or dotted lines.}
 
 \item{strokeDashOffset}{(\emph{BrushConfig}) The offset (in pixels) with which to begin drawing the stroke dash array.}
 
-\item{strokeOpacity}{(\emph{BrushConfig}) The stroke opacity of the interval mark (a value between 0 and 1).}
+\item{strokeOpacity}{(\emph{BrushConfig}) The stroke opacity of the interval mark (a value between \code{0} and \code{1}).}
 
 \item{strokeWidth}{(\emph{BrushConfig}) The stroke width of the interval mark.}
 }

@@ -6,13 +6,14 @@
 \usage{
 vl_add_headerRow_config(spec, format = NULL, formatType = NULL,
   labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL,
-  labelColor = NULL, labelFont = NULL, labelFontSize = NULL,
-  labelLimit = NULL, labelOrient = NULL, labelPadding = NULL,
-  shortTimeLabels = NULL, title = NULL, titleAlign = NULL,
-  titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL,
-  titleColor = NULL, titleFont = NULL, titleFontSize = NULL,
-  titleFontWeight = NULL, titleLimit = NULL, titleOrient = NULL,
-  titlePadding = NULL)
+  labelColor = NULL, labelExpr = NULL, labelFont = NULL,
+  labelFontSize = NULL, labelFontStyle = NULL, labelLimit = NULL,
+  labelOrient = NULL, labelPadding = NULL, labels = NULL,
+  title = NULL, titleAlign = NULL, titleAnchor = NULL,
+  titleAngle = NULL, titleBaseline = NULL, titleColor = NULL,
+  titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL,
+  titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL,
+  titleOrient = NULL, titlePadding = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -35,7 +36,7 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 \item \code{"number"} for quantitative fields as well as ordinal and nomimal fields without \code{timeUnit}.
 }}
 
-\item{labelAlign}{(\emph{HeaderConfig}) Horizontal text alignment of header labels.}
+\item{labelAlign}{(\emph{HeaderConfig}) Horizontal text alignment of header labels. One of \code{"left"}, \code{"center"}, or \code{"right"}.}
 
 \item{labelAnchor}{(\emph{HeaderConfig}) The anchor position for placing the labels. One of \code{"start"}, \code{"middle"}, or \code{"end"}. For example, with a label orientation of top these anchor positions map to a left-, center-, or right-aligned label.}
 
@@ -45,9 +46,15 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \item{labelColor}{(\emph{HeaderConfig}) The color of the header label, can be in hex color code or regular color name.}
 
+\item{labelExpr}{(\emph{HeaderConfig}) \href{https://vega.github.io/vega/docs/expressions/}{Vega expression} for customizing labels.
+
+\strong{Note:} The label text and value can be assessed via the \code{label} and \code{value} properties of the header's backing \code{datum} object.}
+
 \item{labelFont}{(\emph{HeaderConfig}) The font of the header label.}
 
 \item{labelFontSize}{(\emph{HeaderConfig}) The font size of the header label, in pixels.}
+
+\item{labelFontStyle}{(\emph{HeaderConfig}) The font style of the header label.}
 
 \item{labelLimit}{(\emph{HeaderConfig}) The maximum length of the header label in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
 
@@ -59,9 +66,9 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \strong{Default value:} \code{10}}
 
-\item{shortTimeLabels}{(\emph{HeaderConfig}) Whether month names and weekday names should be abbreviated.
+\item{labels}{(\emph{HeaderConfig}) A boolean flag indicating if labels should be included as part of the header.
 
-\strong{Default value:}  \code{false}}
+\strong{Default value:} \code{true}.}
 
 \item{title}{(\emph{HeaderConfig}) Set to null to disable title for the axis, legend, or header.}
 
@@ -83,12 +90,16 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \item{titleFontSize}{(\emph{HeaderConfig}) Font size of the header title.}
 
+\item{titleFontStyle}{(\emph{HeaderConfig}) The font style of the header title.}
+
 \item{titleFontWeight}{(\emph{HeaderConfig}) Font weight of the header title.
 This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
 
 \item{titleLimit}{(\emph{HeaderConfig}) The maximum length of the header title in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
 
 \strong{Default value:} \code{0}, indicating no limit}
+
+\item{titleLineHeight}{(\emph{HeaderConfig}) Line height in pixels for multi-line title text.}
 
 \item{titleOrient}{(\emph{HeaderConfig}) The orientation of the header title. One of \code{"top"}, \code{"bottom"}, \code{"left"} or \code{"right"}.}
 

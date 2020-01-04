@@ -50,13 +50,14 @@ vl_chart() %>%
   vl_filter("datum.year == 2000") %>%
   vl_encode_x(field = "age", 
               type = "ordinal") %>%
-  vl_scale_x(rangeStep = 17) %>%
   vl_encode_y(field = "people", type = "quantitative") %>%
   vl_stack_y("normalize") %>%
   vl_aggregate_y("sum") %>%
   vl_axis_y(title = "population") %>%
   vl_encode_color(field = "gender", type = "nominal") %>%
-  vl_mark_bar() 
+  vl_mark_bar() %>% 
+  vl_add_axis_config(domainWidth = 1) %>%
+  vl_add_view_config(stroke = "transparent")
 ```
 
 
@@ -66,8 +67,7 @@ vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/population.json") %>%
   vl_filter("datum.year == 2000") %>%
   vl_encode_y(field = "age", 
-              type = "ordinal", 
-              scale = list(rangeStep = 17)) %>%
+              type = "ordinal") %>%
   vl_encode_x(field = "people", 
               type = "quantitative", 
               aggregate = "sum",
@@ -156,13 +156,16 @@ vl_chart() %>%
   vl_encode_x(field = "gender", type = "nominal") %>%
   vl_encode_y(field = "people", type = "quantitative", aggregate = "sum") %>%
   vl_encode_color(field = "gender", type = "nominal") %>%
-  vl_scale_x(rangeStep = 8) %>%
+  vl_scale_color(range =  c("#675193", "#ca8861")) %>%
   vl_scale_color(range = c("#EA98D2", "#659CCA")) %>%
-  vl_facet_column(field = "age", type = "ordinal") %>%
+  vl_encode_column(field = "age", type = "ordinal", spacing = 10) %>%
   vl_remove_axis_x() %>%
   vl_axis_y(title = "population", grid = FALSE) %>%
   vl_add_view_config(strokeWidth = 0) %>%
-  vl_mark_bar()
+  vl_mark_bar()%>% 
+  vl_add_axis_config(domainWidth = 1) %>%
+  vl_add_view_config(stroke = "transparent") %>%
+  vl_add_properties(width = 10)
 ```
 
 ```{r}

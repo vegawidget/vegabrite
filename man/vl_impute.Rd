@@ -10,7 +10,7 @@ vl_impute(spec, frame = NULL, groupby = NULL, impute = NULL,
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{frame}{(\emph{ImputeTransform}) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object.  For example, the value \code{[-5, 5]} indicates that the window should include five objects preceding and five objects following the current object.
+\item{frame}{(\emph{ImputeTransform}) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. For example, the value \code{[-5, 5]} indicates that the window should include five objects preceding and five objects following the current object.
 
 \strong{Default value:}:  \code{[null, null]} indicating that the window includes all objects.}
 
@@ -25,12 +25,12 @@ Missing key values (those occurring in the data but not in the current group) wi
 \item{keyvals}{(\emph{ImputeTransform}) Defines the key values that should be considered for imputation.
 An array of key values or an object defining a \href{https://vega.github.io/vega-lite/docs/impute.html#sequence-def}{number sequence}.
 
-If provided, this will be used in addition to the key values observed within the input data.  If not provided, the values will be derived from all unique values of the \code{key} field. For \code{impute} in \code{encoding}, the key field is the x-field if the y-field is imputed, or vice versa.
+If provided, this will be used in addition to the key values observed within the input data. If not provided, the values will be derived from all unique values of the \code{key} field. For \code{impute} in \code{encoding}, the key field is the x-field if the y-field is imputed, or vice versa.
 
 If there is no impute grouping, this property \emph{must} be specified.}
 
 \item{method}{(\emph{ImputeTransform}) The imputation method to use for the field value of imputed data objects.
-One of \code{value}, \code{mean}, \code{median}, \code{max} or \code{min}.
+One of \code{"value"}, \code{"mean"}, \code{"median"}, \code{"max"} or \code{"min"}.
 
 \strong{Default value:}  \code{"value"}}
 

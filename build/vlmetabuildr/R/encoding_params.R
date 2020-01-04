@@ -5,7 +5,7 @@ create_encoding_param_functions <- function(schema) {
     create_function_group_for_encode_param("#/definitions/Axis", "axis", schema),
     create_function_group_for_encode_param("#/definitions/Scale", "scale", schema),
     create_function_group_for_encode_param("#/definitions/Legend", "legend", schema),
-    create_function_group_for_encode_param("#/definitions/ConditionOnlyDef<MarkPropFieldDef>/properties/condition","condition",schema),    
+    create_function_group_for_encode_param("#/definitions/ConditionalMarkPropFieldDef","condition",schema),    
     create_stack_encoding_functions(schema),
     create_aggregate_encoding_functions(schema),
     create_sort_encoding_functions(schema),
@@ -225,5 +225,13 @@ create_sort_encoding_functions <- function(schema) {
   c(group_docs,
     purrr::map_chr(get_enc_with_prop(schema,'sort'), maker_func)
   )
+  
+}
+
+create_condition_encoding_function <- function(schema, enc) {
+  
+  objs <- props2(VL_SCHEMA, list("$ref" = glue("#/definitions/Encoding/properties/{enc}")))
+  refs  <- paste0("#/definitions/",names(objs)[purrr::map_lgl(objs, ~hasName(.,"condition"))], "/properties/condition")
+  
   
 }

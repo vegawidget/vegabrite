@@ -11,22 +11,21 @@ vl_add_config(spec, area = NULL, autosize = NULL, axis = NULL,
   concat = NULL, countTitle = NULL, errorband = NULL,
   errorbar = NULL, facet = NULL, fieldTitle = NULL,
   geoshape = NULL, header = NULL, headerColumn = NULL,
-  headerFacet = NULL, headerRow = NULL, invalidValues = NULL,
+  headerFacet = NULL, headerRow = NULL, image = NULL,
   legend = NULL, line = NULL, mark = NULL, numberFormat = NULL,
   padding = NULL, point = NULL, projection = NULL, range = NULL,
   rect = NULL, `repeat` = NULL, rule = NULL, scale = NULL,
-  selection = NULL, square = NULL, stack = NULL, style = NULL,
-  text = NULL, tick = NULL, timeFormat = NULL, title = NULL,
-  trail = NULL, view = NULL)
+  selection = NULL, square = NULL, style = NULL, text = NULL,
+  tick = NULL, timeFormat = NULL, title = NULL, trail = NULL,
+  view = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
 \item{area}{(\emph{Config}) Area-Specific Config}
 
-\item{autosize}{(\emph{Config}) Sets how the visualization size should be determined. If a string, should be one of \code{"pad"}, \code{"fit"} or \code{"none"}.
+\item{autosize}{(\emph{Config}) How the visualization size should be determined. If a string, should be one of \code{"pad"}, \code{"fit"} or \code{"none"}.
 Object values can additionally specify parameters for content sizing and automatic resizing.
-\code{"fit"} is only supported for single and layered views that don't use \code{rangeStep}.
 
 \strong{Default value}: \code{pad}}
 
@@ -46,9 +45,9 @@ Object values can additionally specify parameters for content sizing and automat
 
 \item{axisY}{(\emph{Config}) Y-axis specific config.}
 
-\item{background}{(\emph{Config}) CSS color property to use as the background of the whole Vega-Lite view
+\item{background}{(\emph{Config}) CSS color property to use as the background of the entire view.
 
-\strong{Default value:} none (transparent)}
+\strong{Default value:} \code{"white"}}
 
 \item{bar}{(\emph{Config}) Bar-Specific Config}
 
@@ -68,7 +67,7 @@ Object values can additionally specify parameters for content sizing and automat
 
 \item{facet}{(\emph{Config}) Default configuration for the \code{facet} view composition operator}
 
-\item{fieldTitle}{(\emph{Config}) Defines how Vega-Lite generates title for fields.  There are three possible styles:
+\item{fieldTitle}{(\emph{Config}) Defines how Vega-Lite generates title for fields. There are three possible styles:
 \itemize{
 \item \code{"verbal"} (Default) - displays function in a verbal style (e.g., "Sum of field", "Year-month of date", "field (binned)").
 \item \code{"function"} - displays function using parentheses and capitalized texts (e.g., "SUM(field)", "YEARMONTH(date)", "BIN(field)").
@@ -93,11 +92,7 @@ For a full list of header configuration options, please see the \href{https://ve
 
 For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
 
-\item{invalidValues}{(\emph{Config}) Defines how Vega-Lite should handle invalid values (\code{null} and \code{NaN}).
-\itemize{
-\item If set to \code{"filter"} (default), all data items with null values will be skipped (for line, trail, and area marks) or filtered (for other marks).
-\item If \code{null}, all data items are included. In this case, invalid values will be interpreted as zeroes.
-}}
+\item{image}{(\emph{Config}) Image-specific Config}
 
 \item{legend}{(\emph{Config}) Legend configuration, which determines default properties for all \href{https://vega.github.io/vega-lite/docs/legend.html}{legends}. For a full list of legend configuration options, please see the \href{https://vega.github.io/vega-lite/docs/legend.html#config}{corresponding section of in the legend documentation}.}
 
@@ -107,7 +102,7 @@ For a full list of header configuration options, please see the \href{https://ve
 
 \item{numberFormat}{(\emph{Config}) D3 Number format for guide labels and text marks. For example "s" for SI units. Use \href{https://github.com/d3/d3-format#locale_format}{D3's number format pattern}.}
 
-\item{padding}{(\emph{Config}) The default visualization padding, in pixels, from the edge of the visualization canvas to the data rectangle.  If a number, specifies padding for all sides.
+\item{padding}{(\emph{Config}) The default visualization padding, in pixels, from the edge of the visualization canvas to the data rectangle. If a number, specifies padding for all sides.
 If an object, the value should have the format \code{{"left": 5, "top": 5, "right": 5, "bottom": 5}} to specify padding for each side of the visualization.
 
 \strong{Default value}: \code{5}}
@@ -131,9 +126,7 @@ For a full list of scale range configuration options, please see the \href{https
 
 \item{square}{(\emph{Config}) Square-Specific Config}
 
-\item{stack}{(\emph{Config}) Default stack offset for stackable mark.}
-
-\item{style}{(\emph{Config}) An object hash that defines key-value mappings to determine default properties for marks with a given \href{https://vega.github.io/vega-lite/docs/mark.html#mark-def}{style}.  The keys represent styles names; the values have to be valid \href{https://vega.github.io/vega-lite/docs/mark.html#config}{mark configuration objects}.}
+\item{style}{(\emph{Config}) An object hash that defines key-value mappings to determine default properties for marks with a given \href{https://vega.github.io/vega-lite/docs/mark.html#mark-def}{style}. The keys represent styles names; the values have to be valid \href{https://vega.github.io/vega-lite/docs/mark.html#config}{mark configuration objects}.}
 
 \item{text}{(\emph{Config}) Text-Specific Config}
 

@@ -1,12 +1,24 @@
 create_facet_type <- function(schema, type) {
-  
+
   make_function( glue("#/definitions/FacetFieldDef"), 
                  schema, 
                  glue("facet_{type}"), 
                  glue(".add_facet_{type}"), 
+                 priority_args = c("field","type"),
                  description = glue::glue("Add faceting by {type} to a vega-lite spec.")
   )
   
+}
+
+create_facet_encoding <- function(schema, type) {
+  make_function( glue("#/definitions/FacetEncodingFieldDef"), 
+                 schema, 
+                 glue("encode_{type}"), 
+                 glue(".add_encoding"), 
+                 priority_args = c("field","type"),
+                 pass_to_adder = list(encoding = type),
+                 description = glue::glue("Add faceting by {type} to a vega-lite spec.")
+  )
 }
 
 
@@ -54,6 +66,9 @@ create_facet_functions <- function(schema){
   c(
     create_facet_type(schema, "row"),
     create_facet_type(schema, "column"),
+    create_facet_encoding(schema, "row"),
+    create_facet_encoding(schema, "column"),
+    create_facet_encoding(schema, "wrap"),
     create_facet_wrap(schema)
   )
 }

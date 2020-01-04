@@ -4,28 +4,50 @@
 \alias{vl_make_BaseMarkConfig}
 \title{vl_make_BaseMarkConfig}
 \usage{
-vl_make_BaseMarkConfig(align = NULL, angle = NULL, baseline = NULL,
-  cornerRadius = NULL, cursor = NULL, dir = NULL, dx = NULL,
-  dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL,
-  font = NULL, fontSize = NULL, fontStyle = NULL,
-  fontWeight = NULL, href = NULL, interpolate = NULL, limit = NULL,
-  opacity = NULL, orient = NULL, radius = NULL, shape = NULL,
-  size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL,
+vl_make_BaseMarkConfig(align = NULL, angle = NULL, aspect = NULL,
+  baseline = NULL, cornerRadius = NULL,
+  cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL,
+  cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL,
+  cursor = NULL, dir = NULL, dx = NULL, dy = NULL,
+  ellipsis = NULL, fill = NULL, fillOpacity = NULL, font = NULL,
+  fontSize = NULL, fontStyle = NULL, fontWeight = NULL,
+  height = NULL, href = NULL, interpolate = NULL, limit = NULL,
+  lineBreak = NULL, lineHeight = NULL, opacity = NULL,
+  orient = NULL, radius = NULL, shape = NULL, size = NULL,
+  stroke = NULL, strokeCap = NULL, strokeDash = NULL,
   strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
   tension = NULL, text = NULL, theta = NULL, tooltip = NULL,
-  x = NULL, x2 = NULL, y = NULL, y2 = NULL)
+  width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL)
 }
 \arguments{
-\item{align}{(\emph{BaseMarkConfig}) The horizontal alignment of the text. One of \code{"left"}, \code{"right"}, \code{"center"}.}
+\item{align}{(\emph{BaseMarkConfig}) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of \code{"left"}, \code{"right"}, \code{"center"}.}
 
 \item{angle}{(\emph{BaseMarkConfig}) The rotation angle of the text, in degrees.}
 
-\item{baseline}{(\emph{BaseMarkConfig}) The vertical alignment of the text. One of \code{"top"}, \code{"middle"}, \code{"bottom"}.
+\item{aspect}{(\emph{BaseMarkConfig}) Whether to keep aspect ratio of image marks.}
+
+\item{baseline}{(\emph{BaseMarkConfig}) The vertical alignment of the text or ranged marks (area, bar, image, rect, rule). One of \code{"top"}, \code{"middle"}, \code{"bottom"}.
 
 \strong{Default value:} \code{"middle"}}
 
 \item{cornerRadius}{(\emph{BaseMarkConfig}) The radius in pixels of rounded rectangle corners.
+
+\strong{Default value:} \code{0}}
+
+\item{cornerRadiusBottomLeft}{(\emph{BaseMarkConfig}) The radius in pixels of rounded rectangle bottom left corner.
+
+\strong{Default value:} \code{0}}
+
+\item{cornerRadiusBottomRight}{(\emph{BaseMarkConfig}) The radius in pixels of rounded rectangle bottom right corner.
+
+\strong{Default value:} \code{0}}
+
+\item{cornerRadiusTopLeft}{(\emph{BaseMarkConfig}) The radius in pixels of rounded rectangle top right corner.
+
+\strong{Default value:} \code{0}}
+
+\item{cornerRadiusTopRight}{(\emph{BaseMarkConfig}) The radius in pixels of rounded rectangle top left corner.
 
 \strong{Default value:} \code{0}}
 
@@ -43,7 +65,7 @@ vl_make_BaseMarkConfig(align = NULL, angle = NULL, baseline = NULL,
 
 \strong{Default value:} \code{"…"}}
 
-\item{fill}{(\emph{BaseMarkConfig}) Default Fill Color.  This has higher precedence than \code{config.color}
+\item{fill}{(\emph{BaseMarkConfig}) Default Fill Color. This has higher precedence than \code{config.color}.
 
 \strong{Default value:} (None)}
 
@@ -59,6 +81,8 @@ vl_make_BaseMarkConfig(align = NULL, angle = NULL, baseline = NULL,
 
 \item{fontWeight}{(\emph{BaseMarkConfig}) The font weight.
 This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
+
+\item{height}{(\emph{BaseMarkConfig}) Height of the marks.}
 
 \item{href}{(\emph{BaseMarkConfig}) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.}
 
@@ -82,6 +106,10 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item{limit}{(\emph{BaseMarkConfig}) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
 
 \strong{Default value:} \code{0}, indicating no limit}
+
+\item{lineBreak}{(\emph{BaseMarkConfig}) A delimiter, such as a newline character, upon which to break text strings into multiple lines. This property will be ignored if the text property is array-valued.}
+
+\item{lineHeight}{(\emph{BaseMarkConfig}) The height, in pixels, of each line of text in a multi-line text mark.}
 
 \item{opacity}{(\emph{BaseMarkConfig}) The overall opacity (value between [0,1]).
 
@@ -116,7 +144,7 @@ For example: in the case of circles, the radius is determined in part by the squ
 
 \strong{Default value:} \code{30}}
 
-\item{stroke}{(\emph{BaseMarkConfig}) Default Stroke Color.  This has higher precedence than \code{config.color}
+\item{stroke}{(\emph{BaseMarkConfig}) Default Stroke Color. This has higher precedence than \code{config.color}.
 
 \strong{Default value:} (None)}
 
@@ -148,13 +176,23 @@ For example: in the case of circles, the radius is determined in part by the squ
 
 \item{tooltip}{(\emph{BaseMarkConfig}) The tooltip text to show upon mouse hover.}
 
-\item{x}{(\emph{BaseMarkConfig}) X coordinates of the marks, or width of horizontal \code{"bar"} and \code{"area"} without \code{x2}.}
+\item{width}{(\emph{BaseMarkConfig}) Width of the marks.}
 
-\item{x2}{(\emph{BaseMarkConfig}) X2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.}
+\item{x}{(\emph{BaseMarkConfig}) X coordinates of the marks, or width of horizontal \code{"bar"} and \code{"area"} without specified \code{x2} or \code{width}.
 
-\item{y}{(\emph{BaseMarkConfig}) Y coordinates of the marks, or height of vertical \code{"bar"} and \code{"area"} without \code{y2}}
+The \code{value} of this channel can be a number or a string \code{"width"} for the width of the plot.}
 
-\item{y2}{(\emph{BaseMarkConfig}) Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.}
+\item{x2}{(\emph{BaseMarkConfig}) X2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.
+
+The \code{value} of this channel can be a number or a string \code{"width"} for the width of the plot.}
+
+\item{y}{(\emph{BaseMarkConfig}) Y coordinates of the marks, or height of vertical \code{"bar"} and \code{"area"} without specified \code{y2} or \code{height}.
+
+The \code{value} of this channel can be a number or a string \code{"height"} for the height of the plot.}
+
+\item{y2}{(\emph{BaseMarkConfig}) Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.
+
+The \code{value} of this channel can be a number or a string \code{"height"} for the height of the plot.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a BaseMarkConfig.

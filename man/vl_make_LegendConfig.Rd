@@ -18,17 +18,19 @@ vl_make_LegendConfig(clipHeight = NULL, columnPadding = NULL,
   labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL,
   labelPadding = NULL, labelSeparation = NULL, layout = NULL,
   legendX = NULL, legendY = NULL, offset = NULL, orient = NULL,
-  padding = NULL, rowPadding = NULL, shortTimeLabels = NULL,
-  strokeColor = NULL, strokeDash = NULL, strokeWidth = NULL,
-  symbolBaseFillColor = NULL, symbolBaseStrokeColor = NULL,
-  symbolDash = NULL, symbolDashOffset = NULL, symbolDirection = NULL,
-  symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL,
-  symbolSize = NULL, symbolStrokeColor = NULL,
-  symbolStrokeWidth = NULL, symbolType = NULL, title = NULL,
-  titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL,
-  titleColor = NULL, titleFont = NULL, titleFontSize = NULL,
-  titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL,
-  titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL)
+  padding = NULL, rowPadding = NULL, strokeColor = NULL,
+  strokeDash = NULL, strokeWidth = NULL, symbolBaseFillColor = NULL,
+  symbolBaseStrokeColor = NULL, symbolDash = NULL,
+  symbolDashOffset = NULL, symbolDirection = NULL,
+  symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL,
+  symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL,
+  symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL,
+  title = NULL, titleAlign = NULL, titleAnchor = NULL,
+  titleBaseline = NULL, titleColor = NULL, titleFont = NULL,
+  titleFontSize = NULL, titleFontStyle = NULL,
+  titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL,
+  titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
+  unselectedOpacity = NULL)
 }
 \arguments{
 \item{clipHeight}{(\emph{LegendConfig}) The height in pixels to clip symbol legend entries and limit their size.}
@@ -109,7 +111,7 @@ vl_make_LegendConfig(clipHeight = NULL, columnPadding = NULL,
 
 \item{labelFontWeight}{(\emph{LegendConfig}) The font weight of legend label.}
 
-\item{labelLimit}{(\emph{LegendConfig}) Maximum allowed pixel width of axis tick labels.
+\item{labelLimit}{(\emph{LegendConfig}) Maximum allowed pixel width of legend tick labels.
 
 \strong{Default value:} \code{160}.}
 
@@ -119,8 +121,7 @@ vl_make_LegendConfig(clipHeight = NULL, columnPadding = NULL,
 
 \item{labelOverlap}{(\emph{LegendConfig}) The strategy to use for resolving overlap of labels in gradient legends. If \code{false}, no overlap reduction is attempted. If set to \code{true} or \code{"parity"}, a strategy of removing every other label is used. If set to \code{"greedy"}, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
 
-\strong{Default value:} \code{"greedy"} for \code{log scales otherwise }true`.
-*}
+\strong{Default value:} \code{"greedy"} for \code{log scales otherwise }true`.}
 
 \item{labelPadding}{(\emph{LegendConfig}) Padding in pixels between the legend and legend labels.}
 
@@ -148,10 +149,6 @@ vl_make_LegendConfig(clipHeight = NULL, columnPadding = NULL,
 
 \strong{Default value:} \code{2}.}
 
-\item{shortTimeLabels}{(\emph{LegendConfig}) Whether month names and weekday names should be abbreviated.
-
-\strong{Default value:}  \code{false}}
-
 \item{strokeColor}{(\emph{LegendConfig}) Border stroke color for the full legend.}
 
 \item{strokeDash}{(\emph{LegendConfig}) Border stroke dash pattern for the full legend.}
@@ -176,6 +173,8 @@ vl_make_LegendConfig(clipHeight = NULL, columnPadding = NULL,
 
 \item{symbolFillColor}{(\emph{LegendConfig}) The color of the legend symbol,}
 
+\item{symbolLimit}{(\emph{LegendConfig}) The maximum number of allowed entries for a symbol legend. Additional entries will be dropped.}
+
 \item{symbolOffset}{(\emph{LegendConfig}) Horizontal pixel offset for legend symbols.
 
 \strong{Default value:} \code{0}.}
@@ -192,14 +191,11 @@ vl_make_LegendConfig(clipHeight = NULL, columnPadding = NULL,
 
 \strong{Default value:} \code{1.5}.}
 
-\item{symbolType}{(\emph{LegendConfig}) Default shape type (such as "circle") for legend symbols.
-Can be one of ``"circle"\code{, }"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
-\itemize{
-\item In addition to a set of built-in shapes, custom shapes can be defined using \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path strings}.
-\item 
-\item \strong{Default value:} \code{"circle"}.
-\item 
-}}
+\item{symbolType}{(\emph{LegendConfig}) The symbol shape. One of the plotting shapes \code{circle} (default), \code{square}, \code{cross}, \code{diamond}, \code{triangle-up}, \code{triangle-down}, \code{triangle-right}, or \code{triangle-left}, the line symbol \code{stroke}, or one of the centered directional shapes \code{arrow}, \code{wedge}, or \code{triangle}. Alternatively, a custom \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path string} can be provided. For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.
+
+\strong{Default value:} \code{"circle"}.}
+
+\item{tickCount}{(\emph{LegendConfig}) The desired number of tick values for quantitative legends.}
 
 \item{title}{(\emph{LegendConfig}) Set to null to disable title for the axis, legend, or header.}
 
@@ -224,9 +220,11 @@ Can be one of ``"circle"\code{, }"square"`, `"cross"`, `"diamond"`, `"triangle-u
 \item{titleFontWeight}{(\emph{LegendConfig}) The font weight of the legend title.
 This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
 
-\item{titleLimit}{(\emph{LegendConfig}) Maximum allowed pixel width of axis titles.
+\item{titleLimit}{(\emph{LegendConfig}) Maximum allowed pixel width of legend titles.
 
 \strong{Default value:} \code{180}.}
+
+\item{titleLineHeight}{(\emph{LegendConfig}) Line height in pixels for multi-line title text.}
 
 \item{titleOpacity}{(\emph{LegendConfig}) Opacity of the legend title.}
 
@@ -235,6 +233,10 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item{titlePadding}{(\emph{LegendConfig}) The padding, in pixels, between title and legend.
 
 \strong{Default value:} \code{5}.}
+
+\item{unselectedOpacity}{(\emph{LegendConfig}) The opacity of unselected legend entries.
+
+\strong{Default value:} 0.35.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a LegendConfig.

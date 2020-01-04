@@ -15,15 +15,15 @@ vl_make_AxisConfig(bandPosition = NULL, domain = NULL,
   labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL,
   labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL,
   labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL,
-  shortTimeLabels = NULL, tickColor = NULL, tickDash = NULL,
+  tickBand = NULL, tickColor = NULL, tickDash = NULL,
   tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL,
   tickOpacity = NULL, tickRound = NULL, tickSize = NULL,
   tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL,
   titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL,
   titleColor = NULL, titleFont = NULL, titleFontSize = NULL,
   titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL,
-  titleOpacity = NULL, titlePadding = NULL, titleX = NULL,
-  titleY = NULL)
+  titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL,
+  titleX = NULL, titleY = NULL, translate = NULL)
 }
 \arguments{
 \item{bandPosition}{(\emph{AxisConfig}) An interpolation fraction indicating where, for \code{band} scales, axis ticks should be positioned. A value of \code{0} places ticks at the left edge of their bands. A value of \code{0.5} places ticks in the middle of their bands.
@@ -52,35 +52,29 @@ vl_make_AxisConfig(bandPosition = NULL, domain = NULL,
 
 \strong{Default value:} \code{true} for \href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{continuous scales} that are not binned; otherwise, \code{false}.}
 
-\item{gridColor}{(\emph{AxisConfig}) Color of gridlines.
+\item{gridColor}{(\emph{AxisConfig})}
 
-\strong{Default value:} \code{"lightGray"}.}
+\item{gridDash}{(\emph{AxisConfig})}
 
-\item{gridDash}{(\emph{AxisConfig}) An array of alternating [stroke, space] lengths for dashed grid lines.}
+\item{gridDashOffset}{(\emph{AxisConfig})}
 
-\item{gridDashOffset}{(\emph{AxisConfig}) The pixel offset at which to start drawing with the grid dash array.}
+\item{gridOpacity}{(\emph{AxisConfig})}
 
-\item{gridOpacity}{(\emph{AxisConfig}) The stroke opacity of grid (value between [0,1])
+\item{gridWidth}{(\emph{AxisConfig})}
 
-\strong{Default value:} \code{1}}
-
-\item{gridWidth}{(\emph{AxisConfig}) The grid width, in pixels.
-
-\strong{Default value:} \code{1}}
-
-\item{labelAlign}{(\emph{AxisConfig}) Horizontal text alignment of axis tick labels, overriding the default setting for the current axis orientation.}
+\item{labelAlign}{(\emph{AxisConfig})}
 
 \item{labelAngle}{(\emph{AxisConfig}) The rotation angle of the axis labels.
 
 \strong{Default value:} \code{-90} for nominal and ordinal fields; \code{0} otherwise.}
 
-\item{labelBaseline}{(\emph{AxisConfig}) Vertical text baseline of axis tick labels, overriding the default setting for the current axis orientation. Can be \code{"top"}, \code{"middle"}, \code{"bottom"}, or \code{"alphabetic"}.}
+\item{labelBaseline}{(\emph{AxisConfig})}
 
 \item{labelBound}{(\emph{AxisConfig}) Indicates if labels should be hidden if they exceed the axis range. If \code{false} (the default) no bounds overlap analysis is performed. If \code{true}, labels will be hidden if they exceed the axis range by more than 1 pixel. If this property is a number, it specifies the pixel tolerance: the maximum amount by which a label bounding box may exceed the axis range.
 
 \strong{Default value:} \code{false}.}
 
-\item{labelColor}{(\emph{AxisConfig}) The color of the tick label, can be in hex color code or regular color name.}
+\item{labelColor}{(\emph{AxisConfig})}
 
 \item{labelFlush}{(\emph{AxisConfig}) Indicates if the first and last axis labels should be aligned flush with the scale range. Flush alignment for a horizontal axis will left-align the first label and right-align the last label. For vertical axes, bottom and top text baselines are applied instead. If this property is a number, it also indicates the number of pixels by which to offset the first and last labels; for example, a value of 2 will flush-align the first and last labels and also push them 2 pixels outward from the center of the axis. The additional adjustment can sometimes help the labels better visually group with corresponding axis ticks.
 
@@ -90,19 +84,19 @@ vl_make_AxisConfig(bandPosition = NULL, domain = NULL,
 
 \strong{Default value:} \code{0}.}
 
-\item{labelFont}{(\emph{AxisConfig}) The font of the tick label.}
+\item{labelFont}{(\emph{AxisConfig})}
 
-\item{labelFontSize}{(\emph{AxisConfig}) The font size of the label, in pixels.}
+\item{labelFontSize}{(\emph{AxisConfig})}
 
-\item{labelFontStyle}{(\emph{AxisConfig}) Font style of the title.}
+\item{labelFontStyle}{(\emph{AxisConfig})}
 
-\item{labelFontWeight}{(\emph{AxisConfig}) Font weight of axis tick labels.}
+\item{labelFontWeight}{(\emph{AxisConfig})}
 
 \item{labelLimit}{(\emph{AxisConfig}) Maximum allowed pixel width of axis tick labels.
 
 \strong{Default value:} \code{180}}
 
-\item{labelOpacity}{(\emph{AxisConfig}) The opacity of the labels.}
+\item{labelOpacity}{(\emph{AxisConfig})}
 
 \item{labelOverlap}{(\emph{AxisConfig}) The strategy to use for resolving overlap of axis labels. If \code{false} (the default), no overlap reduction is attempted. If set to \code{true} or \code{"parity"}, a strategy of removing every other label is used (this works well for standard linear axes). If set to \code{"greedy"}, a linear scan of the labels is performed, removing any labels that overlaps with the last visible label (this often works better for log-scaled axes).
 
@@ -130,23 +124,19 @@ vl_make_AxisConfig(bandPosition = NULL, domain = NULL,
 
 \strong{Default value:} \code{"bottom"} for x-axes and \code{"left"} for y-axes.}
 
-\item{shortTimeLabels}{(\emph{AxisConfig}) Whether month names and weekday names should be abbreviated.
+\item{tickBand}{(\emph{AxisConfig}) For band scales, indicates if ticks and grid lines should be placed at the center of a band (default) or at the band extents to indicate intervals.}
 
-\strong{Default value:}  \code{false}}
+\item{tickColor}{(\emph{AxisConfig})}
 
-\item{tickColor}{(\emph{AxisConfig}) The color of the axis's tick.
+\item{tickDash}{(\emph{AxisConfig})}
 
-\strong{Default value:} \code{"gray"}}
-
-\item{tickDash}{(\emph{AxisConfig}) An array of alternating [stroke, space] lengths for dashed tick mark lines.}
-
-\item{tickDashOffset}{(\emph{AxisConfig}) The pixel offset at which to start drawing with the tick mark dash array.}
+\item{tickDashOffset}{(\emph{AxisConfig})}
 
 \item{tickExtra}{(\emph{AxisConfig}) Boolean flag indicating if an extra axis tick should be added for the initial position of the axis. This flag is useful for styling axes for \code{band} scales such that ticks are placed on band boundaries rather in the middle of a band. Use in conjunction with \code{"bandPosition": 1} and an axis \code{"padding"} value of \code{0}.}
 
 \item{tickOffset}{(\emph{AxisConfig}) Position offset in pixels to apply to ticks, labels, and gridlines.}
 
-\item{tickOpacity}{(\emph{AxisConfig}) Opacity of the ticks.}
+\item{tickOpacity}{(\emph{AxisConfig})}
 
 \item{tickRound}{(\emph{AxisConfig}) Boolean flag indicating if pixel position values should be rounded to the nearest integer.
 
@@ -156,9 +146,7 @@ vl_make_AxisConfig(bandPosition = NULL, domain = NULL,
 
 \strong{Default value:} \code{5}}
 
-\item{tickWidth}{(\emph{AxisConfig}) The width, in pixels, of ticks.
-
-\strong{Default value:} \code{1}}
+\item{tickWidth}{(\emph{AxisConfig})}
 
 \item{ticks}{(\emph{AxisConfig}) Boolean value that determines whether the axis should include ticks.
 
@@ -187,6 +175,8 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 
 \item{titleLimit}{(\emph{AxisConfig}) Maximum allowed pixel width of axis titles.}
 
+\item{titleLineHeight}{(\emph{AxisConfig}) Line height in pixels for multi-line title text.}
+
 \item{titleOpacity}{(\emph{AxisConfig}) Opacity of the axis title.}
 
 \item{titlePadding}{(\emph{AxisConfig}) The padding, in pixels, between title and axis.}
@@ -194,6 +184,8 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item{titleX}{(\emph{AxisConfig}) X-coordinate of the axis title relative to the axis group.}
 
 \item{titleY}{(\emph{AxisConfig}) Y-coordinate of the axis title relative to the axis group.}
+
+\item{translate}{(\emph{AxisConfig}) Translation offset in pixels applied to the axis group mark x and y. If specified, overrides the default behavior of a 0.5 offset to pixel-align stroked lines.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a AxisConfig.
