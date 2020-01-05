@@ -1,9 +1,32 @@
+
+create_resolve_functions <- function(schema) {
+  
+  resolve_doc <- make_option_group_doc(
+    "resolve",
+    "how",
+    unlist(enums("#/definitions/ResolveMode", schema)),
+    "Resolve axes, legends, or scales for composite charts",
+    paste(
+      "When faceting, layering, repeating, or concatenating a chart, one ",
+      "can choose whether axes, legends, or scales are shared or independent ",
+      "using the resolve specification"),
+    na_option = FALSE
+  )
+  
+  c(
+    resolve_doc,
+    create_resolve_axis_functions(schema),
+    create_resolve_legend_functions(schema),
+    create_resolve_scale_functions(schema)
+  )
+}
+
 create_resolve <- function(enc, type, schema) {
   
   make_option_function(
     "#/definitions/ResolveMode",
     "how",
-    unlist(enums(schema, list("$ref" = "#/definitions/ResolveMode"))),
+    unlist(enums("#/definitions/ResolveMode", schema)),
     glue("resolve_{type}_{enc}"),
     ".add_resolve",
     na_option = FALSE,
@@ -34,27 +57,3 @@ create_resolve_legend_functions <- function(schema){
   
 }
 
-#' @export
-create_resolve_functions <- function(schema) {
-  
-  resolve_doc <- make_option_group_doc(
-    "resolve",
-    "how",
-    unlist(enums(schema, list("$ref" = "#/definitions/ResolveMode"))),
-    "Resolve axes, legends, or scales for composite charts",
-    paste(
-      "When faceting, layering, repeating, or concatenating a chart, one ",
-      "can choose whether axes, legends, or scales are shared or independent ",
-      "using the resolve specification"),
-    na_option = FALSE
-  )
-  
-
-  
-  c(
-    resolve_doc,
-    create_resolve_axis_functions(schema),
-    create_resolve_legend_functions(schema),
-    create_resolve_scale_functions(schema)
-  )
-}

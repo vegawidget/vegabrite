@@ -43,7 +43,7 @@ get_description_plus <- function(x) {
 }
 
 get_params <- function(schema, ref, exclude = NULL) {
-  properties <- unlist(purrr::map(ref, ~props2(schema, list("$ref" = .))), 
+  properties <- unlist(purrr::map(ref, props_grouped_by_object, schema = schema), 
                        recursive = FALSE)
   
   param_names <- unique(names(unlist(unname(properties), recursive = FALSE)))
@@ -58,7 +58,7 @@ get_params <- function(schema, ref, exclude = NULL) {
 
 get_param_docs <- function(schema, ref, exclude = NULL) {
   
-  properties <- unlist(purrr::map(ref, ~props2(schema, list("$ref" = .))), 
+  properties <- unlist(purrr::map(ref, props_grouped_by_object, schema = schema), 
                        recursive = FALSE)
   
   param_names <- get_params(schema, ref, exclude)

@@ -1,3 +1,16 @@
+create_additional_objects <- function(schema) {
+  
+  objs <- c("BinParams",
+            "Axis",
+            "Scale",
+            "Legend",
+            "BindCheckbox",
+            "BindRange",
+            "BindRadioSelect")
+  
+  purrr::map_chr(objs, create_object, schema = schema)
+  
+}
 
 create_object <- function(obj, schema, reference = glue("#/definitions/{obj}")) {
   
@@ -24,18 +37,6 @@ create_object <- function(obj, schema, reference = glue("#/definitions/{obj}")) 
 }
 
 
-create_additional_objects <- function(schema) {
-  
-  objs <- c("BinParams",
-            "Axis",
-            "Scale",
-            "Legend",
-            "BindCheckbox",
-            "BindRange",
-            "BindRadioSelect")
-  
-  purrr::map_chr(objs, create_object, schema = schema)
-  
-}
+
 
 

@@ -1,3 +1,8 @@
+
+create_repeat_functions <- function(schema){
+  purrr::map_chr(c("row","col","wrap"), create_repeat, schema = schema)
+}
+
 create_repeat <- function(type, schema) {
   
   reference <- "#/definitions/RepeatSpec/properties/repeat"
@@ -27,11 +32,4 @@ create_repeat <- function(type, schema) {
   ## Make the outer function
   make_function_helper(suffix, docs, inner_fn, arg_list)
   
-}
-
-
-
-#' @export
-create_repeat_functions <- function(schema){
-  purrr::map_chr(c("row","col","wrap"), create_repeat, schema = schema)
 }

@@ -1,3 +1,12 @@
+create_mark_functions <- function(schema){
+  simple_mark_options = enums('#/definitions/Mark', schema)
+  comp_mark_options = enums('#/definitions/CompositeMark', schema)
+  c(
+    purrr::map_chr(simple_mark_options, create_mark, schema = schema),
+    purrr::map_chr(comp_mark_options, create_mark_composite, schema = schema)
+  )
+}
+
 create_mark <- function(mark, schema) {
 
   make_function( "#/definitions/MarkDef", 
@@ -27,11 +36,3 @@ create_mark_composite <- function(mark, schema) {
   
 }
 
-create_mark_functions <- function(schema){
-  simple_mark_options = enums(schema, list("$ref" = '#/definitions/Mark'))
-  comp_mark_options = enums(schema, list("$ref" = '#/definitions/CompositeMark'))
-  c(
-    purrr::map_chr(simple_mark_options, create_mark, schema = schema),
-    purrr::map_chr(comp_mark_options, create_mark_composite, schema = schema)
-  )
-}
