@@ -5,7 +5,7 @@ create_encoding_param_functions <- function(schema) {
     create_function_group_for_encode_param("#/definitions/Axis", "axis", schema),
     create_function_group_for_encode_param("#/definitions/Scale", "scale", schema),
     create_function_group_for_encode_param("#/definitions/Legend", "legend", schema),
-    create_function_group_for_encode_param("#/definitions/ConditionalMarkPropFieldDef","condition",schema),    
+    create_condition_encoding_functions(schema),    
     create_stack_encoding_functions(schema),
     create_aggregate_encoding_functions(schema),
     create_sort_encoding_functions(schema),
@@ -228,10 +228,36 @@ create_sort_encoding_functions <- function(schema) {
   
 }
 
-create_condition_encoding_function <- function(schema, enc) {
-  
+
+get_condition_references <- function(enc, schema) {
   objs <- props2(VL_SCHEMA, list("$ref" = glue("#/definitions/Encoding/properties/{enc}")))
   refs  <- paste0("#/definitions/",names(objs)[purrr::map_lgl(objs, ~hasName(.,"condition"))], "/properties/condition")
+  refs
+}
+
+create_condition_encoding_functions <- function(schema) {
+  
+  encs <- get_enc_with_prop(schema,'condition')
+  
+  refs <- purrr::map(encs, get_condition_references, schema = schema)
+  names(refs) <- encs
   
   
+  reference <- "#/definitions/EncodingSortField"
+  doc_group <- "condition_encoding"
+  
+  doc <-  make_group_doc(unique(unlist(refs, use.names = FALSE, recursive = TRUE)), schema, 
+                         doc_group = doc_group, 
+                         title = glue("Add conditioning to an encoding"), 
+                         description = "Add condition parameters to an encoding")
+  
+  c(doc, 
+    purrr::map_chr(encs, function(enc) {
+      make_function( refs[[enc]], 
+                     schema, 
+                     glue("condition_{enc}"), 
+                     glue(".add_condition_to_encoding"), 
+                     doc_group = doc_group,
+                     pass_to_adder = list(encoding = enc))
+    }))
 }

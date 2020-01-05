@@ -236,7 +236,7 @@ vl_add_properties <- function(spec, autosize = NULL, background = NULL, bounds =
   "resolve", "selection", "title", "transform", "usermeta", "view", "width", "align", 
   "center", "columns", "facet", "spacing", "spec", "layer", "repeat", "concat", 
   "vconcat", "hconcat"))
-  .add_properties(args$spec, args$object, '#/definitions/TopLevelSpec')
+  .add_properties(args$spec, args$object, "#/definitions/TopLevelSpec")
 } 
 #' vl_add_data
 #' 
@@ -256,7 +256,7 @@ vl_add_properties <- function(spec, autosize = NULL, background = NULL, bounds =
 
 vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = NULL, sequence = NULL, sphere = NULL, graticule = NULL){
   args <- .modify_args(NULL, c("format", "name", "url", "values", "sequence", "sphere", "graticule"))
-  .add_data(args$spec, args$object, '#/definitions/Data')
+  .add_data(args$spec, args$object, "#/definitions/Data")
 } 
 #' vl_mark_area
 #' 
@@ -460,7 +460,7 @@ vl_mark_area <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseli
   "text", "theta", "thickness", "timeUnitBand", "timeUnitBandPosition", "tooltip", 
   "type", "width", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"
   ))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+  .add_mark(args$spec, args$object, "#/definitions/MarkDef")
 } 
 #' vl_mark_bar
 #' 
@@ -664,7 +664,7 @@ vl_mark_bar <- function(spec, align = NULL, angle = NULL, aspect = NULL, baselin
   "text", "theta", "thickness", "timeUnitBand", "timeUnitBandPosition", "tooltip", 
   "type", "width", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"
   ))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+  .add_mark(args$spec, args$object, "#/definitions/MarkDef")
 } 
 #' vl_mark_line
 #' 
@@ -868,7 +868,7 @@ vl_mark_line <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseli
   "text", "theta", "thickness", "timeUnitBand", "timeUnitBandPosition", "tooltip", 
   "type", "width", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"
   ))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+  .add_mark(args$spec, args$object, "#/definitions/MarkDef")
 } 
 #' vl_mark_image
 #' 
@@ -1072,7 +1072,7 @@ vl_mark_image <- function(spec, align = NULL, angle = NULL, aspect = NULL, basel
   "text", "theta", "thickness", "timeUnitBand", "timeUnitBandPosition", "tooltip", 
   "type", "width", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"
   ))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+  .add_mark(args$spec, args$object, "#/definitions/MarkDef")
 } 
 #' vl_mark_trail
 #' 
@@ -1276,7 +1276,7 @@ vl_mark_trail <- function(spec, align = NULL, angle = NULL, aspect = NULL, basel
   "text", "theta", "thickness", "timeUnitBand", "timeUnitBandPosition", "tooltip", 
   "type", "width", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"
   ))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+  .add_mark(args$spec, args$object, "#/definitions/MarkDef")
 } 
 #' vl_mark_point
 #' 
@@ -1480,7 +1480,7 @@ vl_mark_point <- function(spec, align = NULL, angle = NULL, aspect = NULL, basel
   "text", "theta", "thickness", "timeUnitBand", "timeUnitBandPosition", "tooltip", 
   "type", "width", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"
   ))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+  .add_mark(args$spec, args$object, "#/definitions/MarkDef")
 } 
 #' vl_mark_text
 #' 
@@ -1684,7 +1684,7 @@ vl_mark_text <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseli
   "text", "theta", "thickness", "timeUnitBand", "timeUnitBandPosition", "tooltip", 
   "type", "width", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"
   ))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+  .add_mark(args$spec, args$object, "#/definitions/MarkDef")
 } 
 #' vl_mark_tick
 #' 
@@ -1888,7 +1888,7 @@ vl_mark_tick <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseli
   "text", "theta", "thickness", "timeUnitBand", "timeUnitBandPosition", "tooltip", 
   "type", "width", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"
   ))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+  .add_mark(args$spec, args$object, "#/definitions/MarkDef")
 } 
 #' vl_mark_rect
 #' 
@@ -2092,7 +2092,7 @@ vl_mark_rect <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseli
   "text", "theta", "thickness", "timeUnitBand", "timeUnitBandPosition", "tooltip", 
   "type", "width", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"
   ))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+  .add_mark(args$spec, args$object, "#/definitions/MarkDef")
 } 
 #' vl_mark_rule
 #' 
@@ -2296,7 +2296,7 @@ vl_mark_rule <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseli
   "text", "theta", "thickness", "timeUnitBand", "timeUnitBandPosition", "tooltip", 
   "type", "width", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"
   ))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+  .add_mark(args$spec, args$object, "#/definitions/MarkDef")
 } 
 #' vl_mark_circle
 #' 
@@ -2500,7 +2500,7 @@ vl_mark_circle <- function(spec, align = NULL, angle = NULL, aspect = NULL, base
   "text", "theta", "thickness", "timeUnitBand", "timeUnitBandPosition", "tooltip", 
   "type", "width", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"
   ))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+  .add_mark(args$spec, args$object, "#/definitions/MarkDef")
 } 
 #' vl_mark_square
 #' 
@@ -2704,7 +2704,7 @@ vl_mark_square <- function(spec, align = NULL, angle = NULL, aspect = NULL, base
   "text", "theta", "thickness", "timeUnitBand", "timeUnitBandPosition", "tooltip", 
   "type", "width", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"
   ))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+  .add_mark(args$spec, args$object, "#/definitions/MarkDef")
 } 
 #' vl_mark_geoshape
 #' 
@@ -2908,7 +2908,7 @@ vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, aspect = NULL, ba
   "text", "theta", "thickness", "timeUnitBand", "timeUnitBandPosition", "tooltip", 
   "type", "width", "x", "x2", "x2Offset", "xOffset", "y", "y2", "y2Offset", "yOffset"
   ))
-  .add_mark(args$spec, args$object, '#/definitions/MarkDef')
+  .add_mark(args$spec, args$object, "#/definitions/MarkDef")
 } 
 #' vl_mark_boxplot
 #' 
@@ -2943,7 +2943,7 @@ vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, aspect = NULL, ba
 vl_mark_boxplot <- function(spec, box = NULL, clip = NULL, color = NULL, extent = NULL, median = NULL, opacity = NULL, orient = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL){
   args <- .modify_args(structure(list(type = "boxplot"), .Names = "type"), c("box", "clip", "color", "extent", "median", "opacity", "orient", "outliers", 
   "rule", "size", "ticks", "type"))
-  .add_mark(args$spec, args$object, '#/definitions/BoxPlotDef')
+  .add_mark(args$spec, args$object, structure("#/definitions/BoxPlotDef", class = c("glue", "character")))
 } 
 #' vl_mark_errorbar
 #' 
@@ -2973,7 +2973,7 @@ vl_mark_boxplot <- function(spec, box = NULL, clip = NULL, color = NULL, extent 
 
 vl_mark_errorbar <- function(spec, clip = NULL, color = NULL, extent = NULL, opacity = NULL, orient = NULL, rule = NULL, ticks = NULL){
   args <- .modify_args(structure(list(type = "errorbar"), .Names = "type"), c("clip", "color", "extent", "opacity", "orient", "rule", "ticks", "type"))
-  .add_mark(args$spec, args$object, '#/definitions/ErrorBarDef')
+  .add_mark(args$spec, args$object, structure("#/definitions/ErrorBarDef", class = c("glue", "character")))
 } 
 #' vl_mark_errorband
 #' 
@@ -3019,7 +3019,7 @@ vl_mark_errorbar <- function(spec, clip = NULL, color = NULL, extent = NULL, opa
 vl_mark_errorband <- function(spec, band = NULL, borders = NULL, clip = NULL, color = NULL, extent = NULL, interpolate = NULL, opacity = NULL, orient = NULL, tension = NULL){
   args <- .modify_args(structure(list(type = "errorband"), .Names = "type"), c("band", "borders", "clip", "color", "extent", "interpolate", "opacity", "orient", 
   "tension", "type"))
-  .add_mark(args$spec, args$object, '#/definitions/ErrorBandDef')
+  .add_mark(args$spec, args$object, structure("#/definitions/ErrorBandDef", class = c("glue", "character")))
 } 
 #' vl_encode_color
 #' 
@@ -3121,7 +3121,8 @@ vl_mark_errorband <- function(spec, band = NULL, borders = NULL, clip = NULL, co
 vl_encode_color <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/color' , encoding = "color")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/color", class = c("glue", "character"
+  )) , encoding = "color")
 } 
 #' vl_encode_detail
 #' 
@@ -3186,7 +3187,8 @@ vl_encode_color <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 
 vl_encode_detail <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/detail' , encoding = "detail")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/detail", class = c("glue", "character"
+  )) , encoding = "detail")
 } 
 #' vl_encode_fill
 #' 
@@ -3288,7 +3290,8 @@ vl_encode_detail <- function(spec, field = NULL, type = NULL, aggregate = NULL, 
 vl_encode_fill <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/fill' , encoding = "fill")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/fill", class = c("glue", "character"
+  )) , encoding = "fill")
 } 
 #' vl_encode_fillOpacity
 #' 
@@ -3390,7 +3393,8 @@ vl_encode_fill <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/fillOpacity' , encoding = "fillOpacity")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/fillOpacity", class = c("glue", 
+  "character")) , encoding = "fillOpacity")
 } 
 #' vl_encode_href
 #' 
@@ -3479,7 +3483,8 @@ vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = N
 vl_encode_href <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "labelExpr", 
   "timeUnit", "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/href' , encoding = "href")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/href", class = c("glue", "character"
+  )) , encoding = "href")
 } 
 #' vl_encode_key
 #' 
@@ -3544,7 +3549,8 @@ vl_encode_href <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 
 vl_encode_key <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/key' , encoding = "key")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/key", class = c("glue", "character"
+  )) , encoding = "key")
 } 
 #' vl_encode_latitude
 #' 
@@ -3610,7 +3616,8 @@ vl_encode_key <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin
 
 vl_encode_latitude <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/latitude' , encoding = "latitude")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/latitude", class = c("glue", "character"
+  )) , encoding = "latitude")
 } 
 #' vl_encode_latitude2
 #' 
@@ -3662,7 +3669,8 @@ vl_encode_latitude <- function(spec, field = NULL, type = NULL, aggregate = NULL
 
 vl_encode_latitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/latitude2' , encoding = "latitude2")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/latitude2", class = c("glue", "character"
+  )) , encoding = "latitude2")
 } 
 #' vl_encode_longitude
 #' 
@@ -3728,7 +3736,8 @@ vl_encode_latitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL
 
 vl_encode_longitude <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/longitude' , encoding = "longitude")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/longitude", class = c("glue", "character"
+  )) , encoding = "longitude")
 } 
 #' vl_encode_longitude2
 #' 
@@ -3780,7 +3789,8 @@ vl_encode_longitude <- function(spec, field = NULL, type = NULL, aggregate = NUL
 
 vl_encode_longitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/longitude2' , encoding = "longitude2")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/longitude2", class = c("glue", 
+  "character")) , encoding = "longitude2")
 } 
 #' vl_encode_opacity
 #' 
@@ -3882,7 +3892,8 @@ vl_encode_longitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NUL
 vl_encode_opacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/opacity' , encoding = "opacity")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/opacity", class = c("glue", "character"
+  )) , encoding = "opacity")
 } 
 #' vl_encode_order
 #' 
@@ -3949,7 +3960,8 @@ vl_encode_opacity <- function(spec, field = NULL, type = NULL, aggregate = NULL,
 
 vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "sort", "timeUnit", "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/order' , encoding = "order")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/order", class = c("glue", "character"
+  )) , encoding = "order")
 } 
 #' vl_encode_shape
 #' 
@@ -4051,7 +4063,8 @@ vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 vl_encode_shape <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/shape' , encoding = "shape")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/shape", class = c("glue", "character"
+  )) , encoding = "shape")
 } 
 #' vl_encode_size
 #' 
@@ -4153,7 +4166,8 @@ vl_encode_shape <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 vl_encode_size <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/size' , encoding = "size")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/size", class = c("glue", "character"
+  )) , encoding = "size")
 } 
 #' vl_encode_stroke
 #' 
@@ -4255,7 +4269,8 @@ vl_encode_size <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 vl_encode_stroke <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/stroke' , encoding = "stroke")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/stroke", class = c("glue", "character"
+  )) , encoding = "stroke")
 } 
 #' vl_encode_strokeOpacity
 #' 
@@ -4357,7 +4372,8 @@ vl_encode_stroke <- function(spec, field = NULL, type = NULL, aggregate = NULL, 
 vl_encode_strokeOpacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/strokeOpacity' , encoding = "strokeOpacity")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/strokeOpacity", class = c("glue", 
+  "character")) , encoding = "strokeOpacity")
 } 
 #' vl_encode_strokeWidth
 #' 
@@ -4459,7 +4475,8 @@ vl_encode_strokeOpacity <- function(spec, field = NULL, type = NULL, aggregate =
 vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/strokeWidth' , encoding = "strokeWidth")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/strokeWidth", class = c("glue", 
+  "character")) , encoding = "strokeWidth")
 } 
 #' vl_encode_text
 #' 
@@ -4548,7 +4565,8 @@ vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = N
 vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "labelExpr", 
   "timeUnit", "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/text' , encoding = "text")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/text", class = c("glue", "character"
+  )) , encoding = "text")
 } 
 #' vl_encode_tooltip
 #' 
@@ -4637,7 +4655,8 @@ vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 vl_encode_tooltip <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "labelExpr", 
   "timeUnit", "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/tooltip' , encoding = "tooltip")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/tooltip", class = c("glue", "character"
+  )) , encoding = "tooltip")
 } 
 #' vl_encode_url
 #' 
@@ -4726,7 +4745,8 @@ vl_encode_tooltip <- function(spec, field = NULL, type = NULL, aggregate = NULL,
 vl_encode_url <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "labelExpr", 
   "timeUnit", "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/url' , encoding = "url")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/url", class = c("glue", "character"
+  )) , encoding = "url")
 } 
 #' vl_encode_x
 #' 
@@ -4846,7 +4866,8 @@ vl_encode_url <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin
 vl_encode_x <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis = NULL, band = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "axis", "band", "bin", "field", "impute", "scale", "sort", "stack", 
   "timeUnit", "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/x' , encoding = "x")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/x", class = c("glue", "character"
+  )) , encoding = "x")
 } 
 #' vl_encode_x2
 #' 
@@ -4898,7 +4919,8 @@ vl_encode_x <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis 
 
 vl_encode_x2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/x2' , encoding = "x2")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/x2", class = c("glue", "character"
+  )) , encoding = "x2")
 } 
 #' vl_encode_xError
 #' 
@@ -4950,7 +4972,8 @@ vl_encode_x2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeU
 
 vl_encode_xError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/xError' , encoding = "xError")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/xError", class = c("glue", "character"
+  )) , encoding = "xError")
 } 
 #' vl_encode_xError2
 #' 
@@ -5002,7 +5025,8 @@ vl_encode_xError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, t
 
 vl_encode_xError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/xError2' , encoding = "xError2")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/xError2", class = c("glue", "character"
+  )) , encoding = "xError2")
 } 
 #' vl_encode_y
 #' 
@@ -5122,7 +5146,8 @@ vl_encode_xError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, 
 vl_encode_y <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis = NULL, band = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "axis", "band", "bin", "field", "impute", "scale", "sort", "stack", 
   "timeUnit", "title", "type", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/y' , encoding = "y")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/y", class = c("glue", "character"
+  )) , encoding = "y")
 } 
 #' vl_encode_y2
 #' 
@@ -5174,7 +5199,8 @@ vl_encode_y <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis 
 
 vl_encode_y2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/y2' , encoding = "y2")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/y2", class = c("glue", "character"
+  )) , encoding = "y2")
 } 
 #' vl_encode_yError
 #' 
@@ -5226,7 +5252,8 @@ vl_encode_y2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeU
 
 vl_encode_yError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/yError' , encoding = "yError")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/yError", class = c("glue", "character"
+  )) , encoding = "yError")
 } 
 #' vl_encode_yError2
 #' 
@@ -5278,7 +5305,8 @@ vl_encode_yError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, t
 
 vl_encode_yError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
-  .add_encoding(args$spec, args$object, '#/definitions/Encoding/properties/yError2' , encoding = "yError2")
+  .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/yError2", class = c("glue", "character"
+  )) , encoding = "yError2")
 } 
 #' vl_make_Color
 #' 
@@ -7522,7 +7550,7 @@ args$obj
 
 vl_aggregate <- function(spec, aggregate = NULL, groupby = NULL){
   args <- .modify_args(NULL, c("aggregate", "groupby"))
-  .add_transform(args$spec, args$object, '#/definitions/AggregateTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/AggregateTransform", class = c("glue", "character")))
 } 
 #' vl_bin
 #' 
@@ -7536,7 +7564,7 @@ vl_aggregate <- function(spec, aggregate = NULL, groupby = NULL){
 
 vl_bin <- function(spec, as = NULL, bin = NULL, field = NULL){
   args <- .modify_args(NULL, c("as", "bin", "field"))
-  .add_transform(args$spec, args$object, '#/definitions/BinTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/BinTransform", class = c("glue", "character")))
 } 
 #' vl_calculate
 #' 
@@ -7549,7 +7577,7 @@ vl_bin <- function(spec, as = NULL, bin = NULL, field = NULL){
 
 vl_calculate <- function(spec, as = NULL, calculate = NULL){
   args <- .modify_args(NULL, c("as", "calculate"))
-  .add_transform(args$spec, args$object, '#/definitions/CalculateTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/CalculateTransform", class = c("glue", "character")))
 } 
 #' vl_density
 #' 
@@ -7581,7 +7609,7 @@ vl_calculate <- function(spec, as = NULL, calculate = NULL){
 vl_density <- function(spec, as = NULL, bandwidth = NULL, counts = NULL, cumulative = NULL, density = NULL, extent = NULL, groupby = NULL, maxsteps = NULL, minsteps = NULL, steps = NULL){
   args <- .modify_args(NULL, c("as", "bandwidth", "counts", "cumulative", "density", "extent", "groupby", 
   "maxsteps", "minsteps", "steps"))
-  .add_transform(args$spec, args$object, '#/definitions/DensityTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/DensityTransform", class = c("glue", "character")))
 } 
 #' vl_filter
 #' 
@@ -7609,7 +7637,7 @@ vl_density <- function(spec, as = NULL, bandwidth = NULL, counts = NULL, cumulat
 
 vl_filter <- function(spec, filter = NULL){
   args <- .modify_args(NULL, "filter")
-  .add_transform(args$spec, args$object, '#/definitions/FilterTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/FilterTransform", class = c("glue", "character")))
 } 
 #' vl_flatten
 #' 
@@ -7627,7 +7655,7 @@ vl_filter <- function(spec, filter = NULL){
 
 vl_flatten <- function(spec, as = NULL, flatten = NULL){
   args <- .modify_args(NULL, c("as", "flatten"))
-  .add_transform(args$spec, args$object, '#/definitions/FlattenTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/FlattenTransform", class = c("glue", "character")))
 } 
 #' vl_fold
 #' 
@@ -7641,7 +7669,7 @@ vl_flatten <- function(spec, as = NULL, flatten = NULL){
 
 vl_fold <- function(spec, as = NULL, fold = NULL){
   args <- .modify_args(NULL, c("as", "fold"))
-  .add_transform(args$spec, args$object, '#/definitions/FoldTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/FoldTransform", class = c("glue", "character")))
 } 
 #' vl_impute
 #' 
@@ -7671,7 +7699,7 @@ vl_fold <- function(spec, as = NULL, fold = NULL){
 
 vl_impute <- function(spec, frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL){
   args <- .modify_args(NULL, c("frame", "groupby", "impute", "key", "keyvals", "method", "value"))
-  .add_transform(args$spec, args$object, '#/definitions/ImputeTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/ImputeTransform", class = c("glue", "character")))
 } 
 #' vl_joinaggregate
 #' 
@@ -7684,7 +7712,8 @@ vl_impute <- function(spec, frame = NULL, groupby = NULL, impute = NULL, key = N
 
 vl_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL){
   args <- .modify_args(NULL, c("groupby", "joinaggregate"))
-  .add_transform(args$spec, args$object, '#/definitions/JoinAggregateTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/JoinAggregateTransform", class = c("glue", "character"
+  )))
 } 
 #' vl_loess
 #' 
@@ -7704,7 +7733,7 @@ vl_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL){
 
 vl_loess <- function(spec, as = NULL, bandwidth = NULL, groupby = NULL, loess = NULL, on = NULL){
   args <- .modify_args(NULL, c("as", "bandwidth", "groupby", "loess", "on"))
-  .add_transform(args$spec, args$object, '#/definitions/LoessTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/LoessTransform", class = c("glue", "character")))
 } 
 #' vl_lookup
 #' 
@@ -7729,7 +7758,7 @@ vl_loess <- function(spec, as = NULL, bandwidth = NULL, groupby = NULL, loess = 
 
 vl_lookup <- function(spec, as = NULL, default = NULL, from = NULL, lookup = NULL){
   args <- .modify_args(NULL, c("as", "default", "from", "lookup"))
-  .add_transform(args$spec, args$object, '#/definitions/LookupTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/LookupTransform", class = c("glue", "character")))
 } 
 #' vl_quantile
 #' 
@@ -7747,7 +7776,7 @@ vl_lookup <- function(spec, as = NULL, default = NULL, from = NULL, lookup = NUL
 
 vl_quantile <- function(spec, as = NULL, groupby = NULL, probs = NULL, quantile = NULL, step = NULL){
   args <- .modify_args(NULL, c("as", "groupby", "probs", "quantile", "step"))
-  .add_transform(args$spec, args$object, '#/definitions/QuantileTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/QuantileTransform", class = c("glue", "character")))
 } 
 #' vl_regression
 #' 
@@ -7777,7 +7806,8 @@ vl_quantile <- function(spec, as = NULL, groupby = NULL, probs = NULL, quantile 
 vl_regression <- function(spec, as = NULL, extent = NULL, groupby = NULL, method = NULL, on = NULL, order = NULL, params = NULL, regression = NULL){
   args <- .modify_args(NULL, c("as", "extent", "groupby", "method", "on", "order", "params", "regression"
   ))
-  .add_transform(args$spec, args$object, '#/definitions/RegressionTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/RegressionTransform", class = c("glue", "character"
+  )))
 } 
 #' vl_timeunit
 #' 
@@ -7791,7 +7821,7 @@ vl_regression <- function(spec, as = NULL, extent = NULL, groupby = NULL, method
 
 vl_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL){
   args <- .modify_args(NULL, c("as", "field", "timeUnit"))
-  .add_transform(args$spec, args$object, '#/definitions/TimeUnitTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/TimeUnitTransform", class = c("glue", "character")))
 } 
 #' vl_sample
 #' 
@@ -7805,7 +7835,7 @@ vl_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL){
 
 vl_sample <- function(spec, sample = NULL){
   args <- .modify_args(NULL, "sample")
-  .add_transform(args$spec, args$object, '#/definitions/SampleTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/SampleTransform", class = c("glue", "character")))
 } 
 #' vl_stack
 #' 
@@ -7825,7 +7855,7 @@ vl_sample <- function(spec, sample = NULL){
 
 vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL){
   args <- .modify_args(NULL, c("as", "groupby", "offset", "sort", "stack"))
-  .add_transform(args$spec, args$object, '#/definitions/StackTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/StackTransform", class = c("glue", "character")))
 } 
 #' vl_window
 #' 
@@ -7845,7 +7875,7 @@ vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL
 
 vl_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL){
   args <- .modify_args(NULL, c("frame", "groupby", "ignorePeers", "sort", "window"))
-  .add_transform(args$spec, args$object, '#/definitions/WindowTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/WindowTransform", class = c("glue", "character")))
 } 
 #' vl_pivot
 #' 
@@ -7864,7 +7894,7 @@ vl_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers = NULL, so
 
 vl_pivot <- function(spec, groupby = NULL, limit = NULL, op = NULL, pivot = NULL, value = NULL){
   args <- .modify_args(NULL, c("groupby", "limit", "op", "pivot", "value"))
-  .add_transform(args$spec, args$object, '#/definitions/PivotTransform')
+  .add_transform(args$spec, args$object, structure("#/definitions/PivotTransform", class = c("glue", "character")))
 } 
 #' vl_make_AggregateTransform
 #' 
@@ -8237,196 +8267,196 @@ args$obj
 vl_bin_color <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "color")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "color")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_detail <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "detail")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "detail")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_fill <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "fill")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "fill")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_fillOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "fillOpacity")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "fillOpacity")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_href <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "href")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "href")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_key <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "key")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "key")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_latitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "latitude")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "latitude")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_latitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "latitude2")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "latitude2")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_longitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "longitude")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "longitude")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_longitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "longitude2")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "longitude2")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_opacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "opacity")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "opacity")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_order <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "order")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "order")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_shape <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "shape")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "shape")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_size <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "size")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "size")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_stroke <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "stroke")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "stroke")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_strokeOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "strokeOpacity")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "strokeOpacity")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_strokeWidth <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "strokeWidth")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "strokeWidth")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_text <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "text")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "text")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_tooltip <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "tooltip")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "tooltip")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_url <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "url")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "url")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_x <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "x")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "x")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_x2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "x2")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "x2")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_xError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "xError")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "xError")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_xError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "xError2")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "xError2")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_y <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "y")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "y")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_y2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "y2")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "y2")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_yError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "yError")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "yError")
 } 
 #' @name bin_encoding
 #' @export
 vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
-  .add_bin_to_encoding(args$spec, args$object, '#/definitions/BinParams' , encoding = "yError2")
+  .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "yError2")
 } 
 #' Add impute to encoding
 #' 
@@ -8453,13 +8483,13 @@ vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divi
 #' @export
 vl_impute_x <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL){
   args <- .modify_args(NULL, c("frame", "keyvals", "method", "value"))
-  .add_impute_to_encoding(args$spec, args$object, '#/definitions/ImputeParams' , encoding = "x")
+  .add_impute_to_encoding(args$spec, args$object, "#/definitions/ImputeParams" , encoding = "x")
 } 
 #' @name impute_encoding
 #' @export
 vl_impute_y <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL){
   args <- .modify_args(NULL, c("frame", "keyvals", "method", "value"))
-  .add_impute_to_encoding(args$spec, args$object, '#/definitions/ImputeParams' , encoding = "y")
+  .add_impute_to_encoding(args$spec, args$object, "#/definitions/ImputeParams" , encoding = "y")
 } 
 #' Add axis to encoding
 #' 
@@ -8625,7 +8655,7 @@ vl_axis_x <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NU
   "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
   "titleFontStyle", "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", 
   "titlePadding", "titleX", "titleY", "translate", "values", "zindex"))
-  .add_axis_to_encoding(args$spec, args$object, '#/definitions/Axis' , encoding = "x")
+  .add_axis_to_encoding(args$spec, args$object, "#/definitions/Axis" , encoding = "x")
 } 
 #' @name axis_encoding
 #' @export
@@ -8642,7 +8672,7 @@ vl_axis_y <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NU
   "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
   "titleFontStyle", "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", 
   "titlePadding", "titleX", "titleY", "translate", "values", "zindex"))
-  .add_axis_to_encoding(args$spec, args$object, '#/definitions/Axis' , encoding = "y")
+  .add_axis_to_encoding(args$spec, args$object, "#/definitions/Axis" , encoding = "y")
 } 
 #' Add scale to encoding
 #' 
@@ -8744,7 +8774,7 @@ vl_scale_color <- function(spec, align = NULL, base = NULL, bins = NULL, clamp =
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
-  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "color")
+  .add_scale_to_encoding(args$spec, args$object, "#/definitions/Scale" , encoding = "color")
 } 
 #' @name scale_encoding
 #' @export
@@ -8752,7 +8782,7 @@ vl_scale_fill <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = 
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
-  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "fill")
+  .add_scale_to_encoding(args$spec, args$object, "#/definitions/Scale" , encoding = "fill")
 } 
 #' @name scale_encoding
 #' @export
@@ -8760,7 +8790,7 @@ vl_scale_fillOpacity <- function(spec, align = NULL, base = NULL, bins = NULL, c
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
-  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "fillOpacity")
+  .add_scale_to_encoding(args$spec, args$object, "#/definitions/Scale" , encoding = "fillOpacity")
 } 
 #' @name scale_encoding
 #' @export
@@ -8768,7 +8798,7 @@ vl_scale_opacity <- function(spec, align = NULL, base = NULL, bins = NULL, clamp
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
-  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "opacity")
+  .add_scale_to_encoding(args$spec, args$object, "#/definitions/Scale" , encoding = "opacity")
 } 
 #' @name scale_encoding
 #' @export
@@ -8776,7 +8806,7 @@ vl_scale_shape <- function(spec, align = NULL, base = NULL, bins = NULL, clamp =
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
-  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "shape")
+  .add_scale_to_encoding(args$spec, args$object, "#/definitions/Scale" , encoding = "shape")
 } 
 #' @name scale_encoding
 #' @export
@@ -8784,7 +8814,7 @@ vl_scale_size <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = 
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
-  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "size")
+  .add_scale_to_encoding(args$spec, args$object, "#/definitions/Scale" , encoding = "size")
 } 
 #' @name scale_encoding
 #' @export
@@ -8792,7 +8822,7 @@ vl_scale_stroke <- function(spec, align = NULL, base = NULL, bins = NULL, clamp 
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
-  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "stroke")
+  .add_scale_to_encoding(args$spec, args$object, "#/definitions/Scale" , encoding = "stroke")
 } 
 #' @name scale_encoding
 #' @export
@@ -8800,7 +8830,7 @@ vl_scale_strokeOpacity <- function(spec, align = NULL, base = NULL, bins = NULL,
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
-  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "strokeOpacity")
+  .add_scale_to_encoding(args$spec, args$object, "#/definitions/Scale" , encoding = "strokeOpacity")
 } 
 #' @name scale_encoding
 #' @export
@@ -8808,7 +8838,7 @@ vl_scale_strokeWidth <- function(spec, align = NULL, base = NULL, bins = NULL, c
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
-  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "strokeWidth")
+  .add_scale_to_encoding(args$spec, args$object, "#/definitions/Scale" , encoding = "strokeWidth")
 } 
 #' @name scale_encoding
 #' @export
@@ -8816,7 +8846,7 @@ vl_scale_x <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NUL
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
-  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "x")
+  .add_scale_to_encoding(args$spec, args$object, "#/definitions/Scale" , encoding = "x")
 } 
 #' @name scale_encoding
 #' @export
@@ -8824,7 +8854,7 @@ vl_scale_y <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NUL
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
-  .add_scale_to_encoding(args$spec, args$object, '#/definitions/Scale' , encoding = "y")
+  .add_scale_to_encoding(args$spec, args$object, "#/definitions/Scale" , encoding = "y")
 } 
 #' Add legend to encoding
 #' 
@@ -8989,7 +9019,7 @@ vl_legend_color <- function(spec, clipHeight = NULL, columnPadding = NULL, colum
   "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
   "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", "titleOrient", 
   "titlePadding", "type", "values", "zindex"))
-  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "color")
+  .add_legend_to_encoding(args$spec, args$object, "#/definitions/Legend" , encoding = "color")
 } 
 #' @name legend_encoding
 #' @export
@@ -9006,7 +9036,7 @@ vl_legend_fill <- function(spec, clipHeight = NULL, columnPadding = NULL, column
   "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
   "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", "titleOrient", 
   "titlePadding", "type", "values", "zindex"))
-  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "fill")
+  .add_legend_to_encoding(args$spec, args$object, "#/definitions/Legend" , encoding = "fill")
 } 
 #' @name legend_encoding
 #' @export
@@ -9023,7 +9053,7 @@ vl_legend_fillOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL,
   "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
   "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", "titleOrient", 
   "titlePadding", "type", "values", "zindex"))
-  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "fillOpacity")
+  .add_legend_to_encoding(args$spec, args$object, "#/definitions/Legend" , encoding = "fillOpacity")
 } 
 #' @name legend_encoding
 #' @export
@@ -9040,7 +9070,7 @@ vl_legend_opacity <- function(spec, clipHeight = NULL, columnPadding = NULL, col
   "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
   "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", "titleOrient", 
   "titlePadding", "type", "values", "zindex"))
-  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "opacity")
+  .add_legend_to_encoding(args$spec, args$object, "#/definitions/Legend" , encoding = "opacity")
 } 
 #' @name legend_encoding
 #' @export
@@ -9057,7 +9087,7 @@ vl_legend_shape <- function(spec, clipHeight = NULL, columnPadding = NULL, colum
   "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
   "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", "titleOrient", 
   "titlePadding", "type", "values", "zindex"))
-  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "shape")
+  .add_legend_to_encoding(args$spec, args$object, "#/definitions/Legend" , encoding = "shape")
 } 
 #' @name legend_encoding
 #' @export
@@ -9074,7 +9104,7 @@ vl_legend_size <- function(spec, clipHeight = NULL, columnPadding = NULL, column
   "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
   "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", "titleOrient", 
   "titlePadding", "type", "values", "zindex"))
-  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "size")
+  .add_legend_to_encoding(args$spec, args$object, "#/definitions/Legend" , encoding = "size")
 } 
 #' @name legend_encoding
 #' @export
@@ -9091,7 +9121,7 @@ vl_legend_stroke <- function(spec, clipHeight = NULL, columnPadding = NULL, colu
   "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
   "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", "titleOrient", 
   "titlePadding", "type", "values", "zindex"))
-  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "stroke")
+  .add_legend_to_encoding(args$spec, args$object, "#/definitions/Legend" , encoding = "stroke")
 } 
 #' @name legend_encoding
 #' @export
@@ -9108,7 +9138,7 @@ vl_legend_strokeOpacity <- function(spec, clipHeight = NULL, columnPadding = NUL
   "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
   "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", "titleOrient", 
   "titlePadding", "type", "values", "zindex"))
-  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "strokeOpacity")
+  .add_legend_to_encoding(args$spec, args$object, "#/definitions/Legend" , encoding = "strokeOpacity")
 } 
 #' @name legend_encoding
 #' @export
@@ -9125,19 +9155,22 @@ vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL,
   "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
   "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", "titleOrient", 
   "titlePadding", "type", "values", "zindex"))
-  .add_legend_to_encoding(args$spec, args$object, '#/definitions/Legend' , encoding = "strokeWidth")
+  .add_legend_to_encoding(args$spec, args$object, "#/definitions/Legend" , encoding = "strokeWidth")
 } 
-#' Add condition to encoding
+#' Add conditioning to an encoding
 #' 
 #' Add condition parameters to an encoding
 #' @param spec An input vega-lite spec
-#' @param aggregate (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) Aggregation function for the field
+#' @param test (_ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalPredicate<MarkPropFieldDef>, ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalPredicate<NumberValueDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalPredicate<NumberValueDef>, ConditionalPredicate<ValueDef<string>>, ConditionalPredicate<MarkPropFieldDef>, ConditionalPredicate<StringValueDef>, ConditionalPredicate<StringValueDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringValueDef>, ConditionalPredicate<ValueDef<Text>>, ConditionalPredicate<StringFieldDef>, ConditionalPredicate<ValueDef<Text>>_) Predicate for triggering the condition
+#' @param value (_ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalSelection<ValueDef<(Gradient|string|null)>>, ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalSelection<ValueDef<(Gradient|string|null)>>, ConditionalPredicate<NumberValueDef>, ConditionalSelection<NumberValueDef>, ConditionalPredicate<NumberValueDef>, ConditionalSelection<NumberValueDef>, ConditionalPredicate<ValueDef<string>>, ConditionalSelection<ValueDef<string>>, ConditionalPredicate<StringValueDef>, ConditionalSelection<StringValueDef>, ConditionalPredicate<StringValueDef>, ConditionalSelection<StringValueDef>, ConditionalPredicate<StringValueDef>, ConditionalSelection<StringValueDef>, ConditionalPredicate<ValueDef<Text>>, ConditionalSelection<ValueDef<Text>>, ConditionalPredicate<ValueDef<Text>>, ConditionalSelection<ValueDef<Text>>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param selection (_ConditionalSelection<ValueDef<(Gradient|string|null)>>, ConditionalSelection<MarkPropFieldDef>, ConditionalSelection<ValueDef<(Gradient|string|null)>>, ConditionalSelection<NumberValueDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalSelection<NumberValueDef>, ConditionalSelection<ValueDef<string>>, ConditionalSelection<MarkPropFieldDef>, ConditionalSelection<StringValueDef>, ConditionalSelection<StringValueDef>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<StringValueDef>, ConditionalSelection<ValueDef<Text>>, ConditionalSelection<StringFieldDef>, ConditionalSelection<ValueDef<Text>>_) A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose).
+#' @param aggregate (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
 #' __Default value:__ `undefined` (None)
 #' 
 #' __See also:__ [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html) documentation.
-#' @param bin (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' @param bin (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
 #' 
 #' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 #' 
@@ -9146,7 +9179,7 @@ vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL,
 #' __Default value:__ `false`
 #' 
 #' __See also:__ [`bin`](https://vega.github.io/vega-lite/docs/bin.html) documentation.
-#' @param field (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) __Required.__ A string defining the name of the field from which to pull a data value
+#' @param field (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) __Required.__ A string defining the name of the field from which to pull a data value
 #' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
 #' 
 #' __See also:__ [`field`](https://vega.github.io/vega-lite/docs/field.html) documentation.
@@ -9156,20 +9189,20 @@ vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL,
 #' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\\[0\\\]"`).
 #' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
 #' 2) `field` is not required if `aggregate` is `count`.
-#' @param legend (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) An object defining properties of the legend.
+#' @param legend (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>_) An object defining properties of the legend.
 #' If `null`, the legend for the encoding channel will be removed.
 #' 
 #' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied.
 #' 
 #' __See also:__ [`legend`](https://vega.github.io/vega-lite/docs/legend.html) documentation.
-#' @param scale (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' @param scale (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>_) An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
 #' 
 #' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
 #' 
 #' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied.
 #' 
 #' __See also:__ [`scale`](https://vega.github.io/vega-lite/docs/scale.html) documentation.
-#' @param sort (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) Sort order for the encoded field.
+#' @param sort (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>_) Sort order for the encoded field.
 #' 
 #' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
 #' 
@@ -9185,14 +9218,13 @@ vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL,
 #' __Note:__ `null` and sorting by another channel is not supported for `row` and `column`.
 #' 
 #' __See also:__ [`sort`](https://vega.github.io/vega-lite/docs/sort.html) documentation.
-#' @param test (_ConditionalPredicate<MarkPropFieldDef>_) Predicate for triggering the condition
-#' @param timeUnit (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' @param timeUnit (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 #' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
 #' 
 #' __Default value:__ `undefined` (None)
 #' 
 #' __See also:__ [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html) documentation.
-#' @param title (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) A title for the field. If `null`, the title will be removed.
+#' @param title (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) A title for the field. If `null`, the title will be removed.
 #' 
 #' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`). If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`). Otherwise, the title is simply the field name.
 #' 
@@ -9201,7 +9233,7 @@ vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL,
 #' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
-#' @param type (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' @param type (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
 #' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
 #' 
 #' 
@@ -9215,100 +9247,141 @@ vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL,
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
-#' @param selection (_ConditionalSelection<MarkPropFieldDef>_) A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose).
+#' @param format (_ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+#' 
+#' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
+#' - If the format type is `"time"` (e.g., for temporal fields), this is D3's [time format pattern](https://github.com/d3/d3-time-format#locale_format).
+#' 
+#' See the [format documentation](https://vega.github.io/vega-lite/docs/format.html) for more examples.
+#' 
+#' __Default value:__  Derived from [numberFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for number format and from [timeFormat](https://vega.github.io/vega-lite/docs/config.html#format) config for time format.
+#' @param formatType (_ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) The format type for labels (`"number"` or `"time"`).
+#' 
+#' __Default value:__
+#' - `"time"` for temporal fields and ordinal and nomimal fields with `timeUnit`.
+#' - `"number"` for quantitative fields as well as ordinal and nomimal fields without `timeUnit`.
+#' @param labelExpr (_ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) [Vega expression](https://vega.github.io/vega/docs/expressions/) for customizing labels text.
+#' 
+#' __Note:__ The label text and value can be assessed via the `label` and `value` properties of the axis's backing `datum` object.
 #' @return A modified Vega-Lite Spec
 #' @export
 #' @name condition_encoding 
 #' @name condition_encoding
 #' @export
-vl_condition_color <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL){
-  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
-  "title", "type", "selection"))
-  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionalMarkPropFieldDef' , encoding = "color")
+vl_condition_color <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+  args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
+  "sort", "timeUnit", "title", "type"))
+  .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>/properties/condition", 
+  "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>/properties/condition"
+  ) , encoding = "color")
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_fill <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL){
-  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
-  "title", "type", "selection"))
-  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionalMarkPropFieldDef' , encoding = "fill")
+vl_condition_fill <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+  args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
+  "sort", "timeUnit", "title", "type"))
+  .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>/properties/condition", 
+  "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>/properties/condition"
+  ) , encoding = "fill")
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_fillOpacity <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL){
-  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
-  "title", "type", "selection"))
-  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionalMarkPropFieldDef' , encoding = "fillOpacity")
+vl_condition_fillOpacity <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+  args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
+  "sort", "timeUnit", "title", "type"))
+  .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,number>/properties/condition", 
+  "#/definitions/ValueDefWithCondition<MarkPropFieldDef,number>/properties/condition"
+  ) , encoding = "fillOpacity")
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_href <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL){
-  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
-  "title", "type", "selection"))
-  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionalMarkPropFieldDef' , encoding = "href")
+vl_condition_href <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+  args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
+  "sort", "timeUnit", "title", "type"))
+  .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<StringFieldDef,string>/properties/condition", 
+  "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(string|null)>/properties/condition"
+  ) , encoding = "href")
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_opacity <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL){
-  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
-  "title", "type", "selection"))
-  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionalMarkPropFieldDef' , encoding = "opacity")
+vl_condition_opacity <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+  args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
+  "sort", "timeUnit", "title", "type"))
+  .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,number>/properties/condition", 
+  "#/definitions/ValueDefWithCondition<MarkPropFieldDef,number>/properties/condition"
+  ) , encoding = "opacity")
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_shape <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL){
-  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
-  "title", "type", "selection"))
-  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionalMarkPropFieldDef' , encoding = "shape")
+vl_condition_shape <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+  args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
+  "sort", "timeUnit", "title", "type"))
+  .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>/properties/condition", 
+  "#/definitions/ValueDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>/properties/condition"
+  ) , encoding = "shape")
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_size <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL){
-  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
-  "title", "type", "selection"))
-  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionalMarkPropFieldDef' , encoding = "size")
+vl_condition_size <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+  args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
+  "sort", "timeUnit", "title", "type"))
+  .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,number>/properties/condition", 
+  "#/definitions/ValueDefWithCondition<MarkPropFieldDef,number>/properties/condition"
+  ) , encoding = "size")
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_stroke <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL){
-  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
-  "title", "type", "selection"))
-  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionalMarkPropFieldDef' , encoding = "stroke")
+vl_condition_stroke <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+  args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
+  "sort", "timeUnit", "title", "type"))
+  .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>/properties/condition", 
+  "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>/properties/condition"
+  ) , encoding = "stroke")
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_strokeOpacity <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL){
-  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
-  "title", "type", "selection"))
-  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionalMarkPropFieldDef' , encoding = "strokeOpacity")
+vl_condition_strokeOpacity <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+  args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
+  "sort", "timeUnit", "title", "type"))
+  .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,number>/properties/condition", 
+  "#/definitions/ValueDefWithCondition<MarkPropFieldDef,number>/properties/condition"
+  ) , encoding = "strokeOpacity")
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_strokeWidth <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL){
-  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
-  "title", "type", "selection"))
-  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionalMarkPropFieldDef' , encoding = "strokeWidth")
+vl_condition_strokeWidth <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+  args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
+  "sort", "timeUnit", "title", "type"))
+  .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,number>/properties/condition", 
+  "#/definitions/ValueDefWithCondition<MarkPropFieldDef,number>/properties/condition"
+  ) , encoding = "strokeWidth")
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_text <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL){
-  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
-  "title", "type", "selection"))
-  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionalMarkPropFieldDef' , encoding = "text")
+vl_condition_text <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL, type = NULL){
+  args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "format", "formatType", 
+  "labelExpr", "timeUnit", "title", "type"))
+  .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<StringFieldDef,Text>/properties/condition", 
+  "#/definitions/ValueDefWithCondition<StringFieldDef,Text>/properties/condition"
+  ) , encoding = "text")
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_tooltip <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL){
-  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
-  "title", "type", "selection"))
-  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionalMarkPropFieldDef' , encoding = "tooltip")
+vl_condition_tooltip <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+  args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
+  "sort", "timeUnit", "title", "type"))
+  .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<StringFieldDef,string>/properties/condition", 
+  "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(string|null)>/properties/condition"
+  ) , encoding = "tooltip")
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_url <- function(spec, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, test = NULL, timeUnit = NULL, title = NULL, type = NULL, selection = NULL){
-  args <- .modify_args(NULL, c("aggregate", "bin", "field", "legend", "scale", "sort", "test", "timeUnit", 
-  "title", "type", "selection"))
-  .add_condition_to_encoding(args$spec, args$object, '#/definitions/ConditionalMarkPropFieldDef' , encoding = "url")
+vl_condition_url <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+  args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
+  "sort", "timeUnit", "title", "type"))
+  .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<StringFieldDef,string>/properties/condition", 
+  "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(string|null)>/properties/condition"
+  ) , encoding = "url")
 } 
 #' Add stack transform to encoding
 #' 
@@ -9596,73 +9669,73 @@ vl_sort_y <- function(spec, value){
 #' @export
 vl_sort_color_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "color")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "color")
 } 
 #' @name sort_encoding_by_field
 #' @export
 vl_sort_fill_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "fill")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "fill")
 } 
 #' @name sort_encoding_by_field
 #' @export
 vl_sort_fillOpacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "fillOpacity")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "fillOpacity")
 } 
 #' @name sort_encoding_by_field
 #' @export
 vl_sort_opacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "opacity")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "opacity")
 } 
 #' @name sort_encoding_by_field
 #' @export
 vl_sort_order_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "order")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "order")
 } 
 #' @name sort_encoding_by_field
 #' @export
 vl_sort_shape_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "shape")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "shape")
 } 
 #' @name sort_encoding_by_field
 #' @export
 vl_sort_size_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "size")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "size")
 } 
 #' @name sort_encoding_by_field
 #' @export
 vl_sort_stroke_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "stroke")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "stroke")
 } 
 #' @name sort_encoding_by_field
 #' @export
 vl_sort_strokeOpacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "strokeOpacity")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "strokeOpacity")
 } 
 #' @name sort_encoding_by_field
 #' @export
 vl_sort_strokeWidth_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "strokeWidth")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "strokeWidth")
 } 
 #' @name sort_encoding_by_field
 #' @export
 vl_sort_x_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "x")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "x")
 } 
 #' @name sort_encoding_by_field
 #' @export
 vl_sort_y_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/EncodingSortField' , encoding = "y")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "y")
 } 
 #' Add sort transform by encoding to encoding
 #' 
@@ -9677,73 +9750,73 @@ vl_sort_y_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
 #' @export
 vl_sort_color_by_encoding <- function(spec, encoding = NULL, order = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "color")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "color")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
 vl_sort_fill_by_encoding <- function(spec, encoding = NULL, order = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "fill")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "fill")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
 vl_sort_fillOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "fillOpacity")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "fillOpacity")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
 vl_sort_opacity_by_encoding <- function(spec, encoding = NULL, order = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "opacity")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "opacity")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
 vl_sort_order_by_encoding <- function(spec, encoding = NULL, order = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "order")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "order")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
 vl_sort_shape_by_encoding <- function(spec, encoding = NULL, order = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "shape")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "shape")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
 vl_sort_size_by_encoding <- function(spec, encoding = NULL, order = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "size")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "size")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
 vl_sort_stroke_by_encoding <- function(spec, encoding = NULL, order = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "stroke")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "stroke")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
 vl_sort_strokeOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "strokeOpacity")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "strokeOpacity")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
 vl_sort_strokeWidth_by_encoding <- function(spec, encoding = NULL, order = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "strokeWidth")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "strokeWidth")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
 vl_sort_x_by_encoding <- function(spec, encoding = NULL, order = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "x")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "x")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
 vl_sort_y_by_encoding <- function(spec, encoding = NULL, order = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
-  .add_sort_to_encoding(args$spec, args$object, '#/definitions/SortByEncoding' , encoding = "y")
+  .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "y")
 } 
 #' @name axis_encoding
 #' @export
@@ -10290,7 +10363,7 @@ projection_name = args$extra$projection_name)
 vl_facet_row <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "header", "sort", "timeUnit", "title", "type"
   ))
-  .add_facet_row(args$spec, args$object, '#/definitions/FacetFieldDef')
+  .add_facet_row(args$spec, args$object, structure("#/definitions/FacetFieldDef", class = c("glue", "character")))
 } 
 #' vl_facet_column
 #' 
@@ -10370,7 +10443,7 @@ vl_facet_row <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin 
 vl_facet_column <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "header", "sort", "timeUnit", "title", "type"
   ))
-  .add_facet_column(args$spec, args$object, '#/definitions/FacetFieldDef')
+  .add_facet_column(args$spec, args$object, structure("#/definitions/FacetFieldDef", class = c("glue", "character")))
 } 
 #' vl_encode_row
 #' 
@@ -10488,7 +10561,8 @@ vl_facet_column <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 vl_encode_row <- function(spec, field = NULL, type = NULL, aggregate = NULL, align = NULL, bin = NULL, bounds = NULL, center = NULL, columns = NULL, header = NULL, sort = NULL, spacing = NULL, timeUnit = NULL, title = NULL){
   args <- .modify_args(NULL, c("aggregate", "align", "bin", "bounds", "center", "columns", "field", "header", 
   "sort", "spacing", "timeUnit", "title", "type"))
-  .add_encoding(args$spec, args$object, '#/definitions/FacetEncodingFieldDef' , encoding = "row")
+  .add_encoding(args$spec, args$object, structure("#/definitions/FacetEncodingFieldDef", class = c("glue", "character"
+  )) , encoding = "row")
 } 
 #' vl_encode_column
 #' 
@@ -10606,7 +10680,8 @@ vl_encode_row <- function(spec, field = NULL, type = NULL, aggregate = NULL, ali
 vl_encode_column <- function(spec, field = NULL, type = NULL, aggregate = NULL, align = NULL, bin = NULL, bounds = NULL, center = NULL, columns = NULL, header = NULL, sort = NULL, spacing = NULL, timeUnit = NULL, title = NULL){
   args <- .modify_args(NULL, c("aggregate", "align", "bin", "bounds", "center", "columns", "field", "header", 
   "sort", "spacing", "timeUnit", "title", "type"))
-  .add_encoding(args$spec, args$object, '#/definitions/FacetEncodingFieldDef' , encoding = "column")
+  .add_encoding(args$spec, args$object, structure("#/definitions/FacetEncodingFieldDef", class = c("glue", "character"
+  )) , encoding = "column")
 } 
 #' vl_encode_wrap
 #' 
@@ -10724,7 +10799,8 @@ vl_encode_column <- function(spec, field = NULL, type = NULL, aggregate = NULL, 
 vl_encode_wrap <- function(spec, field = NULL, type = NULL, aggregate = NULL, align = NULL, bin = NULL, bounds = NULL, center = NULL, columns = NULL, header = NULL, sort = NULL, spacing = NULL, timeUnit = NULL, title = NULL){
   args <- .modify_args(NULL, c("aggregate", "align", "bin", "bounds", "center", "columns", "field", "header", 
   "sort", "spacing", "timeUnit", "title", "type"))
-  .add_encoding(args$spec, args$object, '#/definitions/FacetEncodingFieldDef' , encoding = "wrap")
+  .add_encoding(args$spec, args$object, structure("#/definitions/FacetEncodingFieldDef", class = c("glue", "character"
+  )) , encoding = "wrap")
 } 
 #' vl_facet_wrap
 #' 
@@ -11084,7 +11160,7 @@ vl_add_config <- function(spec, area = NULL, autosize = NULL, axis = NULL, axisB
   "numberFormat", "padding", "point", "projection", "range", "rect", "repeat", 
   "rule", "scale", "selection", "square", "style", "text", "tick", "timeFormat", 
   "title", "trail", "view"))
-  .add_config(args$spec, args$object, '#/definitions/Config')
+  .add_config(args$spec, args$object, structure("#/definitions/Config", class = c("glue", "character")))
 } 
 #' vl_add_area_config
 #' 
@@ -11272,7 +11348,7 @@ vl_add_area_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, 
   "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", "text", "theta", 
   "timeUnitBand", "timeUnitBandPosition", "tooltip", "width", "x", "x2", "y", 
   "y2"))
-  .add_sub_config(args$spec, args$object, '#/definitions/AreaConfig' , .config = "area")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/AreaConfig", class = c("glue", "character")) , .config = "area")
 } 
 #' vl_add_axis_config
 #' 
@@ -11393,7 +11469,7 @@ vl_add_axis_config <- function(spec, bandPosition = NULL, domain = NULL, domainC
   "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
   "titleFontStyle", "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", 
   "titlePadding", "titleX", "titleY", "translate"))
-  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axis")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/AxisConfig", class = c("glue", "character")) , .config = "axis")
 } 
 #' vl_add_axisBand_config
 #' 
@@ -11514,7 +11590,7 @@ vl_add_axisBand_config <- function(spec, bandPosition = NULL, domain = NULL, dom
   "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
   "titleFontStyle", "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", 
   "titlePadding", "titleX", "titleY", "translate"))
-  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisBand")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/AxisConfig", class = c("glue", "character")) , .config = "axisBand")
 } 
 #' vl_add_axisBottom_config
 #' 
@@ -11635,7 +11711,7 @@ vl_add_axisBottom_config <- function(spec, bandPosition = NULL, domain = NULL, d
   "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
   "titleFontStyle", "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", 
   "titlePadding", "titleX", "titleY", "translate"))
-  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisBottom")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/AxisConfig", class = c("glue", "character")) , .config = "axisBottom")
 } 
 #' vl_add_axisLeft_config
 #' 
@@ -11756,7 +11832,7 @@ vl_add_axisLeft_config <- function(spec, bandPosition = NULL, domain = NULL, dom
   "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
   "titleFontStyle", "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", 
   "titlePadding", "titleX", "titleY", "translate"))
-  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisLeft")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/AxisConfig", class = c("glue", "character")) , .config = "axisLeft")
 } 
 #' vl_add_axisRight_config
 #' 
@@ -11877,7 +11953,7 @@ vl_add_axisRight_config <- function(spec, bandPosition = NULL, domain = NULL, do
   "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
   "titleFontStyle", "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", 
   "titlePadding", "titleX", "titleY", "translate"))
-  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisRight")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/AxisConfig", class = c("glue", "character")) , .config = "axisRight")
 } 
 #' vl_add_axisTop_config
 #' 
@@ -11998,7 +12074,7 @@ vl_add_axisTop_config <- function(spec, bandPosition = NULL, domain = NULL, doma
   "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
   "titleFontStyle", "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", 
   "titlePadding", "titleX", "titleY", "translate"))
-  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisTop")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/AxisConfig", class = c("glue", "character")) , .config = "axisTop")
 } 
 #' vl_add_axisX_config
 #' 
@@ -12119,7 +12195,7 @@ vl_add_axisX_config <- function(spec, bandPosition = NULL, domain = NULL, domain
   "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
   "titleFontStyle", "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", 
   "titlePadding", "titleX", "titleY", "translate"))
-  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisX")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/AxisConfig", class = c("glue", "character")) , .config = "axisX")
 } 
 #' vl_add_axisY_config
 #' 
@@ -12240,7 +12316,7 @@ vl_add_axisY_config <- function(spec, bandPosition = NULL, domain = NULL, domain
   "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", 
   "titleFontStyle", "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", 
   "titlePadding", "titleX", "titleY", "translate"))
-  .add_sub_config(args$spec, args$object, '#/definitions/AxisConfig' , .config = "axisY")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/AxisConfig", class = c("glue", "character")) , .config = "axisY")
 } 
 #' vl_add_bar_config
 #' 
@@ -12419,7 +12495,7 @@ vl_add_bar_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, b
   "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", 
   "strokeWidth", "tension", "text", "theta", "timeUnitBand", "timeUnitBandPosition", 
   "tooltip", "width", "x", "x2", "y", "y2"))
-  .add_sub_config(args$spec, args$object, '#/definitions/RectConfig' , .config = "bar")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/RectConfig", class = c("glue", "character")) , .config = "bar")
 } 
 #' vl_add_boxplot_config
 #' 
@@ -12441,7 +12517,7 @@ vl_add_bar_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, b
 
 vl_add_boxplot_config <- function(spec, box = NULL, extent = NULL, median = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL){
   args <- .modify_args(NULL, c("box", "extent", "median", "outliers", "rule", "size", "ticks"))
-  .add_sub_config(args$spec, args$object, '#/definitions/BoxPlotConfig' , .config = "boxplot")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/BoxPlotConfig", class = c("glue", "character")) , .config = "boxplot")
 } 
 #' vl_add_circle_config
 #' 
@@ -12613,7 +12689,7 @@ vl_add_circle_config <- function(spec, align = NULL, angle = NULL, aspect = NULL
   "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", "text", "theta", 
   "timeUnitBand", "timeUnitBandPosition", "tooltip", "width", "x", "x2", "y", 
   "y2"))
-  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "circle")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/MarkConfig", class = c("glue", "character")) , .config = "circle")
 } 
 #' vl_add_concat_config
 #' 
@@ -12639,7 +12715,7 @@ vl_add_circle_config <- function(spec, align = NULL, angle = NULL, aspect = NULL
 
 vl_add_concat_config <- function(spec, columns = NULL, spacing = NULL){
   args <- .modify_args(NULL, c("columns", "spacing"))
-  .add_sub_config(args$spec, args$object, '#/definitions/CompositionConfig' , .config = "concat")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/CompositionConfig", class = c("glue", "character")) , .config = "concat")
 } 
 #' vl_add_errorband_config
 #' 
@@ -12674,7 +12750,7 @@ vl_add_concat_config <- function(spec, columns = NULL, spacing = NULL){
 
 vl_add_errorband_config <- function(spec, band = NULL, borders = NULL, extent = NULL, interpolate = NULL, tension = NULL){
   args <- .modify_args(NULL, c("band", "borders", "extent", "interpolate", "tension"))
-  .add_sub_config(args$spec, args$object, '#/definitions/ErrorBandConfig' , .config = "errorband")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/ErrorBandConfig", class = c("glue", "character")) , .config = "errorband")
 } 
 #' vl_add_errorbar_config
 #' 
@@ -12694,7 +12770,7 @@ vl_add_errorband_config <- function(spec, band = NULL, borders = NULL, extent = 
 
 vl_add_errorbar_config <- function(spec, extent = NULL, rule = NULL, ticks = NULL){
   args <- .modify_args(NULL, c("extent", "rule", "ticks"))
-  .add_sub_config(args$spec, args$object, '#/definitions/ErrorBarConfig' , .config = "errorbar")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/ErrorBarConfig", class = c("glue", "character")) , .config = "errorbar")
 } 
 #' vl_add_facet_config
 #' 
@@ -12720,7 +12796,7 @@ vl_add_errorbar_config <- function(spec, extent = NULL, rule = NULL, ticks = NUL
 
 vl_add_facet_config <- function(spec, columns = NULL, spacing = NULL){
   args <- .modify_args(NULL, c("columns", "spacing"))
-  .add_sub_config(args$spec, args$object, '#/definitions/CompositionConfig' , .config = "facet")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/CompositionConfig", class = c("glue", "character")) , .config = "facet")
 } 
 #' vl_add_geoshape_config
 #' 
@@ -12892,7 +12968,7 @@ vl_add_geoshape_config <- function(spec, align = NULL, angle = NULL, aspect = NU
   "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", "text", "theta", 
   "timeUnitBand", "timeUnitBandPosition", "tooltip", "width", "x", "x2", "y", 
   "y2"))
-  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "geoshape")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/MarkConfig", class = c("glue", "character")) , .config = "geoshape")
 } 
 #' vl_add_header_config
 #' 
@@ -12966,7 +13042,7 @@ vl_add_header_config <- function(spec, format = NULL, formatType = NULL, labelAl
   "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
   "titleFontWeight", "titleLimit", "titleLineHeight", "titleOrient", "titlePadding"
   ))
-  .add_sub_config(args$spec, args$object, '#/definitions/HeaderConfig' , .config = "header")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/HeaderConfig", class = c("glue", "character")) , .config = "header")
 } 
 #' vl_add_headerColumn_config
 #' 
@@ -13040,7 +13116,7 @@ vl_add_headerColumn_config <- function(spec, format = NULL, formatType = NULL, l
   "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
   "titleFontWeight", "titleLimit", "titleLineHeight", "titleOrient", "titlePadding"
   ))
-  .add_sub_config(args$spec, args$object, '#/definitions/HeaderConfig' , .config = "headerColumn")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/HeaderConfig", class = c("glue", "character")) , .config = "headerColumn")
 } 
 #' vl_add_headerFacet_config
 #' 
@@ -13114,7 +13190,7 @@ vl_add_headerFacet_config <- function(spec, format = NULL, formatType = NULL, la
   "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
   "titleFontWeight", "titleLimit", "titleLineHeight", "titleOrient", "titlePadding"
   ))
-  .add_sub_config(args$spec, args$object, '#/definitions/HeaderConfig' , .config = "headerFacet")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/HeaderConfig", class = c("glue", "character")) , .config = "headerFacet")
 } 
 #' vl_add_headerRow_config
 #' 
@@ -13188,7 +13264,7 @@ vl_add_headerRow_config <- function(spec, format = NULL, formatType = NULL, labe
   "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", 
   "titleFontWeight", "titleLimit", "titleLineHeight", "titleOrient", "titlePadding"
   ))
-  .add_sub_config(args$spec, args$object, '#/definitions/HeaderConfig' , .config = "headerRow")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/HeaderConfig", class = c("glue", "character")) , .config = "headerRow")
 } 
 #' vl_add_image_config
 #' 
@@ -13367,7 +13443,7 @@ vl_add_image_config <- function(spec, align = NULL, angle = NULL, aspect = NULL,
   "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", 
   "strokeWidth", "tension", "text", "theta", "timeUnitBand", "timeUnitBandPosition", 
   "tooltip", "width", "x", "x2", "y", "y2"))
-  .add_sub_config(args$spec, args$object, '#/definitions/RectConfig' , .config = "image")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/RectConfig", class = c("glue", "character")) , .config = "image")
 } 
 #' vl_add_legend_config
 #' 
@@ -13526,7 +13602,7 @@ vl_add_legend_config <- function(spec, clipHeight = NULL, columnPadding = NULL, 
   "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", "titleFont", 
   "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", "titleLineHeight", 
   "titleOpacity", "titleOrient", "titlePadding", "unselectedOpacity"))
-  .add_sub_config(args$spec, args$object, '#/definitions/LegendConfig' , .config = "legend")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/LegendConfig", class = c("glue", "character")) , .config = "legend")
 } 
 #' vl_add_line_config
 #' 
@@ -13707,7 +13783,7 @@ vl_add_line_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, 
   "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", "text", "theta", 
   "timeUnitBand", "timeUnitBandPosition", "tooltip", "width", "x", "x2", "y", 
   "y2"))
-  .add_sub_config(args$spec, args$object, '#/definitions/LineConfig' , .config = "line")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/LineConfig", class = c("glue", "character")) , .config = "line")
 } 
 #' vl_add_mark_config
 #' 
@@ -13879,7 +13955,7 @@ vl_add_mark_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, 
   "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", "text", "theta", 
   "timeUnitBand", "timeUnitBandPosition", "tooltip", "width", "x", "x2", "y", 
   "y2"))
-  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "mark")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/MarkConfig", class = c("glue", "character")) , .config = "mark")
 } 
 #' vl_add_point_config
 #' 
@@ -14051,7 +14127,7 @@ vl_add_point_config <- function(spec, align = NULL, angle = NULL, aspect = NULL,
   "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", "text", "theta", 
   "timeUnitBand", "timeUnitBandPosition", "tooltip", "width", "x", "x2", "y", 
   "y2"))
-  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "point")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/MarkConfig", class = c("glue", "character")) , .config = "point")
 } 
 #' vl_add_projection_config
 #' 
@@ -14090,7 +14166,7 @@ vl_add_projection_config <- function(spec, center = NULL, clipAngle = NULL, clip
   args <- .modify_args(NULL, c("center", "clipAngle", "clipExtent", "coefficient", "distance", "fraction", 
   "lobes", "parallel", "parallels", "precision", "radius", "ratio", "reflectX", 
   "reflectY", "rotate", "scale", "spacing", "tilt", "translate", "type"))
-  .add_sub_config(args$spec, args$object, '#/definitions/ProjectionConfig' , .config = "projection")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/ProjectionConfig", class = c("glue", "character")) , .config = "projection")
 } 
 #' vl_add_range_config
 #' 
@@ -14107,7 +14183,7 @@ vl_add_projection_config <- function(spec, center = NULL, clipAngle = NULL, clip
 
 vl_add_range_config <- function(spec, category = NULL, diverging = NULL, heatmap = NULL, ordinal = NULL, ramp = NULL, symbol = NULL){
   args <- .modify_args(NULL, c("category", "diverging", "heatmap", "ordinal", "ramp", "symbol"))
-  .add_sub_config(args$spec, args$object, '#/definitions/RangeConfig' , .config = "range")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/RangeConfig", class = c("glue", "character")) , .config = "range")
 } 
 #' vl_add_rect_config
 #' 
@@ -14286,7 +14362,7 @@ vl_add_rect_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, 
   "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", "strokeOpacity", 
   "strokeWidth", "tension", "text", "theta", "timeUnitBand", "timeUnitBandPosition", 
   "tooltip", "width", "x", "x2", "y", "y2"))
-  .add_sub_config(args$spec, args$object, '#/definitions/RectConfig' , .config = "rect")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/RectConfig", class = c("glue", "character")) , .config = "rect")
 } 
 #' vl_add_repeat_config
 #' 
@@ -14312,7 +14388,7 @@ vl_add_rect_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, 
 
 vl_add_repeat_config <- function(spec, columns = NULL, spacing = NULL){
   args <- .modify_args(NULL, c("columns", "spacing"))
-  .add_sub_config(args$spec, args$object, '#/definitions/CompositionConfig' , .config = "repeat")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/CompositionConfig", class = c("glue", "character")) , .config = "repeat")
 } 
 #' vl_add_rule_config
 #' 
@@ -14484,7 +14560,7 @@ vl_add_rule_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, 
   "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", "text", "theta", 
   "timeUnitBand", "timeUnitBandPosition", "tooltip", "width", "x", "x2", "y", 
   "y2"))
-  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "rule")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/MarkConfig", class = c("glue", "character")) , .config = "rule")
 } 
 #' vl_add_scale_config
 #' 
@@ -14563,7 +14639,7 @@ vl_add_scale_config <- function(spec, bandPaddingInner = NULL, bandPaddingOuter 
   "maxBandSize", "maxFontSize", "maxOpacity", "maxSize", "maxStrokeWidth", "minBandSize", 
   "minFontSize", "minOpacity", "minSize", "minStrokeWidth", "pointPadding", "quantileCount", 
   "quantizeCount", "rectBandPaddingInner", "round", "useUnaggregatedDomain"))
-  .add_sub_config(args$spec, args$object, '#/definitions/ScaleConfig' , .config = "scale")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/ScaleConfig", class = c("glue", "character")) , .config = "scale")
 } 
 #' vl_add_selection_config
 #' 
@@ -14588,7 +14664,7 @@ vl_add_scale_config <- function(spec, bandPaddingInner = NULL, bandPaddingOuter 
 
 vl_add_selection_config <- function(spec, interval = NULL, multi = NULL, single = NULL){
   args <- .modify_args(NULL, c("interval", "multi", "single"))
-  .add_sub_config(args$spec, args$object, '#/definitions/SelectionConfig' , .config = "selection")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/SelectionConfig", class = c("glue", "character")) , .config = "selection")
 } 
 #' vl_add_square_config
 #' 
@@ -14760,7 +14836,7 @@ vl_add_square_config <- function(spec, align = NULL, angle = NULL, aspect = NULL
   "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", "text", "theta", 
   "timeUnitBand", "timeUnitBandPosition", "tooltip", "width", "x", "x2", "y", 
   "y2"))
-  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "square")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/MarkConfig", class = c("glue", "character")) , .config = "square")
 } 
 #' vl_add_text_config
 #' 
@@ -14932,7 +15008,7 @@ vl_add_text_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, 
   "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", "text", "theta", 
   "timeUnitBand", "timeUnitBandPosition", "tooltip", "width", "x", "x2", "y", 
   "y2"))
-  .add_sub_config(args$spec, args$object, '#/definitions/MarkConfig' , .config = "text")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/MarkConfig", class = c("glue", "character")) , .config = "text")
 } 
 #' vl_add_tick_config
 #' 
@@ -15110,7 +15186,7 @@ vl_add_tick_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, 
   "strokeJoin", "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", 
   "text", "theta", "thickness", "timeUnitBand", "timeUnitBandPosition", "tooltip", 
   "width", "x", "x2", "y", "y2"))
-  .add_sub_config(args$spec, args$object, '#/definitions/TickConfig' , .config = "tick")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/TickConfig", class = c("glue", "character")) , .config = "tick")
 } 
 #' vl_add_title_config
 #' 
@@ -15149,7 +15225,7 @@ vl_add_title_config <- function(spec, align = NULL, anchor = NULL, angle = NULL,
   "fontStyle", "fontWeight", "frame", "limit", "lineHeight", "offset", "orient", 
   "subtitleColor", "subtitleFont", "subtitleFontSize", "subtitleFontStyle", "subtitleFontWeight", 
   "subtitleLineHeight", "subtitlePadding"))
-  .add_sub_config(args$spec, args$object, '#/definitions/TitleConfig' , .config = "title")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/TitleConfig", class = c("glue", "character")) , .config = "title")
 } 
 #' vl_add_trail_config
 #' 
@@ -15330,7 +15406,7 @@ vl_add_trail_config <- function(spec, align = NULL, angle = NULL, aspect = NULL,
   "strokeMiterLimit", "strokeOpacity", "strokeWidth", "tension", "text", "theta", 
   "timeUnitBand", "timeUnitBandPosition", "tooltip", "width", "x", "x2", "y", 
   "y2"))
-  .add_sub_config(args$spec, args$object, '#/definitions/LineConfig' , .config = "trail")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/LineConfig", class = c("glue", "character")) , .config = "trail")
 } 
 #' vl_add_view_config
 #' 
@@ -15388,7 +15464,7 @@ vl_add_view_config <- function(spec, clip = NULL, continuousHeight = NULL, conti
   "discreteWidth", "fill", "fillOpacity", "height", "opacity", "step", "stroke", 
   "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
   "strokeOpacity", "strokeWidth", "width"))
-  .add_sub_config(args$spec, args$object, '#/definitions/ViewConfig' , .config = "view")
+  .add_sub_config(args$spec, args$object, structure("#/definitions/ViewConfig", class = c("glue", "character")) , .config = "view")
 } 
 #' vl_make_AreaConfig
 #' 
