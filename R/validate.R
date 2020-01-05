@@ -1,14 +1,4 @@
 
-# validate_sub_schema <- function(x, ref) {
-#   j <-  jsonlite::toJSON(x, auto_unbox = TRUE, null = "null")
-#   schema_file <-  Sys.glob(file.path(system.file("schema/", package = "vlbuildr"),"*.json"))
-#   schema <- paste(readLines(schema_file), collapse = "\n")
-#   res <- jsonvalidate::json_validate(j, schema, engine = "ajv", reference = ref)
-#   if (!res){
-#     warning("Invalid specification for ", ref, ".")
-#   }
-#   return(res)
-# }
 
 validate_sub_schema <- function(x, ref) {
   
@@ -66,7 +56,7 @@ is_valid_object <- function(obj, sub_schema, schema) {
   }
   
   # Validate each property... 
-  all_return_true(names(obj), function(x) is_valid_subschema(obj[[x]], sub_schema$properties[[x]], VL_SCHEMA))
+  all_return_true(names(obj), function(x) is_valid_subschema(obj[[x]], sub_schema$properties[[x]], env$VL_SCHEMA))
 }
 
 is_valid_subschema <- function(obj, sub_schema, schema) {
