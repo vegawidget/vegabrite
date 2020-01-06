@@ -1,0 +1,16 @@
+Package: vlmetabuildr
+Title: Helpers for building a vegalite api
+Version: 0.0.0.9000
+Authors@R: person("Aicia", "Schep", email = "aschep@gmail.com", role = c("aut", "cre"))
+Description: Has functions to help build components of an R vegalite API. Inspired
+  by vega-lite-api JS package and altair Python package. 
+Depends: R (>= 3.4.4)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: purrr,
+    glue,
+    utils,
+    stringr
+RoxygenNote: 6.1.0
+Suggests: vegawidget
