@@ -45,8 +45,8 @@ search2 <- function(schema, type, check, get, gather, base, parent) {
     t <- c(type[["anyOf"]],type[["allOf"]],type[["oneOf"]])
     ts <- purrr::map(t, function(x) search2(schema, x, check, get, gather, base, get_name_from_ref(t)))
     gather(ts)
-  } else{
-    base()
+  } else {
+    base(type)
   }
 }
 
@@ -66,7 +66,11 @@ props_grouped_by_object <- function(ref, schema) {
          function(x) {"type" %in% names(x) && x[["type"]] ==  'object'},
          function(x) {x[["properties"]]},
          function(x) unlist(x, recursive = FALSE),
-         function() {NULL},
+         function(x) { 
+           out = list() 
+           out[[paste0(".",x[["type"]])]] =  x
+           out 
+         },
          get_name_from_ref(type)
   )
 }
