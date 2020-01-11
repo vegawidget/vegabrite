@@ -33,7 +33,7 @@ search <- function(schema, type, check, get, gather, base) {
 # the result. 
 search2 <- function(schema, type, check, get, gather, base, parent) {
   if (is.null(type)) {
-    base()
+    base(type)
   } else if (hasName(type,"$ref")) {
     search2(schema, lookup(schema, type[["$ref"]]), check, get, gather, base, get_name_from_ref(type))
   } else if (check(type)) {
@@ -60,18 +60,29 @@ props <- function(ref, schema) {
   )
 }
 
+types <- function(ref, schema) {
+  search2(schema,
+         list("$ref" = ref),
+         function(x) {"type" %in% names(x) && x[["type"]] ==  'object'},
+         function(x) { x },
+         function(x) unlist(x, recursive = FALSE),
+         function(x) { 
+           out = list() 
+           out[[x[["type"]]]] =  x
+           out 
+         },
+         get_name_from_ref(ref)
+  )
+}
+
 props_grouped_by_object <- function(ref, schema) {
   search2(schema,
           list("$ref" = ref),
          function(x) {"type" %in% names(x) && x[["type"]] ==  'object'},
          function(x) {x[["properties"]]},
          function(x) unlist(x, recursive = FALSE),
-         function(x) { 
-           out = list() 
-           out[[paste0(".",x[["type"]])]] =  x
-           out 
-         },
-         get_name_from_ref(type)
+         function(x) { NULL },
+         get_name_from_ref(ref)
   )
 }
 
@@ -95,21 +106,12 @@ enums <- function(ref, schema) {
   )
 }
 
-types <- function(ref, schema) {
-  search(schema,
-         list("$ref" = ref),
-         function(x) {"type" %in% names(x) && x[["type"]] ==  'object' &&
-             "properties" %in% names(x) && "type" %in% names(x[["properties"]])},
-         function(x) {x[["properties"]][["type"]][["enum"]]},
-         function(x) sort(unlist(x, use.names = FALSE)),
-         function() {c()}
-  )
-}
-
 
 get_name_from_ref <- function(type){
   if (hasName(type,"$ref")) {
     stringr::str_remove(type[["$ref"]],"#/definitions/")
+  } else if (is.character(type)) {
+    stringr::str_remove(type,"#/definitions/")
   } else {
     NULL
   }

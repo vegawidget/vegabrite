@@ -71,7 +71,7 @@ make_arg_list <- function(reference, schema, exclude_args, priority_args){
   
   param_names <- unique(c(intersect(priority_args,param_names), param_names))
   args <- paste(param_names, "NULL", sep = " = ")
-  arg_list <- paste(c('spec', args), collapse = ", ")
+  arg_list <- paste(c('spec', args, ".object = NULL"), collapse = ", ")
   
   arg_list
 }
