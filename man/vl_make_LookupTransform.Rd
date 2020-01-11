@@ -8,15 +8,21 @@ vl_make_LookupTransform(as = NULL, default = NULL, from = NULL,
   lookup = NULL)
 }
 \arguments{
-\item{as}{(\emph{LookupTransform}) The field or fields for storing the computed formula value.
-If \code{from.fields} is specified, the transform will use the same names for \code{as}.
-If \code{from.fields} is not specified, \code{as} has to be a string and we put the whole object into the data under the specified name.}
+\item{as}{(\emph{LookupTransform}) The output fields on which to store the looked up data values.
+
+For data lookups, this property may be left blank if \code{from.fields}
+has been specified (those field names will be used); if \code{from.fields}
+has not been specified, \code{as} must be a string.
+
+For selection lookups, this property is optional: if unspecified,
+looked up values will be stored under a property named for the selection;
+and if specified, it must correspond to \code{from.fields}.}
 
 \item{default}{(\emph{LookupTransform}) The default value to use if lookup fails.
 
 \strong{Default value:} \code{null}}
 
-\item{from}{(\emph{LookupTransform}) Secondary data reference.}
+\item{from}{(\emph{LookupTransform}) Data source or selection for secondary data reference.}
 
 \item{lookup}{(\emph{LookupTransform}) Key in primary data source.}
 }

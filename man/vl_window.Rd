@@ -20,7 +20,7 @@ vl_window(spec, frame = NULL, groupby = NULL, ignorePeers = NULL,
 
 \strong{Default value:} \code{false}}
 
-\item{sort}{(\emph{WindowTransform}) A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered “peer” values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to \code{true}).}
+\item{sort}{(\emph{WindowTransform}) A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered "peer" values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to \code{true}).}
 
 \item{window}{(\emph{WindowTransform}) The definition of the fields in the window, and what calculations to use.}
 }

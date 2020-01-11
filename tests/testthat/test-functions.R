@@ -24,7 +24,7 @@ test_that("can use vl_encode with row", {
   chart <- vl_chart() %>%
     vl_encode(row = list(field = "x", type = "quantitative")) 
   
-  expect_equivalent(chart$facet$row, list(field = "x", type = "quantitative"))
+  expect_equivalent(chart$encoding$row, list(field = "x", type = "quantitative"))
 })
 
 test_that("can use vl_encode with column", {
@@ -32,7 +32,7 @@ test_that("can use vl_encode with column", {
   chart <- vl_chart() %>%
     vl_encode(column = list(field = "x", type = "quantitative")) 
   
-  expect_equivalent(chart$facet$column, list(field = "x", type = "quantitative"))
+  expect_equivalent(chart$encoding$column, list(field = "x", type = "quantitative"))
 })
 
 test_that("can use vl_encode with facet", {
@@ -40,7 +40,7 @@ test_that("can use vl_encode with facet", {
   chart <- vl_chart() %>%
     vl_encode(facet = list(field = "x", type = "quantitative")) 
   
-  expect_equivalent(chart$facet, list(field = "x", type = "quantitative"))
+  expect_equivalent(chart$encoding$facet, list(field = "x", type = "quantitative"))
 })
 
 test_that("encode functions escapes field names with .", {

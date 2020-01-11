@@ -4,35 +4,62 @@
 \alias{vl_make_AreaConfig}
 \title{vl_make_AreaConfig}
 \usage{
-vl_make_AreaConfig(align = NULL, angle = NULL, baseline = NULL,
-  color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL,
-  dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL,
-  fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL,
-  fontStyle = NULL, fontWeight = NULL, href = NULL,
-  interpolate = NULL, limit = NULL, line = NULL, opacity = NULL,
+vl_make_AreaConfig(align = NULL, angle = NULL, aspect = NULL,
+  baseline = NULL, color = NULL, cornerRadius = NULL,
+  cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL,
+  cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL,
+  cursor = NULL, dir = NULL, dx = NULL, dy = NULL,
+  ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL,
+  font = NULL, fontSize = NULL, fontStyle = NULL,
+  fontWeight = NULL, height = NULL, href = NULL,
+  interpolate = NULL, invalid = NULL, limit = NULL, line = NULL,
+  lineBreak = NULL, lineHeight = NULL, opacity = NULL,
   order = NULL, orient = NULL, point = NULL, radius = NULL,
   shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL,
   strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL,
   strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
-  tension = NULL, text = NULL, theta = NULL, tooltip = NULL,
+  tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL,
+  timeUnitBandPosition = NULL, tooltip = NULL, width = NULL,
   x = NULL, x2 = NULL, y = NULL, y2 = NULL)
 }
 \arguments{
-\item{align}{(\emph{AreaConfig}) The horizontal alignment of the text. One of \code{"left"}, \code{"right"}, \code{"center"}.}
+\item{align}{(\emph{AreaConfig}) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of \code{"left"}, \code{"right"}, \code{"center"}.}
 
 \item{angle}{(\emph{AreaConfig}) The rotation angle of the text, in degrees.}
 
-\item{baseline}{(\emph{AreaConfig}) The vertical alignment of the text. One of \code{"top"}, \code{"middle"}, \code{"bottom"}.
+\item{aspect}{(\emph{AreaConfig}) Whether to keep aspect ratio of image marks.}
+
+\item{baseline}{(\emph{AreaConfig}) The vertical alignment of the text or ranged marks (area, bar, image, rect, rule). One of \code{"top"}, \code{"middle"}, \code{"bottom"}.
 
 \strong{Default value:} \code{"middle"}}
 
-\item{color}{(\emph{AreaConfig}) Default color.  Note that \code{fill} and \code{stroke} have higher precedence than \code{color} and will override \code{color}.
+\item{color}{(\emph{AreaConfig}) Default color.
 
 \strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
 
-\strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.}
+\strong{Note:}
+\itemize{
+\item This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.
+\item The \code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.
+}}
 
 \item{cornerRadius}{(\emph{AreaConfig}) The radius in pixels of rounded rectangle corners.
+
+\strong{Default value:} \code{0}}
+
+\item{cornerRadiusBottomLeft}{(\emph{AreaConfig}) The radius in pixels of rounded rectangle bottom left corner.
+
+\strong{Default value:} \code{0}}
+
+\item{cornerRadiusBottomRight}{(\emph{AreaConfig}) The radius in pixels of rounded rectangle bottom right corner.
+
+\strong{Default value:} \code{0}}
+
+\item{cornerRadiusTopLeft}{(\emph{AreaConfig}) The radius in pixels of rounded rectangle top right corner.
+
+\strong{Default value:} \code{0}}
+
+\item{cornerRadiusTopRight}{(\emph{AreaConfig}) The radius in pixels of rounded rectangle top left corner.
 
 \strong{Default value:} \code{0}}
 
@@ -50,7 +77,7 @@ vl_make_AreaConfig(align = NULL, angle = NULL, baseline = NULL,
 
 \strong{Default value:} \code{"…"}}
 
-\item{fill}{(\emph{AreaConfig}) Default Fill Color.  This has higher precedence than \code{config.color}
+\item{fill}{(\emph{AreaConfig}) Default Fill Color. This has higher precedence than \code{config.color}.
 
 \strong{Default value:} (None)}
 
@@ -60,7 +87,7 @@ vl_make_AreaConfig(align = NULL, angle = NULL, baseline = NULL,
 
 \item{filled}{(\emph{AreaConfig}) Whether the mark's color should be used as fill color instead of stroke color.
 
-\strong{Default value:} \code{false} for \code{point}, \code{line} and \code{rule}; otherwise, \code{true}.
+\strong{Default value:} \code{false} for all \code{point}, \code{line}, and \code{rule} marks as well as \code{geoshape} marks for \href{https://vega.github.io/vega-lite/docs/data.html#graticule}{graticule} data sources; otherwise, \code{true}.
 
 \strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.}
 
@@ -72,6 +99,8 @@ vl_make_AreaConfig(align = NULL, angle = NULL, baseline = NULL,
 
 \item{fontWeight}{(\emph{AreaConfig}) The font weight.
 This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
+
+\item{height}{(\emph{AreaConfig}) Height of the marks.}
 
 \item{href}{(\emph{AreaConfig}) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.}
 
@@ -92,6 +121,12 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item \code{"monotone"}: cubic interpolation that preserves monotonicity in y.
 }}
 
+\item{invalid}{(\emph{AreaConfig}) Defines how Vega-Lite should handle marks for invalid values (\code{null} and \code{NaN}).
+\itemize{
+\item If set to \code{"filter"} (default), all data items with null values will be skipped (for line, trail, and area marks) or filtered (for other marks).
+\item If \code{null}, all data items are included. In this case, invalid values will be interpreted as zeroes.
+}}
+
 \item{limit}{(\emph{AreaConfig}) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
 
 \strong{Default value:} \code{0}, indicating no limit}
@@ -103,6 +138,10 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 }
 
 \strong{Default value:} \code{false}.}
+
+\item{lineBreak}{(\emph{AreaConfig}) A delimiter, such as a newline character, upon which to break text strings into multiple lines. This property will be ignored if the text property is array-valued.}
+
+\item{lineHeight}{(\emph{AreaConfig}) The height, in pixels, of each line of text in a multi-line text mark.}
 
 \item{opacity}{(\emph{AreaConfig}) The overall opacity (value between [0,1]).
 
@@ -150,9 +189,15 @@ therefore explicitly specified value will be ignored.
 \item For \code{text}, this represents the font size, in pixels.
 }
 
-\strong{Default value:} \code{30} for point, circle, square marks; \code{rangeStep} - 1 for bar marks with discrete dimensions; \code{5} for bar marks with continuous dimensions; \code{11} for text marks.}
+\strong{Default value:}
+\itemize{
+\item \code{30} for point, circle, square marks; width/height's \code{step}
+\item \code{2} for bar marks with discrete dimensions;
+\item \code{5} for bar marks with continuous dimensions;
+\item \code{11} for text marks.
+}}
 
-\item{stroke}{(\emph{AreaConfig}) Default Stroke Color.  This has higher precedence than \code{config.color}
+\item{stroke}{(\emph{AreaConfig}) Default Stroke Color. This has higher precedence than \code{config.color}.
 
 \strong{Default value:} (None)}
 
@@ -182,20 +227,40 @@ therefore explicitly specified value will be ignored.
 
 \item{theta}{(\emph{AreaConfig}) Polar coordinate angle, in radians, of the text label from the origin determined by the \code{x} and \code{y} properties. Values for \code{theta} follow the same convention of \code{arc} mark \code{startAngle} and \code{endAngle} properties: angles are measured in radians, with \code{0} indicating "north".}
 
+\item{timeUnitBand}{(\emph{AreaConfig}) Default relative band size for a time unit. If set to \code{1}, the bandwidth of the marks will be equal to the time unit band step.
+If set to \code{0.5}, bandwidth of the marks will be half of the time unit band step.}
+
+\item{timeUnitBandPosition}{(\emph{AreaConfig}) Default relative band position for a time unit. If set to \code{0}, the marks will be positioned at the beginning of the time unit band step.
+If set to \code{0.5}, the marks will be positioned in the middle of the time unit band step.}
+
 \item{tooltip}{(\emph{AreaConfig}) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
 \itemize{
-\item If \code{tooltip} is \code{{"content": "encoding"}}, then all fields from \code{encoding} will be used.
+\item If \code{tooltip} is \code{true} or \code{{"content": "encoding"}}, then all fields from \code{encoding} will be used.
 \item If \code{tooltip} is \code{{"content": "data"}}, then all fields that appear in the highlighted data point will be used.
-\item If set to \code{null}, then no tooltip will be used.
-}}
+\item If set to \code{null} or \code{false}, then no tooltip will be used.
+}
 
-\item{x}{(\emph{AreaConfig}) X coordinates of the marks, or width of horizontal \code{"bar"} and \code{"area"} without \code{x2}.}
+See the \href{https://vega.github.io/vega-lite/docs/tooltip.html}{tooltip} documentation for a detailed discussion about tooltip  in Vega-Lite.
 
-\item{x2}{(\emph{AreaConfig}) X2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.}
+\strong{Default value:} \code{null}}
 
-\item{y}{(\emph{AreaConfig}) Y coordinates of the marks, or height of vertical \code{"bar"} and \code{"area"} without \code{y2}}
+\item{width}{(\emph{AreaConfig}) Width of the marks.}
 
-\item{y2}{(\emph{AreaConfig}) Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.}
+\item{x}{(\emph{AreaConfig}) X coordinates of the marks, or width of horizontal \code{"bar"} and \code{"area"} without specified \code{x2} or \code{width}.
+
+The \code{value} of this channel can be a number or a string \code{"width"} for the width of the plot.}
+
+\item{x2}{(\emph{AreaConfig}) X2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.
+
+The \code{value} of this channel can be a number or a string \code{"width"} for the width of the plot.}
+
+\item{y}{(\emph{AreaConfig}) Y coordinates of the marks, or height of vertical \code{"bar"} and \code{"area"} without specified \code{y2} or \code{height}.
+
+The \code{value} of this channel can be a number or a string \code{"height"} for the height of the plot.}
+
+\item{y2}{(\emph{AreaConfig}) Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.
+
+The \code{value} of this channel can be a number or a string \code{"height"} for the height of the plot.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a AreaConfig.

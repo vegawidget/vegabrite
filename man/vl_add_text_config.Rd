@@ -4,80 +4,109 @@
 \alias{vl_add_text_config}
 \title{vl_add_text_config}
 \usage{
-vl_add_text_config(spec, align = NULL, angle = NULL, baseline = NULL,
-  color = NULL, cornerRadius = NULL, cursor = NULL, dir = NULL,
-  dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL,
-  fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL,
-  fontStyle = NULL, fontWeight = NULL, href = NULL,
-  interpolate = NULL, limit = NULL, opacity = NULL, order = NULL,
-  orient = NULL, radius = NULL, shape = NULL,
-  shortTimeLabels = NULL, size = NULL, stroke = NULL,
-  strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL,
-  strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL,
-  strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL,
-  tooltip = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL)
+vl_add_text_config(spec, align = NULL, angle = NULL, aspect = NULL,
+  baseline = NULL, color = NULL, cornerRadius = NULL,
+  cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL,
+  cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL,
+  cursor = NULL, dir = NULL, dx = NULL, dy = NULL,
+  ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL,
+  font = NULL, fontSize = NULL, fontStyle = NULL,
+  fontWeight = NULL, height = NULL, href = NULL,
+  interpolate = NULL, invalid = NULL, limit = NULL,
+  lineBreak = NULL, lineHeight = NULL, opacity = NULL,
+  order = NULL, orient = NULL, radius = NULL, shape = NULL,
+  size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL,
+  strokeDashOffset = NULL, strokeJoin = NULL,
+  strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
+  tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL,
+  timeUnitBandPosition = NULL, tooltip = NULL, width = NULL,
+  x = NULL, x2 = NULL, y = NULL, y2 = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{align}{(\emph{TextConfig}) The horizontal alignment of the text. One of \code{"left"}, \code{"right"}, \code{"center"}.}
+\item{align}{(\emph{MarkConfig}) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of \code{"left"}, \code{"right"}, \code{"center"}.}
 
-\item{angle}{(\emph{TextConfig}) The rotation angle of the text, in degrees.}
+\item{angle}{(\emph{MarkConfig}) The rotation angle of the text, in degrees.}
 
-\item{baseline}{(\emph{TextConfig}) The vertical alignment of the text. One of \code{"top"}, \code{"middle"}, \code{"bottom"}.
+\item{aspect}{(\emph{MarkConfig}) Whether to keep aspect ratio of image marks.}
+
+\item{baseline}{(\emph{MarkConfig}) The vertical alignment of the text or ranged marks (area, bar, image, rect, rule). One of \code{"top"}, \code{"middle"}, \code{"bottom"}.
 
 \strong{Default value:} \code{"middle"}}
 
-\item{color}{(\emph{TextConfig}) Default color.  Note that \code{fill} and \code{stroke} have higher precedence than \code{color} and will override \code{color}.
+\item{color}{(\emph{MarkConfig}) Default color.
 
 \strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
 
-\strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.}
+\strong{Note:}
+\itemize{
+\item This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.
+\item The \code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.
+}}
 
-\item{cornerRadius}{(\emph{TextConfig}) The radius in pixels of rounded rectangle corners.
+\item{cornerRadius}{(\emph{MarkConfig}) The radius in pixels of rounded rectangle corners.
 
 \strong{Default value:} \code{0}}
 
-\item{cursor}{(\emph{TextConfig}) The mouse cursor used over the mark. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values}{CSS cursor type} can be used.}
+\item{cornerRadiusBottomLeft}{(\emph{MarkConfig}) The radius in pixels of rounded rectangle bottom left corner.
 
-\item{dir}{(\emph{TextConfig}) The direction of the text. One of \code{"ltr"} (left-to-right) or \code{"rtl"} (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+\strong{Default value:} \code{0}}
+
+\item{cornerRadiusBottomRight}{(\emph{MarkConfig}) The radius in pixels of rounded rectangle bottom right corner.
+
+\strong{Default value:} \code{0}}
+
+\item{cornerRadiusTopLeft}{(\emph{MarkConfig}) The radius in pixels of rounded rectangle top right corner.
+
+\strong{Default value:} \code{0}}
+
+\item{cornerRadiusTopRight}{(\emph{MarkConfig}) The radius in pixels of rounded rectangle top left corner.
+
+\strong{Default value:} \code{0}}
+
+\item{cursor}{(\emph{MarkConfig}) The mouse cursor used over the mark. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values}{CSS cursor type} can be used.}
+
+\item{dir}{(\emph{MarkConfig}) The direction of the text. One of \code{"ltr"} (left-to-right) or \code{"rtl"} (right-to-left). This property determines on which side is truncated in response to the limit parameter.
 
 \strong{Default value:} \code{"ltr"}}
 
-\item{dx}{(\emph{TextConfig}) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the \emph{angle} property.}
+\item{dx}{(\emph{MarkConfig}) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the \emph{angle} property.}
 
-\item{dy}{(\emph{TextConfig}) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the \emph{angle} property.}
+\item{dy}{(\emph{MarkConfig}) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the \emph{angle} property.}
 
-\item{ellipsis}{(\emph{TextConfig}) The ellipsis string for text truncated in response to the limit parameter.
+\item{ellipsis}{(\emph{MarkConfig}) The ellipsis string for text truncated in response to the limit parameter.
 
 \strong{Default value:} \code{"…"}}
 
-\item{fill}{(\emph{TextConfig}) Default Fill Color.  This has higher precedence than \code{config.color}
+\item{fill}{(\emph{MarkConfig}) Default Fill Color. This has higher precedence than \code{config.color}.
 
 \strong{Default value:} (None)}
 
-\item{fillOpacity}{(\emph{TextConfig}) The fill opacity (value between [0,1]).
+\item{fillOpacity}{(\emph{MarkConfig}) The fill opacity (value between [0,1]).
 
 \strong{Default value:} \code{1}}
 
-\item{filled}{(\emph{TextConfig}) Whether the mark's color should be used as fill color instead of stroke color.
+\item{filled}{(\emph{MarkConfig}) Whether the mark's color should be used as fill color instead of stroke color.
 
-\strong{Default value:} \code{false} for \code{point}, \code{line} and \code{rule}; otherwise, \code{true}.
+\strong{Default value:} \code{false} for all \code{point}, \code{line}, and \code{rule} marks as well as \code{geoshape} marks for \href{https://vega.github.io/vega-lite/docs/data.html#graticule}{graticule} data sources; otherwise, \code{true}.
 
 \strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.}
 
-\item{font}{(\emph{TextConfig}) The typeface to set the text in (e.g., \code{"Helvetica Neue"}).}
+\item{font}{(\emph{MarkConfig}) The typeface to set the text in (e.g., \code{"Helvetica Neue"}).}
 
-\item{fontSize}{(\emph{TextConfig}) The font size, in pixels.}
+\item{fontSize}{(\emph{MarkConfig}) The font size, in pixels.}
 
-\item{fontStyle}{(\emph{TextConfig}) The font style (e.g., \code{"italic"}).}
+\item{fontStyle}{(\emph{MarkConfig}) The font style (e.g., \code{"italic"}).}
 
-\item{fontWeight}{(\emph{TextConfig}) The font weight.
+\item{fontWeight}{(\emph{MarkConfig}) The font weight.
 This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
 
-\item{href}{(\emph{TextConfig}) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.}
+\item{height}{(\emph{MarkConfig}) Height of the marks.}
 
-\item{interpolate}{(\emph{TextConfig}) The line interpolation method to use for line and area marks. One of the following:
+\item{href}{(\emph{MarkConfig}) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.}
+
+\item{interpolate}{(\emph{MarkConfig}) The line interpolation method to use for line and area marks. One of the following:
 \itemize{
 \item \code{"linear"}: piecewise linear segments, as in a polyline.
 \item \code{"linear-closed"}: close the linear segments to form a polygon.
@@ -94,17 +123,27 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item \code{"monotone"}: cubic interpolation that preserves monotonicity in y.
 }}
 
-\item{limit}{(\emph{TextConfig}) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+\item{invalid}{(\emph{MarkConfig}) Defines how Vega-Lite should handle marks for invalid values (\code{null} and \code{NaN}).
+\itemize{
+\item If set to \code{"filter"} (default), all data items with null values will be skipped (for line, trail, and area marks) or filtered (for other marks).
+\item If \code{null}, all data items are included. In this case, invalid values will be interpreted as zeroes.
+}}
+
+\item{limit}{(\emph{MarkConfig}) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
 
 \strong{Default value:} \code{0}, indicating no limit}
 
-\item{opacity}{(\emph{TextConfig}) The overall opacity (value between [0,1]).
+\item{lineBreak}{(\emph{MarkConfig}) A delimiter, such as a newline character, upon which to break text strings into multiple lines. This property will be ignored if the text property is array-valued.}
+
+\item{lineHeight}{(\emph{MarkConfig}) The height, in pixels, of each line of text in a multi-line text mark.}
+
+\item{opacity}{(\emph{MarkConfig}) The overall opacity (value between [0,1]).
 
 \strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick}, \code{circle}, or \code{square} marks or layered \code{bar} charts and \code{1} otherwise.}
 
-\item{order}{(\emph{TextConfig}) For line and trail marks, this \code{order} property can be set to \code{null} or \code{false} to make the lines use the original order in the data sources.}
+\item{order}{(\emph{MarkConfig}) For line and trail marks, this \code{order} property can be set to \code{null} or \code{false} to make the lines use the original order in the data sources.}
 
-\item{orient}{(\emph{TextConfig}) The orientation of a non-stacked bar, tick, area, and line charts.
+\item{orient}{(\emph{MarkConfig}) The orientation of a non-stacked bar, tick, area, and line charts.
 The value is either horizontal (default) or vertical.
 \itemize{
 \item For bar, rule and tick, this determines whether the size of the bar and tick
@@ -116,9 +155,9 @@ For stacked charts, this is always determined by the orientation of the stack;
 therefore explicitly specified value will be ignored.
 }}
 
-\item{radius}{(\emph{TextConfig}) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the \code{x} and \code{y} properties.}
+\item{radius}{(\emph{MarkConfig}) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the \code{x} and \code{y} properties.}
 
-\item{shape}{(\emph{TextConfig}) Shape of the point marks. Supported values include:
+\item{shape}{(\emph{MarkConfig}) Shape of the point marks. Supported values include:
 \itemize{
 \item plotting shapes: \code{"circle"}, \code{"square"}, \code{"cross"}, \code{"diamond"}, \code{"triangle-up"}, \code{"triangle-down"}, \code{"triangle-right"}, or \code{"triangle-left"}.
 \item the line symbol \code{"stroke"}
@@ -128,65 +167,89 @@ therefore explicitly specified value will be ignored.
 
 \strong{Default value:} \code{"circle"}}
 
-\item{shortTimeLabels}{(\emph{TextConfig}) Whether month names and weekday names should be abbreviated.}
-
-\item{size}{(\emph{TextConfig}) Default size for marks.
+\item{size}{(\emph{MarkConfig}) Default size for marks.
 \itemize{
 \item For \code{point}/\code{circle}/\code{square}, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
 \item For \code{bar}, this represents the band size of the bar, in pixels.
 \item For \code{text}, this represents the font size, in pixels.
 }
 
-\strong{Default value:} \code{30} for point, circle, square marks; \code{rangeStep} - 1 for bar marks with discrete dimensions; \code{5} for bar marks with continuous dimensions; \code{11} for text marks.}
+\strong{Default value:}
+\itemize{
+\item \code{30} for point, circle, square marks; width/height's \code{step}
+\item \code{2} for bar marks with discrete dimensions;
+\item \code{5} for bar marks with continuous dimensions;
+\item \code{11} for text marks.
+}}
 
-\item{stroke}{(\emph{TextConfig}) Default Stroke Color.  This has higher precedence than \code{config.color}
+\item{stroke}{(\emph{MarkConfig}) Default Stroke Color. This has higher precedence than \code{config.color}.
 
 \strong{Default value:} (None)}
 
-\item{strokeCap}{(\emph{TextConfig}) The stroke cap for line ending style. One of \code{"butt"}, \code{"round"}, or \code{"square"}.
+\item{strokeCap}{(\emph{MarkConfig}) The stroke cap for line ending style. One of \code{"butt"}, \code{"round"}, or \code{"square"}.
 
 \strong{Default value:} \code{"square"}}
 
-\item{strokeDash}{(\emph{TextConfig}) An array of alternating stroke, space lengths for creating dashed or dotted lines.}
+\item{strokeDash}{(\emph{MarkConfig}) An array of alternating stroke, space lengths for creating dashed or dotted lines.}
 
-\item{strokeDashOffset}{(\emph{TextConfig}) The offset (in pixels) into which to begin drawing with the stroke dash array.}
+\item{strokeDashOffset}{(\emph{MarkConfig}) The offset (in pixels) into which to begin drawing with the stroke dash array.}
 
-\item{strokeJoin}{(\emph{TextConfig}) The stroke line join method. One of \code{"miter"}, \code{"round"} or \code{"bevel"}.
+\item{strokeJoin}{(\emph{MarkConfig}) The stroke line join method. One of \code{"miter"}, \code{"round"} or \code{"bevel"}.
 
 \strong{Default value:} \code{"miter"}}
 
-\item{strokeMiterLimit}{(\emph{TextConfig}) The miter limit at which to bevel a line join.}
+\item{strokeMiterLimit}{(\emph{MarkConfig}) The miter limit at which to bevel a line join.}
 
-\item{strokeOpacity}{(\emph{TextConfig}) The stroke opacity (value between [0,1]).
+\item{strokeOpacity}{(\emph{MarkConfig}) The stroke opacity (value between [0,1]).
 
 \strong{Default value:} \code{1}}
 
-\item{strokeWidth}{(\emph{TextConfig}) The stroke width, in pixels.}
+\item{strokeWidth}{(\emph{MarkConfig}) The stroke width, in pixels.}
 
-\item{tension}{(\emph{TextConfig}) Depending on the interpolation type, sets the tension parameter (for line and area marks).}
+\item{tension}{(\emph{MarkConfig}) Depending on the interpolation type, sets the tension parameter (for line and area marks).}
 
-\item{text}{(\emph{TextConfig}) Placeholder text if the \code{text} channel is not specified}
+\item{text}{(\emph{MarkConfig}) Placeholder text if the \code{text} channel is not specified}
 
-\item{theta}{(\emph{TextConfig}) Polar coordinate angle, in radians, of the text label from the origin determined by the \code{x} and \code{y} properties. Values for \code{theta} follow the same convention of \code{arc} mark \code{startAngle} and \code{endAngle} properties: angles are measured in radians, with \code{0} indicating "north".}
+\item{theta}{(\emph{MarkConfig}) Polar coordinate angle, in radians, of the text label from the origin determined by the \code{x} and \code{y} properties. Values for \code{theta} follow the same convention of \code{arc} mark \code{startAngle} and \code{endAngle} properties: angles are measured in radians, with \code{0} indicating "north".}
 
-\item{tooltip}{(\emph{TextConfig}) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+\item{timeUnitBand}{(\emph{MarkConfig}) Default relative band size for a time unit. If set to \code{1}, the bandwidth of the marks will be equal to the time unit band step.
+If set to \code{0.5}, bandwidth of the marks will be half of the time unit band step.}
+
+\item{timeUnitBandPosition}{(\emph{MarkConfig}) Default relative band position for a time unit. If set to \code{0}, the marks will be positioned at the beginning of the time unit band step.
+If set to \code{0.5}, the marks will be positioned in the middle of the time unit band step.}
+
+\item{tooltip}{(\emph{MarkConfig}) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
 \itemize{
-\item If \code{tooltip} is \code{{"content": "encoding"}}, then all fields from \code{encoding} will be used.
+\item If \code{tooltip} is \code{true} or \code{{"content": "encoding"}}, then all fields from \code{encoding} will be used.
 \item If \code{tooltip} is \code{{"content": "data"}}, then all fields that appear in the highlighted data point will be used.
-\item If set to \code{null}, then no tooltip will be used.
-}}
+\item If set to \code{null} or \code{false}, then no tooltip will be used.
+}
 
-\item{x}{(\emph{TextConfig}) X coordinates of the marks, or width of horizontal \code{"bar"} and \code{"area"} without \code{x2}.}
+See the \href{https://vega.github.io/vega-lite/docs/tooltip.html}{tooltip} documentation for a detailed discussion about tooltip  in Vega-Lite.
 
-\item{x2}{(\emph{TextConfig}) X2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.}
+\strong{Default value:} \code{null}}
 
-\item{y}{(\emph{TextConfig}) Y coordinates of the marks, or height of vertical \code{"bar"} and \code{"area"} without \code{y2}}
+\item{width}{(\emph{MarkConfig}) Width of the marks.}
 
-\item{y2}{(\emph{TextConfig}) Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.}
+\item{x}{(\emph{MarkConfig}) X coordinates of the marks, or width of horizontal \code{"bar"} and \code{"area"} without specified \code{x2} or \code{width}.
+
+The \code{value} of this channel can be a number or a string \code{"width"} for the width of the plot.}
+
+\item{x2}{(\emph{MarkConfig}) X2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.
+
+The \code{value} of this channel can be a number or a string \code{"width"} for the width of the plot.}
+
+\item{y}{(\emph{MarkConfig}) Y coordinates of the marks, or height of vertical \code{"bar"} and \code{"area"} without specified \code{y2} or \code{height}.
+
+The \code{value} of this channel can be a number or a string \code{"height"} for the height of the plot.}
+
+\item{y2}{(\emph{MarkConfig}) Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.
+
+The \code{value} of this channel can be a number or a string \code{"height"} for the height of the plot.}
 }
 \value{
 A modified Vega-Lite Spec
 }
 \description{
-Add text config (TextConfig) to a vega-lite spec.
+Add text config (MarkConfig) to a vega-lite spec.
 }

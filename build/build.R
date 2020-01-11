@@ -1,4 +1,4 @@
-# devtools::install("build/vlmetabuildr")
+devtools::install("build/vlmetabuildr")
 library("vlmetabuildr")
 
 schema_file <- Sys.glob(file.path(system.file("schema",'vega-lite', package = 'vegawidget'),"*.json"))

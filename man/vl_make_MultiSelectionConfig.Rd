@@ -4,41 +4,54 @@
 \alias{vl_make_MultiSelectionConfig}
 \title{vl_make_MultiSelectionConfig}
 \usage{
-vl_make_MultiSelectionConfig(clear = NULL, empty = NULL,
+vl_make_MultiSelectionConfig(bind = NULL, clear = NULL, empty = NULL,
   encodings = NULL, fields = NULL, init = NULL, nearest = NULL,
   on = NULL, resolve = NULL, toggle = NULL)
 }
 \arguments{
-\item{clear}{(\emph{MultiSelectionConfig}) Clears the selection, emptying it of all values. Can be an
-\href{https://vega.github.io/vega/docs/event-streams/}{EventStream} or \code{false} to disable.
+\item{bind}{(\emph{MultiSelectionConfig}) When set, a selection is populated by interacting with the corresponding legend. Direct manipulation interaction is disabled by default;
+to re-enable it, set the selection's \href{https://vega.github.io/vega-lite/docs/selection.html#common-selection-properties}{on} property.
+
+Legend bindings are restricted to selections that only specify a single field or encoding.}
+
+\item{clear}{(\emph{MultiSelectionConfig}) Clears the selection, emptying it of all values. Can be a
+\href{https://vega.github.io/vega/docs/event-streams/}{Event Stream} or \code{false} to disable.
 
 \strong{Default value:} \code{dblclick}.
 
-See the \href{https://vega.github.io/vega-lite/docs/clear.html}{clear} documentation for more information.}
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/clear.html}{clear} documentation.}
 
 \item{empty}{(\emph{MultiSelectionConfig}) By default, \code{all} data values are considered to lie within an empty selection.
 When set to \code{none}, empty selections contain no data values.}
 
 \item{encodings}{(\emph{MultiSelectionConfig}) An array of encoding channels. The corresponding data field values
-must match for a data tuple to fall within the selection.}
+must match for a data tuple to fall within the selection.
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/project.html}{encodings} documentation.}
 
 \item{fields}{(\emph{MultiSelectionConfig}) An array of field names whose values must match for a data tuple to
-fall within the selection.}
+fall within the selection.
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/project.html}{fields} documentation.}
 
 \item{init}{(\emph{MultiSelectionConfig}) Initialize the selection with a mapping between \href{https://vega.github.io/vega-lite/docs/project.html}{projected channels or field names} and an initial
-value (or array of values).}
+value (or array of values).
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/init.html}{init} documentation.}
 
 \item{nearest}{(\emph{MultiSelectionConfig}) When true, an invisible voronoi diagram is computed to accelerate discrete
 selection. The data value \emph{nearest} the mouse cursor is added to the selection.
 
-See the \href{https://vega.github.io/vega-lite/docs/nearest.html}{nearest transform} documentation for more information.}
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/nearest.html}{nearest} documentation.}
 
 \item{on}{(\emph{MultiSelectionConfig}) A \href{https://vega.github.io/vega/docs/event-streams/}{Vega event stream} (object or selector) that triggers the selection.
 For interval selections, the event stream must specify a \href{https://vega.github.io/vega/docs/event-streams/#between-filters}{start and end}.}
 
 \item{resolve}{(\emph{MultiSelectionConfig}) With layered and multi-view displays, a strategy that determines how
 selections' data queries are resolved when applied in a filter transform,
-conditional encoding rule, or scale domain.}
+conditional encoding rule, or scale domain.
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/selection-resolve.html}{resolve} documentation.}
 
 \item{toggle}{(\emph{MultiSelectionConfig}) Controls whether data values should be toggled or only ever inserted into
 multi selections. Can be \code{true}, \code{false} (for insertion only), or a
@@ -47,7 +60,7 @@ multi selections. Can be \code{true}, \code{false} (for insertion only), or a
 \strong{Default value:} \code{true}, which corresponds to \code{event.shiftKey} (i.e.,
 data values are toggled when a user interacts with the shift-key pressed).
 
-See the \href{https://vega.github.io/vega-lite/docs/toggle.html}{toggle transform} documentation for more information.}
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/toggle.html}{toggle} documentation.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a MultiSelectionConfig.

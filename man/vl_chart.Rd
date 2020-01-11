@@ -5,21 +5,106 @@
 \title{vl_chart}
 \usage{
 vl_chart(data = NULL, `$schema` = vegawidget::vega_schema(),
-  align = NULL, autosize = NULL, background = NULL, bounds = NULL,
-  center = NULL, columns = NULL, config = NULL, datasets = NULL,
-  description = NULL, encoding = NULL, height = NULL, mark = NULL,
-  name = NULL, padding = NULL, projection = NULL, resolve = NULL,
-  selection = NULL, spacing = NULL, title = NULL, transform = NULL,
-  usermeta = NULL, view = NULL, width = NULL, facet = NULL,
-  spec = NULL, layer = NULL, `repeat` = NULL, concat = NULL,
-  vconcat = NULL, hconcat = NULL)
+  autosize = NULL, background = NULL, bounds = NULL, config = NULL,
+  datasets = NULL, description = NULL, encoding = NULL,
+  height = NULL, mark = NULL, name = NULL, padding = NULL,
+  projection = NULL, resolve = NULL, selection = NULL,
+  title = NULL, transform = NULL, usermeta = NULL, view = NULL,
+  width = NULL, align = NULL, center = NULL, columns = NULL,
+  facet = NULL, spacing = NULL, spec = NULL, layer = NULL,
+  `repeat` = NULL, concat = NULL, vconcat = NULL, hconcat = NULL)
 }
 \arguments{
-\item{data}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) An object describing the data source}
+\item{data}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) An object describing the data source. Set to \code{null} to ignore the parent's data source. If no data is set, it is derived from the parent.}
 
-\item{$schema}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) URL to \href{http://json-schema.org/}{JSON schema} for a Vega-Lite specification. Unless you have a reason to change this, use \code{https://vega.github.io/schema/vega-lite/v3.json}. Setting the \code{$schema} property allows automatic validation and autocomplete in editors that support JSON schema.}
+\item{$schema}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) URL to \href{http://json-schema.org/}{JSON schema} for a Vega-Lite specification. Unless you have a reason to change this, use \code{https://vega.github.io/schema/vega-lite/v4.json}. Setting the \code{$schema} property allows automatic validation and autocomplete in editors that support JSON schema.}
 
-\item{align}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) The alignment to apply to grid rows and columns.
+\item{autosize}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) How the visualization size should be determined. If a string, should be one of \code{"pad"}, \code{"fit"} or \code{"none"}.
+Object values can additionally specify parameters for content sizing and automatic resizing.
+
+\strong{Default value}: \code{pad}}
+
+\item{background}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) CSS color property to use as the background of the entire view.
+
+\strong{Default value:} \code{"white"}}
+
+\item{bounds}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) The bounds calculation method to use for determining the extent of a sub-plot. One of \code{full} (the default) or \code{flush}.
+\itemize{
+\item If set to \code{full}, the entire calculated bounds (including axes, title, and legend) will be used.
+\item If set to \code{flush}, only the specified width and height values for the sub-view will be used. The \code{flush} setting can be useful when attempting to place sub-plots without axes or legends into a uniform grid structure.
+}
+
+\strong{Default value:} \code{"full"}}
+
+\item{config}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Vega-Lite configuration object. This property can only be defined at the top-level of a specification.}
+
+\item{datasets}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) A global data store for named datasets. This is a mapping from names to inline datasets.
+This can be an array of objects or primitive values or a string. Arrays of primitive values are ingested as objects with a \code{data} property.}
+
+\item{description}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Description of this mark for commenting purpose.}
+
+\item{encoding}{(\emph{TopLevelUnitSpec}) A key-value mapping between encoding channels and definition of fields.
+
+(\emph{TopLevelLayerSpec}) A shared key-value mapping between encoding channels and definition of fields in the underlying layers.}
+
+\item{height}{(\emph{TopLevelUnitSpec, TopLevelLayerSpec}) The height of a visualization.
+\itemize{
+\item For a plot with a continuous y-field, height should be a number.
+\item For a plot with either a discrete y-field or no y-field, height can be either a number indicating a fixed height or an object in the form of \code{{step: number}} defining the height per discrete step. (No y-field is equivalent to having one discrete step.)
+\item To enable responsive sizing on height, it should be set to \code{"container"}.
+}
+
+\strong{Default value:} Based on \code{config.view.continuousHeight} for a plot with a continuous y-field and \code{config.view.discreteHeight} otherwise.
+
+\strong{Note:} For plots with \href{https://vega.github.io/vega-lite/docs/encoding.html#facet}{row and column channels}, this represents the height of a single view and the \code{"container"} option cannot be used.
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/size.html}{height} documentation.}
+
+\item{mark}{(\emph{TopLevelUnitSpec}) A string describing the mark type (one of \code{"bar"}, \code{"circle"}, \code{"square"}, \code{"tick"}, \code{"line"},
+\code{"area"}, \code{"point"}, \code{"rule"}, \code{"geoshape"}, and \code{"text"}) or a \href{https://vega.github.io/vega-lite/docs/mark.html#mark-def}{mark definition object}.}
+
+\item{name}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Name of the visualization for later reference.}
+
+\item{padding}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) The default visualization padding, in pixels, from the edge of the visualization canvas to the data rectangle. If a number, specifies padding for all sides.
+If an object, the value should have the format \code{{"left": 5, "top": 5, "right": 5, "bottom": 5}} to specify padding for each side of the visualization.
+
+\strong{Default value}: \code{5}}
+
+\item{projection}{(\emph{TopLevelUnitSpec}) An object defining properties of geographic projection, which will be applied to \code{shape} path for \code{"geoshape"} marks
+and to \code{latitude} and \code{"longitude"} channels for other marks.
+
+(\emph{TopLevelLayerSpec}) An object defining properties of the geographic projection shared by underlying layers.}
+
+\item{resolve}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Scale, axis, and legend resolutions for view composition specifications.}
+
+\item{selection}{(\emph{TopLevelUnitSpec}) A key-value mapping between selection names and definitions.}
+
+\item{title}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Title for the plot.}
+
+\item{transform}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) An array of data transformations such as filter and new field calculation.}
+
+\item{usermeta}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Optional metadata that will be passed to Vega.
+This object is completely ignored by Vega and Vega-Lite and can be used for custom metadata.}
+
+\item{view}{(\emph{TopLevelUnitSpec, TopLevelLayerSpec}) An object defining the view background's fill and stroke.
+
+\strong{Default value:} none (transparent)}
+
+\item{width}{(\emph{TopLevelUnitSpec, TopLevelLayerSpec}) The width of a visualization.
+\itemize{
+\item For a plot with a continuous x-field, width should be a number.
+\item For a plot with either a discrete x-field or no x-field, width can be either a number indicating a fixed width or an object in the form of \code{{step: number}} defining the width per discrete step. (No x-field is equivalent to having one discrete step.)
+\item To enable responsive sizing on width, it should be set to \code{"container"}.
+}
+
+\strong{Default value:}
+Based on \code{config.view.continuousWidth} for a plot with a continuous x-field and \code{config.view.discreteWidth} otherwise.
+
+\strong{Note:} For plots with \href{https://vega.github.io/vega-lite/docs/encoding.html#facet}{row and column channels}, this represents the width of a single view and the \code{"container"} option cannot be used.
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/size.html}{width} documentation.}
+
+\item{align}{(\emph{TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) The alignment to apply to grid rows and columns.
 The supported string values are \code{"all"}, \code{"each"}, and \code{"none"}.
 \itemize{
 \item For \code{"none"}, a flow layout will be used, in which adjacent subviews are simply placed one after the other.
@@ -31,35 +116,17 @@ Alternatively, an object value of the form \code{{"row": string, "column": strin
 
 \strong{Default value:} \code{"all"}.}
 
-\item{autosize}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Sets how the visualization size should be determined. If a string, should be one of \code{"pad"}, \code{"fit"} or \code{"none"}.
-Object values can additionally specify parameters for content sizing and automatic resizing.
-\code{"fit"} is only supported for single and layered views that don't use \code{rangeStep}.
-
-\strong{Default value}: \code{pad}}
-
-\item{background}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) CSS color property to use as the background of the entire view.
-
-\strong{Default value:} none (transparent)}
-
-\item{bounds}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) The bounds calculation method to use for determining the extent of a sub-plot. One of \code{full} (the default) or \code{flush}.
-\itemize{
-\item If set to \code{full}, the entire calculated bounds (including axes, title, and legend) will be used.
-\item If set to \code{flush}, only the specified width and height values for the sub-view will be used. The \code{flush} setting can be useful when attempting to place sub-plots without axes or legends into a uniform grid structure.
-}
-
-\strong{Default value:} \code{"full"}}
-
 \item{center}{(\emph{TopLevelVConcatSpec, TopLevelHConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
 
 \strong{Default value:} \code{false}
 
-(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
+(\emph{TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
 
 An object value of the form \code{{"row": boolean, "column": boolean}} can be used to supply different centering values for rows and columns.
 
 \strong{Default value:} \code{false}}
 
-\item{columns}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) The number of columns to include in the view composition layout.
+\item{columns}{(\emph{TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) The number of columns to include in the view composition layout.
 
 \strong{Default value}: \code{undefined} -- An infinite number of columns (a single row) will be assumed. This is equivalent to
 \code{hconcat} (for \code{concat}) and to using the \code{column} channel (for \code{facet} and \code{repeat}).
@@ -76,50 +143,13 @@ An object value of the form \code{{"row": boolean, "column": boolean}} can be us
 \item Setting the \code{columns} to \code{1} is equivalent to \code{vconcat} (for \code{concat}) and to using the \code{row} channel (for \code{facet} and \code{repeat}).
 }}
 
-\item{config}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Vega-Lite configuration object.  This property can only be defined at the top-level of a specification.}
+\item{facet}{(\emph{TopLevelFacetSpec}) Definition for how to facet the data. One of:
+\enumerate{
+\item \href{https://vega.github.io/vega-lite/docs/facet.html#field-def}{a field definition for faceting the plot by one field}
+\item \href{https://vega.github.io/vega-lite/docs/facet.html#mapping}{An object that maps row and column channels to their field definitions}
+}}
 
-\item{datasets}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) A global data store for named datasets. This is a mapping from names to inline datasets.
-This can be an array of objects or primitive values or a string. Arrays of primitive values are ingested as objects with a \code{data} property.}
-
-\item{description}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Description of this mark for commenting purpose.}
-
-\item{encoding}{(\emph{TopLevelUnitSpec}) A key-value mapping between encoding channels and definition of fields.
-
-(\emph{TopLevelLayerSpec}) A shared key-value mapping between encoding channels and definition of fields in the underlying layers.}
-
-\item{height}{(\emph{TopLevelUnitSpec, TopLevelLayerSpec}) The height of a visualization.
-
-\strong{Default value:}
-\itemize{
-\item If a view's \href{https://vega.github.io/vega-lite/docs/size.html#autosize}{autosize} type is \code{"fit"} or its y-channel has a \href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{continuous scale}, the height will be the value of \href{https://vega.github.io/vega-lite/docs/spec.html#config}{config.view.height}.
-\item For y-axis with a band or point scale: if \href{https://vega.github.io/vega-lite/docs/scale.html#band}{rangeStep} is a numeric value or unspecified, the height is \href{https://vega.github.io/vega-lite/docs/scale.html#band}{determined by the range step, paddings, and the cardinality of the field mapped to y-channel}. Otherwise, if the \code{rangeStep} is \code{null}, the height will be the value of \href{https://vega.github.io/vega-lite/docs/spec.html#config}{config.view.height}.
-\item If no field is mapped to \code{y} channel, the \code{height} will be the value of \code{rangeStep}.
-}
-
-\strong{Note}: For plots with \href{https://vega.github.io/vega-lite/docs/encoding.html#facet}{row and column channels}, this represents the height of a single view.
-
-\strong{See also:} The documentation for \href{https://vega.github.io/vega-lite/docs/size.html}{width and height} contains more examples.}
-
-\item{mark}{(\emph{TopLevelUnitSpec}) A string describing the mark type (one of \code{"bar"}, \code{"circle"}, \code{"square"}, \code{"tick"}, \code{"line"},
-\code{"area"}, \code{"point"}, \code{"rule"}, \code{"geoshape"}, and \code{"text"}) or a \href{https://vega.github.io/vega-lite/docs/mark.html#mark-def}{mark definition object}.}
-
-\item{name}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Name of the visualization for later reference.}
-
-\item{padding}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) The default visualization padding, in pixels, from the edge of the visualization canvas to the data rectangle.  If a number, specifies padding for all sides.
-If an object, the value should have the format \code{{"left": 5, "top": 5, "right": 5, "bottom": 5}} to specify padding for each side of the visualization.
-
-\strong{Default value}: \code{5}}
-
-\item{projection}{(\emph{TopLevelUnitSpec}) An object defining properties of geographic projection, which will be applied to \code{shape} path for \code{"geoshape"} marks
-and to \code{latitude} and \code{"longitude"} channels for other marks.
-
-(\emph{TopLevelLayerSpec}) An object defining properties of the geographic projection shared by underlying layers.}
-
-\item{resolve}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Scale, axis, and legend resolutions for view composition specifications.}
-
-\item{selection}{(\emph{TopLevelUnitSpec}) A key-value mapping between selection names and definitions.}
-
-\item{spacing}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) The spacing in pixels between sub-views of the composition operator.
+\item{spacing}{(\emph{TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) The spacing in pixels between sub-views of the composition operator.
 An object of the form \code{{"row": number, "column": number}} can be used to set
 different spacing values for rows and columns.
 
@@ -129,36 +159,6 @@ different spacing values for rows and columns.
 
 \strong{Default value}: \code{10}}
 
-\item{title}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Title for the plot.}
-
-\item{transform}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) An array of data transformations such as filter and new field calculation.}
-
-\item{usermeta}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Optional metadata that will be passed to Vega.
-This object is completely ignored by Vega and Vega-Lite and can be used for custom metadata.}
-
-\item{view}{(\emph{TopLevelUnitSpec, TopLevelLayerSpec}) An object defining the view background's fill and stroke.
-
-\strong{Default value:} none (transparent)}
-
-\item{width}{(\emph{TopLevelUnitSpec, TopLevelLayerSpec}) The width of a visualization.
-
-\strong{Default value:} This will be determined by the following rules:
-\itemize{
-\item If a view's \href{https://vega.github.io/vega-lite/docs/size.html#autosize}{autosize} type is \code{"fit"} or its x-channel has a \href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{continuous scale}, the width will be the value of \href{https://vega.github.io/vega-lite/docs/spec.html#config}{config.view.width}.
-\item For x-axis with a band or point scale: if \href{https://vega.github.io/vega-lite/docs/scale.html#band}{rangeStep} is a numeric value or unspecified, the width is \href{https://vega.github.io/vega-lite/docs/scale.html#band}{determined by the range step, paddings, and the cardinality of the field mapped to x-channel}.   Otherwise, if the \code{rangeStep} is \code{null}, the width will be the value of \href{https://vega.github.io/vega-lite/docs/spec.html#config}{config.view.width}.
-\item If no field is mapped to \code{x} channel, the \code{width} will be the value of \href{https://vega.github.io/vega-lite/docs/size.html#default-width-and-height}{config.scale.textXRangeStep} for \code{text} mark and the value of \code{rangeStep} for other marks.
-}
-
-\strong{Note:} For plots with \href{https://vega.github.io/vega-lite/docs/encoding.html#facet}{row and column channels}, this represents the width of a single view.
-
-\strong{See also:} The documentation for \href{https://vega.github.io/vega-lite/docs/size.html}{width and height} contains more examples.}
-
-\item{facet}{(\emph{TopLevelFacetSpec}) Definition for how to facet the data.  One of:
-\enumerate{
-\item \href{https://vega.github.io/vega-lite/docs/facet.html#field-def}{a field definition for faceting the plot by one field}
-\item \href{https://vega.github.io/vega-lite/docs/facet.html#mapping}{An object that maps row and column channels to their field definitions}
-}}
-
 \item{spec}{(\emph{TopLevelFacetSpec}) A specification of the view that gets faceted.
 
 (\emph{TopLevelRepeatSpec}) A specification of the view that gets repeated.}
@@ -167,9 +167,9 @@ This object is completely ignored by Vega and Vega-Lite and can be used for cust
 
 \strong{Note}: Specifications inside \code{layer} cannot use \code{row} and \code{column} channels as layering facet specifications is not allowed. Instead, use the \href{https://vega.github.io/vega-lite/docs/facet.html}{facet operator} and place a layer inside a facet.}
 
-\item{repeat}{(\emph{TopLevelRepeatSpec}) Definition for fields to be repeated.  One of:
+\item{repeat}{(\emph{TopLevelRepeatSpec}) Definition for fields to be repeated. One of:
 \enumerate{
-\item An array of fields to be repeated.  If \code{"repeat"} is an array, the field can be referred using \code{{"repeat": "repeat"}}
+\item An array of fields to be repeated. If \code{"repeat"} is an array, the field can be referred using \code{{"repeat": "repeat"}}
 \item An object that mapped \code{"row"} and/or \code{"column"} to the listed of fields to be repeated along the particular orientations. The objects \code{{"repeat": "row"}} and \code{{"repeat": "column"}} can be used to refer to the repeated field respectively.
 }}
 

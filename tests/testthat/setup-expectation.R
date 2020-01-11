@@ -9,6 +9,11 @@ list_sort <- function (x) {
 }
 
 expect_equivalent_json <- function(object, reference) {
+  
+  # 0. Obliterate the 'schema' field...
+  object['$schema'] <- NULL
+  reference['$schema'] <- NULL
+  
   # 1. Capture object and label
   act <- testthat::quasi_label(rlang::enquo(object), arg = "object")
   

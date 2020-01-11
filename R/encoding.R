@@ -144,12 +144,11 @@ vl_encode <- function(spec, ...){
   inputs <- list(...)
   for (n in names(inputs)){
     if (n %in% c('row','column','facet')) {
-      args <- list(spec = spec, obj = inputs[[n]], ref = "#/definitions/FacetFieldDef", .type = n)
-      spec <- rlang::exec(.add_facet, !!!args)
+      args <- list(spec = spec, obj = inputs[[n]], ref = "#/definitions/FacetEncodingFieldDef", encoding = n)
     } else {
       args <- list(spec = spec, obj = inputs[[n]], ref = paste0("#/definitions/Encoding/properties/",n), encoding = n)
-      spec <- rlang::exec(.add_encoding, !!!args)
     }
+    spec <- rlang::exec(.add_encoding, !!!args)
   }
   spec
 }

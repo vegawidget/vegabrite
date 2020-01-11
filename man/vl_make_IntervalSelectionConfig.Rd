@@ -12,37 +12,49 @@ vl_make_IntervalSelectionConfig(bind = NULL, clear = NULL,
 \arguments{
 \item{bind}{(\emph{IntervalSelectionConfig}) Establishes a two-way binding between the interval selection and the scales
 used within the same view. This allows a user to interactively pan and
-zoom the view.}
+zoom the view.
 
-\item{clear}{(\emph{IntervalSelectionConfig}) Clears the selection, emptying it of all values. Can be an
-\href{https://vega.github.io/vega/docs/event-streams/}{EventStream} or \code{false} to disable.
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/bind.html}{bind} documentation.}
+
+\item{clear}{(\emph{IntervalSelectionConfig}) Clears the selection, emptying it of all values. Can be a
+\href{https://vega.github.io/vega/docs/event-streams/}{Event Stream} or \code{false} to disable.
 
 \strong{Default value:} \code{dblclick}.
 
-See the \href{https://vega.github.io/vega-lite/docs/clear.html}{clear} documentation for more information.}
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/clear.html}{clear} documentation.}
 
 \item{empty}{(\emph{IntervalSelectionConfig}) By default, \code{all} data values are considered to lie within an empty selection.
 When set to \code{none}, empty selections contain no data values.}
 
 \item{encodings}{(\emph{IntervalSelectionConfig}) An array of encoding channels. The corresponding data field values
-must match for a data tuple to fall within the selection.}
+must match for a data tuple to fall within the selection.
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/project.html}{encodings} documentation.}
 
 \item{fields}{(\emph{IntervalSelectionConfig}) An array of field names whose values must match for a data tuple to
-fall within the selection.}
+fall within the selection.
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/project.html}{fields} documentation.}
 
 \item{init}{(\emph{IntervalSelectionConfig}) Initialize the selection with a mapping between \href{https://vega.github.io/vega-lite/docs/project.html}{projected channels or field names} and arrays of
-initial values.}
+initial values.
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/init.html}{init} documentation.}
 
 \item{mark}{(\emph{IntervalSelectionConfig}) An interval selection also adds a rectangle mark to depict the
 extents of the interval. The \code{mark} property can be used to customize the
-appearance of the mark.}
+appearance of the mark.
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/selection-mark.html}{mark} documentation.}
 
 \item{on}{(\emph{IntervalSelectionConfig}) A \href{https://vega.github.io/vega/docs/event-streams/}{Vega event stream} (object or selector) that triggers the selection.
 For interval selections, the event stream must specify a \href{https://vega.github.io/vega/docs/event-streams/#between-filters}{start and end}.}
 
 \item{resolve}{(\emph{IntervalSelectionConfig}) With layered and multi-view displays, a strategy that determines how
 selections' data queries are resolved when applied in a filter transform,
-conditional encoding rule, or scale domain.}
+conditional encoding rule, or scale domain.
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/selection-resolve.html}{resolve} documentation.}
 
 \item{translate}{(\emph{IntervalSelectionConfig}) When truthy, allows a user to interactively move an interval selection
 back-and-forth. Can be \code{true}, \code{false} (to disable panning), or a
@@ -51,13 +63,17 @@ which must include a start and end event to trigger continuous panning.
 
 \strong{Default value:} \code{true}, which corresponds to
 \code{[mousedown, window:mouseup] > window:mousemove!} which corresponds to
-clicks and dragging within an interval selection to reposition it.}
+clicks and dragging within an interval selection to reposition it.
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/translate.html}{translate} documentation.}
 
 \item{zoom}{(\emph{IntervalSelectionConfig}) When truthy, allows a user to interactively resize an interval selection.
 Can be \code{true}, \code{false} (to disable zooming), or a \href{https://vega.github.io/vega/docs/event-streams/}{Vega event stream definition}. Currently,
 only \code{wheel} events are supported.
 
-\strong{Default value:} \code{true}, which corresponds to \code{wheel!}.}
+\strong{Default value:} \code{true}, which corresponds to \code{wheel!}.
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/zoom.html}{zoom} documentation.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a IntervalSelectionConfig.
