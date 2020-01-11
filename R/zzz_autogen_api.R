@@ -118,6 +118,7 @@
 #' @param concat (_TopLevelConcatSpec_) A list of views to be concatenated.
 #' @param vconcat (_TopLevelVConcatSpec_) A list of views to be concatenated and put into a column.
 #' @param hconcat (_TopLevelHConcatSpec_) A list of views to be concatenated and put into a row.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec or TopLevelHConcatSpec
 #' @name vl_chart
 vl_chart <- function(data = NULL, `$schema` = vegawidget::vega_schema(), autosize = NULL, background = NULL, bounds = NULL, config = NULL, datasets = NULL, description = NULL, encoding = NULL, height = NULL, mark = NULL, name = NULL, padding = NULL, projection = NULL, resolve = NULL, selection = NULL, title = NULL, transform = NULL, usermeta = NULL, view = NULL, width = NULL, align = NULL, center = NULL, columns = NULL, facet = NULL, spacing = NULL, spec = NULL, layer = NULL, `repeat` = NULL, concat = NULL, vconcat = NULL, hconcat = NULL){
 args <- .modify_args(NULL, c("$schema", "autosize", "background", "bounds", "config", "data", "datasets", 
@@ -227,10 +228,11 @@ as_vegaspec(args$obj)
 #' (_TopLevelVConcatSpec, TopLevelHConcatSpec_) The spacing in pixels between sub-views of the concat operator.
 #' 
 #' __Default value__: `10`
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec or TopLevelHConcatSpec
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_properties <- function(spec, autosize = NULL, background = NULL, bounds = NULL, datasets = NULL, description = NULL, height = NULL, name = NULL, padding = NULL, projection = NULL, title = NULL, usermeta = NULL, view = NULL, width = NULL, align = NULL, center = NULL, columns = NULL, spacing = NULL){
+vl_add_properties <- function(spec, autosize = NULL, background = NULL, bounds = NULL, datasets = NULL, description = NULL, height = NULL, name = NULL, padding = NULL, projection = NULL, title = NULL, usermeta = NULL, view = NULL, width = NULL, align = NULL, center = NULL, columns = NULL, spacing = NULL, .object = NULL){
   args <- .modify_args(NULL, c("$schema", "autosize", "background", "bounds", "config", "data", "datasets", 
   "description", "encoding", "height", "mark", "name", "padding", "projection", 
   "resolve", "selection", "title", "transform", "usermeta", "view", "width", "align", 
@@ -251,10 +253,11 @@ vl_add_properties <- function(spec, autosize = NULL, background = NULL, bounds =
 #' @param sequence (_SequenceGenerator_) Generate a sequence of numbers.
 #' @param sphere (_SphereGenerator_) Generate sphere GeoJSON data for the full globe.
 #' @param graticule (_GraticuleGenerator_) Generate graticule GeoJSON data for geographic reference lines.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: UrlData, InlineData, NamedData, SequenceGenerator, SphereGenerator or GraticuleGenerator
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_data <- function(spec, values = NULL, format = NULL, name = NULL, url = NULL, sequence = NULL, sphere = NULL, graticule = NULL){
+vl_add_data <- function(spec, values = NULL, format = NULL, name = NULL, url = NULL, sequence = NULL, sphere = NULL, graticule = NULL, .object = NULL){
   args <- .modify_args(NULL, c("format", "name", "url", "values", "sequence", "sphere", "graticule"))
   .add_data(args$spec, args$object, "#/definitions/Data")
 } 
@@ -446,10 +449,11 @@ vl_add_data <- function(spec, values = NULL, format = NULL, name = NULL, url = N
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
 #' @param y2Offset (_MarkDef_) Offset for y2-position.
 #' @param yOffset (_MarkDef_) Offset for y-position.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_mark_area <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+vl_mark_area <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL, .object = NULL){
   args <- .modify_args(structure(list(type = "area"), .Names = "type"), c("align", "angle", "aspect", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", 
@@ -650,10 +654,11 @@ vl_mark_area <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseli
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
 #' @param y2Offset (_MarkDef_) Offset for y2-position.
 #' @param yOffset (_MarkDef_) Offset for y-position.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_mark_bar <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+vl_mark_bar <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL, .object = NULL){
   args <- .modify_args(structure(list(type = "bar"), .Names = "type"), c("align", "angle", "aspect", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", 
@@ -854,10 +859,11 @@ vl_mark_bar <- function(spec, align = NULL, angle = NULL, aspect = NULL, baselin
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
 #' @param y2Offset (_MarkDef_) Offset for y2-position.
 #' @param yOffset (_MarkDef_) Offset for y-position.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_mark_line <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+vl_mark_line <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL, .object = NULL){
   args <- .modify_args(structure(list(type = "line"), .Names = "type"), c("align", "angle", "aspect", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", 
@@ -1058,10 +1064,11 @@ vl_mark_line <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseli
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
 #' @param y2Offset (_MarkDef_) Offset for y2-position.
 #' @param yOffset (_MarkDef_) Offset for y-position.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_mark_image <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+vl_mark_image <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL, .object = NULL){
   args <- .modify_args(structure(list(type = "image"), .Names = "type"), c("align", "angle", "aspect", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", 
@@ -1262,10 +1269,11 @@ vl_mark_image <- function(spec, align = NULL, angle = NULL, aspect = NULL, basel
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
 #' @param y2Offset (_MarkDef_) Offset for y2-position.
 #' @param yOffset (_MarkDef_) Offset for y-position.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_mark_trail <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+vl_mark_trail <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL, .object = NULL){
   args <- .modify_args(structure(list(type = "trail"), .Names = "type"), c("align", "angle", "aspect", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", 
@@ -1466,10 +1474,11 @@ vl_mark_trail <- function(spec, align = NULL, angle = NULL, aspect = NULL, basel
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
 #' @param y2Offset (_MarkDef_) Offset for y2-position.
 #' @param yOffset (_MarkDef_) Offset for y-position.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_mark_point <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+vl_mark_point <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL, .object = NULL){
   args <- .modify_args(structure(list(type = "point"), .Names = "type"), c("align", "angle", "aspect", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", 
@@ -1670,10 +1679,11 @@ vl_mark_point <- function(spec, align = NULL, angle = NULL, aspect = NULL, basel
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
 #' @param y2Offset (_MarkDef_) Offset for y2-position.
 #' @param yOffset (_MarkDef_) Offset for y-position.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_mark_text <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+vl_mark_text <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL, .object = NULL){
   args <- .modify_args(structure(list(type = "text"), .Names = "type"), c("align", "angle", "aspect", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", 
@@ -1874,10 +1884,11 @@ vl_mark_text <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseli
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
 #' @param y2Offset (_MarkDef_) Offset for y2-position.
 #' @param yOffset (_MarkDef_) Offset for y-position.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_mark_tick <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+vl_mark_tick <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL, .object = NULL){
   args <- .modify_args(structure(list(type = "tick"), .Names = "type"), c("align", "angle", "aspect", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", 
@@ -2078,10 +2089,11 @@ vl_mark_tick <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseli
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
 #' @param y2Offset (_MarkDef_) Offset for y2-position.
 #' @param yOffset (_MarkDef_) Offset for y-position.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_mark_rect <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+vl_mark_rect <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL, .object = NULL){
   args <- .modify_args(structure(list(type = "rect"), .Names = "type"), c("align", "angle", "aspect", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", 
@@ -2282,10 +2294,11 @@ vl_mark_rect <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseli
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
 #' @param y2Offset (_MarkDef_) Offset for y2-position.
 #' @param yOffset (_MarkDef_) Offset for y-position.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_mark_rule <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+vl_mark_rule <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL, .object = NULL){
   args <- .modify_args(structure(list(type = "rule"), .Names = "type"), c("align", "angle", "aspect", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", 
@@ -2486,10 +2499,11 @@ vl_mark_rule <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseli
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
 #' @param y2Offset (_MarkDef_) Offset for y2-position.
 #' @param yOffset (_MarkDef_) Offset for y-position.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_mark_circle <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+vl_mark_circle <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL, .object = NULL){
   args <- .modify_args(structure(list(type = "circle"), .Names = "type"), c("align", "angle", "aspect", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", 
@@ -2690,10 +2704,11 @@ vl_mark_circle <- function(spec, align = NULL, angle = NULL, aspect = NULL, base
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
 #' @param y2Offset (_MarkDef_) Offset for y2-position.
 #' @param yOffset (_MarkDef_) Offset for y-position.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_mark_square <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+vl_mark_square <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL, .object = NULL){
   args <- .modify_args(structure(list(type = "square"), .Names = "type"), c("align", "angle", "aspect", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", 
@@ -2894,10 +2909,11 @@ vl_mark_square <- function(spec, align = NULL, angle = NULL, aspect = NULL, base
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
 #' @param y2Offset (_MarkDef_) Offset for y2-position.
 #' @param yOffset (_MarkDef_) Offset for y-position.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL){
+vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL, .object = NULL){
   args <- .modify_args(structure(list(type = "geoshape"), .Names = "type"), c("align", "angle", "aspect", "baseline", "binSpacing", "clip", "color", "cornerRadius", 
   "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", 
@@ -2937,10 +2953,11 @@ vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, aspect = NULL, ba
 #' @param rule (_BoxPlotDef_)  
 #' @param size (_BoxPlotDef_) Size of the box and median tick of a box plot
 #' @param ticks (_BoxPlotDef_)  
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BoxPlotDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_mark_boxplot <- function(spec, box = NULL, clip = NULL, color = NULL, extent = NULL, median = NULL, opacity = NULL, orient = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL){
+vl_mark_boxplot <- function(spec, box = NULL, clip = NULL, color = NULL, extent = NULL, median = NULL, opacity = NULL, orient = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL, .object = NULL){
   args <- .modify_args(structure(list(type = "boxplot"), .Names = "type"), c("box", "clip", "color", "extent", "median", "opacity", "orient", "outliers", 
   "rule", "size", "ticks", "type"))
   .add_mark(args$spec, args$object, structure("#/definitions/BoxPlotDef", class = c("glue", "character")))
@@ -2968,10 +2985,11 @@ vl_mark_boxplot <- function(spec, box = NULL, clip = NULL, color = NULL, extent 
 #' @param orient (_ErrorBarDef_) Orientation of the error bar. This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.
 #' @param rule (_ErrorBarDef_)  
 #' @param ticks (_ErrorBarDef_)  
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBarDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_mark_errorbar <- function(spec, clip = NULL, color = NULL, extent = NULL, opacity = NULL, orient = NULL, rule = NULL, ticks = NULL){
+vl_mark_errorbar <- function(spec, clip = NULL, color = NULL, extent = NULL, opacity = NULL, orient = NULL, rule = NULL, ticks = NULL, .object = NULL){
   args <- .modify_args(structure(list(type = "errorbar"), .Names = "type"), c("clip", "color", "extent", "opacity", "orient", "rule", "ticks", "type"))
   .add_mark(args$spec, args$object, structure("#/definitions/ErrorBarDef", class = c("glue", "character")))
 } 
@@ -3013,10 +3031,11 @@ vl_mark_errorbar <- function(spec, clip = NULL, color = NULL, extent = NULL, opa
 #' @param opacity (_ErrorBandDef_) The opacity (value between \[0,1\]) of the mark.
 #' @param orient (_ErrorBandDef_) Orientation of the error band. This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.
 #' @param tension (_ErrorBandDef_) The tension parameter for the interpolation type of the error band.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBandDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_mark_errorband <- function(spec, band = NULL, borders = NULL, clip = NULL, color = NULL, extent = NULL, interpolate = NULL, opacity = NULL, orient = NULL, tension = NULL){
+vl_mark_errorband <- function(spec, band = NULL, borders = NULL, clip = NULL, color = NULL, extent = NULL, interpolate = NULL, opacity = NULL, orient = NULL, tension = NULL, .object = NULL){
   args <- .modify_args(structure(list(type = "errorband"), .Names = "type"), c("band", "borders", "clip", "color", "extent", "interpolate", "opacity", "orient", 
   "tension", "type"))
   .add_mark(args$spec, args$object, structure("#/definitions/ErrorBandDef", class = c("glue", "character")))
@@ -3115,10 +3134,11 @@ vl_mark_errorband <- function(spec, band = NULL, borders = NULL, clip = NULL, co
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)> or ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_color <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_color <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/color", class = c("glue", "character"
@@ -3182,10 +3202,11 @@ vl_encode_color <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TypedFieldDef or array of FieldDefWithoutScale
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_detail <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
+vl_encode_detail <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/detail", class = c("glue", "character"
   )) , encoding = "detail")
@@ -3284,10 +3305,11 @@ vl_encode_detail <- function(spec, field = NULL, type = NULL, aggregate = NULL, 
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)> or ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_fill <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_fill <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/fill", class = c("glue", "character"
@@ -3387,10 +3409,11 @@ vl_encode_fill <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,number> or ValueDefWithCondition<MarkPropFieldDef,number>
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/fillOpacity", class = c("glue", 
@@ -3477,10 +3500,11 @@ vl_encode_fillOpacity <- function(spec, field = NULL, type = NULL, aggregate = N
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<StringFieldDef,string> or ValueDefWithCondition<MarkPropFieldDef,(string|null)>
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_href <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_href <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "labelExpr", 
   "timeUnit", "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/href", class = c("glue", "character"
@@ -3544,10 +3568,11 @@ vl_encode_href <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TypedFieldDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_key <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
+vl_encode_key <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/key", class = c("glue", "character"
   )) , encoding = "key")
@@ -3611,10 +3636,11 @@ vl_encode_key <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LatLongFieldDef or NumberValueDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_latitude <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_latitude <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/latitude", class = c("glue", "character"
   )) , encoding = "latitude")
@@ -3664,10 +3690,11 @@ vl_encode_latitude <- function(spec, field = NULL, type = NULL, aggregate = NULL
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_latitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_latitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/latitude2", class = c("glue", "character"
   )) , encoding = "latitude2")
@@ -3731,10 +3758,11 @@ vl_encode_latitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LatLongFieldDef or NumberValueDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_longitude <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_longitude <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/longitude", class = c("glue", "character"
   )) , encoding = "longitude")
@@ -3784,10 +3812,11 @@ vl_encode_longitude <- function(spec, field = NULL, type = NULL, aggregate = NUL
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_longitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_longitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/longitude2", class = c("glue", 
   "character")) , encoding = "longitude2")
@@ -3886,10 +3915,11 @@ vl_encode_longitude2 <- function(spec, field = NULL, aggregate = NULL, bin = NUL
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,number> or ValueDefWithCondition<MarkPropFieldDef,number>
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_opacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_opacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/opacity", class = c("glue", "character"
@@ -3955,10 +3985,11 @@ vl_encode_opacity <- function(spec, field = NULL, type = NULL, aggregate = NULL,
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: OrderFieldDef, array of OrderFieldDef or NumberValueDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "sort", "timeUnit", "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/order", class = c("glue", "character"
   )) , encoding = "order")
@@ -4057,10 +4088,11 @@ vl_encode_order <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)> or ValueDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_shape <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_shape <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/shape", class = c("glue", "character"
@@ -4160,10 +4192,11 @@ vl_encode_shape <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,number> or ValueDefWithCondition<MarkPropFieldDef,number>
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_size <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_size <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/size", class = c("glue", "character"
@@ -4263,10 +4296,11 @@ vl_encode_size <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)> or ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_stroke <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_stroke <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/stroke", class = c("glue", "character"
@@ -4366,10 +4400,11 @@ vl_encode_stroke <- function(spec, field = NULL, type = NULL, aggregate = NULL, 
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,number> or ValueDefWithCondition<MarkPropFieldDef,number>
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_strokeOpacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_strokeOpacity <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/strokeOpacity", class = c("glue", 
@@ -4469,10 +4504,11 @@ vl_encode_strokeOpacity <- function(spec, field = NULL, type = NULL, aggregate =
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,number> or ValueDefWithCondition<MarkPropFieldDef,number>
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "legend", "scale", "sort", "timeUnit", 
   "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/strokeWidth", class = c("glue", 
@@ -4559,10 +4595,11 @@ vl_encode_strokeWidth <- function(spec, field = NULL, type = NULL, aggregate = N
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<StringFieldDef,Text>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<StringFieldDef,Text> or ValueDefWithCondition<StringFieldDef,Text>
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "labelExpr", 
   "timeUnit", "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/text", class = c("glue", "character"
@@ -4649,10 +4686,11 @@ vl_encode_text <- function(spec, field = NULL, type = NULL, aggregate = NULL, bi
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<StringFieldDef,string>, ValueDefWithCondition<MarkPropFieldDef,(string|null)>, array of StringFieldDef or null
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_tooltip <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_tooltip <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "labelExpr", 
   "timeUnit", "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/tooltip", class = c("glue", "character"
@@ -4739,10 +4777,11 @@ vl_encode_tooltip <- function(spec, field = NULL, type = NULL, aggregate = NULL,
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<StringFieldDef,string> or ValueDefWithCondition<MarkPropFieldDef,(string|null)>
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_url <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_url <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "condition", "field", "format", "formatType", "labelExpr", 
   "timeUnit", "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/url", class = c("glue", "character"
@@ -4860,10 +4899,11 @@ vl_encode_url <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_XValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: PositionFieldDef or XValueDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_x <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis = NULL, band = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_x <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis = NULL, band = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "axis", "band", "bin", "field", "impute", "scale", "sort", "stack", 
   "timeUnit", "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/x", class = c("glue", "character"
@@ -4914,10 +4954,11 @@ vl_encode_x <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis 
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_XValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or XValueDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_x2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_x2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/x2", class = c("glue", "character"
   )) , encoding = "x2")
@@ -4967,10 +5008,11 @@ vl_encode_x2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeU
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_xError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_xError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/xError", class = c("glue", "character"
   )) , encoding = "xError")
@@ -5020,10 +5062,11 @@ vl_encode_xError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, t
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_xError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_xError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/xError2", class = c("glue", "character"
   )) , encoding = "xError2")
@@ -5140,10 +5183,11 @@ vl_encode_xError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, 
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_YValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: PositionFieldDef or YValueDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_y <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis = NULL, band = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_y <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis = NULL, band = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "axis", "band", "bin", "field", "impute", "scale", "sort", "stack", 
   "timeUnit", "title", "type", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/y", class = c("glue", "character"
@@ -5194,10 +5238,11 @@ vl_encode_y <- function(spec, field = NULL, type = NULL, aggregate = NULL, axis 
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_YValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or YValueDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_y2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_y2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/y2", class = c("glue", "character"
   )) , encoding = "y2")
@@ -5247,10 +5292,11 @@ vl_encode_y2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeU
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_yError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_yError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/yError", class = c("glue", "character"
   )) , encoding = "yError")
@@ -5300,10 +5346,11 @@ vl_encode_yError <- function(spec, field = NULL, aggregate = NULL, bin = NULL, t
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_yError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_yError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "timeUnit", "title", "value"))
   .add_encoding(args$spec, args$object, structure("#/definitions/Encoding/properties/yError2", class = c("glue", "character"
   )) , encoding = "yError2")
@@ -5401,6 +5448,7 @@ vl_encode_yError2 <- function(spec, field = NULL, aggregate = NULL, bin = NULL, 
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)> or ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>
 #' @return A component of a Vega-Lite spec, corresponding to a Color.
 #' @export
 
@@ -5466,6 +5514,7 @@ args$obj
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TypedFieldDef or array of FieldDefWithoutScale
 #' @return A component of a Vega-Lite spec, corresponding to a Detail.
 #' @export
 
@@ -5566,6 +5615,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)> or ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>
 #' @return A component of a Vega-Lite spec, corresponding to a Fill.
 #' @export
 
@@ -5667,6 +5717,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,number> or ValueDefWithCondition<MarkPropFieldDef,number>
 #' @return A component of a Vega-Lite spec, corresponding to a FillOpacity.
 #' @export
 
@@ -5755,6 +5806,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<StringFieldDef,string> or ValueDefWithCondition<MarkPropFieldDef,(string|null)>
 #' @return A component of a Vega-Lite spec, corresponding to a Href.
 #' @export
 
@@ -5820,6 +5872,7 @@ args$obj
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TypedFieldDef
 #' @return A component of a Vega-Lite spec, corresponding to a Key.
 #' @export
 
@@ -5885,6 +5938,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LatLongFieldDef or NumberValueDef
 #' @return A component of a Vega-Lite spec, corresponding to a Latitude.
 #' @export
 
@@ -5936,6 +5990,7 @@ args$obj
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @return A component of a Vega-Lite spec, corresponding to a Latitude2.
 #' @export
 
@@ -6001,6 +6056,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LatLongFieldDef or NumberValueDef
 #' @return A component of a Vega-Lite spec, corresponding to a Longitude.
 #' @export
 
@@ -6052,6 +6108,7 @@ args$obj
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @return A component of a Vega-Lite spec, corresponding to a Longitude2.
 #' @export
 
@@ -6152,6 +6209,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,number> or ValueDefWithCondition<MarkPropFieldDef,number>
 #' @return A component of a Vega-Lite spec, corresponding to a Opacity.
 #' @export
 
@@ -6219,6 +6277,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: OrderFieldDef, array of OrderFieldDef or NumberValueDef
 #' @return A component of a Vega-Lite spec, corresponding to a Order.
 #' @export
 
@@ -6319,6 +6378,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)> or ValueDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>
 #' @return A component of a Vega-Lite spec, corresponding to a Shape.
 #' @export
 
@@ -6420,6 +6480,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,number> or ValueDefWithCondition<MarkPropFieldDef,number>
 #' @return A component of a Vega-Lite spec, corresponding to a Size.
 #' @export
 
@@ -6521,6 +6582,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)> or ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>
 #' @return A component of a Vega-Lite spec, corresponding to a Stroke.
 #' @export
 
@@ -6622,6 +6684,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,number> or ValueDefWithCondition<MarkPropFieldDef,number>
 #' @return A component of a Vega-Lite spec, corresponding to a StrokeOpacity.
 #' @export
 
@@ -6723,6 +6786,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,number> or ValueDefWithCondition<MarkPropFieldDef,number>
 #' @return A component of a Vega-Lite spec, corresponding to a StrokeWidth.
 #' @export
 
@@ -6811,6 +6875,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<StringFieldDef,Text>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<StringFieldDef,Text> or ValueDefWithCondition<StringFieldDef,Text>
 #' @return A component of a Vega-Lite spec, corresponding to a Text.
 #' @export
 
@@ -6899,6 +6964,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<StringFieldDef,string>, ValueDefWithCondition<MarkPropFieldDef,(string|null)>, array of StringFieldDef or null
 #' @return A component of a Vega-Lite spec, corresponding to a Tooltip.
 #' @export
 
@@ -6987,6 +7053,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<StringFieldDef,string> or ValueDefWithCondition<MarkPropFieldDef,(string|null)>
 #' @return A component of a Vega-Lite spec, corresponding to a Url.
 #' @export
 
@@ -7106,6 +7173,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_XValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: PositionFieldDef or XValueDef
 #' @return A component of a Vega-Lite spec, corresponding to a X.
 #' @export
 
@@ -7158,6 +7226,7 @@ args$obj
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_XValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or XValueDef
 #' @return A component of a Vega-Lite spec, corresponding to a X2.
 #' @export
 
@@ -7209,6 +7278,7 @@ args$obj
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @return A component of a Vega-Lite spec, corresponding to a XError.
 #' @export
 
@@ -7260,6 +7330,7 @@ args$obj
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @return A component of a Vega-Lite spec, corresponding to a XError2.
 #' @export
 
@@ -7378,6 +7449,7 @@ args$obj
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_YValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: PositionFieldDef or YValueDef
 #' @return A component of a Vega-Lite spec, corresponding to a Y.
 #' @export
 
@@ -7430,6 +7502,7 @@ args$obj
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_YValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or YValueDef
 #' @return A component of a Vega-Lite spec, corresponding to a Y2.
 #' @export
 
@@ -7481,6 +7554,7 @@ args$obj
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @return A component of a Vega-Lite spec, corresponding to a YError.
 #' @export
 
@@ -7532,6 +7606,7 @@ args$obj
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @return A component of a Vega-Lite spec, corresponding to a YError2.
 #' @export
 
@@ -7545,10 +7620,11 @@ args$obj
 #' @param spec An input vega-lite spec
 #' @param aggregate (_AggregateTransform_) Array of objects that define fields to aggregate.
 #' @param groupby (_AggregateTransform_) The data fields to group by. If not specified, a single group containing all data objects will be used.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AggregateTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_aggregate <- function(spec, aggregate = NULL, groupby = NULL){
+vl_aggregate <- function(spec, aggregate = NULL, groupby = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "groupby"))
   .add_transform(args$spec, args$object, structure("#/definitions/AggregateTransform", class = c("glue", "character")))
 } 
@@ -7559,10 +7635,11 @@ vl_aggregate <- function(spec, aggregate = NULL, groupby = NULL){
 #' @param as (_BinTransform_) The output fields at which to write the start and end bin values.
 #' @param bin (_BinTransform_) An object indicating bin properties, or simply `true` for using default bin parameters.
 #' @param field (_BinTransform_) The data field to bin.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BinTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_bin <- function(spec, as = NULL, bin = NULL, field = NULL){
+vl_bin <- function(spec, as = NULL, bin = NULL, field = NULL, .object = NULL){
   args <- .modify_args(NULL, c("as", "bin", "field"))
   .add_transform(args$spec, args$object, structure("#/definitions/BinTransform", class = c("glue", "character")))
 } 
@@ -7572,10 +7649,11 @@ vl_bin <- function(spec, as = NULL, bin = NULL, field = NULL){
 #' @param spec An input vega-lite spec
 #' @param as (_CalculateTransform_) The field for storing the computed formula value.
 #' @param calculate (_CalculateTransform_) A [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string. Use the variable `datum` to refer to the current data object.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: CalculateTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_calculate <- function(spec, as = NULL, calculate = NULL){
+vl_calculate <- function(spec, as = NULL, calculate = NULL, .object = NULL){
   args <- .modify_args(NULL, c("as", "calculate"))
   .add_transform(args$spec, args$object, structure("#/definitions/CalculateTransform", class = c("glue", "character")))
 } 
@@ -7603,10 +7681,11 @@ vl_calculate <- function(spec, as = NULL, calculate = NULL){
 #' 
 #' __Default value:__ `25`
 #' @param steps (_DensityTransform_) The exact number of samples to take along the extent domain for plotting the density. If specified, overrides both minsteps and maxsteps to set an exact number of uniform samples. Potentially useful in conjunction with a fixed extent to ensure consistent sample points for stacked densities.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: DensityTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_density <- function(spec, as = NULL, bandwidth = NULL, counts = NULL, cumulative = NULL, density = NULL, extent = NULL, groupby = NULL, maxsteps = NULL, minsteps = NULL, steps = NULL){
+vl_density <- function(spec, as = NULL, bandwidth = NULL, counts = NULL, cumulative = NULL, density = NULL, extent = NULL, groupby = NULL, maxsteps = NULL, minsteps = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("as", "bandwidth", "counts", "cumulative", "density", "extent", "groupby", 
   "maxsteps", "minsteps", "steps"))
   .add_transform(args$spec, args$object, structure("#/definitions/DensityTransform", class = c("glue", "character")))
@@ -7632,10 +7711,11 @@ vl_density <- function(spec, as = NULL, bandwidth = NULL, counts = NULL, cumulat
 #' 3) a [selection predicate](https://vega.github.io/vega-lite/docs/filter.html#selection-predicate)
 #' 
 #' 4) a logical operand that combines (1), (2), or (3).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FilterTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_filter <- function(spec, filter = NULL){
+vl_filter <- function(spec, filter = NULL, .object = NULL){
   args <- .modify_args(NULL, "filter")
   .add_transform(args$spec, args$object, structure("#/definitions/FilterTransform", class = c("glue", "character")))
 } 
@@ -7650,10 +7730,11 @@ vl_filter <- function(spec, filter = NULL){
 #' If multiple fields are specified, their array values should have a parallel structure, ideally with the same length.
 #' If the lengths of parallel arrays do not match,
 #' the longest array will be used with `null` values added for missing entries.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FlattenTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_flatten <- function(spec, as = NULL, flatten = NULL){
+vl_flatten <- function(spec, as = NULL, flatten = NULL, .object = NULL){
   args <- .modify_args(NULL, c("as", "flatten"))
   .add_transform(args$spec, args$object, structure("#/definitions/FlattenTransform", class = c("glue", "character")))
 } 
@@ -7664,10 +7745,11 @@ vl_flatten <- function(spec, as = NULL, flatten = NULL){
 #' @param as (_FoldTransform_) The output field names for the key and value properties produced by the fold transform.
 #' __Default value:__ `["key", "value"]`
 #' @param fold (_FoldTransform_) An array of data fields indicating the properties to fold.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FoldTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_fold <- function(spec, as = NULL, fold = NULL){
+vl_fold <- function(spec, as = NULL, fold = NULL, .object = NULL){
   args <- .modify_args(NULL, c("as", "fold"))
   .add_transform(args$spec, args$object, structure("#/definitions/FoldTransform", class = c("glue", "character")))
 } 
@@ -7694,10 +7776,11 @@ vl_fold <- function(spec, as = NULL, fold = NULL){
 #' 
 #' __Default value:__  `"value"`
 #' @param value (_ImputeTransform_) The field value to use when the imputation `method` is `"value"`.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ImputeTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_impute <- function(spec, frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL){
+vl_impute <- function(spec, frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("frame", "groupby", "impute", "key", "keyvals", "method", "value"))
   .add_transform(args$spec, args$object, structure("#/definitions/ImputeTransform", class = c("glue", "character")))
 } 
@@ -7707,10 +7790,11 @@ vl_impute <- function(spec, frame = NULL, groupby = NULL, impute = NULL, key = N
 #' @param spec An input vega-lite spec
 #' @param groupby (_JoinAggregateTransform_) The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group.
 #' @param joinaggregate (_JoinAggregateTransform_) The definition of the fields in the join aggregate, and what calculations to use.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: JoinAggregateTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL){
+vl_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL, .object = NULL){
   args <- .modify_args(NULL, c("groupby", "joinaggregate"))
   .add_transform(args$spec, args$object, structure("#/definitions/JoinAggregateTransform", class = c("glue", "character"
   )))
@@ -7728,10 +7812,11 @@ vl_joinaggregate <- function(spec, groupby = NULL, joinaggregate = NULL){
 #' @param groupby (_LoessTransform_) The data fields to group by. If not specified, a single group containing all data objects will be used.
 #' @param loess (_LoessTransform_) The data field of the dependent variable to smooth.
 #' @param on (_LoessTransform_) The data field of the independent variable to use a predictor.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LoessTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_loess <- function(spec, as = NULL, bandwidth = NULL, groupby = NULL, loess = NULL, on = NULL){
+vl_loess <- function(spec, as = NULL, bandwidth = NULL, groupby = NULL, loess = NULL, on = NULL, .object = NULL){
   args <- .modify_args(NULL, c("as", "bandwidth", "groupby", "loess", "on"))
   .add_transform(args$spec, args$object, structure("#/definitions/LoessTransform", class = c("glue", "character")))
 } 
@@ -7753,10 +7838,11 @@ vl_loess <- function(spec, as = NULL, bandwidth = NULL, groupby = NULL, loess = 
 #' __Default value:__ `null`
 #' @param from (_LookupTransform_) Data source or selection for secondary data reference.
 #' @param lookup (_LookupTransform_) Key in primary data source.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LookupTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_lookup <- function(spec, as = NULL, default = NULL, from = NULL, lookup = NULL){
+vl_lookup <- function(spec, as = NULL, default = NULL, from = NULL, lookup = NULL, .object = NULL){
   args <- .modify_args(NULL, c("as", "default", "from", "lookup"))
   .add_transform(args$spec, args$object, structure("#/definitions/LookupTransform", class = c("glue", "character")))
 } 
@@ -7771,10 +7857,11 @@ vl_lookup <- function(spec, as = NULL, default = NULL, from = NULL, lookup = NUL
 #' @param probs (_QuantileTransform_) An array of probabilities in the range (0, 1) for which to compute quantile values. If not specified, the *step* parameter will be used.
 #' @param quantile (_QuantileTransform_) The data field for which to perform quantile estimation.
 #' @param step (_QuantileTransform_) A probability step size (default 0.01) for sampling quantile values. All values from one-half the step size up to 1 (exclusive) will be sampled. This parameter is only used if the *probs* parameter is not provided.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: QuantileTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_quantile <- function(spec, as = NULL, groupby = NULL, probs = NULL, quantile = NULL, step = NULL){
+vl_quantile <- function(spec, as = NULL, groupby = NULL, probs = NULL, quantile = NULL, step = NULL, .object = NULL){
   args <- .modify_args(NULL, c("as", "groupby", "probs", "quantile", "step"))
   .add_transform(args$spec, args$object, structure("#/definitions/QuantileTransform", class = c("glue", "character")))
 } 
@@ -7800,10 +7887,11 @@ vl_quantile <- function(spec, as = NULL, groupby = NULL, probs = NULL, quantile 
 #' 
 #' __Default value:__ `false`
 #' @param regression (_RegressionTransform_) The data field of the dependent variable to predict.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RegressionTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_regression <- function(spec, as = NULL, extent = NULL, groupby = NULL, method = NULL, on = NULL, order = NULL, params = NULL, regression = NULL){
+vl_regression <- function(spec, as = NULL, extent = NULL, groupby = NULL, method = NULL, on = NULL, order = NULL, params = NULL, regression = NULL, .object = NULL){
   args <- .modify_args(NULL, c("as", "extent", "groupby", "method", "on", "order", "params", "regression"
   ))
   .add_transform(args$spec, args$object, structure("#/definitions/RegressionTransform", class = c("glue", "character"
@@ -7816,10 +7904,11 @@ vl_regression <- function(spec, as = NULL, extent = NULL, groupby = NULL, method
 #' @param as (_TimeUnitTransform_) The output field to write the timeUnit value.
 #' @param field (_TimeUnitTransform_) The data field to apply time unit.
 #' @param timeUnit (_TimeUnitTransform_) The timeUnit.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TimeUnitTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL){
+vl_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL, .object = NULL){
   args <- .modify_args(NULL, c("as", "field", "timeUnit"))
   .add_transform(args$spec, args$object, structure("#/definitions/TimeUnitTransform", class = c("glue", "character")))
 } 
@@ -7830,10 +7919,11 @@ vl_timeunit <- function(spec, as = NULL, field = NULL, timeUnit = NULL){
 #' @param sample (_SampleTransform_) The maximum number of data objects to include in the sample.
 #' 
 #' __Default value:__ `1000`
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SampleTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_sample <- function(spec, sample = NULL){
+vl_sample <- function(spec, sample = NULL, .object = NULL){
   args <- .modify_args(NULL, "sample")
   .add_transform(args$spec, args$object, structure("#/definitions/SampleTransform", class = c("glue", "character")))
 } 
@@ -7850,10 +7940,11 @@ vl_sample <- function(spec, sample = NULL){
 #' __Default value:__ `"zero"`
 #' @param sort (_StackTransform_) Field that determines the order of leaves in the stacked charts.
 #' @param stack (_StackTransform_) The field which is stacked.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: StackTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL){
+vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL, .object = NULL){
   args <- .modify_args(NULL, c("as", "groupby", "offset", "sort", "stack"))
   .add_transform(args$spec, args$object, structure("#/definitions/StackTransform", class = c("glue", "character")))
 } 
@@ -7870,10 +7961,11 @@ vl_stack <- function(spec, as = NULL, groupby = NULL, offset = NULL, sort = NULL
 #' __Default value:__ `false`
 #' @param sort (_WindowTransform_) A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered "peer" values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to `true`).
 #' @param window (_WindowTransform_) The definition of the fields in the window, and what calculations to use.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: WindowTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL){
+vl_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL, .object = NULL){
   args <- .modify_args(NULL, c("frame", "groupby", "ignorePeers", "sort", "window"))
   .add_transform(args$spec, args$object, structure("#/definitions/WindowTransform", class = c("glue", "character")))
 } 
@@ -7889,10 +7981,11 @@ vl_window <- function(spec, frame = NULL, groupby = NULL, ignorePeers = NULL, so
 #' __Default value:__ `sum`
 #' @param pivot (_PivotTransform_) The data field to pivot on. The unique values of this field become new field names in the output stream.
 #' @param value (_PivotTransform_) The data field to populate pivoted fields. The aggregate values of this field become the values of the new pivoted fields.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: PivotTransform
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_pivot <- function(spec, groupby = NULL, limit = NULL, op = NULL, pivot = NULL, value = NULL){
+vl_pivot <- function(spec, groupby = NULL, limit = NULL, op = NULL, pivot = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("groupby", "limit", "op", "pivot", "value"))
   .add_transform(args$spec, args$object, structure("#/definitions/PivotTransform", class = c("glue", "character")))
 } 
@@ -7901,6 +7994,7 @@ vl_pivot <- function(spec, groupby = NULL, limit = NULL, op = NULL, pivot = NULL
 #' Create spec for {obj}
 #' @param aggregate (_AggregateTransform_) Array of objects that define fields to aggregate.
 #' @param groupby (_AggregateTransform_) The data fields to group by. If not specified, a single group containing all data objects will be used.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AggregateTransform
 #' @return A component of a Vega-Lite spec, corresponding to a AggregateTransform.
 #' @export
 
@@ -7914,6 +8008,7 @@ args$obj
 #' @param as (_BinTransform_) The output fields at which to write the start and end bin values.
 #' @param bin (_BinTransform_) An object indicating bin properties, or simply `true` for using default bin parameters.
 #' @param field (_BinTransform_) The data field to bin.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BinTransform
 #' @return A component of a Vega-Lite spec, corresponding to a BinTransform.
 #' @export
 
@@ -7926,6 +8021,7 @@ args$obj
 #' Create spec for {obj}
 #' @param as (_CalculateTransform_) The field for storing the computed formula value.
 #' @param calculate (_CalculateTransform_) A [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string. Use the variable `datum` to refer to the current data object.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: CalculateTransform
 #' @return A component of a Vega-Lite spec, corresponding to a CalculateTransform.
 #' @export
 
@@ -7956,6 +8052,7 @@ args$obj
 #' 
 #' __Default value:__ `25`
 #' @param steps (_DensityTransform_) The exact number of samples to take along the extent domain for plotting the density. If specified, overrides both minsteps and maxsteps to set an exact number of uniform samples. Potentially useful in conjunction with a fixed extent to ensure consistent sample points for stacked densities.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: DensityTransform
 #' @return A component of a Vega-Lite spec, corresponding to a DensityTransform.
 #' @export
 
@@ -7984,6 +8081,7 @@ args$obj
 #' 3) a [selection predicate](https://vega.github.io/vega-lite/docs/filter.html#selection-predicate)
 #' 
 #' 4) a logical operand that combines (1), (2), or (3).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FilterTransform
 #' @return A component of a Vega-Lite spec, corresponding to a FilterTransform.
 #' @export
 
@@ -8001,6 +8099,7 @@ args$obj
 #' If multiple fields are specified, their array values should have a parallel structure, ideally with the same length.
 #' If the lengths of parallel arrays do not match,
 #' the longest array will be used with `null` values added for missing entries.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FlattenTransform
 #' @return A component of a Vega-Lite spec, corresponding to a FlattenTransform.
 #' @export
 
@@ -8014,6 +8113,7 @@ args$obj
 #' @param as (_FoldTransform_) The output field names for the key and value properties produced by the fold transform.
 #' __Default value:__ `["key", "value"]`
 #' @param fold (_FoldTransform_) An array of data fields indicating the properties to fold.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FoldTransform
 #' @return A component of a Vega-Lite spec, corresponding to a FoldTransform.
 #' @export
 
@@ -8043,6 +8143,7 @@ args$obj
 #' 
 #' __Default value:__  `"value"`
 #' @param value (_ImputeTransform_) The field value to use when the imputation `method` is `"value"`.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ImputeTransform
 #' @return A component of a Vega-Lite spec, corresponding to a ImputeTransform.
 #' @export
 
@@ -8055,6 +8156,7 @@ args$obj
 #' Create spec for {obj}
 #' @param groupby (_JoinAggregateTransform_) The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group.
 #' @param joinaggregate (_JoinAggregateTransform_) The definition of the fields in the join aggregate, and what calculations to use.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: JoinAggregateTransform
 #' @return A component of a Vega-Lite spec, corresponding to a JoinAggregateTransform.
 #' @export
 
@@ -8074,6 +8176,7 @@ args$obj
 #' @param groupby (_LoessTransform_) The data fields to group by. If not specified, a single group containing all data objects will be used.
 #' @param loess (_LoessTransform_) The data field of the dependent variable to smooth.
 #' @param on (_LoessTransform_) The data field of the independent variable to use a predictor.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LoessTransform
 #' @return A component of a Vega-Lite spec, corresponding to a LoessTransform.
 #' @export
 
@@ -8098,6 +8201,7 @@ args$obj
 #' __Default value:__ `null`
 #' @param from (_LookupTransform_) Data source or selection for secondary data reference.
 #' @param lookup (_LookupTransform_) Key in primary data source.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LookupTransform
 #' @return A component of a Vega-Lite spec, corresponding to a LookupTransform.
 #' @export
 
@@ -8115,6 +8219,7 @@ args$obj
 #' @param probs (_QuantileTransform_) An array of probabilities in the range (0, 1) for which to compute quantile values. If not specified, the *step* parameter will be used.
 #' @param quantile (_QuantileTransform_) The data field for which to perform quantile estimation.
 #' @param step (_QuantileTransform_) A probability step size (default 0.01) for sampling quantile values. All values from one-half the step size up to 1 (exclusive) will be sampled. This parameter is only used if the *probs* parameter is not provided.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: QuantileTransform
 #' @return A component of a Vega-Lite spec, corresponding to a QuantileTransform.
 #' @export
 
@@ -8143,6 +8248,7 @@ args$obj
 #' 
 #' __Default value:__ `false`
 #' @param regression (_RegressionTransform_) The data field of the dependent variable to predict.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RegressionTransform
 #' @return A component of a Vega-Lite spec, corresponding to a RegressionTransform.
 #' @export
 
@@ -8157,6 +8263,7 @@ args$obj
 #' @param as (_TimeUnitTransform_) The output field to write the timeUnit value.
 #' @param field (_TimeUnitTransform_) The data field to apply time unit.
 #' @param timeUnit (_TimeUnitTransform_) The timeUnit.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TimeUnitTransform
 #' @return A component of a Vega-Lite spec, corresponding to a TimeUnitTransform.
 #' @export
 
@@ -8170,6 +8277,7 @@ args$obj
 #' @param sample (_SampleTransform_) The maximum number of data objects to include in the sample.
 #' 
 #' __Default value:__ `1000`
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SampleTransform
 #' @return A component of a Vega-Lite spec, corresponding to a SampleTransform.
 #' @export
 
@@ -8189,6 +8297,7 @@ args$obj
 #' __Default value:__ `"zero"`
 #' @param sort (_StackTransform_) Field that determines the order of leaves in the stacked charts.
 #' @param stack (_StackTransform_) The field which is stacked.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: StackTransform
 #' @return A component of a Vega-Lite spec, corresponding to a StackTransform.
 #' @export
 
@@ -8208,6 +8317,7 @@ args$obj
 #' __Default value:__ `false`
 #' @param sort (_WindowTransform_) A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered "peer" values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to `true`).
 #' @param window (_WindowTransform_) The definition of the fields in the window, and what calculations to use.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: WindowTransform
 #' @return A component of a Vega-Lite spec, corresponding to a WindowTransform.
 #' @export
 
@@ -8226,6 +8336,7 @@ args$obj
 #' __Default value:__ `sum`
 #' @param pivot (_PivotTransform_) The data field to pivot on. The unique values of this field become new field names in the output stream.
 #' @param value (_PivotTransform_) The data field to populate pivoted fields. The aggregate values of this field become the values of the new pivoted fields.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: PivotTransform
 #' @return A component of a Vega-Lite spec, corresponding to a PivotTransform.
 #' @export
 
@@ -8259,201 +8370,202 @@ args$obj
 #' 
 #' __Note:__ If provided, options such as maxbins will be ignored.
 #' @param steps (_BinParams_) An array of allowable step sizes to choose from.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BinParams
 #' @return A modified Vega-Lite Spec
 #' @export
 #' @name bin_encoding 
 #' @name bin_encoding
 #' @export
-vl_bin_color <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_color <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "color")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_detail <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_detail <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "detail")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_fill <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_fill <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "fill")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_fillOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_fillOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "fillOpacity")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_href <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_href <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "href")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_key <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_key <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "key")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_latitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_latitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "latitude")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_latitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_latitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "latitude2")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_longitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_longitude <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "longitude")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_longitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_longitude2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "longitude2")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_opacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_opacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "opacity")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_order <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_order <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "order")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_shape <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_shape <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "shape")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_size <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_size <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "size")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_stroke <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_stroke <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "stroke")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_strokeOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_strokeOpacity <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "strokeOpacity")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_strokeWidth <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_strokeWidth <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "strokeWidth")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_text <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_text <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "text")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_tooltip <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_tooltip <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "tooltip")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_url <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_url <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "url")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_x <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_x <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "x")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_x2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_x2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "x2")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_xError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_xError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "xError")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_xError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_xError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "xError2")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_y <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_y <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "y")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_y2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_y2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "y2")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_yError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_yError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "yError")
 } 
 #' @name bin_encoding
 #' @export
-vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL){
+vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL){
   args <- .modify_args(NULL, c("anchor", "base", "binned", "divide", "extent", "maxbins", "minstep", "nice", 
   "step", "steps"))
   .add_bin_to_encoding(args$spec, args$object, "#/definitions/BinParams" , encoding = "yError2")
@@ -8476,18 +8588,19 @@ vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divi
 #' 
 #' __Default value:__  `"value"`
 #' @param value (_ImputeParams_) The field value to use when the imputation `method` is `"value"`.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ImputeParams
 #' @return A modified Vega-Lite Spec
 #' @export
 #' @name impute_encoding 
 #' @name impute_encoding
 #' @export
-vl_impute_x <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL){
+vl_impute_x <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("frame", "keyvals", "method", "value"))
   .add_impute_to_encoding(args$spec, args$object, "#/definitions/ImputeParams" , encoding = "x")
 } 
 #' @name impute_encoding
 #' @export
-vl_impute_y <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL){
+vl_impute_y <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL, .object = NULL){
   args <- .modify_args(NULL, c("frame", "keyvals", "method", "value"))
   .add_impute_to_encoding(args$spec, args$object, "#/definitions/ImputeParams" , encoding = "y")
 } 
@@ -8637,12 +8750,13 @@ vl_impute_y <- function(spec, frame = NULL, keyvals = NULL, method = NULL, value
 #' To put them in front, set `zindex` to `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Axis
 #' @return A modified Vega-Lite Spec
 #' @export
 #' @name axis_encoding 
 #' @name axis_encoding
 #' @export
-vl_axis_x <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickBand = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL){
+vl_axis_x <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickBand = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL, .object = NULL){
   args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
   "domainOpacity", "domainWidth", "format", "formatType", "grid", "gridColor", 
   "gridDash", "gridDashOffset", "gridOpacity", "gridWidth", "labelAlign", "labelAngle", 
@@ -8659,7 +8773,7 @@ vl_axis_x <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NU
 } 
 #' @name axis_encoding
 #' @export
-vl_axis_y <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickBand = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL){
+vl_axis_y <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, tickBand = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL, .object = NULL){
   args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
   "domainOpacity", "domainWidth", "format", "formatType", "grid", "gridColor", 
   "gridDash", "gridDashOffset", "gridOpacity", "gridWidth", "labelAlign", "labelAngle", 
@@ -8765,12 +8879,13 @@ vl_axis_y <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NU
 #' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
 #' 
 #' __Note:__ Log, time, and utc scales do not support `zero`.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Scale
 #' @return A modified Vega-Lite Spec
 #' @export
 #' @name scale_encoding 
 #' @name scale_encoding
 #' @export
-vl_scale_color <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+vl_scale_color <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
@@ -8778,7 +8893,7 @@ vl_scale_color <- function(spec, align = NULL, base = NULL, bins = NULL, clamp =
 } 
 #' @name scale_encoding
 #' @export
-vl_scale_fill <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+vl_scale_fill <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
@@ -8786,7 +8901,7 @@ vl_scale_fill <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = 
 } 
 #' @name scale_encoding
 #' @export
-vl_scale_fillOpacity <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+vl_scale_fillOpacity <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
@@ -8794,7 +8909,7 @@ vl_scale_fillOpacity <- function(spec, align = NULL, base = NULL, bins = NULL, c
 } 
 #' @name scale_encoding
 #' @export
-vl_scale_opacity <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+vl_scale_opacity <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
@@ -8802,7 +8917,7 @@ vl_scale_opacity <- function(spec, align = NULL, base = NULL, bins = NULL, clamp
 } 
 #' @name scale_encoding
 #' @export
-vl_scale_shape <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+vl_scale_shape <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
@@ -8810,7 +8925,7 @@ vl_scale_shape <- function(spec, align = NULL, base = NULL, bins = NULL, clamp =
 } 
 #' @name scale_encoding
 #' @export
-vl_scale_size <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+vl_scale_size <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
@@ -8818,7 +8933,7 @@ vl_scale_size <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = 
 } 
 #' @name scale_encoding
 #' @export
-vl_scale_stroke <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+vl_scale_stroke <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
@@ -8826,7 +8941,7 @@ vl_scale_stroke <- function(spec, align = NULL, base = NULL, bins = NULL, clamp 
 } 
 #' @name scale_encoding
 #' @export
-vl_scale_strokeOpacity <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+vl_scale_strokeOpacity <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
@@ -8834,7 +8949,7 @@ vl_scale_strokeOpacity <- function(spec, align = NULL, base = NULL, bins = NULL,
 } 
 #' @name scale_encoding
 #' @export
-vl_scale_strokeWidth <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+vl_scale_strokeWidth <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
@@ -8842,7 +8957,7 @@ vl_scale_strokeWidth <- function(spec, align = NULL, base = NULL, bins = NULL, c
 } 
 #' @name scale_encoding
 #' @export
-vl_scale_x <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+vl_scale_x <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
@@ -8850,7 +8965,7 @@ vl_scale_x <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NUL
 } 
 #' @name scale_encoding
 #' @export
-vl_scale_y <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL){
+vl_scale_y <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "base", "bins", "clamp", "constant", "domain", "exponent", "interpolate", 
   "nice", "padding", "paddingInner", "paddingOuter", "range", "round", "scheme", 
   "type", "zero"))
@@ -9001,12 +9116,13 @@ vl_scale_y <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NUL
 #' @param zindex (_Legend_) A non-negative integer indicating the z-index of the legend.
 #' If zindex is 0, legend should be drawn behind all chart elements.
 #' To put them in front, use zindex = 1.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Legend
 #' @return A modified Vega-Lite Spec
 #' @export
 #' @name legend_encoding 
 #' @name legend_encoding
 #' @export
-vl_legend_color <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_color <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL, .object = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
@@ -9023,7 +9139,7 @@ vl_legend_color <- function(spec, clipHeight = NULL, columnPadding = NULL, colum
 } 
 #' @name legend_encoding
 #' @export
-vl_legend_fill <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_fill <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL, .object = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
@@ -9040,7 +9156,7 @@ vl_legend_fill <- function(spec, clipHeight = NULL, columnPadding = NULL, column
 } 
 #' @name legend_encoding
 #' @export
-vl_legend_fillOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_fillOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL, .object = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
@@ -9057,7 +9173,7 @@ vl_legend_fillOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL,
 } 
 #' @name legend_encoding
 #' @export
-vl_legend_opacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_opacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL, .object = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
@@ -9074,7 +9190,7 @@ vl_legend_opacity <- function(spec, clipHeight = NULL, columnPadding = NULL, col
 } 
 #' @name legend_encoding
 #' @export
-vl_legend_shape <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_shape <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL, .object = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
@@ -9091,7 +9207,7 @@ vl_legend_shape <- function(spec, clipHeight = NULL, columnPadding = NULL, colum
 } 
 #' @name legend_encoding
 #' @export
-vl_legend_size <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_size <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL, .object = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
@@ -9108,7 +9224,7 @@ vl_legend_size <- function(spec, clipHeight = NULL, columnPadding = NULL, column
 } 
 #' @name legend_encoding
 #' @export
-vl_legend_stroke <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_stroke <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL, .object = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
@@ -9125,7 +9241,7 @@ vl_legend_stroke <- function(spec, clipHeight = NULL, columnPadding = NULL, colu
 } 
 #' @name legend_encoding
 #' @export
-vl_legend_strokeOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_strokeOpacity <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL, .object = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
@@ -9142,7 +9258,7 @@ vl_legend_strokeOpacity <- function(spec, clipHeight = NULL, columnPadding = NUL
 } 
 #' @name legend_encoding
 #' @export
-vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL){
+vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, direction = NULL, fillColor = NULL, format = NULL, formatType = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, tickMinStep = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, type = NULL, values = NULL, zindex = NULL, .object = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "direction", "fillColor", 
   "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
   "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", 
@@ -9263,12 +9379,13 @@ vl_legend_strokeWidth <- function(spec, clipHeight = NULL, columnPadding = NULL,
 #' @param labelExpr (_ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) [Vega expression](https://vega.github.io/vega/docs/expressions/) for customizing labels text.
 #' 
 #' __Note:__ The label text and value can be assessed via the `label` and `value` properties of the axis's backing `datum` object.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalSelection<ValueDef<(Gradient|string|null)>> or array of ConditionalValueDef<(Gradient|string|null)>
 #' @return A modified Vega-Lite Spec
 #' @export
 #' @name condition_encoding 
 #' @name condition_encoding
 #' @export
-vl_condition_color <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_color <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, .object = NULL){
   args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
   "sort", "timeUnit", "title", "type"))
   .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>/properties/condition", 
@@ -9277,7 +9394,7 @@ vl_condition_color <- function(spec, test = NULL, value = NULL, selection = NULL
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_fill <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_fill <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, .object = NULL){
   args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
   "sort", "timeUnit", "title", "type"))
   .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>/properties/condition", 
@@ -9286,7 +9403,7 @@ vl_condition_fill <- function(spec, test = NULL, value = NULL, selection = NULL,
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_fillOpacity <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_fillOpacity <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, .object = NULL){
   args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
   "sort", "timeUnit", "title", "type"))
   .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,number>/properties/condition", 
@@ -9295,7 +9412,7 @@ vl_condition_fillOpacity <- function(spec, test = NULL, value = NULL, selection 
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_href <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_href <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, .object = NULL){
   args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
   "sort", "timeUnit", "title", "type"))
   .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<StringFieldDef,string>/properties/condition", 
@@ -9304,7 +9421,7 @@ vl_condition_href <- function(spec, test = NULL, value = NULL, selection = NULL,
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_opacity <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_opacity <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, .object = NULL){
   args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
   "sort", "timeUnit", "title", "type"))
   .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,number>/properties/condition", 
@@ -9313,7 +9430,7 @@ vl_condition_opacity <- function(spec, test = NULL, value = NULL, selection = NU
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_shape <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_shape <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, .object = NULL){
   args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
   "sort", "timeUnit", "title", "type"))
   .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>/properties/condition", 
@@ -9322,7 +9439,7 @@ vl_condition_shape <- function(spec, test = NULL, value = NULL, selection = NULL
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_size <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_size <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, .object = NULL){
   args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
   "sort", "timeUnit", "title", "type"))
   .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,number>/properties/condition", 
@@ -9331,7 +9448,7 @@ vl_condition_size <- function(spec, test = NULL, value = NULL, selection = NULL,
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_stroke <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_stroke <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, .object = NULL){
   args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
   "sort", "timeUnit", "title", "type"))
   .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>/properties/condition", 
@@ -9340,7 +9457,7 @@ vl_condition_stroke <- function(spec, test = NULL, value = NULL, selection = NUL
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_strokeOpacity <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_strokeOpacity <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, .object = NULL){
   args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
   "sort", "timeUnit", "title", "type"))
   .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,number>/properties/condition", 
@@ -9349,7 +9466,7 @@ vl_condition_strokeOpacity <- function(spec, test = NULL, value = NULL, selectio
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_strokeWidth <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_strokeWidth <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, .object = NULL){
   args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
   "sort", "timeUnit", "title", "type"))
   .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,number>/properties/condition", 
@@ -9358,7 +9475,7 @@ vl_condition_strokeWidth <- function(spec, test = NULL, value = NULL, selection 
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_text <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_text <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL, type = NULL, .object = NULL){
   args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "format", "formatType", 
   "labelExpr", "timeUnit", "title", "type"))
   .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<StringFieldDef,Text>/properties/condition", 
@@ -9367,7 +9484,7 @@ vl_condition_text <- function(spec, test = NULL, value = NULL, selection = NULL,
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_tooltip <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_tooltip <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, .object = NULL){
   args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
   "sort", "timeUnit", "title", "type"))
   .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<StringFieldDef,string>/properties/condition", 
@@ -9376,7 +9493,7 @@ vl_condition_tooltip <- function(spec, test = NULL, value = NULL, selection = NU
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_url <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_url <- function(spec, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, .object = NULL){
   args <- .modify_args(NULL, c("test", "value", "selection", "aggregate", "bin", "field", "legend", "scale", 
   "sort", "timeUnit", "title", "type"))
   .add_condition_to_encoding(args$spec, args$object, c("#/definitions/FieldDefWithCondition<StringFieldDef,string>/properties/condition", 
@@ -9662,78 +9779,79 @@ vl_sort_y <- function(spec, value){
 #' 
 #' __Default value:__ `"sum"` for stacked plots. Otherwise, `"mean"`.
 #' @param order (_EncodingSortField_) The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: EncodingSortField
 #' @return A modified Vega-Lite Spec
 #' @export
 #' @name sort_encoding_by_field 
 #' @name sort_encoding_by_field
 #' @export
-vl_sort_color_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+vl_sort_color_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "color")
 } 
 #' @name sort_encoding_by_field
 #' @export
-vl_sort_fill_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+vl_sort_fill_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "fill")
 } 
 #' @name sort_encoding_by_field
 #' @export
-vl_sort_fillOpacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+vl_sort_fillOpacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "fillOpacity")
 } 
 #' @name sort_encoding_by_field
 #' @export
-vl_sort_opacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+vl_sort_opacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "opacity")
 } 
 #' @name sort_encoding_by_field
 #' @export
-vl_sort_order_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+vl_sort_order_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "order")
 } 
 #' @name sort_encoding_by_field
 #' @export
-vl_sort_shape_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+vl_sort_shape_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "shape")
 } 
 #' @name sort_encoding_by_field
 #' @export
-vl_sort_size_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+vl_sort_size_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "size")
 } 
 #' @name sort_encoding_by_field
 #' @export
-vl_sort_stroke_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+vl_sort_stroke_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "stroke")
 } 
 #' @name sort_encoding_by_field
 #' @export
-vl_sort_strokeOpacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+vl_sort_strokeOpacity_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "strokeOpacity")
 } 
 #' @name sort_encoding_by_field
 #' @export
-vl_sort_strokeWidth_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+vl_sort_strokeWidth_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "strokeWidth")
 } 
 #' @name sort_encoding_by_field
 #' @export
-vl_sort_x_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+vl_sort_x_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "x")
 } 
 #' @name sort_encoding_by_field
 #' @export
-vl_sort_y_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
+vl_sort_y_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("field", "op", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/EncodingSortField" , encoding = "y")
 } 
@@ -9743,78 +9861,79 @@ vl_sort_y_by_field <- function(spec, field = NULL, op = NULL, order = NULL){
 #' @param spec An input vega-lite spec
 #' @param encoding (_SortByEncoding_) The [encoding channel](https://vega.github.io/vega-lite/docs/encoding.html#channels) to sort by (e.g., `"x"`, `"y"`)
 #' @param order (_SortByEncoding_) The sort order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SortByEncoding
 #' @return A modified Vega-Lite Spec
 #' @export
 #' @name sort_encoding_by_encoding 
 #' @name sort_encoding_by_encoding
 #' @export
-vl_sort_color_by_encoding <- function(spec, encoding = NULL, order = NULL){
+vl_sort_color_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "color")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
-vl_sort_fill_by_encoding <- function(spec, encoding = NULL, order = NULL){
+vl_sort_fill_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "fill")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
-vl_sort_fillOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL){
+vl_sort_fillOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "fillOpacity")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
-vl_sort_opacity_by_encoding <- function(spec, encoding = NULL, order = NULL){
+vl_sort_opacity_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "opacity")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
-vl_sort_order_by_encoding <- function(spec, encoding = NULL, order = NULL){
+vl_sort_order_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "order")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
-vl_sort_shape_by_encoding <- function(spec, encoding = NULL, order = NULL){
+vl_sort_shape_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "shape")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
-vl_sort_size_by_encoding <- function(spec, encoding = NULL, order = NULL){
+vl_sort_size_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "size")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
-vl_sort_stroke_by_encoding <- function(spec, encoding = NULL, order = NULL){
+vl_sort_stroke_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "stroke")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
-vl_sort_strokeOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL){
+vl_sort_strokeOpacity_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "strokeOpacity")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
-vl_sort_strokeWidth_by_encoding <- function(spec, encoding = NULL, order = NULL){
+vl_sort_strokeWidth_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "strokeWidth")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
-vl_sort_x_by_encoding <- function(spec, encoding = NULL, order = NULL){
+vl_sort_x_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "x")
 } 
 #' @name sort_encoding_by_encoding
 #' @export
-vl_sort_y_by_encoding <- function(spec, encoding = NULL, order = NULL){
+vl_sort_y_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL){
   args <- .modify_args(NULL, c("encoding", "order"))
   .add_sort_to_encoding(args$spec, args$object, "#/definitions/SortByEncoding" , encoding = "y")
 } 
@@ -9878,6 +9997,7 @@ vl_remove_axis_y <- function(spec){
 #' - `"single"` -- to select a single discrete data value on `click`.
 #' - `"multi"` -- to select multiple discrete data value; the first value is selected on `click` and additional values toggled on shift-`click`.
 #' - `"interval"` -- to select a continuous range of data values on `drag`.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SingleSelection
 #' @return A modified Vega-Lite Spec
 #' @export
 
@@ -9939,6 +10059,7 @@ vl_add_single_selection <- function(spec, selection_name, bind = NULL, clear = N
 #' - `"single"` -- to select a single discrete data value on `click`.
 #' - `"multi"` -- to select multiple discrete data value; the first value is selected on `click` and additional values toggled on shift-`click`.
 #' - `"interval"` -- to select a continuous range of data values on `drag`.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MultiSelection
 #' @return A modified Vega-Lite Spec
 #' @export
 
@@ -10012,6 +10133,7 @@ vl_add_multi_selection <- function(spec, selection_name, bind = NULL, clear = NU
 #' __Default value:__ `true`, which corresponds to `wheel!`.
 #' 
 #' __See also:__ [`zoom`](https://vega.github.io/vega-lite/docs/zoom.html) documentation.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: IntervalSelection
 #' @return A modified Vega-Lite Spec
 #' @export
 
@@ -10068,6 +10190,7 @@ vl_add_interval_selection <- function(spec, selection_name, bind = NULL, clear =
 #' - `"single"` -- to select a single discrete data value on `click`.
 #' - `"multi"` -- to select multiple discrete data value; the first value is selected on `click` and additional values toggled on shift-`click`.
 #' - `"interval"` -- to select a continuous range of data values on `drag`.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SingleSelection
 #' @return A component of a Vega-Lite spec, corresponding to a SingleSelection.
 #' @export
 
@@ -10127,6 +10250,7 @@ args$obj
 #' - `"single"` -- to select a single discrete data value on `click`.
 #' - `"multi"` -- to select multiple discrete data value; the first value is selected on `click` and additional values toggled on shift-`click`.
 #' - `"interval"` -- to select a continuous range of data values on `drag`.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MultiSelection
 #' @return A component of a Vega-Lite spec, corresponding to a MultiSelection.
 #' @export
 
@@ -10198,6 +10322,7 @@ args$obj
 #' __Default value:__ `true`, which corresponds to `wheel!`.
 #' 
 #' __See also:__ [`zoom`](https://vega.github.io/vega-lite/docs/zoom.html) documentation.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: IntervalSelection
 #' @return A component of a Vega-Lite spec, corresponding to a IntervalSelection.
 #' @export
 
@@ -10218,6 +10343,7 @@ args$obj
 #' @param name (_BindRadioSelect_)  
 #' @param options (_BindRadioSelect_)  
 #' @param type (_BindRadioSelect_)  
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRadioSelect
 #' @return A modified Vega-Lite Spec
 #' @export
 
@@ -10238,6 +10364,7 @@ projection_name = args$extra$projection_name)
 #' @param name (_BindRadioSelect_)  
 #' @param options (_BindRadioSelect_)  
 #' @param type (_BindRadioSelect_)  
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRadioSelect
 #' @return A modified Vega-Lite Spec
 #' @export
 
@@ -10256,6 +10383,7 @@ projection_name = args$extra$projection_name)
 #' @param element (_BindCheckbox_)  
 #' @param name (_BindCheckbox_)  
 #' @param type (_BindCheckbox_)  
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindCheckbox
 #' @return A modified Vega-Lite Spec
 #' @export
 
@@ -10277,6 +10405,7 @@ projection_name = args$extra$projection_name)
 #' @param name (_BindRange_)  
 #' @param step (_BindRange_)  
 #' @param type (_BindRange_)  
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRange
 #' @return A modified Vega-Lite Spec
 #' @export
 
@@ -10357,10 +10486,11 @@ projection_name = args$extra$projection_name)
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FacetFieldDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_facet_row <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL){
+vl_facet_row <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "header", "sort", "timeUnit", "title", "type"
   ))
   .add_facet_row(args$spec, args$object, structure("#/definitions/FacetFieldDef", class = c("glue", "character")))
@@ -10437,10 +10567,11 @@ vl_facet_row <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin 
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FacetFieldDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_facet_column <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL){
+vl_facet_column <- function(spec, field = NULL, type = NULL, aggregate = NULL, bin = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "header", "sort", "timeUnit", "title", "type"
   ))
   .add_facet_column(args$spec, args$object, structure("#/definitions/FacetFieldDef", class = c("glue", "character")))
@@ -10555,10 +10686,11 @@ vl_facet_column <- function(spec, field = NULL, type = NULL, aggregate = NULL, b
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FacetEncodingFieldDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_row <- function(spec, field = NULL, type = NULL, aggregate = NULL, align = NULL, bin = NULL, bounds = NULL, center = NULL, columns = NULL, header = NULL, sort = NULL, spacing = NULL, timeUnit = NULL, title = NULL){
+vl_encode_row <- function(spec, field = NULL, type = NULL, aggregate = NULL, align = NULL, bin = NULL, bounds = NULL, center = NULL, columns = NULL, header = NULL, sort = NULL, spacing = NULL, timeUnit = NULL, title = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "align", "bin", "bounds", "center", "columns", "field", "header", 
   "sort", "spacing", "timeUnit", "title", "type"))
   .add_encoding(args$spec, args$object, structure("#/definitions/FacetEncodingFieldDef", class = c("glue", "character"
@@ -10674,10 +10806,11 @@ vl_encode_row <- function(spec, field = NULL, type = NULL, aggregate = NULL, ali
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FacetEncodingFieldDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_column <- function(spec, field = NULL, type = NULL, aggregate = NULL, align = NULL, bin = NULL, bounds = NULL, center = NULL, columns = NULL, header = NULL, sort = NULL, spacing = NULL, timeUnit = NULL, title = NULL){
+vl_encode_column <- function(spec, field = NULL, type = NULL, aggregate = NULL, align = NULL, bin = NULL, bounds = NULL, center = NULL, columns = NULL, header = NULL, sort = NULL, spacing = NULL, timeUnit = NULL, title = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "align", "bin", "bounds", "center", "columns", "field", "header", 
   "sort", "spacing", "timeUnit", "title", "type"))
   .add_encoding(args$spec, args$object, structure("#/definitions/FacetEncodingFieldDef", class = c("glue", "character"
@@ -10793,10 +10926,11 @@ vl_encode_column <- function(spec, field = NULL, type = NULL, aggregate = NULL, 
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FacetEncodingFieldDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_encode_wrap <- function(spec, field = NULL, type = NULL, aggregate = NULL, align = NULL, bin = NULL, bounds = NULL, center = NULL, columns = NULL, header = NULL, sort = NULL, spacing = NULL, timeUnit = NULL, title = NULL){
+vl_encode_wrap <- function(spec, field = NULL, type = NULL, aggregate = NULL, align = NULL, bin = NULL, bounds = NULL, center = NULL, columns = NULL, header = NULL, sort = NULL, spacing = NULL, timeUnit = NULL, title = NULL, .object = NULL){
   args <- .modify_args(NULL, c("aggregate", "align", "bin", "bounds", "center", "columns", "field", "header", 
   "sort", "spacing", "timeUnit", "title", "type"))
   .add_encoding(args$spec, args$object, structure("#/definitions/FacetEncodingFieldDef", class = c("glue", "character"
@@ -10875,6 +11009,7 @@ vl_encode_wrap <- function(spec, field = NULL, type = NULL, aggregate = NULL, al
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FacetFieldDef
 #' @return A modified Vega-Lite Spec
 #' @export
 
@@ -11149,10 +11284,11 @@ vl_resolve_scale_y <- function(spec, how = c('independent', 'shared')){
 #' @param title (_Config_) Title configuration, which determines default properties for all [titles](https://vega.github.io/vega-lite/docs/title.html). For a full list of title configuration options, please see the [corresponding section of the title documentation](https://vega.github.io/vega-lite/docs/title.html#config).
 #' @param trail (_Config_) Trail-Specific Config
 #' @param view (_Config_) Default properties for [single view plots](https://vega.github.io/vega-lite/docs/spec.html#single).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Config
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_config <- function(spec, area = NULL, autosize = NULL, axis = NULL, axisBand = NULL, axisBottom = NULL, axisLeft = NULL, axisRight = NULL, axisTop = NULL, axisX = NULL, axisY = NULL, background = NULL, bar = NULL, boxplot = NULL, circle = NULL, concat = NULL, countTitle = NULL, errorband = NULL, errorbar = NULL, facet = NULL, fieldTitle = NULL, geoshape = NULL, header = NULL, headerColumn = NULL, headerFacet = NULL, headerRow = NULL, image = NULL, legend = NULL, line = NULL, mark = NULL, numberFormat = NULL, padding = NULL, point = NULL, projection = NULL, range = NULL, rect = NULL, `repeat` = NULL, rule = NULL, scale = NULL, selection = NULL, square = NULL, style = NULL, text = NULL, tick = NULL, timeFormat = NULL, title = NULL, trail = NULL, view = NULL){
+vl_add_config <- function(spec, area = NULL, autosize = NULL, axis = NULL, axisBand = NULL, axisBottom = NULL, axisLeft = NULL, axisRight = NULL, axisTop = NULL, axisX = NULL, axisY = NULL, background = NULL, bar = NULL, boxplot = NULL, circle = NULL, concat = NULL, countTitle = NULL, errorband = NULL, errorbar = NULL, facet = NULL, fieldTitle = NULL, geoshape = NULL, header = NULL, headerColumn = NULL, headerFacet = NULL, headerRow = NULL, image = NULL, legend = NULL, line = NULL, mark = NULL, numberFormat = NULL, padding = NULL, point = NULL, projection = NULL, range = NULL, rect = NULL, `repeat` = NULL, rule = NULL, scale = NULL, selection = NULL, square = NULL, style = NULL, text = NULL, tick = NULL, timeFormat = NULL, title = NULL, trail = NULL, view = NULL, .object = NULL){
   args <- .modify_args(NULL, c("area", "autosize", "axis", "axisBand", "axisBottom", "axisLeft", "axisRight", 
   "axisTop", "axisX", "axisY", "background", "bar", "boxplot", "circle", "concat", 
   "countTitle", "errorband", "errorbar", "facet", "fieldTitle", "geoshape", "header", 
@@ -11335,10 +11471,11 @@ vl_add_config <- function(spec, area = NULL, autosize = NULL, axis = NULL, axisB
 #' @param y2 (_AreaConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AreaConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_area_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+vl_add_area_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "angle", "aspect", "baseline", "color", "cornerRadius", "cornerRadiusBottomLeft", 
   "cornerRadiusBottomRight", "cornerRadiusTopLeft", "cornerRadiusTopRight", "cursor", 
   "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", 
@@ -11454,10 +11591,11 @@ vl_add_area_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, 
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
 #' @param translate (_AxisConfig_) Translation offset in pixels applied to the axis group mark x and y. If specified, overrides the default behavior of a 0.5 offset to pixel-align stroked lines.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AxisConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_axis_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, tickBand = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL){
+vl_add_axis_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, tickBand = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, .object = NULL){
   args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
   "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
   "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
@@ -11575,10 +11713,11 @@ vl_add_axis_config <- function(spec, bandPosition = NULL, domain = NULL, domainC
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
 #' @param translate (_AxisConfig_) Translation offset in pixels applied to the axis group mark x and y. If specified, overrides the default behavior of a 0.5 offset to pixel-align stroked lines.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AxisConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_axisBand_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, tickBand = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL){
+vl_add_axisBand_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, tickBand = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, .object = NULL){
   args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
   "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
   "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
@@ -11696,10 +11835,11 @@ vl_add_axisBand_config <- function(spec, bandPosition = NULL, domain = NULL, dom
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
 #' @param translate (_AxisConfig_) Translation offset in pixels applied to the axis group mark x and y. If specified, overrides the default behavior of a 0.5 offset to pixel-align stroked lines.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AxisConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_axisBottom_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, tickBand = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL){
+vl_add_axisBottom_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, tickBand = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, .object = NULL){
   args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
   "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
   "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
@@ -11817,10 +11957,11 @@ vl_add_axisBottom_config <- function(spec, bandPosition = NULL, domain = NULL, d
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
 #' @param translate (_AxisConfig_) Translation offset in pixels applied to the axis group mark x and y. If specified, overrides the default behavior of a 0.5 offset to pixel-align stroked lines.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AxisConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_axisLeft_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, tickBand = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL){
+vl_add_axisLeft_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, tickBand = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, .object = NULL){
   args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
   "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
   "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
@@ -11938,10 +12079,11 @@ vl_add_axisLeft_config <- function(spec, bandPosition = NULL, domain = NULL, dom
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
 #' @param translate (_AxisConfig_) Translation offset in pixels applied to the axis group mark x and y. If specified, overrides the default behavior of a 0.5 offset to pixel-align stroked lines.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AxisConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_axisRight_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, tickBand = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL){
+vl_add_axisRight_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, tickBand = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, .object = NULL){
   args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
   "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
   "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
@@ -12059,10 +12201,11 @@ vl_add_axisRight_config <- function(spec, bandPosition = NULL, domain = NULL, do
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
 #' @param translate (_AxisConfig_) Translation offset in pixels applied to the axis group mark x and y. If specified, overrides the default behavior of a 0.5 offset to pixel-align stroked lines.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AxisConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_axisTop_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, tickBand = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL){
+vl_add_axisTop_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, tickBand = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, .object = NULL){
   args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
   "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
   "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
@@ -12180,10 +12323,11 @@ vl_add_axisTop_config <- function(spec, bandPosition = NULL, domain = NULL, doma
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
 #' @param translate (_AxisConfig_) Translation offset in pixels applied to the axis group mark x and y. If specified, overrides the default behavior of a 0.5 offset to pixel-align stroked lines.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AxisConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_axisX_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, tickBand = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL){
+vl_add_axisX_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, tickBand = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, .object = NULL){
   args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
   "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
   "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
@@ -12301,10 +12445,11 @@ vl_add_axisX_config <- function(spec, bandPosition = NULL, domain = NULL, domain
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
 #' @param translate (_AxisConfig_) Translation offset in pixels applied to the axis group mark x and y. If specified, overrides the default behavior of a 0.5 offset to pixel-align stroked lines.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AxisConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_axisY_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, tickBand = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL){
+vl_add_axisY_config <- function(spec, bandPosition = NULL, domain = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, grid = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL, tickBand = NULL, tickColor = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, .object = NULL){
   args <- .modify_args(NULL, c("bandPosition", "domain", "domainColor", "domainDash", "domainDashOffset", 
   "domainOpacity", "domainWidth", "grid", "gridColor", "gridDash", "gridDashOffset", 
   "gridOpacity", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", 
@@ -12482,10 +12627,11 @@ vl_add_axisY_config <- function(spec, bandPosition = NULL, domain = NULL, domain
 #' @param y2 (_RectConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RectConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_bar_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+vl_add_bar_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "angle", "aspect", "baseline", "binSpacing", "color", "continuousBandSize", 
   "cornerRadius", "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "discreteBandSize", "dx", "dy", "ellipsis", 
@@ -12512,10 +12658,11 @@ vl_add_bar_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, b
 #' @param rule (_BoxPlotConfig_)  
 #' @param size (_BoxPlotConfig_) Size of the box and median tick of a box plot
 #' @param ticks (_BoxPlotConfig_)  
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BoxPlotConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_boxplot_config <- function(spec, box = NULL, extent = NULL, median = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL){
+vl_add_boxplot_config <- function(spec, box = NULL, extent = NULL, median = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL, .object = NULL){
   args <- .modify_args(NULL, c("box", "extent", "median", "outliers", "rule", "size", "ticks"))
   .add_sub_config(args$spec, args$object, structure("#/definitions/BoxPlotConfig", class = c("glue", "character")) , .config = "boxplot")
 } 
@@ -12676,10 +12823,11 @@ vl_add_boxplot_config <- function(spec, box = NULL, extent = NULL, median = NULL
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_circle_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+vl_add_circle_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "angle", "aspect", "baseline", "color", "cornerRadius", "cornerRadiusBottomLeft", 
   "cornerRadiusBottomRight", "cornerRadiusTopLeft", "cornerRadiusTopRight", "cursor", 
   "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", 
@@ -12710,10 +12858,11 @@ vl_add_circle_config <- function(spec, align = NULL, angle = NULL, aspect = NULL
 #' @param spacing (_CompositionConfig_) The default spacing in pixels between composed sub-views.
 #' 
 #' __Default value__: `20`
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: CompositionConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_concat_config <- function(spec, columns = NULL, spacing = NULL){
+vl_add_concat_config <- function(spec, columns = NULL, spacing = NULL, .object = NULL){
   args <- .modify_args(NULL, c("columns", "spacing"))
   .add_sub_config(args$spec, args$object, structure("#/definitions/CompositionConfig", class = c("glue", "character")) , .config = "concat")
 } 
@@ -12745,10 +12894,11 @@ vl_add_concat_config <- function(spec, columns = NULL, spacing = NULL){
 #' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
 #' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
 #' @param tension (_ErrorBandConfig_) The tension parameter for the interpolation type of the error band.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBandConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_errorband_config <- function(spec, band = NULL, borders = NULL, extent = NULL, interpolate = NULL, tension = NULL){
+vl_add_errorband_config <- function(spec, band = NULL, borders = NULL, extent = NULL, interpolate = NULL, tension = NULL, .object = NULL){
   args <- .modify_args(NULL, c("band", "borders", "extent", "interpolate", "tension"))
   .add_sub_config(args$spec, args$object, structure("#/definitions/ErrorBandConfig", class = c("glue", "character")) , .config = "errorband")
 } 
@@ -12765,10 +12915,11 @@ vl_add_errorband_config <- function(spec, band = NULL, borders = NULL, extent = 
 #' __Default value:__ `"stderr"`.
 #' @param rule (_ErrorBarConfig_)  
 #' @param ticks (_ErrorBarConfig_)  
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBarConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_errorbar_config <- function(spec, extent = NULL, rule = NULL, ticks = NULL){
+vl_add_errorbar_config <- function(spec, extent = NULL, rule = NULL, ticks = NULL, .object = NULL){
   args <- .modify_args(NULL, c("extent", "rule", "ticks"))
   .add_sub_config(args$spec, args$object, structure("#/definitions/ErrorBarConfig", class = c("glue", "character")) , .config = "errorbar")
 } 
@@ -12791,10 +12942,11 @@ vl_add_errorbar_config <- function(spec, extent = NULL, rule = NULL, ticks = NUL
 #' @param spacing (_CompositionConfig_) The default spacing in pixels between composed sub-views.
 #' 
 #' __Default value__: `20`
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: CompositionConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_facet_config <- function(spec, columns = NULL, spacing = NULL){
+vl_add_facet_config <- function(spec, columns = NULL, spacing = NULL, .object = NULL){
   args <- .modify_args(NULL, c("columns", "spacing"))
   .add_sub_config(args$spec, args$object, structure("#/definitions/CompositionConfig", class = c("glue", "character")) , .config = "facet")
 } 
@@ -12955,10 +13107,11 @@ vl_add_facet_config <- function(spec, columns = NULL, spacing = NULL){
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_geoshape_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+vl_add_geoshape_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "angle", "aspect", "baseline", "color", "cornerRadius", "cornerRadiusBottomLeft", 
   "cornerRadiusBottomRight", "cornerRadiusTopLeft", "cornerRadiusTopRight", "cursor", 
   "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", 
@@ -13032,10 +13185,11 @@ vl_add_geoshape_config <- function(spec, align = NULL, angle = NULL, aspect = NU
 #' @param titlePadding (_HeaderConfig_) The padding, in pixel, between facet header's title and the label.
 #' 
 #' __Default value:__ `10`
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: HeaderConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_header_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, labels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOrient = NULL, titlePadding = NULL){
+vl_add_header_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, labels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOrient = NULL, titlePadding = NULL, .object = NULL){
   args <- .modify_args(NULL, c("format", "formatType", "labelAlign", "labelAnchor", "labelAngle", "labelColor", 
   "labelExpr", "labelFont", "labelFontSize", "labelFontStyle", "labelLimit", "labelOrient", 
   "labelPadding", "labels", "title", "titleAlign", "titleAnchor", "titleAngle", 
@@ -13106,10 +13260,11 @@ vl_add_header_config <- function(spec, format = NULL, formatType = NULL, labelAl
 #' @param titlePadding (_HeaderConfig_) The padding, in pixel, between facet header's title and the label.
 #' 
 #' __Default value:__ `10`
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: HeaderConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_headerColumn_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, labels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOrient = NULL, titlePadding = NULL){
+vl_add_headerColumn_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, labels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOrient = NULL, titlePadding = NULL, .object = NULL){
   args <- .modify_args(NULL, c("format", "formatType", "labelAlign", "labelAnchor", "labelAngle", "labelColor", 
   "labelExpr", "labelFont", "labelFontSize", "labelFontStyle", "labelLimit", "labelOrient", 
   "labelPadding", "labels", "title", "titleAlign", "titleAnchor", "titleAngle", 
@@ -13180,10 +13335,11 @@ vl_add_headerColumn_config <- function(spec, format = NULL, formatType = NULL, l
 #' @param titlePadding (_HeaderConfig_) The padding, in pixel, between facet header's title and the label.
 #' 
 #' __Default value:__ `10`
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: HeaderConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_headerFacet_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, labels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOrient = NULL, titlePadding = NULL){
+vl_add_headerFacet_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, labels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOrient = NULL, titlePadding = NULL, .object = NULL){
   args <- .modify_args(NULL, c("format", "formatType", "labelAlign", "labelAnchor", "labelAngle", "labelColor", 
   "labelExpr", "labelFont", "labelFontSize", "labelFontStyle", "labelLimit", "labelOrient", 
   "labelPadding", "labels", "title", "titleAlign", "titleAnchor", "titleAngle", 
@@ -13254,10 +13410,11 @@ vl_add_headerFacet_config <- function(spec, format = NULL, formatType = NULL, la
 #' @param titlePadding (_HeaderConfig_) The padding, in pixel, between facet header's title and the label.
 #' 
 #' __Default value:__ `10`
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: HeaderConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_headerRow_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, labels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOrient = NULL, titlePadding = NULL){
+vl_add_headerRow_config <- function(spec, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelLimit = NULL, labelOrient = NULL, labelPadding = NULL, labels = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOrient = NULL, titlePadding = NULL, .object = NULL){
   args <- .modify_args(NULL, c("format", "formatType", "labelAlign", "labelAnchor", "labelAngle", "labelColor", 
   "labelExpr", "labelFont", "labelFontSize", "labelFontStyle", "labelLimit", "labelOrient", 
   "labelPadding", "labels", "title", "titleAlign", "titleAnchor", "titleAngle", 
@@ -13430,10 +13587,11 @@ vl_add_headerRow_config <- function(spec, format = NULL, formatType = NULL, labe
 #' @param y2 (_RectConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RectConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_image_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+vl_add_image_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "angle", "aspect", "baseline", "binSpacing", "color", "continuousBandSize", 
   "cornerRadius", "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "discreteBandSize", "dx", "dy", "ellipsis", 
@@ -13584,10 +13742,11 @@ vl_add_image_config <- function(spec, align = NULL, angle = NULL, aspect = NULL,
 #' @param unselectedOpacity (_LegendConfig_) The opacity of unselected legend entries.
 #' 
 #' __Default value:__ 0.35.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LegendConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_legend_config <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, fillColor = NULL, gradientDirection = NULL, gradientHorizontalMaxLength = NULL, gradientHorizontalMinLength = NULL, gradientLabelLimit = NULL, gradientLabelOffset = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gradientVerticalMaxLength = NULL, gradientVerticalMinLength = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, layout = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, strokeDash = NULL, strokeWidth = NULL, symbolBaseFillColor = NULL, symbolBaseStrokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolDirection = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, unselectedOpacity = NULL){
+vl_add_legend_config <- function(spec, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, fillColor = NULL, gradientDirection = NULL, gradientHorizontalMaxLength = NULL, gradientHorizontalMinLength = NULL, gradientLabelLimit = NULL, gradientLabelOffset = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gradientVerticalMaxLength = NULL, gradientVerticalMinLength = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, layout = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, strokeDash = NULL, strokeWidth = NULL, symbolBaseFillColor = NULL, symbolBaseStrokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolDirection = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, unselectedOpacity = NULL, .object = NULL){
   args <- .modify_args(NULL, c("clipHeight", "columnPadding", "columns", "cornerRadius", "fillColor", "gradientDirection", 
   "gradientHorizontalMaxLength", "gradientHorizontalMinLength", "gradientLabelLimit", 
   "gradientLabelOffset", "gradientLength", "gradientOpacity", "gradientStrokeColor", 
@@ -13770,10 +13929,11 @@ vl_add_legend_config <- function(spec, clipHeight = NULL, columnPadding = NULL, 
 #' @param y2 (_LineConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LineConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_line_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+vl_add_line_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "angle", "aspect", "baseline", "color", "cornerRadius", "cornerRadiusBottomLeft", 
   "cornerRadiusBottomRight", "cornerRadiusTopLeft", "cornerRadiusTopRight", "cursor", 
   "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", 
@@ -13942,10 +14102,11 @@ vl_add_line_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, 
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_mark_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+vl_add_mark_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "angle", "aspect", "baseline", "color", "cornerRadius", "cornerRadiusBottomLeft", 
   "cornerRadiusBottomRight", "cornerRadiusTopLeft", "cornerRadiusTopRight", "cursor", 
   "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", 
@@ -14114,10 +14275,11 @@ vl_add_mark_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, 
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_point_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+vl_add_point_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "angle", "aspect", "baseline", "color", "cornerRadius", "cornerRadiusBottomLeft", 
   "cornerRadiusBottomRight", "cornerRadiusTopLeft", "cornerRadiusTopRight", "cursor", 
   "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", 
@@ -14159,10 +14321,11 @@ vl_add_point_config <- function(spec, align = NULL, angle = NULL, aspect = NULL,
 #' @param type (_Projection_) The cartographic projection to use. This value is case-insensitive, for example `"albers"` and `"Albers"` indicate the same projection type. You can find all valid projection types [in the documentation](https://vega.github.io/vega-lite/docs/projection.html#projection-types).
 #' 
 #' __Default value:__ `mercator`
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Projection
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_projection_config <- function(spec, center = NULL, clipAngle = NULL, clipExtent = NULL, coefficient = NULL, distance = NULL, fraction = NULL, lobes = NULL, parallel = NULL, parallels = NULL, precision = NULL, radius = NULL, ratio = NULL, reflectX = NULL, reflectY = NULL, rotate = NULL, scale = NULL, spacing = NULL, tilt = NULL, translate = NULL, type = NULL){
+vl_add_projection_config <- function(spec, center = NULL, clipAngle = NULL, clipExtent = NULL, coefficient = NULL, distance = NULL, fraction = NULL, lobes = NULL, parallel = NULL, parallels = NULL, precision = NULL, radius = NULL, ratio = NULL, reflectX = NULL, reflectY = NULL, rotate = NULL, scale = NULL, spacing = NULL, tilt = NULL, translate = NULL, type = NULL, .object = NULL){
   args <- .modify_args(NULL, c("center", "clipAngle", "clipExtent", "coefficient", "distance", "fraction", 
   "lobes", "parallel", "parallels", "precision", "radius", "ratio", "reflectX", 
   "reflectY", "rotate", "scale", "spacing", "tilt", "translate", "type"))
@@ -14178,10 +14341,11 @@ vl_add_projection_config <- function(spec, center = NULL, clipAngle = NULL, clip
 #' @param ordinal (_RangeConfig_) Default [color scheme](https://vega.github.io/vega/docs/schemes/) for rank-ordered data.
 #' @param ramp (_RangeConfig_) Default [color scheme](https://vega.github.io/vega/docs/schemes/) for sequential quantitative ramps.
 #' @param symbol (_RangeConfig_) Array of [symbol](https://vega.github.io/vega/docs/marks/symbol/) names or paths for the default shape palette.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RangeConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_range_config <- function(spec, category = NULL, diverging = NULL, heatmap = NULL, ordinal = NULL, ramp = NULL, symbol = NULL){
+vl_add_range_config <- function(spec, category = NULL, diverging = NULL, heatmap = NULL, ordinal = NULL, ramp = NULL, symbol = NULL, .object = NULL){
   args <- .modify_args(NULL, c("category", "diverging", "heatmap", "ordinal", "ramp", "symbol"))
   .add_sub_config(args$spec, args$object, structure("#/definitions/RangeConfig", class = c("glue", "character")) , .config = "range")
 } 
@@ -14349,10 +14513,11 @@ vl_add_range_config <- function(spec, category = NULL, diverging = NULL, heatmap
 #' @param y2 (_RectConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RectConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_rect_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+vl_add_rect_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "angle", "aspect", "baseline", "binSpacing", "color", "continuousBandSize", 
   "cornerRadius", "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "discreteBandSize", "dx", "dy", "ellipsis", 
@@ -14383,10 +14548,11 @@ vl_add_rect_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, 
 #' @param spacing (_CompositionConfig_) The default spacing in pixels between composed sub-views.
 #' 
 #' __Default value__: `20`
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: CompositionConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_repeat_config <- function(spec, columns = NULL, spacing = NULL){
+vl_add_repeat_config <- function(spec, columns = NULL, spacing = NULL, .object = NULL){
   args <- .modify_args(NULL, c("columns", "spacing"))
   .add_sub_config(args$spec, args$object, structure("#/definitions/CompositionConfig", class = c("glue", "character")) , .config = "repeat")
 } 
@@ -14547,10 +14713,11 @@ vl_add_repeat_config <- function(spec, columns = NULL, spacing = NULL){
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_rule_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+vl_add_rule_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "angle", "aspect", "baseline", "color", "cornerRadius", "cornerRadiusBottomLeft", 
   "cornerRadiusBottomRight", "cornerRadiusTopLeft", "cornerRadiusTopRight", "cursor", 
   "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", 
@@ -14631,10 +14798,11 @@ vl_add_rule_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, 
 #' This property only works with aggregate functions that produce values within the raw data domain (`"mean"`, `"average"`, `"median"`, `"q1"`, `"q3"`, `"min"`, `"max"`). For other aggregations that produce values outside of the raw data domain (e.g. `"count"`, `"sum"`), this property is ignored.
 #' 
 #' __Default value:__ `false`
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ScaleConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_scale_config <- function(spec, bandPaddingInner = NULL, bandPaddingOuter = NULL, barBandPaddingInner = NULL, clamp = NULL, continuousPadding = NULL, maxBandSize = NULL, maxFontSize = NULL, maxOpacity = NULL, maxSize = NULL, maxStrokeWidth = NULL, minBandSize = NULL, minFontSize = NULL, minOpacity = NULL, minSize = NULL, minStrokeWidth = NULL, pointPadding = NULL, quantileCount = NULL, quantizeCount = NULL, rectBandPaddingInner = NULL, round = NULL, useUnaggregatedDomain = NULL){
+vl_add_scale_config <- function(spec, bandPaddingInner = NULL, bandPaddingOuter = NULL, barBandPaddingInner = NULL, clamp = NULL, continuousPadding = NULL, maxBandSize = NULL, maxFontSize = NULL, maxOpacity = NULL, maxSize = NULL, maxStrokeWidth = NULL, minBandSize = NULL, minFontSize = NULL, minOpacity = NULL, minSize = NULL, minStrokeWidth = NULL, pointPadding = NULL, quantileCount = NULL, quantizeCount = NULL, rectBandPaddingInner = NULL, round = NULL, useUnaggregatedDomain = NULL, .object = NULL){
   args <- .modify_args(NULL, c("bandPaddingInner", "bandPaddingOuter", "barBandPaddingInner", "clamp", "continuousPadding", 
   "maxBandSize", "maxFontSize", "maxOpacity", "maxSize", "maxStrokeWidth", "minBandSize", 
   "minFontSize", "minOpacity", "minSize", "minStrokeWidth", "pointPadding", "quantileCount", 
@@ -14659,10 +14827,11 @@ vl_add_scale_config <- function(spec, bandPaddingInner = NULL, bandPaddingOuter 
 #'   for a single selection definition (except `type`) may be specified here.
 #' 
 #' For instance, setting `single` to `{"on": "dblclick"}` populates single selections on double-click by default.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SelectionConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_selection_config <- function(spec, interval = NULL, multi = NULL, single = NULL){
+vl_add_selection_config <- function(spec, interval = NULL, multi = NULL, single = NULL, .object = NULL){
   args <- .modify_args(NULL, c("interval", "multi", "single"))
   .add_sub_config(args$spec, args$object, structure("#/definitions/SelectionConfig", class = c("glue", "character")) , .config = "selection")
 } 
@@ -14823,10 +14992,11 @@ vl_add_selection_config <- function(spec, interval = NULL, multi = NULL, single 
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_square_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+vl_add_square_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "angle", "aspect", "baseline", "color", "cornerRadius", "cornerRadiusBottomLeft", 
   "cornerRadiusBottomRight", "cornerRadiusTopLeft", "cornerRadiusTopRight", "cursor", 
   "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", 
@@ -14995,10 +15165,11 @@ vl_add_square_config <- function(spec, align = NULL, angle = NULL, aspect = NULL
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_text_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+vl_add_text_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "angle", "aspect", "baseline", "color", "cornerRadius", "cornerRadiusBottomLeft", 
   "cornerRadiusBottomRight", "cornerRadiusTopLeft", "cornerRadiusTopRight", "cursor", 
   "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", 
@@ -15173,10 +15344,11 @@ vl_add_text_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, 
 #' @param y2 (_TickConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TickConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_tick_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+vl_add_tick_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "angle", "aspect", "bandSize", "baseline", "color", "cornerRadius", 
   "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", 
   "cornerRadiusTopRight", "cursor", "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", 
@@ -15217,10 +15389,11 @@ vl_add_tick_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, 
 #' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
 #' @param subtitleLineHeight (_ExcludeMappedValueRef<BaseTitle>_) Line height in pixels for multi-line subtitle text.
 #' @param subtitlePadding (_ExcludeMappedValueRef<BaseTitle>_) The padding in pixels between title and subtitle text.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ExcludeMappedValueRef<BaseTitle>
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_title_config <- function(spec, align = NULL, anchor = NULL, angle = NULL, baseline = NULL, color = NULL, dx = NULL, dy = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, frame = NULL, limit = NULL, lineHeight = NULL, offset = NULL, orient = NULL, subtitleColor = NULL, subtitleFont = NULL, subtitleFontSize = NULL, subtitleFontStyle = NULL, subtitleFontWeight = NULL, subtitleLineHeight = NULL, subtitlePadding = NULL){
+vl_add_title_config <- function(spec, align = NULL, anchor = NULL, angle = NULL, baseline = NULL, color = NULL, dx = NULL, dy = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, frame = NULL, limit = NULL, lineHeight = NULL, offset = NULL, orient = NULL, subtitleColor = NULL, subtitleFont = NULL, subtitleFontSize = NULL, subtitleFontStyle = NULL, subtitleFontWeight = NULL, subtitleLineHeight = NULL, subtitlePadding = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "anchor", "angle", "baseline", "color", "dx", "dy", "font", "fontSize", 
   "fontStyle", "fontWeight", "frame", "limit", "lineHeight", "offset", "orient", 
   "subtitleColor", "subtitleFont", "subtitleFontSize", "subtitleFontStyle", "subtitleFontWeight", 
@@ -15393,10 +15566,11 @@ vl_add_title_config <- function(spec, align = NULL, anchor = NULL, angle = NULL,
 #' @param y2 (_LineConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LineConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_trail_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL){
+vl_add_trail_config <- function(spec, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL, .object = NULL){
   args <- .modify_args(NULL, c("align", "angle", "aspect", "baseline", "color", "cornerRadius", "cornerRadiusBottomLeft", 
   "cornerRadiusBottomRight", "cornerRadiusTopLeft", "cornerRadiusTopRight", "cursor", 
   "dir", "dx", "dy", "ellipsis", "fill", "fillOpacity", "filled", "font", "fontSize", 
@@ -15456,10 +15630,11 @@ vl_add_trail_config <- function(spec, align = NULL, angle = NULL, aspect = NULL,
 #' __Default value:__ `1`
 #' @param strokeWidth (_ViewConfig_) The stroke width, in pixels.
 #' @param width (_ViewConfig_) Default width
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ViewConfig
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_view_config <- function(spec, clip = NULL, continuousHeight = NULL, continuousWidth = NULL, cornerRadius = NULL, discreteHeight = NULL, discreteWidth = NULL, fill = NULL, fillOpacity = NULL, height = NULL, opacity = NULL, step = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, width = NULL){
+vl_add_view_config <- function(spec, clip = NULL, continuousHeight = NULL, continuousWidth = NULL, cornerRadius = NULL, discreteHeight = NULL, discreteWidth = NULL, fill = NULL, fillOpacity = NULL, height = NULL, opacity = NULL, step = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, width = NULL, .object = NULL){
   args <- .modify_args(NULL, c("clip", "continuousHeight", "continuousWidth", "cornerRadius", "discreteHeight", 
   "discreteWidth", "fill", "fillOpacity", "height", "opacity", "step", "stroke", 
   "strokeCap", "strokeDash", "strokeDashOffset", "strokeJoin", "strokeMiterLimit", 
@@ -15638,6 +15813,7 @@ vl_add_view_config <- function(spec, clip = NULL, continuousHeight = NULL, conti
 #' @param y2 (_AreaConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AreaConfig
 #' @return A component of a Vega-Lite spec, corresponding to a AreaConfig.
 #' @export
 
@@ -15756,6 +15932,7 @@ args$obj
 #' @param titleX (_AxisConfig_) X-coordinate of the axis title relative to the axis group.
 #' @param titleY (_AxisConfig_) Y-coordinate of the axis title relative to the axis group.
 #' @param translate (_AxisConfig_) Translation offset in pixels applied to the axis group mark x and y. If specified, overrides the default behavior of a 0.5 offset to pixel-align stroked lines.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AxisConfig
 #' @return A component of a Vega-Lite spec, corresponding to a AxisConfig.
 #' @export
 
@@ -15895,6 +16072,7 @@ args$obj
 #' @param y2 (_BaseMarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BaseMarkConfig
 #' @return A component of a Vega-Lite spec, corresponding to a BaseMarkConfig.
 #' @export
 
@@ -15922,6 +16100,7 @@ args$obj
 #' @param rule (_BoxPlotConfig_)  
 #' @param size (_BoxPlotConfig_) Size of the box and median tick of a box plot
 #' @param ticks (_BoxPlotConfig_)  
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BoxPlotConfig
 #' @return A component of a Vega-Lite spec, corresponding to a BoxPlotConfig.
 #' @export
 
@@ -15946,6 +16125,7 @@ args$obj
 #' @param strokeDashOffset (_BrushConfig_) The offset (in pixels) with which to begin drawing the stroke dash array.
 #' @param strokeOpacity (_BrushConfig_) The stroke opacity of the interval mark (a value between `0` and `1`).
 #' @param strokeWidth (_BrushConfig_) The stroke width of the interval mark.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BrushConfig
 #' @return A component of a Vega-Lite spec, corresponding to a BrushConfig.
 #' @export
 
@@ -15972,6 +16152,7 @@ args$obj
 #' @param spacing (_CompositionConfig_) The default spacing in pixels between composed sub-views.
 #' 
 #' __Default value__: `20`
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: CompositionConfig
 #' @return A component of a Vega-Lite spec, corresponding to a CompositionConfig.
 #' @export
 
@@ -16054,6 +16235,7 @@ args$obj
 #' @param title (_Config_) Title configuration, which determines default properties for all [titles](https://vega.github.io/vega-lite/docs/title.html). For a full list of title configuration options, please see the [corresponding section of the title documentation](https://vega.github.io/vega-lite/docs/title.html#config).
 #' @param trail (_Config_) Trail-Specific Config
 #' @param view (_Config_) Default properties for [single view plots](https://vega.github.io/vega-lite/docs/spec.html#single).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Config
 #' @return A component of a Vega-Lite spec, corresponding to a Config.
 #' @export
 
@@ -16094,6 +16276,7 @@ args$obj
 #' - `"bundle"`: equivalent to basis, except the tension parameter is used to straighten the spline.
 #' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
 #' @param tension (_ErrorBandConfig_) The tension parameter for the interpolation type of the error band.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBandConfig
 #' @return A component of a Vega-Lite spec, corresponding to a ErrorBandConfig.
 #' @export
 
@@ -16113,6 +16296,7 @@ args$obj
 #' __Default value:__ `"stderr"`.
 #' @param rule (_ErrorBarConfig_)  
 #' @param ticks (_ErrorBarConfig_)  
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBarConfig
 #' @return A component of a Vega-Lite spec, corresponding to a ErrorBarConfig.
 #' @export
 
@@ -16181,6 +16365,7 @@ args$obj
 #' @param titlePadding (_HeaderConfig_) The padding, in pixel, between facet header's title and the label.
 #' 
 #' __Default value:__ `10`
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: HeaderConfig
 #' @return A component of a Vega-Lite spec, corresponding to a HeaderConfig.
 #' @export
 
@@ -16251,6 +16436,7 @@ args$obj
 #' __Default value:__ `true`, which corresponds to `wheel!`.
 #' 
 #' __See also:__ [`zoom`](https://vega.github.io/vega-lite/docs/zoom.html) documentation.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: IntervalSelectionConfig
 #' @return A component of a Vega-Lite spec, corresponding to a IntervalSelectionConfig.
 #' @export
 
@@ -16397,6 +16583,7 @@ args$obj
 #' @param unselectedOpacity (_LegendConfig_) The opacity of unselected legend entries.
 #' 
 #' __Default value:__ 0.35.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LegendConfig
 #' @return A component of a Vega-Lite spec, corresponding to a LegendConfig.
 #' @export
 
@@ -16582,6 +16769,7 @@ args$obj
 #' @param y2 (_LineConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LineConfig
 #' @return A component of a Vega-Lite spec, corresponding to a LineConfig.
 #' @export
 
@@ -16753,6 +16941,7 @@ args$obj
 #' @param y2 (_MarkConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkConfig
 #' @return A component of a Vega-Lite spec, corresponding to a MarkConfig.
 #' @export
 
@@ -16814,6 +17003,7 @@ args$obj
 #' data values are toggled when a user interacts with the shift-key pressed).
 #' 
 #' __See also:__ [`toggle`](https://vega.github.io/vega-lite/docs/toggle.html) documentation.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MultiSelectionConfig
 #' @return A component of a Vega-Lite spec, corresponding to a MultiSelectionConfig.
 #' @export
 
@@ -16851,6 +17041,7 @@ args$obj
 #' @param type (_Projection_) The cartographic projection to use. This value is case-insensitive, for example `"albers"` and `"Albers"` indicate the same projection type. You can find all valid projection types [in the documentation](https://vega.github.io/vega-lite/docs/projection.html#projection-types).
 #' 
 #' __Default value:__ `mercator`
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Projection
 #' @return A component of a Vega-Lite spec, corresponding to a ProjectionConfig.
 #' @export
 
@@ -16869,6 +17060,7 @@ args$obj
 #' @param ordinal (_RangeConfig_) Default [color scheme](https://vega.github.io/vega/docs/schemes/) for rank-ordered data.
 #' @param ramp (_RangeConfig_) Default [color scheme](https://vega.github.io/vega/docs/schemes/) for sequential quantitative ramps.
 #' @param symbol (_RangeConfig_) Array of [symbol](https://vega.github.io/vega/docs/marks/symbol/) names or paths for the default shape palette.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RangeConfig
 #' @return A component of a Vega-Lite spec, corresponding to a RangeConfig.
 #' @export
 
@@ -17039,6 +17231,7 @@ args$obj
 #' @param y2 (_RectConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RectConfig
 #' @return A component of a Vega-Lite spec, corresponding to a RectConfig.
 #' @export
 
@@ -17122,6 +17315,7 @@ args$obj
 #' This property only works with aggregate functions that produce values within the raw data domain (`"mean"`, `"average"`, `"median"`, `"q1"`, `"q3"`, `"min"`, `"max"`). For other aggregations that produce values outside of the raw data domain (e.g. `"count"`, `"sum"`), this property is ignored.
 #' 
 #' __Default value:__ `false`
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ScaleConfig
 #' @return A component of a Vega-Lite spec, corresponding to a ScaleConfig.
 #' @export
 
@@ -17149,6 +17343,7 @@ args$obj
 #'   for a single selection definition (except `type`) may be specified here.
 #' 
 #' For instance, setting `single` to `{"on": "dblclick"}` populates single selections on double-click by default.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SelectionConfig
 #' @return A component of a Vega-Lite spec, corresponding to a SelectionConfig.
 #' @export
 
@@ -17199,6 +17394,7 @@ args$obj
 #' conditional encoding rule, or scale domain.
 #' 
 #' __See also:__ [`resolve`](https://vega.github.io/vega-lite/docs/selection-resolve.html) documentation.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SingleSelectionConfig
 #' @return A component of a Vega-Lite spec, corresponding to a SingleSelectionConfig.
 #' @export
 
@@ -17369,6 +17565,7 @@ args$obj
 #' @param y2 (_TickConfig_) Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the height of the plot.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TickConfig
 #' @return A component of a Vega-Lite spec, corresponding to a TickConfig.
 #' @export
 
@@ -17412,6 +17609,7 @@ args$obj
 #' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
 #' @param subtitleLineHeight (_ExcludeMappedValueRef<BaseTitle>_) Line height in pixels for multi-line subtitle text.
 #' @param subtitlePadding (_ExcludeMappedValueRef<BaseTitle>_) The padding in pixels between title and subtitle text.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ExcludeMappedValueRef<BaseTitle>
 #' @return A component of a Vega-Lite spec, corresponding to a TitleConfig.
 #' @export
 
@@ -17469,6 +17667,7 @@ args$obj
 #' __Default value:__ `1`
 #' @param strokeWidth (_ViewConfig_) The stroke width, in pixels.
 #' @param width (_ViewConfig_) Default width
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ViewConfig
 #' @return A component of a Vega-Lite spec, corresponding to a ViewConfig.
 #' @export
 
@@ -17504,6 +17703,7 @@ args$obj
 #' 
 #' __Note:__ If provided, options such as maxbins will be ignored.
 #' @param steps (_BinParams_) An array of allowable step sizes to choose from.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BinParams
 #' @return A component of a Vega-Lite spec, corresponding to a BinParams.
 #' @export
 
@@ -17657,6 +17857,7 @@ args$obj
 #' To put them in front, set `zindex` to `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Axis
 #' @return A component of a Vega-Lite spec, corresponding to a Axis.
 #' @export
 
@@ -17765,6 +17966,7 @@ args$obj
 #' __Default value:__ `true` for x and y channels if the quantitative field is not binned and no custom `domain` is provided; `false` otherwise.
 #' 
 #' __Note:__ Log, time, and utc scales do not support `zero`.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Scale
 #' @return A component of a Vega-Lite spec, corresponding to a Scale.
 #' @export
 
@@ -17918,6 +18120,7 @@ args$obj
 #' @param zindex (_Legend_) A non-negative integer indicating the z-index of the legend.
 #' If zindex is 0, legend should be drawn behind all chart elements.
 #' To put them in front, use zindex = 1.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Legend
 #' @return A component of a Vega-Lite spec, corresponding to a Legend.
 #' @export
 
@@ -17944,6 +18147,7 @@ args$obj
 #' @param input (_BindCheckbox_) checkbox
 #' @param name (_BindCheckbox_)  
 #' @param type (_BindCheckbox_)  
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindCheckbox
 #' @return A component of a Vega-Lite spec, corresponding to a BindCheckbox.
 #' @export
 
@@ -17962,6 +18166,7 @@ args$obj
 #' @param name (_BindRange_)  
 #' @param step (_BindRange_)  
 #' @param type (_BindRange_)  
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRange
 #' @return A component of a Vega-Lite spec, corresponding to a BindRange.
 #' @export
 
@@ -17979,6 +18184,7 @@ args$obj
 #' @param name (_BindRadioSelect_)  
 #' @param options (_BindRadioSelect_)  
 #' @param type (_BindRadioSelect_)  
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRadioSelect
 #' @return A component of a Vega-Lite spec, corresponding to a BindRadioSelect.
 #' @export
 

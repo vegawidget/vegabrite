@@ -56,6 +56,27 @@ get_params <- function(schema, ref, exclude = NULL) {
   
 }
 
+get_single_object_desc <- function(name, info) {
+  if (name == "array") {
+    glue("array of {get_name_from_ref(info[['items']])}")
+  } else {
+    name
+  }
+}
+
+get_object_desc <- function(schema, ref) {
+  
+  object_types <- types(ref, schema)
+  
+  object_descs <- unique(purrr::map_chr(names(object_types), ~get_single_object_desc(.,object_types[[.]])))
+  
+  glue("Directly input an object, rather than creating one via the other arguments. ",
+       "Should not be used in conjunction with the other arguments other than 'spec'. ",
+       "Objects can be of type: ",
+       glue_collapse(object_descs, sep = ", ", last = " or "))
+  
+}
+
 get_param_docs <- function(schema, ref, exclude = NULL) {
   
   properties <- unlist(purrr::map(ref, props_grouped_by_object, schema = schema), 
@@ -96,6 +117,11 @@ get_param_docs <- function(schema, ref, exclude = NULL) {
     param_desc,
    "`'Count of Records`",
    "`Count of Records`")
+  
+  # Add ".object" doc 
+  object_desc <- get_object_desc(schema, ref)
+  param_names <- c(param_names, '.object')
+  param_desc <- c(param_desc, object_desc)
   
   paste("#' @param", param_names, param_desc, sep = " ", collapse = "\n")
  
