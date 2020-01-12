@@ -30,8 +30,8 @@ test_that("can build simple bar chart", {
   chart <- vl_chart(description = "A simple bar chart with embedded data.") %>%
     vl_add_data(values = data) %>%
     vl_mark_bar() %>%
-    vl_encode_x("a", "ordinal") %>%
-    vl_encode_y("b", "quantitative")
+    vl_encode_x(field = "a", type = "ordinal") %>%
+    vl_encode_y(field = "b", type = "quantitative")
   
   expect_equivalent_json(chart, spec)
 })
@@ -67,8 +67,8 @@ test_that("can build aggregate bar chart", {
     vl_add_data(url = data) %>%
     vl_filter("datum.year == 2000") %>%
     vl_mark_bar() %>%
-    vl_encode_y("age", "ordinal") %>%
-    vl_encode_x("people", "quantitative") %>%
+    vl_encode_y(field = "age", type = "ordinal") %>%
+    vl_encode_x(field = "people", type = "quantitative") %>%
     vl_aggregate_x("sum") %>%
     vl_axis_x(title = "population") 
   
@@ -110,9 +110,9 @@ test_that("can build aggregate bar chart (sorted)", {
     vl_add_data(url = data) %>%
     vl_filter("datum.year == 2000") %>%
     vl_mark_bar() %>%
-    vl_encode_y("age", "ordinal") %>%
+    vl_encode_y(field = "age", type = "ordinal") %>%
     vl_sort_y_by_encoding(encoding = "x", order = "descending") %>%
-    vl_encode_x("people", "quantitative") %>%
+    vl_encode_x(field = "people", type = "quantitative") %>%
     vl_aggregate_x("sum") %>%
     vl_axis_x(title = "population") 
   
