@@ -6,3 +6,6 @@
 - [ ] Binding function -- list input (is object doc correct)?
 - [ ] "repeat:column" sugar for encoding
 - [ ] if single field (e.g. filter) allow to pass unnamed to .object
+- [ ] vl$ for make object functions
+- [ ] Roxygen consolidation -- use eval
+- [ ] Make col --> column 

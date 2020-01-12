@@ -46,12 +46,12 @@ vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/population.json") %>%
   vl_calculate(calculate = "datum.sex == 2 ? 'Female' : 'Male'", 
                as = "gender") %>%
-  vl_filter("datum.year == 2000") %>%
+  vl_filter(filter = "datum.year == 2000") %>%
   vl_encode_x(field = "age", 
               type = "ordinal") %>%
   vl_encode_y(field = "people", type = "quantitative") %>%
   vl_stack_y("normalize") %>%
-  vl_aggregate_y("sum") %>%
+  vl_aggregate_y(aggregate = "sum") %>%
   vl_axis_y(title = "population") %>%
   vl_encode_color(field = "gender", type = "nominal") %>%
   vl_mark_bar() %>% 
@@ -155,7 +155,6 @@ vl_chart() %>%
   vl_encode_x(field = "gender", type = "nominal") %>%
   vl_encode_y(field = "people", type = "quantitative", aggregate = "sum") %>%
   vl_encode_color(field = "gender", type = "nominal") %>%
-  vl_scale_color(range =  c("#675193", "#ca8861")) %>%
   vl_scale_color(range = c("#EA98D2", "#659CCA")) %>%
   vl_encode_column(field = "age", type = "ordinal", spacing = 10) %>%
   vl_remove_axis_x() %>%
@@ -203,8 +202,8 @@ vl_chart() %>%
   vl_mark_point() %>%
   vl_encode_x(field = "Horsepower", type = "quantitative") %>%
   vl_encode_y(field = "Miles_per_Gallon", type = "quantitative") %>%
-  vl_encode_color(field = list("repeat" = "column"), "nominal") %>%
-  vl_repeat_col("Origin","Cylinders") %>%
+  vl_encode_color(field = list("repeat" = "column"), type = "nominal") %>%
+  vl_repeat_col("Origin", "Cylinders") %>%
   vl_resolve_scale_color("independent")
 ```
 

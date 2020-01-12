@@ -52,7 +52,7 @@ make_function_innards <- function(reference, schema, override_args, adder_functi
     ""
   }
   
-  adder <- glue("{adder_function}(args$spec, args$object, {deparse_c(reference)}{extras})")
+  adder <- glue("{adder_function}(args$spec, args$object, {deparse_c(as.character(reference))}{extras})")
   
   paste(
     modifier,
