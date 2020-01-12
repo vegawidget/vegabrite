@@ -1,3 +1,6 @@
+
+# Use a schema path like "#/definitions/Encoding" to extract a portion of the 
+# schema
 lookup <- function(schema, ref = NULL){
   if (is.null(ref)) return(NULL)
   path <- strsplit(ref,"/")[[1]]
@@ -7,6 +10,9 @@ lookup <- function(schema, ref = NULL){
   return(schema)
 }
 
+# Helper function to search through schema and apply a function to extract the 
+# elements needed. Function inputs check, get, and gather specify what is being
+# looked for, what to extract, and how to combine results, respectively.
 search <- function(schema, type, check, get, gather, base) {
   if (is.null(type)) {
     base()
@@ -23,6 +29,8 @@ search <- function(schema, type, check, get, gather, base) {
   }
 }
 
+# A modified verision of 'search' helper that keeps track of the 'parent object' that lead to 
+# the result. 
 search2 <- function(schema, type, check, get, gather, base, parent) {
   if (is.null(type)) {
     base()
@@ -42,26 +50,9 @@ search2 <- function(schema, type, check, get, gather, base, parent) {
   }
 }
 
-
-
-#' schema utility functions
-#'
-#' @param schema imported json schema
-#' @param type schema reference
-#'
-#' @return list
-#' @export
-#' @title schema
-#' @name schema
-#'
-#' @examples
-#' 
-#' schema_file <- Sys.glob(file.path(system.file("schema/vega-lite", package = "vegawidget"),"*.json"))
-#' VL_SCHEMA <- jsonlite::read_json(schema_file)
-#' encoding_options <- props(VL_SCHEMA, list("$ref" = "#/definitions/Encoding"))
-props <- function(schema, type) {
+props <- function(ref, schema) {
   search(schema,
-         type,
+         list("$ref" = ref),
          function(x) {"type" %in% names(x) && x[["type"]] ==  'object'},
          function(x) {x[["properties"]]},
          function(x) unlist(x, recursive = FALSE),
@@ -69,11 +60,9 @@ props <- function(schema, type) {
   )
 }
 
-#' @name schema
-#' @export
-props2 <- function(schema, type) {
+props_grouped_by_object <- function(ref, schema) {
   search2(schema,
-         type,
+          list("$ref" = ref),
          function(x) {"type" %in% names(x) && x[["type"]] ==  'object'},
          function(x) {x[["properties"]]},
          function(x) unlist(x, recursive = FALSE),
@@ -82,11 +71,9 @@ props2 <- function(schema, type) {
   )
 }
 
-#' @name schema
-#' @export
-reqs <- function(schema, type) {
+reqs <- function(ref, schema) {
   search(schema,
-         type,
+         list("$ref" = ref),
          function(x) {"type" %in% names(x) && x[["type"]] ==  'object'},
          function(x) {x[["required"]]},
          function(x) unlist(x),
@@ -94,24 +81,9 @@ reqs <- function(schema, type) {
   )
 }
 
-#' @name schema
-#' @export
-reqs2 <- function(schema, type) {
-  search2(schema,
-          type,
-          function(x) {"type" %in% names(x) && x[["type"]] ==  'object'},
-          function(x) {x[["required"]]},
-          function(x) unlist(x, recursive = FALSE),
-          function() {NULL},
-          get_name_from_ref(type)
-  )
-}
-
-#' @name schema
-#' @export
-enums <- function(schema, type) {
+enums <- function(ref, schema) {
   search(schema,
-         type,
+         list("$ref" = ref),
          function(x) {"enum" %in% names(x)},
          function(x) {x[["enum"]]},
          function(x) unlist(x, use.names = FALSE),
@@ -119,13 +91,9 @@ enums <- function(schema, type) {
   )
 }
 
-
-
-#' @name schema
-#' @export
-types <- function(schema, type) {
+types <- function(ref, schema) {
   search(schema,
-         type,
+         list("$ref" = ref),
          function(x) {"type" %in% names(x) && x[["type"]] ==  'object' &&
              "properties" %in% names(x) && "type" %in% names(x[["properties"]])},
          function(x) {x[["properties"]][["type"]][["enum"]]},
@@ -135,9 +103,6 @@ types <- function(schema, type) {
 }
 
 
-
-#' @name schema
-#' @export
 get_name_from_ref <- function(type){
   if (hasName(type,"$ref")) {
     stringr::str_remove(type[["$ref"]],"#/definitions/")

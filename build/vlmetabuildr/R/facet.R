@@ -1,3 +1,14 @@
+create_facet_functions <- function(schema){
+  c(
+    create_facet_type(schema, "row"),
+    create_facet_type(schema, "column"),
+    create_facet_encoding(schema, "row"),
+    create_facet_encoding(schema, "column"),
+    create_facet_encoding(schema, "wrap"),
+    create_facet_wrap(schema)
+  )
+}
+
 create_facet_type <- function(schema, type) {
 
   make_function( glue("#/definitions/FacetFieldDef"), 
@@ -61,14 +72,3 @@ create_facet_wrap <- function(schema) {
   
 }
 
-#' @export
-create_facet_functions <- function(schema){
-  c(
-    create_facet_type(schema, "row"),
-    create_facet_type(schema, "column"),
-    create_facet_encoding(schema, "row"),
-    create_facet_encoding(schema, "column"),
-    create_facet_encoding(schema, "wrap"),
-    create_facet_wrap(schema)
-  )
-}

@@ -254,7 +254,7 @@ vl_add_properties <- function(spec, autosize = NULL, background = NULL, bounds =
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_data <- function(spec, format = NULL, name = NULL, url = NULL, values = NULL, sequence = NULL, sphere = NULL, graticule = NULL){
+vl_add_data <- function(spec, values = NULL, format = NULL, name = NULL, url = NULL, sequence = NULL, sphere = NULL, graticule = NULL){
   args <- .modify_args(NULL, c("format", "name", "url", "values", "sequence", "sphere", "graticule"))
   .add_data(args$spec, args$object, "#/definitions/Data")
 } 

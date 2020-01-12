@@ -4,11 +4,14 @@
 \alias{vl_add_data}
 \title{vl_add_data}
 \usage{
-vl_add_data(spec, format = NULL, name = NULL, url = NULL,
-  values = NULL, sequence = NULL, sphere = NULL, graticule = NULL)
+vl_add_data(spec, values = NULL, format = NULL, name = NULL,
+  url = NULL, sequence = NULL, sphere = NULL, graticule = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{values}{(\emph{InlineData}) The full data set, included inline. This can be an array of objects or primitive values, an object, or a string.
+Arrays of primitive values are ingested as objects with a \code{data} property. Strings are parsed according to the specified format type.}
 
 \item{format}{(\emph{UrlData, InlineData, NamedData}) An object that specifies the format for parsing the data.}
 
@@ -16,9 +19,6 @@ vl_add_data(spec, format = NULL, name = NULL, url = NULL,
 
 \item{url}{(\emph{UrlData}) An URL from which to load the data set. Use the \code{format.type} property
 to ensure the loaded data is correctly parsed.}
-
-\item{values}{(\emph{InlineData}) The full data set, included inline. This can be an array of objects or primitive values, an object, or a string.
-Arrays of primitive values are ingested as objects with a \code{data} property. Strings are parsed according to the specified format type.}
 
 \item{sequence}{(\emph{SequenceGenerator}) Generate a sequence of numbers.}
 

@@ -16,15 +16,12 @@ create_encoding_param_functions <- function(schema) {
 }
 
 get_enc_with_prop <- function(schema, prop) {
-  encs <- names(props(schema, list("$ref" = "#/definitions/Encoding")))
+  encs <- names(props("#/definitions/Encoding", schema))
   with_prop <-
     purrr::map_lgl(
       encs, 
       function(x) {
-        prop_names <- names(
-          props(schema, 
-                list("$ref" = glue("#/definitions/Encoding/properties/{x}"))
-          ))
+        prop_names <- names(props(glue("#/definitions/Encoding/properties/{x}"), schema))
         prop %in% prop_names
       }
     )
@@ -89,7 +86,7 @@ create_stack_encoding_functions <- function(schema) {
   stack_doc <- make_option_group_doc(
     "stack_encoding",
     "stack",
-    unlist(enums(schema, list("$ref" = "#/definitions/StackOffset"))),
+    unlist(enums("#/definitions/StackOffset", schema)),
     "Add stack transform to encoding",
     "Add stack parameters to an encoding",
     na_option = TRUE
@@ -109,7 +106,7 @@ create_stack_for_encoding <- function(enc, schema){
   make_option_function(
     "#/definitions/StackOffset",
     "stack",
-    unlist(enums(schema, list("$ref" = "#/definitions/StackOffset"))),
+    unlist(enums("#/definitions/StackOffset", schema)),
     glue("stack_{enc}"),
     ".add_stack_to_encoding",
     na_option = TRUE,
@@ -124,7 +121,7 @@ create_aggregate_encoding_functions <- function(schema) {
   aggregate_doc <- make_option_group_doc(
     "aggregate_encoding",
     "aggregate",
-    unlist(enums(schema, list("$ref" = "#/definitions/Aggregate"))),
+    unlist(enums("#/definitions/Aggregate", schema)),
     "Add aggregate transform to encoding",
     "Add aggregate parameters to an encoding",
     na_option = TRUE)
@@ -142,7 +139,7 @@ create_aggregate_for_encoding <- function(enc, schema){
   make_option_function(
     "#/definitions/Aggregate",
     "aggregate",
-    unlist(enums(schema, list("$ref" = "#/definitions/Aggregate"))),
+    unlist(enums("#/definitions/Aggregate", schema)),
     glue("aggregate_{enc}"),
     ".add_aggregate_to_encoding",
     na_option = TRUE,
@@ -230,18 +227,21 @@ create_sort_encoding_functions <- function(schema) {
 
 
 get_condition_references <- function(enc, schema) {
-  objs <- props2(VL_SCHEMA, list("$ref" = glue("#/definitions/Encoding/properties/{enc}")))
+  objs <- props_grouped_by_object(glue("#/definitions/Encoding/properties/{enc}"), schema)
   refs  <- paste0("#/definitions/",names(objs)[purrr::map_lgl(objs, ~hasName(.,"condition"))], "/properties/condition")
   refs
 }
 
 create_condition_encoding_functions <- function(schema) {
   
+  # Creating the condition functions is a bit complicated because there are 
+  # multiple acceptable objects that can be inputs, and what those objects are 
+  # varies based on the Encoding.
+
   encs <- get_enc_with_prop(schema,'condition')
   
   refs <- purrr::map(encs, get_condition_references, schema = schema)
   names(refs) <- encs
-  
   
   reference <- "#/definitions/EncodingSortField"
   doc_group <- "condition_encoding"

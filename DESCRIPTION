@@ -14,10 +14,7 @@ Imports:
     magrittr,
     rlang,
     vegawidget,
-    V8,
-    jsonvalidate,
     jsonlite
-Remotes: ropensci/jsonvalidate
 Suggests: 
     knitr,
     rmarkdown,

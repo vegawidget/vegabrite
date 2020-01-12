@@ -1,3 +1,11 @@
+create_binding_functions <- function(schema){
+  c(
+    create_binding(schema, "radio", "BindRadioSelect"),
+    create_binding(schema, "select", "BindRadioSelect"),
+    create_binding(schema, "checkbox", "BindCheckbox"),
+    create_binding(schema, "range", "BindRange")
+  )
+}
 
 create_binding <- function(schema, name, ref) {
   
@@ -39,17 +47,3 @@ create_binding <- function(schema, name, ref) {
 }
 
 
- 
-
-  
-
-
-#' @export
-create_binding_functions <- function(schema){
-  c(
-    create_binding(schema, "radio", "BindRadioSelect"),
-    create_binding(schema, "select", "BindRadioSelect"),
-    create_binding(schema, "checkbox", "BindCheckbox"),
-    create_binding(schema, "range", "BindRange")
-  )
-}

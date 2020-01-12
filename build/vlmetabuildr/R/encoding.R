@@ -1,6 +1,6 @@
 create_encoding_functions <- function(schema) {
   
-  encoding_options <- props(schema, list("$ref" = "#/definitions/Encoding"))
+  encoding_options <- props("#/definitions/Encoding", schema)
   
   c(
     purrr::map_chr(names(encoding_options), create_encoder, schema = schema),
@@ -8,9 +8,6 @@ create_encoding_functions <- function(schema) {
   )
   
 }
-
-
-
 
 create_encoder <- function(enc, schema) {
 
