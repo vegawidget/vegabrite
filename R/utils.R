@@ -8,8 +8,19 @@ TOP_LEVEL_KEYS <- c("$schema", "autosize", "background", "config", "datasets",
   args_nn <- args_eval[!vapply(args_eval,is.null,FALSE)]
   args_nn <- c(args_nn, override)
   is_obj <- names(args_nn) %in% valid_names
-  args_obj <- args_nn[is_obj]
-  is_extra <- !is_obj & names(args_nn) != "spec"
+  if ('.object' %in% names(args_nn)) {
+    args_obj <- args_nn[['.object']]
+    if (sum(is_obj) > 0) {
+      fn <- sys.calls()[[sys.nframe()-1]][[1]]
+      warning("In ", fn,
+        ", .object argument was provided, so ignoring additional inputs: ", 
+         names(args_nn)[is_obj],
+        call. = FALSE)
+    }
+  } else {
+    args_obj <- args_nn[is_obj]
+  }
+  is_extra <- !is_obj & names(args_nn) != "spec" & names(args_nn) != '.object'
   args_extra <- args_nn[is_extra]
   list(object = args_obj, extra = args_extra, spec = args_nn[['spec']])
 }

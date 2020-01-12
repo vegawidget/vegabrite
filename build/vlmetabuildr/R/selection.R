@@ -16,11 +16,12 @@ create_selection_type <- function(type, schema) {
   spec_doc <- glue("#' @param spec An input vega-lite spec")
   extra_doc <- "#' @param selection_name Name for selection"
   param_docs <- get_param_docs(schema, reference)
+  object_doc <- get_object_doc(schema, reference)
   
   docs <- make_docs_helper(
     glue("vl_{suffix}"),
     glue::glue("Add {type} to a vega-lite spec."),
-    paste(spec_doc,extra_doc, param_docs, sep = "\n")
+    paste(spec_doc, object_doc, extra_doc, param_docs, sep = "\n")
   )
   
   ## Make the inner function
@@ -37,7 +38,7 @@ create_selection_type <- function(type, schema) {
   
   ## Get args
   args <- paste(param_names, "NULL", sep = " = ")
-  arg_list <- paste(c('spec', 'selection_name', args), collapse = ", ")
+  arg_list <- paste(c('spec', 'selection_name', '.object = NULL', args), collapse = ", ")
   
   make_function_helper(suffix, docs, inner_fn, arg_list)
   

@@ -4,11 +4,14 @@
 \alias{vl_encode_yError2}
 \title{vl_encode_yError2}
 \usage{
-vl_encode_yError2(spec, field = NULL, aggregate = NULL, bin = NULL,
-  timeUnit = NULL, title = NULL, value = NULL)
+vl_encode_yError2(spec, .object = NULL, field = NULL,
+  aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL,
+  value = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef}
 
 \item{field}{(\emph{SecondaryFieldDef}) \strong{Required.} A string defining the name of the field from which to pull a data value
 or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{repeat} operator.

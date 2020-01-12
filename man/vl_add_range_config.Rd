@@ -4,11 +4,14 @@
 \alias{vl_add_range_config}
 \title{vl_add_range_config}
 \usage{
-vl_add_range_config(spec, category = NULL, diverging = NULL,
-  heatmap = NULL, ordinal = NULL, ramp = NULL, symbol = NULL)
+vl_add_range_config(spec, .object = NULL, category = NULL,
+  diverging = NULL, heatmap = NULL, ordinal = NULL, ramp = NULL,
+  symbol = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RangeConfig}
 
 \item{category}{(\emph{RangeConfig}) Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for categorical data.}
 

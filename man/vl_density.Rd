@@ -4,12 +4,14 @@
 \alias{vl_density}
 \title{vl_density}
 \usage{
-vl_density(spec, as = NULL, bandwidth = NULL, counts = NULL,
-  cumulative = NULL, density = NULL, extent = NULL, groupby = NULL,
-  maxsteps = NULL, minsteps = NULL, steps = NULL)
+vl_density(spec, .object = NULL, as = NULL, bandwidth = NULL,
+  counts = NULL, cumulative = NULL, density = NULL, extent = NULL,
+  groupby = NULL, maxsteps = NULL, minsteps = NULL, steps = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: DensityTransform}
 
 \item{as}{(\emph{DensityTransform}) The output fields for the sample value and corresponding density estimate.
 

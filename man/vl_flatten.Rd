@@ -4,10 +4,12 @@
 \alias{vl_flatten}
 \title{vl_flatten}
 \usage{
-vl_flatten(spec, as = NULL, flatten = NULL)
+vl_flatten(spec, .object = NULL, as = NULL, flatten = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FlattenTransform}
 
 \item{as}{(\emph{FlattenTransform}) The output field names for extracted array values.
 

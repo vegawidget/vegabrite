@@ -4,14 +4,14 @@
 \alias{vl_add_line_config}
 \title{vl_add_line_config}
 \usage{
-vl_add_line_config(spec, align = NULL, angle = NULL, aspect = NULL,
-  baseline = NULL, color = NULL, cornerRadius = NULL,
-  cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL,
-  cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL,
-  cursor = NULL, dir = NULL, dx = NULL, dy = NULL,
-  ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL,
-  font = NULL, fontSize = NULL, fontStyle = NULL,
-  fontWeight = NULL, height = NULL, href = NULL,
+vl_add_line_config(spec, .object = NULL, align = NULL, angle = NULL,
+  aspect = NULL, baseline = NULL, color = NULL,
+  cornerRadius = NULL, cornerRadiusBottomLeft = NULL,
+  cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL,
+  cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL,
+  dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL,
+  fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL,
+  fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL,
   interpolate = NULL, invalid = NULL, limit = NULL,
   lineBreak = NULL, lineHeight = NULL, opacity = NULL,
   order = NULL, orient = NULL, point = NULL, radius = NULL,
@@ -24,6 +24,8 @@ vl_add_line_config(spec, align = NULL, angle = NULL, aspect = NULL,
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LineConfig}
 
 \item{align}{(\emph{LineConfig}) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of \code{"left"}, \code{"right"}, \code{"center"}.}
 

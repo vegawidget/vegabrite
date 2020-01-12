@@ -4,8 +4,8 @@
 \alias{vl_add_image_config}
 \title{vl_add_image_config}
 \usage{
-vl_add_image_config(spec, align = NULL, angle = NULL, aspect = NULL,
-  baseline = NULL, binSpacing = NULL, color = NULL,
+vl_add_image_config(spec, .object = NULL, align = NULL, angle = NULL,
+  aspect = NULL, baseline = NULL, binSpacing = NULL, color = NULL,
   continuousBandSize = NULL, cornerRadius = NULL,
   cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL,
   cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL,
@@ -25,6 +25,8 @@ vl_add_image_config(spec, align = NULL, angle = NULL, aspect = NULL,
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RectConfig}
 
 \item{align}{(\emph{RectConfig}) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of \code{"left"}, \code{"right"}, \code{"center"}.}
 

@@ -13,10 +13,10 @@
 \alias{vl_legend_strokeWidth}
 \title{Add legend to encoding}
 \usage{
-vl_legend_color(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_color(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
   labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
@@ -36,10 +36,10 @@ vl_legend_color(spec, clipHeight = NULL, columnPadding = NULL,
   titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
   type = NULL, values = NULL, zindex = NULL)
 
-vl_legend_fill(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_fill(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
   labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
@@ -59,10 +59,10 @@ vl_legend_fill(spec, clipHeight = NULL, columnPadding = NULL,
   titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
   type = NULL, values = NULL, zindex = NULL)
 
-vl_legend_fillOpacity(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_fillOpacity(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
   labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
@@ -82,10 +82,10 @@ vl_legend_fillOpacity(spec, clipHeight = NULL, columnPadding = NULL,
   titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
   type = NULL, values = NULL, zindex = NULL)
 
-vl_legend_opacity(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_opacity(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
   labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
@@ -105,10 +105,10 @@ vl_legend_opacity(spec, clipHeight = NULL, columnPadding = NULL,
   titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
   type = NULL, values = NULL, zindex = NULL)
 
-vl_legend_shape(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_shape(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
   labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
@@ -128,10 +128,10 @@ vl_legend_shape(spec, clipHeight = NULL, columnPadding = NULL,
   titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
   type = NULL, values = NULL, zindex = NULL)
 
-vl_legend_size(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_size(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
   labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
@@ -151,10 +151,10 @@ vl_legend_size(spec, clipHeight = NULL, columnPadding = NULL,
   titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
   type = NULL, values = NULL, zindex = NULL)
 
-vl_legend_stroke(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_stroke(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
   labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
@@ -174,10 +174,10 @@ vl_legend_stroke(spec, clipHeight = NULL, columnPadding = NULL,
   titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
   type = NULL, values = NULL, zindex = NULL)
 
-vl_legend_strokeOpacity(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_strokeOpacity(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
   labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
@@ -197,10 +197,10 @@ vl_legend_strokeOpacity(spec, clipHeight = NULL, columnPadding = NULL,
   titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
   type = NULL, values = NULL, zindex = NULL)
 
-vl_legend_strokeWidth(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_strokeWidth(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
   labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
@@ -222,6 +222,8 @@ vl_legend_strokeWidth(spec, clipHeight = NULL, columnPadding = NULL,
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Legend}
 
 \item{clipHeight}{(\emph{Legend}) The height in pixels to clip symbol legend entries and limit their size.}
 

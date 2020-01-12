@@ -4,7 +4,7 @@
 \alias{vl_add_scale_config}
 \title{vl_add_scale_config}
 \usage{
-vl_add_scale_config(spec, bandPaddingInner = NULL,
+vl_add_scale_config(spec, .object = NULL, bandPaddingInner = NULL,
   bandPaddingOuter = NULL, barBandPaddingInner = NULL, clamp = NULL,
   continuousPadding = NULL, maxBandSize = NULL, maxFontSize = NULL,
   maxOpacity = NULL, maxSize = NULL, maxStrokeWidth = NULL,
@@ -16,6 +16,8 @@ vl_add_scale_config(spec, bandPaddingInner = NULL,
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ScaleConfig}
 
 \item{bandPaddingInner}{(\emph{ScaleConfig}) Default inner padding for \code{x} and \code{y} band-ordinal scales.
 

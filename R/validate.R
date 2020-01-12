@@ -1,9 +1,22 @@
 
-validate_sub_schema <- function(x, ref) {
-  
+
+validate_sub_schema_inner <- function(x, ref) {
+
   sub_schema <- lookup(env$VL_SCHEMA, ref)
   
-  is_valid_subschema(sub_schema, x, env$VL_SCHEMA)
+  valid <- is_valid_subschema(x, sub_schema, env$VL_SCHEMA)
+  valid
+}
+
+validate_sub_schema <- function(x, ref) {
+  
+  valid <- any(vapply(ref, function(y) validate_sub_schema_inner(x,y), TRUE))
+  
+  if (!valid){
+    fn <- sys.calls()[[sys.nframe()-2]][[1]]
+    warning("Invalid schema for object passed to or created by ", fn, call. = FALSE)
+  }
+  return(valid)
 }
 
 
@@ -18,6 +31,7 @@ lookup <- function(schema, ref = NULL){
 
 
 is_valid_string <- function(x, enum = NULL) { 
+  if (length(x) > 1) { return(FALSE) }
   if (is.null(enum)) {
     is.character(x)
   } else {
@@ -36,7 +50,9 @@ is_valid_array <- function(x, items, schema) {
 
 all_return_true <- function(x, fun) {
   for (el in x) {
-    if (!fun(el)) return(FALSE)
+    if (identical(fun(el), FALSE)) {
+      return(FALSE)
+    }
   }
  return(TRUE)
 }
@@ -44,18 +60,25 @@ all_return_true <- function(x, fun) {
 
 is_valid_object <- function(obj, sub_schema, schema) {
   
-  if (!is.list(sub_schema)) return(FALSE)
+  if (!is.list(obj)) return(FALSE)
+  if (isTRUE(all.equal(sub_schema,list(type = "object")))) {
+    return(TRUE)
+  }
   
   required <- sub_schema$required 
   has_required <- is.null(required) || all_return_true(required, function(x) hasName(obj, x))
   if (!has_required) return(FALSE)
   
-  if (!sub_schema$additionalProperties) {
+  if (identical(sub_schema$additionalProperties,FALSE)) {
     if (any(!names(obj) %in% names(sub_schema$properties))) return(FALSE)
-  }
+  } 
   
-  # Validate each property... 
-  all_return_true(names(obj), function(x) is_valid_subschema(obj[[x]], sub_schema$properties[[x]], env$VL_SCHEMA))
+  # If additional Properties is a ref... should pull in all the allowed properties there 
+  # For now, ignoring additional property validation...
+  
+  # Validate each property
+  in_props <- intersect(names(obj), names(sub_schema$properties)) 
+  all_return_true(in_props, function(x) is_valid_subschema(obj[[x]], sub_schema$properties[[x]], env$VL_SCHEMA))
 }
 
 is_valid_subschema <- function(obj, sub_schema, schema) {
@@ -66,7 +89,7 @@ is_valid_subschema <- function(obj, sub_schema, schema) {
   
   if (hasName(sub_schema,"anyOf")) {
     possible = sub_schema[["anyOf"]]
-    valid = vapply(possible, function(x) is_valid_subschema(obj, sub_schema, schema), FALSE)
+    valid = vapply(possible, function(x) is_valid_subschema(obj, x, schema), FALSE)
     return(any(valid))
   }
   
@@ -76,7 +99,7 @@ is_valid_subschema <- function(obj, sub_schema, schema) {
   
   switch(sub_schema[["type"]],
          object = is_valid_object(obj, sub_schema,schema),
-         array = is_valid_array(obj[["items"]], sub_schema, schema),
+         array = is_valid_array(obj, sub_schema[["items"]], schema),
          boolean = is.logical(obj),
          string = is_valid_string(obj, sub_schema[["enum"]]),
          null = is.na(obj),

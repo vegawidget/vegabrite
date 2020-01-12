@@ -4,11 +4,13 @@
 \alias{vl_add_selection_config}
 \title{vl_add_selection_config}
 \usage{
-vl_add_selection_config(spec, interval = NULL, multi = NULL,
-  single = NULL)
+vl_add_selection_config(spec, .object = NULL, interval = NULL,
+  multi = NULL, single = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SelectionConfig}
 
 \item{interval}{(\emph{SelectionConfig}) The default definition for an \href{https://vega.github.io/vega-lite/docs/selection.html#type}{interval} selection. All properties and transformations
 for an interval selection definition (except \code{type}) may be specified here.

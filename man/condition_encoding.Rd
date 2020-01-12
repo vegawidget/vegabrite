@@ -17,73 +17,75 @@
 \alias{vl_condition_url}
 \title{Add conditioning to an encoding}
 \usage{
-vl_condition_color(spec, test = NULL, value = NULL, selection = NULL,
-  aggregate = NULL, bin = NULL, field = NULL, legend = NULL,
-  scale = NULL, sort = NULL, timeUnit = NULL, title = NULL,
-  type = NULL)
-
-vl_condition_fill(spec, test = NULL, value = NULL, selection = NULL,
-  aggregate = NULL, bin = NULL, field = NULL, legend = NULL,
-  scale = NULL, sort = NULL, timeUnit = NULL, title = NULL,
-  type = NULL)
-
-vl_condition_fillOpacity(spec, test = NULL, value = NULL,
+vl_condition_color(spec, .object = NULL, test = NULL, value = NULL,
   selection = NULL, aggregate = NULL, bin = NULL, field = NULL,
   legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL,
   title = NULL, type = NULL)
 
-vl_condition_href(spec, test = NULL, value = NULL, selection = NULL,
-  aggregate = NULL, bin = NULL, field = NULL, legend = NULL,
-  scale = NULL, sort = NULL, timeUnit = NULL, title = NULL,
-  type = NULL)
-
-vl_condition_opacity(spec, test = NULL, value = NULL,
+vl_condition_fill(spec, .object = NULL, test = NULL, value = NULL,
   selection = NULL, aggregate = NULL, bin = NULL, field = NULL,
   legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL,
   title = NULL, type = NULL)
 
-vl_condition_shape(spec, test = NULL, value = NULL, selection = NULL,
-  aggregate = NULL, bin = NULL, field = NULL, legend = NULL,
-  scale = NULL, sort = NULL, timeUnit = NULL, title = NULL,
-  type = NULL)
+vl_condition_fillOpacity(spec, .object = NULL, test = NULL,
+  value = NULL, selection = NULL, aggregate = NULL, bin = NULL,
+  field = NULL, legend = NULL, scale = NULL, sort = NULL,
+  timeUnit = NULL, title = NULL, type = NULL)
 
-vl_condition_size(spec, test = NULL, value = NULL, selection = NULL,
-  aggregate = NULL, bin = NULL, field = NULL, legend = NULL,
-  scale = NULL, sort = NULL, timeUnit = NULL, title = NULL,
-  type = NULL)
-
-vl_condition_stroke(spec, test = NULL, value = NULL,
+vl_condition_href(spec, .object = NULL, test = NULL, value = NULL,
   selection = NULL, aggregate = NULL, bin = NULL, field = NULL,
   legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL,
   title = NULL, type = NULL)
 
-vl_condition_strokeOpacity(spec, test = NULL, value = NULL,
+vl_condition_opacity(spec, .object = NULL, test = NULL, value = NULL,
   selection = NULL, aggregate = NULL, bin = NULL, field = NULL,
   legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL,
   title = NULL, type = NULL)
 
-vl_condition_strokeWidth(spec, test = NULL, value = NULL,
+vl_condition_shape(spec, .object = NULL, test = NULL, value = NULL,
   selection = NULL, aggregate = NULL, bin = NULL, field = NULL,
   legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL,
   title = NULL, type = NULL)
 
-vl_condition_text(spec, test = NULL, value = NULL, selection = NULL,
-  aggregate = NULL, bin = NULL, field = NULL, format = NULL,
-  formatType = NULL, labelExpr = NULL, timeUnit = NULL,
-  title = NULL, type = NULL)
-
-vl_condition_tooltip(spec, test = NULL, value = NULL,
+vl_condition_size(spec, .object = NULL, test = NULL, value = NULL,
   selection = NULL, aggregate = NULL, bin = NULL, field = NULL,
   legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL,
   title = NULL, type = NULL)
 
-vl_condition_url(spec, test = NULL, value = NULL, selection = NULL,
-  aggregate = NULL, bin = NULL, field = NULL, legend = NULL,
-  scale = NULL, sort = NULL, timeUnit = NULL, title = NULL,
-  type = NULL)
+vl_condition_stroke(spec, .object = NULL, test = NULL, value = NULL,
+  selection = NULL, aggregate = NULL, bin = NULL, field = NULL,
+  legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL,
+  title = NULL, type = NULL)
+
+vl_condition_strokeOpacity(spec, .object = NULL, test = NULL,
+  value = NULL, selection = NULL, aggregate = NULL, bin = NULL,
+  field = NULL, legend = NULL, scale = NULL, sort = NULL,
+  timeUnit = NULL, title = NULL, type = NULL)
+
+vl_condition_strokeWidth(spec, .object = NULL, test = NULL,
+  value = NULL, selection = NULL, aggregate = NULL, bin = NULL,
+  field = NULL, legend = NULL, scale = NULL, sort = NULL,
+  timeUnit = NULL, title = NULL, type = NULL)
+
+vl_condition_text(spec, .object = NULL, test = NULL, value = NULL,
+  selection = NULL, aggregate = NULL, bin = NULL, field = NULL,
+  format = NULL, formatType = NULL, labelExpr = NULL,
+  timeUnit = NULL, title = NULL, type = NULL)
+
+vl_condition_tooltip(spec, .object = NULL, test = NULL, value = NULL,
+  selection = NULL, aggregate = NULL, bin = NULL, field = NULL,
+  legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL,
+  title = NULL, type = NULL)
+
+vl_condition_url(spec, .object = NULL, test = NULL, value = NULL,
+  selection = NULL, aggregate = NULL, bin = NULL, field = NULL,
+  legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL,
+  title = NULL, type = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalSelection<ValueDef<(Gradient|string|null)>> or array of ConditionalValueDef<(Gradient|string|null)>}
 
 \item{test}{(\emph{ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalPredicate<MarkPropFieldDef>, ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalPredicate<NumberValueDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalPredicate<NumberValueDef>, ConditionalPredicate<ValueDef<string>>, ConditionalPredicate<MarkPropFieldDef>, ConditionalPredicate<StringValueDef>, ConditionalPredicate<StringValueDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringValueDef>, ConditionalPredicate<ValueDef<Text>>, ConditionalPredicate<StringFieldDef>, ConditionalPredicate<ValueDef<Text>>}) Predicate for triggering the condition}
 

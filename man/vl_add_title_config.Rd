@@ -4,17 +4,19 @@
 \alias{vl_add_title_config}
 \title{vl_add_title_config}
 \usage{
-vl_add_title_config(spec, align = NULL, anchor = NULL, angle = NULL,
-  baseline = NULL, color = NULL, dx = NULL, dy = NULL,
-  font = NULL, fontSize = NULL, fontStyle = NULL,
-  fontWeight = NULL, frame = NULL, limit = NULL, lineHeight = NULL,
-  offset = NULL, orient = NULL, subtitleColor = NULL,
-  subtitleFont = NULL, subtitleFontSize = NULL,
+vl_add_title_config(spec, .object = NULL, align = NULL,
+  anchor = NULL, angle = NULL, baseline = NULL, color = NULL,
+  dx = NULL, dy = NULL, font = NULL, fontSize = NULL,
+  fontStyle = NULL, fontWeight = NULL, frame = NULL, limit = NULL,
+  lineHeight = NULL, offset = NULL, orient = NULL,
+  subtitleColor = NULL, subtitleFont = NULL, subtitleFontSize = NULL,
   subtitleFontStyle = NULL, subtitleFontWeight = NULL,
   subtitleLineHeight = NULL, subtitlePadding = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ExcludeMappedValueRef<BaseTitle>}
 
 \item{align}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Horizontal text alignment for title text. One of \code{"left"}, \code{"center"}, or \code{"right"}.}
 

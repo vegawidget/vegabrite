@@ -4,15 +4,17 @@
 \alias{vl_add_interval_selection}
 \title{vl_add_interval_selection}
 \usage{
-vl_add_interval_selection(spec, selection_name, bind = NULL,
-  clear = NULL, empty = NULL, encodings = NULL, fields = NULL,
-  init = NULL, mark = NULL, on = NULL, resolve = NULL,
-  translate = NULL, type = NULL, zoom = NULL)
+vl_add_interval_selection(spec, selection_name, .object = NULL,
+  bind = NULL, clear = NULL, empty = NULL, encodings = NULL,
+  fields = NULL, init = NULL, mark = NULL, on = NULL,
+  resolve = NULL, translate = NULL, type = NULL, zoom = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
 \item{selection_name}{Name for selection}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: IntervalSelection}
 
 \item{bind}{(\emph{IntervalSelection}) Establishes a two-way binding between the interval selection and the scales
 used within the same view. This allows a user to interactively pan and

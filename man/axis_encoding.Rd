@@ -8,7 +8,7 @@
 \alias{vl_remove_axis_y}
 \title{Add axis to encoding}
 \usage{
-vl_axis_x(spec, bandPosition = NULL, domain = NULL,
+vl_axis_x(spec, .object = NULL, bandPosition = NULL, domain = NULL,
   domainColor = NULL, domainDash = NULL, domainDashOffset = NULL,
   domainOpacity = NULL, domainWidth = NULL, format = NULL,
   formatType = NULL, grid = NULL, gridColor = NULL,
@@ -32,7 +32,7 @@ vl_axis_x(spec, bandPosition = NULL, domain = NULL,
   titleOpacity = NULL, titlePadding = NULL, titleX = NULL,
   titleY = NULL, translate = NULL, values = NULL, zindex = NULL)
 
-vl_axis_y(spec, bandPosition = NULL, domain = NULL,
+vl_axis_y(spec, .object = NULL, bandPosition = NULL, domain = NULL,
   domainColor = NULL, domainDash = NULL, domainDashOffset = NULL,
   domainOpacity = NULL, domainWidth = NULL, format = NULL,
   formatType = NULL, grid = NULL, gridColor = NULL,
@@ -62,6 +62,8 @@ vl_remove_axis_y(spec)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Axis}
 
 \item{bandPosition}{(\emph{Axis}) An interpolation fraction indicating where, for \code{band} scales, axis ticks should be positioned. A value of \code{0} places ticks at the left edge of their bands. A value of \code{0.5} places ticks in the middle of their bands.
 

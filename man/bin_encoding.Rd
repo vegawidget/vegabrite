@@ -32,120 +32,123 @@
 \alias{vl_bin_yError2}
 \title{Add bin to encoding}
 \usage{
-vl_bin_color(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_color(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_detail(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_detail(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_fill(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_fill(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_fillOpacity(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_fillOpacity(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_href(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_href(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_key(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_key(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_latitude(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_latitude(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_latitude2(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_latitude2(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_longitude(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_longitude(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_longitude2(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_longitude2(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_opacity(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_opacity(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_order(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_order(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_shape(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_shape(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_size(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_size(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_stroke(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_stroke(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_strokeOpacity(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_strokeOpacity(spec, .object = NULL, anchor = NULL,
+  base = NULL, binned = NULL, divide = NULL, extent = NULL,
+  maxbins = NULL, minstep = NULL, nice = NULL, step = NULL,
+  steps = NULL)
 
-vl_bin_strokeWidth(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_strokeWidth(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_text(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_text(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_tooltip(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_tooltip(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_url(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_url(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_x(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_x(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_x2(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_x2(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_xError(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_xError(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_xError2(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_xError2(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_y(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_y(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_y2(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_y2(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_yError(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_yError(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_yError2(spec, anchor = NULL, base = NULL, binned = NULL,
-  divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL,
-  nice = NULL, step = NULL, steps = NULL)
+vl_bin_yError2(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BinParams}
 
 \item{anchor}{(\emph{BinParams}) A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
 

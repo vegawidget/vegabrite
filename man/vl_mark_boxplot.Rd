@@ -4,12 +4,15 @@
 \alias{vl_mark_boxplot}
 \title{vl_mark_boxplot}
 \usage{
-vl_mark_boxplot(spec, box = NULL, clip = NULL, color = NULL,
-  extent = NULL, median = NULL, opacity = NULL, orient = NULL,
-  outliers = NULL, rule = NULL, size = NULL, ticks = NULL)
+vl_mark_boxplot(spec, .object = NULL, box = NULL, clip = NULL,
+  color = NULL, extent = NULL, median = NULL, opacity = NULL,
+  orient = NULL, outliers = NULL, rule = NULL, size = NULL,
+  ticks = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BoxPlotDef}
 
 \item{box}{(\emph{BoxPlotDef})}
 

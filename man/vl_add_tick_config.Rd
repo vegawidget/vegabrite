@@ -4,8 +4,8 @@
 \alias{vl_add_tick_config}
 \title{vl_add_tick_config}
 \usage{
-vl_add_tick_config(spec, align = NULL, angle = NULL, aspect = NULL,
-  bandSize = NULL, baseline = NULL, color = NULL,
+vl_add_tick_config(spec, .object = NULL, align = NULL, angle = NULL,
+  aspect = NULL, bandSize = NULL, baseline = NULL, color = NULL,
   cornerRadius = NULL, cornerRadiusBottomLeft = NULL,
   cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL,
   cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL,
@@ -24,6 +24,8 @@ vl_add_tick_config(spec, align = NULL, angle = NULL, aspect = NULL,
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TickConfig}
 
 \item{align}{(\emph{TickConfig}) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of \code{"left"}, \code{"right"}, \code{"center"}.}
 

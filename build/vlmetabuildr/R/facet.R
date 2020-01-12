@@ -39,13 +39,14 @@ create_facet_wrap <- function(schema) {
   suffix <- "facet_wrap"
   
   spec_doc <- glue("#' @param spec An input vega-lite spec")
+  object_doc <- get_object_doc(schema, reference)
   extra_doc <- "#' @param columns number of columns to add"
   param_docs <- get_param_docs(schema, reference)
   
   docs <- make_docs_helper(
     glue("vl_{suffix}"),
     glue::glue("Add wrap facetting to a vega-lite spec."),
-    paste(spec_doc,extra_doc, param_docs, sep = "\n")
+    paste(spec_doc, object_doc, extra_doc, param_docs, sep = "\n")
   )
   
   ## Make the inner function
@@ -62,7 +63,7 @@ create_facet_wrap <- function(schema) {
   
   ## Get args
   args <- paste(param_names, "NULL", sep = " = ")
-  arg_list <- paste(c('spec', 'columns = 2', args), collapse = ", ")
+  arg_list <- paste(c('spec', '.object = NULL', 'columns = 2', args), collapse = ", ")
   
   ## Make the outer function
   fn <- glue("vl_{suffix} <- function({arg_list}){{\n{inner_fn}\n}}")

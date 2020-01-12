@@ -35,9 +35,8 @@ vl_chart() %>%
 vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/movies.json") %>%
   vl_encode_x(field = "IMDB_Rating", type = "quantitative") %>%
-  vl_encode_y(type = "quantitative") %>%
+  vl_encode_y(type = "quantitative", aggregate = "count") %>%
   vl_bin_x(maxbins=10) %>%
-  vl_aggregate_y("count") %>%
   vl_mark_bar()
 ```
 
@@ -47,12 +46,12 @@ vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/population.json") %>%
   vl_calculate(calculate = "datum.sex == 2 ? 'Female' : 'Male'", 
                as = "gender") %>%
-  vl_filter("datum.year == 2000") %>%
+  vl_filter(filter = "datum.year == 2000") %>%
   vl_encode_x(field = "age", 
               type = "ordinal") %>%
   vl_encode_y(field = "people", type = "quantitative") %>%
   vl_stack_y("normalize") %>%
-  vl_aggregate_y("sum") %>%
+  vl_aggregate_y(aggregate = "sum") %>%
   vl_axis_y(title = "population") %>%
   vl_encode_color(field = "gender", type = "nominal") %>%
   vl_mark_bar() %>% 
@@ -65,7 +64,7 @@ vl_chart() %>%
 ```{r}
 vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/population.json") %>%
-  vl_filter("datum.year == 2000") %>%
+  vl_filter(filter = "datum.year == 2000") %>%
   vl_encode_y(field = "age", 
               type = "ordinal") %>%
   vl_encode_x(field = "people", 
@@ -151,12 +150,11 @@ vl_chart() %>%
 ```{r}
 vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/population.json") %>%
-  vl_filter("datum.year == 2000") %>%
+  vl_filter(filter = "datum.year == 2000") %>%
   vl_calculate(as = "gender", calculate = 'datum.sex == 2 ? "Female" : "Male"') %>%
   vl_encode_x(field = "gender", type = "nominal") %>%
   vl_encode_y(field = "people", type = "quantitative", aggregate = "sum") %>%
   vl_encode_color(field = "gender", type = "nominal") %>%
-  vl_scale_color(range =  c("#675193", "#ca8861")) %>%
   vl_scale_color(range = c("#EA98D2", "#659CCA")) %>%
   vl_encode_column(field = "age", type = "ordinal", spacing = 10) %>%
   vl_remove_axis_x() %>%
@@ -171,26 +169,26 @@ vl_chart() %>%
 ```{r}
 bar_chart <- vl_chart() %>%
   vl_mark_bar() %>%
-  vl_encode_x("date:O", timeUnit = "month") %>%
-  vl_encode_y("precipitation:Q", aggregate = "mean")
+  vl_encode_x(field = "date:O", timeUnit = "month") %>%
+  vl_encode_y(field = "precipitation:Q", aggregate = "mean")
 
 point_chart <- vl_chart() %>%
   vl_mark_point() %>%
-  vl_encode_x("temp_min:Q", bin = TRUE) %>%
-  vl_encode_y("temp_max:Q", bin = TRUE) %>%
+  vl_encode_x(field = "temp_min:Q", bin = TRUE) %>%
+  vl_encode_y(field = "temp_max:Q", bin = TRUE) %>%
   vl_encode_size(aggregate = "count", type = "quantitative")
   
 vl_hconcat(bar_chart, point_chart) %>% 
   vl_add_data(url = "https://vega.github.io/vega-lite/data/weather.csv") %>%
-  vl_filter("datum.location === 'Seattle'")
+  vl_filter(filter = "datum.location === 'Seattle'")
 ```
 
 ```{r}
 vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
   vl_mark_point() %>%
-  vl_encode_x(list("repeat" = "column"), "quantitative") %>%
-  vl_encode_y(list("repeat" = "row"), "quantitative") %>%
+  vl_encode_x(field = list("repeat" = "column"), type = "quantitative") %>%
+  vl_encode_y(field = list("repeat" = "row"), type = "quantitative") %>%
   vl_add_interval_selection("brush", resolve = "global") %>%
   vl_encode_color(value = "grey") %>%
   vl_condition_color(selection = "brush", field = "Origin", type = "nominal") %>%
@@ -202,10 +200,10 @@ vl_chart() %>%
 vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
   vl_mark_point() %>%
-  vl_encode_x("Horsepower","quantitative") %>%
-  vl_encode_y("Miles_per_Gallon", "quantitative") %>%
-  vl_encode_color(list("repeat" = "column"), "nominal") %>%
-  vl_repeat_col("Origin","Cylinders") %>%
+  vl_encode_x(field = "Horsepower", type = "quantitative") %>%
+  vl_encode_y(field = "Miles_per_Gallon", type = "quantitative") %>%
+  vl_encode_color(field = list("repeat" = "column"), type = "nominal") %>%
+  vl_repeat_col("Origin", "Cylinders") %>%
   vl_resolve_scale_color("independent")
 ```
 
@@ -219,7 +217,7 @@ vl_chart() %>%
     vl_add_data(url = "https://vega.github.io/vega-editor/app/data/stocks.csv") %>% 
     vl_mark_line() %>% 
     vl_mark_point() %>%
-    vl_filter("datum.symbol==='GOOG'") %>%
+    vl_filter(filter = "datum.symbol==='GOOG'") %>%
     vl_encode_x(field = "date", type = "temporal") %>%
     vl_encode_y(field = "price", type = "quantitative")
 ```

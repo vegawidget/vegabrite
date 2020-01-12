@@ -4,10 +4,13 @@
 \alias{vl_add_facet_config}
 \title{vl_add_facet_config}
 \usage{
-vl_add_facet_config(spec, columns = NULL, spacing = NULL)
+vl_add_facet_config(spec, .object = NULL, columns = NULL,
+  spacing = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: CompositionConfig}
 
 \item{columns}{(\emph{CompositionConfig}) The number of columns to include in the view composition layout.
 

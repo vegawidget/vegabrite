@@ -4,12 +4,14 @@
 \alias{vl_encode_order}
 \title{vl_encode_order}
 \usage{
-vl_encode_order(spec, field = NULL, type = NULL, aggregate = NULL,
-  bin = NULL, sort = NULL, timeUnit = NULL, title = NULL,
-  value = NULL)
+vl_encode_order(spec, .object = NULL, field = NULL, type = NULL,
+  aggregate = NULL, bin = NULL, sort = NULL, timeUnit = NULL,
+  title = NULL, value = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: OrderFieldDef, array of OrderFieldDef or NumberValueDef}
 
 \item{field}{(\emph{OrderFieldDef}) \strong{Required.} A string defining the name of the field from which to pull a data value
 or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{repeat} operator.

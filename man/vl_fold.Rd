@@ -4,10 +4,12 @@
 \alias{vl_fold}
 \title{vl_fold}
 \usage{
-vl_fold(spec, as = NULL, fold = NULL)
+vl_fold(spec, .object = NULL, as = NULL, fold = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FoldTransform}
 
 \item{as}{(\emph{FoldTransform}) The output field names for the key and value properties produced by the fold transform.
 \strong{Default value:} \code{["key", "value"]}}

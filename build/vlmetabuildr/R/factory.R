@@ -52,7 +52,7 @@ make_function_innards <- function(reference, schema, override_args, adder_functi
     ""
   }
   
-  adder <- glue("{adder_function}(args$spec, args$object, {deparse_c(reference)}{extras})")
+  adder <- glue("{adder_function}(args$spec, args$object, {deparse_c(as.character(reference))}{extras})")
   
   paste(
     modifier,
@@ -71,7 +71,7 @@ make_arg_list <- function(reference, schema, exclude_args, priority_args){
   
   param_names <- unique(c(intersect(priority_args,param_names), param_names))
   args <- paste(param_names, "NULL", sep = " = ")
-  arg_list <- paste(c('spec', args), collapse = ", ")
+  arg_list <- paste(c('spec',".object = NULL",  args), collapse = ", ")
   
   arg_list
 }
@@ -106,11 +106,12 @@ make_docs <- function(reference, schema, suffix,  exclude_args,  description = "
   
   spec_doc <- glue("#' @param spec An input vega-lite spec")
   param_docs <- get_param_docs(schema, reference, exclude = exclude_args)
+  object_doc <- get_object_doc(schema, reference)
   
   make_docs_helper(
     glue("vl_{suffix}"),
     description,
-    paste(spec_doc, param_docs, sep = "\n")
+    paste(spec_doc, object_doc, param_docs, sep = "\n")
   )
 }
 
@@ -123,11 +124,12 @@ make_group_doc <- function(reference, schema, doc_group, title, description, exc
   
   spec_doc <- glue("#' @param spec An input vega-lite spec")
   param_docs <- get_param_docs(schema, reference, exclude = exclude_args)
+  object_doc <- get_object_doc(schema, reference)
   
   make_docs_helper(
     title,
     description,
-    paste(spec_doc, param_docs, sep = "\n"),
+    paste(spec_doc, object_doc, param_docs, sep = "\n"),
     doc_group = doc_group
   )
   

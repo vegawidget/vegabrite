@@ -4,21 +4,22 @@
 \alias{vl_add_axisTop_config}
 \title{vl_add_axisTop_config}
 \usage{
-vl_add_axisTop_config(spec, bandPosition = NULL, domain = NULL,
-  domainColor = NULL, domainDash = NULL, domainDashOffset = NULL,
-  domainOpacity = NULL, domainWidth = NULL, grid = NULL,
-  gridColor = NULL, gridDash = NULL, gridDashOffset = NULL,
-  gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL,
-  labelAngle = NULL, labelBaseline = NULL, labelBound = NULL,
-  labelColor = NULL, labelFlush = NULL, labelFlushOffset = NULL,
-  labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL,
-  labelFontWeight = NULL, labelLimit = NULL, labelOpacity = NULL,
-  labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL,
-  labels = NULL, maxExtent = NULL, minExtent = NULL, orient = NULL,
-  tickBand = NULL, tickColor = NULL, tickDash = NULL,
-  tickDashOffset = NULL, tickExtra = NULL, tickOffset = NULL,
-  tickOpacity = NULL, tickRound = NULL, tickSize = NULL,
-  tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL,
+vl_add_axisTop_config(spec, .object = NULL, bandPosition = NULL,
+  domain = NULL, domainColor = NULL, domainDash = NULL,
+  domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL,
+  grid = NULL, gridColor = NULL, gridDash = NULL,
+  gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL,
+  labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL,
+  labelBound = NULL, labelColor = NULL, labelFlush = NULL,
+  labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL,
+  labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL,
+  labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL,
+  labelSeparation = NULL, labels = NULL, maxExtent = NULL,
+  minExtent = NULL, orient = NULL, tickBand = NULL,
+  tickColor = NULL, tickDash = NULL, tickDashOffset = NULL,
+  tickExtra = NULL, tickOffset = NULL, tickOpacity = NULL,
+  tickRound = NULL, tickSize = NULL, tickWidth = NULL,
+  ticks = NULL, title = NULL, titleAlign = NULL,
   titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL,
   titleColor = NULL, titleFont = NULL, titleFontSize = NULL,
   titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL,
@@ -27,6 +28,8 @@ vl_add_axisTop_config(spec, bandPosition = NULL, domain = NULL,
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AxisConfig}
 
 \item{bandPosition}{(\emph{AxisConfig}) An interpolation fraction indicating where, for \code{band} scales, axis ticks should be positioned. A value of \code{0} places ticks at the left edge of their bands. A value of \code{0.5} places ticks in the middle of their bands.
 
