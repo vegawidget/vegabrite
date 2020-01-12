@@ -261,6 +261,8 @@ The \code{value} of this channel can be a number or a string \code{"height"} for
 \item{y2}{(\emph{AreaConfig}) Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.
 
 The \code{value} of this channel can be a number or a string \code{"height"} for the height of the plot.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AreaConfig}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a AreaConfig.

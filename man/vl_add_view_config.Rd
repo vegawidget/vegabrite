@@ -4,16 +4,19 @@
 \alias{vl_add_view_config}
 \title{vl_add_view_config}
 \usage{
-vl_add_view_config(spec, clip = NULL, continuousHeight = NULL,
-  continuousWidth = NULL, cornerRadius = NULL, discreteHeight = NULL,
-  discreteWidth = NULL, fill = NULL, fillOpacity = NULL,
-  height = NULL, opacity = NULL, step = NULL, stroke = NULL,
-  strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL,
-  strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL,
-  strokeWidth = NULL, width = NULL)
+vl_add_view_config(spec, .object = NULL, clip = NULL,
+  continuousHeight = NULL, continuousWidth = NULL,
+  cornerRadius = NULL, discreteHeight = NULL, discreteWidth = NULL,
+  fill = NULL, fillOpacity = NULL, height = NULL, opacity = NULL,
+  step = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL,
+  strokeDashOffset = NULL, strokeJoin = NULL,
+  strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
+  width = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ViewConfig}
 
 \item{clip}{(\emph{ViewConfig}) Whether the view should be clipped.}
 

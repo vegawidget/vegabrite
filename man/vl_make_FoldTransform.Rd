@@ -11,6 +11,8 @@ vl_make_FoldTransform(as = NULL, fold = NULL)
 \strong{Default value:} \code{["key", "value"]}}
 
 \item{fold}{(\emph{FoldTransform}) An array of data fields indicating the properties to fold.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FoldTransform}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a FoldTransform.

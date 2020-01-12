@@ -4,13 +4,15 @@
 \alias{vl_encode_column}
 \title{vl_encode_column}
 \usage{
-vl_encode_column(spec, field = NULL, type = NULL, aggregate = NULL,
-  align = NULL, bin = NULL, bounds = NULL, center = NULL,
-  columns = NULL, header = NULL, sort = NULL, spacing = NULL,
-  timeUnit = NULL, title = NULL)
+vl_encode_column(spec, .object = NULL, field = NULL, type = NULL,
+  aggregate = NULL, align = NULL, bin = NULL, bounds = NULL,
+  center = NULL, columns = NULL, header = NULL, sort = NULL,
+  spacing = NULL, timeUnit = NULL, title = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FacetEncodingFieldDef}
 
 \item{field}{(\emph{FacetEncodingFieldDef}) \strong{Required.} A string defining the name of the field from which to pull a data value
 or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{repeat} operator.

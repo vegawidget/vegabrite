@@ -4,11 +4,13 @@
 \alias{vl_encode_detail}
 \title{vl_encode_detail}
 \usage{
-vl_encode_detail(spec, field = NULL, type = NULL, aggregate = NULL,
-  bin = NULL, timeUnit = NULL, title = NULL)
+vl_encode_detail(spec, .object = NULL, field = NULL, type = NULL,
+  aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TypedFieldDef or array of FieldDefWithoutScale}
 
 \item{field}{(\emph{TypedFieldDef}) \strong{Required.} A string defining the name of the field from which to pull a data value
 or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{repeat} operator.

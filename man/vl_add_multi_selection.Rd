@@ -73,6 +73,8 @@ data values are toggled when a user interacts with the shift-key pressed).
 \item \code{"multi"} -- to select multiple discrete data value; the first value is selected on \code{click} and additional values toggled on shift-\code{click}.
 \item \code{"interval"} -- to select a continuous range of data values on \code{drag}.
 }}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MultiSelection}
 }
 \value{
 A modified Vega-Lite Spec

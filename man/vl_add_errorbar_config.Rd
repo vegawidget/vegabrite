@@ -4,11 +4,13 @@
 \alias{vl_add_errorbar_config}
 \title{vl_add_errorbar_config}
 \usage{
-vl_add_errorbar_config(spec, extent = NULL, rule = NULL,
-  ticks = NULL)
+vl_add_errorbar_config(spec, .object = NULL, extent = NULL,
+  rule = NULL, ticks = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBarConfig}
 
 \item{extent}{(\emph{ErrorBarConfig}) The extent of the rule. Available options include:
 \itemize{

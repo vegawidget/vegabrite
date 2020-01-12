@@ -186,6 +186,8 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item{titleY}{(\emph{AxisConfig}) Y-coordinate of the axis title relative to the axis group.}
 
 \item{translate}{(\emph{AxisConfig}) Translation offset in pixels applied to the axis group mark x and y. If specified, overrides the default behavior of a 0.5 offset to pixel-align stroked lines.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AxisConfig}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a AxisConfig.

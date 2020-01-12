@@ -12,6 +12,8 @@ vl_make_TimeUnitTransform(as = NULL, field = NULL, timeUnit = NULL)
 \item{field}{(\emph{TimeUnitTransform}) The data field to apply time unit.}
 
 \item{timeUnit}{(\emph{TimeUnitTransform}) The timeUnit.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TimeUnitTransform}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a TimeUnitTransform.

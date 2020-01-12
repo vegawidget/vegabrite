@@ -237,6 +237,8 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item{unselectedOpacity}{(\emph{LegendConfig}) The opacity of unselected legend entries.
 
 \strong{Default value:} 0.35.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LegendConfig}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a LegendConfig.

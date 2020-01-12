@@ -21,6 +21,8 @@ vl_make_LoessTransform(as = NULL, bandwidth = NULL, groupby = NULL,
 \item{loess}{(\emph{LoessTransform}) The data field of the dependent variable to smooth.}
 
 \item{on}{(\emph{LoessTransform}) The data field of the independent variable to use a predictor.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LoessTransform}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a LoessTransform.

@@ -23,6 +23,8 @@ multi selections when clicking with the alt-key pressed by default.}
 for a single selection definition (except \code{type}) may be specified here.
 
 For instance, setting \code{single} to \code{{"on": "dblclick"}} populates single selections on double-click by default.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SelectionConfig}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a SelectionConfig.

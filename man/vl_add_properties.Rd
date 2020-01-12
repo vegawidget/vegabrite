@@ -4,14 +4,17 @@
 \alias{vl_add_properties}
 \title{vl_add_properties}
 \usage{
-vl_add_properties(spec, autosize = NULL, background = NULL,
-  bounds = NULL, datasets = NULL, description = NULL,
-  height = NULL, name = NULL, padding = NULL, projection = NULL,
-  title = NULL, usermeta = NULL, view = NULL, width = NULL,
-  align = NULL, center = NULL, columns = NULL, spacing = NULL)
+vl_add_properties(spec, .object = NULL, autosize = NULL,
+  background = NULL, bounds = NULL, datasets = NULL,
+  description = NULL, height = NULL, name = NULL, padding = NULL,
+  projection = NULL, title = NULL, usermeta = NULL, view = NULL,
+  width = NULL, align = NULL, center = NULL, columns = NULL,
+  spacing = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec or TopLevelHConcatSpec}
 
 \item{autosize}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) How the visualization size should be determined. If a string, should be one of \code{"pad"}, \code{"fit"} or \code{"none"}.
 Object values can additionally specify parameters for content sizing and automatic resizing.

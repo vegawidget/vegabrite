@@ -4,15 +4,17 @@
 \alias{vl_add_projection_config}
 \title{vl_add_projection_config}
 \usage{
-vl_add_projection_config(spec, center = NULL, clipAngle = NULL,
-  clipExtent = NULL, coefficient = NULL, distance = NULL,
-  fraction = NULL, lobes = NULL, parallel = NULL, parallels = NULL,
-  precision = NULL, radius = NULL, ratio = NULL, reflectX = NULL,
-  reflectY = NULL, rotate = NULL, scale = NULL, spacing = NULL,
-  tilt = NULL, translate = NULL, type = NULL)
+vl_add_projection_config(spec, .object = NULL, center = NULL,
+  clipAngle = NULL, clipExtent = NULL, coefficient = NULL,
+  distance = NULL, fraction = NULL, lobes = NULL, parallel = NULL,
+  parallels = NULL, precision = NULL, radius = NULL, ratio = NULL,
+  reflectX = NULL, reflectY = NULL, rotate = NULL, scale = NULL,
+  spacing = NULL, tilt = NULL, translate = NULL, type = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Projection}
 
 \item{center}{(\emph{Projection}) The projection’s center to the specified center, a two-element array of longitude and latitude in degrees.
 

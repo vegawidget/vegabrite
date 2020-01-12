@@ -4,11 +4,14 @@
 \alias{vl_add_boxplot_config}
 \title{vl_add_boxplot_config}
 \usage{
-vl_add_boxplot_config(spec, box = NULL, extent = NULL, median = NULL,
-  outliers = NULL, rule = NULL, size = NULL, ticks = NULL)
+vl_add_boxplot_config(spec, .object = NULL, box = NULL,
+  extent = NULL, median = NULL, outliers = NULL, rule = NULL,
+  size = NULL, ticks = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BoxPlotConfig}
 
 \item{box}{(\emph{BoxPlotConfig})}
 

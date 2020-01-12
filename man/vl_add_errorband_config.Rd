@@ -4,11 +4,14 @@
 \alias{vl_add_errorband_config}
 \title{vl_add_errorband_config}
 \usage{
-vl_add_errorband_config(spec, band = NULL, borders = NULL,
-  extent = NULL, interpolate = NULL, tension = NULL)
+vl_add_errorband_config(spec, .object = NULL, band = NULL,
+  borders = NULL, extent = NULL, interpolate = NULL,
+  tension = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBandConfig}
 
 \item{band}{(\emph{ErrorBandConfig})}
 

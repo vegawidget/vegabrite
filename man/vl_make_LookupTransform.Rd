@@ -25,6 +25,8 @@ and if specified, it must correspond to \code{from.fields}.}
 \item{from}{(\emph{LookupTransform}) Data source or selection for secondary data reference.}
 
 \item{lookup}{(\emph{LookupTransform}) Key in primary data source.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LookupTransform}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a LookupTransform.

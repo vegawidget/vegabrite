@@ -4,11 +4,13 @@
 \alias{vl_lookup}
 \title{vl_lookup}
 \usage{
-vl_lookup(spec, as = NULL, default = NULL, from = NULL,
-  lookup = NULL)
+vl_lookup(spec, .object = NULL, as = NULL, default = NULL,
+  from = NULL, lookup = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LookupTransform}
 
 \item{as}{(\emph{LookupTransform}) The output fields on which to store the looked up data values.
 

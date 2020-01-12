@@ -4,19 +4,21 @@
 \alias{vl_add_headerColumn_config}
 \title{vl_add_headerColumn_config}
 \usage{
-vl_add_headerColumn_config(spec, format = NULL, formatType = NULL,
-  labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL,
-  labelColor = NULL, labelExpr = NULL, labelFont = NULL,
-  labelFontSize = NULL, labelFontStyle = NULL, labelLimit = NULL,
-  labelOrient = NULL, labelPadding = NULL, labels = NULL,
-  title = NULL, titleAlign = NULL, titleAnchor = NULL,
-  titleAngle = NULL, titleBaseline = NULL, titleColor = NULL,
-  titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL,
-  titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL,
-  titleOrient = NULL, titlePadding = NULL)
+vl_add_headerColumn_config(spec, .object = NULL, format = NULL,
+  formatType = NULL, labelAlign = NULL, labelAnchor = NULL,
+  labelAngle = NULL, labelColor = NULL, labelExpr = NULL,
+  labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL,
+  labelLimit = NULL, labelOrient = NULL, labelPadding = NULL,
+  labels = NULL, title = NULL, titleAlign = NULL,
+  titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL,
+  titleColor = NULL, titleFont = NULL, titleFontSize = NULL,
+  titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL,
+  titleLineHeight = NULL, titleOrient = NULL, titlePadding = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: HeaderConfig}
 
 \item{format}{(\emph{HeaderConfig}) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 \itemize{

@@ -4,11 +4,13 @@
 \alias{vl_pivot}
 \title{vl_pivot}
 \usage{
-vl_pivot(spec, groupby = NULL, limit = NULL, op = NULL,
-  pivot = NULL, value = NULL)
+vl_pivot(spec, .object = NULL, groupby = NULL, limit = NULL,
+  op = NULL, pivot = NULL, value = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: PivotTransform}
 
 \item{groupby}{(\emph{PivotTransform}) The optional data fields to group by. If not specified, a single group containing all data objects will be used.}
 

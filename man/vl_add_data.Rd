@@ -4,11 +4,14 @@
 \alias{vl_add_data}
 \title{vl_add_data}
 \usage{
-vl_add_data(spec, values = NULL, format = NULL, name = NULL,
-  url = NULL, sequence = NULL, sphere = NULL, graticule = NULL)
+vl_add_data(spec, .object = NULL, values = NULL, format = NULL,
+  name = NULL, url = NULL, sequence = NULL, sphere = NULL,
+  graticule = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: UrlData, InlineData, NamedData, SequenceGenerator, SphereGenerator or GraticuleGenerator}
 
 \item{values}{(\emph{InlineData}) The full data set, included inline. This can be an array of objects or primitive values, an object, or a string.
 Arrays of primitive values are ingested as objects with a \code{data} property. Strings are parsed according to the specified format type.}

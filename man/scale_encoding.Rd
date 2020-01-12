@@ -15,74 +15,77 @@
 \alias{vl_scale_y}
 \title{Add scale to encoding}
 \usage{
-vl_scale_color(spec, align = NULL, base = NULL, bins = NULL,
-  clamp = NULL, constant = NULL, domain = NULL, exponent = NULL,
-  interpolate = NULL, nice = NULL, padding = NULL,
+vl_scale_color(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
   paddingInner = NULL, paddingOuter = NULL, range = NULL,
   round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_fill(spec, align = NULL, base = NULL, bins = NULL,
-  clamp = NULL, constant = NULL, domain = NULL, exponent = NULL,
-  interpolate = NULL, nice = NULL, padding = NULL,
+vl_scale_fill(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
   paddingInner = NULL, paddingOuter = NULL, range = NULL,
   round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_fillOpacity(spec, align = NULL, base = NULL, bins = NULL,
-  clamp = NULL, constant = NULL, domain = NULL, exponent = NULL,
-  interpolate = NULL, nice = NULL, padding = NULL,
+vl_scale_fillOpacity(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
   paddingInner = NULL, paddingOuter = NULL, range = NULL,
   round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_opacity(spec, align = NULL, base = NULL, bins = NULL,
-  clamp = NULL, constant = NULL, domain = NULL, exponent = NULL,
-  interpolate = NULL, nice = NULL, padding = NULL,
+vl_scale_opacity(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
   paddingInner = NULL, paddingOuter = NULL, range = NULL,
   round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_shape(spec, align = NULL, base = NULL, bins = NULL,
-  clamp = NULL, constant = NULL, domain = NULL, exponent = NULL,
-  interpolate = NULL, nice = NULL, padding = NULL,
+vl_scale_shape(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
   paddingInner = NULL, paddingOuter = NULL, range = NULL,
   round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_size(spec, align = NULL, base = NULL, bins = NULL,
-  clamp = NULL, constant = NULL, domain = NULL, exponent = NULL,
-  interpolate = NULL, nice = NULL, padding = NULL,
+vl_scale_size(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
   paddingInner = NULL, paddingOuter = NULL, range = NULL,
   round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_stroke(spec, align = NULL, base = NULL, bins = NULL,
-  clamp = NULL, constant = NULL, domain = NULL, exponent = NULL,
-  interpolate = NULL, nice = NULL, padding = NULL,
+vl_scale_stroke(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
   paddingInner = NULL, paddingOuter = NULL, range = NULL,
   round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_strokeOpacity(spec, align = NULL, base = NULL, bins = NULL,
-  clamp = NULL, constant = NULL, domain = NULL, exponent = NULL,
-  interpolate = NULL, nice = NULL, padding = NULL,
+vl_scale_strokeOpacity(spec, .object = NULL, align = NULL,
+  base = NULL, bins = NULL, clamp = NULL, constant = NULL,
+  domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL,
+  padding = NULL, paddingInner = NULL, paddingOuter = NULL,
+  range = NULL, round = NULL, scheme = NULL, type = NULL,
+  zero = NULL)
+
+vl_scale_strokeWidth(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
   paddingInner = NULL, paddingOuter = NULL, range = NULL,
   round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_strokeWidth(spec, align = NULL, base = NULL, bins = NULL,
-  clamp = NULL, constant = NULL, domain = NULL, exponent = NULL,
-  interpolate = NULL, nice = NULL, padding = NULL,
+vl_scale_x(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
   paddingInner = NULL, paddingOuter = NULL, range = NULL,
   round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_x(spec, align = NULL, base = NULL, bins = NULL,
-  clamp = NULL, constant = NULL, domain = NULL, exponent = NULL,
-  interpolate = NULL, nice = NULL, padding = NULL,
-  paddingInner = NULL, paddingOuter = NULL, range = NULL,
-  round = NULL, scheme = NULL, type = NULL, zero = NULL)
-
-vl_scale_y(spec, align = NULL, base = NULL, bins = NULL,
-  clamp = NULL, constant = NULL, domain = NULL, exponent = NULL,
-  interpolate = NULL, nice = NULL, padding = NULL,
+vl_scale_y(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
   paddingInner = NULL, paddingOuter = NULL, range = NULL,
   round = NULL, scheme = NULL, type = NULL, zero = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Scale}
 
 \item{align}{(\emph{Scale}) The alignment of the steps within the scale range.
 

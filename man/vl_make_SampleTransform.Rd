@@ -10,6 +10,8 @@ vl_make_SampleTransform(sample = NULL)
 \item{sample}{(\emph{SampleTransform}) The maximum number of data objects to include in the sample.
 
 \strong{Default value:} \code{1000}}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SampleTransform}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a SampleTransform.

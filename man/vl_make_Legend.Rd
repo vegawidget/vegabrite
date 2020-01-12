@@ -237,6 +237,8 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item{zindex}{(\emph{Legend}) A non-negative integer indicating the z-index of the legend.
 If zindex is 0, legend should be drawn behind all chart elements.
 To put them in front, use zindex = 1.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Legend}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a Legend.

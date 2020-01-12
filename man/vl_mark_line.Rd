@@ -4,9 +4,9 @@
 \alias{vl_mark_line}
 \title{vl_mark_line}
 \usage{
-vl_mark_line(spec, align = NULL, angle = NULL, aspect = NULL,
-  baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL,
-  cornerRadius = NULL, cornerRadiusBottomLeft = NULL,
+vl_mark_line(spec, .object = NULL, align = NULL, angle = NULL,
+  aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL,
+  color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL,
   cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL,
   cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL,
   dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL,
@@ -26,6 +26,8 @@ vl_mark_line(spec, align = NULL, angle = NULL, aspect = NULL,
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef}
 
 \item{align}{(\emph{MarkDef}) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of \code{"left"}, \code{"right"}, \code{"center"}.}
 

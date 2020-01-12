@@ -23,6 +23,8 @@ vl_make_BindRange(debounce = NULL, element = NULL, input = NULL,
 \item{step}{(\emph{BindRange})}
 
 \item{type}{(\emph{BindRange})}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRange}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a BindRange.

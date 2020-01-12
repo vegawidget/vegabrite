@@ -22,6 +22,8 @@ or \href{https://vega.github.io/vega-lite/docs/filter.html#valid-predicate}{vali
 \item a \href{https://vega.github.io/vega-lite/docs/filter.html#selection-predicate}{selection predicate}
 \item a logical operand that combines (1), (2), or (3).
 }}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FilterTransform}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a FilterTransform.

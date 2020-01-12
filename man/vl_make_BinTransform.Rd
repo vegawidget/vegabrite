@@ -12,6 +12,8 @@ vl_make_BinTransform(as = NULL, bin = NULL, field = NULL)
 \item{bin}{(\emph{BinTransform}) An object indicating bin properties, or simply \code{true} for using default bin parameters.}
 
 \item{field}{(\emph{BinTransform}) The data field to bin.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BinTransform}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a BinTransform.

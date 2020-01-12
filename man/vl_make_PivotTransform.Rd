@@ -20,6 +20,8 @@ The default (\code{0}) applies no limit. The pivoted \code{pivot} names are sort
 \item{pivot}{(\emph{PivotTransform}) The data field to pivot on. The unique values of this field become new field names in the output stream.}
 
 \item{value}{(\emph{PivotTransform}) The data field to populate pivoted fields. The aggregate values of this field become the values of the new pivoted fields.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: PivotTransform}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a PivotTransform.

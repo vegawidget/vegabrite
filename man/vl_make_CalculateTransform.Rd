@@ -10,6 +10,8 @@ vl_make_CalculateTransform(as = NULL, calculate = NULL)
 \item{as}{(\emph{CalculateTransform}) The field for storing the computed formula value.}
 
 \item{calculate}{(\emph{CalculateTransform}) A \href{https://vega.github.io/vega-lite/docs/types.html#expression}{expression} string. Use the variable \code{datum} to refer to the current data object.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: CalculateTransform}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a CalculateTransform.

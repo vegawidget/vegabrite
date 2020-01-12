@@ -104,6 +104,8 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item{titlePadding}{(\emph{HeaderConfig}) The padding, in pixel, between facet header's title and the label.
 
 \strong{Default value:} \code{10}}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: HeaderConfig}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a HeaderConfig.

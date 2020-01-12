@@ -81,6 +81,8 @@ only \code{wheel} events are supported.
 \strong{Default value:} \code{true}, which corresponds to \code{wheel!}.
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/zoom.html}{zoom} documentation.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: IntervalSelection}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a IntervalSelection.

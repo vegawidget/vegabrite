@@ -4,11 +4,13 @@
 \alias{vl_quantile}
 \title{vl_quantile}
 \usage{
-vl_quantile(spec, as = NULL, groupby = NULL, probs = NULL,
-  quantile = NULL, step = NULL)
+vl_quantile(spec, .object = NULL, as = NULL, groupby = NULL,
+  probs = NULL, quantile = NULL, step = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: QuantileTransform}
 
 \item{as}{(\emph{QuantileTransform}) The output field names for the probability and quantile values.
 

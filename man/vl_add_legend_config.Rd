@@ -4,9 +4,10 @@
 \alias{vl_add_legend_config}
 \title{vl_add_legend_config}
 \usage{
-vl_add_legend_config(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, fillColor = NULL,
-  gradientDirection = NULL, gradientHorizontalMaxLength = NULL,
+vl_add_legend_config(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  fillColor = NULL, gradientDirection = NULL,
+  gradientHorizontalMaxLength = NULL,
   gradientHorizontalMinLength = NULL, gradientLabelLimit = NULL,
   gradientLabelOffset = NULL, gradientLength = NULL,
   gradientOpacity = NULL, gradientStrokeColor = NULL,
@@ -34,6 +35,8 @@ vl_add_legend_config(spec, clipHeight = NULL, columnPadding = NULL,
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LegendConfig}
 
 \item{clipHeight}{(\emph{LegendConfig}) The height in pixels to clip symbol legend entries and limit their size.}
 

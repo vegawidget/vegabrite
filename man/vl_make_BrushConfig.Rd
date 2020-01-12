@@ -29,6 +29,8 @@ for creating dashed or dotted lines.}
 \item{strokeOpacity}{(\emph{BrushConfig}) The stroke opacity of the interval mark (a value between \code{0} and \code{1}).}
 
 \item{strokeWidth}{(\emph{BrushConfig}) The stroke width of the interval mark.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BrushConfig}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a BrushConfig.

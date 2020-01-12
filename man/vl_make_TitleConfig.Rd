@@ -61,6 +61,8 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item{subtitleLineHeight}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Line height in pixels for multi-line subtitle text.}
 
 \item{subtitlePadding}{(\emph{ExcludeMappedValueRef<BaseTitle>}) The padding in pixels between title and subtitle text.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ExcludeMappedValueRef<BaseTitle>}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a TitleConfig.

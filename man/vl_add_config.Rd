@@ -4,8 +4,8 @@
 \alias{vl_add_config}
 \title{vl_add_config}
 \usage{
-vl_add_config(spec, area = NULL, autosize = NULL, axis = NULL,
-  axisBand = NULL, axisBottom = NULL, axisLeft = NULL,
+vl_add_config(spec, .object = NULL, area = NULL, autosize = NULL,
+  axis = NULL, axisBand = NULL, axisBottom = NULL, axisLeft = NULL,
   axisRight = NULL, axisTop = NULL, axisX = NULL, axisY = NULL,
   background = NULL, bar = NULL, boxplot = NULL, circle = NULL,
   concat = NULL, countTitle = NULL, errorband = NULL,
@@ -21,6 +21,8 @@ vl_add_config(spec, area = NULL, autosize = NULL, axis = NULL,
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Config}
 
 \item{area}{(\emph{Config}) Area-Specific Config}
 
