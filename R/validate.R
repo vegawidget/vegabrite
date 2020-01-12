@@ -1,5 +1,4 @@
 
-
 validate_sub_schema <- function(x, ref) {
   
   sub_schema <- lookup(env$VL_SCHEMA, ref)

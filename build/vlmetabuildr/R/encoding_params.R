@@ -237,7 +237,7 @@ create_condition_encoding_functions <- function(schema) {
   # Creating the condition functions is a bit complicated because there are 
   # multiple acceptable objects that can be inputs, and what those objects are 
   # varies based on the Encoding.
-  
+
   encs <- get_enc_with_prop(schema,'condition')
   
   refs <- purrr::map(encs, get_condition_references, schema = schema)
