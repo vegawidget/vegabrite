@@ -20,8 +20,6 @@ vl_make_ErrorBarConfig(extent = NULL, rule = NULL, ticks = NULL)
 \item{rule}{(\emph{ErrorBarConfig})}
 
 \item{ticks}{(\emph{ErrorBarConfig})}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBarConfig}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a ErrorBarConfig.

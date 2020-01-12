@@ -118,12 +118,11 @@ get_param_docs <- function(schema, ref, exclude = NULL) {
    "`'Count of Records`",
    "`Count of Records`")
   
-  # Add ".object" doc 
-  object_desc <- get_object_desc(schema, ref)
-  param_names <- c('.object', param_names)
-  param_desc <- c(object_desc, param_desc)
-  
   paste("#' @param", param_names, param_desc, sep = " ", collapse = "\n")
  
 }
 
+get_object_doc <- function(schema, ref) {
+  object_desc <- get_object_desc(schema, ref)
+  glue("#' @param .object {object_desc}")
+}

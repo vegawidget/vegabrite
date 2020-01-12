@@ -21,8 +21,6 @@ The \code{"zero"} offset will stack starting at \code{0}. The \code{"center"} of
 \item{sort}{(\emph{StackTransform}) Field that determines the order of leaves in the stacked charts.}
 
 \item{stack}{(\emph{StackTransform}) The field which is stacked.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: StackTransform}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a StackTransform.

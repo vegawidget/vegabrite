@@ -76,8 +76,6 @@ vl_make_ViewConfig(clip = NULL, continuousHeight = NULL,
 \item{strokeWidth}{(\emph{ViewConfig}) The stroke width, in pixels.}
 
 \item{width}{(\emph{ViewConfig}) Default width}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ViewConfig}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a ViewConfig.

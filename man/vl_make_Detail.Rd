@@ -69,8 +69,6 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 }
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/type.html}{type} documentation.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TypedFieldDef or array of FieldDefWithoutScale}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a Detail.

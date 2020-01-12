@@ -140,8 +140,6 @@ For a full list of scale range configuration options, please see the \href{https
 \item{trail}{(\emph{Config}) Trail-Specific Config}
 
 \item{view}{(\emph{Config}) Default properties for \href{https://vega.github.io/vega-lite/docs/spec.html#single}{single view plots}.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Config}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a Config.

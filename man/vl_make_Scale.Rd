@@ -113,8 +113,6 @@ For the full list of supported schemes, please refer to the \href{https://vega.g
 \strong{Default value:} \code{true} for x and y channels if the quantitative field is not binned and no custom \code{domain} is provided; \code{false} otherwise.
 
 \strong{Note:} Log, time, and utc scales do not support \code{zero}.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Scale}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a Scale.

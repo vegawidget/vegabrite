@@ -4,15 +4,17 @@
 \alias{vl_add_multi_selection}
 \title{vl_add_multi_selection}
 \usage{
-vl_add_multi_selection(spec, selection_name, bind = NULL, clear = NULL,
-  empty = NULL, encodings = NULL, fields = NULL, init = NULL,
-  nearest = NULL, on = NULL, resolve = NULL, toggle = NULL,
-  type = NULL)
+vl_add_multi_selection(spec, selection_name, .object = NULL,
+  bind = NULL, clear = NULL, empty = NULL, encodings = NULL,
+  fields = NULL, init = NULL, nearest = NULL, on = NULL,
+  resolve = NULL, toggle = NULL, type = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
 \item{selection_name}{Name for selection}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MultiSelection}
 
 \item{bind}{(\emph{MultiSelection}) When set, a selection is populated by interacting with the corresponding legend. Direct manipulation interaction is disabled by default;
 to re-enable it, set the selection's \href{https://vega.github.io/vega-lite/docs/selection.html#common-selection-properties}{on} property.
@@ -73,8 +75,6 @@ data values are toggled when a user interacts with the shift-key pressed).
 \item \code{"multi"} -- to select multiple discrete data value; the first value is selected on \code{click} and additional values toggled on shift-\code{click}.
 \item \code{"interval"} -- to select a continuous range of data values on \code{drag}.
 }}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MultiSelection}
 }
 \value{
 A modified Vega-Lite Spec

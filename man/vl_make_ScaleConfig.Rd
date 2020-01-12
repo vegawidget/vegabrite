@@ -101,8 +101,6 @@ This is equivalent to setting \code{domain} to \code{"unaggregate"} for aggregat
 This property only works with aggregate functions that produce values within the raw data domain (\code{"mean"}, \code{"average"}, \code{"median"}, \code{"q1"}, \code{"q3"}, \code{"min"}, \code{"max"}). For other aggregations that produce values outside of the raw data domain (e.g. \code{"count"}, \code{"sum"}), this property is ignored.
 
 \strong{Default value:} \code{false}}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ScaleConfig}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a ScaleConfig.

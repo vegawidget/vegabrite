@@ -27,8 +27,6 @@ vl_make_CompositionConfig(columns = NULL, spacing = NULL)
 \item{spacing}{(\emph{CompositionConfig}) The default spacing in pixels between composed sub-views.
 
 \strong{Default value}: \code{20}}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: CompositionConfig}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a CompositionConfig.

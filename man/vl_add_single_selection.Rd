@@ -4,15 +4,17 @@
 \alias{vl_add_single_selection}
 \title{vl_add_single_selection}
 \usage{
-vl_add_single_selection(spec, selection_name, bind = NULL,
-  clear = NULL, empty = NULL, encodings = NULL, fields = NULL,
-  init = NULL, nearest = NULL, on = NULL, resolve = NULL,
-  type = NULL)
+vl_add_single_selection(spec, selection_name, .object = NULL,
+  bind = NULL, clear = NULL, empty = NULL, encodings = NULL,
+  fields = NULL, init = NULL, nearest = NULL, on = NULL,
+  resolve = NULL, type = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
 \item{selection_name}{Name for selection}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SingleSelection}
 
 \item{bind}{(\emph{SingleSelection}) When set, a selection is populated by input elements (also known as dynamic query widgets)
 or by interacting with the corresponding legend. Direct manipulation interaction is disabled by default;
@@ -69,8 +71,6 @@ conditional encoding rule, or scale domain.
 \item \code{"multi"} -- to select multiple discrete data value; the first value is selected on \code{click} and additional values toggled on shift-\code{click}.
 \item \code{"interval"} -- to select a continuous range of data values on \code{drag}.
 }}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SingleSelection}
 }
 \value{
 A modified Vega-Lite Spec

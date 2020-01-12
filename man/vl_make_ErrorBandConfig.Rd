@@ -40,8 +40,6 @@ vl_make_ErrorBandConfig(band = NULL, borders = NULL, extent = NULL,
 }}
 
 \item{tension}{(\emph{ErrorBandConfig}) The tension parameter for the interpolation type of the error band.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBandConfig}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a ErrorBandConfig.

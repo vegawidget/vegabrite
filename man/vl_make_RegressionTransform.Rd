@@ -34,8 +34,6 @@ and an \code{rSquared} value (indicating the total variance explained by the mod
 \strong{Default value:} \code{false}}
 
 \item{regression}{(\emph{RegressionTransform}) The data field of the dependent variable to predict.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RegressionTransform}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a RegressionTransform.

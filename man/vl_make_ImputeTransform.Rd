@@ -33,8 +33,6 @@ One of \code{"value"}, \code{"mean"}, \code{"median"}, \code{"max"} or \code{"mi
 \strong{Default value:}  \code{"value"}}
 
 \item{value}{(\emph{ImputeTransform}) The field value to use when the imputation \code{method} is \code{"value"}.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ImputeTransform}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a ImputeTransform.

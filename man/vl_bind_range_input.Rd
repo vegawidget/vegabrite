@@ -5,8 +5,8 @@
 \title{vl_bind_range_input}
 \usage{
 vl_bind_range_input(spec, selection_name, projection_name = NULL,
-  debounce = NULL, element = NULL, max = NULL, min = NULL,
-  name = NULL, step = NULL, type = NULL)
+  .object = NULL, debounce = NULL, element = NULL, max = NULL,
+  min = NULL, name = NULL, step = NULL, type = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -14,6 +14,8 @@ vl_bind_range_input(spec, selection_name, projection_name = NULL,
 \item{selection_name}{Name of selection to add binding to}
 
 \item{projection_name}{Name of projection (field or encoding) within selection}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRange}
 
 \item{debounce}{(\emph{BindRange})}
 
@@ -28,8 +30,6 @@ vl_bind_range_input(spec, selection_name, projection_name = NULL,
 \item{step}{(\emph{BindRange})}
 
 \item{type}{(\emph{BindRange})}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRange}
 }
 \value{
 A modified Vega-Lite Spec

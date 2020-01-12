@@ -19,8 +19,6 @@ vl_make_QuantileTransform(as = NULL, groupby = NULL, probs = NULL,
 \item{quantile}{(\emph{QuantileTransform}) The data field for which to perform quantile estimation.}
 
 \item{step}{(\emph{QuantileTransform}) A probability step size (default 0.01) for sampling quantile values. All values from one-half the step size up to 1 (exclusive) will be sampled. This parameter is only used if the \emph{probs} parameter is not provided.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: QuantileTransform}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a QuantileTransform.

@@ -178,8 +178,6 @@ different spacing values for rows and columns.
 \item{vconcat}{(\emph{TopLevelVConcatSpec}) A list of views to be concatenated and put into a column.}
 
 \item{hconcat}{(\emph{TopLevelHConcatSpec}) A list of views to be concatenated and put into a row.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec or TopLevelHConcatSpec}
 }
 \value{
 A vega-lite spec, as an S3 object of class vegaspec_vega_lite

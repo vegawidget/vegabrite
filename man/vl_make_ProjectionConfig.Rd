@@ -57,8 +57,6 @@ vl_make_ProjectionConfig(center = NULL, clipAngle = NULL,
 \item{type}{(\emph{Projection}) The cartographic projection to use. This value is case-insensitive, for example \code{"albers"} and \code{"Albers"} indicate the same projection type. You can find all valid projection types \href{https://vega.github.io/vega-lite/docs/projection.html#projection-types}{in the documentation}.
 
 \strong{Default value:} \code{mercator}}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Projection}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a ProjectionConfig.

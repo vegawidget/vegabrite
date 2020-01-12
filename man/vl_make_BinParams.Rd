@@ -40,8 +40,6 @@ vl_make_BinParams(anchor = NULL, base = NULL, binned = NULL,
 \strong{Note:} If provided, options such as maxbins will be ignored.}
 
 \item{steps}{(\emph{BinParams}) An array of allowable step sizes to choose from.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BinParams}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a BinParams.

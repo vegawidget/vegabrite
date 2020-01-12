@@ -15,8 +15,6 @@ vl_make_FlattenTransform(as = NULL, flatten = NULL)
 If multiple fields are specified, their array values should have a parallel structure, ideally with the same length.
 If the lengths of parallel arrays do not match,
 the longest array will be used with \code{null} values added for missing entries.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FlattenTransform}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a FlattenTransform.

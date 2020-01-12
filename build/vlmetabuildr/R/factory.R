@@ -106,11 +106,12 @@ make_docs <- function(reference, schema, suffix,  exclude_args,  description = "
   
   spec_doc <- glue("#' @param spec An input vega-lite spec")
   param_docs <- get_param_docs(schema, reference, exclude = exclude_args)
+  object_doc <- get_object_doc(schema, reference)
   
   make_docs_helper(
     glue("vl_{suffix}"),
     description,
-    paste(spec_doc, param_docs, sep = "\n")
+    paste(spec_doc, object_doc, param_docs, sep = "\n")
   )
 }
 
@@ -123,11 +124,12 @@ make_group_doc <- function(reference, schema, doc_group, title, description, exc
   
   spec_doc <- glue("#' @param spec An input vega-lite spec")
   param_docs <- get_param_docs(schema, reference, exclude = exclude_args)
+  object_doc <- get_object_doc(schema, reference)
   
   make_docs_helper(
     title,
     description,
-    paste(spec_doc, param_docs, sep = "\n"),
+    paste(spec_doc, object_doc, param_docs, sep = "\n"),
     doc_group = doc_group
   )
   

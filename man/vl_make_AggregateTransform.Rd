@@ -10,8 +10,6 @@ vl_make_AggregateTransform(aggregate = NULL, groupby = NULL)
 \item{aggregate}{(\emph{AggregateTransform}) Array of objects that define fields to aggregate.}
 
 \item{groupby}{(\emph{AggregateTransform}) The data fields to group by. If not specified, a single group containing all data objects will be used.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AggregateTransform}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to a AggregateTransform.

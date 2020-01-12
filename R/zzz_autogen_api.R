@@ -1,4 +1,3 @@
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec or TopLevelHConcatSpec
 #' @param $schema (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec_) URL to [JSON schema](http://json-schema.org/) for a Vega-Lite specification. Unless you have a reason to change this, use `https://vega.github.io/schema/vega-lite/v4.json`. Setting the `$schema` property allows automatic validation and autocomplete in editors that support JSON schema.
 #' @param autosize (_TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec_) How the visualization size should be determined. If a string, should be one of `"pad"`, `"fit"` or `"none"`.
 #' Object values can additionally specify parameters for content sizing and automatic resizing.
@@ -5358,7 +5357,6 @@ vl_encode_yError2 <- function(spec, .object = NULL, field = NULL, aggregate = NU
 #' vl_make_Color
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)> or ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -5460,7 +5458,6 @@ args$obj
 #' vl_make_Detail
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TypedFieldDef or array of FieldDefWithoutScale
 #' @param aggregate (_TypedFieldDef_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -5525,7 +5522,6 @@ args$obj
 #' vl_make_Fill
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)> or ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -5627,7 +5623,6 @@ args$obj
 #' vl_make_FillOpacity
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,number> or ValueDefWithCondition<MarkPropFieldDef,number>
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -5729,7 +5724,6 @@ args$obj
 #' vl_make_Href
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<StringFieldDef,string> or ValueDefWithCondition<MarkPropFieldDef,(string|null)>
 #' @param aggregate (_FieldDefWithCondition<StringFieldDef,string>_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -5818,7 +5812,6 @@ args$obj
 #' vl_make_Key
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TypedFieldDef
 #' @param aggregate (_TypedFieldDef_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -5883,7 +5876,6 @@ args$obj
 #' vl_make_Latitude
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LatLongFieldDef or NumberValueDef
 #' @param aggregate (_LatLongFieldDef_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -5949,7 +5941,6 @@ args$obj
 #' vl_make_Latitude2
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -6001,7 +5992,6 @@ args$obj
 #' vl_make_Longitude
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LatLongFieldDef or NumberValueDef
 #' @param aggregate (_LatLongFieldDef_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -6067,7 +6057,6 @@ args$obj
 #' vl_make_Longitude2
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -6119,7 +6108,6 @@ args$obj
 #' vl_make_Opacity
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,number> or ValueDefWithCondition<MarkPropFieldDef,number>
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -6221,7 +6209,6 @@ args$obj
 #' vl_make_Order
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: OrderFieldDef, array of OrderFieldDef or NumberValueDef
 #' @param aggregate (_OrderFieldDef_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -6288,7 +6275,6 @@ args$obj
 #' vl_make_Shape
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)> or ValueDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -6390,7 +6376,6 @@ args$obj
 #' vl_make_Size
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,number> or ValueDefWithCondition<MarkPropFieldDef,number>
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -6492,7 +6477,6 @@ args$obj
 #' vl_make_Stroke
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)> or ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -6594,7 +6578,6 @@ args$obj
 #' vl_make_StrokeOpacity
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,number> or ValueDefWithCondition<MarkPropFieldDef,number>
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -6696,7 +6679,6 @@ args$obj
 #' vl_make_StrokeWidth
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<MarkPropFieldDef,number> or ValueDefWithCondition<MarkPropFieldDef,number>
 #' @param aggregate (_FieldDefWithCondition<MarkPropFieldDef,number>_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -6798,7 +6780,6 @@ args$obj
 #' vl_make_Text
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<StringFieldDef,Text> or ValueDefWithCondition<StringFieldDef,Text>
 #' @param aggregate (_FieldDefWithCondition<StringFieldDef,Text>_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -6887,7 +6868,6 @@ args$obj
 #' vl_make_Tooltip
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<StringFieldDef,string>, ValueDefWithCondition<MarkPropFieldDef,(string|null)>, array of StringFieldDef or null
 #' @param aggregate (_FieldDefWithCondition<StringFieldDef,string>_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -6976,7 +6956,6 @@ args$obj
 #' vl_make_Url
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldDefWithCondition<StringFieldDef,string> or ValueDefWithCondition<MarkPropFieldDef,(string|null)>
 #' @param aggregate (_FieldDefWithCondition<StringFieldDef,string>_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -7065,7 +7044,6 @@ args$obj
 #' vl_make_X
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: PositionFieldDef or XValueDef
 #' @param aggregate (_PositionFieldDef_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -7185,7 +7163,6 @@ args$obj
 #' vl_make_X2
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or XValueDef
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -7237,7 +7214,6 @@ args$obj
 #' vl_make_XError
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -7289,7 +7265,6 @@ args$obj
 #' vl_make_XError2
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -7341,7 +7316,6 @@ args$obj
 #' vl_make_Y
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: PositionFieldDef or YValueDef
 #' @param aggregate (_PositionFieldDef_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -7461,7 +7435,6 @@ args$obj
 #' vl_make_Y2
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or YValueDef
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -7513,7 +7486,6 @@ args$obj
 #' vl_make_YError
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -7565,7 +7537,6 @@ args$obj
 #' vl_make_YError2
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef
 #' @param aggregate (_SecondaryFieldDef_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -7992,7 +7963,6 @@ vl_pivot <- function(spec, .object = NULL, groupby = NULL, limit = NULL, op = NU
 #' vl_make_AggregateTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AggregateTransform
 #' @param aggregate (_AggregateTransform_) Array of objects that define fields to aggregate.
 #' @param groupby (_AggregateTransform_) The data fields to group by. If not specified, a single group containing all data objects will be used.
 #' @return A component of a Vega-Lite spec, corresponding to a AggregateTransform.
@@ -8005,7 +7975,6 @@ args$obj
 #' vl_make_BinTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BinTransform
 #' @param as (_BinTransform_) The output fields at which to write the start and end bin values.
 #' @param bin (_BinTransform_) An object indicating bin properties, or simply `true` for using default bin parameters.
 #' @param field (_BinTransform_) The data field to bin.
@@ -8019,7 +7988,6 @@ args$obj
 #' vl_make_CalculateTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: CalculateTransform
 #' @param as (_CalculateTransform_) The field for storing the computed formula value.
 #' @param calculate (_CalculateTransform_) A [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string. Use the variable `datum` to refer to the current data object.
 #' @return A component of a Vega-Lite spec, corresponding to a CalculateTransform.
@@ -8032,7 +8000,6 @@ args$obj
 #' vl_make_DensityTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: DensityTransform
 #' @param as (_DensityTransform_) The output fields for the sample value and corresponding density estimate.
 #' 
 #' __Default value:__ `["value", "density"]`
@@ -8064,7 +8031,6 @@ args$obj
 #' vl_make_FilterTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FilterTransform
 #' @param filter (_FilterTransform_) The `filter` property must be one of the predicate definitions:
 #' 
 #' 1) an [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string,
@@ -8092,7 +8058,6 @@ args$obj
 #' vl_make_FlattenTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FlattenTransform
 #' @param as (_FlattenTransform_) The output field names for extracted array values.
 #' 
 #' __Default value:__ The field name of the corresponding array field
@@ -8110,7 +8075,6 @@ args$obj
 #' vl_make_FoldTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FoldTransform
 #' @param as (_FoldTransform_) The output field names for the key and value properties produced by the fold transform.
 #' __Default value:__ `["key", "value"]`
 #' @param fold (_FoldTransform_) An array of data fields indicating the properties to fold.
@@ -8124,7 +8088,6 @@ args$obj
 #' vl_make_ImputeTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ImputeTransform
 #' @param frame (_ImputeTransform_) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. For example, the value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object.
 #' 
 #' __Default value:__:  `[null, null]` indicating that the window includes all objects.
@@ -8154,7 +8117,6 @@ args$obj
 #' vl_make_JoinAggregateTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: JoinAggregateTransform
 #' @param groupby (_JoinAggregateTransform_) The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group.
 #' @param joinaggregate (_JoinAggregateTransform_) The definition of the fields in the join aggregate, and what calculations to use.
 #' @return A component of a Vega-Lite spec, corresponding to a JoinAggregateTransform.
@@ -8167,7 +8129,6 @@ args$obj
 #' vl_make_LoessTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LoessTransform
 #' @param as (_LoessTransform_) The output field names for the smoothed points generated by the loess transform.
 #' 
 #' __Default value:__ The field names of the input x and y values.
@@ -8187,7 +8148,6 @@ args$obj
 #' vl_make_LookupTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LookupTransform
 #' @param as (_LookupTransform_) The output fields on which to store the looked up data values.
 #' 
 #' For data lookups, this property may be left blank if `from.fields`
@@ -8212,7 +8172,6 @@ args$obj
 #' vl_make_QuantileTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: QuantileTransform
 #' @param as (_QuantileTransform_) The output field names for the probability and quantile values.
 #' 
 #' __Default value:__ `["prob", "value"]`
@@ -8230,7 +8189,6 @@ args$obj
 #' vl_make_RegressionTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RegressionTransform
 #' @param as (_RegressionTransform_) The output field names for the smoothed points generated by the regression transform.
 #' 
 #' __Default value:__ The field names of the input x and y values.
@@ -8260,7 +8218,6 @@ args$obj
 #' vl_make_TimeUnitTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TimeUnitTransform
 #' @param as (_TimeUnitTransform_) The output field to write the timeUnit value.
 #' @param field (_TimeUnitTransform_) The data field to apply time unit.
 #' @param timeUnit (_TimeUnitTransform_) The timeUnit.
@@ -8274,7 +8231,6 @@ args$obj
 #' vl_make_SampleTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SampleTransform
 #' @param sample (_SampleTransform_) The maximum number of data objects to include in the sample.
 #' 
 #' __Default value:__ `1000`
@@ -8288,7 +8244,6 @@ args$obj
 #' vl_make_StackTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: StackTransform
 #' @param as (_StackTransform_) Output field names. This can be either a string or an array of strings with two elements denoting the name for the fields for stack start and stack end respectively.
 #' If a single string(e.g., `"val"`) is provided, the end field will be `"val_end"`.
 #' @param groupby (_StackTransform_) The data fields to group by.
@@ -8308,7 +8263,6 @@ args$obj
 #' vl_make_WindowTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: WindowTransform
 #' @param frame (_WindowTransform_) A frame specification as a two-element array indicating how the sliding window should proceed. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. The default value is `[null, 0]`, indicating that the sliding window includes the current object and all preceding objects. The value `[-5, 5]` indicates that the window should include five objects preceding and five objects following the current object. Finally, `[null, null]` indicates that the window frame should always include all data objects. If you this frame and want to assign the same value to add objects, you can use the simpler [join aggregate transform](https://vega.github.io/vega-lite/docs/joinaggregate.html). The only operators affected are the aggregation operations and the `first_value`, `last_value`, and `nth_value` window operations. The other window operations are not affected by this.
 #' 
 #' __Default value:__:  `[null, 0]` (includes the current object and all preceding objects)
@@ -8328,7 +8282,6 @@ args$obj
 #' vl_make_PivotTransform
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: PivotTransform
 #' @param groupby (_PivotTransform_) The optional data fields to group by. If not specified, a single group containing all data objects will be used.
 #' @param limit (_PivotTransform_) An optional parameter indicating the maximum number of pivoted fields to generate.
 #' The default (`0`) applies no limit. The pivoted `pivot` names are sorted in ascending order prior to enforcing the limit.
@@ -9951,8 +9904,8 @@ vl_remove_axis_y <- function(spec){
 #' 
 #' Add SingleSelection to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param selection_name Name for selection
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SingleSelection
+#' @param selection_name Name for selection
 #' @param bind (_SingleSelection_) When set, a selection is populated by input elements (also known as dynamic query widgets)
 #' or by interacting with the corresponding legend. Direct manipulation interaction is disabled by default;
 #' to re-enable it, set the selection's [`on`](https://vega.github.io/vega-lite/docs/selection.html#common-selection-properties) property.
@@ -10001,7 +9954,7 @@ vl_remove_axis_y <- function(spec){
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_single_selection <- function(spec, selection_name, bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, type = NULL){
+vl_add_single_selection <- function(spec, selection_name, .object = NULL, bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, type = NULL){
   args <- .modify_args(NULL, c("bind", "clear", "empty", "encodings", "fields", "init", "nearest", "on", 
   "resolve", "type"))
   .add_selection(args$spec, args$object, '#/definitions/SingleSelection', type = 'single', selection_name = args$extra$selection_name)
@@ -10010,8 +9963,8 @@ vl_add_single_selection <- function(spec, selection_name, bind = NULL, clear = N
 #' 
 #' Add MultiSelection to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param selection_name Name for selection
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MultiSelection
+#' @param selection_name Name for selection
 #' @param bind (_MultiSelection_) When set, a selection is populated by interacting with the corresponding legend. Direct manipulation interaction is disabled by default;
 #' to re-enable it, set the selection's [`on`](https://vega.github.io/vega-lite/docs/selection.html#common-selection-properties) property.
 #' 
@@ -10063,7 +10016,7 @@ vl_add_single_selection <- function(spec, selection_name, bind = NULL, clear = N
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_multi_selection <- function(spec, selection_name, bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL, type = NULL){
+vl_add_multi_selection <- function(spec, selection_name, .object = NULL, bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL, type = NULL){
   args <- .modify_args(NULL, c("bind", "clear", "empty", "encodings", "fields", "init", "nearest", "on", 
   "resolve", "toggle", "type"))
   .add_selection(args$spec, args$object, '#/definitions/MultiSelection', type = 'multi', selection_name = args$extra$selection_name)
@@ -10072,8 +10025,8 @@ vl_add_multi_selection <- function(spec, selection_name, bind = NULL, clear = NU
 #' 
 #' Add IntervalSelection to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param selection_name Name for selection
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: IntervalSelection
+#' @param selection_name Name for selection
 #' @param bind (_IntervalSelection_) Establishes a two-way binding between the interval selection and the scales
 #' used within the same view. This allows a user to interactively pan and
 #' zoom the view.
@@ -10137,7 +10090,7 @@ vl_add_multi_selection <- function(spec, selection_name, bind = NULL, clear = NU
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_add_interval_selection <- function(spec, selection_name, bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, type = NULL, zoom = NULL){
+vl_add_interval_selection <- function(spec, selection_name, .object = NULL, bind = NULL, clear = NULL, empty = NULL, encodings = NULL, fields = NULL, init = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, type = NULL, zoom = NULL){
   args <- .modify_args(NULL, c("bind", "clear", "empty", "encodings", "fields", "init", "mark", "on", "resolve", 
   "translate", "type", "zoom"))
   .add_selection(args$spec, args$object, '#/definitions/IntervalSelection', type = 'interval', selection_name = args$extra$selection_name)
@@ -10145,7 +10098,6 @@ vl_add_interval_selection <- function(spec, selection_name, bind = NULL, clear =
 #' vl_make_SingleSelection
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SingleSelection
 #' @param bind (_SingleSelection_) When set, a selection is populated by input elements (also known as dynamic query widgets)
 #' or by interacting with the corresponding legend. Direct manipulation interaction is disabled by default;
 #' to re-enable it, set the selection's [`on`](https://vega.github.io/vega-lite/docs/selection.html#common-selection-properties) property.
@@ -10202,7 +10154,6 @@ args$obj
 #' vl_make_MultiSelection
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MultiSelection
 #' @param bind (_MultiSelection_) When set, a selection is populated by interacting with the corresponding legend. Direct manipulation interaction is disabled by default;
 #' to re-enable it, set the selection's [`on`](https://vega.github.io/vega-lite/docs/selection.html#common-selection-properties) property.
 #' 
@@ -10262,7 +10213,6 @@ args$obj
 #' vl_make_IntervalSelection
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: IntervalSelection
 #' @param bind (_IntervalSelection_) Establishes a two-way binding between the interval selection and the scales
 #' used within the same view. This allows a user to interactively pan and
 #' zoom the view.
@@ -10347,7 +10297,7 @@ args$obj
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_bind_radio_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, labels = NULL, name = NULL, options = NULL, type = NULL){
+vl_bind_radio_input <- function(spec, selection_name, projection_name = NULL, .object = NULL, debounce = NULL, element = NULL, labels = NULL, name = NULL, options = NULL, type = NULL){
   args <- .modify_args(list(input = 'radio'), c("debounce", "element", "input", "labels", "name", "options", "type"))
   .add_binding(args$spec, args$object, '#/definitions/BindRadioSelect', selection_name = args$extra$selection_name,
 projection_name = args$extra$projection_name)
@@ -10368,7 +10318,7 @@ projection_name = args$extra$projection_name)
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_bind_select_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, labels = NULL, name = NULL, options = NULL, type = NULL){
+vl_bind_select_input <- function(spec, selection_name, projection_name = NULL, .object = NULL, debounce = NULL, element = NULL, labels = NULL, name = NULL, options = NULL, type = NULL){
   args <- .modify_args(list(input = 'select'), c("debounce", "element", "input", "labels", "name", "options", "type"))
   .add_binding(args$spec, args$object, '#/definitions/BindRadioSelect', selection_name = args$extra$selection_name,
 projection_name = args$extra$projection_name)
@@ -10387,7 +10337,7 @@ projection_name = args$extra$projection_name)
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_bind_checkbox_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, name = NULL, type = NULL){
+vl_bind_checkbox_input <- function(spec, selection_name, projection_name = NULL, .object = NULL, debounce = NULL, element = NULL, name = NULL, type = NULL){
   args <- .modify_args(list(input = 'checkbox'), c("debounce", "element", "input", "name", "type"))
   .add_binding(args$spec, args$object, '#/definitions/BindCheckbox', selection_name = args$extra$selection_name,
 projection_name = args$extra$projection_name)
@@ -10409,7 +10359,7 @@ projection_name = args$extra$projection_name)
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_bind_range_input <- function(spec, selection_name, projection_name = NULL, debounce = NULL, element = NULL, max = NULL, min = NULL, name = NULL, step = NULL, type = NULL){
+vl_bind_range_input <- function(spec, selection_name, projection_name = NULL, .object = NULL, debounce = NULL, element = NULL, max = NULL, min = NULL, name = NULL, step = NULL, type = NULL){
   args <- .modify_args(list(input = 'range'), c("debounce", "element", "input", "max", "min", "name", "step", "type"))
   .add_binding(args$spec, args$object, '#/definitions/BindRange', selection_name = args$extra$selection_name,
 projection_name = args$extra$projection_name)
@@ -10940,8 +10890,8 @@ vl_encode_wrap <- function(spec, .object = NULL, field = NULL, type = NULL, aggr
 #' 
 #' Add wrap facetting to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param columns number of columns to add
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FacetFieldDef
+#' @param columns number of columns to add
 #' @param aggregate (_FacetFieldDef_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
@@ -11013,7 +10963,7 @@ vl_encode_wrap <- function(spec, .object = NULL, field = NULL, type = NULL, aggr
 #' @return A modified Vega-Lite Spec
 #' @export
 
-vl_facet_wrap <- function(spec, columns = 2, aggregate = NULL, bin = NULL, field = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_facet_wrap <- function(spec, .object = NULL, columns = 2, aggregate = NULL, bin = NULL, field = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
   args <- .modify_args(NULL, c("aggregate", "bin", "field", "header", "sort", "timeUnit", "title", "type"
   ))
   .add_facet_wrap(args$spec, args$object, '#/definitions/FacetFieldDef', columns = args$extra$columns)
@@ -15644,7 +15594,6 @@ vl_add_view_config <- function(spec, .object = NULL, clip = NULL, continuousHeig
 #' vl_make_AreaConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AreaConfig
 #' @param align (_AreaConfig_) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_AreaConfig_) The rotation angle of the text, in degrees.
 #' @param aspect (_AreaConfig_) Whether to keep aspect ratio of image marks.
@@ -15832,7 +15781,6 @@ args$obj
 #' vl_make_AxisConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AxisConfig
 #' @param bandPosition (_AxisConfig_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
 #' 
 #'   __Default value:__ `0.5`
@@ -15953,7 +15901,6 @@ args$obj
 #' vl_make_BaseMarkConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BaseMarkConfig
 #' @param align (_BaseMarkConfig_) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_BaseMarkConfig_) The rotation angle of the text, in degrees.
 #' @param aspect (_BaseMarkConfig_) Whether to keep aspect ratio of image marks.
@@ -16089,7 +16036,6 @@ args$obj
 #' vl_make_BoxPlotConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BoxPlotConfig
 #' @param box (_BoxPlotConfig_)  
 #' @param extent (_BoxPlotConfig_) The extent of the whiskers. Available options include:
 #' - `"min-max"`: min and max are the lower and upper whiskers respectively.
@@ -16111,7 +16057,6 @@ args$obj
 #' vl_make_BrushConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BrushConfig
 #' @param fill (_BrushConfig_) The fill color of the interval mark.
 #' 
 #' __Default value:__ `"#333333"`
@@ -16137,7 +16082,6 @@ args$obj
 #' vl_make_CompositionConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: CompositionConfig
 #' @param columns (_CompositionConfig_) The number of columns to include in the view composition layout.
 #' 
 #' __Default value__: `undefined` -- An infinite number of columns (a single row) will be assumed. This is equivalent to
@@ -16163,7 +16107,6 @@ args$obj
 #' vl_make_Config
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Config
 #' @param area (_Config_) Area-Specific Config
 #' @param autosize (_Config_) How the visualization size should be determined. If a string, should be one of `"pad"`, `"fit"` or `"none"`.
 #' Object values can additionally specify parameters for content sizing and automatic resizing.
@@ -16252,7 +16195,6 @@ args$obj
 #' vl_make_ErrorBandConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBandConfig
 #' @param band (_ErrorBandConfig_)  
 #' @param borders (_ErrorBandConfig_)  
 #' @param extent (_ErrorBandConfig_) The extent of the band. Available options include:
@@ -16287,7 +16229,6 @@ args$obj
 #' vl_make_ErrorBarConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBarConfig
 #' @param extent (_ErrorBarConfig_) The extent of the rule. Available options include:
 #' - `"ci"`: Extend the rule to the confidence interval of the mean.
 #' - `"stderr"`: The size of rule are set to the value of standard error, extending from the mean.
@@ -16307,7 +16248,6 @@ args$obj
 #' vl_make_HeaderConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: HeaderConfig
 #' @param format (_HeaderConfig_) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 #' 
 #' - If the format type is `"number"` (e.g., for quantitative fields), this is D3's [number format pattern](https://github.com/d3/d3-format#locale_format).
@@ -16381,7 +16321,6 @@ args$obj
 #' vl_make_IntervalSelectionConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: IntervalSelectionConfig
 #' @param bind (_IntervalSelectionConfig_) Establishes a two-way binding between the interval selection and the scales
 #' used within the same view. This allows a user to interactively pan and
 #' zoom the view.
@@ -16448,7 +16387,6 @@ args$obj
 #' vl_make_LegendConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LegendConfig
 #' @param clipHeight (_LegendConfig_) The height in pixels to clip symbol legend entries and limit their size.
 #' @param columnPadding (_LegendConfig_) The horizontal padding in pixels between symbol legend entries.
 #' 
@@ -16607,7 +16545,6 @@ args$obj
 #' vl_make_LineConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LineConfig
 #' @param align (_LineConfig_) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_LineConfig_) The rotation angle of the text, in degrees.
 #' @param aspect (_LineConfig_) Whether to keep aspect ratio of image marks.
@@ -16788,7 +16725,6 @@ args$obj
 #' vl_make_MarkConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkConfig
 #' @param align (_MarkConfig_) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_MarkConfig_) The rotation angle of the text, in degrees.
 #' @param aspect (_MarkConfig_) Whether to keep aspect ratio of image marks.
@@ -16960,7 +16896,6 @@ args$obj
 #' vl_make_MultiSelectionConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MultiSelectionConfig
 #' @param bind (_MultiSelectionConfig_) When set, a selection is populated by interacting with the corresponding legend. Direct manipulation interaction is disabled by default;
 #' to re-enable it, set the selection's [`on`](https://vega.github.io/vega-lite/docs/selection.html#common-selection-properties) property.
 #' 
@@ -17015,7 +16950,6 @@ args$obj
 #' vl_make_ProjectionConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Projection
 #' @param center (_Projection_) The projection’s center to the specified center, a two-element array of longitude and latitude in degrees.
 #' 
 #' __Default value:__ `[0, 0]`
@@ -17054,7 +16988,6 @@ args$obj
 #' vl_make_RangeConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RangeConfig
 #' @param category (_RangeConfig_) Default [color scheme](https://vega.github.io/vega/docs/schemes/) for categorical data.
 #' @param diverging (_RangeConfig_) Default [color scheme](https://vega.github.io/vega/docs/schemes/) for diverging quantitative ramps.
 #' @param heatmap (_RangeConfig_) Default [color scheme](https://vega.github.io/vega/docs/schemes/) for quantitative heatmaps.
@@ -17071,7 +17004,6 @@ args$obj
 #' vl_make_RectConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RectConfig
 #' @param align (_RectConfig_) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_RectConfig_) The rotation angle of the text, in degrees.
 #' @param aspect (_RectConfig_) Whether to keep aspect ratio of image marks.
@@ -17250,7 +17182,6 @@ args$obj
 #' vl_make_ScaleConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ScaleConfig
 #' @param bandPaddingInner (_ScaleConfig_) Default inner padding for `x` and `y` band-ordinal scales.
 #' 
 #' __Default value:__
@@ -17329,7 +17260,6 @@ args$obj
 #' vl_make_SelectionConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SelectionConfig
 #' @param interval (_SelectionConfig_) The default definition for an [`interval`](https://vega.github.io/vega-lite/docs/selection.html#type) selection. All properties and transformations
 #' for an interval selection definition (except `type`) may be specified here.
 #' 
@@ -17354,7 +17284,6 @@ args$obj
 #' vl_make_SingleSelectionConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SingleSelectionConfig
 #' @param bind (_SingleSelectionConfig_) When set, a selection is populated by input elements (also known as dynamic query widgets)
 #' or by interacting with the corresponding legend. Direct manipulation interaction is disabled by default;
 #' to re-enable it, set the selection's [`on`](https://vega.github.io/vega-lite/docs/selection.html#common-selection-properties) property.
@@ -17406,7 +17335,6 @@ args$obj
 #' vl_make_TickConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TickConfig
 #' @param align (_TickConfig_) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of `"left"`, `"right"`, `"center"`.
 #' @param angle (_TickConfig_) The rotation angle of the text, in degrees.
 #' @param aspect (_TickConfig_) Whether to keep aspect ratio of image marks.
@@ -17584,7 +17512,6 @@ args$obj
 #' vl_make_TitleConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ExcludeMappedValueRef<BaseTitle>
 #' @param align (_ExcludeMappedValueRef<BaseTitle>_) Horizontal text alignment for title text. One of `"left"`, `"center"`, or `"right"`.
 #' @param anchor (_ExcludeMappedValueRef<BaseTitle>_) The anchor position for placing the title and subtitle text. One of `"start"`, `"middle"`, or `"end"`. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.
 #' @param angle (_ExcludeMappedValueRef<BaseTitle>_) Angle in degrees of title and subtitle text.
@@ -17623,7 +17550,6 @@ args$obj
 #' vl_make_ViewConfig
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ViewConfig
 #' @param clip (_ViewConfig_) Whether the view should be clipped.
 #' @param continuousHeight (_ViewConfig_) The default height when the plot has a continuous y-field.
 #' 
@@ -17681,7 +17607,6 @@ args$obj
 #' vl_make_BinParams
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BinParams
 #' @param anchor (_BinParams_) A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
 #' 
 #' __Default value:__ the minimum bin extent value
@@ -17715,7 +17640,6 @@ args$obj
 #' vl_make_Axis
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Axis
 #' @param bandPosition (_Axis_) An interpolation fraction indicating where, for `band` scales, axis ticks should be positioned. A value of `0` places ticks at the left edge of their bands. A value of `0.5` places ticks in the middle of their bands.
 #' 
 #'   __Default value:__ `0.5`
@@ -17879,7 +17803,6 @@ args$obj
 #' vl_make_Scale
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Scale
 #' @param align (_Scale_) The alignment of the steps within the scale range.
 #' 
 #' This value must lie in the range `[0,1]`. A value of `0.5` indicates that the steps should be centered within the range. A value of `0` or `1` may be used to shift the bands to one side, say to position them adjacent to an axis.
@@ -17979,7 +17902,6 @@ args$obj
 #' vl_make_Legend
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Legend
 #' @param clipHeight (_Legend_) The height in pixels to clip symbol legend entries and limit their size.
 #' @param columnPadding (_Legend_) The horizontal padding in pixels between symbol legend entries.
 #' 
@@ -18142,7 +18064,6 @@ args$obj
 #' vl_make_BindCheckbox
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindCheckbox
 #' @param debounce (_BindCheckbox_)  
 #' @param element (_BindCheckbox_)  
 #' @param input (_BindCheckbox_) checkbox
@@ -18158,7 +18079,6 @@ args$obj
 #' vl_make_BindRange
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRange
 #' @param debounce (_BindRange_)  
 #' @param element (_BindRange_)  
 #' @param input (_BindRange_) range
@@ -18177,7 +18097,6 @@ args$obj
 #' vl_make_BindRadioSelect
 #' 
 #' Create spec for {obj}
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRadioSelect
 #' @param debounce (_BindRadioSelect_)  
 #' @param element (_BindRadioSelect_)  
 #' @param input (_BindRadioSelect_) radio, select
