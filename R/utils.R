@@ -10,6 +10,13 @@ TOP_LEVEL_KEYS <- c("$schema", "autosize", "background", "config", "datasets",
   is_obj <- names(args_nn) %in% valid_names
   if ('.object' %in% names(args_nn)) {
     args_obj <- args_nn[['.object']]
+    if (sum(is_obj) > 0) {
+      fn <- sys.calls()[[sys.nframe()-1]][[1]]
+      warning("In ", fn,
+        ", .object argument was provided, so ignoring additional inputs: ", 
+         names(args_nn)[is_obj],
+        call. = FALSE)
+    }
   } else {
     args_obj <- args_nn[is_obj]
   }
