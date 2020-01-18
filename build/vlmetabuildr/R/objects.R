@@ -12,27 +12,44 @@ create_additional_objects <- function(schema) {
   
 }
 
+get_objects <- function(schema) {
+  is_obj <- purrr::map_lgl(schema$definitions, ~hasName(.,"type") && .[["type"]] == "object")
+  names(schema$definitions)[is_obj]
+}
+
 create_object <- function(obj, schema, reference = glue("#/definitions/{obj}")) {
   
-  suffix <- glue("make_{obj}")
+  fn_name <- glue("vl${obj}")
   
   docs <- make_docs_helper(
-    glue("vl_make_{obj}"),
-    "Create spec for {obj}",
+    obj,
+    glue("Create object for {obj}"),
     get_param_docs(schema, reference),
-    returns = glue("A component of a Vega-Lite spec, corresponding to a {obj}.")
+    returns = glue("A component of a Vega-Lite spec, corresponding to {obj} definition."),
+    export = FALSE, 
+    doc_group = fn_name
   )
   
   param_names <- get_params(schema, reference)
   
   # If param is named repeat, need to change
-  param_names[param_names == "repeat"] <- "`repeat`"
+  #param_names[param_names == "repeat"] <- "`repeat`"
   
-  args <- paste(param_names, "NULL", sep = " = ", collapse = ", ")
+  # Get whether any additional properties...
+  additional_properties <-  lookup(schema, reference)$additionalProperties 
+  
+  additional_args <- if (!identical(additional_properties, FALSE)) "..." else NULL
+  prop_args <- if (length(param_names) > 1) paste(paste0('`',param_names,'`'), "NULL", sep = " = ", collapse = ", ") else NULL 
+  
+  args <- paste(c(prop_args, additional_args), collapse = ", ")
 
-  inner_fn <- glue("  args <- .modify_args(NULL, {deparse_c(param_names)})\n  args$obj")
+  inner_function <- glue("  args <- .modify_args(NULL, {deparse_c(param_names)})\n  args$obj")
   
-  make_function_helper(suffix, docs, inner_fn, args)
+  ## Make the outer function
+  fn <- glue("vl$`{obj}` <- function({args}){{\n{inner_function}\n}}")
+  
+  # Combine docs and function
+  glue_collapse(c(docs, fn), sep = "\n", last = "\n")
   
 }
 

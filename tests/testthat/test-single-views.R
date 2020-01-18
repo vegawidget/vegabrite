@@ -65,7 +65,7 @@ test_that("can build aggregate bar chart", {
   
   chart <- vl_chart(description = "A bar chart showing the US population distribution of age groups in 2000.", height = list(step = 17)) %>%
     vl_add_data(url = data) %>%
-    vl_filter("datum.year == 2000") %>%
+    vl_filter(filter = "datum.year == 2000") %>%
     vl_mark_bar() %>%
     vl_encode_y(field = "age", type = "ordinal") %>%
     vl_encode_x(field = "people", type = "quantitative") %>%
@@ -108,7 +108,7 @@ test_that("can build aggregate bar chart (sorted)", {
   
   chart <- vl_chart(description = "A bar chart that sorts the y-values by the x-values.", height = list(step = 17)) %>%
     vl_add_data(url = data) %>%
-    vl_filter("datum.year == 2000") %>%
+    vl_filter(filter = "datum.year == 2000") %>%
     vl_mark_bar() %>%
     vl_encode_y(field = "age", type = "ordinal") %>%
     vl_sort_y_by_encoding(encoding = "x", order = "descending") %>%

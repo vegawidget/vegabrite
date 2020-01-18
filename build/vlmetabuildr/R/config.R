@@ -28,8 +28,8 @@ create_sub_config <- function(prop, schema) {
   
   make_function( glue("#/definitions/{config}"), 
                  schema, 
-                 glue("add_{prop}_config"), 
-                 glue(".add_sub_config"), 
+                 glue("config_{prop}"), 
+                 ".add_sub_config", 
                  description = glue::glue("Add {prop} config ({config}) to a vega-lite spec."),
                  pass_to_adder = list(.config = prop)
   )
@@ -40,8 +40,8 @@ create_config <- function(schema) {
   
   make_function( glue("#/definitions/Config"), 
                  schema, 
-                 glue("add_config"), 
-                 glue(".add_config"), 
+                 "config", 
+                 ".add_config", 
                  description = glue::glue("Add top-level config to a vega-lite spec.")
   )
   

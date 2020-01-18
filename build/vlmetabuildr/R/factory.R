@@ -77,7 +77,7 @@ make_arg_list <- function(reference, schema, exclude_args, priority_args){
 }
 
 make_docs_helper <- function(title, description, param_docs,
-                             returns = "A modified Vega-Lite Spec", export = TRUE, doc_group = NULL) {
+                             returns = "A modified Vega-Lite Spec", export = TRUE, doc_group = NULL, extra = NULL) {
   
   title <- roxy_wrap(title)
   
@@ -97,6 +97,7 @@ make_docs_helper <- function(title, description, param_docs,
     returns,
     export,
     doc_name,
+    extra,
     sep = "\n"
   )
   
