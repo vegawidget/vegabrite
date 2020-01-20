@@ -25,7 +25,7 @@ vl_chart() \%>\%
   vl_add_data_frame(mtcars) \%>\%
   vl_mark_point() \%>\%
   vl_encode_x("wt") \%>\%
-  vl_encode_y("mpg") 
+  vl_encode_y("mpg")
 }
 \seealso{
 \code{\link[=vl_add_data]{vl_add_data()}}

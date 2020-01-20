@@ -23,16 +23,15 @@ json1 <- '{
 
 
 test_that("can build simple bar chart", {
-
   spec <- jsonlite::fromJSON(json1)
   data <- spec$data$values
-  
+
   chart <- vl_chart(description = "A simple bar chart with embedded data.") %>%
     vl_add_data(values = data) %>%
     vl_mark_bar() %>%
     vl_encode_x(field = "a", type = "ordinal") %>%
     vl_encode_y(field = "b", type = "quantitative")
-  
+
   expect_equivalent_json(chart, spec)
 })
 
@@ -59,10 +58,9 @@ json2 <- '
 '
 
 test_that("can build aggregate bar chart", {
-  
   spec <- jsonlite::fromJSON(json2)
   data <- spec$data$url
-  
+
   chart <- vl_chart(description = "A bar chart showing the US population distribution of age groups in 2000.", height = list(step = 17)) %>%
     vl_add_data(url = data) %>%
     vl_filter(filter = "datum.year == 2000") %>%
@@ -70,8 +68,8 @@ test_that("can build aggregate bar chart", {
     vl_encode_y(field = "age", type = "ordinal") %>%
     vl_encode_x(field = "people", type = "quantitative") %>%
     vl_aggregate_x("sum") %>%
-    vl_axis_x(title = "population") 
-  
+    vl_axis_x(title = "population")
+
   expect_equivalent_json(chart, spec)
 })
 
@@ -102,10 +100,9 @@ json3 <- '
 '
 
 test_that("can build aggregate bar chart (sorted)", {
-  
   spec <- jsonlite::fromJSON(json3)
   data <- spec$data$url
-  
+
   chart <- vl_chart(description = "A bar chart that sorts the y-values by the x-values.", height = list(step = 17)) %>%
     vl_add_data(url = data) %>%
     vl_filter(filter = "datum.year == 2000") %>%
@@ -114,10 +111,7 @@ test_that("can build aggregate bar chart (sorted)", {
     vl_sort_y_by_encoding(encoding = "x", order = "descending") %>%
     vl_encode_x(field = "people", type = "quantitative") %>%
     vl_aggregate_x("sum") %>%
-    vl_axis_x(title = "population") 
-  
+    vl_axis_x(title = "population")
+
   expect_equivalent_json(chart, spec)
 })
-
-
-

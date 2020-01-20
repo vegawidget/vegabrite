@@ -5,108 +5,107 @@ ENCODE_MAPPING <- list(
   "O" = "ordinal"
 )
 
-.add_encoding <- function(spec, obj, ref, encoding){
-
+.add_encoding <- function(spec, obj, ref, encoding) {
   fn <- function(spec) {
-    
+
     # Handle shorthand
     enc <- obj
     if (is.null(names(enc)) && length(enc) == 1) {
       enc <- list(field = enc[[1]])
     }
     # sugar for type shorthand
-    if (!hasName(enc,"type") && hasName(enc,"field") && grepl(":[N,O,Q,T]$", enc[["field"]])) {
+    if (!hasName(enc, "type") && hasName(enc, "field") && grepl(":[N,O,Q,T]$", enc[["field"]])) {
       field <- enc$field
       nc <- nchar(field)
       enc$type <- ENCODE_MAPPING[[substr(field, nc, nc)]]
-      enc$field <- substr(field,1, nc - 2)
-    } else if (hasName(enc,"type") && enc$type %in% names(ENCODE_MAPPING)) { 
+      enc$field <- substr(field, 1, nc - 2)
+    } else if (hasName(enc, "type") && enc$type %in% names(ENCODE_MAPPING)) {
       enc$type <- ENCODE_MAPPING[[enc$type]]
-    } else if (!hasName(enc,"type") && hasName(enc,"field")) {
+    } else if (!hasName(enc, "type") && hasName(enc, "field")) {
       dat <- .get_inline_data(spec)
       if (!is.null(dat)) {
         col <- dat[[enc$field]]
         if (is.factor(col)) {
-          enc$type <- "ordinal"          
+          enc$type <- "ordinal"
         } else if (inherits(col, c("POSIXt", "POSIXct", "POSIXlt", "Date"))) {
           enc$type <- "temporal"
         } else if (is.numeric(col)) {
           enc$type <- "quantitative"
-        } else{
+        } else {
           enc$type <- "nominal"
         }
       }
     }
     # sugar for repeat
-    if (hasName(enc,"field") && grepl("^repeat:(column|row|repeat)$", enc[["field"]])) {
-      enc[["field"]] = list(`repeat` = substr(enc$field,8,nchar(enc$field)))
-    } else if (hasName(enc,"field") && (enc$field == "repeat:" || enc$field == "repeat:wrap")) {
-      enc[["field"]] = list(`repeat` = "repeat")
+    if (hasName(enc, "field") && grepl("^repeat:(column|row|repeat)$", enc[["field"]])) {
+      enc[["field"]] <- list(`repeat` = substr(enc$field, 8, nchar(enc$field)))
+    } else if (hasName(enc, "field") && (enc$field == "repeat:" || enc$field == "repeat:wrap")) {
+      enc[["field"]] <- list(`repeat` = "repeat")
     }
     # Escape "." in feild
-    if (hasName(enc,"field") && !is.list(enc$field)){
-      enc$field <- gsub("\\.","\\\\.", enc$field)
+    if (hasName(enc, "field") && !is.list(enc$field)) {
+      enc$field <- gsub("\\.", "\\\\.", enc$field)
     }
-    
-    if (!hasName(spec,"encoding")) spec$encoding <- list()
+
+    if (!hasName(spec, "encoding")) spec$encoding <- list()
     validate_sub_schema(enc, ref)
     spec[["encoding"]][[encoding]] <- enc
     spec
   }
-  
+
   modify_inner_spec(spec, fn)
-  
 }
 
-.add_param_to_encoding <- function(spec, obj, ref, encoding, param, ...){
-  
+.add_param_to_encoding <- function(spec, obj, ref, encoding, param, ...) {
   fn <- function(spec) {
-    if (!hasName(spec,"encoding") || !hasName(spec[["encoding"]], encoding)) {
-      stop("Error in adding ", param, " to ", encoding, 
-           "\nCould not find ", encoding," encoding in spec.",
-           "\nAdd encoding first before adding, ", param, ".")
+    if (!hasName(spec, "encoding") || !hasName(spec[["encoding"]], encoding)) {
+      stop(
+        "Error in adding ", param, " to ", encoding,
+        "\nCould not find ", encoding, " encoding in spec.",
+        "\nAdd encoding first before adding, ", param, "."
+      )
     }
     validate_sub_schema(obj, ref)
     spec[["encoding"]][[encoding]][[param]] <- obj
     spec
   }
-  
+
   modify_inner_spec(spec, fn)
-  
 }
 
-.add_sort_to_encoding <- function(spec, obj, ref, encoding, ...){
+.add_sort_to_encoding <- function(spec, obj, ref, encoding, ...) {
   .add_param_to_encoding(spec, obj, ref, encoding, param = "sort", ...)
 }
 
 
-.add_axis_to_encoding <- function(spec, obj, ref, encoding, ...){
+.add_axis_to_encoding <- function(spec, obj, ref, encoding, ...) {
   .add_param_to_encoding(spec, obj, ref, encoding, param = "axis", ...)
 }
 
-.add_scale_to_encoding <- function(spec, obj, ref, encoding, ...){
+.add_scale_to_encoding <- function(spec, obj, ref, encoding, ...) {
   .add_param_to_encoding(spec, obj, ref, encoding, param = "scale", ...)
 }
 
-.add_legend_to_encoding <- function(spec, obj, ref, encoding, ...){
+.add_legend_to_encoding <- function(spec, obj, ref, encoding, ...) {
   .add_param_to_encoding(spec, obj, ref, encoding, param = "legend", ...)
 }
 
 .add_condition_to_encoding <- function(spec, obj, ref, encoding, ...) {
-  
+
   # adds to an array, so not use standard func...
-  
+
   fn <- function(spec) {
-  
-    if (!hasName(spec,"encoding") || !hasName(spec[["encoding"]], encoding)) {
-      stop("Error in adding condition to ", encoding, 
-           "\nCould not find ",encoding," encoding in spec.",
-           "\nAdd encoding first before adding condition.")
+    if (!hasName(spec, "encoding") || !hasName(spec[["encoding"]], encoding)) {
+      stop(
+        "Error in adding condition to ", encoding,
+        "\nCould not find ", encoding, " encoding in spec.",
+        "\nAdd encoding first before adding condition."
+      )
     }
-    
+
     validate_sub_schema(obj, ref)
-    
-    if (hasName(spec[["encoding"]][[encoding]],"condition")) {
+
+    if (hasName(spec[["encoding"]][[encoding]], "condition")) {
       # Check if named
       if (is.null(names(spec[["encoding"]][[encoding]][["condition"]]))) {
         value <- c(spec[["encoding"]][[encoding]][["condition"]], list(obj))
@@ -116,13 +115,12 @@ ENCODE_MAPPING <- list(
     } else {
       value <- obj
     }
-    
+
     spec[["encoding"]][[encoding]][["condition"]] <- value
     spec
   }
-  
+
   modify_inner_spec(spec, fn)
-  
 }
 
 #' vl_encode
@@ -146,16 +144,15 @@ ENCODE_MAPPING <- list(
 #'     x = "wt:Q",
 #'     y = "mpg:Q"
 #'   )
-vl_encode <- function(spec, ...){
+vl_encode <- function(spec, ...) {
   inputs <- list(...)
-  for (n in names(inputs)){
-    if (n %in% c('row','column','facet')) {
+  for (n in names(inputs)) {
+    if (n %in% c("row", "column", "facet")) {
       args <- list(spec = spec, obj = inputs[[n]], ref = "#/definitions/FacetEncodingFieldDef", encoding = n)
     } else {
-      args <- list(spec = spec, obj = inputs[[n]], ref = paste0("#/definitions/Encoding/properties/",n), encoding = n)
+      args <- list(spec = spec, obj = inputs[[n]], ref = paste0("#/definitions/Encoding/properties/", n), encoding = n)
     }
     spec <- rlang::exec(.add_encoding, !!!args)
   }
   spec
 }
-
