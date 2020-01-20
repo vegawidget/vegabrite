@@ -10024,7 +10024,7 @@ vl$`IntervalSelection` <- function(`bind` = NULL, `clear` = NULL, `empty` = NULL
 
 
 vl_bind_radio_input <- function(spec, selection_name, projection_name = NULL, .object = NULL, debounce = NULL, element = NULL, labels = NULL, name = NULL, options = NULL, type = NULL){
-  obj <- .modify_args(list(input = '{name}'), c('projection_name', 'selection_name'))
+  obj <- .modify_args(list(input = 'radio'), c('projection_name', 'selection_name'))
   .add_binding(spec, obj, '#/definitions/BindRadioSelect', selection_name = selection_name,
 projection_name = projection_name)
 } 
@@ -10046,7 +10046,7 @@ projection_name = projection_name)
 
 
 vl_bind_select_input <- function(spec, selection_name, projection_name = NULL, .object = NULL, debounce = NULL, element = NULL, labels = NULL, name = NULL, options = NULL, type = NULL){
-  obj <- .modify_args(list(input = '{name}'), c('projection_name', 'selection_name'))
+  obj <- .modify_args(list(input = 'select'), c('projection_name', 'selection_name'))
   .add_binding(spec, obj, '#/definitions/BindRadioSelect', selection_name = selection_name,
 projection_name = projection_name)
 } 
@@ -10066,7 +10066,7 @@ projection_name = projection_name)
 
 
 vl_bind_checkbox_input <- function(spec, selection_name, projection_name = NULL, .object = NULL, debounce = NULL, element = NULL, name = NULL, type = NULL){
-  obj <- .modify_args(list(input = '{name}'), c('projection_name', 'selection_name'))
+  obj <- .modify_args(list(input = 'checkbox'), c('projection_name', 'selection_name'))
   .add_binding(spec, obj, '#/definitions/BindCheckbox', selection_name = selection_name,
 projection_name = projection_name)
 } 
@@ -10089,7 +10089,7 @@ projection_name = projection_name)
 
 
 vl_bind_range_input <- function(spec, selection_name, projection_name = NULL, .object = NULL, debounce = NULL, element = NULL, max = NULL, min = NULL, name = NULL, step = NULL, type = NULL){
-  obj <- .modify_args(list(input = '{name}'), c('projection_name', 'selection_name'))
+  obj <- .modify_args(list(input = 'range'), c('projection_name', 'selection_name'))
   .add_binding(spec, obj, '#/definitions/BindRange', selection_name = selection_name,
 projection_name = projection_name)
 } 
