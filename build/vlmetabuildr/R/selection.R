@@ -2,7 +2,8 @@ create_selection_functions <- function(schema) {
   selections <- list("SingleSelection","MultiSelection","IntervalSelection")
   c(
     purrr::map_chr(selections, create_selection_type, schema = schema),
-    purrr::map_chr(selections, create_object, schema = schema)
+    purrr::map_chr(selections, create_object, schema = schema),
+    purrr::map_chr(selections, create_deprecated_object)
   )
 }
 
@@ -26,9 +27,9 @@ create_selection_type <- function(type, schema) {
   
   ## Make the inner function
   param_names <- get_params(schema, reference)
-  modifier <- glue("  args <- .modify_args(NULL, {deparse_c(param_names)})")
+  modifier <- "  obj <- .modify_args(NULL, 'selection_name')"
   
-  adder <- glue(".add_selection(args$spec, args$object, '{reference}', type = '{short_type}', selection_name = args$extra$selection_name)")
+  adder <- glue(".add_selection(spec, obj, '{reference}', type = '{short_type}', selection_name = selection_name)")
   
   inner_fn <- paste(
     modifier,

@@ -51,9 +51,9 @@ create_facet_wrap <- function(schema) {
   
   ## Make the inner function
   param_names <- get_params(schema, reference)
-  modifier <- glue("  args <- .modify_args(NULL, {deparse_c(param_names)})")
+  modifier <- "  obj <- .modify_args(NULL, 'columns')"
   
-  adder <- glue(".add_facet_wrap(args$spec, args$object, '{reference}', columns = args$extra$columns)")
+  adder <- glue(".add_facet_wrap(spec, obj, '{reference}', columns = columns)")
   
   inner_fn <- paste(
     modifier,

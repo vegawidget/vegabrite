@@ -4,16 +4,16 @@
 \alias{vl_calculate}
 \title{vl_calculate}
 \usage{
-vl_calculate(spec, .object = NULL, as = NULL, calculate = NULL)
+vl_calculate(spec, .object = NULL, calculate = NULL, as = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: CalculateTransform}
 
-\item{as}{(\emph{CalculateTransform}) The field for storing the computed formula value.}
-
 \item{calculate}{(\emph{CalculateTransform}) A \href{https://vega.github.io/vega-lite/docs/types.html#expression}{expression} string. Use the variable \code{datum} to refer to the current data object.}
+
+\item{as}{(\emph{CalculateTransform}) The field for storing the computed formula value.}
 }
 \value{
 A modified Vega-Lite Spec

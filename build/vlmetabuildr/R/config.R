@@ -6,7 +6,10 @@ create_config_functions <- function(schema) {
   c(
     create_config(schema),
     purrr::map_chr(config_options, create_sub_config, schema = schema),
-    purrr::map_chr(config_objs, create_object, schema = schema)
+    purrr::map_chr(config_objs, create_object, schema = schema),
+    purrr::map_chr(config_options, create_deprecated_sub_config),
+    create_deprecated("vl_add_config","vl_config"),
+    purrr::map_chr(config_objs, create_deprecated_object)
   )
 }
 
@@ -28,8 +31,8 @@ create_sub_config <- function(prop, schema) {
   
   make_function( glue("#/definitions/{config}"), 
                  schema, 
-                 glue("add_{prop}_config"), 
-                 glue(".add_sub_config"), 
+                 glue("config_{prop}"), 
+                 ".add_sub_config", 
                  description = glue::glue("Add {prop} config ({config}) to a vega-lite spec."),
                  pass_to_adder = list(.config = prop)
   )
@@ -40,9 +43,15 @@ create_config <- function(schema) {
   
   make_function( glue("#/definitions/Config"), 
                  schema, 
-                 glue("add_config"), 
-                 glue(".add_config"), 
+                 "config", 
+                 ".add_config", 
                  description = glue::glue("Add top-level config to a vega-lite spec.")
   )
   
+}
+
+create_deprecated_sub_config <- function(prop) {
+  new <- glue("vl_config_{prop}")
+  old <- glue("vl_add_{prop}_config")
+  create_deprecated(old, new)
 }

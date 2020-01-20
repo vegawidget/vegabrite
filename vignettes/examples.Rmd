@@ -46,7 +46,7 @@ vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/population.json") %>%
   vl_calculate(calculate = "datum.sex == 2 ? 'Female' : 'Male'", 
                as = "gender") %>%
-  vl_filter(filter = "datum.year == 2000") %>%
+  vl_filter("datum.year == 2000") %>%
   vl_encode_x(field = "age", 
               type = "ordinal") %>%
   vl_encode_y(field = "people", type = "quantitative") %>%
@@ -55,8 +55,8 @@ vl_chart() %>%
   vl_axis_y(title = "population") %>%
   vl_encode_color(field = "gender", type = "nominal") %>%
   vl_mark_bar() %>% 
-  vl_add_axis_config(domainWidth = 1) %>%
-  vl_add_view_config(stroke = "transparent")
+  vl_config_axis(domainWidth = 1) %>%
+  vl_config_view(stroke = "transparent")
 ```
 
 
@@ -64,7 +64,7 @@ vl_chart() %>%
 ```{r}
 vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/population.json") %>%
-  vl_filter(filter = "datum.year == 2000") %>%
+  vl_filter("datum.year == 2000") %>%
   vl_encode_y(field = "age", 
               type = "ordinal") %>%
   vl_encode_x(field = "people", 
@@ -150,7 +150,7 @@ vl_chart() %>%
 ```{r}
 vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/population.json") %>%
-  vl_filter(filter = "datum.year == 2000") %>%
+  vl_filter("datum.year == 2000") %>%
   vl_calculate(as = "gender", calculate = 'datum.sex == 2 ? "Female" : "Male"') %>%
   vl_encode_x(field = "gender", type = "nominal") %>%
   vl_encode_y(field = "people", type = "quantitative", aggregate = "sum") %>%
@@ -159,10 +159,10 @@ vl_chart() %>%
   vl_encode_column(field = "age", type = "ordinal", spacing = 10) %>%
   vl_remove_axis_x() %>%
   vl_axis_y(title = "population", grid = FALSE) %>%
-  vl_add_view_config(strokeWidth = 0) %>%
+  vl_config_view(strokeWidth = 0) %>%
   vl_mark_bar()%>% 
-  vl_add_axis_config(domainWidth = 1) %>%
-  vl_add_view_config(stroke = "transparent") %>%
+  vl_config_axis(domainWidth = 1) %>%
+  vl_config_view(stroke = "transparent") %>%
   vl_add_properties(width = 10)
 ```
 
@@ -180,7 +180,7 @@ point_chart <- vl_chart() %>%
   
 vl_hconcat(bar_chart, point_chart) %>% 
   vl_add_data(url = "https://vega.github.io/vega-lite/data/weather.csv") %>%
-  vl_filter(filter = "datum.location === 'Seattle'")
+  vl_filter("datum.location === 'Seattle'")
 ```
 
 ```{r}
@@ -217,7 +217,7 @@ vl_chart() %>%
     vl_add_data(url = "https://vega.github.io/vega-editor/app/data/stocks.csv") %>% 
     vl_mark_line() %>% 
     vl_mark_point() %>%
-    vl_filter(filter = "datum.symbol==='GOOG'") %>%
+    vl_filter("datum.symbol==='GOOG'") %>%
     vl_encode_x(field = "date", type = "temporal") %>%
     vl_encode_y(field = "price", type = "quantitative")
 ```

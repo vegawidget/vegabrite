@@ -42,6 +42,12 @@ get_description_plus <- function(x) {
 
 }
 
+get_required_params <- function(schema, ref) {
+  required <- unlist(purrr::map(ref, reqs, schema = schema))
+  # Sort by frequency
+  names(sort(table(required), decreasing=TRUE))
+}
+
 get_params <- function(schema, ref, exclude = NULL) {
   properties <- unlist(purrr::map(ref, props_grouped_by_object, schema = schema), 
                        recursive = FALSE)
@@ -85,7 +91,7 @@ get_param_docs <- function(schema, ref, exclude = NULL) {
   param_names <- get_params(schema, ref, exclude)
   
   get_desc <- function(param) {
-    objs <- names(properties[purrr::map_lgl(properties, ~hasName(., param))])
+    objs <- unique(names(properties[purrr::map_lgl(properties, ~hasName(., param))]))
     d <- purrr::map_chr(objs, ~get_description_plus(properties[[.]][[param]]))
     grps <- split(objs, d)
     grp_descs <- purrr::map_chr(names(grps), 
@@ -117,6 +123,11 @@ get_param_docs <- function(schema, ref, exclude = NULL) {
     param_desc,
    "`'Count of Records`",
    "`Count of Records`")
+  
+  if (additional_properties_allowed(ref, schema)) {
+    param_names <- c(param_names, '...')
+    param_desc <- c(param_desc, 'Additional elements for constructing object.')
+  }
   
   paste("#' @param", param_names, param_desc, sep = " ", collapse = "\n")
  

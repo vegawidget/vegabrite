@@ -42,8 +42,7 @@ make_function <- function(
 
 make_function_innards <- function(reference, schema, override_args, adder_function, pass_to_adder) {
   
-  param_names <- get_params(schema, reference)
-  modifier <- glue("  args <- .modify_args({deparse_c(override_args)}, {deparse_c(param_names)})")
+  modifier <- glue("  obj <- .modify_args({deparse_c(override_args)}, NULL)")
   
   extras <- if (!is.null(pass_to_adder)){
     paste(c(" ",paste(names(pass_to_adder), purrr::map_chr(pass_to_adder, deparse_c), sep = " = ")), 
@@ -52,7 +51,7 @@ make_function_innards <- function(reference, schema, override_args, adder_functi
     ""
   }
   
-  adder <- glue("{adder_function}(args$spec, args$object, {deparse_c(as.character(reference))}{extras})")
+  adder <- glue("{adder_function}(spec, obj, {deparse_c(as.character(reference))}{extras})")
   
   paste(
     modifier,
@@ -69,15 +68,21 @@ make_arg_list <- function(reference, schema, exclude_args, priority_args){
   # If param is named repeat, need to change
   param_names[param_names == "repeat"] <- "`repeat`"
   
-  param_names <- unique(c(intersect(priority_args,param_names), param_names))
+  required <- get_required_params(schema, reference)
+  
+  param_names <- unique(c(intersect(priority_args,param_names), intersect(required, param_names), param_names))
   args <- paste(param_names, "NULL", sep = " = ")
   arg_list <- paste(c('spec',".object = NULL",  args), collapse = ", ")
+  
+  if (additional_properties_allowed(reference, schema)) {
+    arg_list <- paste0(arg_list, ', ...')
+  }
   
   arg_list
 }
 
 make_docs_helper <- function(title, description, param_docs,
-                             returns = "A modified Vega-Lite Spec", export = TRUE, doc_group = NULL) {
+                             returns = "A modified Vega-Lite Spec", export = TRUE, doc_group = NULL, extra = NULL) {
   
   title <- roxy_wrap(title)
   
@@ -97,6 +102,7 @@ make_docs_helper <- function(title, description, param_docs,
     returns,
     export,
     doc_name,
+    extra,
     sep = "\n"
   )
   
@@ -225,4 +231,16 @@ make_option_function_innards <- function(reference, option_name, adder_function,
 
 make_option_arg_list <- function(option_name, options, na_option = FALSE) {
   glue("spec, {option_name} = c({opts_to_list(options, na_option)})")
+}
+
+create_deprecated <- function(old, new) {
+  glue(
+    "#' @export",
+    "#' @name vlbuildr-deprecated",
+    "{old} <- function(...) {{",
+    "  .Deprecated('{new}', package = 'vlbuidlr')",
+    "  {new}(...)",
+    "}}",
+    .sep = "\n", .trim = FALSE
+  )
 }

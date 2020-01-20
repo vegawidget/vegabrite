@@ -4,14 +4,17 @@
 \alias{vl_density}
 \title{vl_density}
 \usage{
-vl_density(spec, .object = NULL, as = NULL, bandwidth = NULL,
-  counts = NULL, cumulative = NULL, density = NULL, extent = NULL,
-  groupby = NULL, maxsteps = NULL, minsteps = NULL, steps = NULL)
+vl_density(spec, .object = NULL, density = NULL, as = NULL,
+  bandwidth = NULL, counts = NULL, cumulative = NULL,
+  extent = NULL, groupby = NULL, maxsteps = NULL, minsteps = NULL,
+  steps = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: DensityTransform}
+
+\item{density}{(\emph{DensityTransform}) The data field for which to perform density estimation.}
 
 \item{as}{(\emph{DensityTransform}) The output fields for the sample value and corresponding density estimate.
 
@@ -26,8 +29,6 @@ vl_density(spec, .object = NULL, as = NULL, bandwidth = NULL,
 \item{cumulative}{(\emph{DensityTransform}) A boolean flag indicating whether to produce density estimates (false) or cumulative density estimates (true).
 
 \strong{Default value:} \code{false}}
-
-\item{density}{(\emph{DensityTransform}) The data field for which to perform density estimation.}
 
 \item{extent}{(\emph{DensityTransform}) A [min, max] domain from which to sample the distribution. If unspecified, the extent will be determined by the observed minimum and maximum values of the density value field.}
 

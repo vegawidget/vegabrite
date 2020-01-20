@@ -5,8 +5,8 @@
 \title{vl_add_data}
 \usage{
 vl_add_data(spec, .object = NULL, values = NULL, format = NULL,
-  name = NULL, url = NULL, sequence = NULL, sphere = NULL,
-  graticule = NULL)
+  name = NULL, url = NULL, graticule = NULL, sequence = NULL,
+  sphere = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -23,11 +23,11 @@ Arrays of primitive values are ingested as objects with a \code{data} property. 
 \item{url}{(\emph{UrlData}) An URL from which to load the data set. Use the \code{format.type} property
 to ensure the loaded data is correctly parsed.}
 
+\item{graticule}{(\emph{GraticuleGenerator}) Generate graticule GeoJSON data for geographic reference lines.}
+
 \item{sequence}{(\emph{SequenceGenerator}) Generate a sequence of numbers.}
 
 \item{sphere}{(\emph{SphereGenerator}) Generate sphere GeoJSON data for the full globe.}
-
-\item{graticule}{(\emph{GraticuleGenerator}) Generate graticule GeoJSON data for geographic reference lines.}
 }
 \value{
 A modified Vega-Lite Spec

@@ -19,7 +19,6 @@ validate_sub_schema <- function(x, ref) {
   return(valid)
 }
 
-
 lookup <- function(schema, ref = NULL){
   if (is.null(ref)) return(NULL)
   path <- strsplit(ref,"/")[[1]]

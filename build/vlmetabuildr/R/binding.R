@@ -29,10 +29,10 @@ create_binding <- function(schema, name, ref) {
   
   ## Make the inner function
   param_names <- get_params(schema, reference)
-  modifier <- glue("  args <- .modify_args(list(input = '{name}'), {deparse_c(param_names)})")
+  modifier <- glue("  obj <- .modify_args(list(input = '{name}'), c('projection_name', 'selection_name'))")
   
-  adder <- glue(".add_binding(args$spec, args$object, '{reference}', selection_name = args$extra$selection_name,
-                projection_name = args$extra$projection_name)")
+  adder <- glue(".add_binding(spec, obj, '{reference}', selection_name = selection_name,
+                projection_name = projection_name)")
   
   inner_fn <- paste(
     modifier,

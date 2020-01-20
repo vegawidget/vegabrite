@@ -106,6 +106,18 @@ enums <- function(ref, schema) {
   )
 }
 
+additional_properties_allowed <- function(ref, schema) {
+  if (length(ref) > 1) {
+    return(any(purrr::map_lgl(ref, additional_properties_allowed, schema = schema)))
+  }
+  any(search(schema,
+         list("$ref" = ref),
+         function(x) {"type" %in% names(x) && x[["type"]] ==  'object'},
+         function(x) {!identical(x[["additionalProperties"]], FALSE)},
+         function(x) unlist(x, use.names = FALSE),
+         function() list()
+  ))
+}
 
 get_name_from_ref <- function(type){
   if (hasName(type,"$ref")) {
