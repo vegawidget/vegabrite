@@ -49,6 +49,8 @@
 \item{type}{(\emph{Projection}) The cartographic projection to use. This value is case-insensitive, for example \code{"albers"} and \code{"Albers"} indicate the same projection type. You can find all valid projection types \href{https://vega.github.io/vega-lite/docs/projection.html#projection-types}{in the documentation}.
 
 \strong{Default value:} \code{mercator}}
+
+\item{...}{Additional objects}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to ProjectionConfig definition.

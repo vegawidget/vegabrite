@@ -55,8 +55,8 @@ vl_chart() %>%
   vl_axis_y(title = "population") %>%
   vl_encode_color(field = "gender", type = "nominal") %>%
   vl_mark_bar() %>% 
-  vl_add_axis_config(domainWidth = 1) %>%
-  vl_add_view_config(stroke = "transparent")
+  vl_config_axis(domainWidth = 1) %>%
+  vl_config_view(stroke = "transparent")
 ```
 
 
@@ -159,10 +159,10 @@ vl_chart() %>%
   vl_encode_column(field = "age", type = "ordinal", spacing = 10) %>%
   vl_remove_axis_x() %>%
   vl_axis_y(title = "population", grid = FALSE) %>%
-  vl_add_view_config(strokeWidth = 0) %>%
+  vl_config_view(strokeWidth = 0) %>%
   vl_mark_bar()%>% 
-  vl_add_axis_config(domainWidth = 1) %>%
-  vl_add_view_config(stroke = "transparent") %>%
+  vl_config_axis(domainWidth = 1) %>%
+  vl_config_view(stroke = "transparent") %>%
   vl_add_properties(width = 10)
 ```
 

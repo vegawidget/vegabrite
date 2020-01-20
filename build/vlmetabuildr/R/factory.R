@@ -43,7 +43,7 @@ make_function <- function(
 make_function_innards <- function(reference, schema, override_args, adder_function, pass_to_adder) {
   
   param_names <- get_params(schema, reference)
-  modifier <- glue("  args <- .modify_args({deparse_c(override_args)}, {deparse_c(param_names)})")
+  modifier <- glue("  obj <- .modify_args({deparse_c(override_args)}, NULL)")
   
   extras <- if (!is.null(pass_to_adder)){
     paste(c(" ",paste(names(pass_to_adder), purrr::map_chr(pass_to_adder, deparse_c), sep = " = ")), 
@@ -52,7 +52,7 @@ make_function_innards <- function(reference, schema, override_args, adder_functi
     ""
   }
   
-  adder <- glue("{adder_function}(args$spec, args$object, {deparse_c(as.character(reference))}{extras})")
+  adder <- glue("{adder_function}(spec, obj, {deparse_c(as.character(reference))}{extras})")
   
   paste(
     modifier,

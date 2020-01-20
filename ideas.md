@@ -8,3 +8,10 @@
 - [x] vl$ for make object functions
 - [ ] Roxygen consolidation -- use eval
 - [ ] Make col --> column 
+
+
+NEED to make sure ... actually respected for obj functions.
+Also add ... capabilities to others
+
+.modify_args shouldn't need to get a list of all acceptable -- can pull fresh? from Schema? And can do its own figuring out of what needs to happen?
+

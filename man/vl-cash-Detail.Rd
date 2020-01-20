@@ -65,6 +65,8 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 }
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/type.html}{type} documentation.}
+
+\item{...}{Additional objects}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to Detail definition.
