@@ -14,6 +14,7 @@ ENCODE_MAPPING <- list(
     if (is.null(names(enc)) && length(enc) == 1) {
       enc <- list(field = enc[[1]])
     }
+    # sugar for type shorthand
     if (!hasName(enc,"type") && hasName(enc,"field") && grepl(":[N,O,Q,T]$", enc[["field"]])) {
       field <- enc$field
       nc <- nchar(field)
@@ -36,7 +37,12 @@ ENCODE_MAPPING <- list(
         }
       }
     }
-    
+    # sugar for repeat
+    if (hasName(enc,"field") && grepl("^repeat:(column|row|repeat)$", enc[["field"]])) {
+      enc[["field"]] = list(`repeat` = substr(enc$field,8,nchar(enc$field)))
+    } else if (hasName(enc,"field") && (enc$field == "repeat:" || enc$field == "repeat:wrap")) {
+      enc[["field"]] = list(`repeat` = "repeat")
+    }
     # Escape "." in feild
     if (hasName(enc,"field") && !is.list(enc$field)){
       enc$field <- gsub("\\.","\\\\.", enc$field)

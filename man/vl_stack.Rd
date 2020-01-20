@@ -4,13 +4,15 @@
 \alias{vl_stack}
 \title{vl_stack}
 \usage{
-vl_stack(spec, .object = NULL, as = NULL, groupby = NULL,
-  offset = NULL, sort = NULL, stack = NULL)
+vl_stack(spec, .object = NULL, stack = NULL, as = NULL,
+  groupby = NULL, offset = NULL, sort = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: StackTransform}
+
+\item{stack}{(\emph{StackTransform}) The field which is stacked.}
 
 \item{as}{(\emph{StackTransform}) Output field names. This can be either a string or an array of strings with two elements denoting the name for the fields for stack start and stack end respectively.
 If a single string(e.g., \code{"val"}) is provided, the end field will be \code{"val_end"}.}
@@ -23,8 +25,6 @@ The \code{"zero"} offset will stack starting at \code{0}. The \code{"center"} of
 \strong{Default value:} \code{"zero"}}
 
 \item{sort}{(\emph{StackTransform}) Field that determines the order of leaves in the stacked charts.}
-
-\item{stack}{(\emph{StackTransform}) The field which is stacked.}
 }
 \value{
 A modified Vega-Lite Spec

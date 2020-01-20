@@ -8,8 +8,10 @@ create_additional_objects <- function(schema) {
             "BindRange",
             "BindRadioSelect")
   
-  purrr::map_chr(objs, create_object, schema = schema)
-  
+  c(
+    purrr::map_chr(objs, create_object, schema = schema),
+    purrr::map_chr(objs, create_deprecated_object)
+  )
 }
 
 get_objects <- function(schema) {
@@ -22,12 +24,8 @@ create_object <- function(obj, schema, reference = glue("#/definitions/{obj}")) 
   fn_name <- glue("vl${obj}")
   
   # Get whether any additional properties...
-  additional_properties <-  lookup(schema, reference)$additionalProperties 
   
   param_docs <-  get_param_docs(schema, reference)
-  if (!identical(additional_properties, FALSE)) {
-    param_docs <- paste(param_docs, "#' @param ... Additional objects", sep = "\n")
-  }
   
   docs <- make_docs_helper(
     obj,
@@ -43,7 +41,7 @@ create_object <- function(obj, schema, reference = glue("#/definitions/{obj}")) 
   # If param is named repeat, need to change
   #param_names[param_names == "repeat"] <- "`repeat`"
   
-  additional_args <- if (!identical(additional_properties, FALSE)) "..." else NULL
+  additional_args <- if (additional_properties_allowed(reference, schema)) "..." else NULL
   prop_args <- if (length(param_names) > 1) paste(paste0('`',param_names,'`'), "NULL", sep = " = ", collapse = ", ") else NULL 
   
   args <- paste(c(prop_args, additional_args), collapse = ", ")
@@ -58,7 +56,11 @@ create_object <- function(obj, schema, reference = glue("#/definitions/{obj}")) 
   
 }
 
-
+create_deprecated_object <- function(object){
+  new <- glue("vl$object")
+  old <- glue("vl_make_{object}")
+  create_deprecated(old, new)
+}
 
 
 

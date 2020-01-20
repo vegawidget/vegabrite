@@ -4,13 +4,17 @@
 \alias{vl_pivot}
 \title{vl_pivot}
 \usage{
-vl_pivot(spec, .object = NULL, groupby = NULL, limit = NULL,
-  op = NULL, pivot = NULL, value = NULL)
+vl_pivot(spec, .object = NULL, pivot = NULL, value = NULL,
+  groupby = NULL, limit = NULL, op = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: PivotTransform}
+
+\item{pivot}{(\emph{PivotTransform}) The data field to pivot on. The unique values of this field become new field names in the output stream.}
+
+\item{value}{(\emph{PivotTransform}) The data field to populate pivoted fields. The aggregate values of this field become the values of the new pivoted fields.}
 
 \item{groupby}{(\emph{PivotTransform}) The optional data fields to group by. If not specified, a single group containing all data objects will be used.}
 
@@ -20,10 +24,6 @@ The default (\code{0}) applies no limit. The pivoted \code{pivot} names are sort
 
 \item{op}{(\emph{PivotTransform}) The aggregation operation to apply to grouped \code{value} field values.
 \strong{Default value:} \code{sum}}
-
-\item{pivot}{(\emph{PivotTransform}) The data field to pivot on. The unique values of this field become new field names in the output stream.}
-
-\item{value}{(\emph{PivotTransform}) The data field to populate pivoted fields. The aggregate values of this field become the values of the new pivoted fields.}
 }
 \value{
 A modified Vega-Lite Spec

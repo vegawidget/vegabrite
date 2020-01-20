@@ -121,7 +121,7 @@
 #' @name vl_chart
 vl_chart <- function(data = NULL, `$schema` = vegawidget::vega_schema(), autosize = NULL, background = NULL, bounds = NULL, config = NULL, datasets = NULL, description = NULL, encoding = NULL, height = NULL, mark = NULL, name = NULL, padding = NULL, projection = NULL, resolve = NULL, selection = NULL, title = NULL, transform = NULL, usermeta = NULL, view = NULL, width = NULL, align = NULL, center = NULL, columns = NULL, facet = NULL, spacing = NULL, spec = NULL, layer = NULL, `repeat` = NULL, concat = NULL, vconcat = NULL, hconcat = NULL){
   obj <- .modify_args(NULL, NULL)
-  as_vegaspec(obj)
+  .chart_initialize(obj)
 } 
 #' vl_add_properties
 #' 
@@ -250,7 +250,7 @@ vl_add_properties <- function(spec, .object = NULL, autosize = NULL, background 
 #' @export
 
 
-vl_add_data <- function(spec, .object = NULL, values = NULL, format = NULL, name = NULL, url = NULL, sequence = NULL, sphere = NULL, graticule = NULL){
+vl_add_data <- function(spec, .object = NULL, values = NULL, format = NULL, name = NULL, url = NULL, graticule = NULL, sequence = NULL, sphere = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_data(spec, obj, "#/definitions/Data")
 } 
@@ -3527,7 +3527,7 @@ vl_encode_key <- function(spec, .object = NULL, field = NULL, type = NULL, aggre
 #' @export
 
 
-vl_encode_latitude <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_latitude <- function(spec, .object = NULL, field = NULL, type = NULL, value = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_encoding(spec, obj, "#/definitions/Encoding/properties/latitude" , encoding = "latitude")
 } 
@@ -3581,7 +3581,7 @@ vl_encode_latitude <- function(spec, .object = NULL, field = NULL, type = NULL, 
 #' @export
 
 
-vl_encode_latitude2 <- function(spec, .object = NULL, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_latitude2 <- function(spec, .object = NULL, field = NULL, value = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_encoding(spec, obj, "#/definitions/Encoding/properties/latitude2" , encoding = "latitude2")
 } 
@@ -3649,7 +3649,7 @@ vl_encode_latitude2 <- function(spec, .object = NULL, field = NULL, aggregate = 
 #' @export
 
 
-vl_encode_longitude <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_longitude <- function(spec, .object = NULL, field = NULL, type = NULL, value = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_encoding(spec, obj, "#/definitions/Encoding/properties/longitude" , encoding = "longitude")
 } 
@@ -3703,7 +3703,7 @@ vl_encode_longitude <- function(spec, .object = NULL, field = NULL, type = NULL,
 #' @export
 
 
-vl_encode_longitude2 <- function(spec, .object = NULL, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_longitude2 <- function(spec, .object = NULL, field = NULL, value = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_encoding(spec, obj, "#/definitions/Encoding/properties/longitude2" , encoding = "longitude2")
 } 
@@ -3875,7 +3875,7 @@ vl_encode_opacity <- function(spec, .object = NULL, field = NULL, type = NULL, a
 #' @export
 
 
-vl_encode_order <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bin = NULL, sort = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_order <- function(spec, .object = NULL, field = NULL, type = NULL, value = NULL, aggregate = NULL, bin = NULL, sort = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_encoding(spec, obj, "#/definitions/Encoding/properties/order" , encoding = "order")
 } 
@@ -4781,7 +4781,7 @@ vl_encode_url <- function(spec, .object = NULL, field = NULL, type = NULL, aggre
 #' @export
 
 
-vl_encode_x <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, axis = NULL, band = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_x <- function(spec, .object = NULL, field = NULL, type = NULL, value = NULL, aggregate = NULL, axis = NULL, band = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_encoding(spec, obj, "#/definitions/Encoding/properties/x" , encoding = "x")
 } 
@@ -4835,7 +4835,7 @@ vl_encode_x <- function(spec, .object = NULL, field = NULL, type = NULL, aggrega
 #' @export
 
 
-vl_encode_x2 <- function(spec, .object = NULL, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_x2 <- function(spec, .object = NULL, field = NULL, value = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_encoding(spec, obj, "#/definitions/Encoding/properties/x2" , encoding = "x2")
 } 
@@ -4889,7 +4889,7 @@ vl_encode_x2 <- function(spec, .object = NULL, field = NULL, aggregate = NULL, b
 #' @export
 
 
-vl_encode_xError <- function(spec, .object = NULL, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_xError <- function(spec, .object = NULL, field = NULL, value = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_encoding(spec, obj, "#/definitions/Encoding/properties/xError" , encoding = "xError")
 } 
@@ -4943,7 +4943,7 @@ vl_encode_xError <- function(spec, .object = NULL, field = NULL, aggregate = NUL
 #' @export
 
 
-vl_encode_xError2 <- function(spec, .object = NULL, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_xError2 <- function(spec, .object = NULL, field = NULL, value = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_encoding(spec, obj, "#/definitions/Encoding/properties/xError2" , encoding = "xError2")
 } 
@@ -5064,7 +5064,7 @@ vl_encode_xError2 <- function(spec, .object = NULL, field = NULL, aggregate = NU
 #' @export
 
 
-vl_encode_y <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, axis = NULL, band = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_y <- function(spec, .object = NULL, field = NULL, type = NULL, value = NULL, aggregate = NULL, axis = NULL, band = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_encoding(spec, obj, "#/definitions/Encoding/properties/y" , encoding = "y")
 } 
@@ -5118,7 +5118,7 @@ vl_encode_y <- function(spec, .object = NULL, field = NULL, type = NULL, aggrega
 #' @export
 
 
-vl_encode_y2 <- function(spec, .object = NULL, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_y2 <- function(spec, .object = NULL, field = NULL, value = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_encoding(spec, obj, "#/definitions/Encoding/properties/y2" , encoding = "y2")
 } 
@@ -5172,7 +5172,7 @@ vl_encode_y2 <- function(spec, .object = NULL, field = NULL, aggregate = NULL, b
 #' @export
 
 
-vl_encode_yError <- function(spec, .object = NULL, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_yError <- function(spec, .object = NULL, field = NULL, value = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_encoding(spec, obj, "#/definitions/Encoding/properties/yError" , encoding = "yError")
 } 
@@ -5226,7 +5226,7 @@ vl_encode_yError <- function(spec, .object = NULL, field = NULL, aggregate = NUL
 #' @export
 
 
-vl_encode_yError2 <- function(spec, .object = NULL, field = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL, value = NULL){
+vl_encode_yError2 <- function(spec, .object = NULL, field = NULL, value = NULL, aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_encoding(spec, obj, "#/definitions/Encoding/properties/yError2" , encoding = "yError2")
 } 
@@ -5323,12 +5323,11 @@ vl_encode_yError2 <- function(spec, .object = NULL, field = NULL, aggregate = NU
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Color definition.
 
 #' @name vl$Color
 
-vl$`Color` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`Color` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Detail
@@ -5388,12 +5387,11 @@ vl$`Color` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `fi
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Detail definition.
 
 #' @name vl$Detail
 
-vl$`Detail` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, ...){
+vl$`Detail` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Fill
@@ -5489,12 +5487,11 @@ vl$`Detail` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeU
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Fill definition.
 
 #' @name vl$Fill
 
-vl$`Fill` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`Fill` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' FillOpacity
@@ -5590,12 +5587,11 @@ vl$`Fill` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `fie
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to FillOpacity definition.
 
 #' @name vl$FillOpacity
 
-vl$`FillOpacity` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`FillOpacity` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Href
@@ -5678,12 +5674,11 @@ vl$`FillOpacity` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NUL
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Href definition.
 
 #' @name vl$Href
 
-vl$`Href` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `format` = NULL, `formatType` = NULL, `labelExpr` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`Href` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `format` = NULL, `formatType` = NULL, `labelExpr` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Key
@@ -5743,12 +5738,11 @@ vl$`Href` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `fie
 #' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type` as they have exactly the same type as their primary channels (e.g., `x`, `y`).
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Key definition.
 
 #' @name vl$Key
 
-vl$`Key` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, ...){
+vl$`Key` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Latitude
@@ -5809,12 +5803,11 @@ vl$`Key` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Latitude definition.
 
 #' @name vl$Latitude
 
-vl$`Latitude` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`Latitude` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Latitude2
@@ -5861,12 +5854,11 @@ vl$`Latitude` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `tim
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Latitude2 definition.
 
 #' @name vl$Latitude2
 
-vl$`Latitude2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL, ...){
+vl$`Latitude2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Longitude
@@ -5927,12 +5919,11 @@ vl$`Latitude2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `ti
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Longitude definition.
 
 #' @name vl$Longitude
 
-vl$`Longitude` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`Longitude` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Longitude2
@@ -5979,12 +5970,11 @@ vl$`Longitude` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `ti
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Longitude2 definition.
 
 #' @name vl$Longitude2
 
-vl$`Longitude2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL, ...){
+vl$`Longitude2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Opacity
@@ -6080,12 +6070,11 @@ vl$`Longitude2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `t
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Opacity definition.
 
 #' @name vl$Opacity
 
-vl$`Opacity` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`Opacity` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Order
@@ -6147,12 +6136,11 @@ vl$`Opacity` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Order definition.
 
 #' @name vl$Order
 
-vl$`Order` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`Order` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Shape
@@ -6248,12 +6236,11 @@ vl$`Order` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `sort` 
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Shape definition.
 
 #' @name vl$Shape
 
-vl$`Shape` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`Shape` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Size
@@ -6349,12 +6336,11 @@ vl$`Shape` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `fi
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Size definition.
 
 #' @name vl$Size
 
-vl$`Size` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`Size` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Stroke
@@ -6450,12 +6436,11 @@ vl$`Size` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `fie
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Stroke definition.
 
 #' @name vl$Stroke
 
-vl$`Stroke` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`Stroke` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' StrokeOpacity
@@ -6551,12 +6536,11 @@ vl$`Stroke` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `f
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to StrokeOpacity definition.
 
 #' @name vl$StrokeOpacity
 
-vl$`StrokeOpacity` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`StrokeOpacity` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' StrokeWidth
@@ -6652,12 +6636,11 @@ vl$`StrokeOpacity` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = N
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,number>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to StrokeWidth definition.
 
 #' @name vl$StrokeWidth
 
-vl$`StrokeWidth` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`StrokeWidth` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `legend` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Text
@@ -6740,12 +6723,11 @@ vl$`StrokeWidth` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NUL
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<StringFieldDef,Text>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Text definition.
 
 #' @name vl$Text
 
-vl$`Text` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `format` = NULL, `formatType` = NULL, `labelExpr` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`Text` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `format` = NULL, `formatType` = NULL, `labelExpr` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Tooltip
@@ -6828,12 +6810,11 @@ vl$`Text` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `fie
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Tooltip definition.
 
 #' @name vl$Tooltip
 
-vl$`Tooltip` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `format` = NULL, `formatType` = NULL, `labelExpr` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`Tooltip` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `format` = NULL, `formatType` = NULL, `labelExpr` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Url
@@ -6916,12 +6897,11 @@ vl$`Tooltip` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_ValueDefWithCondition<MarkPropFieldDef,(string|null)>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Url definition.
 
 #' @name vl$Url
 
-vl$`Url` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `format` = NULL, `formatType` = NULL, `labelExpr` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`Url` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `field` = NULL, `format` = NULL, `formatType` = NULL, `labelExpr` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' X
@@ -7035,12 +7015,11 @@ vl$`Url` <- function(`aggregate` = NULL, `bin` = NULL, `condition` = NULL, `fiel
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_XValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to X definition.
 
 #' @name vl$X
 
-vl$`X` <- function(`aggregate` = NULL, `axis` = NULL, `band` = NULL, `bin` = NULL, `field` = NULL, `impute` = NULL, `scale` = NULL, `sort` = NULL, `stack` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`X` <- function(`aggregate` = NULL, `axis` = NULL, `band` = NULL, `bin` = NULL, `field` = NULL, `impute` = NULL, `scale` = NULL, `sort` = NULL, `stack` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' X2
@@ -7087,12 +7066,11 @@ vl$`X` <- function(`aggregate` = NULL, `axis` = NULL, `band` = NULL, `bin` = NUL
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_XValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to X2 definition.
 
 #' @name vl$X2
 
-vl$`X2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL, ...){
+vl$`X2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' XError
@@ -7139,12 +7117,11 @@ vl$`X2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit`
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to XError definition.
 
 #' @name vl$XError
 
-vl$`XError` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL, ...){
+vl$`XError` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' XError2
@@ -7191,12 +7168,11 @@ vl$`XError` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeU
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to XError2 definition.
 
 #' @name vl$XError2
 
-vl$`XError2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL, ...){
+vl$`XError2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Y
@@ -7310,12 +7286,11 @@ vl$`XError2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `time
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html) documentation.
 #' @param value (_YValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Y definition.
 
 #' @name vl$Y
 
-vl$`Y` <- function(`aggregate` = NULL, `axis` = NULL, `band` = NULL, `bin` = NULL, `field` = NULL, `impute` = NULL, `scale` = NULL, `sort` = NULL, `stack` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL, ...){
+vl$`Y` <- function(`aggregate` = NULL, `axis` = NULL, `band` = NULL, `bin` = NULL, `field` = NULL, `impute` = NULL, `scale` = NULL, `sort` = NULL, `stack` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' Y2
@@ -7362,12 +7337,11 @@ vl$`Y` <- function(`aggregate` = NULL, `axis` = NULL, `band` = NULL, `bin` = NUL
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_YValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to Y2 definition.
 
 #' @name vl$Y2
 
-vl$`Y2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL, ...){
+vl$`Y2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' YError
@@ -7414,12 +7388,11 @@ vl$`Y2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit`
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to YError definition.
 
 #' @name vl$YError
 
-vl$`YError` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL, ...){
+vl$`YError` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' YError2
@@ -7466,13 +7439,152 @@ vl$`YError` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeU
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
 #' @param value (_NumberValueDef_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to YError2 definition.
 
 #' @name vl$YError2
 
-vl$`YError2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL, ...){
+vl$`YError2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Color <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Detail <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Fill <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_FillOpacity <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Href <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Key <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Latitude <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Latitude2 <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Longitude <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Longitude2 <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Opacity <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Order <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Shape <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Size <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Stroke <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_StrokeOpacity <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_StrokeWidth <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Text <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Tooltip <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Url <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_X <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_X2 <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_XError <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_XError2 <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Y <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Y2 <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_YError <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_YError2 <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
 } 
 #' vl_aggregate
 #' 
@@ -7487,7 +7599,7 @@ vl$`YError2` <- function(`aggregate` = NULL, `bin` = NULL, `field` = NULL, `time
 
 vl_aggregate <- function(spec, .object = NULL, aggregate = NULL, groupby = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/AggregateTransform")
+  .add_transform(spec, obj, "#/definitions/AggregateTransform" , .trans = "aggregate")
 } 
 #' vl_bin
 #' 
@@ -7501,9 +7613,9 @@ vl_aggregate <- function(spec, .object = NULL, aggregate = NULL, groupby = NULL)
 #' @export
 
 
-vl_bin <- function(spec, .object = NULL, as = NULL, bin = NULL, field = NULL){
+vl_bin <- function(spec, .object = NULL, bin = NULL, as = NULL, field = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/BinTransform")
+  .add_transform(spec, obj, "#/definitions/BinTransform" , .trans = "bin")
 } 
 #' vl_calculate
 #' 
@@ -7516,9 +7628,9 @@ vl_bin <- function(spec, .object = NULL, as = NULL, bin = NULL, field = NULL){
 #' @export
 
 
-vl_calculate <- function(spec, .object = NULL, as = NULL, calculate = NULL){
+vl_calculate <- function(spec, .object = NULL, calculate = NULL, as = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/CalculateTransform")
+  .add_transform(spec, obj, "#/definitions/CalculateTransform" , .trans = "calculate")
 } 
 #' vl_density
 #' 
@@ -7549,9 +7661,9 @@ vl_calculate <- function(spec, .object = NULL, as = NULL, calculate = NULL){
 #' @export
 
 
-vl_density <- function(spec, .object = NULL, as = NULL, bandwidth = NULL, counts = NULL, cumulative = NULL, density = NULL, extent = NULL, groupby = NULL, maxsteps = NULL, minsteps = NULL, steps = NULL){
+vl_density <- function(spec, .object = NULL, density = NULL, as = NULL, bandwidth = NULL, counts = NULL, cumulative = NULL, extent = NULL, groupby = NULL, maxsteps = NULL, minsteps = NULL, steps = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/DensityTransform")
+  .add_transform(spec, obj, "#/definitions/DensityTransform" , .trans = "density")
 } 
 #' vl_filter
 #' 
@@ -7581,7 +7693,7 @@ vl_density <- function(spec, .object = NULL, as = NULL, bandwidth = NULL, counts
 
 vl_filter <- function(spec, .object = NULL, filter = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/FilterTransform")
+  .add_transform(spec, obj, "#/definitions/FilterTransform" , .trans = "filter")
 } 
 #' vl_flatten
 #' 
@@ -7599,9 +7711,9 @@ vl_filter <- function(spec, .object = NULL, filter = NULL){
 #' @export
 
 
-vl_flatten <- function(spec, .object = NULL, as = NULL, flatten = NULL){
+vl_flatten <- function(spec, .object = NULL, flatten = NULL, as = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/FlattenTransform")
+  .add_transform(spec, obj, "#/definitions/FlattenTransform" , .trans = "flatten")
 } 
 #' vl_fold
 #' 
@@ -7615,9 +7727,9 @@ vl_flatten <- function(spec, .object = NULL, as = NULL, flatten = NULL){
 #' @export
 
 
-vl_fold <- function(spec, .object = NULL, as = NULL, fold = NULL){
+vl_fold <- function(spec, .object = NULL, fold = NULL, as = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/FoldTransform")
+  .add_transform(spec, obj, "#/definitions/FoldTransform" , .trans = "fold")
 } 
 #' vl_impute
 #' 
@@ -7647,9 +7759,9 @@ vl_fold <- function(spec, .object = NULL, as = NULL, fold = NULL){
 #' @export
 
 
-vl_impute <- function(spec, .object = NULL, frame = NULL, groupby = NULL, impute = NULL, key = NULL, keyvals = NULL, method = NULL, value = NULL){
+vl_impute <- function(spec, .object = NULL, impute = NULL, key = NULL, frame = NULL, groupby = NULL, keyvals = NULL, method = NULL, value = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/ImputeTransform")
+  .add_transform(spec, obj, "#/definitions/ImputeTransform" , .trans = "impute")
 } 
 #' vl_joinaggregate
 #' 
@@ -7662,9 +7774,9 @@ vl_impute <- function(spec, .object = NULL, frame = NULL, groupby = NULL, impute
 #' @export
 
 
-vl_joinaggregate <- function(spec, .object = NULL, groupby = NULL, joinaggregate = NULL){
+vl_joinaggregate <- function(spec, .object = NULL, joinaggregate = NULL, groupby = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/JoinAggregateTransform")
+  .add_transform(spec, obj, "#/definitions/JoinAggregateTransform" , .trans = "joinaggregate")
 } 
 #' vl_loess
 #' 
@@ -7684,9 +7796,9 @@ vl_joinaggregate <- function(spec, .object = NULL, groupby = NULL, joinaggregate
 #' @export
 
 
-vl_loess <- function(spec, .object = NULL, as = NULL, bandwidth = NULL, groupby = NULL, loess = NULL, on = NULL){
+vl_loess <- function(spec, .object = NULL, loess = NULL, on = NULL, as = NULL, bandwidth = NULL, groupby = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/LoessTransform")
+  .add_transform(spec, obj, "#/definitions/LoessTransform" , .trans = "loess")
 } 
 #' vl_lookup
 #' 
@@ -7711,9 +7823,9 @@ vl_loess <- function(spec, .object = NULL, as = NULL, bandwidth = NULL, groupby 
 #' @export
 
 
-vl_lookup <- function(spec, .object = NULL, as = NULL, default = NULL, from = NULL, lookup = NULL){
+vl_lookup <- function(spec, .object = NULL, lookup = NULL, from = NULL, as = NULL, default = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/LookupTransform")
+  .add_transform(spec, obj, "#/definitions/LookupTransform" , .trans = "lookup")
 } 
 #' vl_quantile
 #' 
@@ -7731,9 +7843,9 @@ vl_lookup <- function(spec, .object = NULL, as = NULL, default = NULL, from = NU
 #' @export
 
 
-vl_quantile <- function(spec, .object = NULL, as = NULL, groupby = NULL, probs = NULL, quantile = NULL, step = NULL){
+vl_quantile <- function(spec, .object = NULL, quantile = NULL, as = NULL, groupby = NULL, probs = NULL, step = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/QuantileTransform")
+  .add_transform(spec, obj, "#/definitions/QuantileTransform" , .trans = "quantile")
 } 
 #' vl_regression
 #' 
@@ -7762,9 +7874,9 @@ vl_quantile <- function(spec, .object = NULL, as = NULL, groupby = NULL, probs =
 #' @export
 
 
-vl_regression <- function(spec, .object = NULL, as = NULL, extent = NULL, groupby = NULL, method = NULL, on = NULL, order = NULL, params = NULL, regression = NULL){
+vl_regression <- function(spec, .object = NULL, regression = NULL, on = NULL, as = NULL, extent = NULL, groupby = NULL, method = NULL, order = NULL, params = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/RegressionTransform")
+  .add_transform(spec, obj, "#/definitions/RegressionTransform" , .trans = "regression")
 } 
 #' vl_timeunit
 #' 
@@ -7780,7 +7892,7 @@ vl_regression <- function(spec, .object = NULL, as = NULL, extent = NULL, groupb
 
 vl_timeunit <- function(spec, .object = NULL, as = NULL, field = NULL, timeUnit = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/TimeUnitTransform")
+  .add_transform(spec, obj, "#/definitions/TimeUnitTransform" , .trans = "timeunit")
 } 
 #' vl_sample
 #' 
@@ -7796,7 +7908,7 @@ vl_timeunit <- function(spec, .object = NULL, as = NULL, field = NULL, timeUnit 
 
 vl_sample <- function(spec, .object = NULL, sample = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/SampleTransform")
+  .add_transform(spec, obj, "#/definitions/SampleTransform" , .trans = "sample")
 } 
 #' vl_stack
 #' 
@@ -7816,9 +7928,9 @@ vl_sample <- function(spec, .object = NULL, sample = NULL){
 #' @export
 
 
-vl_stack <- function(spec, .object = NULL, as = NULL, groupby = NULL, offset = NULL, sort = NULL, stack = NULL){
+vl_stack <- function(spec, .object = NULL, stack = NULL, as = NULL, groupby = NULL, offset = NULL, sort = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/StackTransform")
+  .add_transform(spec, obj, "#/definitions/StackTransform" , .trans = "stack")
 } 
 #' vl_window
 #' 
@@ -7838,9 +7950,9 @@ vl_stack <- function(spec, .object = NULL, as = NULL, groupby = NULL, offset = N
 #' @export
 
 
-vl_window <- function(spec, .object = NULL, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL, window = NULL){
+vl_window <- function(spec, .object = NULL, window = NULL, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/WindowTransform")
+  .add_transform(spec, obj, "#/definitions/WindowTransform" , .trans = "window")
 } 
 #' vl_pivot
 #' 
@@ -7859,9 +7971,9 @@ vl_window <- function(spec, .object = NULL, frame = NULL, groupby = NULL, ignore
 #' @export
 
 
-vl_pivot <- function(spec, .object = NULL, groupby = NULL, limit = NULL, op = NULL, pivot = NULL, value = NULL){
+vl_pivot <- function(spec, .object = NULL, pivot = NULL, value = NULL, groupby = NULL, limit = NULL, op = NULL){
   obj <- .modify_args(NULL, NULL)
-  .add_transform(spec, obj, "#/definitions/PivotTransform")
+  .add_transform(spec, obj, "#/definitions/PivotTransform" , .trans = "pivot")
 } 
 #' AggregateTransform
 #' 
@@ -8197,6 +8309,96 @@ vl$`WindowTransform` <- function(`frame` = NULL, `groupby` = NULL, `ignorePeers`
 
 vl$`PivotTransform` <- function(`groupby` = NULL, `limit` = NULL, `op` = NULL, `pivot` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_AggregateTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_BinTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_CalculateTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_DensityTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_FilterTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_FlattenTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_FoldTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_ImputeTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_JoinAggregateTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_LoessTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_LookupTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_QuantileTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_RegressionTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_TimeUnitTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_SampleTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_StackTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_WindowTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_PivotTransform <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
 } 
 #' Add bin to encoding
 #' 
@@ -8966,16 +9168,16 @@ vl_legend_strokeWidth <- function(spec, .object = NULL, clipHeight = NULL, colum
 #' Add condition parameters to an encoding
 #' @param spec An input vega-lite spec
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalSelection<ValueDef<(Gradient|string|null)>> or array of ConditionalValueDef<(Gradient|string|null)>
-#' @param test (_ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalPredicate<MarkPropFieldDef>, ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalPredicate<NumberValueDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalPredicate<NumberValueDef>, ConditionalPredicate<ValueDef<string>>, ConditionalPredicate<MarkPropFieldDef>, ConditionalPredicate<StringValueDef>, ConditionalPredicate<StringValueDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringValueDef>, ConditionalPredicate<ValueDef<Text>>, ConditionalPredicate<StringFieldDef>, ConditionalPredicate<ValueDef<Text>>_) Predicate for triggering the condition
-#' @param value (_ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalSelection<ValueDef<(Gradient|string|null)>>, ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalSelection<ValueDef<(Gradient|string|null)>>, ConditionalPredicate<NumberValueDef>, ConditionalSelection<NumberValueDef>, ConditionalPredicate<NumberValueDef>, ConditionalSelection<NumberValueDef>, ConditionalPredicate<ValueDef<string>>, ConditionalSelection<ValueDef<string>>, ConditionalPredicate<StringValueDef>, ConditionalSelection<StringValueDef>, ConditionalPredicate<StringValueDef>, ConditionalSelection<StringValueDef>, ConditionalPredicate<StringValueDef>, ConditionalSelection<StringValueDef>, ConditionalPredicate<ValueDef<Text>>, ConditionalSelection<ValueDef<Text>>, ConditionalPredicate<ValueDef<Text>>, ConditionalSelection<ValueDef<Text>>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
-#' @param selection (_ConditionalSelection<ValueDef<(Gradient|string|null)>>, ConditionalSelection<MarkPropFieldDef>, ConditionalSelection<ValueDef<(Gradient|string|null)>>, ConditionalSelection<NumberValueDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalSelection<NumberValueDef>, ConditionalSelection<ValueDef<string>>, ConditionalSelection<MarkPropFieldDef>, ConditionalSelection<StringValueDef>, ConditionalSelection<StringValueDef>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<StringValueDef>, ConditionalSelection<ValueDef<Text>>, ConditionalSelection<StringFieldDef>, ConditionalSelection<ValueDef<Text>>_) A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose).
-#' @param aggregate (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) Aggregation function for the field
+#' @param test (_ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalPredicate<MarkPropFieldDef>, ConditionalPredicate<NumberValueDef>, ConditionalPredicate<ValueDef<string>>, ConditionalPredicate<StringValueDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<ValueDef<Text>>, ConditionalPredicate<StringFieldDef>_) Predicate for triggering the condition
+#' @param value (_ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalSelection<ValueDef<(Gradient|string|null)>>, ConditionalPredicate<NumberValueDef>, ConditionalSelection<NumberValueDef>, ConditionalPredicate<ValueDef<string>>, ConditionalSelection<ValueDef<string>>, ConditionalPredicate<StringValueDef>, ConditionalSelection<StringValueDef>, ConditionalPredicate<ValueDef<Text>>, ConditionalSelection<ValueDef<Text>>_) A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for color, values between `0` to `1` for opacity).
+#' @param selection (_ConditionalSelection<ValueDef<(Gradient|string|null)>>, ConditionalSelection<MarkPropFieldDef>, ConditionalSelection<NumberValueDef>, ConditionalSelection<ValueDef<string>>, ConditionalSelection<StringValueDef>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<ValueDef<Text>>, ConditionalSelection<StringFieldDef>_) A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose).
+#' @param aggregate (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) Aggregation function for the field
 #' (e.g., `"mean"`, `"sum"`, `"median"`, `"min"`, `"max"`, `"count"`).
 #' 
 #' __Default value:__ `undefined` (None)
 #' 
 #' __See also:__ [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html) documentation.
-#' @param bin (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
+#' @param bin (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`"binned"`).
 #' 
 #' - If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
 #' 
@@ -8984,7 +9186,7 @@ vl_legend_strokeWidth <- function(spec, .object = NULL, clipHeight = NULL, colum
 #' __Default value:__ `false`
 #' 
 #' __See also:__ [`bin`](https://vega.github.io/vega-lite/docs/bin.html) documentation.
-#' @param field (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) __Required.__ A string defining the name of the field from which to pull a data value
+#' @param field (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) __Required.__ A string defining the name of the field from which to pull a data value
 #' or an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
 #' 
 #' __See also:__ [`field`](https://vega.github.io/vega-lite/docs/field.html) documentation.
@@ -8994,20 +9196,20 @@ vl_legend_strokeWidth <- function(spec, .object = NULL, clipHeight = NULL, colum
 #' If field names contain dots or brackets but are not nested, you can use `\\` to escape dots and brackets (e.g., `"a\\.b"` and `"a\\\[0\\\]"`).
 #' See more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).
 #' 2) `field` is not required if `aggregate` is `count`.
-#' @param legend (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>_) An object defining properties of the legend.
+#' @param legend (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>_) An object defining properties of the legend.
 #' If `null`, the legend for the encoding channel will be removed.
 #' 
 #' __Default value:__ If undefined, default [legend properties](https://vega.github.io/vega-lite/docs/legend.html) are applied.
 #' 
 #' __See also:__ [`legend`](https://vega.github.io/vega-lite/docs/legend.html) documentation.
-#' @param scale (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>_) An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+#' @param scale (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>_) An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
 #' 
 #' If `null`, the scale will be [disabled and the data value will be directly encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
 #' 
 #' __Default value:__ If undefined, default [scale properties](https://vega.github.io/vega-lite/docs/scale.html) are applied.
 #' 
 #' __See also:__ [`scale`](https://vega.github.io/vega-lite/docs/scale.html) documentation.
-#' @param sort (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>_) Sort order for the encoded field.
+#' @param sort (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>_) Sort order for the encoded field.
 #' 
 #' For continuous fields (quantitative or temporal), `sort` can be either `"ascending"` or `"descending"`.
 #' 
@@ -9023,13 +9225,13 @@ vl_legend_strokeWidth <- function(spec, .object = NULL, clipHeight = NULL, colum
 #' __Note:__ `null` and sorting by another channel is not supported for `row` and `column`.
 #' 
 #' __See also:__ [`sort`](https://vega.github.io/vega-lite/docs/sort.html) documentation.
-#' @param timeUnit (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
+#' @param timeUnit (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for a temporal field.
 #' or [a temporal field that gets casted as ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
 #' 
 #' __Default value:__ `undefined` (None)
 #' 
 #' __See also:__ [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html) documentation.
-#' @param title (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) A title for the field. If `null`, the title will be removed.
+#' @param title (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) A title for the field. If `null`, the title will be removed.
 #' 
 #' __Default value:__  derived from the field's name and transformation function (`aggregate`, `bin` and `timeUnit`). If the field has an aggregate function, the function is displayed as part of the title (e.g., `"Sum of Profit"`). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`). Otherwise, the title is simply the field name.
 #' 
@@ -9038,7 +9240,7 @@ vl_legend_strokeWidth <- function(spec, .object = NULL, clipHeight = NULL, colum
 #' 1) You can customize the default field title format by providing the [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config) property in the [config](https://vega.github.io/vega-lite/docs/config.html) or [`fieldTitle` function via the `compile` function's options](https://vega.github.io/vega-lite/docs/compile.html#field-title).
 #' 
 #' 2) If both field definition's `title` and axis, header, or legend `title` are defined, axis/header/legend title will be used.
-#' @param type (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
+#' @param type (_ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>_) The encoded field's type of measurement (`"quantitative"`, `"temporal"`, `"ordinal"`, or `"nominal"`).
 #' It can also be a `"geojson"` type for encoding ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
 #' 
 #' 
@@ -9074,7 +9276,7 @@ vl_legend_strokeWidth <- function(spec, .object = NULL, clipHeight = NULL, colum
  
 #' @name condition_encoding
 #' @export
-vl_condition_color <- function(spec, .object = NULL, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_color <- function(spec, .object = NULL, value = NULL, selection = NULL, test = NULL, type = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_condition_to_encoding(spec, obj, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>/properties/condition", 
   "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>/properties/condition"
@@ -9082,7 +9284,7 @@ vl_condition_color <- function(spec, .object = NULL, test = NULL, value = NULL, 
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_fill <- function(spec, .object = NULL, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_fill <- function(spec, .object = NULL, value = NULL, selection = NULL, test = NULL, type = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_condition_to_encoding(spec, obj, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>/properties/condition", 
   "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>/properties/condition"
@@ -9090,7 +9292,7 @@ vl_condition_fill <- function(spec, .object = NULL, test = NULL, value = NULL, s
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_fillOpacity <- function(spec, .object = NULL, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_fillOpacity <- function(spec, .object = NULL, value = NULL, selection = NULL, test = NULL, type = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_condition_to_encoding(spec, obj, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,number>/properties/condition", 
   "#/definitions/ValueDefWithCondition<MarkPropFieldDef,number>/properties/condition"
@@ -9098,7 +9300,7 @@ vl_condition_fillOpacity <- function(spec, .object = NULL, test = NULL, value = 
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_href <- function(spec, .object = NULL, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_href <- function(spec, .object = NULL, value = NULL, selection = NULL, test = NULL, type = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_condition_to_encoding(spec, obj, c("#/definitions/FieldDefWithCondition<StringFieldDef,string>/properties/condition", 
   "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(string|null)>/properties/condition"
@@ -9106,7 +9308,7 @@ vl_condition_href <- function(spec, .object = NULL, test = NULL, value = NULL, s
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_opacity <- function(spec, .object = NULL, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_opacity <- function(spec, .object = NULL, value = NULL, selection = NULL, test = NULL, type = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_condition_to_encoding(spec, obj, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,number>/properties/condition", 
   "#/definitions/ValueDefWithCondition<MarkPropFieldDef,number>/properties/condition"
@@ -9114,7 +9316,7 @@ vl_condition_opacity <- function(spec, .object = NULL, test = NULL, value = NULL
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_shape <- function(spec, .object = NULL, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_shape <- function(spec, .object = NULL, value = NULL, selection = NULL, test = NULL, type = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_condition_to_encoding(spec, obj, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>/properties/condition", 
   "#/definitions/ValueDefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>/properties/condition"
@@ -9122,7 +9324,7 @@ vl_condition_shape <- function(spec, .object = NULL, test = NULL, value = NULL, 
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_size <- function(spec, .object = NULL, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_size <- function(spec, .object = NULL, value = NULL, selection = NULL, test = NULL, type = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_condition_to_encoding(spec, obj, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,number>/properties/condition", 
   "#/definitions/ValueDefWithCondition<MarkPropFieldDef,number>/properties/condition"
@@ -9130,7 +9332,7 @@ vl_condition_size <- function(spec, .object = NULL, test = NULL, value = NULL, s
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_stroke <- function(spec, .object = NULL, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_stroke <- function(spec, .object = NULL, value = NULL, selection = NULL, test = NULL, type = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_condition_to_encoding(spec, obj, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>/properties/condition", 
   "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(Gradient|string|null)>/properties/condition"
@@ -9138,7 +9340,7 @@ vl_condition_stroke <- function(spec, .object = NULL, test = NULL, value = NULL,
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_strokeOpacity <- function(spec, .object = NULL, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_strokeOpacity <- function(spec, .object = NULL, value = NULL, selection = NULL, test = NULL, type = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_condition_to_encoding(spec, obj, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,number>/properties/condition", 
   "#/definitions/ValueDefWithCondition<MarkPropFieldDef,number>/properties/condition"
@@ -9146,7 +9348,7 @@ vl_condition_strokeOpacity <- function(spec, .object = NULL, test = NULL, value 
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_strokeWidth <- function(spec, .object = NULL, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_strokeWidth <- function(spec, .object = NULL, value = NULL, selection = NULL, test = NULL, type = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_condition_to_encoding(spec, obj, c("#/definitions/FieldDefWithCondition<MarkPropFieldDef,number>/properties/condition", 
   "#/definitions/ValueDefWithCondition<MarkPropFieldDef,number>/properties/condition"
@@ -9154,7 +9356,7 @@ vl_condition_strokeWidth <- function(spec, .object = NULL, test = NULL, value = 
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_text <- function(spec, .object = NULL, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_text <- function(spec, .object = NULL, value = NULL, selection = NULL, test = NULL, type = NULL, aggregate = NULL, bin = NULL, field = NULL, format = NULL, formatType = NULL, labelExpr = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_condition_to_encoding(spec, obj, c("#/definitions/FieldDefWithCondition<StringFieldDef,Text>/properties/condition", 
   "#/definitions/ValueDefWithCondition<StringFieldDef,Text>/properties/condition"
@@ -9162,7 +9364,7 @@ vl_condition_text <- function(spec, .object = NULL, test = NULL, value = NULL, s
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_tooltip <- function(spec, .object = NULL, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_tooltip <- function(spec, .object = NULL, value = NULL, selection = NULL, test = NULL, type = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_condition_to_encoding(spec, obj, c("#/definitions/FieldDefWithCondition<StringFieldDef,string>/properties/condition", 
   "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(string|null)>/properties/condition"
@@ -9170,7 +9372,7 @@ vl_condition_tooltip <- function(spec, .object = NULL, test = NULL, value = NULL
 } 
 #' @name condition_encoding
 #' @export
-vl_condition_url <- function(spec, .object = NULL, test = NULL, value = NULL, selection = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL){
+vl_condition_url <- function(spec, .object = NULL, value = NULL, selection = NULL, test = NULL, type = NULL, aggregate = NULL, bin = NULL, field = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL){
   obj <- .modify_args(NULL, NULL)
   .add_condition_to_encoding(spec, obj, c("#/definitions/FieldDefWithCondition<StringFieldDef,string>/properties/condition", 
   "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(string|null)>/properties/condition"
@@ -10005,6 +10207,21 @@ vl$`MultiSelection` <- function(`bind` = NULL, `clear` = NULL, `empty` = NULL, `
 
 vl$`IntervalSelection` <- function(`bind` = NULL, `clear` = NULL, `empty` = NULL, `encodings` = NULL, `fields` = NULL, `init` = NULL, `mark` = NULL, `on` = NULL, `resolve` = NULL, `translate` = NULL, `type` = NULL, `zoom` = NULL){
   .modify_args(NULL, NULL)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_SingleSelection <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_MultiSelection <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_IntervalSelection <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
 } 
 #' vl_bind_radio_input
 #' 
@@ -16437,12 +16654,11 @@ vl$`MultiSelectionConfig` <- function(`bind` = NULL, `clear` = NULL, `empty` = N
 #' @param type (_Projection_) The cartographic projection to use. This value is case-insensitive, for example `"albers"` and `"Albers"` indicate the same projection type. You can find all valid projection types [in the documentation](https://vega.github.io/vega-lite/docs/projection.html#projection-types).
 #' 
 #' __Default value:__ `mercator`
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to ProjectionConfig definition.
 
 #' @name vl$ProjectionConfig
 
-vl$`ProjectionConfig` <- function(`center` = NULL, `clipAngle` = NULL, `clipExtent` = NULL, `coefficient` = NULL, `distance` = NULL, `fraction` = NULL, `lobes` = NULL, `parallel` = NULL, `parallels` = NULL, `precision` = NULL, `radius` = NULL, `ratio` = NULL, `reflectX` = NULL, `reflectY` = NULL, `rotate` = NULL, `scale` = NULL, `spacing` = NULL, `tilt` = NULL, `translate` = NULL, `type` = NULL, ...){
+vl$`ProjectionConfig` <- function(`center` = NULL, `clipAngle` = NULL, `clipExtent` = NULL, `coefficient` = NULL, `distance` = NULL, `fraction` = NULL, `lobes` = NULL, `parallel` = NULL, `parallels` = NULL, `precision` = NULL, `radius` = NULL, `ratio` = NULL, `reflectX` = NULL, `reflectY` = NULL, `rotate` = NULL, `scale` = NULL, `spacing` = NULL, `tilt` = NULL, `translate` = NULL, `type` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' RangeConfig
@@ -16977,12 +17193,11 @@ vl$`TickConfig` <- function(`align` = NULL, `angle` = NULL, `aspect` = NULL, `ba
 #' This can be either a string (e.g `"bold"`, `"normal"`) or a number (`100`, `200`, `300`, ..., `900` where `"normal"` = `400` and `"bold"` = `700`).
 #' @param subtitleLineHeight (_ExcludeMappedValueRef<BaseTitle>_) Line height in pixels for multi-line subtitle text.
 #' @param subtitlePadding (_ExcludeMappedValueRef<BaseTitle>_) The padding in pixels between title and subtitle text.
-#' @param ... Additional objects
 #' @return A component of a Vega-Lite spec, corresponding to TitleConfig definition.
 
 #' @name vl$TitleConfig
 
-vl$`TitleConfig` <- function(`align` = NULL, `anchor` = NULL, `angle` = NULL, `baseline` = NULL, `color` = NULL, `dx` = NULL, `dy` = NULL, `font` = NULL, `fontSize` = NULL, `fontStyle` = NULL, `fontWeight` = NULL, `frame` = NULL, `limit` = NULL, `lineHeight` = NULL, `offset` = NULL, `orient` = NULL, `subtitleColor` = NULL, `subtitleFont` = NULL, `subtitleFontSize` = NULL, `subtitleFontStyle` = NULL, `subtitleFontWeight` = NULL, `subtitleLineHeight` = NULL, `subtitlePadding` = NULL, ...){
+vl$`TitleConfig` <- function(`align` = NULL, `anchor` = NULL, `angle` = NULL, `baseline` = NULL, `color` = NULL, `dx` = NULL, `dy` = NULL, `font` = NULL, `fontSize` = NULL, `fontStyle` = NULL, `fontWeight` = NULL, `frame` = NULL, `limit` = NULL, `lineHeight` = NULL, `offset` = NULL, `orient` = NULL, `subtitleColor` = NULL, `subtitleFont` = NULL, `subtitleFontSize` = NULL, `subtitleFontStyle` = NULL, `subtitleFontWeight` = NULL, `subtitleLineHeight` = NULL, `subtitlePadding` = NULL){
   .modify_args(NULL, NULL)
 } 
 #' ViewConfig
@@ -17038,6 +17253,326 @@ vl$`TitleConfig` <- function(`align` = NULL, `anchor` = NULL, `angle` = NULL, `b
 
 vl$`ViewConfig` <- function(`clip` = NULL, `continuousHeight` = NULL, `continuousWidth` = NULL, `cornerRadius` = NULL, `discreteHeight` = NULL, `discreteWidth` = NULL, `fill` = NULL, `fillOpacity` = NULL, `height` = NULL, `opacity` = NULL, `step` = NULL, `stroke` = NULL, `strokeCap` = NULL, `strokeDash` = NULL, `strokeDashOffset` = NULL, `strokeJoin` = NULL, `strokeMiterLimit` = NULL, `strokeOpacity` = NULL, `strokeWidth` = NULL, `width` = NULL){
   .modify_args(NULL, NULL)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_area_config <- function(...) {
+  .Deprecated('vl_config_area', package = 'vlbuidlr')
+  vl_config_area(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_axis_config <- function(...) {
+  .Deprecated('vl_config_axis', package = 'vlbuidlr')
+  vl_config_axis(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_axisBand_config <- function(...) {
+  .Deprecated('vl_config_axisBand', package = 'vlbuidlr')
+  vl_config_axisBand(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_axisBottom_config <- function(...) {
+  .Deprecated('vl_config_axisBottom', package = 'vlbuidlr')
+  vl_config_axisBottom(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_axisLeft_config <- function(...) {
+  .Deprecated('vl_config_axisLeft', package = 'vlbuidlr')
+  vl_config_axisLeft(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_axisRight_config <- function(...) {
+  .Deprecated('vl_config_axisRight', package = 'vlbuidlr')
+  vl_config_axisRight(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_axisTop_config <- function(...) {
+  .Deprecated('vl_config_axisTop', package = 'vlbuidlr')
+  vl_config_axisTop(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_axisX_config <- function(...) {
+  .Deprecated('vl_config_axisX', package = 'vlbuidlr')
+  vl_config_axisX(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_axisY_config <- function(...) {
+  .Deprecated('vl_config_axisY', package = 'vlbuidlr')
+  vl_config_axisY(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_bar_config <- function(...) {
+  .Deprecated('vl_config_bar', package = 'vlbuidlr')
+  vl_config_bar(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_boxplot_config <- function(...) {
+  .Deprecated('vl_config_boxplot', package = 'vlbuidlr')
+  vl_config_boxplot(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_circle_config <- function(...) {
+  .Deprecated('vl_config_circle', package = 'vlbuidlr')
+  vl_config_circle(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_concat_config <- function(...) {
+  .Deprecated('vl_config_concat', package = 'vlbuidlr')
+  vl_config_concat(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_errorband_config <- function(...) {
+  .Deprecated('vl_config_errorband', package = 'vlbuidlr')
+  vl_config_errorband(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_errorbar_config <- function(...) {
+  .Deprecated('vl_config_errorbar', package = 'vlbuidlr')
+  vl_config_errorbar(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_facet_config <- function(...) {
+  .Deprecated('vl_config_facet', package = 'vlbuidlr')
+  vl_config_facet(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_geoshape_config <- function(...) {
+  .Deprecated('vl_config_geoshape', package = 'vlbuidlr')
+  vl_config_geoshape(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_header_config <- function(...) {
+  .Deprecated('vl_config_header', package = 'vlbuidlr')
+  vl_config_header(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_headerColumn_config <- function(...) {
+  .Deprecated('vl_config_headerColumn', package = 'vlbuidlr')
+  vl_config_headerColumn(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_headerFacet_config <- function(...) {
+  .Deprecated('vl_config_headerFacet', package = 'vlbuidlr')
+  vl_config_headerFacet(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_headerRow_config <- function(...) {
+  .Deprecated('vl_config_headerRow', package = 'vlbuidlr')
+  vl_config_headerRow(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_image_config <- function(...) {
+  .Deprecated('vl_config_image', package = 'vlbuidlr')
+  vl_config_image(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_legend_config <- function(...) {
+  .Deprecated('vl_config_legend', package = 'vlbuidlr')
+  vl_config_legend(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_line_config <- function(...) {
+  .Deprecated('vl_config_line', package = 'vlbuidlr')
+  vl_config_line(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_mark_config <- function(...) {
+  .Deprecated('vl_config_mark', package = 'vlbuidlr')
+  vl_config_mark(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_point_config <- function(...) {
+  .Deprecated('vl_config_point', package = 'vlbuidlr')
+  vl_config_point(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_projection_config <- function(...) {
+  .Deprecated('vl_config_projection', package = 'vlbuidlr')
+  vl_config_projection(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_range_config <- function(...) {
+  .Deprecated('vl_config_range', package = 'vlbuidlr')
+  vl_config_range(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_rect_config <- function(...) {
+  .Deprecated('vl_config_rect', package = 'vlbuidlr')
+  vl_config_rect(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_repeat_config <- function(...) {
+  .Deprecated('vl_config_repeat', package = 'vlbuidlr')
+  vl_config_repeat(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_rule_config <- function(...) {
+  .Deprecated('vl_config_rule', package = 'vlbuidlr')
+  vl_config_rule(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_scale_config <- function(...) {
+  .Deprecated('vl_config_scale', package = 'vlbuidlr')
+  vl_config_scale(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_selection_config <- function(...) {
+  .Deprecated('vl_config_selection', package = 'vlbuidlr')
+  vl_config_selection(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_square_config <- function(...) {
+  .Deprecated('vl_config_square', package = 'vlbuidlr')
+  vl_config_square(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_text_config <- function(...) {
+  .Deprecated('vl_config_text', package = 'vlbuidlr')
+  vl_config_text(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_tick_config <- function(...) {
+  .Deprecated('vl_config_tick', package = 'vlbuidlr')
+  vl_config_tick(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_title_config <- function(...) {
+  .Deprecated('vl_config_title', package = 'vlbuidlr')
+  vl_config_title(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_trail_config <- function(...) {
+  .Deprecated('vl_config_trail', package = 'vlbuidlr')
+  vl_config_trail(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_view_config <- function(...) {
+  .Deprecated('vl_config_view', package = 'vlbuidlr')
+  vl_config_view(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_add_config <- function(...) {
+  .Deprecated('vl_config', package = 'vlbuidlr')
+  vl_config(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_AreaConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_AxisConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_BaseMarkConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_BoxPlotConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_BrushConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_CompositionConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Config <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_ErrorBandConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_ErrorBarConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_HeaderConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_IntervalSelectionConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_LegendConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_LineConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_MarkConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_MultiSelectionConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_ProjectionConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_RangeConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_RectConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_ScaleConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_SelectionConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_SingleSelectionConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_TickConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_TitleConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_ViewConfig <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
 } 
 #' BinParams
 #' 
@@ -17520,4 +18055,39 @@ vl$`BindRange` <- function(`debounce` = NULL, `element` = NULL, `input` = NULL, 
 
 vl$`BindRadioSelect` <- function(`debounce` = NULL, `element` = NULL, `input` = NULL, `labels` = NULL, `name` = NULL, `options` = NULL, `type` = NULL){
   .modify_args(NULL, NULL)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_BinParams <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Axis <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Scale <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_Legend <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_BindCheckbox <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_BindRange <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_BindRadioSelect <- function(...) {
+  .Deprecated('vl$object', package = 'vlbuidlr')
+  vl$object(...)
 }

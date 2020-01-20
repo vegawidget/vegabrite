@@ -51,8 +51,6 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 \item{subtitleLineHeight}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Line height in pixels for multi-line subtitle text.}
 
 \item{subtitlePadding}{(\emph{ExcludeMappedValueRef<BaseTitle>}) The padding in pixels between title and subtitle text.}
-
-\item{...}{Additional objects}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to TitleConfig definition.

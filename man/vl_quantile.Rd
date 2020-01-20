@@ -4,13 +4,15 @@
 \alias{vl_quantile}
 \title{vl_quantile}
 \usage{
-vl_quantile(spec, .object = NULL, as = NULL, groupby = NULL,
-  probs = NULL, quantile = NULL, step = NULL)
+vl_quantile(spec, .object = NULL, quantile = NULL, as = NULL,
+  groupby = NULL, probs = NULL, step = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: QuantileTransform}
+
+\item{quantile}{(\emph{QuantileTransform}) The data field for which to perform quantile estimation.}
 
 \item{as}{(\emph{QuantileTransform}) The output field names for the probability and quantile values.
 
@@ -19,8 +21,6 @@ vl_quantile(spec, .object = NULL, as = NULL, groupby = NULL,
 \item{groupby}{(\emph{QuantileTransform}) The data fields to group by. If not specified, a single group containing all data objects will be used.}
 
 \item{probs}{(\emph{QuantileTransform}) An array of probabilities in the range (0, 1) for which to compute quantile values. If not specified, the \emph{step} parameter will be used.}
-
-\item{quantile}{(\emph{QuantileTransform}) The data field for which to perform quantile estimation.}
 
 \item{step}{(\emph{QuantileTransform}) A probability step size (default 0.01) for sampling quantile values. All values from one-half the step size up to 1 (exclusive) will be sampled. This parameter is only used if the \emph{probs} parameter is not provided.}
 }

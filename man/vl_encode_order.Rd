@@ -5,8 +5,8 @@
 \title{vl_encode_order}
 \usage{
 vl_encode_order(spec, .object = NULL, field = NULL, type = NULL,
-  aggregate = NULL, bin = NULL, sort = NULL, timeUnit = NULL,
-  title = NULL, value = NULL)
+  value = NULL, aggregate = NULL, bin = NULL, sort = NULL,
+  timeUnit = NULL, title = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -40,6 +40,8 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 }
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/type.html}{type} documentation.}
+
+\item{value}{(\emph{NumberValueDef}) A constant value in visual domain (e.g., \code{"red"} / \code{"#0099ff"} / \href{https://vega.github.io/vega-lite/docs/types.html#gradient}{gradient definition} for color, values between \code{0} to \code{1} for opacity).}
 
 \item{aggregate}{(\emph{OrderFieldDef}) Aggregation function for the field
 (e.g., \code{"mean"}, \code{"sum"}, \code{"median"}, \code{"min"}, \code{"max"}, \code{"count"}).
@@ -76,8 +78,6 @@ or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field 
 \item You can customize the default field title format by providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{fieldTitle} property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config} or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{fieldTitle function via the compile function's options}.
 \item If both field definition's \code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used.
 }}
-
-\item{value}{(\emph{NumberValueDef}) A constant value in visual domain (e.g., \code{"red"} / \code{"#0099ff"} / \href{https://vega.github.io/vega-lite/docs/types.html#gradient}{gradient definition} for color, values between \code{0} to \code{1} for opacity).}
 }
 \value{
 A modified Vega-Lite Spec
