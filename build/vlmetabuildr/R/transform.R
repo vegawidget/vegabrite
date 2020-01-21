@@ -10,18 +10,14 @@ create_transform_functions <- function(schema) {
 
 
 create_transform <- function(trans, schema) {
-  
-  short_trans <- tolower(stringr::str_remove(trans,"Transform"))
+  short_trans <- tolower(stringr::str_remove(trans, "Transform"))
 
-  make_function( glue("#/definitions/{trans}"), 
-                 schema, 
-                 short_trans, 
-                 ".add_transform", 
-                 priority_args = short_trans,
-                 pass_to_adder = list(.trans = short_trans),
-                 description = glue("Add {trans} to a vega-lite spec."))
-
+  make_function(glue("#/definitions/{trans}"),
+    schema,
+    short_trans,
+    ".add_transform",
+    priority_args = short_trans,
+    pass_to_adder = list(.trans = short_trans),
+    description = glue("Add {trans} to a vega-lite spec.")
+  )
 }
-
-
-

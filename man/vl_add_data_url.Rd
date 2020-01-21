@@ -25,7 +25,7 @@ vl_chart() \%>\%
   vl_add_data_url("https://vega.github.io/vega-editor/app/data/movies.json") \%>\%
   vl_encode_x(field = "IMDB_Rating", type = "quantitative") \%>\%
   vl_encode_y(type = "quantitative", aggregate = "count") \%>\%
-  vl_bin_x(maxbins=10) \%>\%
+  vl_bin_x(maxbins = 10) \%>\%
   vl_mark_bar()
 }
 \seealso{
