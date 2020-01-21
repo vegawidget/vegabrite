@@ -107,7 +107,7 @@ is_valid_subschema <- function(obj, sub_schema, schema) {
     array = is_valid_array(obj, sub_schema[["items"]], schema),
     boolean = is.logical(obj),
     string = is_valid_string(obj, sub_schema[["enum"]]),
-    null = is.na(obj),
+    null = is.na(obj) && length(obj) == 1,
     number = is.numeric(obj)
   )
 }
