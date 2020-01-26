@@ -208,6 +208,18 @@ vl_chart() %>%
   vl_resolve_scale_color("independent")
 ```
 
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_filter("datum.Miles_per_Gallon !== null") %>%
+  vl_timeunit(timeUnit = "year", field = "Year", as = "year") %>%
+  vl_window(window = list(list(op = "mean", field = "Miles_per_Gallon", as = "Average_MPG")),
+              sort = list(list(field = "year", order = "ascending")),
+              ignorePeers = FALSE, frame = list(NA,0)) %>%
+  vl_encode_x(field = "Year", timeUnit = "year", type = "temporal") %>%
+  vl_encode_y(field = "Average_MPG", type = "quantitative") %>% 
+  vl_mark_line()
+```
 
 
 ### Multiple marks...

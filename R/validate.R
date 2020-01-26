@@ -101,6 +101,11 @@ is_valid_subschema <- function(obj, sub_schema, schema) {
   if (!hasName(sub_schema, "type")) {
     return("AAAH")
   }
+  
+  if (length(sub_schema[["type"]]) > 1) {
+    valid <- vapply(sub_schema[["type"]], function(x) is_valid_subschema(obj, list(type = x), schema), FALSE)
+    return(any(valid))
+  }
 
   switch(sub_schema[["type"]],
     object = is_valid_object(obj, sub_schema, schema),
@@ -111,3 +116,4 @@ is_valid_subschema <- function(obj, sub_schema, schema) {
     number = is.numeric(obj)
   )
 }
+
