@@ -17700,3 +17700,17 @@ vl_make_BindRadioSelect <- function(...) {
   .Deprecated("vl$object", package = "vlbuidlr")
   vl$object(...)
 }
+#' Window
+#'
+#' Create object for Window
+#' @param as (_WindowFieldDef_) The output name for the window operation.
+#' @param field (_WindowFieldDef_) The data field for which to compute the aggregate or window function. This can be omitted for window functions that do not operate over a field such as `"count"`, `"rank"`, `"dense_rank"`.
+#' @param op (_WindowFieldDef_) The window or aggregation operation to apply within a window (e.g., `"rank"`, `"lead"`, `"sum"`, `"average"` or `"count"`). See the list of all supported operations [here](https://vega.github.io/vega-lite/docs/window.html#ops).
+#' @param param (_WindowFieldDef_) Parameter values for the window functions. Parameter values can be omitted for operations that do not accept a parameter.
+#'
+#' See the list of all supported operations and their parameters [here](https://vega.github.io/vega-lite/docs/transforms/window.html).
+#' @return A component of a Vega-Lite spec, corresponding to Window definition.
+#' @name vl$Window
+vl$`Window` <- function(`as` = NULL, `field` = NULL, `op` = NULL, `param` = NULL) {
+  .modify_args(NULL, NULL)
+}

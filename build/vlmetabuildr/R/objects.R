@@ -11,7 +11,8 @@ create_additional_objects <- function(schema) {
 
   c(
     purrr::map_chr(objs, create_object, schema = schema),
-    purrr::map_chr(objs, create_deprecated_object)
+    purrr::map_chr(objs, create_deprecated_object),
+    create_object("Window", schema, "#/definitions/WindowFieldDef")
   )
 }
 

@@ -4,7 +4,7 @@
 \name{vl}
 \alias{vl}
 \title{vl}
-\format{An object of class \code{vl} (inherits from \code{environment}) of length 80.}
+\format{An object of class \code{vl} (inherits from \code{environment}) of length 81.}
 \usage{
 vl
 }
