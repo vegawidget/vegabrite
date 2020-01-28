@@ -24,12 +24,9 @@ The goal of vlbuildr is to provide an R api for building up vega-lite specs.
 
 ### Current status
 
-This package is in early stages at the moment. Most of a "v0" of the public facing API has been built (although definitely not locked-down yet!). 
-
-However, the internals of the package might change substantially to provide greater robustness, make it harder to make invalid specs, and/or provide more info when making invalid spec. The current approach seeks to make it easy to build up specs, provided your input arguments are okay... but it does no checking of those inputs and you can very easily make invalid specs! Still TBD exactly how rigorous/helpful this package will aim to be with regards to bad specifications..
+This package is still experimental, but much of the public facing API has been built (although still subject to changes). However, the internals of the package might change substantially to provide greater robustness, make it harder to make invalid specs, and/or provide better information when making invalid spec.
 
 The documentation is also still very bare-bones. The parameter documentation for functions is fairly complete, however, as it relies on descriptions pulled directly from the Vega-Lite schema.  
-
 
 ## Inspiration and related work
 
@@ -59,7 +56,6 @@ vl_chart() %>%
                as = "gender") %>%
   vl_filter("datum.year == 2000") %>%
   vl_encode(x = "age:O", y = "people:Q", color = "gender:N") %>%
-  vl_scale_x(rangeStep = 17) %>%
   vl_stack_y("normalize") %>%
   vl_aggregate_y("sum") %>%
   vl_axis_y(title = "population") %>%
