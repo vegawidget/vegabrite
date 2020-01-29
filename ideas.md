@@ -8,6 +8,6 @@
 - [x] if single field (e.g. filter) allow to pass unnamed to .object
 - [x] vl$ for make object functions
 - [ ] Roxygen consolidation -- use eval
-
+- [ ] tooltip sugar -- should be able to take array
 
 
