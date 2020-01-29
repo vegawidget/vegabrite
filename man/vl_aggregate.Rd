@@ -4,10 +4,12 @@
 \alias{vl_aggregate}
 \title{vl_aggregate}
 \usage{
-vl_aggregate(spec, aggregate = NULL, groupby = NULL)
+vl_aggregate(spec, .object = NULL, aggregate = NULL, groupby = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AggregateTransform}
 
 \item{aggregate}{(\emph{AggregateTransform}) Array of objects that define fields to aggregate.}
 

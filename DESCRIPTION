@@ -1,6 +1,6 @@
 Package: vlbuildr
 Title: Build vega-lite specs in R
-Version: 0.0.1.9005
+Version: 0.1.0.9000
 Authors@R: person("Aicia", "Schep", email = "aschep@gmail.com", role = c("aut", "cre"))
 Description: Build vegalite specs in R. Inspired by vegalite package as well as 
   vega-lite-api and altair. Dependent on vegawidget for actually rendering specs!
@@ -14,10 +14,7 @@ Imports:
     magrittr,
     rlang,
     vegawidget,
-    V8,
-    jsonvalidate,
     jsonlite
-Remotes: ropensci/jsonvalidate
 Suggests: 
     knitr,
     rmarkdown,

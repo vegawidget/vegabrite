@@ -4,11 +4,17 @@
 \alias{vl_add_data}
 \title{vl_add_data}
 \usage{
-vl_add_data(spec, format = NULL, name = NULL, url = NULL,
-  values = NULL, sequence = NULL, sphere = NULL, graticule = NULL)
+vl_add_data(spec, .object = NULL, values = NULL, format = NULL,
+  name = NULL, url = NULL, graticule = NULL, sequence = NULL,
+  sphere = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: UrlData, InlineData, NamedData, SequenceGenerator, SphereGenerator or GraticuleGenerator}
+
+\item{values}{(\emph{InlineData}) The full data set, included inline. This can be an array of objects or primitive values, an object, or a string.
+Arrays of primitive values are ingested as objects with a \code{data} property. Strings are parsed according to the specified format type.}
 
 \item{format}{(\emph{UrlData, InlineData, NamedData}) An object that specifies the format for parsing the data.}
 
@@ -17,14 +23,11 @@ vl_add_data(spec, format = NULL, name = NULL, url = NULL,
 \item{url}{(\emph{UrlData}) An URL from which to load the data set. Use the \code{format.type} property
 to ensure the loaded data is correctly parsed.}
 
-\item{values}{(\emph{InlineData}) The full data set, included inline. This can be an array of objects or primitive values, an object, or a string.
-Arrays of primitive values are ingested as objects with a \code{data} property. Strings are parsed according to the specified format type.}
+\item{graticule}{(\emph{GraticuleGenerator}) Generate graticule GeoJSON data for geographic reference lines.}
 
 \item{sequence}{(\emph{SequenceGenerator}) Generate a sequence of numbers.}
 
 \item{sphere}{(\emph{SphereGenerator}) Generate sphere GeoJSON data for the full globe.}
-
-\item{graticule}{(\emph{GraticuleGenerator}) Generate graticule GeoJSON data for geographic reference lines.}
 }
 \value{
 A modified Vega-Lite Spec

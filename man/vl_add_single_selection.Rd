@@ -4,54 +4,73 @@
 \alias{vl_add_single_selection}
 \title{vl_add_single_selection}
 \usage{
-vl_add_single_selection(spec, selection_name, bind = NULL,
-  clear = NULL, empty = NULL, encodings = NULL, fields = NULL,
-  init = NULL, nearest = NULL, on = NULL, resolve = NULL,
-  type = NULL)
+vl_add_single_selection(spec, selection_name, .object = NULL,
+  bind = NULL, clear = NULL, empty = NULL, encodings = NULL,
+  fields = NULL, init = NULL, nearest = NULL, on = NULL,
+  resolve = NULL, type = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
 \item{selection_name}{Name for selection}
 
-\item{bind}{(\emph{SingleSelection}) Establish a two-way binding between a single selection and input elements
-(also known as dynamic query widgets). A binding takes the form of
-Vega's \href{https://vega.github.io/vega/docs/signals/#bind}{input element binding definition}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SingleSelection}
+
+\item{bind}{(\emph{SingleSelection}) When set, a selection is populated by input elements (also known as dynamic query widgets)
+or by interacting with the corresponding legend. Direct manipulation interaction is disabled by default;
+to re-enable it, set the selection's \href{https://vega.github.io/vega-lite/docs/selection.html#common-selection-properties}{on} property.
+
+Legend bindings are restricted to selections that only specify a single field or encoding.
+
+Query widget binding takes the form of Vega's \href{https://vega.github.io/vega/docs/signals/#bind}{input element binding definition}
 or can be a mapping between projected field/encodings and binding definitions.
 
-See the \href{https://vega.github.io/vega-lite/docs/bind.html}{bind transform} documentation for more information.}
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/bind.html}{bind} documentation.}
 
-\item{clear}{(\emph{SingleSelection}) Clears the selection, emptying it of all values. Can be an
-\href{https://vega.github.io/vega/docs/event-streams/}{EventStream} or \code{false} to disable.
+\item{clear}{(\emph{SingleSelection}) Clears the selection, emptying it of all values. Can be a
+\href{https://vega.github.io/vega/docs/event-streams/}{Event Stream} or \code{false} to disable.
 
 \strong{Default value:} \code{dblclick}.
 
-See the \href{https://vega.github.io/vega-lite/docs/clear.html}{clear} documentation for more information.}
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/clear.html}{clear} documentation.}
 
 \item{empty}{(\emph{SingleSelection}) By default, \code{all} data values are considered to lie within an empty selection.
 When set to \code{none}, empty selections contain no data values.}
 
 \item{encodings}{(\emph{SingleSelection}) An array of encoding channels. The corresponding data field values
-must match for a data tuple to fall within the selection.}
+must match for a data tuple to fall within the selection.
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/project.html}{encodings} documentation.}
 
 \item{fields}{(\emph{SingleSelection}) An array of field names whose values must match for a data tuple to
-fall within the selection.}
+fall within the selection.
 
-\item{init}{(\emph{SingleSelection}) Initialize the selection with a mapping between \href{https://vega.github.io/vega-lite/docs/project.html}{projected channels or field names} and initial values.}
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/project.html}{fields} documentation.}
+
+\item{init}{(\emph{SingleSelection}) Initialize the selection with a mapping between \href{https://vega.github.io/vega-lite/docs/project.html}{projected channels or field names} and initial values.
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/init.html}{init} documentation.}
 
 \item{nearest}{(\emph{SingleSelection}) When true, an invisible voronoi diagram is computed to accelerate discrete
 selection. The data value \emph{nearest} the mouse cursor is added to the selection.
 
-See the \href{https://vega.github.io/vega-lite/docs/nearest.html}{nearest transform} documentation for more information.}
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/nearest.html}{nearest} documentation.}
 
 \item{on}{(\emph{SingleSelection}) A \href{https://vega.github.io/vega/docs/event-streams/}{Vega event stream} (object or selector) that triggers the selection.
 For interval selections, the event stream must specify a \href{https://vega.github.io/vega/docs/event-streams/#between-filters}{start and end}.}
 
 \item{resolve}{(\emph{SingleSelection}) With layered and multi-view displays, a strategy that determines how
 selections' data queries are resolved when applied in a filter transform,
-conditional encoding rule, or scale domain.}
+conditional encoding rule, or scale domain.
 
-\item{type}{(\emph{SingleSelection}) single}
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/selection-resolve.html}{resolve} documentation.}
+
+\item{type}{(\emph{SingleSelection}) Determines the default event processing and data query for the selection. Vega-Lite currently supports three selection types:
+\itemize{
+\item \code{"single"} -- to select a single discrete data value on \code{click}.
+\item \code{"multi"} -- to select multiple discrete data value; the first value is selected on \code{click} and additional values toggled on shift-\code{click}.
+\item \code{"interval"} -- to select a continuous range of data values on \code{drag}.
+}}
 }
 \value{
 A modified Vega-Lite Spec

@@ -5,8 +5,8 @@
 \title{vl_bind_select_input}
 \usage{
 vl_bind_select_input(spec, selection_name, projection_name = NULL,
-  debounce = NULL, element = NULL, name = NULL, options = NULL,
-  type = NULL)
+  .object = NULL, debounce = NULL, element = NULL, labels = NULL,
+  name = NULL, options = NULL, type = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -15,9 +15,13 @@ vl_bind_select_input(spec, selection_name, projection_name = NULL,
 
 \item{projection_name}{Name of projection (field or encoding) within selection}
 
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRadioSelect}
+
 \item{debounce}{(\emph{BindRadioSelect})}
 
 \item{element}{(\emph{BindRadioSelect})}
+
+\item{labels}{(\emph{BindRadioSelect})}
 
 \item{name}{(\emph{BindRadioSelect})}
 

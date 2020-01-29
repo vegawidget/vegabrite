@@ -4,27 +4,34 @@
 \alias{vl_mark_boxplot}
 \title{vl_mark_boxplot}
 \usage{
-vl_mark_boxplot(spec, box = NULL, clip = NULL, color = NULL,
-  extent = NULL, median = NULL, opacity = NULL, orient = NULL,
-  outliers = NULL, rule = NULL, size = NULL, ticks = NULL)
+vl_mark_boxplot(spec, .object = NULL, box = NULL, clip = NULL,
+  color = NULL, extent = NULL, median = NULL, opacity = NULL,
+  orient = NULL, outliers = NULL, rule = NULL, size = NULL,
+  ticks = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BoxPlotDef}
 
 \item{box}{(\emph{BoxPlotDef})}
 
 \item{clip}{(\emph{BoxPlotDef}) Whether a composite mark be clipped to the enclosing group’s width and height.}
 
-\item{color}{(\emph{BoxPlotDef}) Default color.  Note that \code{fill} and \code{stroke} have higher precedence than \code{color} and will override \code{color}.
+\item{color}{(\emph{BoxPlotDef}) Default color.
 
 \strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
 
-\strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.}
+\strong{Note:}
+\itemize{
+\item This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.
+\item The \code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.
+}}
 
 \item{extent}{(\emph{BoxPlotDef}) The extent of the whiskers. Available options include:
 \itemize{
 \item \code{"min-max"}: min and max are the lower and upper whiskers respectively.
-\item A number representing multiple of the interquartile range.  This number will be multiplied by the IQR to determine whisker boundary, which spans from the smallest data to the largest data within the range \emph{[Q1 - k * IQR, Q3 + k * IQR]} where \emph{Q1} and \emph{Q3} are the first and third quartiles while \emph{IQR} is the interquartile range (\emph{Q3-Q1}).
+\item A number representing multiple of the interquartile range. This number will be multiplied by the IQR to determine whisker boundary, which spans from the smallest data to the largest data within the range \emph{[Q1 - k * IQR, Q3 + k * IQR]} where \emph{Q1} and \emph{Q3} are the first and third quartiles while \emph{IQR} is the interquartile range (\emph{Q3-Q1}).
 }
 
 \strong{Default value:} \code{1.5}.}
@@ -33,7 +40,7 @@ vl_mark_boxplot(spec, box = NULL, clip = NULL, color = NULL,
 
 \item{opacity}{(\emph{BoxPlotDef}) The opacity (value between [0,1]) of the mark.}
 
-\item{orient}{(\emph{BoxPlotDef}) Orientation of the box plot.  This is normally automatically determined based on types of fields on x and y channels. However, an explicit \code{orient} be specified when the orientation is ambiguous.
+\item{orient}{(\emph{BoxPlotDef}) Orientation of the box plot. This is normally automatically determined based on types of fields on x and y channels. However, an explicit \code{orient} be specified when the orientation is ambiguous.
 
 \strong{Default value:} \code{"vertical"}.}
 

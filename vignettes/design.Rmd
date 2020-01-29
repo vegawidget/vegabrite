@@ -32,29 +32,28 @@ At the moment, the various top-level specs are S3 classes that are basically tre
 
 There currently are no classes for any sub-components of a spec, e.g. a class that might correspond to an "Axis" definition from the Vega-Lite spec. Rather, functions build those components as lists, and the validity is checked using the schema.
 
-Moving to an approach where actual classes are defined for each potential object is a possibility. The motivation for such an approach would be cleaner internal handing rather than a substantially different API, as this package would seek to primarily present to users a functional interface for building up specs.  The user-facing aspect that would be most likely to change would be:
+Moving to an approach where actual classes are defined for each potential object is a possibility. The motivation for such an approach would be cleaner internal handing rather than a substantially different API, as this package would seek to primarily present to users a functional interface for building up specs.  The user-facing aspect that would be most likely to change would be what is described in the following section
 
 
 ### Making sub-components
 
-The package currently offer a number of functions prefixed with `vl_make_` such as `vl_make_BinParams` which make a given sub-component of a Vega-Lite spec (what could map to an object if taking a more Object-oriented approach).  These functions are intended to build sub-components that can be passed as arguments to functions that add to a spec. 
+The package currently offer a number of functions grouped in a list `vl` (e.g. `vl$BinParams`) which make a given sub-component of a Vega-Lite spec (what could map to an object if taking a more Object-oriented approach).  These functions are intended to build sub-components that can be passed as arguments to functions that add to a spec. 
 
-However, the intention is to make the functions that add to a spec granular enough that in general most won't need complicated nested objects to be taken in as arguments, so that in most cases these `vl_make_` functions won't be needed.
+However, the intention is to make the functions that add to a spec granular enough that in general most won't need complicated nested objects to be taken in as arguments, so that in most cases these `vl$` functions won't be needed.
 
 This part of the API might change, especially if the internal components are reworked to make use of objects corresponding to these sub-components.
 
 ## Correctness of specs being built
 
-This package may build incorrect specs if given improper inputs or if not all needed components are added to a spec. Some protection against this has been added by adding sub-schema validation.  When a function adds a component to a spec, it checks that the component is correct. However, it may be possible to add invalid combinations of individual components to a spec.
+This package may build incorrect specs if given improper inputs or if not all needed components are added to a spec. Some protection against this has been added by adding sub-schema validation.  When a function adds a component to a spec, it checks that the component is correct. That checking will give a warning for an invalid spec; another area of improvement would be giving more detailed error messages. The validation may also still be imperfect. It also may be possible to add invalid combinations of individual components to a spec, and the overall spec is not currently validated.
 
 Potentially validation could also occur prior to printing (to check the validity of the entire spec), but that might be something to add to the vegawdiget package, which handles the printing.  
-
 
 # Construction of the package
 
 ## A semi-automated approach to building an API
 
-The functions in this package are build up using a semi-automated approach. A companion package [vlmetabuildr](https://github.com/AliciaSchep/vlmetabuildr) is used to write the functions in the 'zzz_autogen_api.R' file.  
+The functions in this package are build up using a semi-automated approach. A companion package [vlmetabuildr](https://github.com/vegawidget/vlbuildr/tree/master/build/vlmetabuildr) located inside the 'build' directory is used to write the functions in the 'zzz_autogen_api.R' file.  
 
 Note that this process is very much **semi**-automated and not fully automated. vlmetabuildr has been made specific for the Vega-lite api and this package and is not a general purpose JSON Schema --> API package.  
 
@@ -74,7 +73,6 @@ What **is** automated includes:
 
 The parts that are automated would be extremely tedious to do manually. Potentially more of the API construction could be automated, however, the difficulty of the automation would increase substantially and/or the resulting API might be clunkier.
 
-
 ## Details
 
 ### Build the auto-generated components
@@ -84,4 +82,8 @@ There is a script 'build/build.R' that builds the auto-generated components of t
 ### Stucture of 'adder' functions
 
 Most of the auto-generated functions will call an internal function to add the specified component to the spec. Those functions generally take as argument at least three arguments: (1) the old spec, (2) the new object to add (a list), (3) a reference within the schema of what the object corresponds to.  Additionally, more arguments needed to specify how the component should get added might also be included.  The adder function will generally validate the object.  
+
+### Pulling bits from the schema
+
+Functions for pulling out what properties are available for a particular part of the Vega-Lite schema are in the schema.R file in `vlmetabuildr`. These functions can recursively travel through the schema to pull out all the available enums, properties, or requirements for a particular component of a schema.  These functions were adapted from similar functions in javascript from the vega-lite-api package.
 

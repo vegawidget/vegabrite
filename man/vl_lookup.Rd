@@ -4,23 +4,31 @@
 \alias{vl_lookup}
 \title{vl_lookup}
 \usage{
-vl_lookup(spec, as = NULL, default = NULL, from = NULL,
-  lookup = NULL)
+vl_lookup(spec, .object = NULL, lookup = NULL, from = NULL,
+  as = NULL, default = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{as}{(\emph{LookupTransform}) The field or fields for storing the computed formula value.
-If \code{from.fields} is specified, the transform will use the same names for \code{as}.
-If \code{from.fields} is not specified, \code{as} has to be a string and we put the whole object into the data under the specified name.}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LookupTransform}
+
+\item{lookup}{(\emph{LookupTransform}) Key in primary data source.}
+
+\item{from}{(\emph{LookupTransform}) Data source or selection for secondary data reference.}
+
+\item{as}{(\emph{LookupTransform}) The output fields on which to store the looked up data values.
+
+For data lookups, this property may be left blank if \code{from.fields}
+has been specified (those field names will be used); if \code{from.fields}
+has not been specified, \code{as} must be a string.
+
+For selection lookups, this property is optional: if unspecified,
+looked up values will be stored under a property named for the selection;
+and if specified, it must correspond to \code{from.fields}.}
 
 \item{default}{(\emph{LookupTransform}) The default value to use if lookup fails.
 
 \strong{Default value:} \code{null}}
-
-\item{from}{(\emph{LookupTransform}) Secondary data reference.}
-
-\item{lookup}{(\emph{LookupTransform}) Key in primary data source.}
 }
 \value{
 A modified Vega-Lite Spec

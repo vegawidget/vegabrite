@@ -13,215 +13,217 @@
 \alias{vl_legend_strokeWidth}
 \title{Add legend to encoding}
 \usage{
-vl_legend_color(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_color(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
-  labelBaseline = NULL, labelColor = NULL, labelFont = NULL,
-  labelFontSize = NULL, labelFontStyle = NULL,
+  labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
+  labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL,
   labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL,
   labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL,
   labelSeparation = NULL, legendX = NULL, legendY = NULL,
   offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL,
   strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL,
-  symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL,
-  symbolSize = NULL, symbolStrokeColor = NULL,
+  symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL,
+  symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL,
   symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL,
   tickMinStep = NULL, title = NULL, titleAlign = NULL,
   titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL,
   titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL,
-  titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL,
-  titleOrient = NULL, titlePadding = NULL, type = NULL,
-  values = NULL, zindex = NULL)
+  titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL,
+  titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
+  type = NULL, values = NULL, zindex = NULL)
 
-vl_legend_fill(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_fill(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
-  labelBaseline = NULL, labelColor = NULL, labelFont = NULL,
-  labelFontSize = NULL, labelFontStyle = NULL,
+  labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
+  labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL,
   labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL,
   labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL,
   labelSeparation = NULL, legendX = NULL, legendY = NULL,
   offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL,
   strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL,
-  symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL,
-  symbolSize = NULL, symbolStrokeColor = NULL,
+  symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL,
+  symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL,
   symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL,
   tickMinStep = NULL, title = NULL, titleAlign = NULL,
   titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL,
   titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL,
-  titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL,
-  titleOrient = NULL, titlePadding = NULL, type = NULL,
-  values = NULL, zindex = NULL)
+  titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL,
+  titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
+  type = NULL, values = NULL, zindex = NULL)
 
-vl_legend_fillOpacity(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_fillOpacity(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
-  labelBaseline = NULL, labelColor = NULL, labelFont = NULL,
-  labelFontSize = NULL, labelFontStyle = NULL,
+  labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
+  labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL,
   labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL,
   labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL,
   labelSeparation = NULL, legendX = NULL, legendY = NULL,
   offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL,
   strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL,
-  symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL,
-  symbolSize = NULL, symbolStrokeColor = NULL,
+  symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL,
+  symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL,
   symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL,
   tickMinStep = NULL, title = NULL, titleAlign = NULL,
   titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL,
   titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL,
-  titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL,
-  titleOrient = NULL, titlePadding = NULL, type = NULL,
-  values = NULL, zindex = NULL)
+  titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL,
+  titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
+  type = NULL, values = NULL, zindex = NULL)
 
-vl_legend_opacity(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_opacity(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
-  labelBaseline = NULL, labelColor = NULL, labelFont = NULL,
-  labelFontSize = NULL, labelFontStyle = NULL,
+  labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
+  labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL,
   labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL,
   labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL,
   labelSeparation = NULL, legendX = NULL, legendY = NULL,
   offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL,
   strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL,
-  symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL,
-  symbolSize = NULL, symbolStrokeColor = NULL,
+  symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL,
+  symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL,
   symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL,
   tickMinStep = NULL, title = NULL, titleAlign = NULL,
   titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL,
   titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL,
-  titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL,
-  titleOrient = NULL, titlePadding = NULL, type = NULL,
-  values = NULL, zindex = NULL)
+  titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL,
+  titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
+  type = NULL, values = NULL, zindex = NULL)
 
-vl_legend_shape(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_shape(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
-  labelBaseline = NULL, labelColor = NULL, labelFont = NULL,
-  labelFontSize = NULL, labelFontStyle = NULL,
+  labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
+  labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL,
   labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL,
   labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL,
   labelSeparation = NULL, legendX = NULL, legendY = NULL,
   offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL,
   strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL,
-  symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL,
-  symbolSize = NULL, symbolStrokeColor = NULL,
+  symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL,
+  symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL,
   symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL,
   tickMinStep = NULL, title = NULL, titleAlign = NULL,
   titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL,
   titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL,
-  titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL,
-  titleOrient = NULL, titlePadding = NULL, type = NULL,
-  values = NULL, zindex = NULL)
+  titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL,
+  titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
+  type = NULL, values = NULL, zindex = NULL)
 
-vl_legend_size(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_size(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
-  labelBaseline = NULL, labelColor = NULL, labelFont = NULL,
-  labelFontSize = NULL, labelFontStyle = NULL,
+  labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
+  labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL,
   labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL,
   labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL,
   labelSeparation = NULL, legendX = NULL, legendY = NULL,
   offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL,
   strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL,
-  symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL,
-  symbolSize = NULL, symbolStrokeColor = NULL,
+  symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL,
+  symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL,
   symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL,
   tickMinStep = NULL, title = NULL, titleAlign = NULL,
   titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL,
   titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL,
-  titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL,
-  titleOrient = NULL, titlePadding = NULL, type = NULL,
-  values = NULL, zindex = NULL)
+  titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL,
+  titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
+  type = NULL, values = NULL, zindex = NULL)
 
-vl_legend_stroke(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_stroke(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
-  labelBaseline = NULL, labelColor = NULL, labelFont = NULL,
-  labelFontSize = NULL, labelFontStyle = NULL,
+  labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
+  labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL,
   labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL,
   labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL,
   labelSeparation = NULL, legendX = NULL, legendY = NULL,
   offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL,
   strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL,
-  symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL,
-  symbolSize = NULL, symbolStrokeColor = NULL,
+  symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL,
+  symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL,
   symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL,
   tickMinStep = NULL, title = NULL, titleAlign = NULL,
   titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL,
   titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL,
-  titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL,
-  titleOrient = NULL, titlePadding = NULL, type = NULL,
-  values = NULL, zindex = NULL)
+  titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL,
+  titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
+  type = NULL, values = NULL, zindex = NULL)
 
-vl_legend_strokeOpacity(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_strokeOpacity(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
-  labelBaseline = NULL, labelColor = NULL, labelFont = NULL,
-  labelFontSize = NULL, labelFontStyle = NULL,
+  labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
+  labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL,
   labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL,
   labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL,
   labelSeparation = NULL, legendX = NULL, legendY = NULL,
   offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL,
   strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL,
-  symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL,
-  symbolSize = NULL, symbolStrokeColor = NULL,
+  symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL,
+  symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL,
   symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL,
   tickMinStep = NULL, title = NULL, titleAlign = NULL,
   titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL,
   titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL,
-  titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL,
-  titleOrient = NULL, titlePadding = NULL, type = NULL,
-  values = NULL, zindex = NULL)
+  titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL,
+  titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
+  type = NULL, values = NULL, zindex = NULL)
 
-vl_legend_strokeWidth(spec, clipHeight = NULL, columnPadding = NULL,
-  columns = NULL, cornerRadius = NULL, direction = NULL,
-  fillColor = NULL, format = NULL, formatType = NULL,
-  gradientLength = NULL, gradientOpacity = NULL,
+vl_legend_strokeWidth(spec, .object = NULL, clipHeight = NULL,
+  columnPadding = NULL, columns = NULL, cornerRadius = NULL,
+  direction = NULL, fillColor = NULL, format = NULL,
+  formatType = NULL, gradientLength = NULL, gradientOpacity = NULL,
   gradientStrokeColor = NULL, gradientStrokeWidth = NULL,
   gradientThickness = NULL, gridAlign = NULL, labelAlign = NULL,
-  labelBaseline = NULL, labelColor = NULL, labelFont = NULL,
-  labelFontSize = NULL, labelFontStyle = NULL,
+  labelBaseline = NULL, labelColor = NULL, labelExpr = NULL,
+  labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL,
   labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL,
   labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL,
   labelSeparation = NULL, legendX = NULL, legendY = NULL,
   offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL,
   strokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL,
-  symbolFillColor = NULL, symbolOffset = NULL, symbolOpacity = NULL,
-  symbolSize = NULL, symbolStrokeColor = NULL,
+  symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL,
+  symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL,
   symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL,
   tickMinStep = NULL, title = NULL, titleAlign = NULL,
   titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL,
   titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL,
-  titleFontWeight = NULL, titleLimit = NULL, titleOpacity = NULL,
-  titleOrient = NULL, titlePadding = NULL, type = NULL,
-  values = NULL, zindex = NULL)
+  titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL,
+  titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL,
+  type = NULL, values = NULL, zindex = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Legend}
 
 \item{clipHeight}{(\emph{Legend}) The height in pixels to clip symbol legend entries and limit their size.}
 
@@ -292,6 +294,10 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \item{labelColor}{(\emph{Legend}) The color of the legend label, can be in hex color code or regular color name.}
 
+\item{labelExpr}{(\emph{Legend}) \href{https://vega.github.io/vega/docs/expressions/}{Vega expression} for customizing labels.
+
+\strong{Note:} The label text and value can be assessed via the \code{label} and \code{value} properties of the legend's backing \code{datum} object.}
+
 \item{labelFont}{(\emph{Legend}) The font of the legend label.}
 
 \item{labelFontSize}{(\emph{Legend}) The font size of legend label.
@@ -302,7 +308,7 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \item{labelFontWeight}{(\emph{Legend}) The font weight of legend label.}
 
-\item{labelLimit}{(\emph{Legend}) Maximum allowed pixel width of axis tick labels.
+\item{labelLimit}{(\emph{Legend}) Maximum allowed pixel width of legend tick labels.
 
 \strong{Default value:} \code{160}.}
 
@@ -326,7 +332,7 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \strong{Default value:} \code{18}.}
 
-\item{orient}{(\emph{Legend}) The orientation of the legend, which determines how the legend is positioned within the scene. One of \code{"left"}, \code{"right"}, \code{"top-left"}, \code{"top-right"}, \code{"bottom-left"}, \code{"bottom-right"}, \code{"none"}.
+\item{orient}{(\emph{Legend}) The orientation of the legend, which determines how the legend is positioned within the scene. One of \code{"left"}, \code{"right"}, \code{"top"}, \code{"bottom"}, \code{"top-left"}, \code{"top-right"}, \code{"bottom-left"}, \code{"bottom-right"}, \code{"none"}.
 
 \strong{Default value:} \code{"right"}}
 
@@ -346,6 +352,8 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \item{symbolFillColor}{(\emph{Legend}) The color of the legend symbol,}
 
+\item{symbolLimit}{(\emph{Legend}) The maximum number of allowed entries for a symbol legend. Additional entries will be dropped.}
+
 \item{symbolOffset}{(\emph{Legend}) Horizontal pixel offset for legend symbols.
 
 \strong{Default value:} \code{0}.}
@@ -362,14 +370,9 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \strong{Default value:} \code{1.5}.}
 
-\item{symbolType}{(\emph{Legend}) Default shape type (such as "circle") for legend symbols.
-Can be one of ``"circle"\code{, }"square"`, `"cross"`, `"diamond"`, `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
-\itemize{
-\item In addition to a set of built-in shapes, custom shapes can be defined using \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path strings}.
-\item 
-\item \strong{Default value:} \code{"circle"}.
-\item 
-}}
+\item{symbolType}{(\emph{Legend}) The symbol shape. One of the plotting shapes \code{circle} (default), \code{square}, \code{cross}, \code{diamond}, \code{triangle-up}, \code{triangle-down}, \code{triangle-right}, or \code{triangle-left}, the line symbol \code{stroke}, or one of the centered directional shapes \code{arrow}, \code{wedge}, or \code{triangle}. Alternatively, a custom \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path string} can be provided. For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.
+
+\strong{Default value:} \code{"circle"}.}
 
 \item{tickCount}{(\emph{Legend}) The desired number of tick values for quantitative legends.}
 
@@ -379,7 +382,7 @@ Can be one of ``"circle"\code{, }"square"`, `"cross"`, `"diamond"`, `"triangle-u
 
 \item{title}{(\emph{Legend}) A title for the field. If \code{null}, the title will be removed.
 
-\strong{Default value:}  derived from the field's name and transformation function (\code{aggregate}, \code{bin} and \code{timeUnit}).  If the field has an aggregate function, the function is displayed as part of the title (e.g., \code{"Sum of Profit"}). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., \code{"Profit (binned)"}, \code{"Transaction Date (year-month)"}).  Otherwise, the title is simply the field name.
+\strong{Default value:}  derived from the field's name and transformation function (\code{aggregate}, \code{bin} and \code{timeUnit}). If the field has an aggregate function, the function is displayed as part of the title (e.g., \code{"Sum of Profit"}). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., \code{"Profit (binned)"}, \code{"Transaction Date (year-month)"}). Otherwise, the title is simply the field name.
 
 \strong{Notes}:
 \enumerate{
@@ -408,9 +411,11 @@ Can be one of ``"circle"\code{, }"square"`, `"cross"`, `"diamond"`, `"triangle-u
 \item{titleFontWeight}{(\emph{Legend}) The font weight of the legend title.
 This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
 
-\item{titleLimit}{(\emph{Legend}) Maximum allowed pixel width of axis titles.
+\item{titleLimit}{(\emph{Legend}) Maximum allowed pixel width of legend titles.
 
 \strong{Default value:} \code{180}.}
+
+\item{titleLineHeight}{(\emph{Legend}) Line height in pixels for multi-line title text.}
 
 \item{titleOpacity}{(\emph{Legend}) Opacity of the legend title.}
 
@@ -426,7 +431,7 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 
 \item{values}{(\emph{Legend}) Explicitly set the visible legend values.}
 
-\item{zindex}{(\emph{Legend}) A non-positive integer indicating z-index of the legend.
+\item{zindex}{(\emph{Legend}) A non-negative integer indicating the z-index of the legend.
 If zindex is 0, legend should be drawn behind all chart elements.
 To put them in front, use zindex = 1.}
 }

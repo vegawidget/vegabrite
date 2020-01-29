@@ -4,14 +4,17 @@
 \alias{vl_joinaggregate}
 \title{vl_joinaggregate}
 \usage{
-vl_joinaggregate(spec, groupby = NULL, joinaggregate = NULL)
+vl_joinaggregate(spec, .object = NULL, joinaggregate = NULL,
+  groupby = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{groupby}{(\emph{JoinAggregateTransform}) The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group.}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: JoinAggregateTransform}
 
 \item{joinaggregate}{(\emph{JoinAggregateTransform}) The definition of the fields in the join aggregate, and what calculations to use.}
+
+\item{groupby}{(\emph{JoinAggregateTransform}) The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a single group.}
 }
 \value{
 A modified Vega-Lite Spec
