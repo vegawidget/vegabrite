@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -124,82 +124,72 @@
     <p>Add scale parameters to an encoding</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_scale_color</span>(<span class='no'>spec</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>vl_scale_color</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rangeStep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>vl_scale_fill</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>vl_scale_fillOpacity</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>vl_scale_opacity</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>vl_scale_shape</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>vl_scale_size</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>vl_scale_stroke</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>vl_scale_strokeOpacity</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>vl_scale_fill</span>(<span class='no'>spec</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+<span class='fu'>vl_scale_strokeWidth</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rangeStep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+  <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>vl_scale_fillOpacity</span>(<span class='no'>spec</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+<span class='fu'>vl_scale_x</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rangeStep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+  <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>vl_scale_opacity</span>(<span class='no'>spec</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+<span class='fu'>vl_scale_y</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rangeStep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='fu'>vl_scale_shape</span>(<span class='no'>spec</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rangeStep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='fu'>vl_scale_size</span>(<span class='no'>spec</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rangeStep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='fu'>vl_scale_stroke</span>(<span class='no'>spec</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rangeStep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='fu'>vl_scale_strokeOpacity</span>(<span class='no'>spec</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rangeStep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='fu'>vl_scale_strokeWidth</span>(<span class='no'>spec</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rangeStep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='fu'>vl_scale_x</span>(<span class='no'>spec</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rangeStep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='fu'>vl_scale_y</span>(<span class='no'>spec</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>constant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>exponent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>paddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>paddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rangeStep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zero</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -207,6 +197,16 @@
     <tr>
       <th>spec</th>
       <td><p>An input vega-lite spec</p></td>
+    </tr>
+    <tr>
+      <th>.object</th>
+      <td><p>Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Scale</p></td>
+    </tr>
+    <tr>
+      <th>align</th>
+      <td><p>(<em>Scale</em>) The alignment of the steps within the scale range.</p>
+<p>This value must lie in the range <code>[0,1]</code>. A value of <code>0.5</code> indicates that the steps should be centered within the range. A value of <code>0</code> or <code>1</code> may be used to shift the bands to one side, say to position them adjacent to an axis.</p>
+<p><strong>Default value:</strong> <code>0.5</code></p></td>
     </tr>
     <tr>
       <th>base</th>
@@ -229,7 +229,7 @@
     <tr>
       <th>domain</th>
       <td><p>(<em>Scale</em>) Customized domain values.</p>
-<p>For <em>quantitative</em> fields, <code>domain</code> can take the form of a two-element array with minimum and maximum values.  <a href='https://vega.github.io/vega-lite/docs/scale.html#piecewise'>Piecewise scales</a> can be created by providing a <code>domain</code> with more than two entries.
+<p>For <em>quantitative</em> fields, <code>domain</code> can take the form of a two-element array with minimum and maximum values. <a href='https://vega.github.io/vega-lite/docs/scale.html#piecewise'>Piecewise scales</a> can be created by providing a <code>domain</code> with more than two entries.
 If the input field is aggregated, <code>domain</code> can also be a string value <code>"unaggregated"</code>, indicating that the domain should include the raw data values prior to the aggregation.</p>
 <p>For <em>temporal</em> fields, <code>domain</code> can be a two-element array minimum and maximum values, in the form of either timestamps or the <a href='https://vega.github.io/vega-lite/docs/types.html#datetime'>DateTime definition objects</a>.</p>
 <p>For <em>ordinal</em> and <em>nominal</em> fields, <code>domain</code> can be an array that lists valid input values.</p>
@@ -258,7 +258,7 @@ If the input field is aggregated, <code>domain</code> can also be a string value
 <p>For <em><a href='https://vega.github.io/vega-lite/docs/scale.html#band'>band</a></em> scales, shortcut for setting <code>paddingInner</code> and <code>paddingOuter</code> to the same value.</p>
 <p>For <em><a href='https://vega.github.io/vega-lite/docs/scale.html#point'>point</a></em> scales, alias for <code>paddingOuter</code>.</p>
 <p><strong>Default value:</strong> For <em>continuous</em> scales, derived from the <a href='https://vega.github.io/vega-lite/docs/scale.html#config'>scale config</a>'s <code>continuousPadding</code>.
-For <em>band and point</em> scales, see <code>paddingInner</code> and <code>paddingOuter</code>.</p></td>
+For <em>band and point</em> scales, see <code>paddingInner</code> and <code>paddingOuter</code>. By default, Vega-Lite sets padding such that <em>width/height = number of unique values * step</em>.</p></td>
     </tr>
     <tr>
       <th>paddingInner</th>
@@ -270,7 +270,8 @@ For <em>band and point</em> scales, see <code>paddingInner</code> and <code>padd
       <th>paddingOuter</th>
       <td><p>(<em>Scale</em>) The outer padding (spacing) at the ends of the range of band and point scales,
 as a fraction of the step size. This value must lie in the range [0,1].</p>
-<p><strong>Default value:</strong> derived from the <a href='https://vega.github.io/vega-lite/docs/scale.html#config'>scale config</a>'s <code>bandPaddingOuter</code> for band scales and <code>pointPadding</code> for point scales.</p></td>
+<p><strong>Default value:</strong> derived from the <a href='https://vega.github.io/vega-lite/docs/scale.html#config'>scale config</a>'s <code>bandPaddingOuter</code> for band scales and <code>pointPadding</code> for point scales.
+By default, Vega-Lite sets outer padding such that <em>width/height = number of unique values * step</em>.</p></td>
     </tr>
     <tr>
       <th>range</th>
@@ -282,15 +283,8 @@ as a fraction of the step size. This value must lie in the range [0,1].</p>
 
 <p><strong>Notes:</strong></p><ol>
 <li><p>For color scales you can also specify a color <a href='https://vega.github.io/vega-lite/docs/scale.html#scheme'>scheme</a> instead of <code>range</code>.</p></li>
-<li><p>Any directly specified <code>range</code> for <code>x</code> and <code>y</code> channels will be ignored. Range can be customized via the view's corresponding <a href='https://vega.github.io/vega-lite/docs/size.html'>size</a> (<code>width</code> and <code>height</code>) or via <a href='#range-step'>range steps and paddings properties</a> for <a href='#band'>band</a> and <a href='#point'>point</a> scales.</p></li>
+<li><p>Any directly specified <code>range</code> for <code>x</code> and <code>y</code> channels will be ignored. Range can be customized via the view's corresponding <a href='https://vega.github.io/vega-lite/docs/size.html'>size</a> (<code>width</code> and <code>height</code>).</p></li>
 </ol></td>
-    </tr>
-    <tr>
-      <th>rangeStep</th>
-      <td><p>(<em>Scale</em>) The distance between the starts of adjacent bands or points in <a href='https://vega.github.io/vega-lite/docs/scale.html#band'>band</a> and <a href='https://vega.github.io/vega-lite/docs/scale.html#point'>point</a> scales.</p>
-<p>If <code>rangeStep</code> is <code>null</code> or if the view contains the scale's corresponding <a href='https://vega.github.io/vega-lite/docs/size.html'>size</a> (<code>width</code> for <code>x</code> scales and <code>height</code> for <code>y</code> scales), <code>rangeStep</code> will be automatically determined to fit the size of the view.</p>
-<p><strong>Default value:</strong>  derived the <a href='https://vega.github.io/vega-lite/docs/config.html#scale-config'>scale config</a>'s <code>textXRangeStep</code> (<code>90</code> by default) for x-scales of <code>text</code> marks and <code>rangeStep</code> (<code>21</code> by default) for x-scales of other marks and y-scales.</p>
-<p><strong>Warning</strong>: If <code>rangeStep</code> is <code>null</code> and the cardinality of the scale's domain is higher than <code>width</code> or <code>height</code>, the rangeStep might become less than one pixel and the mark might not appear correctly.</p></td>
     </tr>
     <tr>
       <th>round</th>
@@ -305,7 +299,7 @@ as a fraction of the step size. This value must lie in the range [0,1].</p>
     </tr>
     <tr>
       <th>type</th>
-      <td><p>(<em>Scale</em>) The type of scale.  Vega-Lite supports the following categories of scale types:</p><ol>
+      <td><p>(<em>Scale</em>) The type of scale. Vega-Lite supports the following categories of scale types:</p><ol>
 <li><p><a href='https://vega.github.io/vega-lite/docs/scale.html#continuous'>Continuous Scales</a> -- mapping continuous domains to continuous output ranges (<a href='https://vega.github.io/vega-lite/docs/scale.html#linear'>"linear"</a>, <a href='https://vega.github.io/vega-lite/docs/scale.html#pow'>"pow"</a>, <a href='https://vega.github.io/vega-lite/docs/scale.html#sqrt'>"sqrt"</a>, <a href='https://vega.github.io/vega-lite/docs/scale.html#symlog'>"symlog"</a>, <a href='https://vega.github.io/vega-lite/docs/scale.html#log'>"log"</a>, <a href='https://vega.github.io/vega-lite/docs/scale.html#time'>"time"</a>, <a href='https://vega.github.io/vega-lite/docs/scale.html#utc'>"utc"</a>.</p></li>
 <li><p><a href='https://vega.github.io/vega-lite/docs/scale.html#discrete'>Discrete Scales</a> -- mapping discrete domains to discrete (<a href='https://vega.github.io/vega-lite/docs/scale.html#ordinal'>"ordinal"</a>) or continuous (<a href='https://vega.github.io/vega-lite/docs/scale.html#band'>"band"</a> and <a href='https://vega.github.io/vega-lite/docs/scale.html#point'>"point"</a>) output ranges.</p></li>
 <li><p><a href='https://vega.github.io/vega-lite/docs/scale.html#discretizing'>Discretizing Scales</a> -- mapping continuous domains to discrete output ranges <a href='https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal'>"bin-ordinal"</a>, <a href='https://vega.github.io/vega-lite/docs/scale.html#quantile'>"quantile"</a>, <a href='https://vega.github.io/vega-lite/docs/scale.html#quantize'>"quantize"</a> and <a href='https://vega.github.io/vega-lite/docs/scale.html#threshold'>"threshold"</a>.</p></li>

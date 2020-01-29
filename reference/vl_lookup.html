@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -124,8 +124,8 @@
     <p>Add LookupTransform to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_lookup</span>(<span class='no'>spec</span>, <span class='kw'>as</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>lookup</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vl_lookup</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>lookup</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>as</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -135,23 +135,31 @@
       <td><p>An input vega-lite spec</p></td>
     </tr>
     <tr>
+      <th>.object</th>
+      <td><p>Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LookupTransform</p></td>
+    </tr>
+    <tr>
+      <th>lookup</th>
+      <td><p>(<em>LookupTransform</em>) Key in primary data source.</p></td>
+    </tr>
+    <tr>
+      <th>from</th>
+      <td><p>(<em>LookupTransform</em>) Data source or selection for secondary data reference.</p></td>
+    </tr>
+    <tr>
       <th>as</th>
-      <td><p>(<em>LookupTransform</em>) The field or fields for storing the computed formula value.
-If <code>from.fields</code> is specified, the transform will use the same names for <code>as</code>.
-If <code>from.fields</code> is not specified, <code>as</code> has to be a string and we put the whole object into the data under the specified name.</p></td>
+      <td><p>(<em>LookupTransform</em>) The output fields on which to store the looked up data values.</p>
+<p>For data lookups, this property may be left blank if <code>from.fields</code>
+has been specified (those field names will be used); if <code>from.fields</code>
+has not been specified, <code>as</code> must be a string.</p>
+<p>For selection lookups, this property is optional: if unspecified,
+looked up values will be stored under a property named for the selection;
+and if specified, it must correspond to <code>from.fields</code>.</p></td>
     </tr>
     <tr>
       <th>default</th>
       <td><p>(<em>LookupTransform</em>) The default value to use if lookup fails.</p>
 <p><strong>Default value:</strong> <code>null</code></p></td>
-    </tr>
-    <tr>
-      <th>from</th>
-      <td><p>(<em>LookupTransform</em>) Secondary data reference.</p></td>
-    </tr>
-    <tr>
-      <th>lookup</th>
-      <td><p>(<em>LookupTransform</em>) Key in primary data source.</p></td>
     </tr>
     </table>
 

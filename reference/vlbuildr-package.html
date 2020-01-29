@@ -70,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -128,11 +128,46 @@
 
 
 
+    <h2 class="hasAnchor" id="types-of-functions"><a class="anchor" href="#types-of-functions"></a>Types of functions</h2>
+
+    
+
+<p>This package has three types of functions:</p><ul>
+<li><p><code>vl_chart</code> initializes a new vega-lite specification which can be build upon.</p></li>
+<li><p>Other <code>vl_</code> functions which add an object to an initial spec either from a pre-made
+input object (to the <code>.object</code>) parameter or created via the other parameters to the function.
+See section below for more details on <code>.object</code> argument.</p></li>
+<li><p>Functions grouped in <code>vl</code> list and accessabile via <code>vl$</code>.
+These functions make an object (which can be added to a spec by a <code>vl_</code> function). Generally one
+does not need to use these functions as object can be created directly via the <code>vl_</code> functions,
+but they can be useful for reusing components across charts or when additional flexibility is needed.</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="-object-argument"><a class="anchor" href="#-object-argument"></a>.object argument</h2>
+
+    
+
+<p>Most functions to add a component to a vegalite spec in this package have
+as the first two arguments (1) the input spec to add onto, and (2) a <code>.object</code>
+parameter. The <code>.object</code> argument allows directly passing an object (generally a list) that
+will be incorporated into the spec.</p>
+<p>Additional arguments are avialable to enable creating an object directly from the
+function rather than having to pass it directly via <code>.object</code>. Generally, these arguments
+should not be used if the <code>.object</code> is provided. Thus if <code>.object</code> is passed as well as
+additional arguments, it is assumed that the <code>.object</code> input should be taken as the first
+optional parameter, and an error is given if the first optional parameter is already given.</p>
+<p>For example, if a function <code>vl_add_something</code> has signature
+<code>vl_add_something(spec, .object, x = NULL, y = NULL, z = NULL)</code>
+then if it is called with <code>vl_add_something('hello', z = 'world')</code> then the <code>'hello'</code> input
+is taken as the input to <code>x</code>. If <code>x</code> was already specified, e.g. <code>vl_add_something('hello', x = 'world')</code>
+then an error would be raised.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#types-of-functions">Types of functions</a></li>
+      <li><a href="#-object-argument">.object argument</a></li>
     </ul>
 
     <h2>Author</h2>

@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -124,10 +124,10 @@
     <p>Add IntervalSelection to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_add_interval_selection</span>(<span class='no'>spec</span>, <span class='no'>selection_name</span>, <span class='kw'>bind</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>clear</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>empty</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>encodings</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>init</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mark</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>on</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>resolve</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>translate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zoom</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vl_add_interval_selection</span>(<span class='no'>spec</span>, <span class='no'>selection_name</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bind</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clear</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>empty</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>encodings</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fields</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mark</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>on</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>resolve</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>translate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zoom</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -141,17 +141,22 @@
       <td><p>Name for selection</p></td>
     </tr>
     <tr>
+      <th>.object</th>
+      <td><p>Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: IntervalSelection</p></td>
+    </tr>
+    <tr>
       <th>bind</th>
       <td><p>(<em>IntervalSelection</em>) Establishes a two-way binding between the interval selection and the scales
 used within the same view. This allows a user to interactively pan and
-zoom the view.</p></td>
+zoom the view.</p>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/bind.html'>bind</a> documentation.</p></td>
     </tr>
     <tr>
       <th>clear</th>
-      <td><p>(<em>IntervalSelection</em>) Clears the selection, emptying it of all values. Can be an
-<a href='https://vega.github.io/vega/docs/event-streams/'>EventStream</a> or <code>false</code> to disable.</p>
+      <td><p>(<em>IntervalSelection</em>) Clears the selection, emptying it of all values. Can be a
+<a href='https://vega.github.io/vega/docs/event-streams/'>Event Stream</a> or <code>false</code> to disable.</p>
 <p><strong>Default value:</strong> <code>dblclick</code>.</p>
-<p>See the <a href='https://vega.github.io/vega-lite/docs/clear.html'>clear</a> documentation for more information.</p></td>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/clear.html'>clear</a> documentation.</p></td>
     </tr>
     <tr>
       <th>empty</th>
@@ -161,23 +166,27 @@ When set to <code>none</code>, empty selections contain no data values.</p></td>
     <tr>
       <th>encodings</th>
       <td><p>(<em>IntervalSelection</em>) An array of encoding channels. The corresponding data field values
-must match for a data tuple to fall within the selection.</p></td>
+must match for a data tuple to fall within the selection.</p>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/project.html'>encodings</a> documentation.</p></td>
     </tr>
     <tr>
       <th>fields</th>
       <td><p>(<em>IntervalSelection</em>) An array of field names whose values must match for a data tuple to
-fall within the selection.</p></td>
+fall within the selection.</p>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/project.html'>fields</a> documentation.</p></td>
     </tr>
     <tr>
       <th>init</th>
       <td><p>(<em>IntervalSelection</em>) Initialize the selection with a mapping between <a href='https://vega.github.io/vega-lite/docs/project.html'>projected channels or field names</a> and arrays of
-initial values.</p></td>
+initial values.</p>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/init.html'>init</a> documentation.</p></td>
     </tr>
     <tr>
       <th>mark</th>
       <td><p>(<em>IntervalSelection</em>) An interval selection also adds a rectangle mark to depict the
 extents of the interval. The <code>mark</code> property can be used to customize the
-appearance of the mark.</p></td>
+appearance of the mark.</p>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/selection-mark.html'>mark</a> documentation.</p></td>
     </tr>
     <tr>
       <th>on</th>
@@ -188,7 +197,8 @@ For interval selections, the event stream must specify a <a href='https://vega.g
       <th>resolve</th>
       <td><p>(<em>IntervalSelection</em>) With layered and multi-view displays, a strategy that determines how
 selections' data queries are resolved when applied in a filter transform,
-conditional encoding rule, or scale domain.</p></td>
+conditional encoding rule, or scale domain.</p>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/selection-resolve.html'>resolve</a> documentation.</p></td>
     </tr>
     <tr>
       <th>translate</th>
@@ -198,18 +208,24 @@ back-and-forth. Can be <code>true</code>, <code>false</code> (to disable panning
 which must include a start and end event to trigger continuous panning.</p>
 <p><strong>Default value:</strong> <code>true</code>, which corresponds to
 <code>[mousedown, window:mouseup] &gt; window:mousemove!</code> which corresponds to
-clicks and dragging within an interval selection to reposition it.</p></td>
+clicks and dragging within an interval selection to reposition it.</p>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/translate.html'>translate</a> documentation.</p></td>
     </tr>
     <tr>
       <th>type</th>
-      <td><p>(<em>IntervalSelection</em>) interval</p></td>
+      <td><p>(<em>IntervalSelection</em>) Determines the default event processing and data query for the selection. Vega-Lite currently supports three selection types:</p><ul>
+<li><p><code>"single"</code> -- to select a single discrete data value on <code>click</code>.</p></li>
+<li><p><code>"multi"</code> -- to select multiple discrete data value; the first value is selected on <code>click</code> and additional values toggled on shift-<code>click</code>.</p></li>
+<li><p><code>"interval"</code> -- to select a continuous range of data values on <code>drag</code>.</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>zoom</th>
       <td><p>(<em>IntervalSelection</em>) When truthy, allows a user to interactively resize an interval selection.
 Can be <code>true</code>, <code>false</code> (to disable zooming), or a <a href='https://vega.github.io/vega/docs/event-streams/'>Vega event stream definition</a>. Currently,
 only <code>wheel</code> events are supported.</p>
-<p><strong>Default value:</strong> <code>true</code>, which corresponds to <code>wheel!</code>.</p></td>
+<p><strong>Default value:</strong> <code>true</code>, which corresponds to <code>wheel!</code>.</p>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/zoom.html'>zoom</a> documentation.</p></td>
     </tr>
     </table>
 

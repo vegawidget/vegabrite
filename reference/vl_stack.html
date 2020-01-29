@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -124,8 +124,8 @@
     <p>Add StackTransform to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_stack</span>(<span class='no'>spec</span>, <span class='kw'>as</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>groupby</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>offset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>stack</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vl_stack</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>stack</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>as</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>groupby</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>offset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -135,11 +135,17 @@
       <td><p>An input vega-lite spec</p></td>
     </tr>
     <tr>
+      <th>.object</th>
+      <td><p>Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: StackTransform</p></td>
+    </tr>
+    <tr>
+      <th>stack</th>
+      <td><p>(<em>StackTransform</em>) The field which is stacked.</p></td>
+    </tr>
+    <tr>
       <th>as</th>
-      <td><p>(<em>StackTransform</em>) Output field names. This can be either a string or an array of strings with
-two elements denoting the name for the fields for stack start and stack end
-respectively.
-If a single string(eg."val") is provided, the end field will be "val_end".</p></td>
+      <td><p>(<em>StackTransform</em>) Output field names. This can be either a string or an array of strings with two elements denoting the name for the fields for stack start and stack end respectively.
+If a single string(e.g., <code>"val"</code>) is provided, the end field will be <code>"val_end"</code>.</p></td>
     </tr>
     <tr>
       <th>groupby</th>
@@ -147,16 +153,13 @@ If a single string(eg."val") is provided, the end field will be "val_end".</p></
     </tr>
     <tr>
       <th>offset</th>
-      <td><p>(<em>StackTransform</em>) Mode for stacking marks.
-<strong>Default value:</strong> <code>"zero"</code></p></td>
+      <td><p>(<em>StackTransform</em>) Mode for stacking marks. One of <code>"zero"</code> (default), <code>"center"</code>, or <code>"normalize"</code>.
+The <code>"zero"</code> offset will stack starting at <code>0</code>. The <code>"center"</code> offset will center the stacks. The <code>"normalize"</code> offset will compute percentage values for each stack point, with output values in the range <code>[0,1]</code>.</p>
+<p><strong>Default value:</strong> <code>"zero"</code></p></td>
     </tr>
     <tr>
       <th>sort</th>
       <td><p>(<em>StackTransform</em>) Field that determines the order of leaves in the stacked charts.</p></td>
-    </tr>
-    <tr>
-      <th>stack</th>
-      <td><p>(<em>StackTransform</em>) The field which is stacked.</p></td>
     </tr>
     </table>
 

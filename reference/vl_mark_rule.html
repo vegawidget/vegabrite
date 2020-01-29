@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -124,19 +124,23 @@
     <p>vl_mark_rule</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_mark_rule</span>(<span class='no'>spec</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>angle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>baseline</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binSpacing</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cornerRadius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cursor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dx</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>dy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ellipsis</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fillOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>filled</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>font</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>href</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>line</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>opacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>orient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>point</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>radius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>shape</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>stroke</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeCap</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeDashOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeJoin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>vl_mark_rule</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>angle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>aspect</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>baseline</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>binSpacing</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cornerRadius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cornerRadiusBottomLeft</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>cornerRadiusBottomRight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cornerRadiusTopLeft</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>cornerRadiusTopRight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cursor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>dx</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ellipsis</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fillOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>filled</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>font</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>href</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>invalid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>line</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>lineBreak</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>lineHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>opacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>order</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>orient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>point</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>radius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>shape</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>stroke</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeCap</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>strokeDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeDashOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeJoin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>strokeMiterLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tension</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>text</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>theta</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>thickness</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>x2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>thickness</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>timeUnitBand</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>timeUnitBandPosition</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>x2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>x2Offset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>xOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>y2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>y2Offset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>yOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
@@ -148,21 +152,29 @@
       <td><p>An input vega-lite spec</p></td>
     </tr>
     <tr>
+      <th>.object</th>
+      <td><p>Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef</p></td>
+    </tr>
+    <tr>
       <th>align</th>
-      <td><p>(<em>MarkDef</em>) The horizontal alignment of the text. One of <code>"left"</code>, <code>"right"</code>, <code>"center"</code>.</p></td>
+      <td><p>(<em>MarkDef</em>) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of <code>"left"</code>, <code>"right"</code>, <code>"center"</code>.</p></td>
     </tr>
     <tr>
       <th>angle</th>
       <td><p>(<em>MarkDef</em>) The rotation angle of the text, in degrees.</p></td>
     </tr>
     <tr>
+      <th>aspect</th>
+      <td><p>(<em>MarkDef</em>) Whether to keep aspect ratio of image marks.</p></td>
+    </tr>
+    <tr>
       <th>baseline</th>
-      <td><p>(<em>MarkDef</em>) The vertical alignment of the text. One of <code>"top"</code>, <code>"middle"</code>, <code>"bottom"</code>.</p>
+      <td><p>(<em>MarkDef</em>) The vertical alignment of the text or ranged marks (area, bar, image, rect, rule). One of <code>"top"</code>, <code>"middle"</code>, <code>"bottom"</code>.</p>
 <p><strong>Default value:</strong> <code>"middle"</code></p></td>
     </tr>
     <tr>
       <th>binSpacing</th>
-      <td><p>(<em>MarkDef</em>) Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).</p>
+      <td><p>(<em>MarkDef</em>) Offset between bars for binned field. The ideal value for this is either 0 (preferred by statisticians) or 1 (Vega-Lite default, D3 example style).</p>
 <p><strong>Default value:</strong> <code>1</code></p></td>
     </tr>
     <tr>
@@ -171,13 +183,36 @@
     </tr>
     <tr>
       <th>color</th>
-      <td><p>(<em>MarkDef</em>) Default color.  Note that <code>fill</code> and <code>stroke</code> have higher precedence than <code>color</code> and will override <code>color</code>.</p>
+      <td><p>(<em>MarkDef</em>) Default color.</p>
 <p><strong>Default value:</strong> &lt;span style="color: #4682b4;"&gt;■&lt;/span&gt; <code>"#4682b4"</code></p>
-<p><strong>Note:</strong> This property cannot be used in a <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style config</a>.</p></td>
+<p><strong>Note:</strong></p><ul>
+<li><p>This property cannot be used in a <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style config</a>.</p></li>
+<li><p>The <code>fill</code> and <code>stroke</code> properties have higher precedence than <code>color</code> and will override <code>color</code>.</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>cornerRadius</th>
       <td><p>(<em>MarkDef</em>) The radius in pixels of rounded rectangle corners.</p>
+<p><strong>Default value:</strong> <code>0</code></p></td>
+    </tr>
+    <tr>
+      <th>cornerRadiusBottomLeft</th>
+      <td><p>(<em>MarkDef</em>) The radius in pixels of rounded rectangle bottom left corner.</p>
+<p><strong>Default value:</strong> <code>0</code></p></td>
+    </tr>
+    <tr>
+      <th>cornerRadiusBottomRight</th>
+      <td><p>(<em>MarkDef</em>) The radius in pixels of rounded rectangle bottom right corner.</p>
+<p><strong>Default value:</strong> <code>0</code></p></td>
+    </tr>
+    <tr>
+      <th>cornerRadiusTopLeft</th>
+      <td><p>(<em>MarkDef</em>) The radius in pixels of rounded rectangle top right corner.</p>
+<p><strong>Default value:</strong> <code>0</code></p></td>
+    </tr>
+    <tr>
+      <th>cornerRadiusTopRight</th>
+      <td><p>(<em>MarkDef</em>) The radius in pixels of rounded rectangle top left corner.</p>
 <p><strong>Default value:</strong> <code>0</code></p></td>
     </tr>
     <tr>
@@ -204,7 +239,7 @@
     </tr>
     <tr>
       <th>fill</th>
-      <td><p>(<em>MarkDef</em>) Default Fill Color.  This has higher precedence than <code>config.color</code></p>
+      <td><p>(<em>MarkDef</em>) Default Fill Color. This has higher precedence than <code>config.color</code>.</p>
 <p><strong>Default value:</strong> (None)</p></td>
     </tr>
     <tr>
@@ -215,7 +250,7 @@
     <tr>
       <th>filled</th>
       <td><p>(<em>MarkDef</em>) Whether the mark's color should be used as fill color instead of stroke color.</p>
-<p><strong>Default value:</strong> <code>false</code> for <code>point</code>, <code>line</code> and <code>rule</code>; otherwise, <code>true</code>.</p>
+<p><strong>Default value:</strong> <code>false</code> for all <code>point</code>, <code>line</code>, and <code>rule</code> marks as well as <code>geoshape</code> marks for <a href='https://vega.github.io/vega-lite/docs/data.html#graticule'>graticule</a> data sources; otherwise, <code>true</code>.</p>
 <p><strong>Note:</strong> This property cannot be used in a <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style config</a>.</p></td>
     </tr>
     <tr>
@@ -234,6 +269,10 @@
       <th>fontWeight</th>
       <td><p>(<em>MarkDef</em>) The font weight.
 This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or a number (<code>100</code>, <code>200</code>, <code>300</code>, ..., <code>900</code> where <code>"normal"</code> = <code>400</code> and <code>"bold"</code> = <code>700</code>).</p></td>
+    </tr>
+    <tr>
+      <th>height</th>
+      <td><p>(<em>MarkDef</em>) Height of the marks.</p></td>
     </tr>
     <tr>
       <th>href</th>
@@ -258,6 +297,13 @@ This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or 
 </ul></td>
     </tr>
     <tr>
+      <th>invalid</th>
+      <td><p>(<em>MarkDef</em>) Defines how Vega-Lite should handle marks for invalid values (<code>null</code> and <code>NaN</code>).</p><ul>
+<li><p>If set to <code>"filter"</code> (default), all data items with null values will be skipped (for line, trail, and area marks) or filtered (for other marks).</p></li>
+<li><p>If <code>null</code>, all data items are included. In this case, invalid values will be interpreted as zeroes.</p></li>
+</ul></td>
+    </tr>
+    <tr>
       <th>limit</th>
       <td><p>(<em>MarkDef</em>) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.</p>
 <p><strong>Default value:</strong> <code>0</code>, indicating no limit</p></td>
@@ -270,6 +316,14 @@ This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or 
 </ul>
 
 <p><strong>Default value:</strong> <code>false</code>.</p></td>
+    </tr>
+    <tr>
+      <th>lineBreak</th>
+      <td><p>(<em>MarkDef</em>) A delimiter, such as a newline character, upon which to break text strings into multiple lines. This property will be ignored if the text property is array-valued.</p></td>
+    </tr>
+    <tr>
+      <th>lineHeight</th>
+      <td><p>(<em>MarkDef</em>) The height, in pixels, of each line of text in a multi-line text mark.</p></td>
     </tr>
     <tr>
       <th>opacity</th>
@@ -326,11 +380,16 @@ therefore explicitly specified value will be ignored.</p></li>
 <li><p>For <code>text</code>, this represents the font size, in pixels.</p></li>
 </ul>
 
-<p><strong>Default value:</strong> <code>30</code> for point, circle, square marks; <code>rangeStep</code> - 1 for bar marks with discrete dimensions; <code>5</code> for bar marks with continuous dimensions; <code>11</code> for text marks.</p></td>
+<p><strong>Default value:</strong></p><ul>
+<li><p><code>30</code> for point, circle, square marks; width/height's <code>step</code></p></li>
+<li><p><code>2</code> for bar marks with discrete dimensions;</p></li>
+<li><p><code>5</code> for bar marks with continuous dimensions;</p></li>
+<li><p><code>11</code> for text marks.</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>stroke</th>
-      <td><p>(<em>MarkDef</em>) Default Stroke Color.  This has higher precedence than <code>config.color</code></p>
+      <td><p>(<em>MarkDef</em>) Default Stroke Color. This has higher precedence than <code>config.color</code>.</p>
 <p><strong>Default value:</strong> (None)</p></td>
     </tr>
     <tr>
@@ -367,7 +426,7 @@ therefore explicitly specified value will be ignored.</p></li>
     <tr>
       <th>style</th>
       <td><p>(<em>MarkDef</em>) A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style configuration</a>. If style is an array, later styles will override earlier styles. Any <a href='https://vega.github.io/vega-lite/docs/encoding.html#mark-prop'>mark properties</a> explicitly defined within the <code>encoding</code> will override a style default.</p>
-<p><strong>Default value:</strong> The mark's name.  For example, a bar mark will have style <code>"bar"</code> by default.
+<p><strong>Default value:</strong> The mark's name. For example, a bar mark will have style <code>"bar"</code> by default.
 <strong>Note:</strong> Any specified style will augment the default style. For example, a bar mark with <code>"style": "foo"</code> will receive from <code>config.style.bar</code> and <code>config.style.foo</code> (the specified style <code>"foo"</code> has higher precedence).</p></td>
     </tr>
     <tr>
@@ -388,20 +447,39 @@ therefore explicitly specified value will be ignored.</p></li>
 <p><strong>Default value:</strong>  <code>1</code></p></td>
     </tr>
     <tr>
+      <th>timeUnitBand</th>
+      <td><p>(<em>MarkDef</em>) Default relative band size for a time unit. If set to <code>1</code>, the bandwidth of the marks will be equal to the time unit band step.
+If set to <code>0.5</code>, bandwidth of the marks will be half of the time unit band step.</p></td>
+    </tr>
+    <tr>
+      <th>timeUnitBandPosition</th>
+      <td><p>(<em>MarkDef</em>) Default relative band position for a time unit. If set to <code>0</code>, the marks will be positioned at the beginning of the time unit band step.
+If set to <code>0.5</code>, the marks will be positioned in the middle of the time unit band step.</p></td>
+    </tr>
+    <tr>
       <th>tooltip</th>
       <td><p>(<em>MarkDef</em>) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.</p><ul>
-<li><p>If <code>tooltip</code> is <code>{"content": "encoding"}</code>, then all fields from <code>encoding</code> will be used.</p></li>
+<li><p>If <code>tooltip</code> is <code>true</code> or <code>{"content": "encoding"}</code>, then all fields from <code>encoding</code> will be used.</p></li>
 <li><p>If <code>tooltip</code> is <code>{"content": "data"}</code>, then all fields that appear in the highlighted data point will be used.</p></li>
-<li><p>If set to <code>null</code>, then no tooltip will be used.</p></li>
-</ul></td>
+<li><p>If set to <code>null</code> or <code>false</code>, then no tooltip will be used.</p></li>
+</ul>
+
+<p>See the <a href='https://vega.github.io/vega-lite/docs/tooltip.html'>tooltip</a> documentation for a detailed discussion about tooltip  in Vega-Lite.</p>
+<p><strong>Default value:</strong> <code>null</code></p></td>
+    </tr>
+    <tr>
+      <th>width</th>
+      <td><p>(<em>MarkDef</em>) Width of the marks.</p></td>
     </tr>
     <tr>
       <th>x</th>
-      <td><p>(<em>MarkDef</em>) X coordinates of the marks, or width of horizontal <code>"bar"</code> and <code>"area"</code> without <code>x2</code>.</p></td>
+      <td><p>(<em>MarkDef</em>) X coordinates of the marks, or width of horizontal <code>"bar"</code> and <code>"area"</code> without specified <code>x2</code> or <code>width</code>.</p>
+<p>The <code>value</code> of this channel can be a number or a string <code>"width"</code> for the width of the plot.</p></td>
     </tr>
     <tr>
       <th>x2</th>
-      <td><p>(<em>MarkDef</em>) X2 coordinates for ranged <code>"area"</code>, <code>"bar"</code>, <code>"rect"</code>, and  <code>"rule"</code>.</p></td>
+      <td><p>(<em>MarkDef</em>) X2 coordinates for ranged <code>"area"</code>, <code>"bar"</code>, <code>"rect"</code>, and  <code>"rule"</code>.</p>
+<p>The <code>value</code> of this channel can be a number or a string <code>"width"</code> for the width of the plot.</p></td>
     </tr>
     <tr>
       <th>x2Offset</th>
@@ -413,11 +491,13 @@ therefore explicitly specified value will be ignored.</p></li>
     </tr>
     <tr>
       <th>y</th>
-      <td><p>(<em>MarkDef</em>) Y coordinates of the marks, or height of vertical <code>"bar"</code> and <code>"area"</code> without <code>y2</code></p></td>
+      <td><p>(<em>MarkDef</em>) Y coordinates of the marks, or height of vertical <code>"bar"</code> and <code>"area"</code> without specified <code>y2</code> or <code>height</code>.</p>
+<p>The <code>value</code> of this channel can be a number or a string <code>"height"</code> for the height of the plot.</p></td>
     </tr>
     <tr>
       <th>y2</th>
-      <td><p>(<em>MarkDef</em>) Y2 coordinates for ranged <code>"area"</code>, <code>"bar"</code>, <code>"rect"</code>, and  <code>"rule"</code>.</p></td>
+      <td><p>(<em>MarkDef</em>) Y2 coordinates for ranged <code>"area"</code>, <code>"bar"</code>, <code>"rect"</code>, and  <code>"rule"</code>.</p>
+<p>The <code>value</code> of this channel can be a number or a string <code>"height"</code> for the height of the plot.</p></td>
     </tr>
     <tr>
       <th>y2Offset</th>

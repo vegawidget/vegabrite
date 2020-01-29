@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -124,9 +124,9 @@
     <p>vl_mark_errorband</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_mark_errorband</span>(<span class='no'>spec</span>, <span class='kw'>band</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>borders</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>opacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>orient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tension</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vl_mark_errorband</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>band</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>borders</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>clip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>opacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>orient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tension</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -134,6 +134,10 @@
     <tr>
       <th>spec</th>
       <td><p>An input vega-lite spec</p></td>
+    </tr>
+    <tr>
+      <th>.object</th>
+      <td><p>Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBandDef</p></td>
     </tr>
     <tr>
       <th>band</th>
@@ -149,9 +153,12 @@
     </tr>
     <tr>
       <th>color</th>
-      <td><p>(<em>ErrorBandDef</em>) Default color.  Note that <code>fill</code> and <code>stroke</code> have higher precedence than <code>color</code> and will override <code>color</code>.</p>
+      <td><p>(<em>ErrorBandDef</em>) Default color.</p>
 <p><strong>Default value:</strong> &lt;span style="color: #4682b4;"&gt;■&lt;/span&gt; <code>"#4682b4"</code></p>
-<p><strong>Note:</strong> This property cannot be used in a <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style config</a>.</p></td>
+<p><strong>Note:</strong></p><ul>
+<li><p>This property cannot be used in a <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style config</a>.</p></li>
+<li><p>The <code>fill</code> and <code>stroke</code> properties have higher precedence than <code>color</code> and will override <code>color</code>.</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>extent</th>

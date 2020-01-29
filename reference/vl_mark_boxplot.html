@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -124,9 +124,10 @@
     <p>vl_mark_boxplot</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_mark_boxplot</span>(<span class='no'>spec</span>, <span class='kw'>box</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>median</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>opacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>orient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>outliers</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>rule</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ticks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vl_mark_boxplot</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>box</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>median</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>opacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>orient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>outliers</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>rule</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>ticks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -134,6 +135,10 @@
     <tr>
       <th>spec</th>
       <td><p>An input vega-lite spec</p></td>
+    </tr>
+    <tr>
+      <th>.object</th>
+      <td><p>Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BoxPlotDef</p></td>
     </tr>
     <tr>
       <th>box</th>
@@ -145,15 +150,18 @@
     </tr>
     <tr>
       <th>color</th>
-      <td><p>(<em>BoxPlotDef</em>) Default color.  Note that <code>fill</code> and <code>stroke</code> have higher precedence than <code>color</code> and will override <code>color</code>.</p>
+      <td><p>(<em>BoxPlotDef</em>) Default color.</p>
 <p><strong>Default value:</strong> &lt;span style="color: #4682b4;"&gt;■&lt;/span&gt; <code>"#4682b4"</code></p>
-<p><strong>Note:</strong> This property cannot be used in a <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style config</a>.</p></td>
+<p><strong>Note:</strong></p><ul>
+<li><p>This property cannot be used in a <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style config</a>.</p></li>
+<li><p>The <code>fill</code> and <code>stroke</code> properties have higher precedence than <code>color</code> and will override <code>color</code>.</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>extent</th>
       <td><p>(<em>BoxPlotDef</em>) The extent of the whiskers. Available options include:</p><ul>
 <li><p><code>"min-max"</code>: min and max are the lower and upper whiskers respectively.</p></li>
-<li><p>A number representing multiple of the interquartile range.  This number will be multiplied by the IQR to determine whisker boundary, which spans from the smallest data to the largest data within the range <em>[Q1 - k * IQR, Q3 + k * IQR]</em> where <em>Q1</em> and <em>Q3</em> are the first and third quartiles while <em>IQR</em> is the interquartile range (<em>Q3-Q1</em>).</p></li>
+<li><p>A number representing multiple of the interquartile range. This number will be multiplied by the IQR to determine whisker boundary, which spans from the smallest data to the largest data within the range <em>[Q1 - k * IQR, Q3 + k * IQR]</em> where <em>Q1</em> and <em>Q3</em> are the first and third quartiles while <em>IQR</em> is the interquartile range (<em>Q3-Q1</em>).</p></li>
 </ul>
 
 <p><strong>Default value:</strong> <code>1.5</code>.</p></td>
@@ -168,7 +176,7 @@
     </tr>
     <tr>
       <th>orient</th>
-      <td><p>(<em>BoxPlotDef</em>) Orientation of the box plot.  This is normally automatically determined based on types of fields on x and y channels. However, an explicit <code>orient</code> be specified when the orientation is ambiguous.</p>
+      <td><p>(<em>BoxPlotDef</em>) Orientation of the box plot. This is normally automatically determined based on types of fields on x and y channels. However, an explicit <code>orient</code> be specified when the orientation is ambiguous.</p>
 <p><strong>Default value:</strong> <code>"vertical"</code>.</p></td>
     </tr>
     <tr>

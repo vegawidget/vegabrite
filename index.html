@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -84,8 +84,7 @@
 <div id="current-status" class="section level3">
 <h3 class="hasAnchor">
 <a href="#current-status" class="anchor"></a>Current status</h3>
-<p>This package is in early stages at the moment. Most of a “v0” of the public facing API has been built (although definitely not locked-down yet!).</p>
-<p>However, the internals of the package might change substantially to provide greater robustness, make it harder to make invalid specs, and/or provide more info when making invalid spec. The current approach seeks to make it easy to build up specs, provided your input arguments are okay… but it does no checking of those inputs and you can very easily make invalid specs! Still TBD exactly how rigorous/helpful this package will aim to be with regards to bad specifications..</p>
+<p>This package is still experimental, but much of the public facing API has been built (although still subject to changes). However, the internals of the package might change substantially to provide greater robustness, make it harder to make invalid specs, and/or provide better information when making invalid spec.</p>
 <p>The documentation is also still very bare-bones. The parameter documentation for functions is fairly complete, however, as it relies on descriptions pulled directly from the Vega-Lite schema.</p>
 </div>
 <div id="inspiration-and-related-work" class="section level2">
@@ -115,11 +114,10 @@
 <a class="sourceLine" id="cb2-4" data-line-number="4">               <span class="dt">as =</span> <span class="st">"gender"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="reference/vl_filter.html">vl_filter</a></span>(<span class="st">"datum.year == 2000"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="reference/vl_encode.html">vl_encode</a></span>(<span class="dt">x =</span> <span class="st">"age:O"</span>, <span class="dt">y =</span> <span class="st">"people:Q"</span>, <span class="dt">color =</span> <span class="st">"gender:N"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="reference/scale_encoding.html">vl_scale_x</a></span>(<span class="dt">rangeStep =</span> <span class="dv">17</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="reference/stack_encoding.html">vl_stack_y</a></span>(<span class="st">"normalize"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="reference/aggregate_encoding.html">vl_aggregate_y</a></span>(<span class="st">"sum"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="reference/axis_encoding.html">vl_axis_y</a></span>(<span class="dt">title =</span> <span class="st">"population"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="reference/vl_mark_bar.html">vl_mark_bar</a></span>() </a></code></pre></div>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="reference/stack_encoding.html">vl_stack_y</a></span>(<span class="st">"normalize"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="reference/aggregate_encoding.html">vl_aggregate_y</a></span>(<span class="st">"sum"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="reference/axis_encoding.html">vl_axis_y</a></span>(<span class="dt">title =</span> <span class="st">"population"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="reference/vl_mark_bar.html">vl_mark_bar</a></span>() </a></code></pre></div>
 <p><img src="reference/figures/README-example2-1.svg"><!-- --></p>
 </div>
 </div>

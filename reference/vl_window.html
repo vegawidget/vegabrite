@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -124,8 +124,8 @@
     <p>Add WindowTransform to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_window</span>(<span class='no'>spec</span>, <span class='kw'>frame</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>groupby</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ignorePeers</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>window</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vl_window</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>window</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>frame</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>groupby</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ignorePeers</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -133,6 +133,14 @@
     <tr>
       <th>spec</th>
       <td><p>An input vega-lite spec</p></td>
+    </tr>
+    <tr>
+      <th>.object</th>
+      <td><p>Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: WindowTransform</p></td>
+    </tr>
+    <tr>
+      <th>window</th>
+      <td><p>(<em>WindowTransform</em>) The definition of the fields in the window, and what calculations to use.</p></td>
     </tr>
     <tr>
       <th>frame</th>
@@ -150,11 +158,7 @@
     </tr>
     <tr>
       <th>sort</th>
-      <td><p>(<em>WindowTransform</em>) A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered “peer” values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to <code>true</code>).</p></td>
-    </tr>
-    <tr>
-      <th>window</th>
-      <td><p>(<em>WindowTransform</em>) The definition of the fields in the window, and what calculations to use.</p></td>
+      <td><p>(<em>WindowTransform</em>) A sort field definition for sorting data objects within a window. If two data objects are considered equal by the comparator, they are considered "peer" values of equal rank. If sort is not specified, the order is undefined: data objects are processed in the order they are observed and none are considered peers (the ignorePeers parameter is ignored and treated as if set to <code>true</code>).</p></td>
     </tr>
     </table>
 

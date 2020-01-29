@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -124,140 +124,145 @@
     <p>Add aggregate parameters to an encoding</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_aggregate_color</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+    <pre class="usage"><span class='fu'>vl_aggregate_color</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_detail</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_detail</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_fill</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_fill</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_fillOpacity</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>,
-  <span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>,
-  <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>,
-  <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_fillOpacity</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>,
+  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
+  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_href</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_href</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_key</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_key</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_latitude</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_latitude</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_latitude2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_latitude2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>,
+  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
+  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_longitude</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_longitude</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>,
+  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
+  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_longitude2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>,
-  <span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>,
-  <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>,
-  <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_longitude2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>,
+  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
+  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_opacity</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_opacity</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_order</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_order</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_shape</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_shape</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_size</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_size</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_stroke</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_stroke</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_strokeOpacity</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>,
-  <span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>,
-  <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>,
-  <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_strokeOpacity</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>,
+  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
+  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_strokeWidth</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>,
-  <span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>,
-  <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>,
-  <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_strokeWidth</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>,
+  <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>,
+  <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_text</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_text</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_tooltip</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_tooltip</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_x</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_url</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_x2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_x</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>,
+  <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>,
+  <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>,
+  <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_xError</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_x2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_xError2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_xError</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_y</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_xError2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_y2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_y</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>,
+  <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>,
+  <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>,
+  <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_yError</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+<span class='fu'>vl_aggregate_y2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
 
-<span class='fu'>vl_aggregate_yError2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"argmax"</span>, <span class='st'>"argmin"</span>, <span class='st'>"average"</span>,
-  <span class='st'>"count"</span>, <span class='st'>"distinct"</span>, <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>,
-  <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>, <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>,
-  <span class='st'>"values"</span>, <span class='st'>"variance"</span>, <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))</pre>
+<span class='fu'>vl_aggregate_yError</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))
+
+<span class='fu'>vl_aggregate_yError2</span>(<span class='no'>spec</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"average"</span>, <span class='st'>"count"</span>, <span class='st'>"distinct"</span>,
+  <span class='st'>"max"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"min"</span>, <span class='st'>"missing"</span>, <span class='st'>"q1"</span>, <span class='st'>"q3"</span>, <span class='st'>"ci0"</span>, <span class='st'>"ci1"</span>,
+  <span class='st'>"stderr"</span>, <span class='st'>"stdev"</span>, <span class='st'>"stdevp"</span>, <span class='st'>"sum"</span>, <span class='st'>"valid"</span>, <span class='st'>"values"</span>, <span class='st'>"variance"</span>,
+  <span class='st'>"variancep"</span>, <span class='fl'>NA</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -268,7 +273,7 @@
     </tr>
     <tr>
       <th>aggregate</th>
-      <td><p>One of 'argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA</p></td>
+      <td><p>One of 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA</p></td>
     </tr>
     </table>
 

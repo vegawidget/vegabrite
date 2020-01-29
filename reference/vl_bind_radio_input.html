@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -125,8 +125,8 @@
     </div>
 
     <pre class="usage"><span class='fu'>vl_bind_radio_input</span>(<span class='no'>spec</span>, <span class='no'>selection_name</span>, <span class='kw'>projection_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>debounce</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>element</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>options</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>debounce</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>element</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>options</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -144,11 +144,19 @@
       <td><p>Name of projection (field or encoding) within selection</p></td>
     </tr>
     <tr>
+      <th>.object</th>
+      <td><p>Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRadioSelect</p></td>
+    </tr>
+    <tr>
       <th>debounce</th>
       <td><p>(<em>BindRadioSelect</em>)</p></td>
     </tr>
     <tr>
       <th>element</th>
+      <td><p>(<em>BindRadioSelect</em>)</p></td>
+    </tr>
+    <tr>
+      <th>labels</th>
       <td><p>(<em>BindRadioSelect</em>)</p></td>
     </tr>
     <tr>

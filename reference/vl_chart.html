@@ -72,7 +72,7 @@ pieces of the chart spec." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -131,49 +131,36 @@ pieces of the chart spec.</p>
     </div>
 
     <pre class="usage"><span class='fu'>vl_chart</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>`$schema`</span> <span class='kw'>=</span> <span class='kw pkg'>vegawidget</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/vegawidget/man/vega_schema.html'>vega_schema</a></span>(),
-  <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>autosize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>background</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bounds</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>center</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>columns</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>config</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>datasets</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>description</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>encoding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mark</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>projection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>resolve</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>selection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>spacing</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>transform</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>usermeta</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>view</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>spec</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>layer</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>`repeat`</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>concat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>vconcat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>hconcat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>autosize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>background</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bounds</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>config</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>datasets</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>description</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>encoding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mark</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>projection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>resolve</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>selection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>transform</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>usermeta</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>view</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>center</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>columns</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>spacing</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>spec</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>layer</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>`repeat`</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>concat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>vconcat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>hconcat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec</em>) An object describing the data source</p></td>
+      <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec</em>) An object describing the data source. Set to <code>null</code> to ignore the parent's data source. If no data is set, it is derived from the parent.</p></td>
     </tr>
     <tr>
       <th>$schema</th>
-      <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec</em>) URL to <a href='http://json-schema.org/'>JSON schema</a> for a Vega-Lite specification. Unless you have a reason to change this, use <code>https://vega.github.io/schema/vega-lite/v3.json</code>. Setting the <code>$schema</code> property allows automatic validation and autocomplete in editors that support JSON schema.</p></td>
-    </tr>
-    <tr>
-      <th>align</th>
-      <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec</em>) The alignment to apply to grid rows and columns.
-The supported string values are <code>"all"</code>, <code>"each"</code>, and <code>"none"</code>.</p><ul>
-<li><p>For <code>"none"</code>, a flow layout will be used, in which adjacent subviews are simply placed one after the other.</p></li>
-<li><p>For <code>"each"</code>, subviews will be aligned into a clean grid structure, but each row or column may be of variable size.</p></li>
-<li><p>For <code>"all"</code>, subviews will be aligned and each row or column will be sized identically based on the maximum observed size. String values for this property will be applied to both grid rows and columns.</p></li>
-</ul>
-
-<p>Alternatively, an object value of the form <code>{"row": string, "column": string}</code> can be used to supply different alignments for rows and columns.</p>
-<p><strong>Default value:</strong> <code>"all"</code>.</p></td>
+      <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec</em>) URL to <a href='http://json-schema.org/'>JSON schema</a> for a Vega-Lite specification. Unless you have a reason to change this, use <code>https://vega.github.io/schema/vega-lite/v4.json</code>. Setting the <code>$schema</code> property allows automatic validation and autocomplete in editors that support JSON schema.</p></td>
     </tr>
     <tr>
       <th>autosize</th>
-      <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec</em>) Sets how the visualization size should be determined. If a string, should be one of <code>"pad"</code>, <code>"fit"</code> or <code>"none"</code>.
-Object values can additionally specify parameters for content sizing and automatic resizing.
-<code>"fit"</code> is only supported for single and layered views that don't use <code>rangeStep</code>.</p>
+      <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec</em>) How the visualization size should be determined. If a string, should be one of <code>"pad"</code>, <code>"fit"</code> or <code>"none"</code>.
+Object values can additionally specify parameters for content sizing and automatic resizing.</p>
 <p><strong>Default value</strong>: <code>pad</code></p></td>
     </tr>
     <tr>
       <th>background</th>
       <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec</em>) CSS color property to use as the background of the entire view.</p>
-<p><strong>Default value:</strong> none (transparent)</p></td>
+<p><strong>Default value:</strong> <code>"white"</code></p></td>
     </tr>
     <tr>
       <th>bounds</th>
@@ -185,32 +172,8 @@ Object values can additionally specify parameters for content sizing and automat
 <p><strong>Default value:</strong> <code>"full"</code></p></td>
     </tr>
     <tr>
-      <th>center</th>
-      <td><p>(<em>TopLevelVConcatSpec, TopLevelHConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
-<p><strong>Default value:</strong> <code>false</code></p>
-<p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
-<p>An object value of the form <code>{"row": boolean, "column": boolean}</code> can be used to supply different centering values for rows and columns.</p>
-<p><strong>Default value:</strong> <code>false</code></p></td>
-    </tr>
-    <tr>
-      <th>columns</th>
-      <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec</em>) The number of columns to include in the view composition layout.</p>
-<p><strong>Default value</strong>: <code>undefined</code> -- An infinite number of columns (a single row) will be assumed. This is equivalent to
-<code>hconcat</code> (for <code>concat</code>) and to using the <code>column</code> channel (for <code>facet</code> and <code>repeat</code>).</p>
-<p><strong>Note</strong>:</p><ol>
-<li><p>This property is only for:</p></li>
-</ol>
-<ul>
-<li><p>the general (wrappable) <code>concat</code> operator (not <code>hconcat</code>/<code>vconcat</code>)</p></li>
-<li><p>the <code>facet</code> and <code>repeat</code> operator with one field/repetition definition (without row/column nesting)</p></li>
-</ul>
-<ol>
-<li><p>Setting the <code>columns</code> to <code>1</code> is equivalent to <code>vconcat</code> (for <code>concat</code>) and to using the <code>row</code> channel (for <code>facet</code> and <code>repeat</code>).</p></li>
-</ol></td>
-    </tr>
-    <tr>
       <th>config</th>
-      <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec</em>) Vega-Lite configuration object.  This property can only be defined at the top-level of a specification.</p></td>
+      <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec</em>) Vega-Lite configuration object. This property can only be defined at the top-level of a specification.</p></td>
     </tr>
     <tr>
       <th>datasets</th>
@@ -228,15 +191,15 @@ This can be an array of objects or primitive values or a string. Arrays of primi
     </tr>
     <tr>
       <th>height</th>
-      <td><p>(<em>TopLevelUnitSpec, TopLevelLayerSpec</em>) The height of a visualization.</p>
-<p><strong>Default value:</strong></p><ul>
-<li><p>If a view's <a href='https://vega.github.io/vega-lite/docs/size.html#autosize'>autosize</a> type is <code>"fit"</code> or its y-channel has a <a href='https://vega.github.io/vega-lite/docs/scale.html#continuous'>continuous scale</a>, the height will be the value of <a href='https://vega.github.io/vega-lite/docs/spec.html#config'>config.view.height</a>.</p></li>
-<li><p>For y-axis with a band or point scale: if <a href='https://vega.github.io/vega-lite/docs/scale.html#band'>rangeStep</a> is a numeric value or unspecified, the height is <a href='https://vega.github.io/vega-lite/docs/scale.html#band'>determined by the range step, paddings, and the cardinality of the field mapped to y-channel</a>. Otherwise, if the <code>rangeStep</code> is <code>null</code>, the height will be the value of <a href='https://vega.github.io/vega-lite/docs/spec.html#config'>config.view.height</a>.</p></li>
-<li><p>If no field is mapped to <code>y</code> channel, the <code>height</code> will be the value of <code>rangeStep</code>.</p></li>
+      <td><p>(<em>TopLevelUnitSpec, TopLevelLayerSpec</em>) The height of a visualization.</p><ul>
+<li><p>For a plot with a continuous y-field, height should be a number.</p></li>
+<li><p>For a plot with either a discrete y-field or no y-field, height can be either a number indicating a fixed height or an object in the form of <code>{step: number}</code> defining the height per discrete step. (No y-field is equivalent to having one discrete step.)</p></li>
+<li><p>To enable responsive sizing on height, it should be set to <code>"container"</code>.</p></li>
 </ul>
 
-<p><strong>Note</strong>: For plots with <a href='https://vega.github.io/vega-lite/docs/encoding.html#facet'>row and column channels</a>, this represents the height of a single view.</p>
-<p><strong>See also:</strong> The documentation for <a href='https://vega.github.io/vega-lite/docs/size.html'>width and height</a> contains more examples.</p></td>
+<p><strong>Default value:</strong> Based on <code>config.view.continuousHeight</code> for a plot with a continuous y-field and <code>config.view.discreteHeight</code> otherwise.</p>
+<p><strong>Note:</strong> For plots with <a href='https://vega.github.io/vega-lite/docs/encoding.html#facet'>row and column channels</a>, this represents the height of a single view and the <code>"container"</code> option cannot be used.</p>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/size.html'>height</a> documentation.</p></td>
     </tr>
     <tr>
       <th>mark</th>
@@ -249,7 +212,7 @@ This can be an array of objects or primitive values or a string. Arrays of primi
     </tr>
     <tr>
       <th>padding</th>
-      <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec</em>) The default visualization padding, in pixels, from the edge of the visualization canvas to the data rectangle.  If a number, specifies padding for all sides.
+      <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec</em>) The default visualization padding, in pixels, from the edge of the visualization canvas to the data rectangle. If a number, specifies padding for all sides.
 If an object, the value should have the format <code>{"left": 5, "top": 5, "right": 5, "bottom": 5}</code> to specify padding for each side of the visualization.</p>
 <p><strong>Default value</strong>: <code>5</code></p></td>
     </tr>
@@ -266,15 +229,6 @@ and to <code>latitude</code> and <code>"longitude"</code> channels for other mar
     <tr>
       <th>selection</th>
       <td><p>(<em>TopLevelUnitSpec</em>) A key-value mapping between selection names and definitions.</p></td>
-    </tr>
-    <tr>
-      <th>spacing</th>
-      <td><p>(<em>TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec</em>) The spacing in pixels between sub-views of the composition operator.
-An object of the form <code>{"row": number, "column": number}</code> can be used to set
-different spacing values for rows and columns.</p>
-<p><strong>Default value</strong>: Depends on <code>"spacing"</code> property of <a href='https://vega.github.io/vega-lite/docs/config.html#view-config'>the view composition configuration</a> (<code>20</code> by default)</p>
-<p>(<em>TopLevelVConcatSpec, TopLevelHConcatSpec</em>) The spacing in pixels between sub-views of the concat operator.</p>
-<p><strong>Default value</strong>: <code>10</code></p></td>
     </tr>
     <tr>
       <th>title</th>
@@ -296,22 +250,68 @@ This object is completely ignored by Vega and Vega-Lite and can be used for cust
     </tr>
     <tr>
       <th>width</th>
-      <td><p>(<em>TopLevelUnitSpec, TopLevelLayerSpec</em>) The width of a visualization.</p>
-<p><strong>Default value:</strong> This will be determined by the following rules:</p><ul>
-<li><p>If a view's <a href='https://vega.github.io/vega-lite/docs/size.html#autosize'>autosize</a> type is <code>"fit"</code> or its x-channel has a <a href='https://vega.github.io/vega-lite/docs/scale.html#continuous'>continuous scale</a>, the width will be the value of <a href='https://vega.github.io/vega-lite/docs/spec.html#config'>config.view.width</a>.</p></li>
-<li><p>For x-axis with a band or point scale: if <a href='https://vega.github.io/vega-lite/docs/scale.html#band'>rangeStep</a> is a numeric value or unspecified, the width is <a href='https://vega.github.io/vega-lite/docs/scale.html#band'>determined by the range step, paddings, and the cardinality of the field mapped to x-channel</a>.   Otherwise, if the <code>rangeStep</code> is <code>null</code>, the width will be the value of <a href='https://vega.github.io/vega-lite/docs/spec.html#config'>config.view.width</a>.</p></li>
-<li><p>If no field is mapped to <code>x</code> channel, the <code>width</code> will be the value of <a href='https://vega.github.io/vega-lite/docs/size.html#default-width-and-height'>config.scale.textXRangeStep</a> for <code>text</code> mark and the value of <code>rangeStep</code> for other marks.</p></li>
+      <td><p>(<em>TopLevelUnitSpec, TopLevelLayerSpec</em>) The width of a visualization.</p><ul>
+<li><p>For a plot with a continuous x-field, width should be a number.</p></li>
+<li><p>For a plot with either a discrete x-field or no x-field, width can be either a number indicating a fixed width or an object in the form of <code>{step: number}</code> defining the width per discrete step. (No x-field is equivalent to having one discrete step.)</p></li>
+<li><p>To enable responsive sizing on width, it should be set to <code>"container"</code>.</p></li>
 </ul>
 
-<p><strong>Note:</strong> For plots with <a href='https://vega.github.io/vega-lite/docs/encoding.html#facet'>row and column channels</a>, this represents the width of a single view.</p>
-<p><strong>See also:</strong> The documentation for <a href='https://vega.github.io/vega-lite/docs/size.html'>width and height</a> contains more examples.</p></td>
+<p><strong>Default value:</strong>
+Based on <code>config.view.continuousWidth</code> for a plot with a continuous x-field and <code>config.view.discreteWidth</code> otherwise.</p>
+<p><strong>Note:</strong> For plots with <a href='https://vega.github.io/vega-lite/docs/encoding.html#facet'>row and column channels</a>, this represents the width of a single view and the <code>"container"</code> option cannot be used.</p>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/size.html'>width</a> documentation.</p></td>
+    </tr>
+    <tr>
+      <th>align</th>
+      <td><p>(<em>TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec</em>) The alignment to apply to grid rows and columns.
+The supported string values are <code>"all"</code>, <code>"each"</code>, and <code>"none"</code>.</p><ul>
+<li><p>For <code>"none"</code>, a flow layout will be used, in which adjacent subviews are simply placed one after the other.</p></li>
+<li><p>For <code>"each"</code>, subviews will be aligned into a clean grid structure, but each row or column may be of variable size.</p></li>
+<li><p>For <code>"all"</code>, subviews will be aligned and each row or column will be sized identically based on the maximum observed size. String values for this property will be applied to both grid rows and columns.</p></li>
+</ul>
+
+<p>Alternatively, an object value of the form <code>{"row": string, "column": string}</code> can be used to supply different alignments for rows and columns.</p>
+<p><strong>Default value:</strong> <code>"all"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>center</th>
+      <td><p>(<em>TopLevelVConcatSpec, TopLevelHConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
+<p><strong>Default value:</strong> <code>false</code></p>
+<p>(<em>TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec</em>) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.</p>
+<p>An object value of the form <code>{"row": boolean, "column": boolean}</code> can be used to supply different centering values for rows and columns.</p>
+<p><strong>Default value:</strong> <code>false</code></p></td>
+    </tr>
+    <tr>
+      <th>columns</th>
+      <td><p>(<em>TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec</em>) The number of columns to include in the view composition layout.</p>
+<p><strong>Default value</strong>: <code>undefined</code> -- An infinite number of columns (a single row) will be assumed. This is equivalent to
+<code>hconcat</code> (for <code>concat</code>) and to using the <code>column</code> channel (for <code>facet</code> and <code>repeat</code>).</p>
+<p><strong>Note</strong>:</p><ol>
+<li><p>This property is only for:</p></li>
+</ol>
+<ul>
+<li><p>the general (wrappable) <code>concat</code> operator (not <code>hconcat</code>/<code>vconcat</code>)</p></li>
+<li><p>the <code>facet</code> and <code>repeat</code> operator with one field/repetition definition (without row/column nesting)</p></li>
+</ul>
+<ol>
+<li><p>Setting the <code>columns</code> to <code>1</code> is equivalent to <code>vconcat</code> (for <code>concat</code>) and to using the <code>row</code> channel (for <code>facet</code> and <code>repeat</code>).</p></li>
+</ol></td>
     </tr>
     <tr>
       <th>facet</th>
-      <td><p>(<em>TopLevelFacetSpec</em>) Definition for how to facet the data.  One of:</p><ol>
+      <td><p>(<em>TopLevelFacetSpec</em>) Definition for how to facet the data. One of:</p><ol>
 <li><p><a href='https://vega.github.io/vega-lite/docs/facet.html#field-def'>a field definition for faceting the plot by one field</a></p></li>
 <li><p><a href='https://vega.github.io/vega-lite/docs/facet.html#mapping'>An object that maps row and column channels to their field definitions</a></p></li>
 </ol></td>
+    </tr>
+    <tr>
+      <th>spacing</th>
+      <td><p>(<em>TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec</em>) The spacing in pixels between sub-views of the composition operator.
+An object of the form <code>{"row": number, "column": number}</code> can be used to set
+different spacing values for rows and columns.</p>
+<p><strong>Default value</strong>: Depends on <code>"spacing"</code> property of <a href='https://vega.github.io/vega-lite/docs/config.html#view-config'>the view composition configuration</a> (<code>20</code> by default)</p>
+<p>(<em>TopLevelVConcatSpec, TopLevelHConcatSpec</em>) The spacing in pixels between sub-views of the concat operator.</p>
+<p><strong>Default value</strong>: <code>10</code></p></td>
     </tr>
     <tr>
       <th>spec</th>
@@ -325,8 +325,8 @@ This object is completely ignored by Vega and Vega-Lite and can be used for cust
     </tr>
     <tr>
       <th>repeat</th>
-      <td><p>(<em>TopLevelRepeatSpec</em>) Definition for fields to be repeated.  One of:</p><ol>
-<li><p>An array of fields to be repeated.  If <code>"repeat"</code> is an array, the field can be referred using <code>{"repeat": "repeat"}</code></p></li>
+      <td><p>(<em>TopLevelRepeatSpec</em>) Definition for fields to be repeated. One of:</p><ol>
+<li><p>An array of fields to be repeated. If <code>"repeat"</code> is an array, the field can be referred using <code>{"repeat": "repeat"}</code></p></li>
 <li><p>An object that mapped <code>"row"</code> and/or <code>"column"</code> to the listed of fields to be repeated along the particular orientations. The objects <code>{"repeat": "row"}</code> and <code>{"repeat": "column"}</code> can be used to refer to the repeated field respectively.</p></li>
 </ol></td>
     </tr>
