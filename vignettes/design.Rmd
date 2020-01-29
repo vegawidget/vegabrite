@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-# A functional approach to buidling up specs
+# A functional approach to building up specs
 
 This package seeks to build up a library of functions that can iteratively build up a Vega-Lite spec. There is an initializer function `vl_chart` that initializes the chart (and can optionally take in values for top-level spec attributes), and then subsequent functions can add various component to a spec -- they take in a spec as input as well as arguments relating to the new component and return a modified spec with the new component. 
 
