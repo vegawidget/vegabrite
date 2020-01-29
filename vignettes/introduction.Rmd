@@ -5,8 +5,10 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
@@ -138,10 +140,71 @@ vl_chart() %>%
     )
 ```
 
+# Interactivity
+
+## Tooltips
+
+There are three ways to get tooltips:
+
+### All the encodings
+
+To get a tooltip that shows the values for fields set in the encoding, use `tooltip = TRUE` in the call to add a mark to the plot.
+
+```{r}
+vl_chart(mtcars) %>%
+  vl_mark_point(tooltip = TRUE) %>%
+  vl_encode_x('wt') %>%
+  vl_encode_y('mpg')
+```
+
+### All data associated with point
+
+To get all the data to show up (not just what is used by encoding) pass `list(content = "data")` to the tooltip argument.
+
+```{r}
+vl_chart(mtcars) %>%
+  vl_mark_point(tooltip = list(content = "data")) %>%
+  vl_encode_x('wt') %>%
+  vl_encode_y('mpg')
+```
+
+`vlbuildr` also has a shortcut, whereby if you pass "data" or "encoding" to the tooltip argument, it will transform it into the above list format in the spec. So the following will do the same thing:
+
+```{r}
+vl_chart(mtcars) %>%
+  vl_mark_point(tooltip = "data") %>%
+  vl_encode_x('wt') %>%
+  vl_encode_y('mpg')
+```
+
+### To some constant value 
+
+You can also set the tooltip to a constant value -- e.g. to get each point to say "Hi!":
+
+```{r}
+vl_chart(mtcars) %>%
+  vl_mark_point(tooltip = "Hi!") %>%
+  vl_encode_x('wt') %>%
+  vl_encode_y('mpg')
+```
+
+### Via anencoding channel
+
+We can also use a column of the data by passing the tooltip as an encoding. If we want to use the `row.names` of the `data.frame` we can use `'_row'` as the name:    
+
+```{r}
+vl_chart(mtcars) %>%
+  vl_mark_point() %>%
+  vl_encode_x('wt') %>%
+  vl_encode_y('mpg') %>% 
+  vl_encode_tooltip('_row')
+```
+
+## Selections
+
+More to come here... 
+
 # View Composition
 
 More to come here... 
 
-# Interactivity
-
-More to come here... 

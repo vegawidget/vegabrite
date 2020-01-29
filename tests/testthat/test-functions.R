@@ -50,3 +50,26 @@ test_that("encode functions work with repeat", {
 
   expect_equivalent(chart$encoding$x$field, list("repeat" = "column"))
 })
+
+test_that("mark sugar turns data arg into list", {
+  chart <- vl_chart() %>%
+    vl_mark_point(tooltip = "data")
+  
+  expect_equivalent(chart$mark$tooltip, list("content" = "data"))
+})
+
+test_that("mark sugar turns data arg into list", {
+  chart <- vl_chart() %>%
+    vl_mark_point(tooltip = "encoding")
+  
+  expect_equivalent(chart$mark$tooltip, list("content" = "encoding"))
+})
+
+test_that("mark sugar leaves other strings intact other than data, encoding", {
+  chart <- vl_chart() %>%
+    vl_mark_point(tooltip = "hello")
+  
+  expect_equivalent(chart$mark$tooltip, "hello")
+})
+
+
