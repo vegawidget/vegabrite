@@ -1,0 +1,147 @@
+---
+title: "How to make a plot using vlbuildr"
+author: "Alicia Schep"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This vignette covers the basics of how to make a chart using `vlbuildr`.  For more about the design philosophy of the package, see the [design vignette](https://vegawidget.github.io/vlbuildr/articles/design.html). For example charts see the [examples vignette](https://vegawidget.github.io/vlbuildr/articles/examples.html).
+
+# The three basic components
+
+All plots require **data**, a **mark** and **encodings**. To intialize a chart you use
+
+```{r}
+library(vlbuildr)
+vl_chart()
+```
+
+Without the other components it will be empty! But this output can be piped into commands to add the other components. Some components can also be added directly via that function call.  
+
+## data
+
+```{r}
+vl_chart() %>%
+  vl_add_data(values = mtcars)
+```
+Still empty! Need to set mark and encoding
+
+We could also have passed the data directly to `vl_chart`:
+
+```{r}
+vl_chart(mtcars) 
+```
+
+Data can also be passed as a url using `vl_add_data_url` or the `url` argument to `vl_add_data`. `vl_chart` should also be able to recognize if the argument to `data` is a url and treat it as such.
+
+## Mark
+
+The 'mark' is the type of shape being plotted, e.g. 'point', 'line', 'bar'.
+
+```{r}
+vl_chart() %>%
+  vl_add_data(values = mtcars) %>%
+  vl_mark_point()
+```
+
+Without encodings, all the points show up on top of each other!
+
+It can be passed without arguments besides the input spec (which often will be piped in), but also can take in arguments to change its properties. 
+
+```{r}
+vl_chart() %>%
+  vl_add_data(values = mtcars) %>%
+  vl_mark_point(color = 'red')
+```
+
+## Encoding
+
+The encoding tells the plot what to use along the x or y axis, as well as what to use for color, tooltips, links, and other aspects of the plot that might be controlled by a column of your data. Encodings can also take constant values (generally with the `value` argument).
+
+Functions to add an encoding are of the format `vl_encode_*` where the `*` is the name of the encoding, e.g. `x`:
+
+```{r}
+vl_chart() %>%
+  vl_add_data(values = mtcars) %>%
+  vl_mark_point() %>%
+  vl_encode_x(field = 'wt', type = 'quantitative')
+```
+
+Multiple encodings can be added; it does not matter what order they are added.
+
+```{r}
+vl_chart() %>%
+  vl_add_data(values = mtcars) %>%
+  vl_mark_point() %>%
+  vl_encode_x(field = 'wt', type = 'quantitative') %>%
+  vl_encode_y(field = 'mpg', type = 'quantitative')
+```
+
+### Type shorthands
+
+A shorthand can be used to specify the type. The field name can be joined using a colon with a single letter abbreviation. The abbreviations are:
+
+
+```{r}
+vl_chart() %>%
+  vl_add_data(values = mtcars) %>%
+  vl_mark_point() %>%
+  vl_encode_x('wt:Q') %>%
+  vl_encode_y('mpg:Q')
+```
+
+### Type inference
+
+When the data has been added to the spec already and is given directly by an R data.frame (rather than a URL or a transformation), the type can also be inferred and does not need to be given.
+
+```{r}
+vl_chart() %>%
+  vl_add_data(values = mtcars) %>%
+  vl_mark_point() %>%
+  vl_encode_x('wt') %>%
+  vl_encode_y('mpg')
+```
+
+### `vl_encode`
+
+Each encoding can be passed by a separate function, or a single call to `vl_encode` can be used:
+
+```{r}
+vl_chart() %>%
+  vl_add_data(values = mtcars) %>%
+  vl_mark_point() %>%
+  vl_encode(x = 'wt', y = "mpg")
+```
+
+When not providing additional arguments for x or y encoding this form can be more succinct, but specifying each encoding separately can be easier when passing lots of arguments.  
+
+For help constructing a full encoding object to `vl_encode` one can use functions within `vl` list of functions.
+
+```{r}
+vl_chart() %>%
+  vl_add_data(values = mtcars) %>%
+  vl_mark_point() %>%
+  vl_encode(
+    x = vl$X(field = 'wt', title = "weight"), 
+     y = "mpg"
+    )
+```
+
+# View Composition
+
+More to come here... 
+
+# Interactivity
+
+More to come here... 
