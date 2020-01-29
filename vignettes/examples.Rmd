@@ -185,6 +185,13 @@ vl_hconcat(bar_chart, point_chart) %>%
 ```
 
 ```{r}
+(bar_chart | point_chart) %>% 
+  vl_add_data(url = "https://vega.github.io/vega-lite/data/weather.csv") %>%
+  vl_filter("datum.location === 'Seattle'")
+```
+
+
+```{r}
 vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
   vl_mark_point() %>%
