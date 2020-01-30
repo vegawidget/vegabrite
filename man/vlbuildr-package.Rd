@@ -44,12 +44,19 @@ is taken as the input to \code{x}. If \code{x} was already specified, e.g. \code
 then an error would be raised.
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://vegawidget.github.io/vlbuildr/index.html}
+}
+
+}
 \author{
 \strong{Maintainer}: Aicia Schep \email{aschep@gmail.com}
 
 Authors:
 \itemize{
-  \item Vega-Lite Developers
+  \item Vega-Lite Developers (Authors of the Vega-Lite schema which is used directly to populate much of the documentation of this package.)
 }
 
 }
