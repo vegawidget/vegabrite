@@ -2,7 +2,7 @@ pandoc: '2.2'
 pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
+  examples: articles/examples.html
+  introduction: articles/introduction.html
   design: design.html
-  examples: examples.html
-  introduction: introduction.html
 
