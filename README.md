@@ -11,7 +11,12 @@ status](https://travis-ci.org/vegawidget/vlbuildr.svg?branch=master)](https://tr
 # vlbuildr
 
 The goal of vlbuildr is to provide an R api for building up vega-lite
-specs.
+specs. For a guide on getting started using `vlbuildr`, check out the
+[getting started
+vignette](https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html).
+For some background and context on the package you an check out
+[slides](https://docs.google.com/presentation/d/e/2PACX-1vRUDiM3DaPjYP5b1BafSraf8GWwJk_jy6YV_l9lZgeBVwKDSfqiHcTn8M-Qm-6U7frMX7SLqQthJxah/pub?start=false&loop=false&delayms=3000)
+from a rstudio::conf talk in January 2020.
 
 ### Current status
 
@@ -36,7 +41,7 @@ Vega-lite schema (an approach inspired by
 [Altair](https://github.com/altair-viz/altair) and
 [vega-lite-api](https://github.com/vega/vega-lite-api)) and (2) take
 advantage of the htmlwidget infrastucture for vega specs provided by the
-[vegawidget]() package.
+[vegawidget](https://github.com/vegawidget/vegawidget) package.
 
 ## Building
 
