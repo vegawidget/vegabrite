@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette at the moment is just a place to store some various example plots! More documentation & annotation of examples to come...
+This vignette has some example plots -- for more details on how to make a plot, see the  [how to build a chart vignette](https://vegawidget.github.io/vlbuildr/articles/introduction.html) For more about the design philosophy of the package, see the [design vignette](https://vegawidget.github.io/vlbuildr/articles/design.html).
 
 ```{r }
 library(vlbuildr)
