@@ -47,5 +47,10 @@ then an error would be raised.
 \author{
 \strong{Maintainer}: Aicia Schep \email{aschep@gmail.com}
 
+Authors:
+\itemize{
+  \item Vega-Lite Developers
+}
+
 }
 \keyword{internal}

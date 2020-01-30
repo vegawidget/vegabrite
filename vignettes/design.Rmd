@@ -1,6 +1,5 @@
 ---
 title: "Design"
-author: "Alicia Schep"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
