@@ -1,5 +1,24 @@
 destination: docs
 
+
+navbar:
+  title: "vlbuildr"
+  left:
+    - icon: fa-home fa-lg
+      href: index.html
+    - text: "Getting Started"
+      href: articles/articles/introduction.html
+    - text: "Design"
+      href: articles/design.html 
+    - text: "Examples"
+      href: articles/articles/examples.html
+    - text: "Reference"
+      href: reference/index.html
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/vegawidget/vlbuildr
+
+
 reference:
   - title: "Initialize a chart"
     desc: "Initialize a Vega-Lite specification"
@@ -13,7 +32,7 @@ reference:
   - title: "Mark"
     desc: "Add a mark to chart spec"
     contents:
-    - vl_mark
+    - starts_with("vl_mark")
   - title: "Encoding"
     desc: "Encode a channel"
     contents:
@@ -56,11 +75,11 @@ reference:
   - title: "Config"
     desc: "Add configuration"
     contents:
-    - ends_with("config")
+    - starts_with("vl_config")
   - title: "Selection"
     desc: "Add selection to a spec"
     contents:
-    - ends_with("selection")
+    - ends_with("_selection")
   - title: "Binding"
     desc: "Add a binding to a selection"
     contents:
@@ -76,4 +95,4 @@ reference:
       As opposed to other functions that modify / add to a spec, these make a 
       sub-component of a Vega-lite spec
     contents:
-    - starts_with("vl_make")
+    - starts_with("vl\\$")
