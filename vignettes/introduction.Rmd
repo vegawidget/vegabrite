@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette covers the basics of how to make a chart using `vlbuildr`.  For more about the design philosophy of the package, see the [design vignette](https://vegawidget.github.io/vlbuildr/articles/design.html). For example charts see the [examples vignette](https://vegawidget.github.io/vlbuildr/articles/examples.html).
+This vignette covers the basics of how to make a chart using `vlbuildr`.For more about the design philosophy of the package, see the [design vignette](https://vegawidget.github.io/vlbuildr/articles/design.html). For example charts see the [examples vignette](https://vegawidget.github.io/vlbuildr/articles/examples.html).
 
 # The three basic components
 
@@ -188,7 +188,7 @@ vl_chart(mtcars) %>%
   vl_encode_y('mpg')
 ```
 
-### Via anencoding channel
+### Via an encoding channel
 
 We can also use a column of the data by passing the tooltip as an encoding. If we want to use the `row.names` of the `data.frame` we can use `'_row'` as the name:    
 
@@ -206,5 +206,58 @@ More to come here...
 
 # View Composition
 
+Sub-plots or 'views' can be combined in a number of ways. Layering assembles views into the same plot. Facetting splits views based on a column of data with the same encodings per view. Repeating splits views based on what field to use as one or two of the encodings. Concatenation combines arbitrary views together.  
+
+## Layering
+
+Layering assembles views into the same plot. A single view can only have one 'mark', so layering is how a plot can be made with multiple marks. Those marks can have different encodings or the same encodings.
+
+### vl_layer
+
+Two charts can be layered via `vl_layer`. Additional modifications can then be made to the resulting layered chart, although there are some limitations to the kinds of modifications that can be made to layered charts versus single view charts.  
+
+```{r}
+points_plot <- vl_chart() %>%
+  vl_encode_x(field = "IMDB_Rating", type = "quantitative") %>%
+  vl_encode_y(type = "quantitative", aggregate = "count") %>%
+  vl_bin_x(maxbins=10) %>%
+  vl_mark_bar()
+  
+avg_plot <- vl_chart() %>%
+  vl_encode_x(field = "IMDB_Rating", type = "quantitative", aggregate = "mean") %>%
+  vl_encode_color(value = "red") %>%
+  vl_encode_size(value = 5) %>%
+  vl_mark_rule()
+
+vl_layer(points_plot, avg_plot) %>%
+  vl_add_data_url("https://vega.github.io/vega-editor/app/data/movies.json")
+```
+
+In this case the data is added afterwards. That can help make sure the data isn't duplicated, and helps keep the size of the spec smaller. Note that layers can have different data, too, in which case the data would get added to each chart first before layering.
+
+### The `+` operator
+
+Layering can also be performed by using the `+` operator.
+
+```{r}
+(points_plot + avg_plot) %>%
+  vl_add_data_url("https://vega.github.io/vega-editor/app/data/movies.json")
+```
+
+## Facet
+
+Facetting splits up your data into different subplots based on a field in the data. This can be done across rows and/or columns.  Facets can get added in two ways: via `vl_facet_` functions or as encodings, eg `vl_encode_row`.
+
 More to come here... 
 
+### Facets as encoding
+
+### Adding facets with facet functions
+
+## Repeating
+
+More to come here... 
+
+## Concatenation
+
+More to come here... 
