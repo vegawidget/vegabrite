@@ -86,22 +86,22 @@
 <h3 class="hasAnchor">
 <a href="#current-status" class="anchor"></a>Current status</h3>
 <p>This package is still experimental, but much of the public facing API has been built (although still subject to changes). However, the internals of the package might change substantially to provide greater robustness, make it harder to make invalid specs, and/or provide better information when making invalid spec.</p>
-<p>The documentation is also still very bare-bones. The parameter documentation for functions is fairly complete, however, as it relies on descriptions pulled directly from the Vega-Lite schema.</p>
+<p>The documentation is also still a work-in-progress, but there is a <a href="https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html">getting started vignette</a>. The parameter documentation for functions is fairly complete, however, as it relies on descriptions pulled directly from the Vega-Lite schema.</p>
 </div>
 <div id="inspiration-and-related-work" class="section level2">
 <h2 class="hasAnchor">
 <a href="#inspiration-and-related-work" class="anchor"></a>Inspiration and related work</h2>
-<p>The API for this package is heavily inspired by the <a href="articles/examples.html">vegalite R package</a>, but is rebuilt from scratch to (1) build up the API semi-automatically based on the Vega-lite schema (an approach inspired by <a href="https://github.com/altair-viz/altair">Altair</a> and <a href="https://github.com/vega/vega-lite-api">vega-lite-api</a>) and (2) take advantage of the htmlwidget infrastucture for vega specs provided by the <a href="">vegawidget</a> package.</p>
+<p>The API for this package is heavily inspired by the <a href="https://github.com/hrbrmstr/vegalite">vegalite R package</a>, but is rebuilt from scratch to (1) build up the API semi-automatically based on the Vega-lite schema (an approach inspired by <a href="https://github.com/altair-viz/altair">Altair</a> and <a href="https://github.com/vega/vega-lite-api">vega-lite-api</a>) and (2) take advantage of the htmlwidget infrastucture for vega specs provided by the <a href="">vegawidget</a> package.</p>
 </div>
 <div id="building" class="section level2">
 <h2 class="hasAnchor">
 <a href="#building" class="anchor"></a>Building</h2>
-<p>Much of the public API is auto-generated via the <code>build.R</code> script in the <code>inst</code> directory. The script makes uses of another package, <a href="https://github.com/AliciaSchep/vlmetabuildr">vlmetabuildr</a>.</p>
+<p>Much of the public API is auto-generated via the <code>build.R</code> script in the <code>build</code> directory. The script makes uses of another package, <a href="https://github.com/vegawidget/vlbuildr/tree/master/build/vlmetabuildr">vlmetabuildr</a> located within the <code>build</code> directory. For more about the design see the <a href="https://vegawidget.github.io/vlbuildr/articles/design.html">design vignette</a>.</p>
 </div>
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h2>
-<p>These are some examples showing current capabilities; see <a href="https://vegawidget.github.io/vlbuildr/articles/examples.html">pkgdown site</a> for more examples, including interactive ones.</p>
+<p>These are some examples showing current capabilities; see <a href="https://vegawidget.github.io/vlbuildr/articles/articles/examples.html">examples vignette</a> for more examples, including interactive ones.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(vlbuildr)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="st">   </span><span class="kw"><a href="reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars) <span class="op">%&gt;%</span></a>
