@@ -21,16 +21,19 @@ internals of the package might change substantially to provide greater
 robustness, make it harder to make invalid specs, and/or provide better
 information when making invalid spec.
 
-The documentation is also still very bare-bones. The parameter
-documentation for functions is fairly complete, however, as it relies on
-descriptions pulled directly from the Vega-Lite schema.
+The documentation is also still a work-in-progress, but there is a
+[getting started
+vignette](https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html).
+The parameter documentation for functions is fairly complete, however,
+as it relies on descriptions pulled directly from the Vega-Lite schema.
 
 ## Inspiration and related work
 
 The API for this package is heavily inspired by the [vegalite R
-package](articles/examples.html), but is rebuilt from scratch to (1)
-build up the API semi-automatically based on the Vega-lite schema (an
-approach inspired by [Altair](https://github.com/altair-viz/altair) and
+package](https://github.com/hrbrmstr/vegalite), but is rebuilt from
+scratch to (1) build up the API semi-automatically based on the
+Vega-lite schema (an approach inspired by
+[Altair](https://github.com/altair-viz/altair) and
 [vega-lite-api](https://github.com/vega/vega-lite-api)) and (2) take
 advantage of the htmlwidget infrastucture for vega specs provided by the
 [vegawidget]() package.
@@ -38,14 +41,17 @@ advantage of the htmlwidget infrastucture for vega specs provided by the
 ## Building
 
 Much of the public API is auto-generated via the `build.R` script in the
-`inst` directory. The script makes uses of another package,
-[vlmetabuildr](https://github.com/AliciaSchep/vlmetabuildr).
+`build` directory. The script makes uses of another package,
+[vlmetabuildr](https://github.com/vegawidget/vlbuildr/tree/master/build/vlmetabuildr)
+located within the `build` directory. For more about the design see the
+[design
+vignette](https://vegawidget.github.io/vlbuildr/articles/design.html).
 
 ## Examples
 
-These are some examples showing current capabilities; see [pkgdown
-site](https://vegawidget.github.io/vlbuildr/articles/examples.html) for
-more examples, including interactive ones.
+These are some examples showing current capabilities; see [examples
+vignette](https://vegawidget.github.io/vlbuildr/articles/articles/examples.html)
+for more examples, including interactive ones.
 
 ``` r
 library(vlbuildr)
