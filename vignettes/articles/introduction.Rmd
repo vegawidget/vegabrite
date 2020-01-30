@@ -1,14 +1,7 @@
 ---
 title: "How to make a plot using vlbuildr"
-author: "Alicia Schep"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}
-editor_options: 
-  chunk_output_type: console
+output: rmarkdown::html_document
 ---
 
 ```{r setup, include = FALSE}
@@ -18,7 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette covers the basics of how to make a chart using `vlbuildr`.For more about the design philosophy of the package, see the [design vignette](https://vegawidget.github.io/vlbuildr/articles/design.html). For example charts see the [examples vignette](https://vegawidget.github.io/vlbuildr/articles/examples.html).
+This vignette covers the basics of how to make a chart using `vlbuildr`.For more about the design philosophy of the package, see the [design vignette](https://vegawidget.github.io/vlbuildr/articles/design.html). For example charts see the [examples vignette](https://vegawidget.github.io/vlbuildr/articles/articles/examples.html).
 
 # The three basic components
 
@@ -248,16 +241,95 @@ Layering can also be performed by using the `+` operator.
 
 Facetting splits up your data into different subplots based on a field in the data. This can be done across rows and/or columns.  Facets can get added in two ways: via `vl_facet_` functions or as encodings, eg `vl_encode_row`.
 
-More to come here... 
+In terms of which option to use, they have slightly different options in terms of the parameters that can be given, but often are interchangeable.
 
 ### Facets as encoding
 
+This example splits the data between rows based on the country of origin.
+
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_mark_bar() %>%
+  vl_encode_x(field = "Horsepower", type = "quantitative") %>%
+  vl_bin_x(maxbins = 15) %>%
+  vl_encode_y(aggregate = "count", type = "quantitative") %>%
+  vl_encode_row(field = "Origin", type = "nominal")
+```
+
 ### Adding facets with facet functions
+
+The following does the same as above, except via the `vl_facet_row` function.
+
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_mark_bar() %>%
+  vl_encode_x(field = "Horsepower", type = "quantitative") %>%
+  vl_bin_x(maxbins = 15) %>%
+  vl_encode_y(aggregate = "count", type = "quantitative") %>%
+  vl_facet_row(field = "Origin", type = "nominal")
+```
 
 ## Repeating
 
-More to come here... 
+Adding a 'repeat' is similar in some ways to facetting, except the same data gets shown in each subplot. Instead, what changes between subplots is what field gets used in the encoding. 
+
+To use 'repeat' one needs to both call a `vl_repeat_*` function (where `*` is `wrap`, `row`, or `column`) with the field names to use, and specify the `field` for an encoding as `repeat:*` with the matching value of `*`.For example:
+
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_mark_bar() %>%
+  vl_encode_x(field = "repeat:wrap", type = "quantitative", bin = TRUE) %>%
+  vl_encode_y(aggregate = "count", type = "quantitative") %>%
+  vl_encode_color(field = "Origin", type = "nominal") %>%
+  vl_repeat_wrap("Horsepower", "Miles_per_Gallon", "Acceleration", "Displacement")
+```
+
+Alternatively a longer specification for the field can be used:
+
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_mark_bar() %>%
+  vl_encode_x(field = list(`repeat` = "repeat"), type = "quantitative", bin = TRUE) %>%
+  vl_encode_y(aggregate = "count", type = "quantitative") %>%
+  vl_encode_color(field = "Origin", type = "nominal") %>%
+  vl_repeat_wrap("Horsepower", "Miles_per_Gallon", "Acceleration", "Displacement")
+```
 
 ## Concatenation
 
-More to come here... 
+Different charts can be concatenated together via `vl_concat`, `vl_hconcat`, or `vl_vconcat` to concatenate in wrapping fashion (with number of columns set by `columns` arguments), horizontally, or vertically.  Data can be set for each individual view (and can then be different) or can be set for the concatenated version.
+
+```{r}
+bar_chart <- vl_chart() %>%
+  vl_mark_bar() %>%
+  vl_encode_x(field = "date:O", timeUnit = "month") %>%
+  vl_encode_y(field = "precipitation:Q", aggregate = "mean")
+
+point_chart <- vl_chart() %>%
+  vl_mark_point() %>%
+  vl_encode_x(field = "temp_min:Q", bin = TRUE) %>%
+  vl_encode_y(field = "temp_max:Q", bin = TRUE) %>%
+  vl_encode_size(aggregate = "count", type = "quantitative")
+  
+vl_hconcat(bar_chart, point_chart) %>% 
+  vl_add_data(url = "https://vega.github.io/vega-lite/data/weather.csv") %>%
+  vl_filter("datum.location === 'Seattle'")
+```
+
+Concatenation can also be done via the `|` or `&` operators, to do horizontal or vertical concatenation respectively.  
+
+```{r}
+(bar_chart | point_chart) %>% 
+  vl_add_data(url = "https://vega.github.io/vega-lite/data/weather.csv") %>%
+  vl_filter("datum.location === 'Seattle'")
+```
+
+```{r}
+(bar_chart & point_chart) %>% 
+  vl_add_data(url = "https://vega.github.io/vega-lite/data/weather.csv") %>%
+  vl_filter("datum.location === 'Seattle'")
+```
