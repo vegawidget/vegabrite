@@ -229,7 +229,7 @@ avg_plot <- vl_chart() %>%
   vl_encode_size(value = 5) %>%
   vl_mark_rule()
 
-vl_clayer(points_plot, avg_plot) %>%
+vl_layer(points_plot, avg_plot) %>%
   vl_add_data_url("https://vega.github.io/vega-editor/app/data/movies.json")
 ```
 
