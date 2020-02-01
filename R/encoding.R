@@ -68,7 +68,7 @@ TYPE_MAPPING <- list(
       }
     } else {
       if (!is.null(names(enc))) {
-        enc <- .encoding_sugar(enc) 
+        enc <- .encoding_sugar(enc, spec) 
       } else {
         enc <- lapply(enc, function(x) .encoding_sugar(x, spec))
       }
