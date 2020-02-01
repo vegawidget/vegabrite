@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9001</span>
       </span>
     </div>
 
@@ -123,118 +123,425 @@
     <p>Add bin parameters to an encoding</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_bin_color</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>vl_bin_color</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_detail</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_detail</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_fill</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_fill</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_fillOpacity</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_fillOpacity</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_href</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_href</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_key</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_key</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_latitude</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_latitude</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_latitude2</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_latitude2</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_longitude</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_longitude</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_longitude2</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_longitude2</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_opacity</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_opacity</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_order</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_order</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_shape</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_shape</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_size</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_size</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_stroke</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_stroke</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_strokeOpacity</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_strokeOpacity</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_strokeWidth</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_strokeWidth</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_text</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_text</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_tooltip</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_tooltip</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_url</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_url</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_x</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_x</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_x2</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_x2</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_xError</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_xError</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_xError2</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_xError2</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_y</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_y</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_y2</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_y2</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_yError</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>vl_bin_yError</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>vl_bin_yError2</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>vl_bin_yError2</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

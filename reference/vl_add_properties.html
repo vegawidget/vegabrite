@@ -71,7 +71,7 @@ adding them (unlike markor encoding)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9001</span>
       </span>
     </div>
 
@@ -127,12 +127,27 @@ like width,height, background which don't have a specific function for
 adding them (unlike <code>mark</code>or <code>encoding</code>).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_add_properties</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>autosize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>background</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bounds</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>datasets</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>description</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>projection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>usermeta</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>view</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>center</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>columns</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>spacing</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vl_add_properties</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>autosize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>background</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bounds</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>datasets</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>description</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>projection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>usermeta</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>view</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>center</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>columns</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>spacing</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -183,8 +198,8 @@ This can be an array of objects or primitive values or a string. Arrays of primi
 </ul>
 
 <p><strong>Default value:</strong> Based on <code>config.view.continuousHeight</code> for a plot with a continuous y-field and <code>config.view.discreteHeight</code> otherwise.</p>
-<p><strong>Note:</strong> For plots with <a href='https://vega.github.io/vega-lite/docs/encoding.html#facet'>row and column channels</a>, this represents the height of a single view and the <code>"container"</code> option cannot be used.</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/size.html'>height</a> documentation.</p></td>
+<p><strong>Note:</strong> For plots with <a href='https://vega.github.io/vega-lite/docs/encoding.html#facet'><code>row</code> and <code>column</code> channels</a>, this represents the height of a single view and the <code>"container"</code> option cannot be used.</p>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/size.html'><code>height</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>name</th>
@@ -226,8 +241,8 @@ This object is completely ignored by Vega and Vega-Lite and can be used for cust
 
 <p><strong>Default value:</strong>
 Based on <code>config.view.continuousWidth</code> for a plot with a continuous x-field and <code>config.view.discreteWidth</code> otherwise.</p>
-<p><strong>Note:</strong> For plots with <a href='https://vega.github.io/vega-lite/docs/encoding.html#facet'>row and column channels</a>, this represents the width of a single view and the <code>"container"</code> option cannot be used.</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/size.html'>width</a> documentation.</p></td>
+<p><strong>Note:</strong> For plots with <a href='https://vega.github.io/vega-lite/docs/encoding.html#facet'><code>row</code> and <code>column</code> channels</a>, this represents the width of a single view and the <code>"container"</code> option cannot be used.</p>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/size.html'><code>width</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>align</th>

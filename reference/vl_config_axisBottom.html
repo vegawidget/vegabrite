@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9001</span>
       </span>
     </div>
 
@@ -123,27 +123,71 @@
     <p>Add axisBottom config (AxisConfig) to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_config_axisBottom</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bandPosition</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domainColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domainDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>domainDashOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domainOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>domainWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>grid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>gridColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>gridDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gridDashOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>gridOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>gridWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelAlign</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labelAngle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labelBaseline</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelBound</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labelColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labelFlush</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelFlushOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labelFont</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labelFontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelFontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labelFontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labelLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labelOverlap</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labelPadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelSeparation</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxExtent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minExtent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>orient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tickBand</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>tickColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tickDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tickDashOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>tickExtra</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tickOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tickOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>tickRound</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tickSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tickWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ticks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleAlign</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleAnchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleAngle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleBaseline</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleFont</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleFontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleFontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleFontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleLineHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titlePadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleX</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>titleY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>translate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vl_config_axisBottom</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bandPosition</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>domainColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>domainDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>domainDashOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>domainOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>domainWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>grid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>gridColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>gridDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>gridDashOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>gridOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>gridWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labelAlign</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labelAngle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labelBaseline</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labelBound</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labelColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labelFlush</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labelFlushOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labelFont</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labelFontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labelFontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labelFontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labelLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labelOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labelOverlap</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labelPadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labelSeparation</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxExtent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minExtent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>orient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tickBand</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tickColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tickDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tickDashOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tickExtra</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tickOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tickOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tickRound</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tickSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tickWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>ticks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>titleAlign</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>titleAnchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>titleAngle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>titleBaseline</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>titleColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>titleFont</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>titleFontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>titleFontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>titleFontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>titleLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>titleLineHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>titleOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>titlePadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>titleX</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>titleY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>translate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

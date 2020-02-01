@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9001</span>
       </span>
     </div>
 
@@ -123,15 +123,31 @@
     <p>Add scale config (ScaleConfig) to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_config_scale</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bandPaddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>bandPaddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>barBandPaddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>continuousPadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxBandSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxFontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxStrokeWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minBandSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>minFontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>minOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>minStrokeWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pointPadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>quantileCount</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>quantizeCount</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rectBandPaddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>useUnaggregatedDomain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vl_config_scale</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bandPaddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bandPaddingOuter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>barBandPaddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>clamp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>continuousPadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxBandSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxFontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxStrokeWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minBandSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minFontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>minStrokeWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>pointPadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>quantileCount</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>quantizeCount</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>rectBandPaddingInner</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>round</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>useUnaggregatedDomain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -227,12 +243,12 @@
     </tr>
     <tr>
       <th>quantileCount</th>
-      <td><p>(<em>ScaleConfig</em>) Default range cardinality for <a href='https://vega.github.io/vega-lite/docs/scale.html#quantile'>quantile</a> scale.</p>
+      <td><p>(<em>ScaleConfig</em>) Default range cardinality for <a href='https://vega.github.io/vega-lite/docs/scale.html#quantile'><code>quantile</code></a> scale.</p>
 <p><strong>Default value:</strong> <code>4</code></p></td>
     </tr>
     <tr>
       <th>quantizeCount</th>
-      <td><p>(<em>ScaleConfig</em>) Default range cardinality for <a href='https://vega.github.io/vega-lite/docs/scale.html#quantize'>quantize</a> scale.</p>
+      <td><p>(<em>ScaleConfig</em>) Default range cardinality for <a href='https://vega.github.io/vega-lite/docs/scale.html#quantize'><code>quantize</code></a> scale.</p>
 <p><strong>Default value:</strong> <code>4</code></p></td>
     </tr>
     <tr>

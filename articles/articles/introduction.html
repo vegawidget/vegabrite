@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9001</span>
       </span>
     </div>
 
@@ -95,8 +95,8 @@
 <p>All plots require <strong>data</strong>, a <strong>mark</strong> and <strong>encodings</strong>. To intialize a chart you use</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(vlbuildr)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="../../reference/vl_chart.html">vl_chart</a></span>()</a></code></pre></div>
-<div id="htmlwidget-a5bb02fc303760fe1fff" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a5bb02fc303760fe1fff">{"x":{
+<div id="htmlwidget-b780c676eaa622e53792" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b780c676eaa622e53792">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json"
   },
@@ -111,8 +111,8 @@
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../../reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars)</a></code></pre></div>
 <p></p>
-<div id="htmlwidget-3f9b250b053215463a40" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3f9b250b053215463a40">{"x":{
+<div id="htmlwidget-cbd62b3034e1ab380f8d" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cbd62b3034e1ab380f8d">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "data": {
@@ -575,8 +575,8 @@
 },"evals":[],"jsHooks":[]}</script> Still empty! Need to set mark and encoding
 <p>We could also have passed the data directly to <code>vl_chart</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../../reference/vl_chart.html">vl_chart</a></span>(mtcars) </a></code></pre></div>
-<div id="htmlwidget-716bb8dff6f374aa2cca" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-716bb8dff6f374aa2cca">{"x":{
+<div id="htmlwidget-4ba93292582324fe7e64" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4ba93292582324fe7e64">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -1045,8 +1045,8 @@
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../../reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../../reference/vl_mark_point.html">vl_mark_point</a></span>()</a></code></pre></div>
-<div id="htmlwidget-df34a6a9cddcaed01e7b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-df34a6a9cddcaed01e7b">{"x":{
+<div id="htmlwidget-5c8c113c8ce245e1bef2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5c8c113c8ce245e1bef2">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "data": {
@@ -1514,8 +1514,8 @@
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../../reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../../reference/vl_mark_point.html">vl_mark_point</a></span>(<span class="dt">color =</span> <span class="st">'red'</span>)</a></code></pre></div>
-<div id="htmlwidget-f5c235c87953634fb7c7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f5c235c87953634fb7c7">{"x":{
+<div id="htmlwidget-02b83d8bfb673159ee96" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-02b83d8bfb673159ee96">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "data": {
@@ -1990,8 +1990,8 @@
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../../reference/vl_mark_point.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="dt">field =</span> <span class="st">'wt'</span>, <span class="dt">type =</span> <span class="st">'quantitative'</span>)</a></code></pre></div>
-<div id="htmlwidget-fdb2c400a0e26c8f53e8" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-fdb2c400a0e26c8f53e8">{"x":{
+<div id="htmlwidget-a06da1eede29bbe8aaf3" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a06da1eede29bbe8aaf3">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "data": {
@@ -2466,8 +2466,8 @@
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../../reference/vl_mark_point.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="dt">field =</span> <span class="st">'wt'</span>, <span class="dt">type =</span> <span class="st">'quantitative'</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="dt">field =</span> <span class="st">'mpg'</span>, <span class="dt">type =</span> <span class="st">'quantitative'</span>)</a></code></pre></div>
-<div id="htmlwidget-6a9c2cb7098ccd754cfd" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6a9c2cb7098ccd754cfd">{"x":{
+<div id="htmlwidget-dcc20259f07bd78cb9e6" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dcc20259f07bd78cb9e6">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "data": {
@@ -2949,8 +2949,8 @@
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../../reference/vl_mark_point.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb8-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">'wt:Q'</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb8-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">'mpg:Q'</span>)</a></code></pre></div>
-<div id="htmlwidget-645d42095875ce31caf2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-645d42095875ce31caf2">{"x":{
+<div id="htmlwidget-b53c123da275d236f1cf" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b53c123da275d236f1cf">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "data": {
@@ -3434,8 +3434,8 @@
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../../reference/vl_mark_point.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">'wt'</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb9-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">'mpg'</span>)</a></code></pre></div>
-<div id="htmlwidget-b16bc62d61d6b57c6468" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b16bc62d61d6b57c6468">{"x":{
+<div id="htmlwidget-5671076f54b7be1634b8" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5671076f54b7be1634b8">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "data": {
@@ -3919,8 +3919,8 @@
 <a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../../reference/vl_mark_point.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb10-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode.html">vl_encode</a></span>(<span class="dt">x =</span> <span class="st">'wt'</span>, <span class="dt">y =</span> <span class="st">"mpg"</span>)</a></code></pre></div>
-<div id="htmlwidget-bb34abc957eab7ce2fff" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bb34abc957eab7ce2fff">{"x":{
+<div id="htmlwidget-8e6695f9d088069abbd0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8e6695f9d088069abbd0">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "data": {
@@ -4402,8 +4402,8 @@
 <a class="sourceLine" id="cb11-5" data-line-number="5">    <span class="dt">x =</span> vl<span class="op">$</span><span class="kw">X</span>(<span class="dt">field =</span> <span class="st">'wt'</span>, <span class="dt">title =</span> <span class="st">"weight"</span>), </a>
 <a class="sourceLine" id="cb11-6" data-line-number="6">     <span class="dt">y =</span> <span class="st">"mpg"</span></a>
 <a class="sourceLine" id="cb11-7" data-line-number="7">    )</a></code></pre></div>
-<div id="htmlwidget-1b6d00f13ffce8877b61" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1b6d00f13ffce8877b61">{"x":{
+<div id="htmlwidget-ea2b8561bb4f21ae88e0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ea2b8561bb4f21ae88e0">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "data": {
@@ -4896,8 +4896,8 @@
 <a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../../reference/vl_mark_point.html">vl_mark_point</a></span>(<span class="dt">tooltip =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">'wt'</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb12-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">'mpg'</span>)</a></code></pre></div>
-<div id="htmlwidget-6e529c8100514ca67119" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6e529c8100514ca67119">{"x":{
+<div id="htmlwidget-0fdb799cb19f2629fc6a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0fdb799cb19f2629fc6a">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -5381,8 +5381,8 @@
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../../reference/vl_mark_point.html">vl_mark_point</a></span>(<span class="dt">tooltip =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">content =</span> <span class="st">"data"</span>)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">'wt'</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb13-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">'mpg'</span>)</a></code></pre></div>
-<div id="htmlwidget-3fefdb9224da90d24322" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3fefdb9224da90d24322">{"x":{
+<div id="htmlwidget-a6f839910117afc3b901" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a6f839910117afc3b901">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -5863,8 +5863,8 @@
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../../reference/vl_mark_point.html">vl_mark_point</a></span>(<span class="dt">tooltip =</span> <span class="st">"data"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb14-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">'wt'</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb14-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">'mpg'</span>)</a></code></pre></div>
-<div id="htmlwidget-7c49935744c36ff9be2e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7c49935744c36ff9be2e">{"x":{
+<div id="htmlwidget-81e849404ecd07be3d05" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-81e849404ecd07be3d05">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -6350,8 +6350,8 @@
 <a class="sourceLine" id="cb15-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../../reference/vl_mark_point.html">vl_mark_point</a></span>(<span class="dt">tooltip =</span> <span class="st">"Hi!"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb15-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">'wt'</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb15-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">'mpg'</span>)</a></code></pre></div>
-<div id="htmlwidget-70d07a19f278b5885bf7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-70d07a19f278b5885bf7">{"x":{
+<div id="htmlwidget-11323761b7f1e479c76d" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-11323761b7f1e479c76d">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -6836,8 +6836,8 @@
 <a class="sourceLine" id="cb16-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">'wt'</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb16-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">'mpg'</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb16-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_tooltip.html">vl_encode_tooltip</a></span>(<span class="st">'_row'</span>)</a></code></pre></div>
-<div id="htmlwidget-31f1b19d2f1bccca337d" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-31f1b19d2f1bccca337d">{"x":{
+<div id="htmlwidget-ee19032a684af3e4d3c6" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ee19032a684af3e4d3c6">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -7349,8 +7349,8 @@
 <a class="sourceLine" id="cb17-12" data-line-number="12"></a>
 <a class="sourceLine" id="cb17-13" data-line-number="13"><span class="kw"><a href="../../reference/layer.html">vl_layer</a></span>(points_plot, avg_plot) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb17-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="../../reference/vl_add_data_url.html">vl_add_data_url</a></span>(<span class="st">"https://vega.github.io/vega-editor/app/data/movies.json"</span>)</a></code></pre></div>
-<div id="htmlwidget-cc70547d7543c1faddbc" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cc70547d7543c1faddbc">{"x":{
+<div id="htmlwidget-d54e8dfd90afa034aed9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d54e8dfd90afa034aed9">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "layer": [
@@ -7407,8 +7407,8 @@
 <p>Layering can also be performed by using the <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> operator.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">(points_plot <span class="op">+</span><span class="st"> </span>avg_plot) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb18-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../../reference/vl_add_data_url.html">vl_add_data_url</a></span>(<span class="st">"https://vega.github.io/vega-editor/app/data/movies.json"</span>)</a></code></pre></div>
-<div id="htmlwidget-883af1aafeb0bf32bb31" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-883af1aafeb0bf32bb31">{"x":{
+<div id="htmlwidget-1b8cbe67f43c98d4f7d1" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1b8cbe67f43c98d4f7d1">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "layer": [
@@ -7476,8 +7476,8 @@
 <a class="sourceLine" id="cb19-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../../reference/bin_encoding.html">vl_bin_x</a></span>(<span class="dt">maxbins =</span> <span class="dv">15</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb19-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="dt">aggregate =</span> <span class="st">"count"</span>, <span class="dt">type =</span> <span class="st">"quantitative"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb19-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_row.html">vl_encode_row</a></span>(<span class="dt">field =</span> <span class="st">"Origin"</span>, <span class="dt">type =</span> <span class="st">"nominal"</span>)</a></code></pre></div>
-<div id="htmlwidget-86685a01023d8593a34f" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-86685a01023d8593a34f">{"x":{
+<div id="htmlwidget-9a7d07386b1d33491d01" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9a7d07386b1d33491d01">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "data": {
@@ -7521,8 +7521,8 @@
 <a class="sourceLine" id="cb20-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../../reference/bin_encoding.html">vl_bin_x</a></span>(<span class="dt">maxbins =</span> <span class="dv">15</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb20-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="dt">aggregate =</span> <span class="st">"count"</span>, <span class="dt">type =</span> <span class="st">"quantitative"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb20-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../../reference/vl_facet_row.html">vl_facet_row</a></span>(<span class="dt">field =</span> <span class="st">"Origin"</span>, <span class="dt">type =</span> <span class="st">"nominal"</span>)</a></code></pre></div>
-<div id="htmlwidget-41c7f1b28ef274c124b7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-41c7f1b28ef274c124b7">{"x":{
+<div id="htmlwidget-c2e3a32155a8872db2e7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c2e3a32155a8872db2e7">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "data": {
@@ -7572,8 +7572,8 @@
 <a class="sourceLine" id="cb21-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="dt">aggregate =</span> <span class="st">"count"</span>, <span class="dt">type =</span> <span class="st">"quantitative"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb21-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_color.html">vl_encode_color</a></span>(<span class="dt">field =</span> <span class="st">"Origin"</span>, <span class="dt">type =</span> <span class="st">"nominal"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb21-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../../reference/vl_repeat_wrap.html">vl_repeat_wrap</a></span>(<span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Acceleration"</span>, <span class="st">"Displacement"</span>)</a></code></pre></div>
-<div id="htmlwidget-6e126e3749b3ffb32697" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6e126e3749b3ffb32697">{"x":{
+<div id="htmlwidget-8ee2ca81e21f59e65a2d" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8ee2ca81e21f59e65a2d">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "data": {
@@ -7621,8 +7621,8 @@
 <a class="sourceLine" id="cb22-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="dt">aggregate =</span> <span class="st">"count"</span>, <span class="dt">type =</span> <span class="st">"quantitative"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb22-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../../reference/vl_encode_color.html">vl_encode_color</a></span>(<span class="dt">field =</span> <span class="st">"Origin"</span>, <span class="dt">type =</span> <span class="st">"nominal"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb22-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../../reference/vl_repeat_wrap.html">vl_repeat_wrap</a></span>(<span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Acceleration"</span>, <span class="st">"Displacement"</span>)</a></code></pre></div>
-<div id="htmlwidget-b4c5819a643589b7e80e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b4c5819a643589b7e80e">{"x":{
+<div id="htmlwidget-2b98a9799fd58b0aa2b9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2b98a9799fd58b0aa2b9">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "data": {
@@ -7682,8 +7682,8 @@
 <a class="sourceLine" id="cb23-12" data-line-number="12"><span class="kw"><a href="../../reference/concat.html">vl_hconcat</a></span>(bar_chart, point_chart) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb23-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="../../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">url =</span> <span class="st">"https://vega.github.io/vega-lite/data/weather.csv"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb23-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="../../reference/vl_filter.html">vl_filter</a></span>(<span class="st">"datum.location === 'Seattle'"</span>)</a></code></pre></div>
-<div id="htmlwidget-c78fb770f730c1e6798d" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c78fb770f730c1e6798d">{"x":{
+<div id="htmlwidget-3b1e4aa06a3ae8a41a0a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3b1e4aa06a3ae8a41a0a">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "hconcat": [
@@ -7743,8 +7743,8 @@
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">(bar_chart <span class="op">|</span><span class="st"> </span>point_chart) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb24-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">url =</span> <span class="st">"https://vega.github.io/vega-lite/data/weather.csv"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb24-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../../reference/vl_filter.html">vl_filter</a></span>(<span class="st">"datum.location === 'Seattle'"</span>)</a></code></pre></div>
-<div id="htmlwidget-42ff90e745446fe9016e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-42ff90e745446fe9016e">{"x":{
+<div id="htmlwidget-38da0177e1a797067209" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-38da0177e1a797067209">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "hconcat": [
@@ -7803,8 +7803,8 @@
 },"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">(bar_chart <span class="op">&amp;</span><span class="st"> </span>point_chart) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb25-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">url =</span> <span class="st">"https://vega.github.io/vega-lite/data/weather.csv"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb25-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../../reference/vl_filter.html">vl_filter</a></span>(<span class="st">"datum.location === 'Seattle'"</span>)</a></code></pre></div>
-<div id="htmlwidget-5e3497ffa2789e876440" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5e3497ffa2789e876440">{"x":{
+<div id="htmlwidget-80eada5ab776fe72bae7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-80eada5ab776fe72bae7">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "vconcat": [

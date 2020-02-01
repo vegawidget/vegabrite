@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9001</span>
       </span>
     </div>
 
@@ -123,20 +123,57 @@
     <p>Add top-level config to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_config</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>area</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>autosize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>axis</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>axisBand</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>axisBottom</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>axisLeft</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>axisRight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>axisTop</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>axisX</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>axisY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>background</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bar</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>boxplot</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>circle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>concat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>countTitle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>errorband</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>errorbar</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fieldTitle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>geoshape</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>header</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>headerColumn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>headerFacet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>headerRow</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>image</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>legend</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>line</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mark</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>numberFormat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>point</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>projection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rect</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>`repeat`</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>rule</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>selection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>square</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>text</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>tick</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>timeFormat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>trail</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>view</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vl_config</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>area</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>autosize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>axis</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>axisBand</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>axisBottom</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>axisLeft</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>axisRight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>axisTop</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>axisX</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>axisY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>background</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bar</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>boxplot</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>circle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>concat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>countTitle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>errorband</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>errorbar</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fieldTitle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>geoshape</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>header</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>headerColumn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>headerFacet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>headerRow</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>image</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>legend</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>line</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>mark</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>numberFormat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>point</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>projection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>rect</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>`repeat`</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>rule</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>selection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>square</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>text</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tick</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>timeFormat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>trail</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>view</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

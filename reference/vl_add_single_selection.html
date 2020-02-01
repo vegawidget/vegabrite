@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9001</span>
       </span>
     </div>
 
@@ -123,10 +123,21 @@
     <p>Add SingleSelection to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_add_single_selection</span>(<span class='no'>spec</span>, <span class='no'>selection_name</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>bind</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clear</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>empty</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>encodings</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fields</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nearest</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>on</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>resolve</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vl_add_single_selection</span>(
+  <span class='no'>spec</span>,
+  <span class='no'>selection_name</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bind</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>clear</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>empty</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>encodings</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fields</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>init</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nearest</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>on</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>resolve</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -147,18 +158,18 @@
       <th>bind</th>
       <td><p>(<em>SingleSelection</em>) When set, a selection is populated by input elements (also known as dynamic query widgets)
 or by interacting with the corresponding legend. Direct manipulation interaction is disabled by default;
-to re-enable it, set the selection's <a href='https://vega.github.io/vega-lite/docs/selection.html#common-selection-properties'>on</a> property.</p>
+to re-enable it, set the selection's <a href='https://vega.github.io/vega-lite/docs/selection.html#common-selection-properties'><code>on</code></a> property.</p>
 <p>Legend bindings are restricted to selections that only specify a single field or encoding.</p>
 <p>Query widget binding takes the form of Vega's <a href='https://vega.github.io/vega/docs/signals/#bind'>input element binding definition</a>
 or can be a mapping between projected field/encodings and binding definitions.</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/bind.html'>bind</a> documentation.</p></td>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/bind.html'><code>bind</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>clear</th>
       <td><p>(<em>SingleSelection</em>) Clears the selection, emptying it of all values. Can be a
 <a href='https://vega.github.io/vega/docs/event-streams/'>Event Stream</a> or <code>false</code> to disable.</p>
 <p><strong>Default value:</strong> <code>dblclick</code>.</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/clear.html'>clear</a> documentation.</p></td>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/clear.html'><code>clear</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>empty</th>
@@ -169,24 +180,24 @@ When set to <code>none</code>, empty selections contain no data values.</p></td>
       <th>encodings</th>
       <td><p>(<em>SingleSelection</em>) An array of encoding channels. The corresponding data field values
 must match for a data tuple to fall within the selection.</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/project.html'>encodings</a> documentation.</p></td>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/project.html'><code>encodings</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>fields</th>
       <td><p>(<em>SingleSelection</em>) An array of field names whose values must match for a data tuple to
 fall within the selection.</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/project.html'>fields</a> documentation.</p></td>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/project.html'><code>fields</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>init</th>
       <td><p>(<em>SingleSelection</em>) Initialize the selection with a mapping between <a href='https://vega.github.io/vega-lite/docs/project.html'>projected channels or field names</a> and initial values.</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/init.html'>init</a> documentation.</p></td>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/init.html'><code>init</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>nearest</th>
       <td><p>(<em>SingleSelection</em>) When true, an invisible voronoi diagram is computed to accelerate discrete
 selection. The data value <em>nearest</em> the mouse cursor is added to the selection.</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/nearest.html'>nearest</a> documentation.</p></td>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/nearest.html'><code>nearest</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>on</th>
@@ -198,7 +209,7 @@ For interval selections, the event stream must specify a <a href='https://vega.g
       <td><p>(<em>SingleSelection</em>) With layered and multi-view displays, a strategy that determines how
 selections' data queries are resolved when applied in a filter transform,
 conditional encoding rule, or scale domain.</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/selection-resolve.html'>resolve</a> documentation.</p></td>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/selection-resolve.html'><code>resolve</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>type</th>

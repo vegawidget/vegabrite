@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9001</span>
       </span>
     </div>
 
@@ -123,23 +123,64 @@
     <p>Add circle config (MarkConfig) to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_config_circle</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>angle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>aspect</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>baseline</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cornerRadius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cornerRadiusBottomLeft</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cornerRadiusBottomRight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cornerRadiusTopLeft</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cornerRadiusTopRight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cursor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>dx</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ellipsis</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fillOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>filled</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>font</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>href</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>invalid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>lineBreak</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>lineHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>opacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>order</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>orient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>radius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>shape</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>stroke</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeCap</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeDashOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeJoin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeMiterLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strokeWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>tension</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>text</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>theta</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>timeUnitBand</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>timeUnitBandPosition</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>x2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>y2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vl_config_circle</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>angle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>aspect</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>baseline</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>cornerRadius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>cornerRadiusBottomLeft</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>cornerRadiusBottomRight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>cornerRadiusTopLeft</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>cornerRadiusTopRight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>cursor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>dx</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>dy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>ellipsis</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fill</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fillOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>filled</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>font</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>href</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>invalid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>limit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>lineBreak</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>lineHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>opacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>order</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>orient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>radius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>shape</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>stroke</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>strokeCap</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>strokeDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>strokeDashOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>strokeJoin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>strokeMiterLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>strokeOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>strokeWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tension</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>text</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>theta</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>timeUnitBand</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>timeUnitBandPosition</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>x2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>y2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -238,7 +279,7 @@
     <tr>
       <th>filled</th>
       <td><p>(<em>MarkConfig</em>) Whether the mark's color should be used as fill color instead of stroke color.</p>
-<p><strong>Default value:</strong> <code>false</code> for all <code>point</code>, <code>line</code>, and <code>rule</code> marks as well as <code>geoshape</code> marks for <a href='https://vega.github.io/vega-lite/docs/data.html#graticule'>graticule</a> data sources; otherwise, <code>true</code>.</p>
+<p><strong>Default value:</strong> <code>false</code> for all <code>point</code>, <code>line</code>, and <code>rule</code> marks as well as <code>geoshape</code> marks for <a href='https://vega.github.io/vega-lite/docs/data.html#graticule'><code>graticule</code></a> data sources; otherwise, <code>true</code>.</p>
 <p><strong>Note:</strong> This property cannot be used in a <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style config</a>.</p></td>
     </tr>
     <tr>
@@ -422,7 +463,7 @@ If set to <code>0.5</code>, the marks will be positioned in the middle of the ti
 <li><p>If set to <code>null</code> or <code>false</code>, then no tooltip will be used.</p></li>
 </ul>
 
-<p>See the <a href='https://vega.github.io/vega-lite/docs/tooltip.html'>tooltip</a> documentation for a detailed discussion about tooltip  in Vega-Lite.</p>
+<p>See the <a href='https://vega.github.io/vega-lite/docs/tooltip.html'><code>tooltip</code></a> documentation for a detailed discussion about tooltip  in Vega-Lite.</p>
 <p><strong>Default value:</strong> <code>null</code></p></td>
     </tr>
     <tr>

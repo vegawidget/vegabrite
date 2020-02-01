@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9001</span>
       </span>
     </div>
 
@@ -123,14 +123,33 @@
     <p>Add title config (TitleConfig) to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_config_title</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>angle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>baseline</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dx</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>dy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>font</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>frame</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>lineHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>offset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>orient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>subtitleColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>subtitleFont</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>subtitleFontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>subtitleFontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>subtitleFontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>subtitleLineHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>subtitlePadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vl_config_title</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>angle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>baseline</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>dx</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>dy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>font</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>frame</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>limit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>lineHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>offset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>orient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>subtitleColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>subtitleFont</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>subtitleFontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>subtitleFontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>subtitleFontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>subtitleLineHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>subtitlePadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

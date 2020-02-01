@@ -72,7 +72,7 @@ pieces of the chart spec." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9001</span>
       </span>
     </div>
 
@@ -129,15 +129,40 @@ function (like <code><a href='vl_mark_point.html'>vl_mark_point()</a></code>, <c
 pieces of the chart spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_chart</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>`$schema`</span> <span class='kw'>=</span> <span class='kw pkg'>vegawidget</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/vegawidget/man/vega_schema.html'>vega_schema</a></span>(),
-  <span class='kw'>autosize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>background</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bounds</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>config</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>datasets</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>description</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>encoding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mark</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>projection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>resolve</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>selection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>transform</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>usermeta</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>view</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>center</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>columns</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>spacing</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>spec</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>layer</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>`repeat`</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>concat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>vconcat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>hconcat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vl_chart</span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>`$schema`</span> <span class='kw'>=</span> <span class='kw pkg'>vegawidget</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/vegawidget/man/vega_schema.html'>vega_schema</a></span>(),
+  <span class='kw'>autosize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>background</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bounds</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>config</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>datasets</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>description</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>encoding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>mark</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>projection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>resolve</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>selection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>transform</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>usermeta</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>view</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>center</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>columns</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>spacing</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>spec</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>layer</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>`repeat`</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>concat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>vconcat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>hconcat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -197,8 +222,8 @@ This can be an array of objects or primitive values or a string. Arrays of primi
 </ul>
 
 <p><strong>Default value:</strong> Based on <code>config.view.continuousHeight</code> for a plot with a continuous y-field and <code>config.view.discreteHeight</code> otherwise.</p>
-<p><strong>Note:</strong> For plots with <a href='https://vega.github.io/vega-lite/docs/encoding.html#facet'>row and column channels</a>, this represents the height of a single view and the <code>"container"</code> option cannot be used.</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/size.html'>height</a> documentation.</p></td>
+<p><strong>Note:</strong> For plots with <a href='https://vega.github.io/vega-lite/docs/encoding.html#facet'><code>row</code> and <code>column</code> channels</a>, this represents the height of a single view and the <code>"container"</code> option cannot be used.</p>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/size.html'><code>height</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>mark</th>
@@ -257,8 +282,8 @@ This object is completely ignored by Vega and Vega-Lite and can be used for cust
 
 <p><strong>Default value:</strong>
 Based on <code>config.view.continuousWidth</code> for a plot with a continuous x-field and <code>config.view.discreteWidth</code> otherwise.</p>
-<p><strong>Note:</strong> For plots with <a href='https://vega.github.io/vega-lite/docs/encoding.html#facet'>row and column channels</a>, this represents the width of a single view and the <code>"container"</code> option cannot be used.</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/size.html'>width</a> documentation.</p></td>
+<p><strong>Note:</strong> For plots with <a href='https://vega.github.io/vega-lite/docs/encoding.html#facet'><code>row</code> and <code>column</code> channels</a>, this represents the width of a single view and the <code>"container"</code> option cannot be used.</p>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/size.html'><code>width</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>align</th>
@@ -300,7 +325,7 @@ The supported string values are <code>"all"</code>, <code>"each"</code>, and <co
       <th>facet</th>
       <td><p>(<em>TopLevelFacetSpec</em>) Definition for how to facet the data. One of:</p><ol>
 <li><p><a href='https://vega.github.io/vega-lite/docs/facet.html#field-def'>a field definition for faceting the plot by one field</a></p></li>
-<li><p><a href='https://vega.github.io/vega-lite/docs/facet.html#mapping'>An object that maps row and column channels to their field definitions</a></p></li>
+<li><p><a href='https://vega.github.io/vega-lite/docs/facet.html#mapping'>An object that maps <code>row</code> and <code>column</code> channels to their field definitions</a></p></li>
 </ol></td>
     </tr>
     <tr>

@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9001</span>
       </span>
     </div>
 
@@ -123,10 +123,21 @@
     <p>Add encoding for size to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_encode_size</span>(<span class='no'>spec</span>, <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>field</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>condition</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legend</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>timeUnit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vl_encode_size</span>(
+  <span class='no'>spec</span>,
+  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>field</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>condition</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>legend</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>timeUnit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -142,11 +153,11 @@
     <tr>
       <th>field</th>
       <td><p>(<em>FieldDefWithCondition&lt;MarkPropFieldDef,number&gt;</em>) <strong>Required.</strong> A string defining the name of the field from which to pull a data value
-or an object defining iterated values from the <a href='https://vega.github.io/vega-lite/docs/repeat.html'>repeat</a> operator.</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/field.html'>field</a> documentation.</p>
+or an object defining iterated values from the <a href='https://vega.github.io/vega-lite/docs/repeat.html'><code>repeat</code></a> operator.</p>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/field.html'><code>field</code></a> documentation.</p>
 <p><strong>Notes:</strong></p><ol>
 <li><p>Dots (<code>.</code>) and brackets (<code>[</code> and <code>]</code>) can be used to access nested objects (e.g., <code>"field": "foo.bar"</code> and <code>"field": "foo\['bar'\]"</code>).
-If field names contain dots or brackets but are not nested, you can use <code>\</code> to escape dots and brackets (e.g., <code>"a\.b"</code> and <code>"a\\[0\\]"</code>).
+If field names contain dots or brackets but are not nested, you can use <code>\\</code> to escape dots and brackets (e.g., <code>"a\\.b"</code> and <code>"a\\\[0\\\]"</code>).
 See more details about escaping in the <a href='https://vega.github.io/vega-lite/docs/field.html'>field documentation</a>.</p></li>
 <li><p><code>field</code> is not required if <code>aggregate</code> is <code>count</code>.</p></li>
 </ol></td>
@@ -158,30 +169,30 @@ It can also be a <code>"geojson"</code> type for encoding <a href='https://vega.
 <p><strong>Note:</strong></p><ul>
 <li><p>Data values for a temporal field can be either a date-time string (e.g., <code>"2015-03-07 12:32:17"</code>, <code>"17:01"</code>, <code>"2015-03-16"</code>. <code>"2015"</code>) or a timestamp number (e.g., <code>1552199579097</code>).</p></li>
 <li><p>Data <code>type</code> describes the semantics of the data rather than the primitive data types (number, string, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.</p></li>
-<li><p>When using with <a href='https://vega.github.io/vega-lite/docs/bin.html'>bin</a>, the <code>type</code> property can be either <code>"quantitative"</code> (for using a linear bin scale) or <a href='https://vega.github.io/vega-lite/docs/type.html#cast-bin'>"ordinal" (for using an ordinal bin scale)</a>.</p></li>
-<li><p>When using with <a href='https://vega.github.io/vega-lite/docs/timeunit.html'>timeUnit</a>, the <code>type</code> property can be either <code>"temporal"</code> (for using a temporal scale) or <a href='https://vega.github.io/vega-lite/docs/type.html#cast-bin'>"ordinal" (for using an ordinal scale)</a>.</p></li>
-<li><p>When using with <a href='https://vega.github.io/vega-lite/docs/aggregate.html'>aggregate</a>, the <code>type</code> property refers to the post-aggregation data type. For example, we can calculate count <code>distinct</code> of a categorical field <code>"cat"</code> using <code>{"aggregate": "distinct", "field": "cat", "type": "quantitative"}</code>. The <code>"type"</code> of the aggregate output is <code>"quantitative"</code>.</p></li>
+<li><p>When using with <a href='https://vega.github.io/vega-lite/docs/bin.html'><code>bin</code></a>, the <code>type</code> property can be either <code>"quantitative"</code> (for using a linear bin scale) or <a href='https://vega.github.io/vega-lite/docs/type.html#cast-bin'><code>"ordinal"</code> (for using an ordinal bin scale)</a>.</p></li>
+<li><p>When using with <a href='https://vega.github.io/vega-lite/docs/timeunit.html'><code>timeUnit</code></a>, the <code>type</code> property can be either <code>"temporal"</code> (for using a temporal scale) or <a href='https://vega.github.io/vega-lite/docs/type.html#cast-bin'><code>"ordinal"</code> (for using an ordinal scale)</a>.</p></li>
+<li><p>When using with <a href='https://vega.github.io/vega-lite/docs/aggregate.html'><code>aggregate</code></a>, the <code>type</code> property refers to the post-aggregation data type. For example, we can calculate count <code>distinct</code> of a categorical field <code>"cat"</code> using <code>{"aggregate": "distinct", "field": "cat", "type": "quantitative"}</code>. The <code>"type"</code> of the aggregate output is <code>"quantitative"</code>.</p></li>
 <li><p>Secondary channels (e.g., <code>x2</code>, <code>y2</code>, <code>xError</code>, <code>yError</code>) do not have <code>type</code> as they have exactly the same type as their primary channels (e.g., <code>x</code>, <code>y</code>).</p></li>
 </ul>
 
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/type.html'>type</a> documentation.</p></td>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/type.html'><code>type</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>aggregate</th>
       <td><p>(<em>FieldDefWithCondition&lt;MarkPropFieldDef,number&gt;</em>) Aggregation function for the field
 (e.g., <code>"mean"</code>, <code>"sum"</code>, <code>"median"</code>, <code>"min"</code>, <code>"max"</code>, <code>"count"</code>).</p>
 <p><strong>Default value:</strong> <code>undefined</code> (None)</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/aggregate.html'>aggregate</a> documentation.</p></td>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/aggregate.html'><code>aggregate</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>bin</th>
       <td><p>(<em>FieldDefWithCondition&lt;MarkPropFieldDef,number&gt;</em>) A flag for binning a <code>quantitative</code> field, <a href='https://vega.github.io/vega-lite/docs/bin.html#params'>an object defining binning parameters</a>, or indicating that the data for <code>x</code> or <code>y</code> channel are binned before they are imported into Vega-Lite (<code>"binned"</code>).</p><ul>
 <li><p>If <code>true</code>, default <a href='https://vega.github.io/vega-lite/docs/bin.html'>binning parameters</a> will be applied.</p></li>
-<li><p>If <code>"binned"</code>, this indicates that the data for the <code>x</code> (or <code>y</code>) channel are already binned. You can map the bin-start field to <code>x</code> (or <code>y</code>) and the bin-end field to <code>x2</code> (or <code>y2</code>). The scale and axis will be formatted similar to binning in Vega-Lite.  To adjust the axis ticks based on the bin step, you can also set the axis's <a href='https://vega.github.io/vega-lite/docs/axis.html#ticks'>tickMinStep</a> property.</p></li>
+<li><p>If <code>"binned"</code>, this indicates that the data for the <code>x</code> (or <code>y</code>) channel are already binned. You can map the bin-start field to <code>x</code> (or <code>y</code>) and the bin-end field to <code>x2</code> (or <code>y2</code>). The scale and axis will be formatted similar to binning in Vega-Lite.  To adjust the axis ticks based on the bin step, you can also set the axis's <a href='https://vega.github.io/vega-lite/docs/axis.html#ticks'><code>tickMinStep</code></a> property.</p></li>
 </ul>
 
 <p><strong>Default value:</strong> <code>false</code></p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/bin.html'>bin</a> documentation.</p></td>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/bin.html'><code>bin</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>condition</th>
@@ -195,14 +206,14 @@ since Vega-Lite only allows at most one encoded field per encoding channel.</p><
       <td><p>(<em>FieldDefWithCondition&lt;MarkPropFieldDef,number&gt;</em>) An object defining properties of the legend.
 If <code>null</code>, the legend for the encoding channel will be removed.</p>
 <p><strong>Default value:</strong> If undefined, default <a href='https://vega.github.io/vega-lite/docs/legend.html'>legend properties</a> are applied.</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/legend.html'>legend</a> documentation.</p></td>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/legend.html'><code>legend</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>scale</th>
       <td><p>(<em>FieldDefWithCondition&lt;MarkPropFieldDef,number&gt;</em>) An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.</p>
 <p>If <code>null</code>, the scale will be <a href='https://vega.github.io/vega-lite/docs/scale.html#disable'>disabled and the data value will be directly encoded</a>.</p>
 <p><strong>Default value:</strong> If undefined, default <a href='https://vega.github.io/vega-lite/docs/scale.html'>scale properties</a> are applied.</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/scale.html'>scale</a> documentation.</p></td>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/scale.html'><code>scale</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>sort</th>
@@ -218,21 +229,21 @@ If <code>null</code>, the legend for the encoding channel will be removed.</p>
 
 <p><strong>Default value:</strong> <code>"ascending"</code></p>
 <p><strong>Note:</strong> <code>null</code> and sorting by another channel is not supported for <code>row</code> and <code>column</code>.</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/sort.html'>sort</a> documentation.</p></td>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/sort.html'><code>sort</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>timeUnit</th>
       <td><p>(<em>FieldDefWithCondition&lt;MarkPropFieldDef,number&gt;</em>) Time unit (e.g., <code>year</code>, <code>yearmonth</code>, <code>month</code>, <code>hours</code>) for a temporal field.
 or <a href='https://vega.github.io/vega-lite/docs/type.html#cast'>a temporal field that gets casted as ordinal</a>.</p>
 <p><strong>Default value:</strong> <code>undefined</code> (None)</p>
-<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/timeunit.html'>timeUnit</a> documentation.</p></td>
+<p><strong>See also:</strong> <a href='https://vega.github.io/vega-lite/docs/timeunit.html'><code>timeUnit</code></a> documentation.</p></td>
     </tr>
     <tr>
       <th>title</th>
       <td><p>(<em>FieldDefWithCondition&lt;MarkPropFieldDef,number&gt;</em>) A title for the field. If <code>null</code>, the title will be removed.</p>
 <p><strong>Default value:</strong>  derived from the field's name and transformation function (<code>aggregate</code>, <code>bin</code> and <code>timeUnit</code>). If the field has an aggregate function, the function is displayed as part of the title (e.g., <code>"Sum of Profit"</code>). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., <code>"Profit (binned)"</code>, <code>"Transaction Date (year-month)"</code>). Otherwise, the title is simply the field name.</p>
 <p><strong>Notes</strong>:</p><ol>
-<li><p>You can customize the default field title format by providing the <a href='https://vega.github.io/vega-lite/docs/config.html#top-level-config'>fieldTitle</a> property in the <a href='https://vega.github.io/vega-lite/docs/config.html'>config</a> or <a href='https://vega.github.io/vega-lite/docs/compile.html#field-title'>fieldTitle function via the compile function's options</a>.</p></li>
+<li><p>You can customize the default field title format by providing the <a href='https://vega.github.io/vega-lite/docs/config.html#top-level-config'><code>fieldTitle</code></a> property in the <a href='https://vega.github.io/vega-lite/docs/config.html'>config</a> or <a href='https://vega.github.io/vega-lite/docs/compile.html#field-title'><code>fieldTitle</code> function via the <code>compile</code> function's options</a>.</p></li>
 <li><p>If both field definition's <code>title</code> and axis, header, or legend <code>title</code> are defined, axis/header/legend title will be used.</p></li>
 </ol></td>
     </tr>
