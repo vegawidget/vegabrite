@@ -4,8 +4,16 @@
 \alias{vl_encode_xError}
 \title{vl_encode_xError}
 \usage{
-vl_encode_xError(spec, .object = NULL, field = NULL, value = NULL,
-  aggregate = NULL, bin = NULL, timeUnit = NULL, title = NULL)
+vl_encode_xError(
+  spec,
+  .object = NULL,
+  field = NULL,
+  value = NULL,
+  aggregate = NULL,
+  bin = NULL,
+  timeUnit = NULL,
+  title = NULL
+)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -13,14 +21,14 @@ vl_encode_xError(spec, .object = NULL, field = NULL, value = NULL,
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef}
 
 \item{field}{(\emph{SecondaryFieldDef}) \strong{Required.} A string defining the name of the field from which to pull a data value
-or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{repeat} operator.
+or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{\code{repeat}} operator.
 
-\strong{See also:} \href{https://vega.github.io/vega-lite/docs/field.html}{field} documentation.
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/field.html}{\code{field}} documentation.
 
 \strong{Notes:}
 \enumerate{
-\item Dots (\code{.}) and brackets (\code{[} and \code{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \code{"field": "foo\['bar'\]"}).
-If field names contain dots or brackets but are not nested, you can use \code{\\} to escape dots and brackets (e.g., \code{"a\\.b"} and \code{"a\\\[0\\\]"}).
+\item Dots (\code{.}) and brackets (\code{[} and \verb{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \verb{"field": "foo\['bar'\]"}).
+If field names contain dots or brackets but are not nested, you can use \verb{\\\\} to escape dots and brackets (e.g., \code{"a\\\\.b"} and \verb{"a\\\\\[0\\\\\]"}).
 See more details about escaping in the \href{https://vega.github.io/vega-lite/docs/field.html}{field documentation}.
 \item \code{field} is not required if \code{aggregate} is \code{count}.
 }}
@@ -32,24 +40,24 @@ See more details about escaping in the \href{https://vega.github.io/vega-lite/do
 
 \strong{Default value:} \code{undefined} (None)
 
-\strong{See also:} \href{https://vega.github.io/vega-lite/docs/aggregate.html}{aggregate} documentation.}
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/aggregate.html}{\code{aggregate}} documentation.}
 
 \item{bin}{(\emph{SecondaryFieldDef}) A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y} channel are binned before they are imported into Vega-Lite (\code{"binned"}).
 \itemize{
 \item If \code{true}, default \href{https://vega.github.io/vega-lite/docs/bin.html}{binning parameters} will be applied.
-\item If \code{"binned"}, this indicates that the data for the \code{x} (or \code{y}) channel are already binned. You can map the bin-start field to \code{x} (or \code{y}) and the bin-end field to \code{x2} (or \code{y2}). The scale and axis will be formatted similar to binning in Vega-Lite.  To adjust the axis ticks based on the bin step, you can also set the axis's \href{https://vega.github.io/vega-lite/docs/axis.html#ticks}{tickMinStep} property.
+\item If \code{"binned"}, this indicates that the data for the \code{x} (or \code{y}) channel are already binned. You can map the bin-start field to \code{x} (or \code{y}) and the bin-end field to \code{x2} (or \code{y2}). The scale and axis will be formatted similar to binning in Vega-Lite.  To adjust the axis ticks based on the bin step, you can also set the axis's \href{https://vega.github.io/vega-lite/docs/axis.html#ticks}{\code{tickMinStep}} property.
 }
 
 \strong{Default value:} \code{false}
 
-\strong{See also:} \href{https://vega.github.io/vega-lite/docs/bin.html}{bin} documentation.}
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/bin.html}{\code{bin}} documentation.}
 
 \item{timeUnit}{(\emph{SecondaryFieldDef}) Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field.
 or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}.
 
 \strong{Default value:} \code{undefined} (None)
 
-\strong{See also:} \href{https://vega.github.io/vega-lite/docs/timeunit.html}{timeUnit} documentation.}
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/timeunit.html}{\code{timeUnit}} documentation.}
 
 \item{title}{(\emph{SecondaryFieldDef}) A title for the field. If \code{null}, the title will be removed.
 
@@ -57,7 +65,7 @@ or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field 
 
 \strong{Notes}:
 \enumerate{
-\item You can customize the default field title format by providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{fieldTitle} property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config} or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{fieldTitle function via the compile function's options}.
+\item You can customize the default field title format by providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{\code{fieldTitle}} property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config} or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{\code{fieldTitle} function via the \code{compile} function's options}.
 \item If both field definition's \code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used.
 }}
 }

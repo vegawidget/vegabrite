@@ -15,14 +15,14 @@ vl_filter(spec, .object = NULL, filter = NULL)
 \enumerate{
 \item an \href{https://vega.github.io/vega-lite/docs/types.html#expression}{expression} string,
 where \code{datum} can be used to refer to the current data object
-\item one of the field predicates: \href{https://vega.github.io/vega-lite/docs/filter.html#equal-predicate}{equal},
-\href{https://vega.github.io/vega-lite/docs/filter.html#lt-predicate}{lt},
-\href{https://vega.github.io/vega-lite/docs/filter.html#lte-predicate}{lte},
-\href{https://vega.github.io/vega-lite/docs/filter.html#gt-predicate}{gt},
-\href{https://vega.github.io/vega-lite/docs/filter.html#gte-predicate}{gte},
-\href{https://vega.github.io/vega-lite/docs/filter.html#range-predicate}{range},
-\href{https://vega.github.io/vega-lite/docs/filter.html#one-of-predicate}{oneOf},
-or \href{https://vega.github.io/vega-lite/docs/filter.html#valid-predicate}{valid},
+\item one of the field predicates: \href{https://vega.github.io/vega-lite/docs/filter.html#equal-predicate}{\code{equal}},
+\href{https://vega.github.io/vega-lite/docs/filter.html#lt-predicate}{\code{lt}},
+\href{https://vega.github.io/vega-lite/docs/filter.html#lte-predicate}{\code{lte}},
+\href{https://vega.github.io/vega-lite/docs/filter.html#gt-predicate}{\code{gt}},
+\href{https://vega.github.io/vega-lite/docs/filter.html#gte-predicate}{\code{gte}},
+\href{https://vega.github.io/vega-lite/docs/filter.html#range-predicate}{\code{range}},
+\href{https://vega.github.io/vega-lite/docs/filter.html#one-of-predicate}{\code{oneOf}},
+or \href{https://vega.github.io/vega-lite/docs/filter.html#valid-predicate}{\code{valid}},
 \item a \href{https://vega.github.io/vega-lite/docs/filter.html#selection-predicate}{selection predicate}
 \item a logical operand that combines (1), (2), or (3).
 }}

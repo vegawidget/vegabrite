@@ -21,7 +21,7 @@ vl_chart() %>%
    vl_mark_point() %>%
    vl_encode_x("wt") %>%
    vl_encode_y("mpg") %>% 
-   vl_encode_tooltip("mpg")
+   vl_encode_tooltip(c("_row","mpg","wt"))
 ```
 
 
@@ -222,18 +222,25 @@ vl_chart() %>%
 ```
 
 
-### Multiple marks...
-
-
 ```{r}
-vl_chart() %>%
-    vl_add_data(url = "https://vega.github.io/vega-editor/app/data/stocks.csv") %>% 
-    vl_mark_line() %>% 
-    vl_mark_point() %>%
-    vl_filter("datum.symbol==='GOOG'") %>%
-    vl_encode_x(field = "date", type = "temporal") %>%
-    vl_encode_y(field = "price", type = "quantitative")
+heatmap <- vl_chart() %>%
+  vl_encode_color(aggregate = "count", type = "Q") %>%
+  vl_scale_color(scheme = "darkred") %>%
+  vl_encode_x(field = "Cylinders:O") %>%
+  vl_scale_x(paddingInner = 0) %>%
+  vl_encode_y(field = "Year:O") %>%
+  vl_scale_x(paddingInner = 0) %>%
+  vl_mark_rect()
+
+text <- vl_chart() %>%
+  vl_encode_color(value = "white") %>%
+  vl_encode_x(field = "Cylinders:O") %>%
+  vl_encode_y(field = "Year:O") %>%
+  vl_encode_text(aggregate = "count", type = "Q") %>%
+  vl_mark_text(baseline = "middle")
+
+vl_layer(heatmap, text) %>%
+  vl_add_data_url("https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_facet_column(field = "Origin", type = "nominal") 
 ```
-
-
 

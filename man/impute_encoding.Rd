@@ -6,20 +6,32 @@
 \alias{vl_impute_y}
 \title{Add impute to encoding}
 \usage{
-vl_impute_x(spec, .object = NULL, frame = NULL, keyvals = NULL,
-  method = NULL, value = NULL)
+vl_impute_x(
+  spec,
+  .object = NULL,
+  frame = NULL,
+  keyvals = NULL,
+  method = NULL,
+  value = NULL
+)
 
-vl_impute_y(spec, .object = NULL, frame = NULL, keyvals = NULL,
-  method = NULL, value = NULL)
+vl_impute_y(
+  spec,
+  .object = NULL,
+  frame = NULL,
+  keyvals = NULL,
+  method = NULL,
+  value = NULL
+)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ImputeParams}
 
-\item{frame}{(\emph{ImputeParams}) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. For example, the value \code{[-5, 5]} indicates that the window should include five objects preceding and five objects following the current object.
+\item{frame}{(\emph{ImputeParams}) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. For example, the value \verb{[-5, 5]} indicates that the window should include five objects preceding and five objects following the current object.
 
-\strong{Default value:}:  \code{[null, null]} indicating that the window includes all objects.}
+\strong{Default value:}:  \verb{[null, null]} indicating that the window includes all objects.}
 
 \item{keyvals}{(\emph{ImputeParams}) Defines the key values that should be considered for imputation.
 An array of key values or an object defining a \href{https://vega.github.io/vega-lite/docs/impute.html#sequence-def}{number sequence}.

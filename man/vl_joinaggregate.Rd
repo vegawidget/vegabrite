@@ -4,8 +4,7 @@
 \alias{vl_joinaggregate}
 \title{vl_joinaggregate}
 \usage{
-vl_joinaggregate(spec, .object = NULL, joinaggregate = NULL,
-  groupby = NULL)
+vl_joinaggregate(spec, .object = NULL, joinaggregate = NULL, groupby = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

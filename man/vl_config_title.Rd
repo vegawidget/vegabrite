@@ -4,14 +4,33 @@
 \alias{vl_config_title}
 \title{vl_config_title}
 \usage{
-vl_config_title(spec, .object = NULL, align = NULL, anchor = NULL,
-  angle = NULL, baseline = NULL, color = NULL, dx = NULL,
-  dy = NULL, font = NULL, fontSize = NULL, fontStyle = NULL,
-  fontWeight = NULL, frame = NULL, limit = NULL, lineHeight = NULL,
-  offset = NULL, orient = NULL, subtitleColor = NULL,
-  subtitleFont = NULL, subtitleFontSize = NULL,
-  subtitleFontStyle = NULL, subtitleFontWeight = NULL,
-  subtitleLineHeight = NULL, subtitlePadding = NULL)
+vl_config_title(
+  spec,
+  .object = NULL,
+  align = NULL,
+  anchor = NULL,
+  angle = NULL,
+  baseline = NULL,
+  color = NULL,
+  dx = NULL,
+  dy = NULL,
+  font = NULL,
+  fontSize = NULL,
+  fontStyle = NULL,
+  fontWeight = NULL,
+  frame = NULL,
+  limit = NULL,
+  lineHeight = NULL,
+  offset = NULL,
+  orient = NULL,
+  subtitleColor = NULL,
+  subtitleFont = NULL,
+  subtitleFontSize = NULL,
+  subtitleFontStyle = NULL,
+  subtitleFontWeight = NULL,
+  subtitleLineHeight = NULL,
+  subtitlePadding = NULL
+)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

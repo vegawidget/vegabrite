@@ -4,9 +4,17 @@
 \alias{vl_config_boxplot}
 \title{vl_config_boxplot}
 \usage{
-vl_config_boxplot(spec, .object = NULL, box = NULL, extent = NULL,
-  median = NULL, outliers = NULL, rule = NULL, size = NULL,
-  ticks = NULL)
+vl_config_boxplot(
+  spec,
+  .object = NULL,
+  box = NULL,
+  extent = NULL,
+  median = NULL,
+  outliers = NULL,
+  rule = NULL,
+  size = NULL,
+  ticks = NULL
+)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
