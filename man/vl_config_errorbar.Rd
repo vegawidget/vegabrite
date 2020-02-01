@@ -4,8 +4,13 @@
 \alias{vl_config_errorbar}
 \title{vl_config_errorbar}
 \usage{
-vl_config_errorbar(spec, .object = NULL, extent = NULL, rule = NULL,
-  ticks = NULL)
+vl_config_errorbar(
+  spec,
+  .object = NULL,
+  extent = NULL,
+  rule = NULL,
+  ticks = NULL
+)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

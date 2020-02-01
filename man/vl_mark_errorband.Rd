@@ -4,9 +4,19 @@
 \alias{vl_mark_errorband}
 \title{vl_mark_errorband}
 \usage{
-vl_mark_errorband(spec, .object = NULL, band = NULL, borders = NULL,
-  clip = NULL, color = NULL, extent = NULL, interpolate = NULL,
-  opacity = NULL, orient = NULL, tension = NULL)
+vl_mark_errorband(
+  spec,
+  .object = NULL,
+  band = NULL,
+  borders = NULL,
+  clip = NULL,
+  color = NULL,
+  extent = NULL,
+  interpolate = NULL,
+  opacity = NULL,
+  orient = NULL,
+  tension = NULL
+)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

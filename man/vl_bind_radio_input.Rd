@@ -4,9 +4,18 @@
 \alias{vl_bind_radio_input}
 \title{vl_bind_radio_input}
 \usage{
-vl_bind_radio_input(spec, selection_name, projection_name = NULL,
-  .object = NULL, debounce = NULL, element = NULL, labels = NULL,
-  name = NULL, options = NULL, type = NULL)
+vl_bind_radio_input(
+  spec,
+  selection_name,
+  projection_name = NULL,
+  .object = NULL,
+  debounce = NULL,
+  element = NULL,
+  labels = NULL,
+  name = NULL,
+  options = NULL,
+  type = NULL
+)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
