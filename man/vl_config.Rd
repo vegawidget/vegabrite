@@ -4,20 +4,57 @@
 \alias{vl_config}
 \title{vl_config}
 \usage{
-vl_config(spec, .object = NULL, area = NULL, autosize = NULL,
-  axis = NULL, axisBand = NULL, axisBottom = NULL, axisLeft = NULL,
-  axisRight = NULL, axisTop = NULL, axisX = NULL, axisY = NULL,
-  background = NULL, bar = NULL, boxplot = NULL, circle = NULL,
-  concat = NULL, countTitle = NULL, errorband = NULL,
-  errorbar = NULL, facet = NULL, fieldTitle = NULL,
-  geoshape = NULL, header = NULL, headerColumn = NULL,
-  headerFacet = NULL, headerRow = NULL, image = NULL,
-  legend = NULL, line = NULL, mark = NULL, numberFormat = NULL,
-  padding = NULL, point = NULL, projection = NULL, range = NULL,
-  rect = NULL, `repeat` = NULL, rule = NULL, scale = NULL,
-  selection = NULL, square = NULL, style = NULL, text = NULL,
-  tick = NULL, timeFormat = NULL, title = NULL, trail = NULL,
-  view = NULL)
+vl_config(
+  spec,
+  .object = NULL,
+  area = NULL,
+  autosize = NULL,
+  axis = NULL,
+  axisBand = NULL,
+  axisBottom = NULL,
+  axisLeft = NULL,
+  axisRight = NULL,
+  axisTop = NULL,
+  axisX = NULL,
+  axisY = NULL,
+  background = NULL,
+  bar = NULL,
+  boxplot = NULL,
+  circle = NULL,
+  concat = NULL,
+  countTitle = NULL,
+  errorband = NULL,
+  errorbar = NULL,
+  facet = NULL,
+  fieldTitle = NULL,
+  geoshape = NULL,
+  header = NULL,
+  headerColumn = NULL,
+  headerFacet = NULL,
+  headerRow = NULL,
+  image = NULL,
+  legend = NULL,
+  line = NULL,
+  mark = NULL,
+  numberFormat = NULL,
+  padding = NULL,
+  point = NULL,
+  projection = NULL,
+  range = NULL,
+  rect = NULL,
+  `repeat` = NULL,
+  rule = NULL,
+  scale = NULL,
+  selection = NULL,
+  square = NULL,
+  style = NULL,
+  text = NULL,
+  tick = NULL,
+  timeFormat = NULL,
+  title = NULL,
+  trail = NULL,
+  view = NULL
+)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -61,7 +98,7 @@ Object values can additionally specify parameters for content sizing and automat
 
 \item{countTitle}{(\emph{Config}) Default axis and legend title for count fields.
 
-\strong{Default value:} \code{Count of Records}.}
+\strong{Default value:} \verb{Count of Records}.}
 
 \item{errorband}{(\emph{Config}) ErrorBand Config}
 
@@ -105,7 +142,7 @@ For a full list of header configuration options, please see the \href{https://ve
 \item{numberFormat}{(\emph{Config}) D3 Number format for guide labels and text marks. For example "s" for SI units. Use \href{https://github.com/d3/d3-format#locale_format}{D3's number format pattern}.}
 
 \item{padding}{(\emph{Config}) The default visualization padding, in pixels, from the edge of the visualization canvas to the data rectangle. If a number, specifies padding for all sides.
-If an object, the value should have the format \code{{"left": 5, "top": 5, "right": 5, "bottom": 5}} to specify padding for each side of the visualization.
+If an object, the value should have the format \verb{\{"left": 5, "top": 5, "right": 5, "bottom": 5\}} to specify padding for each side of the visualization.
 
 \strong{Default value}: \code{5}}
 

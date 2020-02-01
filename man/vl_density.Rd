@@ -4,10 +4,20 @@
 \alias{vl_density}
 \title{vl_density}
 \usage{
-vl_density(spec, .object = NULL, density = NULL, as = NULL,
-  bandwidth = NULL, counts = NULL, cumulative = NULL,
-  extent = NULL, groupby = NULL, maxsteps = NULL, minsteps = NULL,
-  steps = NULL)
+vl_density(
+  spec,
+  .object = NULL,
+  density = NULL,
+  as = NULL,
+  bandwidth = NULL,
+  counts = NULL,
+  cumulative = NULL,
+  extent = NULL,
+  groupby = NULL,
+  maxsteps = NULL,
+  minsteps = NULL,
+  steps = NULL
+)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -18,7 +28,7 @@ vl_density(spec, .object = NULL, density = NULL, as = NULL,
 
 \item{as}{(\emph{DensityTransform}) The output fields for the sample value and corresponding density estimate.
 
-\strong{Default value:} \code{["value", "density"]}}
+\strong{Default value:} \verb{["value", "density"]}}
 
 \item{bandwidth}{(\emph{DensityTransform}) The bandwidth (standard deviation) of the Gaussian kernel. If unspecified or set to zero, the bandwidth value is automatically estimated from the input data using Scott’s rule.}
 

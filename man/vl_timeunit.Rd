@@ -4,8 +4,7 @@
 \alias{vl_timeunit}
 \title{vl_timeunit}
 \usage{
-vl_timeunit(spec, .object = NULL, as = NULL, field = NULL,
-  timeUnit = NULL)
+vl_timeunit(spec, .object = NULL, as = NULL, field = NULL, timeUnit = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

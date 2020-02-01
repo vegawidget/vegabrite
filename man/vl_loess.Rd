@@ -4,8 +4,15 @@
 \alias{vl_loess}
 \title{vl_loess}
 \usage{
-vl_loess(spec, .object = NULL, loess = NULL, on = NULL, as = NULL,
-  bandwidth = NULL, groupby = NULL)
+vl_loess(
+  spec,
+  .object = NULL,
+  loess = NULL,
+  on = NULL,
+  as = NULL,
+  bandwidth = NULL,
+  groupby = NULL
+)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -20,7 +27,7 @@ vl_loess(spec, .object = NULL, loess = NULL, on = NULL, as = NULL,
 
 \strong{Default value:} The field names of the input x and y values.}
 
-\item{bandwidth}{(\emph{LoessTransform}) A bandwidth parameter in the range \code{[0, 1]} that determines the amount of smoothing.
+\item{bandwidth}{(\emph{LoessTransform}) A bandwidth parameter in the range \verb{[0, 1]} that determines the amount of smoothing.
 
 \strong{Default value:} \code{0.3}}
 

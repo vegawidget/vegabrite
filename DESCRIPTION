@@ -1,6 +1,6 @@
 Package: vlbuildr
 Title: Build vega-lite specs in R
-Version: 0.1.0.9000
+Version: 0.1.0.9001
 Authors@R: c(
   person("Aicia", "Schep", email = "aschep@gmail.com", role = c("aut", "cre")),
   person("Vega-Lite Developers", role = c("aut"), comment = "The Vega-Lite schema is used to directly populate much of the documentation of this package.")
@@ -12,7 +12,7 @@ Depends: R (>= 3.4.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Roxygen: list(markdown = TRUE)
 Imports:
     magrittr,

@@ -1,50 +1,77 @@
-ENCODE_MAPPING <- list(
+TYPE_MAPPING <- list(
   "N" = "nominal",
   "T" = "temporal",
   "Q" = "quantitative",
   "O" = "ordinal"
 )
 
+.type_sugar <- function(obj, spec) {
+  if (!hasName(obj, "type") && hasName(obj, "field") && grepl(":[N,O,Q,T]$", obj[["field"]])) {
+    field <- obj$field
+    nc <- nchar(field)
+    obj$type <- TYPE_MAPPING[[substr(field, nc, nc)]]
+    obj$field <- substr(field, 1, nc - 2)
+  } else if (hasName(obj, "type") && obj$type %in% names(TYPE_MAPPING)) {
+    obj$type <- TYPE_MAPPING[[obj$type]]
+  } else if (!hasName(obj, "type") && hasName(obj, "field")) {
+    dat <- .get_inline_data(spec)
+    if (!is.null(dat)) {
+      col <- dat[[obj$field]]
+      if (is.factor(col)) {
+        obj$type <- "ordinal"
+      } else if (inherits(col, c("POSIXt", "POSIXct", "POSIXlt", "Date"))) {
+        obj$type <- "temporal"
+      } else if (is.numeric(col)) {
+        obj$type <- "quantitative"
+      } else {
+        obj$type <- "nominal"
+      }
+    }
+  }
+  obj
+}
+
+.escape_dot <- function(obj, element = "field") {
+  if (hasName(obj, element) && !is.list(obj[[element]])) {
+    obj[[element]]<- gsub("\\.", "\\\\.", obj[[element]])
+  }
+  obj
+}
+
+.repeat_sugar <- function(obj) {
+  if (hasName(obj, "field") && grepl("^repeat:(column|row|repeat)$", obj[["field"]])) {
+    obj[["field"]] <- list(`repeat` = substr(obj$field, 8, nchar(obj$field)))
+  } else if (hasName(obj, "field") && (obj$field == "repeat:" || obj$field == "repeat:wrap")) {
+    obj[["field"]] <- list(`repeat` = "repeat")
+  }
+  obj
+}
+
+.encoding_sugar <- function(obj, spec) {
+  obj <- .type_sugar(obj, spec)
+  obj <- .repeat_sugar(obj)
+  obj <- .escape_dot(obj, "field")
+  obj
+}
+
+
 .add_encoding <- function(spec, obj, ref, encoding) {
   fn <- function(spec) {
 
     # Handle shorthand
     enc <- obj
-    if (is.null(names(enc)) && length(enc) == 1) {
-      enc <- list(field = enc[[1]])
-    }
-    # sugar for type shorthand
-    if (!hasName(enc, "type") && hasName(enc, "field") && grepl(":[N,O,Q,T]$", enc[["field"]])) {
-      field <- enc$field
-      nc <- nchar(field)
-      enc$type <- ENCODE_MAPPING[[substr(field, nc, nc)]]
-      enc$field <- substr(field, 1, nc - 2)
-    } else if (hasName(enc, "type") && enc$type %in% names(ENCODE_MAPPING)) {
-      enc$type <- ENCODE_MAPPING[[enc$type]]
-    } else if (!hasName(enc, "type") && hasName(enc, "field")) {
-      dat <- .get_inline_data(spec)
-      if (!is.null(dat)) {
-        col <- dat[[enc$field]]
-        if (is.factor(col)) {
-          enc$type <- "ordinal"
-        } else if (inherits(col, c("POSIXt", "POSIXct", "POSIXlt", "Date"))) {
-          enc$type <- "temporal"
-        } else if (is.numeric(col)) {
-          enc$type <- "quantitative"
-        } else {
-          enc$type <- "nominal"
-        }
+    if (!is.list(enc)) {
+      if (length(enc) == 1) {
+        enc <- .encoding_sugar(list(field = enc[[1]]), spec)
+      } else {
+        enc <- lapply(enc, function(x) .encoding_sugar(list(field = x), spec))
       }
-    }
-    # sugar for repeat
-    if (hasName(enc, "field") && grepl("^repeat:(column|row|repeat)$", enc[["field"]])) {
-      enc[["field"]] <- list(`repeat` = substr(enc$field, 8, nchar(enc$field)))
-    } else if (hasName(enc, "field") && (enc$field == "repeat:" || enc$field == "repeat:wrap")) {
-      enc[["field"]] <- list(`repeat` = "repeat")
-    }
-    # Escape "." in feild
-    if (hasName(enc, "field") && !is.list(enc$field)) {
-      enc$field <- gsub("\\.", "\\\\.", enc$field)
+    } else {
+      if (!is.null(names(enc))) {
+        enc <- .encoding_sugar(enc) 
+      } else {
+        enc <- lapply(enc, function(x) .encoding_sugar(x, spec))
+      }
     }
 
     if (!hasName(spec, "encoding")) spec$encoding <- list()

@@ -4,9 +4,19 @@
 \alias{vl_bind_range_input}
 \title{vl_bind_range_input}
 \usage{
-vl_bind_range_input(spec, selection_name, projection_name = NULL,
-  .object = NULL, debounce = NULL, element = NULL, max = NULL,
-  min = NULL, name = NULL, step = NULL, type = NULL)
+vl_bind_range_input(
+  spec,
+  selection_name,
+  projection_name = NULL,
+  .object = NULL,
+  debounce = NULL,
+  element = NULL,
+  max = NULL,
+  min = NULL,
+  name = NULL,
+  step = NULL,
+  type = NULL
+)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

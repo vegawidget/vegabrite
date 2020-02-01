@@ -174,7 +174,7 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \strong{Notes}:
 \enumerate{
-\item You can customize the default field title format by providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{fieldTitle} property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config} or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{fieldTitle function via the compile function's options}.
+\item You can customize the default field title format by providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{\code{fieldTitle}} property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config} or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{\code{fieldTitle} function via the \code{compile} function's options}.
 \item If both field definition's \code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used.
 }}
 

@@ -4,9 +4,17 @@
 \alias{vl_mark_errorbar}
 \title{vl_mark_errorbar}
 \usage{
-vl_mark_errorbar(spec, .object = NULL, clip = NULL, color = NULL,
-  extent = NULL, opacity = NULL, orient = NULL, rule = NULL,
-  ticks = NULL)
+vl_mark_errorbar(
+  spec,
+  .object = NULL,
+  clip = NULL,
+  color = NULL,
+  extent = NULL,
+  opacity = NULL,
+  orient = NULL,
+  rule = NULL,
+  ticks = NULL
+)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

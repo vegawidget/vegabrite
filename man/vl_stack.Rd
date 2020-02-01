@@ -4,8 +4,15 @@
 \alias{vl_stack}
 \title{vl_stack}
 \usage{
-vl_stack(spec, .object = NULL, stack = NULL, as = NULL,
-  groupby = NULL, offset = NULL, sort = NULL)
+vl_stack(
+  spec,
+  .object = NULL,
+  stack = NULL,
+  as = NULL,
+  groupby = NULL,
+  offset = NULL,
+  sort = NULL
+)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -20,7 +27,7 @@ If a single string(e.g., \code{"val"}) is provided, the end field will be \code{
 \item{groupby}{(\emph{StackTransform}) The data fields to group by.}
 
 \item{offset}{(\emph{StackTransform}) Mode for stacking marks. One of \code{"zero"} (default), \code{"center"}, or \code{"normalize"}.
-The \code{"zero"} offset will stack starting at \code{0}. The \code{"center"} offset will center the stacks. The \code{"normalize"} offset will compute percentage values for each stack point, with output values in the range \code{[0,1]}.
+The \code{"zero"} offset will stack starting at \code{0}. The \code{"center"} offset will center the stacks. The \code{"normalize"} offset will compute percentage values for each stack point, with output values in the range \verb{[0,1]}.
 
 \strong{Default value:} \code{"zero"}}
 
