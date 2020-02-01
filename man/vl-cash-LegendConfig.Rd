@@ -92,7 +92,7 @@
 
 \item{labelOverlap}{(\emph{LegendConfig}) The strategy to use for resolving overlap of labels in gradient legends. If \code{false}, no overlap reduction is attempted. If set to \code{true} or \code{"parity"}, a strategy of removing every other label is used. If set to \code{"greedy"}, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
 
-\strong{Default value:} \code{"greedy"} for \code{log scales otherwise }true`.}
+\strong{Default value:} \code{"greedy"} for \verb{log scales otherwise }true`.}
 
 \item{labelPadding}{(\emph{LegendConfig}) Padding in pixels between the legend and legend labels.}
 

@@ -4,8 +4,7 @@
 \alias{vl_config_repeat}
 \title{vl_config_repeat}
 \usage{
-vl_config_repeat(spec, .object = NULL, columns = NULL,
-  spacing = NULL)
+vl_config_repeat(spec, .object = NULL, columns = NULL, spacing = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

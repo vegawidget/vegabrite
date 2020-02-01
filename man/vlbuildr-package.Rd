@@ -17,7 +17,7 @@ This package has three types of functions:
 \item Other \code{vl_} functions which add an object to an initial spec either from a pre-made
 input object (to the \code{.object}) parameter or created via the other parameters to the function.
 See section below for more details on \code{.object} argument.
-\item Functions grouped in \code{vl} list and accessabile via \code{vl$}.
+\item Functions grouped in \code{vl} list and accessabile via \verb{vl$}.
 These functions make an object (which can be added to a spec by a \code{vl_} function). Generally one
 does not need to use these functions as object can be created directly via the \code{vl_} functions,
 but they can be useful for reusing components across charts or when additional flexibility is needed.
@@ -56,7 +56,7 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Vega-Lite Developers (Authors of the Vega-Lite schema which is used directly to populate much of the documentation of this package.)
+  \item Vega-Lite Developers (The Vega-Lite schema is used to directly populate much of the documentation of this package.)
 }
 
 }

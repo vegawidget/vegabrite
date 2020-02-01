@@ -16,41 +16,49 @@
 \alias{vl_sort_y_by_encoding}
 \title{Add sort transform by encoding to encoding}
 \usage{
-vl_sort_color_by_encoding(spec, .object = NULL, encoding = NULL,
-  order = NULL)
+vl_sort_color_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
 
-vl_sort_fill_by_encoding(spec, .object = NULL, encoding = NULL,
-  order = NULL)
+vl_sort_fill_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
 
-vl_sort_fillOpacity_by_encoding(spec, .object = NULL, encoding = NULL,
-  order = NULL)
+vl_sort_fillOpacity_by_encoding(
+  spec,
+  .object = NULL,
+  encoding = NULL,
+  order = NULL
+)
 
-vl_sort_opacity_by_encoding(spec, .object = NULL, encoding = NULL,
-  order = NULL)
+vl_sort_opacity_by_encoding(
+  spec,
+  .object = NULL,
+  encoding = NULL,
+  order = NULL
+)
 
-vl_sort_order_by_encoding(spec, .object = NULL, encoding = NULL,
-  order = NULL)
+vl_sort_order_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
 
-vl_sort_shape_by_encoding(spec, .object = NULL, encoding = NULL,
-  order = NULL)
+vl_sort_shape_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
 
-vl_sort_size_by_encoding(spec, .object = NULL, encoding = NULL,
-  order = NULL)
+vl_sort_size_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
 
-vl_sort_stroke_by_encoding(spec, .object = NULL, encoding = NULL,
-  order = NULL)
+vl_sort_stroke_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
 
-vl_sort_strokeOpacity_by_encoding(spec, .object = NULL,
-  encoding = NULL, order = NULL)
+vl_sort_strokeOpacity_by_encoding(
+  spec,
+  .object = NULL,
+  encoding = NULL,
+  order = NULL
+)
 
-vl_sort_strokeWidth_by_encoding(spec, .object = NULL, encoding = NULL,
-  order = NULL)
+vl_sort_strokeWidth_by_encoding(
+  spec,
+  .object = NULL,
+  encoding = NULL,
+  order = NULL
+)
 
-vl_sort_x_by_encoding(spec, .object = NULL, encoding = NULL,
-  order = NULL)
+vl_sort_x_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
 
-vl_sort_y_by_encoding(spec, .object = NULL, encoding = NULL,
-  order = NULL)
+vl_sort_y_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

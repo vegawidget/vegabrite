@@ -4,14 +4,30 @@
 \alias{vl_config_view}
 \title{vl_config_view}
 \usage{
-vl_config_view(spec, .object = NULL, clip = NULL,
-  continuousHeight = NULL, continuousWidth = NULL,
-  cornerRadius = NULL, discreteHeight = NULL, discreteWidth = NULL,
-  fill = NULL, fillOpacity = NULL, height = NULL, opacity = NULL,
-  step = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL,
-  strokeDashOffset = NULL, strokeJoin = NULL,
-  strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
-  width = NULL)
+vl_config_view(
+  spec,
+  .object = NULL,
+  clip = NULL,
+  continuousHeight = NULL,
+  continuousWidth = NULL,
+  cornerRadius = NULL,
+  discreteHeight = NULL,
+  discreteWidth = NULL,
+  fill = NULL,
+  fillOpacity = NULL,
+  height = NULL,
+  opacity = NULL,
+  step = NULL,
+  stroke = NULL,
+  strokeCap = NULL,
+  strokeDash = NULL,
+  strokeDashOffset = NULL,
+  strokeJoin = NULL,
+  strokeMiterLimit = NULL,
+  strokeOpacity = NULL,
+  strokeWidth = NULL,
+  width = NULL
+)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

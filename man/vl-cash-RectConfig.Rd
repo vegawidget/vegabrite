@@ -78,7 +78,7 @@
 
 \item{filled}{(\emph{RectConfig}) Whether the mark's color should be used as fill color instead of stroke color.
 
-\strong{Default value:} \code{false} for all \code{point}, \code{line}, and \code{rule} marks as well as \code{geoshape} marks for \href{https://vega.github.io/vega-lite/docs/data.html#graticule}{graticule} data sources; otherwise, \code{true}.
+\strong{Default value:} \code{false} for all \code{point}, \code{line}, and \code{rule} marks as well as \code{geoshape} marks for \href{https://vega.github.io/vega-lite/docs/data.html#graticule}{\code{graticule}} data sources; otherwise, \code{true}.
 
 \strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.}
 
@@ -214,7 +214,7 @@ If set to \code{0.5}, the marks will be positioned in the middle of the time uni
 \item If set to \code{null} or \code{false}, then no tooltip will be used.
 }
 
-See the \href{https://vega.github.io/vega-lite/docs/tooltip.html}{tooltip} documentation for a detailed discussion about tooltip  in Vega-Lite.
+See the \href{https://vega.github.io/vega-lite/docs/tooltip.html}{\code{tooltip}} documentation for a detailed discussion about tooltip  in Vega-Lite.
 
 \strong{Default value:} \code{null}}
 
