@@ -4,32 +4,27 @@
 \alias{vl_config_selection}
 \title{vl_config_selection}
 \usage{
-vl_config_selection(
-  spec,
-  .object = NULL,
-  interval = NULL,
-  multi = NULL,
-  single = NULL
-)
+vl_config_selection(spec, .object = NULL, interval = NULL,
+  multi = NULL, single = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SelectionConfig}
 
-\item{interval}{(\emph{SelectionConfig}) The default definition for an \href{https://vega.github.io/vega-lite/docs/selection.html#type}{\code{interval}} selection. All properties and transformations
+\item{interval}{(\emph{SelectionConfig}) The default definition for an \href{https://vega.github.io/vega-lite/docs/selection.html#type}{interval} selection. All properties and transformations
 for an interval selection definition (except \code{type}) may be specified here.
 
 For instance, setting \code{interval} to \code{{"translate": false}} disables the ability to move
 interval selections by default.}
 
-\item{multi}{(\emph{SelectionConfig}) The default definition for a \href{https://vega.github.io/vega-lite/docs/selection.html#type}{\code{multi}} selection. All properties and transformations
+\item{multi}{(\emph{SelectionConfig}) The default definition for a \href{https://vega.github.io/vega-lite/docs/selection.html#type}{multi} selection. All properties and transformations
 for a multi selection definition (except \code{type}) may be specified here.
 
 For instance, setting \code{multi} to \code{{"toggle": "event.altKey"}} adds additional values to
 multi selections when clicking with the alt-key pressed by default.}
 
-\item{single}{(\emph{SelectionConfig}) The default definition for a \href{https://vega.github.io/vega-lite/docs/selection.html#type}{\code{single}} selection. All properties and transformations
+\item{single}{(\emph{SelectionConfig}) The default definition for a \href{https://vega.github.io/vega-lite/docs/selection.html#type}{single} selection. All properties and transformations
 for a single selection definition (except \code{type}) may be specified here.
 
 For instance, setting \code{single} to \code{{"on": "dblclick"}} populates single selections on double-click by default.}

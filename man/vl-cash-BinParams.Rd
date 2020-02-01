@@ -16,9 +16,9 @@
 
 \item{divide}{(\emph{BinParams}) Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
 
-\strong{Default value:} \verb{[5, 2]}}
+\strong{Default value:} \code{[5, 2]}}
 
-\item{extent}{(\emph{BinParams}) A two-element (\verb{[min, max]}) array indicating the range of desired bin values.}
+\item{extent}{(\emph{BinParams}) A two-element (\code{[min, max]}) array indicating the range of desired bin values.}
 
 \item{maxbins}{(\emph{BinParams}) Maximum number of bins.
 

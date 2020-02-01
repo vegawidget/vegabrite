@@ -6,7 +6,7 @@
 \arguments{
 \item{as}{(\emph{QuantileTransform}) The output field names for the probability and quantile values.
 
-\strong{Default value:} \verb{["prob", "value"]}}
+\strong{Default value:} \code{["prob", "value"]}}
 
 \item{groupby}{(\emph{QuantileTransform}) The data fields to group by. If not specified, a single group containing all data objects will be used.}
 

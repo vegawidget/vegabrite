@@ -4,38 +4,16 @@
 \alias{vl_config_headerColumn}
 \title{vl_config_headerColumn}
 \usage{
-vl_config_headerColumn(
-  spec,
-  .object = NULL,
-  format = NULL,
-  formatType = NULL,
-  labelAlign = NULL,
-  labelAnchor = NULL,
-  labelAngle = NULL,
-  labelColor = NULL,
-  labelExpr = NULL,
-  labelFont = NULL,
-  labelFontSize = NULL,
-  labelFontStyle = NULL,
-  labelLimit = NULL,
-  labelOrient = NULL,
-  labelPadding = NULL,
-  labels = NULL,
-  title = NULL,
-  titleAlign = NULL,
-  titleAnchor = NULL,
-  titleAngle = NULL,
-  titleBaseline = NULL,
-  titleColor = NULL,
-  titleFont = NULL,
-  titleFontSize = NULL,
-  titleFontStyle = NULL,
-  titleFontWeight = NULL,
-  titleLimit = NULL,
-  titleLineHeight = NULL,
-  titleOrient = NULL,
-  titlePadding = NULL
-)
+vl_config_headerColumn(spec, .object = NULL, format = NULL,
+  formatType = NULL, labelAlign = NULL, labelAnchor = NULL,
+  labelAngle = NULL, labelColor = NULL, labelExpr = NULL,
+  labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL,
+  labelLimit = NULL, labelOrient = NULL, labelPadding = NULL,
+  labels = NULL, title = NULL, titleAlign = NULL,
+  titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL,
+  titleColor = NULL, titleFont = NULL, titleFontSize = NULL,
+  titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL,
+  titleLineHeight = NULL, titleOrient = NULL, titlePadding = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

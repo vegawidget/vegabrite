@@ -15,247 +15,72 @@
 \alias{vl_scale_y}
 \title{Add scale to encoding}
 \usage{
-vl_scale_color(
-  spec,
-  .object = NULL,
-  align = NULL,
-  base = NULL,
-  bins = NULL,
-  clamp = NULL,
-  constant = NULL,
-  domain = NULL,
-  exponent = NULL,
-  interpolate = NULL,
-  nice = NULL,
-  padding = NULL,
-  paddingInner = NULL,
-  paddingOuter = NULL,
-  range = NULL,
-  round = NULL,
-  scheme = NULL,
-  type = NULL,
-  zero = NULL
-)
+vl_scale_color(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
+  paddingInner = NULL, paddingOuter = NULL, range = NULL,
+  round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_fill(
-  spec,
-  .object = NULL,
-  align = NULL,
-  base = NULL,
-  bins = NULL,
-  clamp = NULL,
-  constant = NULL,
-  domain = NULL,
-  exponent = NULL,
-  interpolate = NULL,
-  nice = NULL,
-  padding = NULL,
-  paddingInner = NULL,
-  paddingOuter = NULL,
-  range = NULL,
-  round = NULL,
-  scheme = NULL,
-  type = NULL,
-  zero = NULL
-)
+vl_scale_fill(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
+  paddingInner = NULL, paddingOuter = NULL, range = NULL,
+  round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_fillOpacity(
-  spec,
-  .object = NULL,
-  align = NULL,
-  base = NULL,
-  bins = NULL,
-  clamp = NULL,
-  constant = NULL,
-  domain = NULL,
-  exponent = NULL,
-  interpolate = NULL,
-  nice = NULL,
-  padding = NULL,
-  paddingInner = NULL,
-  paddingOuter = NULL,
-  range = NULL,
-  round = NULL,
-  scheme = NULL,
-  type = NULL,
-  zero = NULL
-)
+vl_scale_fillOpacity(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
+  paddingInner = NULL, paddingOuter = NULL, range = NULL,
+  round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_opacity(
-  spec,
-  .object = NULL,
-  align = NULL,
-  base = NULL,
-  bins = NULL,
-  clamp = NULL,
-  constant = NULL,
-  domain = NULL,
-  exponent = NULL,
-  interpolate = NULL,
-  nice = NULL,
-  padding = NULL,
-  paddingInner = NULL,
-  paddingOuter = NULL,
-  range = NULL,
-  round = NULL,
-  scheme = NULL,
-  type = NULL,
-  zero = NULL
-)
+vl_scale_opacity(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
+  paddingInner = NULL, paddingOuter = NULL, range = NULL,
+  round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_shape(
-  spec,
-  .object = NULL,
-  align = NULL,
-  base = NULL,
-  bins = NULL,
-  clamp = NULL,
-  constant = NULL,
-  domain = NULL,
-  exponent = NULL,
-  interpolate = NULL,
-  nice = NULL,
-  padding = NULL,
-  paddingInner = NULL,
-  paddingOuter = NULL,
-  range = NULL,
-  round = NULL,
-  scheme = NULL,
-  type = NULL,
-  zero = NULL
-)
+vl_scale_shape(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
+  paddingInner = NULL, paddingOuter = NULL, range = NULL,
+  round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_size(
-  spec,
-  .object = NULL,
-  align = NULL,
-  base = NULL,
-  bins = NULL,
-  clamp = NULL,
-  constant = NULL,
-  domain = NULL,
-  exponent = NULL,
-  interpolate = NULL,
-  nice = NULL,
-  padding = NULL,
-  paddingInner = NULL,
-  paddingOuter = NULL,
-  range = NULL,
-  round = NULL,
-  scheme = NULL,
-  type = NULL,
-  zero = NULL
-)
+vl_scale_size(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
+  paddingInner = NULL, paddingOuter = NULL, range = NULL,
+  round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_stroke(
-  spec,
-  .object = NULL,
-  align = NULL,
-  base = NULL,
-  bins = NULL,
-  clamp = NULL,
-  constant = NULL,
-  domain = NULL,
-  exponent = NULL,
-  interpolate = NULL,
-  nice = NULL,
-  padding = NULL,
-  paddingInner = NULL,
-  paddingOuter = NULL,
-  range = NULL,
-  round = NULL,
-  scheme = NULL,
-  type = NULL,
-  zero = NULL
-)
+vl_scale_stroke(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
+  paddingInner = NULL, paddingOuter = NULL, range = NULL,
+  round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_strokeOpacity(
-  spec,
-  .object = NULL,
-  align = NULL,
-  base = NULL,
-  bins = NULL,
-  clamp = NULL,
-  constant = NULL,
-  domain = NULL,
-  exponent = NULL,
-  interpolate = NULL,
-  nice = NULL,
-  padding = NULL,
-  paddingInner = NULL,
-  paddingOuter = NULL,
-  range = NULL,
-  round = NULL,
-  scheme = NULL,
-  type = NULL,
-  zero = NULL
-)
+vl_scale_strokeOpacity(spec, .object = NULL, align = NULL,
+  base = NULL, bins = NULL, clamp = NULL, constant = NULL,
+  domain = NULL, exponent = NULL, interpolate = NULL, nice = NULL,
+  padding = NULL, paddingInner = NULL, paddingOuter = NULL,
+  range = NULL, round = NULL, scheme = NULL, type = NULL,
+  zero = NULL)
 
-vl_scale_strokeWidth(
-  spec,
-  .object = NULL,
-  align = NULL,
-  base = NULL,
-  bins = NULL,
-  clamp = NULL,
-  constant = NULL,
-  domain = NULL,
-  exponent = NULL,
-  interpolate = NULL,
-  nice = NULL,
-  padding = NULL,
-  paddingInner = NULL,
-  paddingOuter = NULL,
-  range = NULL,
-  round = NULL,
-  scheme = NULL,
-  type = NULL,
-  zero = NULL
-)
+vl_scale_strokeWidth(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
+  paddingInner = NULL, paddingOuter = NULL, range = NULL,
+  round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_x(
-  spec,
-  .object = NULL,
-  align = NULL,
-  base = NULL,
-  bins = NULL,
-  clamp = NULL,
-  constant = NULL,
-  domain = NULL,
-  exponent = NULL,
-  interpolate = NULL,
-  nice = NULL,
-  padding = NULL,
-  paddingInner = NULL,
-  paddingOuter = NULL,
-  range = NULL,
-  round = NULL,
-  scheme = NULL,
-  type = NULL,
-  zero = NULL
-)
+vl_scale_x(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
+  paddingInner = NULL, paddingOuter = NULL, range = NULL,
+  round = NULL, scheme = NULL, type = NULL, zero = NULL)
 
-vl_scale_y(
-  spec,
-  .object = NULL,
-  align = NULL,
-  base = NULL,
-  bins = NULL,
-  clamp = NULL,
-  constant = NULL,
-  domain = NULL,
-  exponent = NULL,
-  interpolate = NULL,
-  nice = NULL,
-  padding = NULL,
-  paddingInner = NULL,
-  paddingOuter = NULL,
-  range = NULL,
-  round = NULL,
-  scheme = NULL,
-  type = NULL,
-  zero = NULL
-)
+vl_scale_y(spec, .object = NULL, align = NULL, base = NULL,
+  bins = NULL, clamp = NULL, constant = NULL, domain = NULL,
+  exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL,
+  paddingInner = NULL, paddingOuter = NULL, range = NULL,
+  round = NULL, scheme = NULL, type = NULL, zero = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -264,7 +89,7 @@ vl_scale_y(
 
 \item{align}{(\emph{Scale}) The alignment of the steps within the scale range.
 
-This value must lie in the range \verb{[0,1]}. A value of \code{0.5} indicates that the steps should be centered within the range. A value of \code{0} or \code{1} may be used to shift the bands to one side, say to position them adjacent to an axis.
+This value must lie in the range \code{[0,1]}. A value of \code{0.5} indicates that the steps should be centered within the range. A value of \code{0} or \code{1} may be used to shift the bands to one side, say to position them adjacent to an axis.
 
 \strong{Default value:} \code{0.5}}
 
@@ -302,7 +127,7 @@ The \code{selection} property can be used to \href{https://vega.github.io/vega-l
 
 For quantitative scales such as linear, \code{nice} can be either a boolean flag or a number. If \code{nice} is a number, it will represent a desired tick count. This allows greater control over the step size used to extend the bounds, guaranteeing that the returned ticks will exactly cover the domain.
 
-For temporal fields with time and utc scales, the \code{nice} value can be a string indicating the desired time interval. Legal values are \code{"millisecond"}, \code{"second"}, \code{"minute"}, \code{"hour"}, \code{"day"}, \code{"week"}, \code{"month"}, and \code{"year"}. Alternatively, \code{time} and \code{utc} scales can accept an object-valued interval specifier of the form \verb{\{"interval": "month", "step": 3\}}, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
+For temporal fields with time and utc scales, the \code{nice} value can be a string indicating the desired time interval. Legal values are \code{"millisecond"}, \code{"second"}, \code{"minute"}, \code{"hour"}, \code{"day"}, \code{"week"}, \code{"month"}, and \code{"year"}. Alternatively, \code{time} and \code{utc} scales can accept an object-valued interval specifier of the form \code{{"interval": "month", "step": 3}}, which includes a desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries.
 
 \strong{Default value:} \code{true} for unbinned \emph{quantitative} fields; \code{false} otherwise.}
 
@@ -336,7 +161,7 @@ By default, Vega-Lite sets outer padding such that \emph{width/height = number o
 
 \strong{Notes:}
 \enumerate{
-\item For color scales you can also specify a color \href{https://vega.github.io/vega-lite/docs/scale.html#scheme}{\code{scheme}} instead of \code{range}.
+\item For color scales you can also specify a color \href{https://vega.github.io/vega-lite/docs/scale.html#scheme}{scheme} instead of \code{range}.
 \item Any directly specified \code{range} for \code{x} and \code{y} channels will be ignored. Range can be customized via the view's corresponding \href{https://vega.github.io/vega-lite/docs/size.html}{size} (\code{width} and \code{height}).
 }}
 
@@ -352,9 +177,9 @@ For the full list of supported schemes, please refer to the \href{https://vega.g
 
 \item{type}{(\emph{Scale}) The type of scale. Vega-Lite supports the following categories of scale types:
 \enumerate{
-\item \href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{\strong{Continuous Scales}} -- mapping continuous domains to continuous output ranges (\href{https://vega.github.io/vega-lite/docs/scale.html#linear}{\code{"linear"}}, \href{https://vega.github.io/vega-lite/docs/scale.html#pow}{\code{"pow"}}, \href{https://vega.github.io/vega-lite/docs/scale.html#sqrt}{\code{"sqrt"}}, \href{https://vega.github.io/vega-lite/docs/scale.html#symlog}{\code{"symlog"}}, \href{https://vega.github.io/vega-lite/docs/scale.html#log}{\code{"log"}}, \href{https://vega.github.io/vega-lite/docs/scale.html#time}{\code{"time"}}, \href{https://vega.github.io/vega-lite/docs/scale.html#utc}{\code{"utc"}}.
-\item \href{https://vega.github.io/vega-lite/docs/scale.html#discrete}{\strong{Discrete Scales}} -- mapping discrete domains to discrete (\href{https://vega.github.io/vega-lite/docs/scale.html#ordinal}{\code{"ordinal"}}) or continuous (\href{https://vega.github.io/vega-lite/docs/scale.html#band}{\code{"band"}} and \href{https://vega.github.io/vega-lite/docs/scale.html#point}{\code{"point"}}) output ranges.
-\item \href{https://vega.github.io/vega-lite/docs/scale.html#discretizing}{\strong{Discretizing Scales}} -- mapping continuous domains to discrete output ranges \href{https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal}{\code{"bin-ordinal"}}, \href{https://vega.github.io/vega-lite/docs/scale.html#quantile}{\code{"quantile"}}, \href{https://vega.github.io/vega-lite/docs/scale.html#quantize}{\code{"quantize"}} and \href{https://vega.github.io/vega-lite/docs/scale.html#threshold}{\code{"threshold"}}.
+\item \href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{Continuous Scales} -- mapping continuous domains to continuous output ranges (\href{https://vega.github.io/vega-lite/docs/scale.html#linear}{"linear"}, \href{https://vega.github.io/vega-lite/docs/scale.html#pow}{"pow"}, \href{https://vega.github.io/vega-lite/docs/scale.html#sqrt}{"sqrt"}, \href{https://vega.github.io/vega-lite/docs/scale.html#symlog}{"symlog"}, \href{https://vega.github.io/vega-lite/docs/scale.html#log}{"log"}, \href{https://vega.github.io/vega-lite/docs/scale.html#time}{"time"}, \href{https://vega.github.io/vega-lite/docs/scale.html#utc}{"utc"}.
+\item \href{https://vega.github.io/vega-lite/docs/scale.html#discrete}{Discrete Scales} -- mapping discrete domains to discrete (\href{https://vega.github.io/vega-lite/docs/scale.html#ordinal}{"ordinal"}) or continuous (\href{https://vega.github.io/vega-lite/docs/scale.html#band}{"band"} and \href{https://vega.github.io/vega-lite/docs/scale.html#point}{"point"}) output ranges.
+\item \href{https://vega.github.io/vega-lite/docs/scale.html#discretizing}{Discretizing Scales} -- mapping continuous domains to discrete output ranges \href{https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal}{"bin-ordinal"}, \href{https://vega.github.io/vega-lite/docs/scale.html#quantile}{"quantile"}, \href{https://vega.github.io/vega-lite/docs/scale.html#quantize}{"quantize"} and \href{https://vega.github.io/vega-lite/docs/scale.html#threshold}{"threshold"}.
 }
 
 \strong{Default value:} please see the \href{https://vega.github.io/vega-lite/docs/scale.html#type}{scale type table}.}

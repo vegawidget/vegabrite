@@ -4,15 +4,8 @@
 \alias{vl_quantile}
 \title{vl_quantile}
 \usage{
-vl_quantile(
-  spec,
-  .object = NULL,
-  quantile = NULL,
-  as = NULL,
-  groupby = NULL,
-  probs = NULL,
-  step = NULL
-)
+vl_quantile(spec, .object = NULL, quantile = NULL, as = NULL,
+  groupby = NULL, probs = NULL, step = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -23,7 +16,7 @@ vl_quantile(
 
 \item{as}{(\emph{QuantileTransform}) The output field names for the probability and quantile values.
 
-\strong{Default value:} \verb{["prob", "value"]}}
+\strong{Default value:} \code{["prob", "value"]}}
 
 \item{groupby}{(\emph{QuantileTransform}) The data fields to group by. If not specified, a single group containing all data objects will be used.}
 

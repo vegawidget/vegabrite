@@ -16,89 +16,41 @@
 \alias{vl_sort_y_by_field}
 \title{Add sort transform by field to encoding}
 \usage{
-vl_sort_color_by_field(
-  spec,
-  .object = NULL,
-  field = NULL,
-  op = NULL,
-  order = NULL
-)
+vl_sort_color_by_field(spec, .object = NULL, field = NULL, op = NULL,
+  order = NULL)
 
-vl_sort_fill_by_field(
-  spec,
-  .object = NULL,
-  field = NULL,
-  op = NULL,
-  order = NULL
-)
+vl_sort_fill_by_field(spec, .object = NULL, field = NULL, op = NULL,
+  order = NULL)
 
-vl_sort_fillOpacity_by_field(
-  spec,
-  .object = NULL,
-  field = NULL,
-  op = NULL,
-  order = NULL
-)
+vl_sort_fillOpacity_by_field(spec, .object = NULL, field = NULL,
+  op = NULL, order = NULL)
 
-vl_sort_opacity_by_field(
-  spec,
-  .object = NULL,
-  field = NULL,
-  op = NULL,
-  order = NULL
-)
+vl_sort_opacity_by_field(spec, .object = NULL, field = NULL,
+  op = NULL, order = NULL)
 
-vl_sort_order_by_field(
-  spec,
-  .object = NULL,
-  field = NULL,
-  op = NULL,
-  order = NULL
-)
+vl_sort_order_by_field(spec, .object = NULL, field = NULL, op = NULL,
+  order = NULL)
 
-vl_sort_shape_by_field(
-  spec,
-  .object = NULL,
-  field = NULL,
-  op = NULL,
-  order = NULL
-)
+vl_sort_shape_by_field(spec, .object = NULL, field = NULL, op = NULL,
+  order = NULL)
 
-vl_sort_size_by_field(
-  spec,
-  .object = NULL,
-  field = NULL,
-  op = NULL,
-  order = NULL
-)
+vl_sort_size_by_field(spec, .object = NULL, field = NULL, op = NULL,
+  order = NULL)
 
-vl_sort_stroke_by_field(
-  spec,
-  .object = NULL,
-  field = NULL,
-  op = NULL,
-  order = NULL
-)
+vl_sort_stroke_by_field(spec, .object = NULL, field = NULL,
+  op = NULL, order = NULL)
 
-vl_sort_strokeOpacity_by_field(
-  spec,
-  .object = NULL,
-  field = NULL,
-  op = NULL,
-  order = NULL
-)
+vl_sort_strokeOpacity_by_field(spec, .object = NULL, field = NULL,
+  op = NULL, order = NULL)
 
-vl_sort_strokeWidth_by_field(
-  spec,
-  .object = NULL,
-  field = NULL,
-  op = NULL,
-  order = NULL
-)
+vl_sort_strokeWidth_by_field(spec, .object = NULL, field = NULL,
+  op = NULL, order = NULL)
 
-vl_sort_x_by_field(spec, .object = NULL, field = NULL, op = NULL, order = NULL)
+vl_sort_x_by_field(spec, .object = NULL, field = NULL, op = NULL,
+  order = NULL)
 
-vl_sort_y_by_field(spec, .object = NULL, field = NULL, op = NULL, order = NULL)
+vl_sort_y_by_field(spec, .object = NULL, field = NULL, op = NULL,
+  order = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

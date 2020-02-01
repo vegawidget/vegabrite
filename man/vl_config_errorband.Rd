@@ -4,15 +4,9 @@
 \alias{vl_config_errorband}
 \title{vl_config_errorband}
 \usage{
-vl_config_errorband(
-  spec,
-  .object = NULL,
-  band = NULL,
-  borders = NULL,
-  extent = NULL,
-  interpolate = NULL,
-  tension = NULL
-)
+vl_config_errorband(spec, .object = NULL, band = NULL,
+  borders = NULL, extent = NULL, interpolate = NULL,
+  tension = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

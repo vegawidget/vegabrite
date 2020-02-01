@@ -4,14 +4,8 @@
 \alias{vl_lookup}
 \title{vl_lookup}
 \usage{
-vl_lookup(
-  spec,
-  .object = NULL,
-  lookup = NULL,
-  from = NULL,
-  as = NULL,
-  default = NULL
-)
+vl_lookup(spec, .object = NULL, lookup = NULL, from = NULL,
+  as = NULL, default = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

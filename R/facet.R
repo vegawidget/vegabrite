@@ -2,21 +2,13 @@
   UseMethod(".add_facet", spec)
 }
 
-.facet_sugar <- function(obj, spec) {
-  if (!is.list(obj) && length(obj) == 1) {
-    obj <- list(field = obj[[1]])
-  }
-  obj <- .type_sugar(obj, spec)
-  obj <- .escape_dot(obj, "field")
-  obj
-}
+
 
 .add_facet.vegaspec_facet <- function(spec, obj, ref, .type, columns = NULL) {
   if (.type == "wrap" && is.null(columns)) {
     columns <- obj$columns
     obj$columns <- NULL
   }
-  obj <- .facet_sugar(obj)
   validate_sub_schema(obj, ref)
   if (.type == "row") {
     spec[["facet"]][["row"]] <- obj
@@ -42,7 +34,7 @@
     columns <- obj$columns
     obj$columns <- NULL
   }
-  obj <- .facet_sugar(obj)
+  
   validate_sub_schema(obj, ref)
   if (.type == "row") {
     spec[["facet"]][["row"]] <- obj
@@ -68,7 +60,7 @@
     columns <- obj$columns
     obj$columns <- NULL
   }
-  obj <- .facet_sugar(obj)
+
   validate_sub_schema(obj, ref)
   if (.type == "row") {
     spec[["facet"]][["row"]] <- obj

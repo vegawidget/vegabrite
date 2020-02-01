@@ -68,11 +68,11 @@ If undefined (default), we will use the axis's size (width or height) - 1.}
 
 \strong{Default value:} \code{0.5} (which makes \emph{width/height = number of unique values * step})}
 
-\item{quantileCount}{(\emph{ScaleConfig}) Default range cardinality for \href{https://vega.github.io/vega-lite/docs/scale.html#quantile}{\code{quantile}} scale.
+\item{quantileCount}{(\emph{ScaleConfig}) Default range cardinality for \href{https://vega.github.io/vega-lite/docs/scale.html#quantile}{quantile} scale.
 
 \strong{Default value:} \code{4}}
 
-\item{quantizeCount}{(\emph{ScaleConfig}) Default range cardinality for \href{https://vega.github.io/vega-lite/docs/scale.html#quantize}{\code{quantize}} scale.
+\item{quantizeCount}{(\emph{ScaleConfig}) Default range cardinality for \href{https://vega.github.io/vega-lite/docs/scale.html#quantize}{quantize} scale.
 
 \strong{Default value:} \code{4}}
 

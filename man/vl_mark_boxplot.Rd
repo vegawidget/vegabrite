@@ -4,21 +4,10 @@
 \alias{vl_mark_boxplot}
 \title{vl_mark_boxplot}
 \usage{
-vl_mark_boxplot(
-  spec,
-  .object = NULL,
-  box = NULL,
-  clip = NULL,
-  color = NULL,
-  extent = NULL,
-  median = NULL,
-  opacity = NULL,
-  orient = NULL,
-  outliers = NULL,
-  rule = NULL,
-  size = NULL,
-  ticks = NULL
-)
+vl_mark_boxplot(spec, .object = NULL, box = NULL, clip = NULL,
+  color = NULL, extent = NULL, median = NULL, opacity = NULL,
+  orient = NULL, outliers = NULL, rule = NULL, size = NULL,
+  ticks = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
