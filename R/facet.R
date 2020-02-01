@@ -82,7 +82,6 @@
   return(vegawidget::as_vegaspec(spec))
 }
 
-
 .add_facet_row <- function(spec, ...) {
   .add_facet(spec, ..., .type = "row")
 }

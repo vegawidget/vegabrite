@@ -5,8 +5,10 @@ TOP_LEVEL_KEYS <- c(
 
 .modify_args <- function(override, exclude) {
   ## Capture inputs provided by user and make into an object
-  args_in <- rlang::fn_fmls_syms(rlang::caller_fn(n = 1))
-  args_eval <- lapply(args_in, eval, env = rlang::caller_env(n = 1))
+  args_formal <- formals(fun = sys.function(sys.parent(1)))
+  args_syms <- lapply(names(args_formal), as.symbol)
+  names(args_syms) <- names(args_formal)
+  args_eval <- lapply(args_syms, eval, env = sys.parent(1))
   args_nn <- args_eval[!vapply(args_eval, is.null, FALSE)]
   args_nn <- c(args_nn, override)
   is_obj <- !(names(args_nn) %in% c(exclude, ".object", "spec"))
