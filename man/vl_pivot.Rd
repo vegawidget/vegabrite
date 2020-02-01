@@ -4,15 +4,8 @@
 \alias{vl_pivot}
 \title{vl_pivot}
 \usage{
-vl_pivot(
-  spec,
-  .object = NULL,
-  pivot = NULL,
-  value = NULL,
-  groupby = NULL,
-  limit = NULL,
-  op = NULL
-)
+vl_pivot(spec, .object = NULL, pivot = NULL, value = NULL,
+  groupby = NULL, limit = NULL, op = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

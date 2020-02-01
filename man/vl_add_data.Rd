@@ -4,17 +4,9 @@
 \alias{vl_add_data}
 \title{vl_add_data}
 \usage{
-vl_add_data(
-  spec,
-  .object = NULL,
-  values = NULL,
-  format = NULL,
-  name = NULL,
-  url = NULL,
-  graticule = NULL,
-  sequence = NULL,
-  sphere = NULL
-)
+vl_add_data(spec, .object = NULL, values = NULL, format = NULL,
+  name = NULL, url = NULL, graticule = NULL, sequence = NULL,
+  sphere = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

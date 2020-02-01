@@ -4,18 +4,9 @@
 \alias{vl_regression}
 \title{vl_regression}
 \usage{
-vl_regression(
-  spec,
-  .object = NULL,
-  regression = NULL,
-  on = NULL,
-  as = NULL,
-  extent = NULL,
-  groupby = NULL,
-  method = NULL,
-  order = NULL,
-  params = NULL
-)
+vl_regression(spec, .object = NULL, regression = NULL, on = NULL,
+  as = NULL, extent = NULL, groupby = NULL, method = NULL,
+  order = NULL, params = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

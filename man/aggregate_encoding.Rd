@@ -32,201 +32,145 @@
 \alias{vl_aggregate_yError2}
 \title{Add aggregate transform to encoding}
 \usage{
-vl_aggregate_color(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_color(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_detail(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_detail(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_fill(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_fill(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_fillOpacity(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_fillOpacity(spec, aggregate = c("average", "count",
+  "distinct", "max", "mean", "median", "min", "missing", "q1", "q3", "ci0",
+  "ci1", "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_href(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_href(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_key(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_key(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_latitude(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_latitude(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_latitude2(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_latitude2(spec, aggregate = c("average", "count",
+  "distinct", "max", "mean", "median", "min", "missing", "q1", "q3", "ci0",
+  "ci1", "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_longitude(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_longitude(spec, aggregate = c("average", "count",
+  "distinct", "max", "mean", "median", "min", "missing", "q1", "q3", "ci0",
+  "ci1", "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_longitude2(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_longitude2(spec, aggregate = c("average", "count",
+  "distinct", "max", "mean", "median", "min", "missing", "q1", "q3", "ci0",
+  "ci1", "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_opacity(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_opacity(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_order(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_order(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_shape(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_shape(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_size(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_size(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_stroke(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_stroke(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_strokeOpacity(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_strokeOpacity(spec, aggregate = c("average", "count",
+  "distinct", "max", "mean", "median", "min", "missing", "q1", "q3", "ci0",
+  "ci1", "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_strokeWidth(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_strokeWidth(spec, aggregate = c("average", "count",
+  "distinct", "max", "mean", "median", "min", "missing", "q1", "q3", "ci0",
+  "ci1", "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_text(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_text(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_tooltip(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_tooltip(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_url(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_url(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_x(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_x(spec, aggregate = c("average", "count", "distinct", "max",
+  "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1", "stderr",
+  "stdev", "stdevp", "sum", "valid", "values", "variance", "variancep",
+  NA))
 
-vl_aggregate_x2(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_x2(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_xError(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_xError(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_xError2(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_xError2(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_y(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_y(spec, aggregate = c("average", "count", "distinct", "max",
+  "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1", "stderr",
+  "stdev", "stdevp", "sum", "valid", "values", "variance", "variancep",
+  NA))
 
-vl_aggregate_y2(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_y2(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_yError(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_yError(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 
-vl_aggregate_yError2(
-  spec,
-  aggregate = c("average", "count", "distinct", "max", "mean", "median", "min",
-    "missing", "q1", "q3", "ci0", "ci1", "stderr", "stdev", "stdevp", "sum", "valid",
-    "values", "variance", "variancep", NA)
-)
+vl_aggregate_yError2(spec, aggregate = c("average", "count", "distinct",
+  "max", "mean", "median", "min", "missing", "q1", "q3", "ci0", "ci1",
+  "stderr", "stdev", "stdevp", "sum", "valid", "values", "variance",
+  "variancep", NA))
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

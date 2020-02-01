@@ -4,16 +4,9 @@
 \alias{vl_config_range}
 \title{vl_config_range}
 \usage{
-vl_config_range(
-  spec,
-  .object = NULL,
-  category = NULL,
-  diverging = NULL,
-  heatmap = NULL,
-  ordinal = NULL,
-  ramp = NULL,
-  symbol = NULL
-)
+vl_config_range(spec, .object = NULL, category = NULL,
+  diverging = NULL, heatmap = NULL, ordinal = NULL, ramp = NULL,
+  symbol = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

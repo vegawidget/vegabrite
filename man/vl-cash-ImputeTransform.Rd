@@ -4,9 +4,9 @@
 \alias{vl$ImputeTransform}
 \title{ImputeTransform}
 \arguments{
-\item{frame}{(\emph{ImputeTransform}) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. For example, the value \verb{[-5, 5]} indicates that the window should include five objects preceding and five objects following the current object.
+\item{frame}{(\emph{ImputeTransform}) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. For example, the value \code{[-5, 5]} indicates that the window should include five objects preceding and five objects following the current object.
 
-\strong{Default value:}:  \verb{[null, null]} indicating that the window includes all objects.}
+\strong{Default value:}:  \code{[null, null]} indicating that the window includes all objects.}
 
 \item{groupby}{(\emph{ImputeTransform}) An optional array of fields by which to group the values.
 Imputation will then be performed on a per-group basis.}

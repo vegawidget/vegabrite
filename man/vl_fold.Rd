@@ -14,7 +14,7 @@ vl_fold(spec, .object = NULL, fold = NULL, as = NULL)
 \item{fold}{(\emph{FoldTransform}) An array of data fields indicating the properties to fold.}
 
 \item{as}{(\emph{FoldTransform}) The output field names for the key and value properties produced by the fold transform.
-\strong{Default value:} \verb{["key", "value"]}}
+\strong{Default value:} \code{["key", "value"]}}
 }
 \value{
 A modified Vega-Lite Spec

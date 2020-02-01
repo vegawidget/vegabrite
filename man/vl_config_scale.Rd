@@ -4,31 +4,15 @@
 \alias{vl_config_scale}
 \title{vl_config_scale}
 \usage{
-vl_config_scale(
-  spec,
-  .object = NULL,
-  bandPaddingInner = NULL,
-  bandPaddingOuter = NULL,
-  barBandPaddingInner = NULL,
-  clamp = NULL,
-  continuousPadding = NULL,
-  maxBandSize = NULL,
-  maxFontSize = NULL,
-  maxOpacity = NULL,
-  maxSize = NULL,
-  maxStrokeWidth = NULL,
-  minBandSize = NULL,
-  minFontSize = NULL,
-  minOpacity = NULL,
-  minSize = NULL,
-  minStrokeWidth = NULL,
-  pointPadding = NULL,
-  quantileCount = NULL,
-  quantizeCount = NULL,
-  rectBandPaddingInner = NULL,
-  round = NULL,
-  useUnaggregatedDomain = NULL
-)
+vl_config_scale(spec, .object = NULL, bandPaddingInner = NULL,
+  bandPaddingOuter = NULL, barBandPaddingInner = NULL, clamp = NULL,
+  continuousPadding = NULL, maxBandSize = NULL, maxFontSize = NULL,
+  maxOpacity = NULL, maxSize = NULL, maxStrokeWidth = NULL,
+  minBandSize = NULL, minFontSize = NULL, minOpacity = NULL,
+  minSize = NULL, minStrokeWidth = NULL, pointPadding = NULL,
+  quantileCount = NULL, quantizeCount = NULL,
+  rectBandPaddingInner = NULL, round = NULL,
+  useUnaggregatedDomain = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -99,11 +83,11 @@ If undefined (default), we will use the axis's size (width or height) - 1.}
 
 \strong{Default value:} \code{0.5} (which makes \emph{width/height = number of unique values * step})}
 
-\item{quantileCount}{(\emph{ScaleConfig}) Default range cardinality for \href{https://vega.github.io/vega-lite/docs/scale.html#quantile}{\code{quantile}} scale.
+\item{quantileCount}{(\emph{ScaleConfig}) Default range cardinality for \href{https://vega.github.io/vega-lite/docs/scale.html#quantile}{quantile} scale.
 
 \strong{Default value:} \code{4}}
 
-\item{quantizeCount}{(\emph{ScaleConfig}) Default range cardinality for \href{https://vega.github.io/vega-lite/docs/scale.html#quantize}{\code{quantize}} scale.
+\item{quantizeCount}{(\emph{ScaleConfig}) Default range cardinality for \href{https://vega.github.io/vega-lite/docs/scale.html#quantize}{quantize} scale.
 
 \strong{Default value:} \code{4}}
 

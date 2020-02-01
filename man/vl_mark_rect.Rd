@@ -4,74 +4,25 @@
 \alias{vl_mark_rect}
 \title{vl_mark_rect}
 \usage{
-vl_mark_rect(
-  spec,
-  .object = NULL,
-  align = NULL,
-  angle = NULL,
-  aspect = NULL,
-  baseline = NULL,
-  binSpacing = NULL,
-  clip = NULL,
-  color = NULL,
-  cornerRadius = NULL,
-  cornerRadiusBottomLeft = NULL,
-  cornerRadiusBottomRight = NULL,
-  cornerRadiusTopLeft = NULL,
-  cornerRadiusTopRight = NULL,
-  cursor = NULL,
-  dir = NULL,
-  dx = NULL,
-  dy = NULL,
-  ellipsis = NULL,
-  fill = NULL,
-  fillOpacity = NULL,
-  filled = NULL,
-  font = NULL,
-  fontSize = NULL,
-  fontStyle = NULL,
-  fontWeight = NULL,
-  height = NULL,
-  href = NULL,
-  interpolate = NULL,
-  invalid = NULL,
-  limit = NULL,
-  line = NULL,
-  lineBreak = NULL,
-  lineHeight = NULL,
-  opacity = NULL,
-  order = NULL,
-  orient = NULL,
-  point = NULL,
-  radius = NULL,
-  shape = NULL,
-  size = NULL,
-  stroke = NULL,
-  strokeCap = NULL,
-  strokeDash = NULL,
-  strokeDashOffset = NULL,
-  strokeJoin = NULL,
-  strokeMiterLimit = NULL,
-  strokeOpacity = NULL,
-  strokeWidth = NULL,
-  style = NULL,
-  tension = NULL,
-  text = NULL,
-  theta = NULL,
-  thickness = NULL,
-  timeUnitBand = NULL,
-  timeUnitBandPosition = NULL,
-  tooltip = NULL,
-  width = NULL,
-  x = NULL,
-  x2 = NULL,
-  x2Offset = NULL,
-  xOffset = NULL,
-  y = NULL,
-  y2 = NULL,
-  y2Offset = NULL,
-  yOffset = NULL
-)
+vl_mark_rect(spec, .object = NULL, align = NULL, angle = NULL,
+  aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL,
+  color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL,
+  cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL,
+  cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL,
+  dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL,
+  fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL,
+  fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL,
+  interpolate = NULL, invalid = NULL, limit = NULL, line = NULL,
+  lineBreak = NULL, lineHeight = NULL, opacity = NULL,
+  order = NULL, orient = NULL, point = NULL, radius = NULL,
+  shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL,
+  strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL,
+  strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL,
+  style = NULL, tension = NULL, text = NULL, theta = NULL,
+  thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL,
+  tooltip = NULL, width = NULL, x = NULL, x2 = NULL,
+  x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL,
+  y2Offset = NULL, yOffset = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -148,7 +99,7 @@ vl_mark_rect(
 
 \item{filled}{(\emph{MarkDef}) Whether the mark's color should be used as fill color instead of stroke color.
 
-\strong{Default value:} \code{false} for all \code{point}, \code{line}, and \code{rule} marks as well as \code{geoshape} marks for \href{https://vega.github.io/vega-lite/docs/data.html#graticule}{\code{graticule}} data sources; otherwise, \code{true}.
+\strong{Default value:} \code{false} for all \code{point}, \code{line}, and \code{rule} marks as well as \code{geoshape} marks for \href{https://vega.github.io/vega-lite/docs/data.html#graticule}{graticule} data sources; otherwise, \code{true}.
 
 \strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.}
 
@@ -310,7 +261,7 @@ If set to \code{0.5}, the marks will be positioned in the middle of the time uni
 \item If set to \code{null} or \code{false}, then no tooltip will be used.
 }
 
-See the \href{https://vega.github.io/vega-lite/docs/tooltip.html}{\code{tooltip}} documentation for a detailed discussion about tooltip  in Vega-Lite.
+See the \href{https://vega.github.io/vega-lite/docs/tooltip.html}{tooltip} documentation for a detailed discussion about tooltip  in Vega-Lite.
 
 \strong{Default value:} \code{null}}
 

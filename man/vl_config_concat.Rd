@@ -4,7 +4,8 @@
 \alias{vl_config_concat}
 \title{vl_config_concat}
 \usage{
-vl_config_concat(spec, .object = NULL, columns = NULL, spacing = NULL)
+vl_config_concat(spec, .object = NULL, columns = NULL,
+  spacing = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

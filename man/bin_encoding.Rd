@@ -32,425 +32,118 @@
 \alias{vl_bin_yError2}
 \title{Add bin to encoding}
 \usage{
-vl_bin_color(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_color(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_detail(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_detail(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_fill(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_fill(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_fillOpacity(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_fillOpacity(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_href(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_href(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_key(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_key(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_latitude(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_latitude(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_latitude2(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_latitude2(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_longitude(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_longitude(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_longitude2(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_longitude2(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_opacity(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_opacity(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_order(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_order(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_shape(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_shape(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_size(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_size(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_stroke(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_stroke(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_strokeOpacity(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_strokeOpacity(spec, .object = NULL, anchor = NULL,
+  base = NULL, binned = NULL, divide = NULL, extent = NULL,
+  maxbins = NULL, minstep = NULL, nice = NULL, step = NULL,
+  steps = NULL)
 
-vl_bin_strokeWidth(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_strokeWidth(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_text(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_text(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_tooltip(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_tooltip(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_url(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_url(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_x(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_x(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_x2(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_x2(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_xError(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_xError(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_xError2(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_xError2(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_y(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_y(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_y2(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_y2(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_yError(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_yError(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 
-vl_bin_yError2(
-  spec,
-  .object = NULL,
-  anchor = NULL,
-  base = NULL,
-  binned = NULL,
-  divide = NULL,
-  extent = NULL,
-  maxbins = NULL,
-  minstep = NULL,
-  nice = NULL,
-  step = NULL,
-  steps = NULL
-)
+vl_bin_yError2(spec, .object = NULL, anchor = NULL, base = NULL,
+  binned = NULL, divide = NULL, extent = NULL, maxbins = NULL,
+  minstep = NULL, nice = NULL, step = NULL, steps = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -469,9 +162,9 @@ vl_bin_yError2(
 
 \item{divide}{(\emph{BinParams}) Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
 
-\strong{Default value:} \verb{[5, 2]}}
+\strong{Default value:} \code{[5, 2]}}
 
-\item{extent}{(\emph{BinParams}) A two-element (\verb{[min, max]}) array indicating the range of desired bin values.}
+\item{extent}{(\emph{BinParams}) A two-element (\code{[min, max]}) array indicating the range of desired bin values.}
 
 \item{maxbins}{(\emph{BinParams}) Maximum number of bins.
 
