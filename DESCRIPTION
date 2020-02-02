@@ -21,5 +21,6 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown,
+    rlang,
     testthat (>= 2.1.0)
 VignetteBuilder: knitr

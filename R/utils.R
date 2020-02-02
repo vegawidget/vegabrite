@@ -16,7 +16,7 @@ TOP_LEVEL_KEYS <- c(
   if (".object" %in% names(args_nn)) {
     if (sum(is_obj) > 0) {
       # Get the name of first arg...
-      first_obj_arg <- names(args_in)[!(names(args_in) %in% c(exclude, ".object", "spec"))][1]
+      first_obj_arg <- names(args_formal)[!(names(args_formal) %in% c(exclude, ".object", "spec"))][1]
       if (!hasName(args_nn, first_obj_arg)) {
         args_obj <- args_nn[is_obj]
         args_obj[[first_obj_arg]] <- args_nn[[".object"]]

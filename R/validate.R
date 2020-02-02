@@ -99,7 +99,8 @@ is_valid_subschema <- function(obj, sub_schema, schema) {
   }
 
   if (!hasName(sub_schema, "type")) {
-    return("AAAH")
+    # Not sure what to do here... will return true for now
+    return(TRUE)
   }
   
   if (length(sub_schema[["type"]]) > 1) {
@@ -112,7 +113,7 @@ is_valid_subschema <- function(obj, sub_schema, schema) {
     array = is_valid_array(obj, sub_schema[["items"]], schema),
     boolean = is.logical(obj),
     string = is_valid_string(obj, sub_schema[["enum"]]),
-    null = is.na(obj) && length(obj) == 1,
+    null = length(obj) == 1 && is.na(obj),
     number = is.numeric(obj)
   )
 }
