@@ -14,7 +14,7 @@ The goal of vlbuildr is to provide an R api for building up vega-lite
 specs. For a guide on getting started using `vlbuildr`, check out the
 [getting started
 vignette](https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html).
-For some background and context on the package you an check out
+For some background and context on the package you can check out
 [slides](https://docs.google.com/presentation/d/e/2PACX-1vRUDiM3DaPjYP5b1BafSraf8GWwJk_jy6YV_l9lZgeBVwKDSfqiHcTn8M-Qm-6U7frMX7SLqQthJxah/pub?start=false&loop=false&delayms=3000)
 from a rstudio::conf talk in January 2020.
 
