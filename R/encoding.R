@@ -179,7 +179,7 @@ vl_encode <- function(spec, ...) {
     } else {
       args <- list(spec = spec, obj = inputs[[n]], ref = paste0("#/definitions/Encoding/properties/", n), encoding = n)
     }
-    spec <- rlang::exec(.add_encoding, !!!args)
+    spec <- do.call(.add_encoding, args)
   }
   spec
 }

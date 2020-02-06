@@ -31,6 +31,14 @@ test_that("can use shorthand type specification for ordinal", {
   expect_equivalent(chart$encoding$x$type, "ordinal")
 })
 
+test_that("can use shorthand type specification in type field", {
+  chart <- vl_chart() %>%
+    vl_encode_x(field = "abba", type = "N")
+  
+  expect_equivalent(chart$encoding$x$field, "abba")
+  expect_equivalent(chart$encoding$x$type, "nominal")
+})
+
 test_that("can use shorthand type with .object input", {
   chart <- vl_chart() %>%
     vl_encode_x("abba:O")
