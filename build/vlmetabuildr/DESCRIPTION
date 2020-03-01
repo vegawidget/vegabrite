@@ -13,4 +13,4 @@ Imports: purrr,
     utils,
     stringr
 RoxygenNote: 6.1.1
-Suggests: vegawidget
+Suggests: vegawidget, styler, devtools, fs

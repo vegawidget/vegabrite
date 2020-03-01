@@ -442,7 +442,7 @@ vl_add_data <- function(spec, .object = NULL, values = NULL, format = NULL, name
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_area <- function(spec, .object = NULL, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  obj <- .modify_args(structure(list(type = "area"), .Names = "type"), NULL)
+  obj <- .modify_args(list(type = "area"), NULL)
   .add_mark(spec, obj, "#/definitions/MarkDef")
 }
 #' vl_mark_bar
@@ -637,7 +637,7 @@ vl_mark_area <- function(spec, .object = NULL, align = NULL, angle = NULL, aspec
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_bar <- function(spec, .object = NULL, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  obj <- .modify_args(structure(list(type = "bar"), .Names = "type"), NULL)
+  obj <- .modify_args(list(type = "bar"), NULL)
   .add_mark(spec, obj, "#/definitions/MarkDef")
 }
 #' vl_mark_line
@@ -832,7 +832,7 @@ vl_mark_bar <- function(spec, .object = NULL, align = NULL, angle = NULL, aspect
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_line <- function(spec, .object = NULL, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  obj <- .modify_args(structure(list(type = "line"), .Names = "type"), NULL)
+  obj <- .modify_args(list(type = "line"), NULL)
   .add_mark(spec, obj, "#/definitions/MarkDef")
 }
 #' vl_mark_image
@@ -1027,7 +1027,7 @@ vl_mark_line <- function(spec, .object = NULL, align = NULL, angle = NULL, aspec
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_image <- function(spec, .object = NULL, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  obj <- .modify_args(structure(list(type = "image"), .Names = "type"), NULL)
+  obj <- .modify_args(list(type = "image"), NULL)
   .add_mark(spec, obj, "#/definitions/MarkDef")
 }
 #' vl_mark_trail
@@ -1222,7 +1222,7 @@ vl_mark_image <- function(spec, .object = NULL, align = NULL, angle = NULL, aspe
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_trail <- function(spec, .object = NULL, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  obj <- .modify_args(structure(list(type = "trail"), .Names = "type"), NULL)
+  obj <- .modify_args(list(type = "trail"), NULL)
   .add_mark(spec, obj, "#/definitions/MarkDef")
 }
 #' vl_mark_point
@@ -1417,7 +1417,7 @@ vl_mark_trail <- function(spec, .object = NULL, align = NULL, angle = NULL, aspe
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_point <- function(spec, .object = NULL, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  obj <- .modify_args(structure(list(type = "point"), .Names = "type"), NULL)
+  obj <- .modify_args(list(type = "point"), NULL)
   .add_mark(spec, obj, "#/definitions/MarkDef")
 }
 #' vl_mark_text
@@ -1612,7 +1612,7 @@ vl_mark_point <- function(spec, .object = NULL, align = NULL, angle = NULL, aspe
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_text <- function(spec, .object = NULL, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  obj <- .modify_args(structure(list(type = "text"), .Names = "type"), NULL)
+  obj <- .modify_args(list(type = "text"), NULL)
   .add_mark(spec, obj, "#/definitions/MarkDef")
 }
 #' vl_mark_tick
@@ -1807,7 +1807,7 @@ vl_mark_text <- function(spec, .object = NULL, align = NULL, angle = NULL, aspec
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_tick <- function(spec, .object = NULL, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  obj <- .modify_args(structure(list(type = "tick"), .Names = "type"), NULL)
+  obj <- .modify_args(list(type = "tick"), NULL)
   .add_mark(spec, obj, "#/definitions/MarkDef")
 }
 #' vl_mark_rect
@@ -2002,7 +2002,7 @@ vl_mark_tick <- function(spec, .object = NULL, align = NULL, angle = NULL, aspec
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_rect <- function(spec, .object = NULL, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  obj <- .modify_args(structure(list(type = "rect"), .Names = "type"), NULL)
+  obj <- .modify_args(list(type = "rect"), NULL)
   .add_mark(spec, obj, "#/definitions/MarkDef")
 }
 #' vl_mark_rule
@@ -2197,7 +2197,7 @@ vl_mark_rect <- function(spec, .object = NULL, align = NULL, angle = NULL, aspec
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_rule <- function(spec, .object = NULL, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  obj <- .modify_args(structure(list(type = "rule"), .Names = "type"), NULL)
+  obj <- .modify_args(list(type = "rule"), NULL)
   .add_mark(spec, obj, "#/definitions/MarkDef")
 }
 #' vl_mark_circle
@@ -2392,7 +2392,7 @@ vl_mark_rule <- function(spec, .object = NULL, align = NULL, angle = NULL, aspec
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_circle <- function(spec, .object = NULL, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  obj <- .modify_args(structure(list(type = "circle"), .Names = "type"), NULL)
+  obj <- .modify_args(list(type = "circle"), NULL)
   .add_mark(spec, obj, "#/definitions/MarkDef")
 }
 #' vl_mark_square
@@ -2587,7 +2587,7 @@ vl_mark_circle <- function(spec, .object = NULL, align = NULL, angle = NULL, asp
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_square <- function(spec, .object = NULL, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  obj <- .modify_args(structure(list(type = "square"), .Names = "type"), NULL)
+  obj <- .modify_args(list(type = "square"), NULL)
   .add_mark(spec, obj, "#/definitions/MarkDef")
 }
 #' vl_mark_geoshape
@@ -2782,7 +2782,7 @@ vl_mark_square <- function(spec, .object = NULL, align = NULL, angle = NULL, asp
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_geoshape <- function(spec, .object = NULL, align = NULL, angle = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, clip = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, point = NULL, radius = NULL, shape = NULL, size = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, thickness = NULL, timeUnitBand = NULL, timeUnitBandPosition = NULL, tooltip = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
-  obj <- .modify_args(structure(list(type = "geoshape"), .Names = "type"), NULL)
+  obj <- .modify_args(list(type = "geoshape"), NULL)
   .add_mark(spec, obj, "#/definitions/MarkDef")
 }
 #' vl_mark_boxplot
@@ -2816,7 +2816,7 @@ vl_mark_geoshape <- function(spec, .object = NULL, align = NULL, angle = NULL, a
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_boxplot <- function(spec, .object = NULL, box = NULL, clip = NULL, color = NULL, extent = NULL, median = NULL, opacity = NULL, orient = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL) {
-  obj <- .modify_args(structure(list(type = "boxplot"), .Names = "type"), NULL)
+  obj <- .modify_args(list(type = "boxplot"), NULL)
   .add_mark(spec, obj, "#/definitions/BoxPlotDef")
 }
 #' vl_mark_errorbar
@@ -2846,7 +2846,7 @@ vl_mark_boxplot <- function(spec, .object = NULL, box = NULL, clip = NULL, color
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_errorbar <- function(spec, .object = NULL, clip = NULL, color = NULL, extent = NULL, opacity = NULL, orient = NULL, rule = NULL, ticks = NULL) {
-  obj <- .modify_args(structure(list(type = "errorbar"), .Names = "type"), NULL)
+  obj <- .modify_args(list(type = "errorbar"), NULL)
   .add_mark(spec, obj, "#/definitions/ErrorBarDef")
 }
 #' vl_mark_errorband
@@ -2891,7 +2891,7 @@ vl_mark_errorbar <- function(spec, .object = NULL, clip = NULL, color = NULL, ex
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_errorband <- function(spec, .object = NULL, band = NULL, borders = NULL, clip = NULL, color = NULL, extent = NULL, interpolate = NULL, opacity = NULL, orient = NULL, tension = NULL) {
-  obj <- .modify_args(structure(list(type = "errorband"), .Names = "type"), NULL)
+  obj <- .modify_args(list(type = "errorband"), NULL)
   .add_mark(spec, obj, "#/definitions/ErrorBandDef")
 }
 #' vl_encode_color
@@ -17664,6 +17664,16 @@ vl$`BindRange` <- function(`debounce` = NULL, `element` = NULL, `input` = NULL, 
 #' @name vl$BindRadioSelect
 vl$`BindRadioSelect` <- function(`debounce` = NULL, `element` = NULL, `input` = NULL, `labels` = NULL, `name` = NULL, `options` = NULL, `type` = NULL) {
   .modify_args(NULL, NULL)
+}
+#' SortField
+#'
+#' Create object for SortField
+#' @param field (_SortField_) The name of the field to sort.
+#' @param order (_SortField_) Whether to sort the field in ascending or descending order. One of `"ascending"` (default), `"descending"`, or `null` (no not sort).
+#' @return A component of a Vega-Lite spec, corresponding to SortField definition.
+#' @name vl$SortField
+vl$`SortField` <- function(`field` = NULL, `order` = NULL) {
+  .modify_args(NULL, NULL)
 } #' @export
 #' @name vlbuildr-deprecated
 vl_make_BinParams <- function(...) {
@@ -17697,6 +17707,11 @@ vl_make_BindRange <- function(...) {
 } #' @export
 #' @name vlbuildr-deprecated
 vl_make_BindRadioSelect <- function(...) {
+  .Deprecated("vl$object", package = "vlbuidlr")
+  vl$object(...)
+} #' @export
+#' @name vlbuildr-deprecated
+vl_make_SortField <- function(...) {
   .Deprecated("vl$object", package = "vlbuidlr")
   vl$object(...)
 }
