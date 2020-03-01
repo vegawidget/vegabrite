@@ -52,7 +52,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Aicia Schep \email{aschep@gmail.com}
+\strong{Maintainer}: Alicia Schep \email{aschep@gmail.com}
 
 Authors:
 \itemize{

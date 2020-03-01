@@ -122,6 +122,7 @@
 \alias{vl_make_BindCheckbox}
 \alias{vl_make_BindRange}
 \alias{vl_make_BindRadioSelect}
+\alias{vl_make_SortField}
 \title{Deprecated functions from vlbuildr}
 \usage{
 vl_make_Color(...)
@@ -363,6 +364,8 @@ vl_make_BindCheckbox(...)
 vl_make_BindRange(...)
 
 vl_make_BindRadioSelect(...)
+
+vl_make_SortField(...)
 }
 \arguments{
 \item{...}{argument to pass to new function}
