@@ -1,6 +1,5 @@
 destination: docs
 
-
 navbar:
   title: "vlbuildr"
   left:
@@ -8,8 +7,16 @@ navbar:
       href: index.html
     - text: "Getting Started"
       href: articles/articles/introduction.html
-    - text: "Design"
-      href: articles/design.html 
+    - text: "Articles"
+      menu:
+        - text: "Design"
+          href: articles/design.html
+        - text: "Interactivity"
+          href: articles/interactivity.html
+        - text: "Composition"
+          href: articles/composition.html
+        - text: "Customization"
+          href: articles/customization.html
     - text: "Examples"
       href: articles/articles/examples.html
     - text: "Reference"
@@ -17,7 +24,6 @@ navbar:
   right:
     - icon: fa-github fa-lg
       href: https://github.com/vegawidget/vlbuildr
-
 
 reference:
   - title: "Initialize a chart"

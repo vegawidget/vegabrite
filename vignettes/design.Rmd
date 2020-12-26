@@ -1,5 +1,5 @@
 ---
-title: "Design"
+title: "Design of `vlbuildr`"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -24,10 +24,9 @@ vl_chart() %>%
 ```
 
 
-
 ## Underlying objects
 
-At the moment, the various top-level specs are S3 classes that are basically treated as lists.  A few of the internal functions take advantage of the classes to help determine the right way to add a component.
+At the moment, the various top-level specs are S3 classes.  A few of the internal functions take advantage of the classes to help determine the right way to add a component.
 
 There currently are no classes for any sub-components of a spec, e.g. a class that might correspond to an "Axis" definition from the Vega-Lite spec. Rather, functions build those components as lists, and the validity is checked using the schema.
 

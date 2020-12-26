@@ -1,0 +1,126 @@
+---
+title: "Interactivity"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+**This vignette covers how to add interactivity in `vlbuildr`.For an introduction to making individual charts see the [introduction vignette](https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html).**
+
+Vega-lite enables adding several kinds of interactivity to plots, from simple tooltips to panning/zooming to more complex cross-filtering and highlighting. 
+
+## Tooltips
+
+Tooltips are text annotations that pop up when you hover over an element in a plot. `vlbuildr` provides several different ways of specifying what gets shown in tooltips.
+
+### All the encodings
+
+To get a tooltip that shows the values for fields set in the encoding, use `tooltip = TRUE` in the call to add a mark to the plot.
+
+```{r}
+library(vlbuildr)
+
+vl_chart(mtcars) %>%
+  vl_mark_point(tooltip = TRUE) %>%
+  vl_encode_x('wt') %>%
+  vl_encode_y('mpg')
+```
+
+### All data associated with point
+
+To get all the data to show up (not just what is used by encoding) pass `list(content = "data")` to the tooltip argument.
+
+```{r}
+vl_chart(mtcars) %>%
+  vl_mark_point(tooltip = list(content = "data")) %>%
+  vl_encode_x('wt') %>%
+  vl_encode_y('mpg')
+```
+
+`vlbuildr` also has a shortcut, whereby if you pass "data" or "encoding" to the tooltip argument, it will transform it into the above list format in the spec. So the following will do the same thing:
+
+```{r}
+vl_chart(mtcars) %>%
+  vl_mark_point(tooltip = "data") %>%
+  vl_encode_x('wt') %>%
+  vl_encode_y('mpg')
+```
+
+### To some constant value 
+
+You can also set the tooltip to a constant value -- e.g. to get each point to say "Hi!":
+
+```{r}
+vl_chart(mtcars) %>%
+  vl_mark_point(tooltip = "Hi!") %>%
+  vl_encode_x('wt') %>%
+  vl_encode_y('mpg')
+```
+
+### Via an encoding channel
+
+We can also use a column of the data by passing the tooltip as an encoding. If we want to use the `row.names` of the `data.frame` we can use `'_row'` as the name:    
+
+```{r}
+vl_chart(mtcars) %>%
+  vl_mark_point() %>%
+  vl_encode_x('wt') %>%
+  vl_encode_y('mpg') %>% 
+  vl_encode_tooltip('_row')
+```
+
+## Selections
+
+Selections are the way that `vega-lite` enables manipulating what is shown on the plot based on interactions. There are a few different types of selections -- 'interval', 'single', and 'multi', which correspond to an interval of the data, a single data point, or multiple data points, respectively.  Selections can be "bound" to input widgets, the scales of the chart, or to the legends of the chart.  Encoding can be conditioned on a selection so that selected data is for example shown with a different color.  
+
+### Conditioning an encoding to a selection
+
+As an initial example we will consider being able to select a rectangle of data and conditioning the coloring of the plot so that points inside the rectangle are colored differently (based on a field in the data) from points outside of the selected rectange (gray).
+
+To add this type of behavior we have to add an "interval selection", which can be done with `vl_add_interval_selection`. \
+
+
+* Initialize
+
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_add_interval_selection("brush", init = list(x = c(55,160), y = c(13,37))) %>%
+  vl_mark_point() %>%
+  vl_encode_x(field = "Horsepower", type = "quantitative") %>%
+  vl_encode_y(field = "Miles_per_Gallon", type = "quantitative") %>%
+  vl_encode_color(value = "grey") %>%
+  vl_condition_color(selection = "brush", field = "Cylinders", type = "ordinal")
+```
+
+* Clear
+
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_add_interval_selection("brush", clear = "mouseup") %>%
+  vl_mark_point() %>%
+  vl_encode_x(field = "Horsepower", type = "quantitative") %>%
+  vl_encode_y(field = "Miles_per_Gallon", type = "quantitative") %>%
+  vl_encode_color(value = "grey") %>%
+  vl_condition_color(selection = "brush", field = "Cylinders", type = "ordinal")
+```
+
+
+### Cross-linking
+
+### Input widgets
+
+### Panning and Zooming
+
+Binding interval selection to scales
+
+
+

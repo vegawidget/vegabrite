@@ -1,0 +1,17 @@
+---
+title: "Customization"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+**This vignette covers how to customize charts in `vlbuildr`.For an introduction to making individual charts see the [introduction vignette](https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html).**
+
+
