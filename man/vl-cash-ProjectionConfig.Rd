@@ -4,17 +4,21 @@
 \alias{vl$ProjectionConfig}
 \title{ProjectionConfig}
 \arguments{
-\item{center}{(\emph{Projection}) The projection’s center to the specified center, a two-element array of longitude and latitude in degrees.
+\item{center}{(\emph{Projection}) The projection's center, a two-element array of longitude and latitude in degrees.
 
 \strong{Default value:} \verb{[0, 0]}}
 
-\item{clipAngle}{(\emph{Projection}) The projection’s clipping circle radius to the specified angle in degrees. If \code{null}, switches to \href{http://bl.ocks.org/mbostock/3788999}{antimeridian} cutting rather than small-circle clipping.}
+\item{clipAngle}{(\emph{Projection}) The projection's clipping circle radius to the specified angle in degrees. If \code{null}, switches to \href{http://bl.ocks.org/mbostock/3788999}{antimeridian} cutting rather than small-circle clipping.}
 
-\item{clipExtent}{(\emph{Projection}) The projection’s viewport clip extent to the specified bounds in pixels. The extent bounds are specified as an array \verb{[\[x0, y0\], \[x1, y1\]]}, where \code{x0} is the left-side of the viewport, \code{y0} is the top, \code{x1} is the right and \code{y1} is the bottom. If \code{null}, no viewport clipping is performed.}
+\item{clipExtent}{(\emph{Projection}) The projection's viewport clip extent to the specified bounds in pixels. The extent bounds are specified as an array \verb{[\[x0, y0\], \[x1, y1\]]}, where \code{x0} is the left-side of the viewport, \code{y0} is the top, \code{x1} is the right and \code{y1} is the bottom. If \code{null}, no viewport clipping is performed.}
 
 \item{coefficient}{(\emph{Projection})}
 
 \item{distance}{(\emph{Projection})}
+
+\item{extent}{(\emph{Projection})}
+
+\item{fit}{(\emph{Projection})}
 
 \item{fraction}{(\emph{Projection})}
 
@@ -22,9 +26,13 @@
 
 \item{parallel}{(\emph{Projection})}
 
-\item{parallels}{(\emph{Projection})}
+\item{parallels}{(\emph{Projection}) For conic projections, the \href{https://en.wikipedia.org/wiki/Map_projection#Conic}{two standard parallels} that define the map layout. The default depends on the specific conic projection used.}
 
-\item{precision}{(\emph{Projection}) The threshold for the projection’s \href{http://bl.ocks.org/mbostock/3795544}{adaptive resampling} to the specified value in pixels. This value corresponds to the \href{http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm}{Douglas–Peucker distance}. If precision is not specified, returns the projection’s current resampling precision which defaults to \verb{√0.5 ≅ 0.70710…}.}
+\item{pointRadius}{(\emph{Projection}) The default radius (in pixels) to use when drawing GeoJSON \code{Point} and \code{MultiPoint} geometries. This parameter sets a constant default value. To modify the point radius in response to data, see the corresponding parameter of the GeoPath and GeoShape transforms.
+
+\strong{Default value:} \code{4.5}}
+
+\item{precision}{(\emph{Projection}) The threshold for the projection's \href{http://bl.ocks.org/mbostock/3795544}{adaptive resampling} to the specified value in pixels. This value corresponds to the \href{http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm}{Douglas–Peucker distance}. If precision is not specified, returns the projection's current resampling precision which defaults to \verb{√0.5 ≅ 0.70710…}.}
 
 \item{radius}{(\emph{Projection})}
 
@@ -34,17 +42,19 @@
 
 \item{reflectY}{(\emph{Projection})}
 
-\item{rotate}{(\emph{Projection}) The projection’s three-axis rotation to the specified angles, which must be a two- or three-element array of numbers [\code{lambda}, \code{phi}, \code{gamma}] specifying the rotation angles in degrees about each spherical axis. (These correspond to yaw, pitch and roll.)
+\item{rotate}{(\emph{Projection}) The projection's three-axis rotation to the specified angles, which must be a two- or three-element array of numbers [\code{lambda}, \code{phi}, \code{gamma}] specifying the rotation angles in degrees about each spherical axis. (These correspond to yaw, pitch and roll.)
 
 \strong{Default value:} \verb{[0, 0, 0]}}
 
-\item{scale}{(\emph{Projection}) The projection's scale (zoom) value, overriding automatic fitting.}
+\item{scale}{(\emph{Projection}) The projection’s scale (zoom) factor, overriding automatic fitting. The default scale is projection-specific. The scale factor corresponds linearly to the distance between projected points; however, scale factor values are not equivalent across projections.}
+
+\item{size}{(\emph{Projection})}
 
 \item{spacing}{(\emph{Projection})}
 
 \item{tilt}{(\emph{Projection})}
 
-\item{translate}{(\emph{Projection}) The projection's translation (pan) value, overriding automatic fitting.}
+\item{translate}{(\emph{Projection}) The projection’s translation offset as a two-element array \verb{[tx, ty]}.}
 
 \item{type}{(\emph{Projection}) The cartographic projection to use. This value is case-insensitive, for example \code{"albers"} and \code{"Albers"} indicate the same projection type. You can find all valid projection types \href{https://vega.github.io/vega-lite/docs/projection.html#projection-types}{in the documentation}.
 

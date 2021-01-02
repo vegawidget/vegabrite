@@ -9,18 +9,27 @@ vl_mark_line(
   .object = NULL,
   align = NULL,
   angle = NULL,
+  aria = NULL,
+  ariaRole = NULL,
+  ariaRoleDescription = NULL,
   aspect = NULL,
+  bandSize = NULL,
   baseline = NULL,
   binSpacing = NULL,
+  blend = NULL,
   clip = NULL,
   color = NULL,
+  continuousBandSize = NULL,
   cornerRadius = NULL,
   cornerRadiusBottomLeft = NULL,
   cornerRadiusBottomRight = NULL,
+  cornerRadiusEnd = NULL,
   cornerRadiusTopLeft = NULL,
   cornerRadiusTopRight = NULL,
   cursor = NULL,
+  description = NULL,
   dir = NULL,
+  discreteBandSize = NULL,
   dx = NULL,
   dy = NULL,
   ellipsis = NULL,
@@ -33,6 +42,7 @@ vl_mark_line(
   fontWeight = NULL,
   height = NULL,
   href = NULL,
+  innerRadius = NULL,
   interpolate = NULL,
   invalid = NULL,
   limit = NULL,
@@ -42,26 +52,37 @@ vl_mark_line(
   opacity = NULL,
   order = NULL,
   orient = NULL,
+  outerRadius = NULL,
+  padAngle = NULL,
   point = NULL,
   radius = NULL,
+  radius2 = NULL,
+  radius2Offset = NULL,
+  radiusOffset = NULL,
   shape = NULL,
   size = NULL,
+  smooth = NULL,
   stroke = NULL,
   strokeCap = NULL,
   strokeDash = NULL,
   strokeDashOffset = NULL,
   strokeJoin = NULL,
   strokeMiterLimit = NULL,
+  strokeOffset = NULL,
   strokeOpacity = NULL,
   strokeWidth = NULL,
   style = NULL,
   tension = NULL,
   text = NULL,
   theta = NULL,
+  theta2 = NULL,
+  theta2Offset = NULL,
+  thetaOffset = NULL,
   thickness = NULL,
   timeUnitBand = NULL,
   timeUnitBandPosition = NULL,
   tooltip = NULL,
+  url = NULL,
   width = NULL,
   x = NULL,
   x2 = NULL,
@@ -78,19 +99,35 @@ vl_mark_line(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef}
 
-\item{align}{(\emph{MarkDef}) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of \code{"left"}, \code{"right"}, \code{"center"}.}
+\item{align}{(\emph{MarkDef}) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of \code{"left"}, \code{"right"}, \code{"center"}.
 
-\item{angle}{(\emph{MarkDef}) The rotation angle of the text, in degrees.}
+\strong{Note:} Expression reference is \emph{not} supported for range marks.}
 
-\item{aspect}{(\emph{MarkDef}) Whether to keep aspect ratio of image marks.}
+\item{angle}{(\emph{MarkDef})}
 
-\item{baseline}{(\emph{MarkDef}) The vertical alignment of the text or ranged marks (area, bar, image, rect, rule). One of \code{"top"}, \code{"middle"}, \code{"bottom"}.
+\item{aria}{(\emph{MarkDef})}
 
-\strong{Default value:} \code{"middle"}}
+\item{ariaRole}{(\emph{MarkDef})}
+
+\item{ariaRoleDescription}{(\emph{MarkDef})}
+
+\item{aspect}{(\emph{MarkDef})}
+
+\item{bandSize}{(\emph{MarkDef}) The width of the ticks.
+
+\strong{Default value:}  3/4 of step (width step for horizontal ticks and height step for vertical ticks).}
+
+\item{baseline}{(\emph{MarkDef}) For text marks, the vertical text baseline. One of \code{"alphabetic"} (default), \code{"top"}, \code{"middle"}, \code{"bottom"}, \code{"line-top"}, \code{"line-bottom"}, or an expression reference that provides one of the valid values. The \code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"} and \code{"bottom"}, but are calculated relative to the \code{lineHeight} rather than \code{fontSize} alone.
+
+For range marks, the vertical alignment of the marks. One of \code{"top"}, \code{"middle"}, \code{"bottom"}.
+
+\strong{Note:} Expression reference is \emph{not} supported for range marks.}
 
 \item{binSpacing}{(\emph{MarkDef}) Offset between bars for binned field. The ideal value for this is either 0 (preferred by statisticians) or 1 (Vega-Lite default, D3 example style).
 
 \strong{Default value:} \code{1}}
+
+\item{blend}{(\emph{MarkDef})}
 
 \item{clip}{(\emph{MarkDef}) Whether a mark be clipped to the enclosing group’s width and height.}
 
@@ -98,53 +135,43 @@ vl_mark_line(
 
 \strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
 
-\strong{Note:}
-\itemize{
-\item This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.
-\item The \code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.
-}}
+\strong{Note:} - This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. - The \code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.}
 
-\item{cornerRadius}{(\emph{MarkDef}) The radius in pixels of rounded rectangle corners.
+\item{continuousBandSize}{(\emph{MarkDef}) The default size of the bars on continuous scales.
 
-\strong{Default value:} \code{0}}
+\strong{Default value:} \code{5}}
 
-\item{cornerRadiusBottomLeft}{(\emph{MarkDef}) The radius in pixels of rounded rectangle bottom left corner.
+\item{cornerRadius}{(\emph{MarkDef})}
 
-\strong{Default value:} \code{0}}
+\item{cornerRadiusBottomLeft}{(\emph{MarkDef})}
 
-\item{cornerRadiusBottomRight}{(\emph{MarkDef}) The radius in pixels of rounded rectangle bottom right corner.
+\item{cornerRadiusBottomRight}{(\emph{MarkDef})}
 
-\strong{Default value:} \code{0}}
+\item{cornerRadiusEnd}{(\emph{MarkDef}) - For vertical bars, top-left and top-right corner radius. - For horizontal bars, top-right and bottom-right corner radius.}
 
-\item{cornerRadiusTopLeft}{(\emph{MarkDef}) The radius in pixels of rounded rectangle top right corner.
+\item{cornerRadiusTopLeft}{(\emph{MarkDef})}
 
-\strong{Default value:} \code{0}}
+\item{cornerRadiusTopRight}{(\emph{MarkDef})}
 
-\item{cornerRadiusTopRight}{(\emph{MarkDef}) The radius in pixels of rounded rectangle top left corner.
+\item{cursor}{(\emph{MarkDef})}
 
-\strong{Default value:} \code{0}}
+\item{description}{(\emph{MarkDef})}
 
-\item{cursor}{(\emph{MarkDef}) The mouse cursor used over the mark. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values}{CSS cursor type} can be used.}
+\item{dir}{(\emph{MarkDef})}
 
-\item{dir}{(\emph{MarkDef}) The direction of the text. One of \code{"ltr"} (left-to-right) or \code{"rtl"} (right-to-left). This property determines on which side is truncated in response to the limit parameter.
+\item{discreteBandSize}{(\emph{MarkDef}) The default size of the bars with discrete dimensions. If unspecified, the default size is  \code{step-2}, which provides 2 pixel offset between bars.}
 
-\strong{Default value:} \code{"ltr"}}
+\item{dx}{(\emph{MarkDef})}
 
-\item{dx}{(\emph{MarkDef}) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the \emph{angle} property.}
+\item{dy}{(\emph{MarkDef})}
 
-\item{dy}{(\emph{MarkDef}) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the \emph{angle} property.}
+\item{ellipsis}{(\emph{MarkDef})}
 
-\item{ellipsis}{(\emph{MarkDef}) The ellipsis string for text truncated in response to the limit parameter.
-
-\strong{Default value:} \code{"…"}}
-
-\item{fill}{(\emph{MarkDef}) Default Fill Color. This has higher precedence than \code{config.color}.
+\item{fill}{(\emph{MarkDef}) Default fill color. This property has higher precedence than \code{config.color}. Set to \code{null} to remove fill.
 
 \strong{Default value:} (None)}
 
-\item{fillOpacity}{(\emph{MarkDef}) The fill opacity (value between [0,1]).
-
-\strong{Default value:} \code{1}}
+\item{fillOpacity}{(\emph{MarkDef})}
 
 \item{filled}{(\emph{MarkDef}) Whether the mark's color should be used as fill color instead of stroke color.
 
@@ -152,45 +179,25 @@ vl_mark_line(
 
 \strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.}
 
-\item{font}{(\emph{MarkDef}) The typeface to set the text in (e.g., \code{"Helvetica Neue"}).}
+\item{font}{(\emph{MarkDef})}
 
-\item{fontSize}{(\emph{MarkDef}) The font size, in pixels.}
+\item{fontSize}{(\emph{MarkDef})}
 
-\item{fontStyle}{(\emph{MarkDef}) The font style (e.g., \code{"italic"}).}
+\item{fontStyle}{(\emph{MarkDef})}
 
-\item{fontWeight}{(\emph{MarkDef}) The font weight.
-This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
+\item{fontWeight}{(\emph{MarkDef})}
 
-\item{height}{(\emph{MarkDef}) Height of the marks.}
+\item{height}{(\emph{MarkDef})}
 
-\item{href}{(\emph{MarkDef}) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.}
+\item{href}{(\emph{MarkDef})}
 
-\item{interpolate}{(\emph{MarkDef}) The line interpolation method to use for line and area marks. One of the following:
-\itemize{
-\item \code{"linear"}: piecewise linear segments, as in a polyline.
-\item \code{"linear-closed"}: close the linear segments to form a polygon.
-\item \code{"step"}: alternate between horizontal and vertical segments, as in a step function.
-\item \code{"step-before"}: alternate between vertical and horizontal segments, as in a step function.
-\item \code{"step-after"}: alternate between horizontal and vertical segments, as in a step function.
-\item \code{"basis"}: a B-spline, with control point duplication on the ends.
-\item \code{"basis-open"}: an open B-spline; may not intersect the start or end.
-\item \code{"basis-closed"}: a closed B-spline, as in a loop.
-\item \code{"cardinal"}: a Cardinal spline, with control point duplication on the ends.
-\item \code{"cardinal-open"}: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.
-\item \code{"cardinal-closed"}: a closed Cardinal spline, as in a loop.
-\item \code{"bundle"}: equivalent to basis, except the tension parameter is used to straighten the spline.
-\item \code{"monotone"}: cubic interpolation that preserves monotonicity in y.
-}}
+\item{innerRadius}{(\emph{MarkDef}) The inner radius in pixels of arc marks. \code{innerRadius} is an alias for \code{radius2}.}
 
-\item{invalid}{(\emph{MarkDef}) Defines how Vega-Lite should handle marks for invalid values (\code{null} and \code{NaN}).
-\itemize{
-\item If set to \code{"filter"} (default), all data items with null values will be skipped (for line, trail, and area marks) or filtered (for other marks).
-\item If \code{null}, all data items are included. In this case, invalid values will be interpreted as zeroes.
-}}
+\item{interpolate}{(\emph{MarkDef})}
 
-\item{limit}{(\emph{MarkDef}) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+\item{invalid}{(\emph{MarkDef}) Defines how Vega-Lite should handle marks for invalid values (\code{null} and \code{NaN}). - If set to \code{"filter"} (default), all data items with null values will be skipped (for line, trail, and area marks) or filtered (for other marks). - If \code{null}, all data items are included. In this case, invalid values will be interpreted as zeroes.}
 
-\strong{Default value:} \code{0}, indicating no limit}
+\item{limit}{(\emph{MarkDef})}
 
 \item{line}{(\emph{MarkDef}) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.
 \itemize{
@@ -200,9 +207,9 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 
 \strong{Default value:} \code{false}.}
 
-\item{lineBreak}{(\emph{MarkDef}) A delimiter, such as a newline character, upon which to break text strings into multiple lines. This property will be ignored if the text property is array-valued.}
+\item{lineBreak}{(\emph{MarkDef})}
 
-\item{lineHeight}{(\emph{MarkDef}) The height, in pixels, of each line of text in a multi-line text mark.}
+\item{lineHeight}{(\emph{MarkDef})}
 
 \item{opacity}{(\emph{MarkDef}) The overall opacity (value between [0,1]).
 
@@ -210,17 +217,11 @@ This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\c
 
 \item{order}{(\emph{MarkDef}) For line and trail marks, this \code{order} property can be set to \code{null} or \code{false} to make the lines use the original order in the data sources.}
 
-\item{orient}{(\emph{MarkDef}) The orientation of a non-stacked bar, tick, area, and line charts.
-The value is either horizontal (default) or vertical.
-\itemize{
-\item For bar, rule and tick, this determines whether the size of the bar and tick
-should be applied to x or y dimension.
-\item For area, this property determines the orient property of the Vega output.
-\item For line and trail marks, this property determines the sort order of the points in the line
-if \code{config.sortLineBy} is not specified.
-For stacked charts, this is always determined by the orientation of the stack;
-therefore explicitly specified value will be ignored.
-}}
+\item{orient}{(\emph{MarkDef}) The orientation of a non-stacked bar, tick, area, and line charts. The value is either horizontal (default) or vertical. - For bar, rule and tick, this determines whether the size of the bar and tick should be applied to x or y dimension. - For area, this property determines the orient property of the Vega output. - For line and trail marks, this property determines the sort order of the points in the line if \code{config.sortLineBy} is not specified. For stacked charts, this is always determined by the orientation of the stack; therefore explicitly specified value will be ignored.}
+
+\item{outerRadius}{(\emph{MarkDef}) The outer radius in pixels of arc marks. \code{outerRadius} is an alias for \code{radius}.}
+
+\item{padAngle}{(\emph{MarkDef})}
 
 \item{point}{(\emph{MarkDef}) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.
 \itemize{
@@ -231,90 +232,83 @@ therefore explicitly specified value will be ignored.
 
 \strong{Default value:} \code{false}.}
 
-\item{radius}{(\emph{MarkDef}) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the \code{x} and \code{y} properties.}
+\item{radius}{(\emph{MarkDef}) For arc mark, the primary (outer) radius in pixels.
 
-\item{shape}{(\emph{MarkDef}) Shape of the point marks. Supported values include:
-\itemize{
-\item plotting shapes: \code{"circle"}, \code{"square"}, \code{"cross"}, \code{"diamond"}, \code{"triangle-up"}, \code{"triangle-down"}, \code{"triangle-right"}, or \code{"triangle-left"}.
-\item the line symbol \code{"stroke"}
-\item centered directional shapes \code{"arrow"}, \code{"wedge"}, or \code{"triangle"}
-\item a custom \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path string} (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
-}
+For text marks, polar coordinate radial offset, in pixels, of the text from the origin determined by the \code{x} and \code{y} properties.}
 
-\strong{Default value:} \code{"circle"}}
+\item{radius2}{(\emph{MarkDef}) The secondary (inner) radius in pixels of arc marks.}
 
-\item{size}{(\emph{MarkDef}) Default size for marks.
-\itemize{
-\item For \code{point}/\code{circle}/\code{square}, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.
-\item For \code{bar}, this represents the band size of the bar, in pixels.
-\item For \code{text}, this represents the font size, in pixels.
-}
+\item{radius2Offset}{(\emph{MarkDef}) Offset for radius2.}
 
-\strong{Default value:}
-\itemize{
-\item \code{30} for point, circle, square marks; width/height's \code{step}
-\item \code{2} for bar marks with discrete dimensions;
-\item \code{5} for bar marks with continuous dimensions;
-\item \code{11} for text marks.
-}}
+\item{radiusOffset}{(\emph{MarkDef}) Offset for radius.}
 
-\item{stroke}{(\emph{MarkDef}) Default Stroke Color. This has higher precedence than \code{config.color}.
+\item{shape}{(\emph{MarkDef})}
+
+\item{size}{(\emph{MarkDef}) Default size for marks. - For \code{point}/\code{circle}/\code{square}, this represents the pixel area of the marks. Note that this value sets the area of the symbol; the side lengths will increase with the square root of this value. - For \code{bar}, this represents the band size of the bar, in pixels. - For \code{text}, this represents the font size, in pixels.
+
+\strong{Default value:} - \code{30} for point, circle, square marks; width/height's \code{step} - \code{2} for bar marks with discrete dimensions; - \code{5} for bar marks with continuous dimensions; - \code{11} for text marks.}
+
+\item{smooth}{(\emph{MarkDef})}
+
+\item{stroke}{(\emph{MarkDef}) Default stroke color. This property has higher precedence than \code{config.color}. Set to \code{null} to remove stroke.
 
 \strong{Default value:} (None)}
 
-\item{strokeCap}{(\emph{MarkDef}) The stroke cap for line ending style. One of \code{"butt"}, \code{"round"}, or \code{"square"}.
+\item{strokeCap}{(\emph{MarkDef})}
 
-\strong{Default value:} \code{"square"}}
+\item{strokeDash}{(\emph{MarkDef})}
 
-\item{strokeDash}{(\emph{MarkDef}) An array of alternating stroke, space lengths for creating dashed or dotted lines.}
+\item{strokeDashOffset}{(\emph{MarkDef})}
 
-\item{strokeDashOffset}{(\emph{MarkDef}) The offset (in pixels) into which to begin drawing with the stroke dash array.}
+\item{strokeJoin}{(\emph{MarkDef})}
 
-\item{strokeJoin}{(\emph{MarkDef}) The stroke line join method. One of \code{"miter"}, \code{"round"} or \code{"bevel"}.
+\item{strokeMiterLimit}{(\emph{MarkDef})}
 
-\strong{Default value:} \code{"miter"}}
+\item{strokeOffset}{(\emph{MarkDef})}
 
-\item{strokeMiterLimit}{(\emph{MarkDef}) The miter limit at which to bevel a line join.}
+\item{strokeOpacity}{(\emph{MarkDef})}
 
-\item{strokeOpacity}{(\emph{MarkDef}) The stroke opacity (value between [0,1]).
-
-\strong{Default value:} \code{1}}
-
-\item{strokeWidth}{(\emph{MarkDef}) The stroke width, in pixels.}
+\item{strokeWidth}{(\emph{MarkDef})}
 
 \item{style}{(\emph{MarkDef}) A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style configuration}. If style is an array, later styles will override earlier styles. Any \href{https://vega.github.io/vega-lite/docs/encoding.html#mark-prop}{mark properties} explicitly defined within the \code{encoding} will override a style default.
 
-\strong{Default value:} The mark's name. For example, a bar mark will have style \code{"bar"} by default.
-\strong{Note:} Any specified style will augment the default style. For example, a bar mark with \code{"style": "foo"} will receive from \code{config.style.bar} and \code{config.style.foo} (the specified style \code{"foo"} has higher precedence).}
+\strong{Default value:} The mark's name. For example, a bar mark will have style \code{"bar"} by default. \strong{Note:} Any specified style will augment the default style. For example, a bar mark with \code{"style": "foo"} will receive from \code{config.style.bar} and \code{config.style.foo} (the specified style \code{"foo"} has higher precedence).}
 
-\item{tension}{(\emph{MarkDef}) Depending on the interpolation type, sets the tension parameter (for line and area marks).}
+\item{tension}{(\emph{MarkDef})}
 
-\item{text}{(\emph{MarkDef}) Placeholder text if the \code{text} channel is not specified}
+\item{text}{(\emph{MarkDef})}
 
-\item{theta}{(\emph{MarkDef}) Polar coordinate angle, in radians, of the text label from the origin determined by the \code{x} and \code{y} properties. Values for \code{theta} follow the same convention of \code{arc} mark \code{startAngle} and \code{endAngle} properties: angles are measured in radians, with \code{0} indicating "north".}
+\item{theta}{(\emph{MarkDef}) - For arc marks, the arc length in radians if theta2 is not specified, otherwise the start arc angle. (A value of 0 indicates up or “north”, increasing values proceed clockwise.)
+\itemize{
+\item For text marks, polar coordinate angle in radians.
+}}
+
+\item{theta2}{(\emph{MarkDef}) The end angle of arc marks in radians. A value of 0 indicates up or “north”, increasing values proceed clockwise.}
+
+\item{theta2Offset}{(\emph{MarkDef}) Offset for theta2.}
+
+\item{thetaOffset}{(\emph{MarkDef}) Offset for theta.}
 
 \item{thickness}{(\emph{MarkDef}) Thickness of the tick mark.
 
 \strong{Default value:}  \code{1}}
 
-\item{timeUnitBand}{(\emph{MarkDef}) Default relative band size for a time unit. If set to \code{1}, the bandwidth of the marks will be equal to the time unit band step.
-If set to \code{0.5}, bandwidth of the marks will be half of the time unit band step.}
+\item{timeUnitBand}{(\emph{MarkDef}) Default relative band size for a time unit. If set to \code{1}, the bandwidth of the marks will be equal to the time unit band step. If set to \code{0.5}, bandwidth of the marks will be half of the time unit band step.}
 
-\item{timeUnitBandPosition}{(\emph{MarkDef}) Default relative band position for a time unit. If set to \code{0}, the marks will be positioned at the beginning of the time unit band step.
-If set to \code{0.5}, the marks will be positioned in the middle of the time unit band step.}
+\item{timeUnitBandPosition}{(\emph{MarkDef}) Default relative band position for a time unit. If set to \code{0}, the marks will be positioned at the beginning of the time unit band step. If set to \code{0.5}, the marks will be positioned in the middle of the time unit band step.}
 
 \item{tooltip}{(\emph{MarkDef}) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
 \itemize{
-\item If \code{tooltip} is \code{true} or \code{{"content": "encoding"}}, then all fields from \code{encoding} will be used.
-\item If \code{tooltip} is \code{{"content": "data"}}, then all fields that appear in the highlighted data point will be used.
-\item If set to \code{null} or \code{false}, then no tooltip will be used.
+\item If \code{tooltip} is \code{true} or \code{{"content": "encoding"}}, then all fields from \code{encoding} will be used. - If \code{tooltip} is \code{{"content": "data"}}, then all fields that appear in the highlighted data point will be used. - If set to \code{null} or \code{false}, then no tooltip will be used.
 }
 
 See the \href{https://vega.github.io/vega-lite/docs/tooltip.html}{\code{tooltip}} documentation for a detailed discussion about tooltip  in Vega-Lite.
 
 \strong{Default value:} \code{null}}
 
-\item{width}{(\emph{MarkDef}) Width of the marks.}
+\item{url}{(\emph{MarkDef})}
+
+\item{width}{(\emph{MarkDef})}
 
 \item{x}{(\emph{MarkDef}) X coordinates of the marks, or width of horizontal \code{"bar"} and \code{"area"} without specified \code{x2} or \code{width}.
 

@@ -8,23 +8,19 @@
 
 \strong{Default value:}:  \verb{[null, null]} indicating that the window includes all objects.}
 
-\item{groupby}{(\emph{ImputeTransform}) An optional array of fields by which to group the values.
-Imputation will then be performed on a per-group basis.}
+\item{groupby}{(\emph{ImputeTransform}) An optional array of fields by which to group the values. Imputation will then be performed on a per-group basis.}
 
 \item{impute}{(\emph{ImputeTransform}) The data field for which the missing values should be imputed.}
 
-\item{key}{(\emph{ImputeTransform}) A key field that uniquely identifies data objects within a group.
-Missing key values (those occurring in the data but not in the current group) will be imputed.}
+\item{key}{(\emph{ImputeTransform}) A key field that uniquely identifies data objects within a group. Missing key values (those occurring in the data but not in the current group) will be imputed.}
 
-\item{keyvals}{(\emph{ImputeTransform}) Defines the key values that should be considered for imputation.
-An array of key values or an object defining a \href{https://vega.github.io/vega-lite/docs/impute.html#sequence-def}{number sequence}.
+\item{keyvals}{(\emph{ImputeTransform}) Defines the key values that should be considered for imputation. An array of key values or an object defining a \href{https://vega.github.io/vega-lite/docs/impute.html#sequence-def}{number sequence}.
 
 If provided, this will be used in addition to the key values observed within the input data. If not provided, the values will be derived from all unique values of the \code{key} field. For \code{impute} in \code{encoding}, the key field is the x-field if the y-field is imputed, or vice versa.
 
 If there is no impute grouping, this property \emph{must} be specified.}
 
-\item{method}{(\emph{ImputeTransform}) The imputation method to use for the field value of imputed data objects.
-One of \code{"value"}, \code{"mean"}, \code{"median"}, \code{"max"} or \code{"min"}.
+\item{method}{(\emph{ImputeTransform}) The imputation method to use for the field value of imputed data objects. One of \code{"value"}, \code{"mean"}, \code{"median"}, \code{"max"} or \code{"min"}.
 
 \strong{Default value:}  \code{"value"}}
 

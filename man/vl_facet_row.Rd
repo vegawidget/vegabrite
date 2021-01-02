@@ -10,6 +10,7 @@ vl_facet_row(
   field = NULL,
   type = NULL,
   aggregate = NULL,
+  band = NULL,
   bin = NULL,
   header = NULL,
   sort = NULL,
@@ -22,40 +23,35 @@ vl_facet_row(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FacetFieldDef}
 
-\item{field}{(\emph{FacetFieldDef}) \strong{Required.} A string defining the name of the field from which to pull a data value
-or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{\code{repeat}} operator.
+\item{field}{(\emph{FacetFieldDef}) \strong{Required.} A string defining the name of the field from which to pull a data value or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{\code{repeat}} operator.
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/field.html}{\code{field}} documentation.
 
-\strong{Notes:}
+\strong{Notes:} 1)  Dots (\code{.}) and brackets (\code{[} and \verb{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \verb{"field": "foo\['bar'\]"}). If field names contain dots or brackets but are not nested, you can use \verb{\\\\} to escape dots and brackets (e.g., \code{"a\\\\.b"} and \verb{"a\\\\\[0\\\\\]"}). See more details about escaping in the \href{https://vega.github.io/vega-lite/docs/field.html}{field documentation}. 2) \code{field} is not required if \code{aggregate} is \code{count}.}
+
+\item{type}{(\emph{FacetFieldDef}) The type of measurement (\code{"quantitative"}, \code{"temporal"}, \code{"ordinal"}, or \code{"nominal"}) for the encoded field or constant value (\code{datum}). It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io/vega-lite/docs/geoshape.html}{'geoshape'}.
+
+Vega-Lite automatically infers data types in many cases as discussed below. However, type is required for a field if: (1) the field is not nominal and the field encoding has no specified \code{aggregate} (except \code{argmin} and \code{argmax}), \code{bin}, scale type, custom \code{sort} order, nor \code{timeUnit} or (2) if you wish to use an ordinal scale for a field with \code{bin} or \code{timeUnit}.
+
+\strong{Default value:}
 \enumerate{
-\item Dots (\code{.}) and brackets (\code{[} and \verb{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \verb{"field": "foo\['bar'\]"}).
-If field names contain dots or brackets but are not nested, you can use \verb{\\\\} to escape dots and brackets (e.g., \code{"a\\\\.b"} and \verb{"a\\\\\[0\\\\\]"}).
-See more details about escaping in the \href{https://vega.github.io/vega-lite/docs/field.html}{field documentation}.
-\item \code{field} is not required if \code{aggregate} is \code{count}.
-}}
-
-\item{type}{(\emph{FacetFieldDef}) The encoded field's type of measurement (\code{"quantitative"}, \code{"temporal"}, \code{"ordinal"}, or \code{"nominal"}).
-It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io/vega-lite/docs/geoshape.html}{'geoshape'}.
-
-\strong{Note:}
-\itemize{
-\item Data values for a temporal field can be either a date-time string (e.g., \code{"2015-03-07 12:32:17"}, \code{"17:01"}, \code{"2015-03-16"}. \code{"2015"}) or a timestamp number (e.g., \code{1552199579097}).
-\item Data \code{type} describes the semantics of the data rather than the primitive data types (number, string, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
-\item When using with \href{https://vega.github.io/vega-lite/docs/bin.html}{\code{bin}}, the \code{type} property can be either \code{"quantitative"} (for using a linear bin scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{\code{"ordinal"} (for using an ordinal bin scale)}.
-\item When using with \href{https://vega.github.io/vega-lite/docs/timeunit.html}{\code{timeUnit}}, the \code{type} property can be either \code{"temporal"} (for using a temporal scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{\code{"ordinal"} (for using an ordinal scale)}.
-\item When using with \href{https://vega.github.io/vega-lite/docs/aggregate.html}{\code{aggregate}}, the \code{type} property refers to the post-aggregation data type. For example, we can calculate count \code{distinct} of a categorical field \code{"cat"} using \verb{\{"aggregate": "distinct", "field": "cat", "type": "quantitative"\}}. The \code{"type"} of the aggregate output is \code{"quantitative"}.
-\item Secondary channels (e.g., \code{x2}, \code{y2}, \code{xError}, \code{yError}) do not have \code{type} as they have exactly the same type as their primary channels (e.g., \code{x}, \code{y}).
+\item For a data \code{field}, \code{"nominal"} is the default data type unless the field encoding has \code{aggregate}, \code{channel}, \code{bin}, scale type, \code{sort}, or \code{timeUnit} that satisfies the following criteria: - \code{"quantitative"} is the default type if (1) the encoded field contains \code{bin} or \code{aggregate} except \code{"argmin"} and \code{"argmax"}, (2) the encoding channel is \code{latitude} or \code{longitude} channel or (3) if the specified scale type is \href{https://vega.github.io/vega-lite/docs/scale.html#type}{a quantitative scale}. - \code{"temporal"} is the default type if (1) the encoded field contains \code{timeUnit} or (2) the specified scale type is a time or utc scale - \verb{ordinal""} is the default type if (1) the encoded field contains a \href{https://vega.github.io/vega-lite/docs/sort.html#specifying-custom-sort-order}{custom \code{sort} order}, (2) the specified scale type is an ordinal/point/band scale, or (3) the encoding channel i
+\item For a constant value in data domain (\code{datum}): - \code{"quantitative"} if the datum is a number - \code{"nominal"} if the datum is a string - \code{"temporal"} if the datum is \href{https://vega.github.io/vega-lite/docs/datetime.html}{a date time object}
 }
+
+\strong{Note:} - Data \code{type} describes the semantics of the data rather than the primitive data types (number, string, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data. - Data values for a temporal field can be either a date-time string (e.g., \code{"2015-03-07 12:32:17"}, \code{"17:01"}, \code{"2015-03-16"}. \code{"2015"}) or a timestamp number (e.g., \code{1552199579097}). - When using with \href{https://vega.github.io/vega-lite/docs/bin.html}{\code{bin}}, the \code{type} property can be either \code{"quantitative"} (for using a linear bin scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{\code{"ordinal"} (for using an ordinal bin scale)}. - When using with \href{https://vega.github.io/vega-lite/docs/timeunit.html}{\code{timeUnit}}, the \code{type} property can be either \code{"temporal"} (default, for using a temporal scale) or \href{https://vega.gi
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/type.html}{\code{type}} documentation.}
 
-\item{aggregate}{(\emph{FacetFieldDef}) Aggregation function for the field
-(e.g., \code{"mean"}, \code{"sum"}, \code{"median"}, \code{"min"}, \code{"max"}, \code{"count"}).
+\item{aggregate}{(\emph{FacetFieldDef}) Aggregation function for the field (e.g., \code{"mean"}, \code{"sum"}, \code{"median"}, \code{"min"}, \code{"max"}, \code{"count"}).
 
 \strong{Default value:} \code{undefined} (None)
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/aggregate.html}{\code{aggregate}} documentation.}
+
+\item{band}{(\emph{FacetFieldDef}) For rect-based marks (\code{rect}, \code{bar}, and \code{image}), mark size relative to bandwidth of \href{https://vega.github.io/vega-lite/docs/scale.html#band}{band scales}, bins or time units. If set to \code{1}, the mark size is set to the bandwidth, the bin interval, or the time unit interval. If set to \code{0.5}, the mark size is half of the bandwidth or the time unit interval.
+
+For other marks, relative position on a band of a stacked, binned, time unit or band scale. If set to \code{0}, the marks will be positioned at the beginning of the band. If set to \code{0.5}, the marks will be positioned in the middle of the band.}
 
 \item{bin}{(\emph{FacetFieldDef}) A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y} channel are binned before they are imported into Vega-Lite (\code{"binned"}).
 \itemize{
@@ -73,20 +69,13 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 
 For continuous fields (quantitative or temporal), \code{sort} can be either \code{"ascending"} or \code{"descending"}.
 
-For discrete fields, \code{sort} can be one of the following:
-\itemize{
-\item \code{"ascending"} or \code{"descending"} -- for sorting by the values' natural order in JavaScript.
-\item \href{https://vega.github.io/vega-lite/docs/sort.html#sort-field}{A sort field definition} for sorting by another field.
-\item \href{https://vega.github.io/vega-lite/docs/sort.html#sort-array}{An array specifying the field values in preferred order}. In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order. For discrete time field, values in the sort array can be \href{types#datetime}{date-time definition objects}. In addition, for time units \code{"month"} and \code{"day"}, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., \code{"Mon"}, \code{"Tue"}).
-\item \code{null} indicating no sort.
-}
+For discrete fields, \code{sort} can be one of the following: - \code{"ascending"} or \code{"descending"} -- for sorting by the values' natural order in JavaScript. - \href{https://vega.github.io/vega-lite/docs/sort.html#sort-field}{A sort field definition} for sorting by another field. - \href{https://vega.github.io/vega-lite/docs/sort.html#sort-array}{An array specifying the field values in preferred order}. In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order. For discrete time field, values in the sort array can be \href{types#datetime}{date-time definition objects}. In addition, for time units \code{"month"} and \code{"day"}, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., \code{"Mon"}, \code{"Tue"}). - \code{null} indicating no sort.
 
 \strong{Default value:} \code{"ascending"}
 
 \strong{Note:} \code{null} is not supported for \code{row} and \code{column}.}
 
-\item{timeUnit}{(\emph{FacetFieldDef}) Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field.
-or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}.
+\item{timeUnit}{(\emph{FacetFieldDef}) Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field. or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}.
 
 \strong{Default value:} \code{undefined} (None)
 

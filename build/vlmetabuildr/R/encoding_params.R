@@ -116,7 +116,7 @@ create_aggregate_encoding_functions <- function(schema) {
   aggregate_doc <- make_option_group_doc(
     "aggregate_encoding",
     "aggregate",
-    unlist(enums("#/definitions/Aggregate", schema)),
+    unlist(enums("#/definitions/AggregateOp", schema)),
     "Add aggregate transform to encoding",
     "Add aggregate parameters to an encoding",
     na_option = TRUE
@@ -135,7 +135,7 @@ create_aggregate_for_encoding <- function(enc, schema) {
   make_option_function(
     "#/definitions/Aggregate",
     "aggregate",
-    unlist(enums("#/definitions/Aggregate", schema)),
+    unlist(enums("#/definitions/AggregateOp", schema)),
     glue("aggregate_{enc}"),
     ".add_aggregate_to_encoding",
     na_option = TRUE,

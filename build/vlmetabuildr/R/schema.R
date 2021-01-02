@@ -45,7 +45,7 @@ search2 <- function(schema, type, check, get, gather, base, parent) {
   } else if ("anyOf" %in% names(type) || "allOf" %in% names(type) ||
     "oneOf" %in% names(type)) {
     t <- c(type[["anyOf"]], type[["allOf"]], type[["oneOf"]])
-    ts <- purrr::map(t, function(x) search2(schema, x, check, get, gather, base, get_name_from_ref(t)))
+    ts <- purrr::map(t, function(x) search2(schema, x, check, get, gather, base, get_name_from_ref(x, parent)))
     gather(ts)
   } else {
     base(type)
@@ -129,10 +129,14 @@ enums <- function(ref, schema) {
     schema,
     list("$ref" = ref),
     function(x) {
-      "enum" %in% names(x)
+      any(hasName(x, c("enum","anyOf")))
     },
     function(x) {
-      x[["enum"]]
+      if (hasName(x, "enum")) { 
+        x[["enum"]]
+      } else {
+        vapply(x[["anyOf"]], get_name_from_ref, "")
+      }
     },
     function(x) unlist(x, use.names = FALSE),
     function() list()
@@ -157,12 +161,12 @@ additional_properties_allowed <- function(ref, schema) {
   ))
 }
 
-get_name_from_ref <- function(type) {
+get_name_from_ref <- function(type, fallback = NULL) {
   if (hasName(type, "$ref")) {
     stringr::str_remove(type[["$ref"]], "#/definitions/")
   } else if (is.character(type)) {
     stringr::str_remove(type, "#/definitions/")
   } else {
-    NULL
+    fallback
   }
 }

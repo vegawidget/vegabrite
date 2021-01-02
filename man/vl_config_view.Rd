@@ -11,6 +11,7 @@ vl_config_view(
   continuousHeight = NULL,
   continuousWidth = NULL,
   cornerRadius = NULL,
+  cursor = NULL,
   discreteHeight = NULL,
   discreteWidth = NULL,
   fill = NULL,
@@ -36,23 +37,23 @@ vl_config_view(
 
 \item{clip}{(\emph{ViewConfig}) Whether the view should be clipped.}
 
-\item{continuousHeight}{(\emph{ViewConfig}) The default height when the plot has a continuous y-field.
+\item{continuousHeight}{(\emph{ViewConfig}) The default height when the plot has a continuous y-field for x or latitude, or has arc marks.
 
 \strong{Default value:} \code{200}}
 
-\item{continuousWidth}{(\emph{ViewConfig}) The default width when the plot has a continuous x-field.
+\item{continuousWidth}{(\emph{ViewConfig}) The default width when the plot has a continuous field for x or longitude, or has arc marks.
 
 \strong{Default value:} \code{200}}
 
-\item{cornerRadius}{(\emph{ViewConfig}) The radius in pixels of rounded rectangle corners.
+\item{cornerRadius}{(\emph{ViewConfig})}
 
-\strong{Default value:} \code{0}}
+\item{cursor}{(\emph{ViewConfig}) The mouse cursor used over the view. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values}{CSS cursor type} can be used.}
 
-\item{discreteHeight}{(\emph{ViewConfig}) The default height when the plot has either a discrete y-field or no y-field.
+\item{discreteHeight}{(\emph{ViewConfig}) The default height when the plot has non arc marks and either a discrete y-field or no y-field. The height can be either a number indicating a fixed height or an object in the form of \code{{step: number}} defining the height per discrete step.
 
 \strong{Default value:} a step size based on \code{config.view.step}.}
 
-\item{discreteWidth}{(\emph{ViewConfig}) The default width when the plot has either a discrete x-field or no x-field.
+\item{discreteWidth}{(\emph{ViewConfig}) The default width when the plot has non-arc marks and either a discrete x-field or no x-field. The width can be either a number indicating a fixed width or an object in the form of \code{{step: number}} defining the width per discrete step.
 
 \strong{Default value:} a step size based on \code{config.view.step}.}
 
@@ -60,11 +61,11 @@ vl_config_view(
 
 \strong{Default value:} \code{undefined}}
 
-\item{fillOpacity}{(\emph{ViewConfig}) The fill opacity (value between [0,1]).
+\item{fillOpacity}{(\emph{ViewConfig})}
 
-\strong{Default value:} \code{1}}
+\item{height}{(\emph{ViewConfig}) Default height
 
-\item{height}{(\emph{ViewConfig}) Default height}
+\strong{Deprecated:} Since Vega-Lite 4.0. Please use continuousHeight and discreteHeight instead.}
 
 \item{opacity}{(\emph{ViewConfig}) The overall opacity (value between [0,1]).
 
@@ -76,27 +77,23 @@ vl_config_view(
 
 \strong{Default value:} \code{"#ddd"}}
 
-\item{strokeCap}{(\emph{ViewConfig}) The stroke cap for line ending style. One of \code{"butt"}, \code{"round"}, or \code{"square"}.
+\item{strokeCap}{(\emph{ViewConfig})}
 
-\strong{Default value:} \code{"square"}}
+\item{strokeDash}{(\emph{ViewConfig})}
 
-\item{strokeDash}{(\emph{ViewConfig}) An array of alternating stroke, space lengths for creating dashed or dotted lines.}
+\item{strokeDashOffset}{(\emph{ViewConfig})}
 
-\item{strokeDashOffset}{(\emph{ViewConfig}) The offset (in pixels) into which to begin drawing with the stroke dash array.}
+\item{strokeJoin}{(\emph{ViewConfig})}
 
-\item{strokeJoin}{(\emph{ViewConfig}) The stroke line join method. One of \code{"miter"}, \code{"round"} or \code{"bevel"}.
+\item{strokeMiterLimit}{(\emph{ViewConfig})}
 
-\strong{Default value:} \code{"miter"}}
+\item{strokeOpacity}{(\emph{ViewConfig})}
 
-\item{strokeMiterLimit}{(\emph{ViewConfig}) The miter limit at which to bevel a line join.}
+\item{strokeWidth}{(\emph{ViewConfig})}
 
-\item{strokeOpacity}{(\emph{ViewConfig}) The stroke opacity (value between [0,1]).
+\item{width}{(\emph{ViewConfig}) Default width
 
-\strong{Default value:} \code{1}}
-
-\item{strokeWidth}{(\emph{ViewConfig}) The stroke width, in pixels.}
-
-\item{width}{(\emph{ViewConfig}) Default width}
+\strong{Deprecated:} Since Vega-Lite 4.0. Please use continuousWidth and discreteWidth instead.}
 }
 \value{
 A modified Vega-Lite Spec

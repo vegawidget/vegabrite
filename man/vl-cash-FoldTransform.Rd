@@ -4,8 +4,7 @@
 \alias{vl$FoldTransform}
 \title{FoldTransform}
 \arguments{
-\item{as}{(\emph{FoldTransform}) The output field names for the key and value properties produced by the fold transform.
-\strong{Default value:} \verb{["key", "value"]}}
+\item{as}{(\emph{FoldTransform}) The output field names for the key and value properties produced by the fold transform. \strong{Default value:} \verb{["key", "value"]}}
 
 \item{fold}{(\emph{FoldTransform}) An array of data fields indicating the properties to fold.}
 }

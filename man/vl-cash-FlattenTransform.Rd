@@ -8,10 +8,7 @@
 
 \strong{Default value:} The field name of the corresponding array field}
 
-\item{flatten}{(\emph{FlattenTransform}) An array of one or more data fields containing arrays to flatten.
-If multiple fields are specified, their array values should have a parallel structure, ideally with the same length.
-If the lengths of parallel arrays do not match,
-the longest array will be used with \code{null} values added for missing entries.}
+\item{flatten}{(\emph{FlattenTransform}) An array of one or more data fields containing arrays to flatten. If multiple fields are specified, their array values should have a parallel structure, ideally with the same length. If the lengths of parallel arrays do not match, the longest array will be used with \code{null} values added for missing entries.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to FlattenTransform definition.

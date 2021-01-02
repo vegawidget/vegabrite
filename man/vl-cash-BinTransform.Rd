@@ -4,7 +4,7 @@
 \alias{vl$BinTransform}
 \title{BinTransform}
 \arguments{
-\item{as}{(\emph{BinTransform}) The output fields at which to write the start and end bin values.}
+\item{as}{(\emph{BinTransform}) The output fields at which to write the start and end bin values. This can be either a string or an array of strings with two elements denoting the name for the fields for bin start and bin end respectively. If a single string (e.g., \code{"val"}) is provided, the end field will be \code{"val_end"}.}
 
 \item{bin}{(\emph{BinTransform}) An object indicating bin properties, or simply \code{true} for using default bin parameters.}
 

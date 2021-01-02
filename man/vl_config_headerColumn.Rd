@@ -12,15 +12,19 @@ vl_config_headerColumn(
   labelAlign = NULL,
   labelAnchor = NULL,
   labelAngle = NULL,
+  labelBaseline = NULL,
   labelColor = NULL,
   labelExpr = NULL,
   labelFont = NULL,
   labelFontSize = NULL,
   labelFontStyle = NULL,
+  labelFontWeight = NULL,
   labelLimit = NULL,
+  labelLineHeight = NULL,
   labelOrient = NULL,
   labelPadding = NULL,
   labels = NULL,
+  orient = NULL,
   title = NULL,
   titleAlign = NULL,
   titleAnchor = NULL,
@@ -42,23 +46,20 @@ vl_config_headerColumn(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: HeaderConfig}
 
-\item{format}{(\emph{HeaderConfig}) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+\item{format}{(\emph{HeaderConfig}) When used with the default \code{"number"} and \code{"time"} format type, the text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 \itemize{
-\item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern}.
-\item If the format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
+\item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern}. - If the format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
 }
 
 See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more examples.
 
+When used with a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{custom \code{formatType}}, this value will be passed as \code{format} alongside \code{datum.value} to the registered function.
+
 \strong{Default value:}  Derived from \href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for number format and from \href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for time format.}
 
-\item{formatType}{(\emph{HeaderConfig}) The format type for labels (\code{"number"} or \code{"time"}).
+\item{formatType}{(\emph{HeaderConfig}) The format type for labels. One of \code{"number"}, \code{"time"}, or a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{registered custom format type}.
 
-\strong{Default value:}
-\itemize{
-\item \code{"time"} for temporal fields and ordinal and nomimal fields with \code{timeUnit}.
-\item \code{"number"} for quantitative fields as well as ordinal and nomimal fields without \code{timeUnit}.
-}}
+\strong{Default value:} - \code{"time"} for temporal fields and ordinal and nominal fields with \code{timeUnit}. - \code{"number"} for quantitative fields as well as ordinal and nominal fields without \code{timeUnit}.}
 
 \item{labelAlign}{(\emph{HeaderConfig}) Horizontal text alignment of header labels. One of \code{"left"}, \code{"center"}, or \code{"right"}.}
 
@@ -67,6 +68,8 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 \item{labelAngle}{(\emph{HeaderConfig}) The rotation angle of the header labels.
 
 \strong{Default value:} \code{0} for column header, \code{-90} for row header.}
+
+\item{labelBaseline}{(\emph{HeaderConfig}) The vertical text baseline for the header labels. One of \code{"alphabetic"} (default), \code{"top"}, \code{"middle"}, \code{"bottom"}, \code{"line-top"}, or \code{"line-bottom"}. The \code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"} and \code{"bottom"}, but are calculated relative to the \code{titleLineHeight} rather than \code{titleFontSize} alone.}
 
 \item{labelColor}{(\emph{HeaderConfig}) The color of the header label, can be in hex color code or regular color name.}
 
@@ -80,9 +83,13 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \item{labelFontStyle}{(\emph{HeaderConfig}) The font style of the header label.}
 
+\item{labelFontWeight}{(\emph{HeaderConfig}) The font weight of the header label.}
+
 \item{labelLimit}{(\emph{HeaderConfig}) The maximum length of the header label in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
 
 \strong{Default value:} \code{0}, indicating no limit}
+
+\item{labelLineHeight}{(\emph{HeaderConfig}) Line height in pixels for multi-line header labels or title text with \code{"line-top"} or \code{"line-bottom"} baseline.}
 
 \item{labelOrient}{(\emph{HeaderConfig}) The orientation of the header label. One of \code{"top"}, \code{"bottom"}, \code{"left"} or \code{"right"}.}
 
@@ -94,6 +101,8 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \strong{Default value:} \code{true}.}
 
+\item{orient}{(\emph{HeaderConfig}) Shortcut for setting both labelOrient and titleOrient.}
+
 \item{title}{(\emph{HeaderConfig}) Set to null to disable title for the axis, legend, or header.}
 
 \item{titleAlign}{(\emph{HeaderConfig}) Horizontal text alignment (to the anchor) of header titles.}
@@ -104,7 +113,7 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \strong{Default value:} \code{0}.}
 
-\item{titleBaseline}{(\emph{HeaderConfig}) Vertical text baseline for the header title. One of \code{"top"}, \code{"bottom"}, \code{"middle"}.
+\item{titleBaseline}{(\emph{HeaderConfig}) The vertical text baseline for the header title. One of \code{"alphabetic"} (default), \code{"top"}, \code{"middle"}, \code{"bottom"}, \code{"line-top"}, or \code{"line-bottom"}. The \code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"} and \code{"bottom"}, but are calculated relative to the \code{titleLineHeight} rather than \code{titleFontSize} alone.
 
 \strong{Default value:} \code{"middle"}}
 
@@ -116,14 +125,13 @@ See the \href{https://vega.github.io/vega-lite/docs/format.html}{format document
 
 \item{titleFontStyle}{(\emph{HeaderConfig}) The font style of the header title.}
 
-\item{titleFontWeight}{(\emph{HeaderConfig}) Font weight of the header title.
-This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
+\item{titleFontWeight}{(\emph{HeaderConfig}) Font weight of the header title. This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
 
 \item{titleLimit}{(\emph{HeaderConfig}) The maximum length of the header title in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
 
 \strong{Default value:} \code{0}, indicating no limit}
 
-\item{titleLineHeight}{(\emph{HeaderConfig}) Line height in pixels for multi-line title text.}
+\item{titleLineHeight}{(\emph{HeaderConfig}) Line height in pixels for multi-line header title text or title text with \code{"line-top"} or \code{"line-bottom"} baseline.}
 
 \item{titleOrient}{(\emph{HeaderConfig}) The orientation of the header title. One of \code{"top"}, \code{"bottom"}, \code{"left"} or \code{"right"}.}
 

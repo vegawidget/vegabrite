@@ -10,7 +10,6 @@ fs::file_copy(schema_file, new_schema_path, overwrite = TRUE)
 r_api <- create_api(VL_SCHEMA)
 
 r_file_path <- file.path(rprojroot::find_package_root_file(), "R","zzz_autogen_api.R")
-cat(r_api, file = r_file_path)
-styler::style_file(r_file_path)
+cat(r_api, file = r_file_path, sep = "\n")
 devtools::document()
 devtools::install()

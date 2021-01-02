@@ -33,15 +33,13 @@ vl_impute_y(
 
 \strong{Default value:}:  \verb{[null, null]} indicating that the window includes all objects.}
 
-\item{keyvals}{(\emph{ImputeParams}) Defines the key values that should be considered for imputation.
-An array of key values or an object defining a \href{https://vega.github.io/vega-lite/docs/impute.html#sequence-def}{number sequence}.
+\item{keyvals}{(\emph{ImputeParams}) Defines the key values that should be considered for imputation. An array of key values or an object defining a \href{https://vega.github.io/vega-lite/docs/impute.html#sequence-def}{number sequence}.
 
 If provided, this will be used in addition to the key values observed within the input data. If not provided, the values will be derived from all unique values of the \code{key} field. For \code{impute} in \code{encoding}, the key field is the x-field if the y-field is imputed, or vice versa.
 
 If there is no impute grouping, this property \emph{must} be specified.}
 
-\item{method}{(\emph{ImputeParams}) The imputation method to use for the field value of imputed data objects.
-One of \code{"value"}, \code{"mean"}, \code{"median"}, \code{"max"} or \code{"min"}.
+\item{method}{(\emph{ImputeParams}) The imputation method to use for the field value of imputed data objects. One of \code{"value"}, \code{"mean"}, \code{"median"}, \code{"max"} or \code{"min"}.
 
 \strong{Default value:}  \code{"value"}}
 

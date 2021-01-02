@@ -6,12 +6,9 @@
 \arguments{
 \item{groupby}{(\emph{PivotTransform}) The optional data fields to group by. If not specified, a single group containing all data objects will be used.}
 
-\item{limit}{(\emph{PivotTransform}) An optional parameter indicating the maximum number of pivoted fields to generate.
-The default (\code{0}) applies no limit. The pivoted \code{pivot} names are sorted in ascending order prior to enforcing the limit.
-\strong{Default value:} \code{0}}
+\item{limit}{(\emph{PivotTransform}) An optional parameter indicating the maximum number of pivoted fields to generate. The default (\code{0}) applies no limit. The pivoted \code{pivot} names are sorted in ascending order prior to enforcing the limit. \strong{Default value:} \code{0}}
 
-\item{op}{(\emph{PivotTransform}) The aggregation operation to apply to grouped \code{value} field values.
-\strong{Default value:} \code{sum}}
+\item{op}{(\emph{PivotTransform}) The aggregation operation to apply to grouped \code{value} field values. \strong{Default value:} \code{sum}}
 
 \item{pivot}{(\emph{PivotTransform}) The data field to pivot on. The unique values of this field become new field names in the output stream.}
 

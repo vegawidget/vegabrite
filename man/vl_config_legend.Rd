@@ -7,10 +7,14 @@
 vl_config_legend(
   spec,
   .object = NULL,
+  aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
   columns = NULL,
   cornerRadius = NULL,
+  description = NULL,
+  direction = NULL,
+  disable = NULL,
   fillColor = NULL,
   gradientDirection = NULL,
   gradientHorizontalMaxLength = NULL,
@@ -76,7 +80,8 @@ vl_config_legend(
   titleOpacity = NULL,
   titleOrient = NULL,
   titlePadding = NULL,
-  unselectedOpacity = NULL
+  unselectedOpacity = NULL,
+  zindex = NULL
 )
 }
 \arguments{
@@ -84,21 +89,27 @@ vl_config_legend(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LegendConfig}
 
-\item{clipHeight}{(\emph{LegendConfig}) The height in pixels to clip symbol legend entries and limit their size.}
+\item{aria}{(\emph{LegendConfig})}
 
-\item{columnPadding}{(\emph{LegendConfig}) The horizontal padding in pixels between symbol legend entries.
+\item{clipHeight}{(\emph{LegendConfig})}
 
-\strong{Default value:} \code{10}.}
+\item{columnPadding}{(\emph{LegendConfig})}
 
-\item{columns}{(\emph{LegendConfig}) The number of columns in which to arrange symbol legend entries. A value of \code{0} or lower indicates a single row with one column per entry.}
+\item{columns}{(\emph{LegendConfig})}
 
-\item{cornerRadius}{(\emph{LegendConfig}) Corner radius for the full legend.}
+\item{cornerRadius}{(\emph{LegendConfig})}
 
-\item{fillColor}{(\emph{LegendConfig}) Background fill color for the full legend.}
+\item{description}{(\emph{LegendConfig})}
 
-\item{gradientDirection}{(\emph{LegendConfig}) The default direction (\code{"horizontal"} or \code{"vertical"}) for gradient legends.
+\item{direction}{(\emph{LegendConfig}) The direction of the legend, one of \code{"vertical"} or \code{"horizontal"}.
 
-\strong{Default value:} \code{"vertical"}.}
+\strong{Default value:} - For top-/bottom-\code{orient}ed legends, \code{"horizontal"} - For left-/right-\code{orient}ed legends, \code{"vertical"} - For top/bottom-left/right-\code{orient}ed legends, \code{"horizontal"} for gradient legends and \code{"vertical"} for symbol legends.}
+
+\item{disable}{(\emph{LegendConfig}) Disable legend by default}
+
+\item{fillColor}{(\emph{LegendConfig})}
+
+\item{gradientDirection}{(\emph{LegendConfig})}
 
 \item{gradientHorizontalMaxLength}{(\emph{LegendConfig}) Max legend length for a horizontal gradient when \code{config.legend.gradientLength} is undefined.
 
@@ -108,29 +119,19 @@ vl_config_legend(
 
 \strong{Default value:} \code{100}}
 
-\item{gradientLabelLimit}{(\emph{LegendConfig}) The maximum allowed length in pixels of color ramp gradient labels.}
+\item{gradientLabelLimit}{(\emph{LegendConfig})}
 
-\item{gradientLabelOffset}{(\emph{LegendConfig}) Vertical offset in pixels for color ramp gradient labels.
+\item{gradientLabelOffset}{(\emph{LegendConfig})}
 
-\strong{Default value:} \code{2}.}
+\item{gradientLength}{(\emph{LegendConfig})}
 
-\item{gradientLength}{(\emph{LegendConfig}) The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+\item{gradientOpacity}{(\emph{LegendConfig})}
 
-\strong{Default value:} \code{200}.}
+\item{gradientStrokeColor}{(\emph{LegendConfig})}
 
-\item{gradientOpacity}{(\emph{LegendConfig}) Opacity of the color gradient.}
+\item{gradientStrokeWidth}{(\emph{LegendConfig})}
 
-\item{gradientStrokeColor}{(\emph{LegendConfig}) The color of the gradient stroke, can be in hex color code or regular color name.
-
-\strong{Default value:} \code{"lightGray"}.}
-
-\item{gradientStrokeWidth}{(\emph{LegendConfig}) The width of the gradient stroke, in pixels.
-
-\strong{Default value:} \code{0}.}
-
-\item{gradientThickness}{(\emph{LegendConfig}) The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
-
-\strong{Default value:} \code{16}.}
+\item{gradientThickness}{(\emph{LegendConfig})}
 
 \item{gradientVerticalMaxLength}{(\emph{LegendConfig}) Max legend length for a vertical gradient when \code{config.legend.gradientLength} is undefined.
 
@@ -140,154 +141,119 @@ vl_config_legend(
 
 \strong{Default value:} \code{100}}
 
-\item{gridAlign}{(\emph{LegendConfig}) The alignment to apply to symbol legends rows and columns. The supported string values are \code{"all"}, \code{"each"} (the default), and \code{none}. For more information, see the \href{https://vega.github.io/vega/docs/layout}{grid layout documentation}.
+\item{gridAlign}{(\emph{LegendConfig})}
 
-\strong{Default value:} \code{"each"}.}
+\item{labelAlign}{(\emph{LegendConfig})}
 
-\item{labelAlign}{(\emph{LegendConfig}) The alignment of the legend label, can be left, center, or right.}
+\item{labelBaseline}{(\emph{LegendConfig})}
 
-\item{labelBaseline}{(\emph{LegendConfig}) The position of the baseline of legend label, can be \code{"top"}, \code{"middle"}, \code{"bottom"}, or \code{"alphabetic"}.
+\item{labelColor}{(\emph{LegendConfig})}
 
-\strong{Default value:} \code{"middle"}.}
+\item{labelFont}{(\emph{LegendConfig})}
 
-\item{labelColor}{(\emph{LegendConfig}) The color of the legend label, can be in hex color code or regular color name.}
+\item{labelFontSize}{(\emph{LegendConfig})}
 
-\item{labelFont}{(\emph{LegendConfig}) The font of the legend label.}
+\item{labelFontStyle}{(\emph{LegendConfig})}
 
-\item{labelFontSize}{(\emph{LegendConfig}) The font size of legend label.
+\item{labelFontWeight}{(\emph{LegendConfig})}
 
-\strong{Default value:} \code{10}.}
+\item{labelLimit}{(\emph{LegendConfig})}
 
-\item{labelFontStyle}{(\emph{LegendConfig}) The font style of legend label.}
+\item{labelOffset}{(\emph{LegendConfig})}
 
-\item{labelFontWeight}{(\emph{LegendConfig}) The font weight of legend label.}
-
-\item{labelLimit}{(\emph{LegendConfig}) Maximum allowed pixel width of legend tick labels.
-
-\strong{Default value:} \code{160}.}
-
-\item{labelOffset}{(\emph{LegendConfig}) The offset of the legend label.}
-
-\item{labelOpacity}{(\emph{LegendConfig}) Opacity of labels.}
+\item{labelOpacity}{(\emph{LegendConfig})}
 
 \item{labelOverlap}{(\emph{LegendConfig}) The strategy to use for resolving overlap of labels in gradient legends. If \code{false}, no overlap reduction is attempted. If set to \code{true} or \code{"parity"}, a strategy of removing every other label is used. If set to \code{"greedy"}, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
 
 \strong{Default value:} \code{"greedy"} for \verb{log scales otherwise }true`.}
 
-\item{labelPadding}{(\emph{LegendConfig}) Padding in pixels between the legend and legend labels.}
+\item{labelPadding}{(\emph{LegendConfig})}
 
-\item{labelSeparation}{(\emph{LegendConfig}) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default \code{0}). This property is ignored if \emph{labelOverlap} resolution is not enabled.}
+\item{labelSeparation}{(\emph{LegendConfig})}
 
-\item{layout}{(\emph{LegendConfig}) Legend orient group layout parameters.}
+\item{layout}{(\emph{LegendConfig})}
 
-\item{legendX}{(\emph{LegendConfig}) Custom x-position for legend with orient "none".}
+\item{legendX}{(\emph{LegendConfig})}
 
-\item{legendY}{(\emph{LegendConfig}) Custom y-position for legend with orient "none".}
+\item{legendY}{(\emph{LegendConfig})}
 
-\item{offset}{(\emph{LegendConfig}) The offset in pixels by which to displace the legend from the data rectangle and axes.
+\item{offset}{(\emph{LegendConfig})}
 
-\strong{Default value:} \code{18}.}
-
-\item{orient}{(\emph{LegendConfig}) The orientation of the legend, which determines how the legend is positioned within the scene. One of "left", "right", "top-left", "top-right", "bottom-left", "bottom-right", "none".
+\item{orient}{(\emph{LegendConfig}) The orientation of the legend, which determines how the legend is positioned within the scene. One of \code{"left"}, \code{"right"}, \code{"top"}, \code{"bottom"}, \code{"top-left"}, \code{"top-right"}, \code{"bottom-left"}, \code{"bottom-right"}, \code{"none"}.
 
 \strong{Default value:} \code{"right"}}
 
-\item{padding}{(\emph{LegendConfig}) The padding between the border and content of the legend group.
+\item{padding}{(\emph{LegendConfig})}
 
-\strong{Default value:} \code{0}.}
+\item{rowPadding}{(\emph{LegendConfig})}
 
-\item{rowPadding}{(\emph{LegendConfig}) The vertical padding in pixels between symbol legend entries.
+\item{strokeColor}{(\emph{LegendConfig})}
 
-\strong{Default value:} \code{2}.}
+\item{strokeDash}{(\emph{LegendConfig})}
 
-\item{strokeColor}{(\emph{LegendConfig}) Border stroke color for the full legend.}
+\item{strokeWidth}{(\emph{LegendConfig})}
 
-\item{strokeDash}{(\emph{LegendConfig}) Border stroke dash pattern for the full legend.}
+\item{symbolBaseFillColor}{(\emph{LegendConfig})}
 
-\item{strokeWidth}{(\emph{LegendConfig}) Border stroke width for the full legend.}
+\item{symbolBaseStrokeColor}{(\emph{LegendConfig})}
 
-\item{symbolBaseFillColor}{(\emph{LegendConfig}) Default fill color for legend symbols. Only applied if there is no \code{"fill"} scale color encoding for the legend.
+\item{symbolDash}{(\emph{LegendConfig})}
 
-\strong{Default value:} \code{"transparent"}.}
+\item{symbolDashOffset}{(\emph{LegendConfig})}
 
-\item{symbolBaseStrokeColor}{(\emph{LegendConfig}) Default stroke color for legend symbols. Only applied if there is no \code{"fill"} scale color encoding for the legend.
+\item{symbolDirection}{(\emph{LegendConfig})}
 
-\strong{Default value:} \code{"gray"}.}
+\item{symbolFillColor}{(\emph{LegendConfig})}
 
-\item{symbolDash}{(\emph{LegendConfig}) An array of alternating [stroke, space] lengths for dashed symbol strokes.}
+\item{symbolLimit}{(\emph{LegendConfig})}
 
-\item{symbolDashOffset}{(\emph{LegendConfig}) The pixel offset at which to start drawing with the symbol stroke dash array.}
+\item{symbolOffset}{(\emph{LegendConfig})}
 
-\item{symbolDirection}{(\emph{LegendConfig}) The default direction (\code{"horizontal"} or \code{"vertical"}) for symbol legends.
+\item{symbolOpacity}{(\emph{LegendConfig})}
 
-\strong{Default value:} \code{"vertical"}.}
+\item{symbolSize}{(\emph{LegendConfig})}
 
-\item{symbolFillColor}{(\emph{LegendConfig}) The color of the legend symbol,}
+\item{symbolStrokeColor}{(\emph{LegendConfig})}
 
-\item{symbolLimit}{(\emph{LegendConfig}) The maximum number of allowed entries for a symbol legend. Additional entries will be dropped.}
+\item{symbolStrokeWidth}{(\emph{LegendConfig})}
 
-\item{symbolOffset}{(\emph{LegendConfig}) Horizontal pixel offset for legend symbols.
+\item{symbolType}{(\emph{LegendConfig})}
 
-\strong{Default value:} \code{0}.}
-
-\item{symbolOpacity}{(\emph{LegendConfig}) Opacity of the legend symbols.}
-
-\item{symbolSize}{(\emph{LegendConfig}) The size of the legend symbol, in pixels.
-
-\strong{Default value:} \code{100}.}
-
-\item{symbolStrokeColor}{(\emph{LegendConfig}) Stroke color for legend symbols.}
-
-\item{symbolStrokeWidth}{(\emph{LegendConfig}) The width of the symbol's stroke.
-
-\strong{Default value:} \code{1.5}.}
-
-\item{symbolType}{(\emph{LegendConfig}) The symbol shape. One of the plotting shapes \code{circle} (default), \code{square}, \code{cross}, \code{diamond}, \code{triangle-up}, \code{triangle-down}, \code{triangle-right}, or \code{triangle-left}, the line symbol \code{stroke}, or one of the centered directional shapes \code{arrow}, \code{wedge}, or \code{triangle}. Alternatively, a custom \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path string} can be provided. For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.
-
-\strong{Default value:} \code{"circle"}.}
-
-\item{tickCount}{(\emph{LegendConfig}) The desired number of tick values for quantitative legends.}
+\item{tickCount}{(\emph{LegendConfig})}
 
 \item{title}{(\emph{LegendConfig}) Set to null to disable title for the axis, legend, or header.}
 
-\item{titleAlign}{(\emph{LegendConfig}) Horizontal text alignment for legend titles.
+\item{titleAlign}{(\emph{LegendConfig})}
 
-\strong{Default value:} \code{"left"}.}
+\item{titleAnchor}{(\emph{LegendConfig})}
 
-\item{titleAnchor}{(\emph{LegendConfig}) Text anchor position for placing legend titles.}
+\item{titleBaseline}{(\emph{LegendConfig})}
 
-\item{titleBaseline}{(\emph{LegendConfig}) Vertical text baseline for legend titles.
+\item{titleColor}{(\emph{LegendConfig})}
 
-\strong{Default value:} \code{"top"}.}
+\item{titleFont}{(\emph{LegendConfig})}
 
-\item{titleColor}{(\emph{LegendConfig}) The color of the legend title, can be in hex color code or regular color name.}
+\item{titleFontSize}{(\emph{LegendConfig})}
 
-\item{titleFont}{(\emph{LegendConfig}) The font of the legend title.}
+\item{titleFontStyle}{(\emph{LegendConfig})}
 
-\item{titleFontSize}{(\emph{LegendConfig}) The font size of the legend title.}
+\item{titleFontWeight}{(\emph{LegendConfig})}
 
-\item{titleFontStyle}{(\emph{LegendConfig}) The font style of the legend title.}
+\item{titleLimit}{(\emph{LegendConfig})}
 
-\item{titleFontWeight}{(\emph{LegendConfig}) The font weight of the legend title.
-This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
+\item{titleLineHeight}{(\emph{LegendConfig})}
 
-\item{titleLimit}{(\emph{LegendConfig}) Maximum allowed pixel width of legend titles.
+\item{titleOpacity}{(\emph{LegendConfig})}
 
-\strong{Default value:} \code{180}.}
+\item{titleOrient}{(\emph{LegendConfig})}
 
-\item{titleLineHeight}{(\emph{LegendConfig}) Line height in pixels for multi-line title text.}
-
-\item{titleOpacity}{(\emph{LegendConfig}) Opacity of the legend title.}
-
-\item{titleOrient}{(\emph{LegendConfig}) Orientation of the legend title.}
-
-\item{titlePadding}{(\emph{LegendConfig}) The padding, in pixels, between title and legend.
-
-\strong{Default value:} \code{5}.}
+\item{titlePadding}{(\emph{LegendConfig})}
 
 \item{unselectedOpacity}{(\emph{LegendConfig}) The opacity of unselected legend entries.
 
 \strong{Default value:} 0.35.}
+
+\item{zindex}{(\emph{LegendConfig})}
 }
 \value{
 A modified Vega-Lite Spec

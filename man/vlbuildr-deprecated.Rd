@@ -2,7 +2,9 @@
 % Please edit documentation in R/deprecated.R, R/zzz_autogen_api.R
 \name{vlbuildr-deprecated}
 \alias{vlbuildr-deprecated}
+\alias{vl_make_Angle}
 \alias{vl_make_Color}
+\alias{vl_make_Description}
 \alias{vl_make_Detail}
 \alias{vl_make_Fill}
 \alias{vl_make_FillOpacity}
@@ -14,12 +16,17 @@
 \alias{vl_make_Longitude2}
 \alias{vl_make_Opacity}
 \alias{vl_make_Order}
+\alias{vl_make_Radius}
+\alias{vl_make_Radius2}
 \alias{vl_make_Shape}
 \alias{vl_make_Size}
 \alias{vl_make_Stroke}
+\alias{vl_make_StrokeDash}
 \alias{vl_make_StrokeOpacity}
 \alias{vl_make_StrokeWidth}
 \alias{vl_make_Text}
+\alias{vl_make_Theta}
+\alias{vl_make_Theta2}
 \alias{vl_make_Tooltip}
 \alias{vl_make_Url}
 \alias{vl_make_X}
@@ -51,15 +58,30 @@
 \alias{vl_make_SingleSelection}
 \alias{vl_make_MultiSelection}
 \alias{vl_make_IntervalSelection}
+\alias{vl_add_arc_config}
 \alias{vl_add_area_config}
 \alias{vl_add_axis_config}
 \alias{vl_add_axisBand_config}
 \alias{vl_add_axisBottom_config}
+\alias{vl_add_axisDiscrete_config}
 \alias{vl_add_axisLeft_config}
+\alias{vl_add_axisPoint_config}
+\alias{vl_add_axisQuantitative_config}
 \alias{vl_add_axisRight_config}
+\alias{vl_add_axisTemporal_config}
 \alias{vl_add_axisTop_config}
 \alias{vl_add_axisX_config}
+\alias{vl_add_axisXBand_config}
+\alias{vl_add_axisXDiscrete_config}
+\alias{vl_add_axisXPoint_config}
+\alias{vl_add_axisXQuantitative_config}
+\alias{vl_add_axisXTemporal_config}
 \alias{vl_add_axisY_config}
+\alias{vl_add_axisYBand_config}
+\alias{vl_add_axisYDiscrete_config}
+\alias{vl_add_axisYPoint_config}
+\alias{vl_add_axisYQuantitative_config}
+\alias{vl_add_axisYTemporal_config}
 \alias{vl_add_bar_config}
 \alias{vl_add_boxplot_config}
 \alias{vl_add_circle_config}
@@ -80,7 +102,6 @@
 \alias{vl_add_projection_config}
 \alias{vl_add_range_config}
 \alias{vl_add_rect_config}
-\alias{vl_add_repeat_config}
 \alias{vl_add_rule_config}
 \alias{vl_add_scale_config}
 \alias{vl_add_selection_config}
@@ -91,9 +112,10 @@
 \alias{vl_add_trail_config}
 \alias{vl_add_view_config}
 \alias{vl_add_config}
+\alias{vl_make_AnyMarkConfig}
 \alias{vl_make_AreaConfig}
 \alias{vl_make_AxisConfig}
-\alias{vl_make_BaseMarkConfig}
+\alias{vl_make_BarConfig}
 \alias{vl_make_BoxPlotConfig}
 \alias{vl_make_BrushConfig}
 \alias{vl_make_CompositionConfig}
@@ -125,7 +147,11 @@
 \alias{vl_make_SortField}
 \title{Deprecated functions from vlbuildr}
 \usage{
+vl_make_Angle(...)
+
 vl_make_Color(...)
+
+vl_make_Description(...)
 
 vl_make_Detail(...)
 
@@ -149,17 +175,27 @@ vl_make_Opacity(...)
 
 vl_make_Order(...)
 
+vl_make_Radius(...)
+
+vl_make_Radius2(...)
+
 vl_make_Shape(...)
 
 vl_make_Size(...)
 
 vl_make_Stroke(...)
 
+vl_make_StrokeDash(...)
+
 vl_make_StrokeOpacity(...)
 
 vl_make_StrokeWidth(...)
 
 vl_make_Text(...)
+
+vl_make_Theta(...)
+
+vl_make_Theta2(...)
 
 vl_make_Tooltip(...)
 
@@ -223,6 +259,8 @@ vl_make_MultiSelection(...)
 
 vl_make_IntervalSelection(...)
 
+vl_add_arc_config(...)
+
 vl_add_area_config(...)
 
 vl_add_axis_config(...)
@@ -231,15 +269,43 @@ vl_add_axisBand_config(...)
 
 vl_add_axisBottom_config(...)
 
+vl_add_axisDiscrete_config(...)
+
 vl_add_axisLeft_config(...)
 
+vl_add_axisPoint_config(...)
+
+vl_add_axisQuantitative_config(...)
+
 vl_add_axisRight_config(...)
+
+vl_add_axisTemporal_config(...)
 
 vl_add_axisTop_config(...)
 
 vl_add_axisX_config(...)
 
+vl_add_axisXBand_config(...)
+
+vl_add_axisXDiscrete_config(...)
+
+vl_add_axisXPoint_config(...)
+
+vl_add_axisXQuantitative_config(...)
+
+vl_add_axisXTemporal_config(...)
+
 vl_add_axisY_config(...)
+
+vl_add_axisYBand_config(...)
+
+vl_add_axisYDiscrete_config(...)
+
+vl_add_axisYPoint_config(...)
+
+vl_add_axisYQuantitative_config(...)
+
+vl_add_axisYTemporal_config(...)
 
 vl_add_bar_config(...)
 
@@ -281,8 +347,6 @@ vl_add_range_config(...)
 
 vl_add_rect_config(...)
 
-vl_add_repeat_config(...)
-
 vl_add_rule_config(...)
 
 vl_add_scale_config(...)
@@ -303,11 +367,13 @@ vl_add_view_config(...)
 
 vl_add_config(...)
 
+vl_make_AnyMarkConfig(...)
+
 vl_make_AreaConfig(...)
 
 vl_make_AxisConfig(...)
 
-vl_make_BaseMarkConfig(...)
+vl_make_BarConfig(...)
 
 vl_make_BoxPlotConfig(...)
 

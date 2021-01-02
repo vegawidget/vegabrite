@@ -8,7 +8,7 @@
 
 \item{element}{(\emph{BindCheckbox})}
 
-\item{input}{(\emph{BindCheckbox}) checkbox}
+\item{input}{(\emph{BindCheckbox})}
 
 \item{name}{(\emph{BindCheckbox})}
 

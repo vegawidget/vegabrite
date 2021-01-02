@@ -4,53 +4,55 @@
 \alias{vl$TitleConfig}
 \title{TitleConfig}
 \arguments{
-\item{align}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Horizontal text alignment for title text. One of \code{"left"}, \code{"center"}, or \code{"right"}.}
+\item{align}{(\emph{BaseTitleNoValueRefs}) Horizontal text alignment for title text. One of \code{"left"}, \code{"center"}, or \code{"right"}.}
 
-\item{anchor}{(\emph{ExcludeMappedValueRef<BaseTitle>}) The anchor position for placing the title and subtitle text. One of \code{"start"}, \code{"middle"}, or \code{"end"}. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.}
+\item{anchor}{(\emph{BaseTitleNoValueRefs})}
 
-\item{angle}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Angle in degrees of title and subtitle text.}
+\item{angle}{(\emph{BaseTitleNoValueRefs})}
 
-\item{baseline}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Vertical text baseline for title and subtitle text. One of \code{"top"}, \code{"middle"}, \code{"bottom"}, or \code{"alphabetic"}.}
+\item{aria}{(\emph{BaseTitleNoValueRefs})}
 
-\item{color}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Text color for title text.}
+\item{baseline}{(\emph{BaseTitleNoValueRefs}) Vertical text baseline for title and subtitle text. One of \code{"alphabetic"} (default), \code{"top"}, \code{"middle"}, \code{"bottom"}, \code{"line-top"}, or \code{"line-bottom"}. The \code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"} and \code{"bottom"}, but are calculated relative to the \emph{lineHeight} rather than \emph{fontSize} alone.}
 
-\item{dx}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Delta offset for title and subtitle text x-coordinate.}
+\item{color}{(\emph{BaseTitleNoValueRefs})}
 
-\item{dy}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Delta offset for title and subtitle text y-coordinate.}
+\item{dx}{(\emph{BaseTitleNoValueRefs})}
 
-\item{font}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Font name for title text.}
+\item{dy}{(\emph{BaseTitleNoValueRefs})}
 
-\item{fontSize}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Font size in pixels for title text.}
+\item{font}{(\emph{BaseTitleNoValueRefs})}
 
-\item{fontStyle}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Font style for title text.}
+\item{fontSize}{(\emph{BaseTitleNoValueRefs})}
 
-\item{fontWeight}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Font weight for title text.
-This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
+\item{fontStyle}{(\emph{BaseTitleNoValueRefs})}
 
-\item{frame}{(\emph{ExcludeMappedValueRef<BaseTitle>}) The reference frame for the anchor position, one of \code{"bounds"} (to anchor relative to the full bounding box) or \code{"group"} (to anchor relative to the group width or height).}
+\item{fontWeight}{(\emph{BaseTitleNoValueRefs})}
 
-\item{limit}{(\emph{ExcludeMappedValueRef<BaseTitle>}) The maximum allowed length in pixels of title and subtitle text.}
+\item{frame}{(\emph{BaseTitleNoValueRefs})}
 
-\item{lineHeight}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Line height in pixels for multi-line title text.}
+\item{limit}{(\emph{BaseTitleNoValueRefs})}
 
-\item{offset}{(\emph{ExcludeMappedValueRef<BaseTitle>}) The orthogonal offset in pixels by which to displace the title group from its position along the edge of the chart.}
+\item{lineHeight}{(\emph{BaseTitleNoValueRefs})}
 
-\item{orient}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Default title orientation (\code{"top"}, \code{"bottom"}, \code{"left"}, or \code{"right"})}
+\item{offset}{(\emph{BaseTitleNoValueRefs})}
 
-\item{subtitleColor}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Text color for subtitle text.}
+\item{orient}{(\emph{BaseTitleNoValueRefs})}
 
-\item{subtitleFont}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Font name for subtitle text.}
+\item{subtitleColor}{(\emph{BaseTitleNoValueRefs})}
 
-\item{subtitleFontSize}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Font size in pixels for subtitle text.}
+\item{subtitleFont}{(\emph{BaseTitleNoValueRefs})}
 
-\item{subtitleFontStyle}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Font style for subtitle text.}
+\item{subtitleFontSize}{(\emph{BaseTitleNoValueRefs})}
 
-\item{subtitleFontWeight}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Font weight for subtitle text.
-This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
+\item{subtitleFontStyle}{(\emph{BaseTitleNoValueRefs})}
 
-\item{subtitleLineHeight}{(\emph{ExcludeMappedValueRef<BaseTitle>}) Line height in pixels for multi-line subtitle text.}
+\item{subtitleFontWeight}{(\emph{BaseTitleNoValueRefs})}
 
-\item{subtitlePadding}{(\emph{ExcludeMappedValueRef<BaseTitle>}) The padding in pixels between title and subtitle text.}
+\item{subtitleLineHeight}{(\emph{BaseTitleNoValueRefs})}
+
+\item{subtitlePadding}{(\emph{BaseTitleNoValueRefs})}
+
+\item{zindex}{(\emph{BaseTitleNoValueRefs})}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to TitleConfig definition.

@@ -22,9 +22,7 @@
 
 \strong{Default value:} \code{3}}
 
-\item{params}{(\emph{RegressionTransform}) A boolean flag indicating if the transform should return the regression model parameters (one object per group), rather than trend line points.
-The resulting objects include a \code{coef} array of fitted coefficient values (starting with the intercept term and then including terms of increasing order)
-and an \code{rSquared} value (indicating the total variance explained by the model).
+\item{params}{(\emph{RegressionTransform}) A boolean flag indicating if the transform should return the regression model parameters (one object per group), rather than trend line points. The resulting objects include a \code{coef} array of fitted coefficient values (starting with the intercept term and then including terms of increasing order) and an \code{rSquared} value (indicating the total variance explained by the model).
 
 \strong{Default value:} \code{false}}
 

@@ -6,11 +6,7 @@
 \arguments{
 \item{bandPaddingInner}{(\emph{ScaleConfig}) Default inner padding for \code{x} and \code{y} band-ordinal scales.
 
-\strong{Default value:}
-\itemize{
-\item \code{barBandPaddingInner} for bar marks (\code{0.1} by default)
-\item \code{rectBandPaddingInner} for rect and other marks (\code{0} by default)
-}}
+\strong{Default value:} - \code{barBandPaddingInner} for bar marks (\code{0.1} by default) - \code{rectBandPaddingInner} for rect and other marks (\code{0} by default)}
 
 \item{bandPaddingOuter}{(\emph{ScaleConfig}) Default outer padding for \code{x} and \code{y} band-ordinal scales.
 
@@ -80,9 +76,7 @@ If undefined (default), we will use the axis's size (width or height) - 1.}
 
 \strong{Default value:} \code{0}}
 
-\item{round}{(\emph{ScaleConfig}) If true, rounds numeric output values to integers.
-This can be helpful for snapping to the pixel grid.
-(Only available for \code{x}, \code{y}, and \code{size} scales.)}
+\item{round}{(\emph{ScaleConfig}) If true, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid. (Only available for \code{x}, \code{y}, and \code{size} scales.)}
 
 \item{useUnaggregatedDomain}{(\emph{ScaleConfig}) Use the source data range before aggregation as scale domain instead of aggregated data for aggregate axis.
 
@@ -91,6 +85,8 @@ This is equivalent to setting \code{domain} to \code{"unaggregate"} for aggregat
 This property only works with aggregate functions that produce values within the raw data domain (\code{"mean"}, \code{"average"}, \code{"median"}, \code{"q1"}, \code{"q3"}, \code{"min"}, \code{"max"}). For other aggregations that produce values outside of the raw data domain (e.g. \code{"count"}, \code{"sum"}), this property is ignored.
 
 \strong{Default value:} \code{false}}
+
+\item{xReverse}{(\emph{ScaleConfig}) Reverse x-scale by default (useful for right-to-left charts).}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to ScaleConfig definition.

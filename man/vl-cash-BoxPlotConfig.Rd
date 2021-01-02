@@ -6,11 +6,7 @@
 \arguments{
 \item{box}{(\emph{BoxPlotConfig})}
 
-\item{extent}{(\emph{BoxPlotConfig}) The extent of the whiskers. Available options include:
-\itemize{
-\item \code{"min-max"}: min and max are the lower and upper whiskers respectively.
-\item A number representing multiple of the interquartile range. This number will be multiplied by the IQR to determine whisker boundary, which spans from the smallest data to the largest data within the range \emph{[Q1 - k * IQR, Q3 + k * IQR]} where \emph{Q1} and \emph{Q3} are the first and third quartiles while \emph{IQR} is the interquartile range (\emph{Q3-Q1}).
-}
+\item{extent}{(\emph{BoxPlotConfig}) The extent of the whiskers. Available options include: - \code{"min-max"}: min and max are the lower and upper whiskers respectively. - A number representing multiple of the interquartile range. This number will be multiplied by the IQR to determine whisker boundary, which spans from the smallest data to the largest data within the range \emph{[Q1 - k * IQR, Q3 + k * IQR]} where \emph{Q1} and \emph{Q3} are the first and third quartiles while \emph{IQR} is the interquartile range (\emph{Q3-Q1}).
 
 \strong{Default value:} \code{1.5}.}
 

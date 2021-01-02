@@ -10,6 +10,7 @@ vl_encode_yError2(
   field = NULL,
   value = NULL,
   aggregate = NULL,
+  band = NULL,
   bin = NULL,
   timeUnit = NULL,
   title = NULL
@@ -18,29 +19,25 @@ vl_encode_yError2(
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or NumberValueDef}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or ValueDef<number>}
 
-\item{field}{(\emph{SecondaryFieldDef}) \strong{Required.} A string defining the name of the field from which to pull a data value
-or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{\code{repeat}} operator.
+\item{field}{(\emph{SecondaryFieldDef}) \strong{Required.} A string defining the name of the field from which to pull a data value or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{\code{repeat}} operator.
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/field.html}{\code{field}} documentation.
 
-\strong{Notes:}
-\enumerate{
-\item Dots (\code{.}) and brackets (\code{[} and \verb{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \verb{"field": "foo\['bar'\]"}).
-If field names contain dots or brackets but are not nested, you can use \verb{\\\\} to escape dots and brackets (e.g., \code{"a\\\\.b"} and \verb{"a\\\\\[0\\\\\]"}).
-See more details about escaping in the \href{https://vega.github.io/vega-lite/docs/field.html}{field documentation}.
-\item \code{field} is not required if \code{aggregate} is \code{count}.
-}}
+\strong{Notes:} 1)  Dots (\code{.}) and brackets (\code{[} and \verb{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \verb{"field": "foo\['bar'\]"}). If field names contain dots or brackets but are not nested, you can use \verb{\\\\} to escape dots and brackets (e.g., \code{"a\\\\.b"} and \verb{"a\\\\\[0\\\\\]"}). See more details about escaping in the \href{https://vega.github.io/vega-lite/docs/field.html}{field documentation}. 2) \code{field} is not required if \code{aggregate} is \code{count}.}
 
-\item{value}{(\emph{NumberValueDef}) A constant value in visual domain (e.g., \code{"red"} / \code{"#0099ff"} / \href{https://vega.github.io/vega-lite/docs/types.html#gradient}{gradient definition} for color, values between \code{0} to \code{1} for opacity).}
+\item{value}{(\emph{ValueDef<number>}) A constant value in visual domain (e.g., \code{"red"} / \code{"#0099ff"} / \href{https://vega.github.io/vega-lite/docs/types.html#gradient}{gradient definition} for color, values between \code{0} to \code{1} for opacity).}
 
-\item{aggregate}{(\emph{SecondaryFieldDef}) Aggregation function for the field
-(e.g., \code{"mean"}, \code{"sum"}, \code{"median"}, \code{"min"}, \code{"max"}, \code{"count"}).
+\item{aggregate}{(\emph{SecondaryFieldDef}) Aggregation function for the field (e.g., \code{"mean"}, \code{"sum"}, \code{"median"}, \code{"min"}, \code{"max"}, \code{"count"}).
 
 \strong{Default value:} \code{undefined} (None)
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/aggregate.html}{\code{aggregate}} documentation.}
+
+\item{band}{(\emph{SecondaryFieldDef}) For rect-based marks (\code{rect}, \code{bar}, and \code{image}), mark size relative to bandwidth of \href{https://vega.github.io/vega-lite/docs/scale.html#band}{band scales}, bins or time units. If set to \code{1}, the mark size is set to the bandwidth, the bin interval, or the time unit interval. If set to \code{0.5}, the mark size is half of the bandwidth or the time unit interval.
+
+For other marks, relative position on a band of a stacked, binned, time unit or band scale. If set to \code{0}, the marks will be positioned at the beginning of the band. If set to \code{0.5}, the marks will be positioned in the middle of the band.}
 
 \item{bin}{(\emph{SecondaryFieldDef}) A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y} channel are binned before they are imported into Vega-Lite (\code{"binned"}).
 \itemize{
@@ -52,8 +49,7 @@ See more details about escaping in the \href{https://vega.github.io/vega-lite/do
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/bin.html}{\code{bin}} documentation.}
 
-\item{timeUnit}{(\emph{SecondaryFieldDef}) Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field.
-or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}.
+\item{timeUnit}{(\emph{SecondaryFieldDef}) Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field. or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}.
 
 \strong{Default value:} \code{undefined} (None)
 

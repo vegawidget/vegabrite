@@ -2,14 +2,18 @@
 % Please edit documentation in R/zzz_autogen_api.R
 \name{condition_encoding}
 \alias{condition_encoding}
+\alias{vl_condition_angle}
 \alias{vl_condition_color}
+\alias{vl_condition_description}
 \alias{vl_condition_fill}
 \alias{vl_condition_fillOpacity}
 \alias{vl_condition_href}
 \alias{vl_condition_opacity}
+\alias{vl_condition_order}
 \alias{vl_condition_shape}
 \alias{vl_condition_size}
 \alias{vl_condition_stroke}
+\alias{vl_condition_strokeDash}
 \alias{vl_condition_strokeOpacity}
 \alias{vl_condition_strokeWidth}
 \alias{vl_condition_text}
@@ -17,21 +21,61 @@
 \alias{vl_condition_url}
 \title{Add conditioning to an encoding}
 \usage{
-vl_condition_color(
+vl_condition_angle(
   spec,
   .object = NULL,
   value = NULL,
   selection = NULL,
   test = NULL,
-  type = NULL,
   aggregate = NULL,
+  band = NULL,
   bin = NULL,
   field = NULL,
   legend = NULL,
   scale = NULL,
   sort = NULL,
   timeUnit = NULL,
-  title = NULL
+  title = NULL,
+  type = NULL,
+  datum = NULL
+)
+
+vl_condition_color(
+  spec,
+  .object = NULL,
+  value = NULL,
+  selection = NULL,
+  test = NULL,
+  aggregate = NULL,
+  band = NULL,
+  bin = NULL,
+  field = NULL,
+  legend = NULL,
+  scale = NULL,
+  sort = NULL,
+  timeUnit = NULL,
+  title = NULL,
+  type = NULL,
+  datum = NULL
+)
+
+vl_condition_description(
+  spec,
+  .object = NULL,
+  selection = NULL,
+  test = NULL,
+  value = NULL,
+  aggregate = NULL,
+  band = NULL,
+  bin = NULL,
+  field = NULL,
+  legend = NULL,
+  scale = NULL,
+  sort = NULL,
+  timeUnit = NULL,
+  title = NULL,
+  type = NULL,
+  datum = NULL
 )
 
 vl_condition_fill(
@@ -40,15 +84,17 @@ vl_condition_fill(
   value = NULL,
   selection = NULL,
   test = NULL,
-  type = NULL,
   aggregate = NULL,
+  band = NULL,
   bin = NULL,
   field = NULL,
   legend = NULL,
   scale = NULL,
   sort = NULL,
   timeUnit = NULL,
-  title = NULL
+  title = NULL,
+  type = NULL,
+  datum = NULL
 )
 
 vl_condition_fillOpacity(
@@ -57,32 +103,36 @@ vl_condition_fillOpacity(
   value = NULL,
   selection = NULL,
   test = NULL,
-  type = NULL,
   aggregate = NULL,
+  band = NULL,
   bin = NULL,
   field = NULL,
   legend = NULL,
   scale = NULL,
   sort = NULL,
   timeUnit = NULL,
-  title = NULL
+  title = NULL,
+  type = NULL,
+  datum = NULL
 )
 
 vl_condition_href(
   spec,
   .object = NULL,
-  value = NULL,
   selection = NULL,
   test = NULL,
-  type = NULL,
+  value = NULL,
   aggregate = NULL,
+  band = NULL,
   bin = NULL,
   field = NULL,
   legend = NULL,
   scale = NULL,
   sort = NULL,
   timeUnit = NULL,
-  title = NULL
+  title = NULL,
+  type = NULL,
+  datum = NULL
 )
 
 vl_condition_opacity(
@@ -91,15 +141,25 @@ vl_condition_opacity(
   value = NULL,
   selection = NULL,
   test = NULL,
-  type = NULL,
   aggregate = NULL,
+  band = NULL,
   bin = NULL,
   field = NULL,
   legend = NULL,
   scale = NULL,
   sort = NULL,
   timeUnit = NULL,
-  title = NULL
+  title = NULL,
+  type = NULL,
+  datum = NULL
+)
+
+vl_condition_order(
+  spec,
+  .object = NULL,
+  value = NULL,
+  selection = NULL,
+  test = NULL
 )
 
 vl_condition_shape(
@@ -108,15 +168,17 @@ vl_condition_shape(
   value = NULL,
   selection = NULL,
   test = NULL,
-  type = NULL,
   aggregate = NULL,
+  band = NULL,
   bin = NULL,
   field = NULL,
   legend = NULL,
   scale = NULL,
   sort = NULL,
   timeUnit = NULL,
-  title = NULL
+  title = NULL,
+  type = NULL,
+  datum = NULL
 )
 
 vl_condition_size(
@@ -125,15 +187,17 @@ vl_condition_size(
   value = NULL,
   selection = NULL,
   test = NULL,
-  type = NULL,
   aggregate = NULL,
+  band = NULL,
   bin = NULL,
   field = NULL,
   legend = NULL,
   scale = NULL,
   sort = NULL,
   timeUnit = NULL,
-  title = NULL
+  title = NULL,
+  type = NULL,
+  datum = NULL
 )
 
 vl_condition_stroke(
@@ -142,15 +206,36 @@ vl_condition_stroke(
   value = NULL,
   selection = NULL,
   test = NULL,
-  type = NULL,
   aggregate = NULL,
+  band = NULL,
   bin = NULL,
   field = NULL,
   legend = NULL,
   scale = NULL,
   sort = NULL,
   timeUnit = NULL,
-  title = NULL
+  title = NULL,
+  type = NULL,
+  datum = NULL
+)
+
+vl_condition_strokeDash(
+  spec,
+  .object = NULL,
+  value = NULL,
+  selection = NULL,
+  test = NULL,
+  aggregate = NULL,
+  band = NULL,
+  bin = NULL,
+  field = NULL,
+  legend = NULL,
+  scale = NULL,
+  sort = NULL,
+  timeUnit = NULL,
+  title = NULL,
+  type = NULL,
+  datum = NULL
 )
 
 vl_condition_strokeOpacity(
@@ -159,15 +244,17 @@ vl_condition_strokeOpacity(
   value = NULL,
   selection = NULL,
   test = NULL,
-  type = NULL,
   aggregate = NULL,
+  band = NULL,
   bin = NULL,
   field = NULL,
   legend = NULL,
   scale = NULL,
   sort = NULL,
   timeUnit = NULL,
-  title = NULL
+  title = NULL,
+  type = NULL,
+  datum = NULL
 )
 
 vl_condition_strokeWidth(
@@ -176,15 +263,17 @@ vl_condition_strokeWidth(
   value = NULL,
   selection = NULL,
   test = NULL,
-  type = NULL,
   aggregate = NULL,
+  band = NULL,
   bin = NULL,
   field = NULL,
   legend = NULL,
   scale = NULL,
   sort = NULL,
   timeUnit = NULL,
-  title = NULL
+  title = NULL,
+  type = NULL,
+  datum = NULL
 )
 
 vl_condition_text(
@@ -193,85 +282,78 @@ vl_condition_text(
   value = NULL,
   selection = NULL,
   test = NULL,
-  type = NULL,
   aggregate = NULL,
+  band = NULL,
   bin = NULL,
   field = NULL,
   format = NULL,
   formatType = NULL,
   labelExpr = NULL,
   timeUnit = NULL,
-  title = NULL
+  title = NULL,
+  type = NULL
 )
 
 vl_condition_tooltip(
   spec,
   .object = NULL,
-  value = NULL,
   selection = NULL,
   test = NULL,
-  type = NULL,
+  value = NULL,
   aggregate = NULL,
+  band = NULL,
   bin = NULL,
   field = NULL,
   legend = NULL,
   scale = NULL,
   sort = NULL,
   timeUnit = NULL,
-  title = NULL
+  title = NULL,
+  type = NULL,
+  datum = NULL
 )
 
 vl_condition_url(
   spec,
   .object = NULL,
-  value = NULL,
   selection = NULL,
   test = NULL,
-  type = NULL,
+  value = NULL,
   aggregate = NULL,
+  band = NULL,
   bin = NULL,
   field = NULL,
   legend = NULL,
   scale = NULL,
   sort = NULL,
   timeUnit = NULL,
-  title = NULL
+  title = NULL,
+  type = NULL,
+  datum = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalSelection<ValueDef<(Gradient|string|null)>> or array of ConditionalValueDef<(Gradient|string|null)>}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ConditionalPredicate<ValueDef<(number|ExprRef)>>, ConditionalSelection<ValueDef<(number|ExprRef)>> or array of ConditionalValueDef<(number|ExprRef)>}
 
-\item{value}{(\emph{ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalSelection<ValueDef<(Gradient|string|null)>>, ConditionalPredicate<NumberValueDef>, ConditionalSelection<NumberValueDef>, ConditionalPredicate<ValueDef<string>>, ConditionalSelection<ValueDef<string>>, ConditionalPredicate<StringValueDef>, ConditionalSelection<StringValueDef>, ConditionalPredicate<ValueDef<Text>>, ConditionalSelection<ValueDef<Text>>}) A constant value in visual domain (e.g., \code{"red"} / \code{"#0099ff"} / \href{https://vega.github.io/vega-lite/docs/types.html#gradient}{gradient definition} for color, values between \code{0} to \code{1} for opacity).}
+\item{value}{(\emph{ConditionalPredicate<ValueDef<(number|ExprRef)>>, ConditionalSelection<ValueDef<(number|ExprRef)>>, ConditionalPredicate<ValueDef<(Gradient|string|null|ExprRef)>>, ConditionalSelection<ValueDef<(Gradient|string|null|ExprRef)>>, ConditionalPredicate<ValueDef<(string|ExprRef)>>, ConditionalSelection<ValueDef<(string|ExprRef)>>, ConditionalPredicate<ValueDef<(string|null|ExprRef)>>, ConditionalSelection<ValueDef<(string|null|ExprRef)>>, ConditionalPredicate<ValueDef<number>>, ConditionalSelection<ValueDef<number>>, ConditionalPredicate<ValueDef<(number[]|ExprRef)>>, ConditionalSelection<ValueDef<(number[]|ExprRef)>>, ConditionalPredicate<ValueDef<(Text|ExprRef)>>, ConditionalSelection<ValueDef<(Text|ExprRef)>>}) A constant value in visual domain (e.g., \code{"red"} / \code{"#0099ff"} / \href{https://vega.github.io/vega-lite/docs/types.html#gradient}{gradient definition} for color, values between \code{0} to \code{1} for opacity).}
 
-\item{selection}{(\emph{ConditionalSelection<ValueDef<(Gradient|string|null)>>, ConditionalSelection<MarkPropFieldDef>, ConditionalSelection<NumberValueDef>, ConditionalSelection<ValueDef<string>>, ConditionalSelection<StringValueDef>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<ValueDef<Text>>, ConditionalSelection<StringFieldDef>}) A \href{https://vega.github.io/vega-lite/docs/selection.html}{selection name}, or a series of \href{https://vega.github.io/vega-lite/docs/selection.html#compose}{composed selections}.}
+\item{selection}{(\emph{ConditionalSelection<ValueDef<(number|ExprRef)>>, ConditionalSelection<MarkPropFieldOrDatumDef>, ConditionalSelection<ValueDef<(Gradient|string|null|ExprRef)>>, ConditionalSelection<ValueDef<(string|ExprRef)>>, ConditionalSelection<ValueDef<(string|null|ExprRef)>>, ConditionalSelection<ValueDef<number>>, ConditionalSelection<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalSelection<ValueDef<(number[]|ExprRef)>>, ConditionalSelection<ValueDef<(Text|ExprRef)>>, ConditionalSelection<StringFieldDef>}) A \href{https://vega.github.io/vega-lite/docs/selection.html}{selection name}, or a series of \href{https://vega.github.io/vega-lite/docs/selection.html#compose}{composed selections}.}
 
-\item{test}{(\emph{ConditionalPredicate<ValueDef<(Gradient|string|null)>>, ConditionalPredicate<MarkPropFieldDef>, ConditionalPredicate<NumberValueDef>, ConditionalPredicate<ValueDef<string>>, ConditionalPredicate<StringValueDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<ValueDef<Text>>, ConditionalPredicate<StringFieldDef>}) Predicate for triggering the condition}
+\item{test}{(\emph{ConditionalPredicate<ValueDef<(number|ExprRef)>>, ConditionalPredicate<MarkPropFieldOrDatumDef>, ConditionalPredicate<ValueDef<(Gradient|string|null|ExprRef)>>, ConditionalPredicate<ValueDef<(string|ExprRef)>>, ConditionalPredicate<ValueDef<(string|null|ExprRef)>>, ConditionalPredicate<ValueDef<number>>, ConditionalPredicate<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalPredicate<ValueDef<(number[]|ExprRef)>>, ConditionalPredicate<ValueDef<(Text|ExprRef)>>, ConditionalPredicate<StringFieldDef>}) Predicate for triggering the condition}
 
-\item{type}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) The encoded field's type of measurement (\code{"quantitative"}, \code{"temporal"}, \code{"ordinal"}, or \code{"nominal"}).
-It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io/vega-lite/docs/geoshape.html}{'geoshape'}.
-
-\strong{Note:}
-\itemize{
-\item Data values for a temporal field can be either a date-time string (e.g., \code{"2015-03-07 12:32:17"}, \code{"17:01"}, \code{"2015-03-16"}. \code{"2015"}) or a timestamp number (e.g., \code{1552199579097}).
-\item Data \code{type} describes the semantics of the data rather than the primitive data types (number, string, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data.
-\item When using with \href{https://vega.github.io/vega-lite/docs/bin.html}{\code{bin}}, the \code{type} property can be either \code{"quantitative"} (for using a linear bin scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{\code{"ordinal"} (for using an ordinal bin scale)}.
-\item When using with \href{https://vega.github.io/vega-lite/docs/timeunit.html}{\code{timeUnit}}, the \code{type} property can be either \code{"temporal"} (for using a temporal scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{\code{"ordinal"} (for using an ordinal scale)}.
-\item When using with \href{https://vega.github.io/vega-lite/docs/aggregate.html}{\code{aggregate}}, the \code{type} property refers to the post-aggregation data type. For example, we can calculate count \code{distinct} of a categorical field \code{"cat"} using \verb{\{"aggregate": "distinct", "field": "cat", "type": "quantitative"\}}. The \code{"type"} of the aggregate output is \code{"quantitative"}.
-\item Secondary channels (e.g., \code{x2}, \code{y2}, \code{xError}, \code{yError}) do not have \code{type} as they have exactly the same type as their primary channels (e.g., \code{x}, \code{y}).
-}
-
-\strong{See also:} \href{https://vega.github.io/vega-lite/docs/type.html}{\code{type}} documentation.}
-
-\item{aggregate}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) Aggregation function for the field
-(e.g., \code{"mean"}, \code{"sum"}, \code{"median"}, \code{"min"}, \code{"max"}, \code{"count"}).
+\item{aggregate}{(\emph{ConditionalPredicate<MarkPropFieldOrDatumDef>, ConditionalSelection<MarkPropFieldOrDatumDef>, ConditionalPredicate<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalSelection<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) Aggregation function for the field (e.g., \code{"mean"}, \code{"sum"}, \code{"median"}, \code{"min"}, \code{"max"}, \code{"count"}).
 
 \strong{Default value:} \code{undefined} (None)
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/aggregate.html}{\code{aggregate}} documentation.}
 
-\item{bin}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y} channel are binned before they are imported into Vega-Lite (\code{"binned"}).
+\item{band}{(\emph{ConditionalPredicate<MarkPropFieldOrDatumDef>, ConditionalSelection<MarkPropFieldOrDatumDef>, ConditionalPredicate<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalSelection<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) For rect-based marks (\code{rect}, \code{bar}, and \code{image}), mark size relative to bandwidth of \href{https://vega.github.io/vega-lite/docs/scale.html#band}{band scales}, bins or time units. If set to \code{1}, the mark size is set to the bandwidth, the bin interval, or the time unit interval. If set to \code{0.5}, the mark size is half of the bandwidth or the time unit interval.
+
+For other marks, relative position on a band of a stacked, binned, time unit or band scale. If set to \code{0}, the marks will be positioned at the beginning of the band. If set to \code{0.5}, the marks will be positioned in the middle of the band.}
+
+\item{bin}{(\emph{ConditionalPredicate<MarkPropFieldOrDatumDef>, ConditionalSelection<MarkPropFieldOrDatumDef>, ConditionalPredicate<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalSelection<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y} channel are binned before they are imported into Vega-Lite (\code{"binned"}).
 \itemize{
 \item If \code{true}, default \href{https://vega.github.io/vega-lite/docs/bin.html}{binning parameters} will be applied.
 \item If \code{"binned"}, this indicates that the data for the \code{x} (or \code{y}) channel are already binned. You can map the bin-start field to \code{x} (or \code{y}) and the bin-end field to \code{x2} (or \code{y2}). The scale and axis will be formatted similar to binning in Vega-Lite.  To adjust the axis ticks based on the bin step, you can also set the axis's \href{https://vega.github.io/vega-lite/docs/axis.html#ticks}{\code{tickMinStep}} property.
@@ -281,27 +363,19 @@ It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/bin.html}{\code{bin}} documentation.}
 
-\item{field}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) \strong{Required.} A string defining the name of the field from which to pull a data value
-or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{\code{repeat}} operator.
+\item{field}{(\emph{ConditionalPredicate<MarkPropFieldOrDatumDef>, ConditionalSelection<MarkPropFieldOrDatumDef>, ConditionalPredicate<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalSelection<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) \strong{Required.} A string defining the name of the field from which to pull a data value or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{\code{repeat}} operator.
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/field.html}{\code{field}} documentation.
 
-\strong{Notes:}
-\enumerate{
-\item Dots (\code{.}) and brackets (\code{[} and \verb{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \verb{"field": "foo\['bar'\]"}).
-If field names contain dots or brackets but are not nested, you can use \verb{\\\\} to escape dots and brackets (e.g., \code{"a\\\\.b"} and \verb{"a\\\\\[0\\\\\]"}).
-See more details about escaping in the \href{https://vega.github.io/vega-lite/docs/field.html}{field documentation}.
-\item \code{field} is not required if \code{aggregate} is \code{count}.
-}}
+\strong{Notes:} 1)  Dots (\code{.}) and brackets (\code{[} and \verb{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \verb{"field": "foo\['bar'\]"}). If field names contain dots or brackets but are not nested, you can use \verb{\\\\} to escape dots and brackets (e.g., \code{"a\\\\.b"} and \verb{"a\\\\\[0\\\\\]"}). See more details about escaping in the \href{https://vega.github.io/vega-lite/docs/field.html}{field documentation}. 2) \code{field} is not required if \code{aggregate} is \code{count}.}
 
-\item{legend}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>}) An object defining properties of the legend.
-If \code{null}, the legend for the encoding channel will be removed.
+\item{legend}{(\emph{ConditionalPredicate<MarkPropFieldOrDatumDef>, ConditionalSelection<MarkPropFieldOrDatumDef>, ConditionalPredicate<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalSelection<MarkPropFieldOrDatumDef<TypeForShape>>}) An object defining properties of the legend. If \code{null}, the legend for the encoding channel will be removed.
 
 \strong{Default value:} If undefined, default \href{https://vega.github.io/vega-lite/docs/legend.html}{legend properties} are applied.
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/legend.html}{\code{legend}} documentation.}
 
-\item{scale}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>}) An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
+\item{scale}{(\emph{ConditionalPredicate<MarkPropFieldOrDatumDef>, ConditionalSelection<MarkPropFieldOrDatumDef>, ConditionalPredicate<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalSelection<MarkPropFieldOrDatumDef<TypeForShape>>}) An object defining properties of the channel's scale, which is the function that transforms values in the data domain (numbers, dates, strings, etc) to visual values (pixels, colors, sizes) of the encoding channels.
 
 If \code{null}, the scale will be \href{https://vega.github.io/vega-lite/docs/scale.html#disable}{disabled and the data value will be directly encoded}.
 
@@ -309,18 +383,11 @@ If \code{null}, the scale will be \href{https://vega.github.io/vega-lite/docs/sc
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/scale.html}{\code{scale}} documentation.}
 
-\item{sort}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>}) Sort order for the encoded field.
+\item{sort}{(\emph{ConditionalPredicate<MarkPropFieldOrDatumDef>, ConditionalSelection<MarkPropFieldOrDatumDef>, ConditionalPredicate<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalSelection<MarkPropFieldOrDatumDef<TypeForShape>>}) Sort order for the encoded field.
 
 For continuous fields (quantitative or temporal), \code{sort} can be either \code{"ascending"} or \code{"descending"}.
 
-For discrete fields, \code{sort} can be one of the following:
-\itemize{
-\item \code{"ascending"} or \code{"descending"} -- for sorting by the values' natural order in JavaScript.
-\item \href{https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding}{A string indicating an encoding channel name to sort by} (e.g., \code{"x"} or \code{"y"}) with an optional minus prefix for descending sort (e.g., \code{"-x"} to sort by x-field, descending). This channel string is short-form of \href{https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding}{a sort-by-encoding definition}. For example, \code{"sort": "-x"} is equivalent to \verb{"sort": \{"encoding": "x", "order": "descending"\}}.
-\item \href{https://vega.github.io/vega-lite/docs/sort.html#sort-field}{A sort field definition} for sorting by another field.
-\item \href{https://vega.github.io/vega-lite/docs/sort.html#sort-array}{An array specifying the field values in preferred order}. In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order. For discrete time field, values in the sort array can be \href{types#datetime}{date-time definition objects}. In addition, for time units \code{"month"} and \code{"day"}, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., \code{"Mon"}, \code{"Tue"}).
-\item \code{null} indicating no sort.
-}
+For discrete fields, \code{sort} can be one of the following: - \code{"ascending"} or \code{"descending"} -- for sorting by the values' natural order in JavaScript. - \href{https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding}{A string indicating an encoding channel name to sort by} (e.g., \code{"x"} or \code{"y"}) with an optional minus prefix for descending sort (e.g., \code{"-x"} to sort by x-field, descending). This channel string is short-form of \href{https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding}{a sort-by-encoding definition}. For example, \code{"sort": "-x"} is equivalent to \verb{"sort": \{"encoding": "x", "order": "descending"\}}. - \href{https://vega.github.io/vega-lite/docs/sort.html#sort-field}{A sort field definition} for sorting by another field. - \href{https://vega.github.io/vega-lite/docs/sort.html#sort-array}{An array specifying the field values in preferred order}. In this case, the sort order will obey the values in the array, follow
 
 \strong{Default value:} \code{"ascending"}
 
@@ -328,14 +395,13 @@ For discrete fields, \code{sort} can be one of the following:
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/sort.html}{\code{sort}} documentation.}
 
-\item{timeUnit}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field.
-or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}.
+\item{timeUnit}{(\emph{ConditionalPredicate<MarkPropFieldOrDatumDef>, ConditionalSelection<MarkPropFieldOrDatumDef>, ConditionalPredicate<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalSelection<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field. or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}.
 
 \strong{Default value:} \code{undefined} (None)
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/timeunit.html}{\code{timeUnit}} documentation.}
 
-\item{title}{(\emph{ConditionalPredicate<MarkPropFieldDef>, ConditionalSelection<MarkPropFieldDef>, ConditionalPredicate<MarkPropFieldDef<TypeForShape>>, ConditionalSelection<MarkPropFieldDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) A title for the field. If \code{null}, the title will be removed.
+\item{title}{(\emph{ConditionalPredicate<MarkPropFieldOrDatumDef>, ConditionalSelection<MarkPropFieldOrDatumDef>, ConditionalPredicate<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalSelection<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) A title for the field. If \code{null}, the title will be removed.
 
 \strong{Default value:}  derived from the field's name and transformation function (\code{aggregate}, \code{bin} and \code{timeUnit}). If the field has an aggregate function, the function is displayed as part of the title (e.g., \code{"Sum of Profit"}). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., \code{"Profit (binned)"}, \code{"Transaction Date (year-month)"}). Otherwise, the title is simply the field name.
 
@@ -345,23 +411,36 @@ or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field 
 \item If both field definition's \code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used.
 }}
 
-\item{format}{(\emph{ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+\item{type}{(\emph{ConditionalPredicate<MarkPropFieldOrDatumDef>, ConditionalSelection<MarkPropFieldOrDatumDef>, ConditionalPredicate<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalSelection<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) The type of measurement (\code{"quantitative"}, \code{"temporal"}, \code{"ordinal"}, or \code{"nominal"}) for the encoded field or constant value (\code{datum}). It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io/vega-lite/docs/geoshape.html}{'geoshape'}.
+
+Vega-Lite automatically infers data types in many cases as discussed below. However, type is required for a field if: (1) the field is not nominal and the field encoding has no specified \code{aggregate} (except \code{argmin} and \code{argmax}), \code{bin}, scale type, custom \code{sort} order, nor \code{timeUnit} or (2) if you wish to use an ordinal scale for a field with \code{bin} or \code{timeUnit}.
+
+\strong{Default value:}
+\enumerate{
+\item For a data \code{field}, \code{"nominal"} is the default data type unless the field encoding has \code{aggregate}, \code{channel}, \code{bin}, scale type, \code{sort}, or \code{timeUnit} that satisfies the following criteria: - \code{"quantitative"} is the default type if (1) the encoded field contains \code{bin} or \code{aggregate} except \code{"argmin"} and \code{"argmax"}, (2) the encoding channel is \code{latitude} or \code{longitude} channel or (3) if the specified scale type is \href{https://vega.github.io/vega-lite/docs/scale.html#type}{a quantitative scale}. - \code{"temporal"} is the default type if (1) the encoded field contains \code{timeUnit} or (2) the specified scale type is a time or utc scale - \verb{ordinal""} is the default type if (1) the encoded field contains a \href{https://vega.github.io/vega-lite/docs/sort.html#specifying-custom-sort-order}{custom \code{sort} order}, (2) the specified scale type is an ordinal/point/band scale, or (3) the encoding channel i
+\item For a constant value in data domain (\code{datum}): - \code{"quantitative"} if the datum is a number - \code{"nominal"} if the datum is a string - \code{"temporal"} if the datum is \href{https://vega.github.io/vega-lite/docs/datetime.html}{a date time object}
+}
+
+\strong{Note:} - Data \code{type} describes the semantics of the data rather than the primitive data types (number, string, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data. - Data values for a temporal field can be either a date-time string (e.g., \code{"2015-03-07 12:32:17"}, \code{"17:01"}, \code{"2015-03-16"}. \code{"2015"}) or a timestamp number (e.g., \code{1552199579097}). - When using with \href{https://vega.github.io/vega-lite/docs/bin.html}{\code{bin}}, the \code{type} property can be either \code{"quantitative"} (for using a linear bin scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{\code{"ordinal"} (for using an ordinal bin scale)}. - When using with \href{https://vega.github.io/vega-lite/docs/timeunit.html}{\code{timeUnit}}, the \code{type} property can be either \code{"temporal"} (default, for using a temporal scale) or \href{https://vega.gi
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/type.html}{\code{type}} documentation.}
+
+\item{datum}{(\emph{ConditionalPredicate<MarkPropFieldOrDatumDef>, ConditionalSelection<MarkPropFieldOrDatumDef>, ConditionalPredicate<MarkPropFieldOrDatumDef<TypeForShape>>, ConditionalSelection<MarkPropFieldOrDatumDef<TypeForShape>>})}
+
+\item{format}{(\emph{ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) When used with the default \code{"number"} and \code{"time"} format type, the text formatting pattern for labels of guides (axes, legends, headers) and text marks.
 \itemize{
-\item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern}.
-\item If the format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
+\item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern}. - If the format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
 }
 
 See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more examples.
 
+When used with a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{custom \code{formatType}}, this value will be passed as \code{format} alongside \code{datum.value} to the registered function.
+
 \strong{Default value:}  Derived from \href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for number format and from \href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for time format.}
 
-\item{formatType}{(\emph{ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) The format type for labels (\code{"number"} or \code{"time"}).
+\item{formatType}{(\emph{ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) The format type for labels. One of \code{"number"}, \code{"time"}, or a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{registered custom format type}.
 
-\strong{Default value:}
-\itemize{
-\item \code{"time"} for temporal fields and ordinal and nomimal fields with \code{timeUnit}.
-\item \code{"number"} for quantitative fields as well as ordinal and nomimal fields without \code{timeUnit}.
-}}
+\strong{Default value:} - \code{"time"} for temporal fields and ordinal and nominal fields with \code{timeUnit}. - \code{"number"} for quantitative fields as well as ordinal and nominal fields without \code{timeUnit}.}
 
 \item{labelExpr}{(\emph{ConditionalPredicate<StringFieldDef>, ConditionalSelection<StringFieldDef>}) \href{https://vega.github.io/vega/docs/expressions/}{Vega expression} for customizing labels text.
 

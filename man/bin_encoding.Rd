@@ -2,7 +2,9 @@
 % Please edit documentation in R/zzz_autogen_api.R
 \name{bin_encoding}
 \alias{bin_encoding}
+\alias{vl_bin_angle}
 \alias{vl_bin_color}
+\alias{vl_bin_description}
 \alias{vl_bin_detail}
 \alias{vl_bin_fill}
 \alias{vl_bin_fillOpacity}
@@ -14,12 +16,17 @@
 \alias{vl_bin_longitude2}
 \alias{vl_bin_opacity}
 \alias{vl_bin_order}
+\alias{vl_bin_radius}
+\alias{vl_bin_radius2}
 \alias{vl_bin_shape}
 \alias{vl_bin_size}
 \alias{vl_bin_stroke}
+\alias{vl_bin_strokeDash}
 \alias{vl_bin_strokeOpacity}
 \alias{vl_bin_strokeWidth}
 \alias{vl_bin_text}
+\alias{vl_bin_theta}
+\alias{vl_bin_theta2}
 \alias{vl_bin_tooltip}
 \alias{vl_bin_url}
 \alias{vl_bin_x}
@@ -32,7 +39,37 @@
 \alias{vl_bin_yError2}
 \title{Add bin to encoding}
 \usage{
+vl_bin_angle(
+  spec,
+  .object = NULL,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL
+)
+
 vl_bin_color(
+  spec,
+  .object = NULL,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL
+)
+
+vl_bin_description(
   spec,
   .object = NULL,
   anchor = NULL,
@@ -212,6 +249,36 @@ vl_bin_order(
   steps = NULL
 )
 
+vl_bin_radius(
+  spec,
+  .object = NULL,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL
+)
+
+vl_bin_radius2(
+  spec,
+  .object = NULL,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL
+)
+
 vl_bin_shape(
   spec,
   .object = NULL,
@@ -257,6 +324,21 @@ vl_bin_stroke(
   steps = NULL
 )
 
+vl_bin_strokeDash(
+  spec,
+  .object = NULL,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL
+)
+
 vl_bin_strokeOpacity(
   spec,
   .object = NULL,
@@ -288,6 +370,36 @@ vl_bin_strokeWidth(
 )
 
 vl_bin_text(
+  spec,
+  .object = NULL,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL
+)
+
+vl_bin_theta(
+  spec,
+  .object = NULL,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL
+)
+
+vl_bin_theta2(
   spec,
   .object = NULL,
   anchor = NULL,

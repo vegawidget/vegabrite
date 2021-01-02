@@ -8,7 +8,7 @@
 
 \item{element}{(\emph{BindRange})}
 
-\item{input}{(\emph{BindRange}) range}
+\item{input}{(\emph{BindRange})}
 
 \item{max}{(\emph{BindRange})}
 
