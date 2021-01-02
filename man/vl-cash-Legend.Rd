@@ -4,166 +4,163 @@
 \alias{vl$Legend}
 \title{Legend}
 \arguments{
-\item{aria}{(\emph{Legend})}
+\item{aria}{}
 
-\item{clipHeight}{(\emph{Legend})}
+\item{clipHeight}{}
 
-\item{columnPadding}{(\emph{Legend})}
+\item{columnPadding}{}
 
-\item{columns}{(\emph{Legend})}
+\item{columns}{}
 
-\item{cornerRadius}{(\emph{Legend})}
+\item{cornerRadius}{}
 
-\item{description}{(\emph{Legend})}
+\item{description}{}
 
-\item{direction}{(\emph{Legend}) The direction of the legend, one of \code{"vertical"} or \code{"horizontal"}.
+\item{direction}{The direction of the legend, one of \code{"vertical"} or \code{"horizontal"}. #' #' \strong{Default value:} - For
+top-/bottom-\code{orient}ed legends, \code{"horizontal"} - For left-/right-\code{orient}ed legends, \code{"vertical"} - For
+top/bottom-left/right-\code{orient}ed legends, \code{"horizontal"} for gradient legends and \code{"vertical"} for symbol legends.}
 
-\strong{Default value:} - For top-/bottom-\code{orient}ed legends, \code{"horizontal"} - For left-/right-\code{orient}ed legends, \code{"vertical"} - For top/bottom-left/right-\code{orient}ed legends, \code{"horizontal"} for gradient legends and \code{"vertical"} for symbol legends.}
+\item{fillColor}{}
 
-\item{fillColor}{(\emph{Legend})}
+\item{format}{When used with the default \code{"number"} and \code{"time"} format type, the text formatting pattern for labels of guides (axes,
+legends, headers) and text marks. #' #' - If the format type is \code{"number"} (e.g., for quantitative fields), this is
+D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern}. - If the format type is \code{"time"} (e.g.,
+for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}. #' #'
+See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more examples. #' #' When used
+with a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{custom \code{formatType}}, this value will
+be passed as \code{format} alongside \code{datum.value} to the registered function. #' #' \strong{Default value:} Derived from
+\href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for number format and from
+\href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for time format.}
 
-\item{format}{(\emph{Legend}) When used with the default \code{"number"} and \code{"time"} format type, the text formatting pattern for labels of guides (axes, legends, headers) and text marks.
-\itemize{
-\item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern}. - If the format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
-}
+\item{formatType}{The format type for labels. One of \code{"number"}, \code{"time"}, or a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{registered custom format type}. #' #' \strong{Default value:} - \code{"time"} for
+temporal fields and ordinal and nominal fields with \code{timeUnit}. - \code{"number"} for quantitative fields as well as
+ordinal and nominal fields without \code{timeUnit}.}
 
-See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more examples.
+\item{gradientLength}{}
 
-When used with a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{custom \code{formatType}}, this value will be passed as \code{format} alongside \code{datum.value} to the registered function.
+\item{gradientOpacity}{}
 
-\strong{Default value:}  Derived from \href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for number format and from \href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for time format.}
+\item{gradientStrokeColor}{}
 
-\item{formatType}{(\emph{Legend}) The format type for labels. One of \code{"number"}, \code{"time"}, or a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{registered custom format type}.
+\item{gradientStrokeWidth}{}
 
-\strong{Default value:} - \code{"time"} for temporal fields and ordinal and nominal fields with \code{timeUnit}. - \code{"number"} for quantitative fields as well as ordinal and nominal fields without \code{timeUnit}.}
+\item{gradientThickness}{}
 
-\item{gradientLength}{(\emph{Legend})}
+\item{gridAlign}{}
 
-\item{gradientOpacity}{(\emph{Legend})}
+\item{labelAlign}{}
 
-\item{gradientStrokeColor}{(\emph{Legend})}
+\item{labelBaseline}{}
 
-\item{gradientStrokeWidth}{(\emph{Legend})}
+\item{labelColor}{}
 
-\item{gradientThickness}{(\emph{Legend})}
+\item{labelExpr}{\href{https://vega.github.io/vega/docs/expressions/}{Vega expression} for customizing labels. #' #' \strong{Note:} The label text
+and value can be assessed via the \code{label} and \code{value} properties of the legend's backing \code{datum} object.}
 
-\item{gridAlign}{(\emph{Legend})}
+\item{labelFont}{}
 
-\item{labelAlign}{(\emph{Legend})}
+\item{labelFontSize}{}
 
-\item{labelBaseline}{(\emph{Legend})}
+\item{labelFontStyle}{}
 
-\item{labelColor}{(\emph{Legend})}
+\item{labelFontWeight}{}
 
-\item{labelExpr}{(\emph{Legend}) \href{https://vega.github.io/vega/docs/expressions/}{Vega expression} for customizing labels.
+\item{labelLimit}{}
 
-\strong{Note:} The label text and value can be assessed via the \code{label} and \code{value} properties of the legend's backing \code{datum} object.}
+\item{labelOffset}{}
 
-\item{labelFont}{(\emph{Legend})}
+\item{labelOpacity}{}
 
-\item{labelFontSize}{(\emph{Legend})}
+\item{labelOverlap}{}
 
-\item{labelFontStyle}{(\emph{Legend})}
+\item{labelPadding}{}
 
-\item{labelFontWeight}{(\emph{Legend})}
+\item{labelSeparation}{}
 
-\item{labelLimit}{(\emph{Legend})}
+\item{legendX}{}
 
-\item{labelOffset}{(\emph{Legend})}
+\item{legendY}{}
 
-\item{labelOpacity}{(\emph{Legend})}
+\item{offset}{}
 
-\item{labelOverlap}{(\emph{Legend})}
-
-\item{labelPadding}{(\emph{Legend})}
-
-\item{labelSeparation}{(\emph{Legend})}
-
-\item{legendX}{(\emph{Legend})}
-
-\item{legendY}{(\emph{Legend})}
-
-\item{offset}{(\emph{Legend})}
-
-\item{orient}{(\emph{Legend}) The orientation of the legend, which determines how the legend is positioned within the scene. One of \code{"left"}, \code{"right"}, \code{"top"}, \code{"bottom"}, \code{"top-left"}, \code{"top-right"}, \code{"bottom-left"}, \code{"bottom-right"}, \code{"none"}.
-
+\item{orient}{The orientation of the legend, which determines how the legend is positioned within the scene. One of \code{"left"},
+\code{"right"}, \code{"top"}, \code{"bottom"}, \code{"top-left"}, \code{"top-right"}, \code{"bottom-left"}, \code{"bottom-right"}, \code{"none"}. #' #'
 \strong{Default value:} \code{"right"}}
 
-\item{padding}{(\emph{Legend})}
+\item{padding}{}
 
-\item{rowPadding}{(\emph{Legend})}
+\item{rowPadding}{}
 
-\item{strokeColor}{(\emph{Legend})}
+\item{strokeColor}{}
 
-\item{symbolDash}{(\emph{Legend})}
+\item{symbolDash}{}
 
-\item{symbolDashOffset}{(\emph{Legend})}
+\item{symbolDashOffset}{}
 
-\item{symbolFillColor}{(\emph{Legend})}
+\item{symbolFillColor}{}
 
-\item{symbolLimit}{(\emph{Legend})}
+\item{symbolLimit}{}
 
-\item{symbolOffset}{(\emph{Legend})}
+\item{symbolOffset}{}
 
-\item{symbolOpacity}{(\emph{Legend})}
+\item{symbolOpacity}{}
 
-\item{symbolSize}{(\emph{Legend})}
+\item{symbolSize}{}
 
-\item{symbolStrokeColor}{(\emph{Legend})}
+\item{symbolStrokeColor}{}
 
-\item{symbolStrokeWidth}{(\emph{Legend})}
+\item{symbolStrokeWidth}{}
 
-\item{symbolType}{(\emph{Legend})}
+\item{symbolType}{}
 
-\item{tickCount}{(\emph{Legend})}
+\item{tickCount}{}
 
-\item{tickMinStep}{(\emph{Legend}) The minimum desired step between legend ticks, in terms of scale domain values. For example, a value of \code{1} indicates that ticks should not be less than 1 unit apart. If \code{tickMinStep} is specified, the \code{tickCount} value will be adjusted, if necessary, to enforce the minimum step value.
+\item{tickMinStep}{The minimum desired step between legend ticks, in terms of scale domain values. For example, a value of \code{1} indicates
+that ticks should not be less than 1 unit apart. If \code{tickMinStep} is specified, the \code{tickCount} value will be
+adjusted, if necessary, to enforce the minimum step value. #' #' \strong{Default value}: \code{undefined}}
 
-\strong{Default value}: \code{undefined}}
+\item{title}{A title for the field. If \code{null}, the title will be removed. #' #' \strong{Default value:} derived from the field's name and
+transformation function (\code{aggregate}, \code{bin} and \code{timeUnit}). If the field has an aggregate function, the function is
+displayed as part of the title (e.g., \code{"Sum of Profit"}). If the field is binned or has a time unit applied, the
+applied function is shown in parentheses (e.g., \code{"Profit (binned)"}, \code{"Transaction Date (year-month)"}). Otherwise,
+the title is simply the field name. #' #' \strong{Notes}: #' #' 1) You can customize the default field title format by
+providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{\code{fieldTitle}} property in the
+\href{https://vega.github.io/vega-lite/docs/config.html}{config} or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{\code{fieldTitle} function via the \code{compile} function's options}. #' #' 2) If both field definition's
+\code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used.}
 
-\item{title}{(\emph{Legend}) A title for the field. If \code{null}, the title will be removed.
+\item{titleAlign}{}
 
-\strong{Default value:}  derived from the field's name and transformation function (\code{aggregate}, \code{bin} and \code{timeUnit}). If the field has an aggregate function, the function is displayed as part of the title (e.g., \code{"Sum of Profit"}). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., \code{"Profit (binned)"}, \code{"Transaction Date (year-month)"}). Otherwise, the title is simply the field name.
+\item{titleAnchor}{}
 
-\strong{Notes}:
-\enumerate{
-\item You can customize the default field title format by providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{\code{fieldTitle}} property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config} or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{\code{fieldTitle} function via the \code{compile} function's options}.
-\item If both field definition's \code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used.
-}}
+\item{titleBaseline}{}
 
-\item{titleAlign}{(\emph{Legend})}
+\item{titleColor}{}
 
-\item{titleAnchor}{(\emph{Legend})}
+\item{titleFont}{}
 
-\item{titleBaseline}{(\emph{Legend})}
+\item{titleFontSize}{}
 
-\item{titleColor}{(\emph{Legend})}
+\item{titleFontStyle}{}
 
-\item{titleFont}{(\emph{Legend})}
+\item{titleFontWeight}{}
 
-\item{titleFontSize}{(\emph{Legend})}
+\item{titleLimit}{}
 
-\item{titleFontStyle}{(\emph{Legend})}
+\item{titleLineHeight}{}
 
-\item{titleFontWeight}{(\emph{Legend})}
+\item{titleOpacity}{}
 
-\item{titleLimit}{(\emph{Legend})}
+\item{titleOrient}{}
 
-\item{titleLineHeight}{(\emph{Legend})}
+\item{titlePadding}{}
 
-\item{titleOpacity}{(\emph{Legend})}
+\item{type}{The type of the legend. Use \code{"symbol"} to create a discrete legend and \code{"gradient"} for a continuous color gradient. #'
+#' \strong{Default value:} \code{"gradient"} for non-binned quantitative fields and temporal fields; \code{"symbol"} otherwise.}
 
-\item{titleOrient}{(\emph{Legend})}
+\item{values}{Explicitly set the visible legend values.}
 
-\item{titlePadding}{(\emph{Legend})}
-
-\item{type}{(\emph{Legend}) The type of the legend. Use \code{"symbol"} to create a discrete legend and \code{"gradient"} for a continuous color gradient.
-
-\strong{Default value:} \code{"gradient"} for non-binned quantitative fields and temporal fields; \code{"symbol"} otherwise.}
-
-\item{values}{(\emph{Legend}) Explicitly set the visible legend values.}
-
-\item{zindex}{(\emph{Legend}) A non-negative integer indicating the z-index of the legend. If zindex is 0, legend should be drawn behind all chart elements. To put them in front, use zindex = 1.}
+\item{zindex}{A non-negative integer indicating the z-index of the legend. If zindex is 0, legend should be drawn behind all chart
+elements. To put them in front, use zindex = 1.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to Legend definition.

@@ -4,17 +4,18 @@
 \alias{vl$ErrorBarConfig}
 \title{ErrorBarConfig}
 \arguments{
-\item{extent}{(\emph{ErrorBarConfig}) The extent of the rule. Available options include: - \code{"ci"}: Extend the rule to the confidence interval of the mean. - \code{"stderr"}: The size of rule are set to the value of standard error, extending from the mean. - \code{"stdev"}: The size of rule are set to the value of standard deviation, extending from the mean. - \code{"iqr"}: Extend the rule to the q1 and q3.
+\item{extent}{The extent of the rule. Available options include: - \code{"ci"}: Extend the rule to the confidence interval of the mean. -
+\code{"stderr"}: The size of rule are set to the value of standard error, extending from the mean. - \code{"stdev"}: The size
+of rule are set to the value of standard deviation, extending from the mean. - \code{"iqr"}: Extend the rule to the q1
+and q3. #' #' \strong{Default value:} \code{"stderr"}.}
 
-\strong{Default value:} \code{"stderr"}.}
+\item{rule}{}
 
-\item{rule}{(\emph{ErrorBarConfig})}
+\item{size}{Size of the ticks of an error bar}
 
-\item{size}{(\emph{ErrorBarConfig}) Size of the ticks of an error bar}
+\item{thickness}{Thickness of the ticks and the bar of an error bar}
 
-\item{thickness}{(\emph{ErrorBarConfig}) Thickness of the ticks and the bar of an error bar}
-
-\item{ticks}{(\emph{ErrorBarConfig})}
+\item{ticks}{}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to ErrorBarConfig definition.

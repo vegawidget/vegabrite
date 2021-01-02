@@ -4,15 +4,17 @@
 \alias{vl$Window}
 \title{Window}
 \arguments{
-\item{as}{(\emph{WindowFieldDef}) The output name for the window operation.}
+\item{as}{The output name for the window operation.}
 
-\item{field}{(\emph{WindowFieldDef}) The data field for which to compute the aggregate or window function. This can be omitted for window functions that do not operate over a field such as \code{"count"}, \code{"rank"}, \code{"dense_rank"}.}
+\item{field}{The data field for which to compute the aggregate or window function. This can be omitted for window functions that do
+not operate over a field such as \code{"count"}, \code{"rank"}, \code{"dense_rank"}.}
 
-\item{op}{(\emph{WindowFieldDef}) The window or aggregation operation to apply within a window (e.g., \code{"rank"}, \code{"lead"}, \code{"sum"}, \code{"average"} or \code{"count"}). See the list of all supported operations \href{https://vega.github.io/vega-lite/docs/window.html#ops}{here}.}
+\item{op}{The window or aggregation operation to apply within a window (e.g., \code{"rank"}, \code{"lead"}, \code{"sum"}, \code{"average"} or
+\code{"count"}). See the list of all supported operations \href{https://vega.github.io/vega-lite/docs/window.html#ops}{here}.}
 
-\item{param}{(\emph{WindowFieldDef}) Parameter values for the window functions. Parameter values can be omitted for operations that do not accept a parameter.
-
-See the list of all supported operations and their parameters \href{https://vega.github.io/vega-lite/docs/transforms/window.html}{here}.}
+\item{param}{Parameter values for the window functions. Parameter values can be omitted for operations that do not accept a
+parameter. #' #' See the list of all supported operations and their parameters
+\href{https://vega.github.io/vega-lite/docs/transforms/window.html}{here}.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to Window definition.

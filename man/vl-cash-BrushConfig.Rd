@@ -4,27 +4,21 @@
 \alias{vl$BrushConfig}
 \title{BrushConfig}
 \arguments{
-\item{cursor}{(\emph{BrushConfig}) The mouse cursor used over the interval mark. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values}{CSS cursor type} can be used.}
+\item{cursor}{The mouse cursor used over the interval mark. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values}{CSS cursor type} can be used.}
 
-\item{fill}{(\emph{BrushConfig}) The fill color of the interval mark.
+\item{fill}{The fill color of the interval mark. #' #' \strong{Default value:} \code{"#333333"}}
 
-\strong{Default value:} \code{"#333333"}}
+\item{fillOpacity}{The fill opacity of the interval mark (a value between \code{0} and \code{1}). #' #' \strong{Default value:} \code{0.125}}
 
-\item{fillOpacity}{(\emph{BrushConfig}) The fill opacity of the interval mark (a value between \code{0} and \code{1}).
+\item{stroke}{The stroke color of the interval mark. #' #' \strong{Default value:} \code{"#ffffff"}}
 
-\strong{Default value:} \code{0.125}}
+\item{strokeDash}{An array of alternating stroke and space lengths, for creating dashed or dotted lines.}
 
-\item{stroke}{(\emph{BrushConfig}) The stroke color of the interval mark.
+\item{strokeDashOffset}{The offset (in pixels) with which to begin drawing the stroke dash array.}
 
-\strong{Default value:} \code{"#ffffff"}}
+\item{strokeOpacity}{The stroke opacity of the interval mark (a value between \code{0} and \code{1}).}
 
-\item{strokeDash}{(\emph{BrushConfig}) An array of alternating stroke and space lengths, for creating dashed or dotted lines.}
-
-\item{strokeDashOffset}{(\emph{BrushConfig}) The offset (in pixels) with which to begin drawing the stroke dash array.}
-
-\item{strokeOpacity}{(\emph{BrushConfig}) The stroke opacity of the interval mark (a value between \code{0} and \code{1}).}
-
-\item{strokeWidth}{(\emph{BrushConfig}) The stroke width of the interval mark.}
+\item{strokeWidth}{The stroke width of the interval mark.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to BrushConfig definition.

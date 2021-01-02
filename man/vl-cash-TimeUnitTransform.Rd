@@ -4,11 +4,11 @@
 \alias{vl$TimeUnitTransform}
 \title{TimeUnitTransform}
 \arguments{
-\item{as}{(\emph{TimeUnitTransform}) The output field to write the timeUnit value.}
+\item{as}{The output field to write the timeUnit value.}
 
-\item{field}{(\emph{TimeUnitTransform}) The data field to apply time unit.}
+\item{field}{The data field to apply time unit.}
 
-\item{timeUnit}{(\emph{TimeUnitTransform}) The timeUnit.}
+\item{timeUnit}{The timeUnit.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to TimeUnitTransform definition.

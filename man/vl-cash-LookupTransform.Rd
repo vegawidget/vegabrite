@@ -4,19 +4,16 @@
 \alias{vl$LookupTransform}
 \title{LookupTransform}
 \arguments{
-\item{as}{(\emph{LookupTransform}) The output fields on which to store the looked up data values.
+\item{as}{The output fields on which to store the looked up data values. #' #' For data lookups, this property may be left blank
+if \code{from.fields} has been specified (those field names will be used); if \code{from.fields} has not been specified, \code{as}
+must be a string. #' #' For selection lookups, this property is optional: if unspecified, looked up values will be
+stored under a property named for the selection; and if specified, it must correspond to \code{from.fields}.}
 
-For data lookups, this property may be left blank if \code{from.fields} has been specified (those field names will be used); if \code{from.fields} has not been specified, \code{as} must be a string.
+\item{default}{The default value to use if lookup fails. #' #' \strong{Default value:} \code{null}}
 
-For selection lookups, this property is optional: if unspecified, looked up values will be stored under a property named for the selection; and if specified, it must correspond to \code{from.fields}.}
+\item{from}{Data source or selection for secondary data reference.}
 
-\item{default}{(\emph{LookupTransform}) The default value to use if lookup fails.
-
-\strong{Default value:} \code{null}}
-
-\item{from}{(\emph{LookupTransform}) Data source or selection for secondary data reference.}
-
-\item{lookup}{(\emph{LookupTransform}) Key in primary data source.}
+\item{lookup}{Key in primary data source.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to LookupTransform definition.

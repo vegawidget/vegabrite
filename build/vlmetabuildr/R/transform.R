@@ -2,8 +2,7 @@ create_transform_functions <- function(schema) {
   transform_options <- purrr::map_chr(schema$definitions$Transform$anyOf, get_name_from_ref)
   c(
     purrr::map_chr(transform_options, create_transform, schema = schema),
-    purrr::map_chr(transform_options, create_object, schema = schema),
-    purrr::map_chr(transform_options, create_deprecated_object)
+    purrr::map_chr(transform_options, create_object, schema = schema)
   )
 }
 

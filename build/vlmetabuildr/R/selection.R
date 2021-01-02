@@ -2,8 +2,7 @@ create_selection_functions <- function(schema) {
   selections <- list("SingleSelection", "MultiSelection", "IntervalSelection")
   c(
     purrr::map_chr(selections, create_selection_type, schema = schema),
-    purrr::map_chr(selections, create_object, schema = schema),
-    purrr::map_chr(selections, create_deprecated_object)
+    purrr::map_chr(selections, create_object, schema = schema)
   )
 }
 

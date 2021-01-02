@@ -46,98 +46,90 @@ vl_config_headerRow(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: HeaderConfig}
 
-\item{format}{(\emph{HeaderConfig}) When used with the default \code{"number"} and \code{"time"} format type, the text formatting pattern for labels of guides (axes, legends, headers) and text marks.
-\itemize{
-\item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern}. - If the format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
-}
+\item{format}{When used with the default \code{"number"} and \code{"time"} format type, the text formatting pattern for labels of guides (axes,
+legends, headers) and text marks. #' #' - If the format type is \code{"number"} (e.g., for quantitative fields), this is
+D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern}. - If the format type is \code{"time"} (e.g.,
+for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}. #' #'
+See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more examples. #' #' When used
+with a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{custom \code{formatType}}, this value will
+be passed as \code{format} alongside \code{datum.value} to the registered function. #' #' \strong{Default value:} Derived from
+\href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for number format and from
+\href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for time format.}
 
-See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more examples.
+\item{formatType}{The format type for labels. One of \code{"number"}, \code{"time"}, or a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{registered custom format type}. #' #' \strong{Default value:} - \code{"time"} for
+temporal fields and ordinal and nominal fields with \code{timeUnit}. - \code{"number"} for quantitative fields as well as
+ordinal and nominal fields without \code{timeUnit}.}
 
-When used with a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{custom \code{formatType}}, this value will be passed as \code{format} alongside \code{datum.value} to the registered function.
+\item{labelAlign}{Horizontal text alignment of header labels. One of \code{"left"}, \code{"center"}, or \code{"right"}.}
 
-\strong{Default value:}  Derived from \href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for number format and from \href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for time format.}
+\item{labelAnchor}{The anchor position for placing the labels. One of \code{"start"}, \code{"middle"}, or \code{"end"}. For example, with a label
+orientation of top these anchor positions map to a left-, center-, or right-aligned label.}
 
-\item{formatType}{(\emph{HeaderConfig}) The format type for labels. One of \code{"number"}, \code{"time"}, or a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{registered custom format type}.
+\item{labelAngle}{The rotation angle of the header labels. #' #' \strong{Default value:} \code{0} for column header, \code{-90} for row header.}
 
-\strong{Default value:} - \code{"time"} for temporal fields and ordinal and nominal fields with \code{timeUnit}. - \code{"number"} for quantitative fields as well as ordinal and nominal fields without \code{timeUnit}.}
+\item{labelBaseline}{The vertical text baseline for the header labels. One of \code{"alphabetic"} (default), \code{"top"}, \code{"middle"}, \code{"bottom"},
+\code{"line-top"}, or \code{"line-bottom"}. The \code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"} and
+\code{"bottom"}, but are calculated relative to the \code{titleLineHeight} rather than \code{titleFontSize} alone.}
 
-\item{labelAlign}{(\emph{HeaderConfig}) Horizontal text alignment of header labels. One of \code{"left"}, \code{"center"}, or \code{"right"}.}
+\item{labelColor}{The color of the header label, can be in hex color code or regular color name.}
 
-\item{labelAnchor}{(\emph{HeaderConfig}) The anchor position for placing the labels. One of \code{"start"}, \code{"middle"}, or \code{"end"}. For example, with a label orientation of top these anchor positions map to a left-, center-, or right-aligned label.}
+\item{labelExpr}{\href{https://vega.github.io/vega/docs/expressions/}{Vega expression} for customizing labels. #' #' \strong{Note:} The label text
+and value can be assessed via the \code{label} and \code{value} properties of the header's backing \code{datum} object.}
 
-\item{labelAngle}{(\emph{HeaderConfig}) The rotation angle of the header labels.
+\item{labelFont}{The font of the header label.}
 
-\strong{Default value:} \code{0} for column header, \code{-90} for row header.}
+\item{labelFontSize}{The font size of the header label, in pixels.}
 
-\item{labelBaseline}{(\emph{HeaderConfig}) The vertical text baseline for the header labels. One of \code{"alphabetic"} (default), \code{"top"}, \code{"middle"}, \code{"bottom"}, \code{"line-top"}, or \code{"line-bottom"}. The \code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"} and \code{"bottom"}, but are calculated relative to the \code{titleLineHeight} rather than \code{titleFontSize} alone.}
+\item{labelFontStyle}{The font style of the header label.}
 
-\item{labelColor}{(\emph{HeaderConfig}) The color of the header label, can be in hex color code or regular color name.}
+\item{labelFontWeight}{The font weight of the header label.}
 
-\item{labelExpr}{(\emph{HeaderConfig}) \href{https://vega.github.io/vega/docs/expressions/}{Vega expression} for customizing labels.
+\item{labelLimit}{The maximum length of the header label in pixels. The text value will be automatically truncated if the rendered size
+exceeds the limit. #' #' \strong{Default value:} \code{0}, indicating no limit}
 
-\strong{Note:} The label text and value can be assessed via the \code{label} and \code{value} properties of the header's backing \code{datum} object.}
+\item{labelLineHeight}{Line height in pixels for multi-line header labels or title text with \code{"line-top"} or \code{"line-bottom"} baseline.}
 
-\item{labelFont}{(\emph{HeaderConfig}) The font of the header label.}
+\item{labelOrient}{The orientation of the header label. One of \code{"top"}, \code{"bottom"}, \code{"left"} or \code{"right"}.}
 
-\item{labelFontSize}{(\emph{HeaderConfig}) The font size of the header label, in pixels.}
+\item{labelPadding}{The padding, in pixel, between facet header's label and the plot. #' #' \strong{Default value:} \code{10}}
 
-\item{labelFontStyle}{(\emph{HeaderConfig}) The font style of the header label.}
+\item{labels}{A boolean flag indicating if labels should be included as part of the header. #' #' \strong{Default value:} \code{true}.}
 
-\item{labelFontWeight}{(\emph{HeaderConfig}) The font weight of the header label.}
+\item{orient}{Shortcut for setting both labelOrient and titleOrient.}
 
-\item{labelLimit}{(\emph{HeaderConfig}) The maximum length of the header label in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
+\item{title}{Set to null to disable title for the axis, legend, or header.}
 
-\strong{Default value:} \code{0}, indicating no limit}
+\item{titleAlign}{Horizontal text alignment (to the anchor) of header titles.}
 
-\item{labelLineHeight}{(\emph{HeaderConfig}) Line height in pixels for multi-line header labels or title text with \code{"line-top"} or \code{"line-bottom"} baseline.}
+\item{titleAnchor}{The anchor position for placing the title. One of \code{"start"}, \code{"middle"}, or \code{"end"}. For example, with an orientation
+of top these anchor positions map to a left-, center-, or right-aligned title.}
 
-\item{labelOrient}{(\emph{HeaderConfig}) The orientation of the header label. One of \code{"top"}, \code{"bottom"}, \code{"left"} or \code{"right"}.}
+\item{titleAngle}{The rotation angle of the header title. #' #' \strong{Default value:} \code{0}.}
 
-\item{labelPadding}{(\emph{HeaderConfig}) The padding, in pixel, between facet header's label and the plot.
+\item{titleBaseline}{The vertical text baseline for the header title. One of \code{"alphabetic"} (default), \code{"top"}, \code{"middle"}, \code{"bottom"},
+\code{"line-top"}, or \code{"line-bottom"}. The \code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"} and
+\code{"bottom"}, but are calculated relative to the \code{titleLineHeight} rather than \code{titleFontSize} alone. #' #' \strong{Default
+value:} \code{"middle"}}
 
-\strong{Default value:} \code{10}}
+\item{titleColor}{Color of the header title, can be in hex color code or regular color name.}
 
-\item{labels}{(\emph{HeaderConfig}) A boolean flag indicating if labels should be included as part of the header.
+\item{titleFont}{Font of the header title. (e.g., \code{"Helvetica Neue"}).}
 
-\strong{Default value:} \code{true}.}
+\item{titleFontSize}{Font size of the header title.}
 
-\item{orient}{(\emph{HeaderConfig}) Shortcut for setting both labelOrient and titleOrient.}
+\item{titleFontStyle}{The font style of the header title.}
 
-\item{title}{(\emph{HeaderConfig}) Set to null to disable title for the axis, legend, or header.}
+\item{titleFontWeight}{Font weight of the header title. This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200},
+\code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
 
-\item{titleAlign}{(\emph{HeaderConfig}) Horizontal text alignment (to the anchor) of header titles.}
+\item{titleLimit}{The maximum length of the header title in pixels. The text value will be automatically truncated if the rendered size
+exceeds the limit. #' #' \strong{Default value:} \code{0}, indicating no limit}
 
-\item{titleAnchor}{(\emph{HeaderConfig}) The anchor position for placing the title. One of \code{"start"}, \code{"middle"}, or \code{"end"}. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.}
+\item{titleLineHeight}{Line height in pixels for multi-line header title text or title text with \code{"line-top"} or \code{"line-bottom"} baseline.}
 
-\item{titleAngle}{(\emph{HeaderConfig}) The rotation angle of the header title.
+\item{titleOrient}{The orientation of the header title. One of \code{"top"}, \code{"bottom"}, \code{"left"} or \code{"right"}.}
 
-\strong{Default value:} \code{0}.}
-
-\item{titleBaseline}{(\emph{HeaderConfig}) The vertical text baseline for the header title. One of \code{"alphabetic"} (default), \code{"top"}, \code{"middle"}, \code{"bottom"}, \code{"line-top"}, or \code{"line-bottom"}. The \code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"} and \code{"bottom"}, but are calculated relative to the \code{titleLineHeight} rather than \code{titleFontSize} alone.
-
-\strong{Default value:} \code{"middle"}}
-
-\item{titleColor}{(\emph{HeaderConfig}) Color of the header title, can be in hex color code or regular color name.}
-
-\item{titleFont}{(\emph{HeaderConfig}) Font of the header title. (e.g., \code{"Helvetica Neue"}).}
-
-\item{titleFontSize}{(\emph{HeaderConfig}) Font size of the header title.}
-
-\item{titleFontStyle}{(\emph{HeaderConfig}) The font style of the header title.}
-
-\item{titleFontWeight}{(\emph{HeaderConfig}) Font weight of the header title. This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
-
-\item{titleLimit}{(\emph{HeaderConfig}) The maximum length of the header title in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.
-
-\strong{Default value:} \code{0}, indicating no limit}
-
-\item{titleLineHeight}{(\emph{HeaderConfig}) Line height in pixels for multi-line header title text or title text with \code{"line-top"} or \code{"line-bottom"} baseline.}
-
-\item{titleOrient}{(\emph{HeaderConfig}) The orientation of the header title. One of \code{"top"}, \code{"bottom"}, \code{"left"} or \code{"right"}.}
-
-\item{titlePadding}{(\emph{HeaderConfig}) The padding, in pixel, between facet header's title and the label.
-
-\strong{Default value:} \code{10}}
+\item{titlePadding}{The padding, in pixel, between facet header's title and the label. #' #' \strong{Default value:} \code{10}}
 }
 \value{
 A modified Vega-Lite Spec

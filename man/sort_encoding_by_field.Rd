@@ -141,17 +141,17 @@ vl_sort_y_by_field(spec, .object = NULL, field = NULL, op = NULL, order = NULL)
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: EncodingSortField}
 
-\item{field}{(\emph{EncodingSortField}) The data \href{https://vega.github.io/vega-lite/docs/field.html}{field} to sort by.
+\item{field}{The data \href{https://vega.github.io/vega-lite/docs/field.html}{field} to sort by. #' #' \strong{Default value:} If unspecified,
+defaults to the field specified in the outer data reference.}
 
-\strong{Default value:} If unspecified, defaults to the field specified in the outer data reference.}
+\item{op}{An \href{https://vega.github.io/vega-lite/docs/aggregate.html#ops}{aggregate operation} to perform on the field prior to
+sorting (e.g., \code{"count"}, \code{"mean"} and \code{"median"}). An aggregation is required when there are multiple values of the
+sort field for each encoded data field. The input data objects will be aggregated, grouped by the encoded data
+field. #' #' For a full list of operations, please see the documentation for
+\href{https://vega.github.io/vega-lite/docs/aggregate.html#ops}{aggregate}. #' #' \strong{Default value:} \code{"sum"} for stacked
+plots. Otherwise, \code{"min"}.}
 
-\item{op}{(\emph{EncodingSortField}) An \href{https://vega.github.io/vega-lite/docs/aggregate.html#ops}{aggregate operation} to perform on the field prior to sorting (e.g., \code{"count"}, \code{"mean"} and \code{"median"}). An aggregation is required when there are multiple values of the sort field for each encoded data field. The input data objects will be aggregated, grouped by the encoded data field.
-
-For a full list of operations, please see the documentation for \href{https://vega.github.io/vega-lite/docs/aggregate.html#ops}{aggregate}.
-
-\strong{Default value:} \code{"sum"} for stacked plots. Otherwise, \code{"min"}.}
-
-\item{order}{(\emph{EncodingSortField}) The sort order. One of \code{"ascending"} (default), \code{"descending"}, or \code{null} (no not sort).}
+\item{order}{The sort order. One of \code{"ascending"} (default), \code{"descending"}, or \code{null} (no not sort).}
 }
 \value{
 A modified Vega-Lite Spec

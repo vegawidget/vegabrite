@@ -4,9 +4,7 @@
 \alias{vl$SampleTransform}
 \title{SampleTransform}
 \arguments{
-\item{sample}{(\emph{SampleTransform}) The maximum number of data objects to include in the sample.
-
-\strong{Default value:} \code{1000}}
+\item{sample}{The maximum number of data objects to include in the sample. #' #' \strong{Default value:} \code{1000}}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to SampleTransform definition.

@@ -94,12 +94,13 @@ get_param_docs <- function(schema, ref, exclude = NULL) {
     objs <- unique(names(properties[purrr::map_lgl(properties, ~ hasName(., param))]))
     d <- purrr::map_chr(objs, ~ get_description_plus(properties[[.]][[param]]))
     grps <- split(objs, d)
-    grp_descs <- purrr::map_chr(
-      names(grps),
-      ~ glue('(_{paste(grps[[.]], collapse = ", ")}_) {.}')
-    )
+    grp_descs <- purrr::map_chr(names(grps), ~paste(strwrap(., prefix = "#' ", initial = "", width = 120), collapse = "\n"))
+    #purrr::map_chr(
+      #names(grps),
+      #~ glue('(_{paste(grps[[.]], collapse = ", ")}_) {.}')
+    #)
     if (length(grp_descs) > 1) {
-      return(paste(grp_descs, collapse = "\n#' \n#' "))
+      return(paste(grp_descs, collapse = "\n#' \n#' Or:"))
     }
     grp_descs
   }
@@ -127,6 +128,7 @@ get_param_docs <- function(schema, ref, exclude = NULL) {
     "`'Count of Records`",
     "`Count of Records`"
   )
+  
 
   if (additional_properties_allowed(ref, schema)) {
     param_names <- c(param_names, "...")

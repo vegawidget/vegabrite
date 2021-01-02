@@ -199,9 +199,13 @@ create_sort_encoding_functions <- function(schema) {
   spec_doc <- glue("#' @param spec An input vega-lite spec")
   param_docs <- glue("#' @param value One of 'ascending', 'descending', a list with a custom ordering, or NA to specify no sorting")
 
-  group_docs <- make_docs_helper(title, desc, paste(spec_doc, param_docs, sep = "\n"), doc_group = doc_group)
-
-
+  group_docs <- paste(
+    make_docs_helper(title, desc, paste(spec_doc, param_docs, sep = "\n"), doc_group = doc_group, export = FALSE,),
+    "NULL",
+    "#> NULL",
+    sep = "\n"
+  )
+  
   maker_func <- function(enc) {
     docs <- make_docs_for_group(doc_group)
 

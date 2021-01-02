@@ -11,9 +11,9 @@ vl_aggregate(spec, .object = NULL, aggregate = NULL, groupby = NULL)
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AggregateTransform}
 
-\item{aggregate}{(\emph{AggregateTransform}) Array of objects that define fields to aggregate.}
+\item{aggregate}{Array of objects that define fields to aggregate.}
 
-\item{groupby}{(\emph{AggregateTransform}) The data fields to group by. If not specified, a single group containing all data objects will be used.}
+\item{groupby}{The data fields to group by. If not specified, a single group containing all data objects will be used.}
 }
 \value{
 A modified Vega-Lite Spec

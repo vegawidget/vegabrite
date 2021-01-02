@@ -4,9 +4,9 @@
 \alias{vl$FoldTransform}
 \title{FoldTransform}
 \arguments{
-\item{as}{(\emph{FoldTransform}) The output field names for the key and value properties produced by the fold transform. \strong{Default value:} \verb{["key", "value"]}}
+\item{as}{The output field names for the key and value properties produced by the fold transform. \strong{Default value:} \verb{["key", "value"]}}
 
-\item{fold}{(\emph{FoldTransform}) An array of data fields indicating the properties to fold.}
+\item{fold}{An array of data fields indicating the properties to fold.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to FoldTransform definition.

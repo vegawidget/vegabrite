@@ -28,109 +28,113 @@ vl_encode_row(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FacetEncodingFieldDef}
 
-\item{field}{(\emph{FacetEncodingFieldDef}) \strong{Required.} A string defining the name of the field from which to pull a data value or an object defining iterated values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{\code{repeat}} operator.
+\item{field}{\strong{Required.} A string defining the name of the field from which to pull a data value or an object defining iterated
+values from the \href{https://vega.github.io/vega-lite/docs/repeat.html}{\code{repeat}} operator. #' #' \strong{See also:}
+\href{https://vega.github.io/vega-lite/docs/field.html}{\code{field}} documentation. #' #' \strong{Notes:} 1) Dots (\code{.}) and
+brackets (\code{[} and \verb{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \verb{"field": "foo\['bar'\]"}). If field names contain dots or brackets but are not nested, you can use \verb{\\\\} to escape dots and
+brackets (e.g., \code{"a\\\\.b"} and \verb{"a\\\\\[0\\\\\]"}). See more details about escaping in the \href{https://vega.github.io/vega-lite/docs/field.html}{field documentation}. 2) \code{field} is not required if \code{aggregate} is
+\code{count}.}
 
-\strong{See also:} \href{https://vega.github.io/vega-lite/docs/field.html}{\code{field}} documentation.
+\item{type}{The type of measurement (\code{"quantitative"}, \code{"temporal"}, \code{"ordinal"}, or \code{"nominal"}) for the encoded field or constant
+value (\code{datum}). It can also be a \code{"geojson"} type for encoding
+\href{https://vega.github.io/vega-lite/docs/geoshape.html}{'geoshape'}. #' #' Vega-Lite automatically infers data types
+in many cases as discussed below. However, type is required for a field if: (1) the field is not nominal and the
+field encoding has no specified \code{aggregate} (except \code{argmin} and \code{argmax}), \code{bin}, scale type, custom \code{sort} order,
+nor \code{timeUnit} or (2) if you wish to use an ordinal scale for a field with \code{bin} or \code{timeUnit}. #' #' \strong{Default
+value:} #' #' 1) For a data \code{field}, \code{"nominal"} is the default data type unless the field encoding has
+\code{aggregate}, \code{channel}, \code{bin}, scale type, \code{sort}, or \code{timeUnit} that satisfies the following criteria: -
+\code{"quantitative"} is the default type if (1) the encoded field contains \code{bin} or \code{aggregate} except \code{"argmin"} and
+\code{"argmax"}, (2) the encoding channel is \code{latitude} or \code{longitude} channel or (3) if the specified scale type is \href{https://vega.github.io/vega-lite/docs/scale.html#type}{a quantitative scale}. - \code{"temporal"} is the default type if
+(1) the encoded field contains \code{timeUnit} or (2) the specified scale type is a time or utc scale - \verb{ordinal""} is
+the default type if (1) the encoded field contains a \href{https://vega.github.io/vega-lite/docs/sort.html#specifying-custom-sort-order}{custom \code{sort} order}, (2) the specified scale type
+is an ordinal/point/band scale, or (3) the encoding channel is \code{order}. #' #' 2) For a constant value in data domain
+(\code{datum}): - \code{"quantitative"} if the datum is a number - \code{"nominal"} if the datum is a string - \code{"temporal"} if the
+datum is \href{https://vega.github.io/vega-lite/docs/datetime.html}{a date time object} #' #' \strong{Note:} - Data \code{type}
+describes the semantics of the data rather than the primitive data types (number, string, etc.). The same primitive
+data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or
+nominal data. - Data values for a temporal field can be either a date-time string (e.g., \code{"2015-03-07 12:32:17"},
+\code{"17:01"}, \code{"2015-03-16"}. \code{"2015"}) or a timestamp number (e.g., \code{1552199579097}). - When using with
+\href{https://vega.github.io/vega-lite/docs/bin.html}{\code{bin}}, the \code{type} property can be either \code{"quantitative"} (for
+using a linear bin scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{\code{"ordinal"} (for using an ordinal bin scale)}. - When using with
+\href{https://vega.github.io/vega-lite/docs/timeunit.html}{\code{timeUnit}}, the \code{type} property can be either \code{"temporal"}
+(default, for using a temporal scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{\code{"ordinal"} (for using an ordinal scale)}. - When using with
+\href{https://vega.github.io/vega-lite/docs/aggregate.html}{\code{aggregate}}, the \code{type} property refers to the
+post-aggregation data type. For example, we can calculate count \code{distinct} of a categorical field \code{"cat"} using
+\verb{\{"aggregate": "distinct", "field": "cat"\}}. The \code{"type"} of the aggregate output is \code{"quantitative"}. - Secondary
+channels (e.g., \code{x2}, \code{y2}, \code{xError}, \code{yError}) do not have \code{type} as they must have exactly the same type as their
+primary channels (e.g., \code{x}, \code{y}). #' #' \strong{See also:} \href{https://vega.github.io/vega-lite/docs/type.html}{\code{type}}
+documentation.}
 
-\strong{Notes:} 1)  Dots (\code{.}) and brackets (\code{[} and \verb{]}) can be used to access nested objects (e.g., \code{"field": "foo.bar"} and \verb{"field": "foo\['bar'\]"}). If field names contain dots or brackets but are not nested, you can use \verb{\\\\} to escape dots and brackets (e.g., \code{"a\\\\.b"} and \verb{"a\\\\\[0\\\\\]"}). See more details about escaping in the \href{https://vega.github.io/vega-lite/docs/field.html}{field documentation}. 2) \code{field} is not required if \code{aggregate} is \code{count}.}
+\item{aggregate}{Aggregation function for the field (e.g., \code{"mean"}, \code{"sum"}, \code{"median"}, \code{"min"}, \code{"max"}, \code{"count"}). #' #' \strong{Default
+value:} \code{undefined} (None) #' #' \strong{See also:} \href{https://vega.github.io/vega-lite/docs/aggregate.html}{\code{aggregate}}
+documentation.}
 
-\item{type}{(\emph{FacetEncodingFieldDef}) The type of measurement (\code{"quantitative"}, \code{"temporal"}, \code{"ordinal"}, or \code{"nominal"}) for the encoded field or constant value (\code{datum}). It can also be a \code{"geojson"} type for encoding \href{https://vega.github.io/vega-lite/docs/geoshape.html}{'geoshape'}.
-
-Vega-Lite automatically infers data types in many cases as discussed below. However, type is required for a field if: (1) the field is not nominal and the field encoding has no specified \code{aggregate} (except \code{argmin} and \code{argmax}), \code{bin}, scale type, custom \code{sort} order, nor \code{timeUnit} or (2) if you wish to use an ordinal scale for a field with \code{bin} or \code{timeUnit}.
-
-\strong{Default value:}
-\enumerate{
-\item For a data \code{field}, \code{"nominal"} is the default data type unless the field encoding has \code{aggregate}, \code{channel}, \code{bin}, scale type, \code{sort}, or \code{timeUnit} that satisfies the following criteria: - \code{"quantitative"} is the default type if (1) the encoded field contains \code{bin} or \code{aggregate} except \code{"argmin"} and \code{"argmax"}, (2) the encoding channel is \code{latitude} or \code{longitude} channel or (3) if the specified scale type is \href{https://vega.github.io/vega-lite/docs/scale.html#type}{a quantitative scale}. - \code{"temporal"} is the default type if (1) the encoded field contains \code{timeUnit} or (2) the specified scale type is a time or utc scale - \verb{ordinal""} is the default type if (1) the encoded field contains a \href{https://vega.github.io/vega-lite/docs/sort.html#specifying-custom-sort-order}{custom \code{sort} order}, (2) the specified scale type is an ordinal/point/band scale, or (3) the encoding channel i
-\item For a constant value in data domain (\code{datum}): - \code{"quantitative"} if the datum is a number - \code{"nominal"} if the datum is a string - \code{"temporal"} if the datum is \href{https://vega.github.io/vega-lite/docs/datetime.html}{a date time object}
-}
-
-\strong{Note:} - Data \code{type} describes the semantics of the data rather than the primitive data types (number, string, etc.). The same primitive data type can have different types of measurement. For example, numeric data can represent quantitative, ordinal, or nominal data. - Data values for a temporal field can be either a date-time string (e.g., \code{"2015-03-07 12:32:17"}, \code{"17:01"}, \code{"2015-03-16"}. \code{"2015"}) or a timestamp number (e.g., \code{1552199579097}). - When using with \href{https://vega.github.io/vega-lite/docs/bin.html}{\code{bin}}, the \code{type} property can be either \code{"quantitative"} (for using a linear bin scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{\code{"ordinal"} (for using an ordinal bin scale)}. - When using with \href{https://vega.github.io/vega-lite/docs/timeunit.html}{\code{timeUnit}}, the \code{type} property can be either \code{"temporal"} (default, for using a temporal scale) or \href{https://vega.gi
-
-\strong{See also:} \href{https://vega.github.io/vega-lite/docs/type.html}{\code{type}} documentation.}
-
-\item{aggregate}{(\emph{FacetEncodingFieldDef}) Aggregation function for the field (e.g., \code{"mean"}, \code{"sum"}, \code{"median"}, \code{"min"}, \code{"max"}, \code{"count"}).
-
-\strong{Default value:} \code{undefined} (None)
-
-\strong{See also:} \href{https://vega.github.io/vega-lite/docs/aggregate.html}{\code{aggregate}} documentation.}
-
-\item{align}{(\emph{FacetEncodingFieldDef}) The alignment to apply to grid rows and columns. The supported string values are \code{"all"}, \code{"each"}, and \code{"none"}.
+\item{align}{The alignment to apply to grid rows and columns. The supported string values are \code{"all"}, \code{"each"}, and \code{"none"}. #' #'
 \itemize{
-\item For \code{"none"}, a flow layout will be used, in which adjacent subviews are simply placed one after the other. - For \code{"each"}, subviews will be aligned into a clean grid structure, but each row or column may be of variable size. - For \code{"all"}, subviews will be aligned and each row or column will be sized identically based on the maximum observed size. String values for this property will be applied to both grid rows and columns.
-}
-
-Alternatively, an object value of the form \verb{\{"row": string, "column": string\}} can be used to supply different alignments for rows and columns.
-
-\strong{Default value:} \code{"all"}.}
-
-\item{band}{(\emph{FacetEncodingFieldDef}) For rect-based marks (\code{rect}, \code{bar}, and \code{image}), mark size relative to bandwidth of \href{https://vega.github.io/vega-lite/docs/scale.html#band}{band scales}, bins or time units. If set to \code{1}, the mark size is set to the bandwidth, the bin interval, or the time unit interval. If set to \code{0.5}, the mark size is half of the bandwidth or the time unit interval.
-
-For other marks, relative position on a band of a stacked, binned, time unit or band scale. If set to \code{0}, the marks will be positioned at the beginning of the band. If set to \code{0.5}, the marks will be positioned in the middle of the band.}
-
-\item{bin}{(\emph{FacetEncodingFieldDef}) A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y} channel are binned before they are imported into Vega-Lite (\code{"binned"}).
-\itemize{
-\item If \code{true}, default \href{https://vega.github.io/vega-lite/docs/bin.html}{binning parameters} will be applied.
-\item If \code{"binned"}, this indicates that the data for the \code{x} (or \code{y}) channel are already binned. You can map the bin-start field to \code{x} (or \code{y}) and the bin-end field to \code{x2} (or \code{y2}). The scale and axis will be formatted similar to binning in Vega-Lite.  To adjust the axis ticks based on the bin step, you can also set the axis's \href{https://vega.github.io/vega-lite/docs/axis.html#ticks}{\code{tickMinStep}} property.
-}
-
-\strong{Default value:} \code{false}
-
-\strong{See also:} \href{https://vega.github.io/vega-lite/docs/bin.html}{\code{bin}} documentation.}
-
-\item{bounds}{(\emph{FacetEncodingFieldDef}) The bounds calculation method to use for determining the extent of a sub-plot. One of \code{full} (the default) or \code{flush}.
-\itemize{
-\item If set to \code{full}, the entire calculated bounds (including axes, title, and legend) will be used. - If set to \code{flush}, only the specified width and height values for the sub-view will be used. The \code{flush} setting can be useful when attempting to place sub-plots without axes or legends into a uniform grid structure.
-}
-
-\strong{Default value:} \code{"full"}}
-
-\item{center}{(\emph{FacetEncodingFieldDef}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
-
-An object value of the form \verb{\{"row": boolean, "column": boolean\}} can be used to supply different centering values for rows and columns.
-
-\strong{Default value:} \code{false}}
-
-\item{columns}{(\emph{FacetEncodingFieldDef}) The number of columns to include in the view composition layout.
-
-\strong{Default value}: \code{undefined} -- An infinite number of columns (a single row) will be assumed. This is equivalent to \code{hconcat} (for \code{concat}) and to using the \code{column} channel (for \code{facet} and \code{repeat}).
-
-\strong{Note}:
-\enumerate{
-\item This property is only for: - the general (wrappable) \code{concat} operator (not \code{hconcat}/\code{vconcat}) - the \code{facet} and \code{repeat} operator with one field/repetition definition (without row/column nesting)
-\item Setting the \code{columns} to \code{1} is equivalent to \code{vconcat} (for \code{concat}) and to using the \code{row} channel (for \code{facet} and \code{repeat}).
+\item For \code{"none"}, a flow layout will be used, in which adjacent subviews are simply placed one after the other. - For
+\code{"each"}, subviews will be aligned into a clean grid structure, but each row or column may be of variable size. -
+For \code{"all"}, subviews will be aligned and each row or column will be sized identically based on the maximum observed
+size. String values for this property will be applied to both grid rows and columns. #' #' Alternatively, an object
+value of the form \verb{\{"row": string, "column": string\}} can be used to supply different alignments for rows and
+columns. #' #' \strong{Default value:} \code{"all"}.
 }}
 
-\item{header}{(\emph{FacetEncodingFieldDef}) An object defining properties of a facet's header.}
+\item{band}{For rect-based marks (\code{rect}, \code{bar}, and \code{image}), mark size relative to bandwidth of \href{https://vega.github.io/vega-lite/docs/scale.html#band}{band scales}, bins or time units. If set to \code{1}, the mark size is
+set to the bandwidth, the bin interval, or the time unit interval. If set to \code{0.5}, the mark size is half of the
+bandwidth or the time unit interval. #' #' For other marks, relative position on a band of a stacked, binned, time
+unit or band scale. If set to \code{0}, the marks will be positioned at the beginning of the band. If set to \code{0.5}, the
+marks will be positioned in the middle of the band.}
 
-\item{sort}{(\emph{FacetEncodingFieldDef}) Sort order for the encoded field.
+\item{bin}{A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or indicating that the data for \code{x} or \code{y}
+channel are binned before they are imported into Vega-Lite (\code{"binned"}). #' #' - If \code{true}, default \href{https://vega.github.io/vega-lite/docs/bin.html}{binning parameters} will be applied. #' #' - If \code{"binned"}, this indicates
+that the data for the \code{x} (or \code{y}) channel are already binned. You can map the bin-start field to \code{x} (or \code{y}) and
+the bin-end field to \code{x2} (or \code{y2}). The scale and axis will be formatted similar to binning in Vega-Lite.  To
+adjust the axis ticks based on the bin step, you can also set the axis's
+\href{https://vega.github.io/vega-lite/docs/axis.html#ticks}{\code{tickMinStep}} property. #' #' \strong{Default value:} \code{false} #'
+#' \strong{See also:} \href{https://vega.github.io/vega-lite/docs/bin.html}{\code{bin}} documentation.}
 
-For continuous fields (quantitative or temporal), \code{sort} can be either \code{"ascending"} or \code{"descending"}.
+\item{bounds}{The bounds calculation method to use for determining the extent of a sub-plot. One of \code{full} (the default) or \code{flush}.
+#' #' - If set to \code{full}, the entire calculated bounds (including axes, title, and legend) will be used. - If set to
+\code{flush}, only the specified width and height values for the sub-view will be used. The \code{flush} setting can be useful
+when attempting to place sub-plots without axes or legends into a uniform grid structure. #' #' \strong{Default value:}
+\code{"full"}}
 
-For discrete fields, \code{sort} can be one of the following: - \code{"ascending"} or \code{"descending"} -- for sorting by the values' natural order in JavaScript. - \href{https://vega.github.io/vega-lite/docs/sort.html#sort-field}{A sort field definition} for sorting by another field. - \href{https://vega.github.io/vega-lite/docs/sort.html#sort-array}{An array specifying the field values in preferred order}. In this case, the sort order will obey the values in the array, followed by any unspecified values in their original order. For discrete time field, values in the sort array can be \href{types#datetime}{date-time definition objects}. In addition, for time units \code{"month"} and \code{"day"}, the values can be the month or day names (case insensitive) or their 3-letter initials (e.g., \code{"Mon"}, \code{"Tue"}). - \code{null} indicating no sort.
+\item{center}{Boolean flag indicating if subviews should be centered relative to their respective rows or columns. #' #' An object
+value of the form \verb{\{"row": boolean, "column": boolean\}} can be used to supply different centering values for rows
+and columns. #' #' \strong{Default value:} \code{false}}
 
-\strong{Default value:} \code{"ascending"}
+\item{columns}{The number of columns to include in the view composition layout. #' #' \strong{Default value}: \code{undefined} -- An infinite
+number of columns (a single row) will be assumed. This is equivalent to \code{hconcat} (for \code{concat}) and to using the
+\code{column} channel (for \code{facet} and \code{repeat}). #' #' \strong{Note}: #' #' 1) This property is only for: - the general
+(wrappable) \code{concat} operator (not \code{hconcat}/\code{vconcat}) - the \code{facet} and \code{repeat} operator with one
+field/repetition definition (without row/column nesting) #' #' 2) Setting the \code{columns} to \code{1} is equivalent to
+\code{vconcat} (for \code{concat}) and to using the \code{row} channel (for \code{facet} and \code{repeat}).}
 
-\strong{Note:} \code{null} is not supported for \code{row} and \code{column}.}
+\item{header}{An object defining properties of a facet's header.}
 
-\item{spacing}{(\emph{FacetEncodingFieldDef}) The spacing in pixels between sub-views of the composition operator. An object of the form \verb{\{"row": number, "column": number\}} can be used to set different spacing values for rows and columns.
+\item{sort}{Sort order for the encoded field. #' #' For continuous fields (quantitative or temporal), \code{sort} can be either
+\code{"ascending"} or \code{"descending"}. #' #' For discrete fields, \code{sort} can be one of the following: - \code{"ascending"} or
+\code{"descending"} -- for sorting by the values' natural order in JavaScript. - \href{https://vega.github.io/vega-lite/docs/sort.html#sort-field}{A sort field definition} for sorting by another field. - \href{https://vega.github.io/vega-lite/docs/sort.html#sort-array}{An array specifying the field values in preferred order}. In this
+case, the sort order will obey the values in the array, followed by any unspecified values in their original order.
+For discrete time field, values in the sort array can be \href{types#datetime}{date-time definition objects}. In
+addition, for time units \code{"month"} and \code{"day"}, the values can be the month or day names (case insensitive) or their
+3-letter initials (e.g., \code{"Mon"}, \code{"Tue"}). - \code{null} indicating no sort. #' #' \strong{Default value:} \code{"ascending"} #'
+#' \strong{Note:} \code{null} is not supported for \code{row} and \code{column}.}
 
-\strong{Default value}: Depends on \code{"spacing"} property of \href{https://vega.github.io/vega-lite/docs/config.html#view-config}{the view composition configuration} (\code{20} by default)}
+\item{spacing}{The spacing in pixels between sub-views of the composition operator. An object of the form \verb{\{"row": number, "column": number\}} can be used to set different spacing values for rows and columns. #' #' \strong{Default value}: Depends on
+\code{"spacing"} property of \href{https://vega.github.io/vega-lite/docs/config.html#view-config}{the view composition configuration} (\code{20} by default)}
 
-\item{timeUnit}{(\emph{FacetEncodingFieldDef}) Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field. or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}.
-
-\strong{Default value:} \code{undefined} (None)
-
+\item{timeUnit}{Time unit (e.g., \code{year}, \code{yearmonth}, \code{month}, \code{hours}) for a temporal field. or \href{https://vega.github.io/vega-lite/docs/type.html#cast}{a temporal field that gets casted as ordinal}. #' #' \strong{Default value:} \code{undefined} (None) #' #'
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/timeunit.html}{\code{timeUnit}} documentation.}
 
-\item{title}{(\emph{FacetEncodingFieldDef}) A title for the field. If \code{null}, the title will be removed.
-
-\strong{Default value:}  derived from the field's name and transformation function (\code{aggregate}, \code{bin} and \code{timeUnit}). If the field has an aggregate function, the function is displayed as part of the title (e.g., \code{"Sum of Profit"}). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., \code{"Profit (binned)"}, \code{"Transaction Date (year-month)"}). Otherwise, the title is simply the field name.
-
-\strong{Notes}:
-\enumerate{
-\item You can customize the default field title format by providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{\code{fieldTitle}} property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config} or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{\code{fieldTitle} function via the \code{compile} function's options}.
-\item If both field definition's \code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used.
-}}
+\item{title}{A title for the field. If \code{null}, the title will be removed. #' #' \strong{Default value:} derived from the field's name and
+transformation function (\code{aggregate}, \code{bin} and \code{timeUnit}). If the field has an aggregate function, the function is
+displayed as part of the title (e.g., \code{"Sum of Profit"}). If the field is binned or has a time unit applied, the
+applied function is shown in parentheses (e.g., \code{"Profit (binned)"}, \code{"Transaction Date (year-month)"}). Otherwise,
+the title is simply the field name. #' #' \strong{Notes}: #' #' 1) You can customize the default field title format by
+providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{\code{fieldTitle}} property in the
+\href{https://vega.github.io/vega-lite/docs/config.html}{config} or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{\code{fieldTitle} function via the \code{compile} function's options}. #' #' 2) If both field definition's
+\code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used.}
 }
 \value{
 A modified Vega-Lite Spec

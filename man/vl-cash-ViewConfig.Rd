@@ -4,65 +4,54 @@
 \alias{vl$ViewConfig}
 \title{ViewConfig}
 \arguments{
-\item{clip}{(\emph{ViewConfig}) Whether the view should be clipped.}
+\item{clip}{Whether the view should be clipped.}
 
-\item{continuousHeight}{(\emph{ViewConfig}) The default height when the plot has a continuous y-field for x or latitude, or has arc marks.
+\item{continuousHeight}{The default height when the plot has a continuous y-field for x or latitude, or has arc marks. #' #' \strong{Default value:}
+\code{200}}
 
-\strong{Default value:} \code{200}}
+\item{continuousWidth}{The default width when the plot has a continuous field for x or longitude, or has arc marks. #' #' \strong{Default value:}
+\code{200}}
 
-\item{continuousWidth}{(\emph{ViewConfig}) The default width when the plot has a continuous field for x or longitude, or has arc marks.
+\item{cornerRadius}{}
 
-\strong{Default value:} \code{200}}
+\item{cursor}{The mouse cursor used over the view. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values}{CSS cursor type} can be used.}
 
-\item{cornerRadius}{(\emph{ViewConfig})}
+\item{discreteHeight}{The default height when the plot has non arc marks and either a discrete y-field or no y-field. The height can be
+either a number indicating a fixed height or an object in the form of \code{{step: number}} defining the height per
+discrete step. #' #' \strong{Default value:} a step size based on \code{config.view.step}.}
 
-\item{cursor}{(\emph{ViewConfig}) The mouse cursor used over the view. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values}{CSS cursor type} can be used.}
+\item{discreteWidth}{The default width when the plot has non-arc marks and either a discrete x-field or no x-field. The width can be either
+a number indicating a fixed width or an object in the form of \code{{step: number}} defining the width per discrete step.
+#' #' \strong{Default value:} a step size based on \code{config.view.step}.}
 
-\item{discreteHeight}{(\emph{ViewConfig}) The default height when the plot has non arc marks and either a discrete y-field or no y-field. The height can be either a number indicating a fixed height or an object in the form of \code{{step: number}} defining the height per discrete step.
+\item{fill}{The fill color. #' #' \strong{Default value:} \code{undefined}}
 
-\strong{Default value:} a step size based on \code{config.view.step}.}
+\item{fillOpacity}{}
 
-\item{discreteWidth}{(\emph{ViewConfig}) The default width when the plot has non-arc marks and either a discrete x-field or no x-field. The width can be either a number indicating a fixed width or an object in the form of \code{{step: number}} defining the width per discrete step.
+\item{height}{Default height #' #' \strong{Deprecated:} Since Vega-Lite 4.0. Please use continuousHeight and discreteHeight instead.}
 
-\strong{Default value:} a step size based on \code{config.view.step}.}
+\item{opacity}{The overall opacity (value between [0,1]). #' #' \strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick},
+\code{circle}, or \code{square} marks or layered \code{bar} charts and \code{1} otherwise.}
 
-\item{fill}{(\emph{ViewConfig}) The fill color.
+\item{step}{Default step size for x-/y- discrete fields.}
 
-\strong{Default value:} \code{undefined}}
+\item{stroke}{The stroke color. #' #' \strong{Default value:} \code{"#ddd"}}
 
-\item{fillOpacity}{(\emph{ViewConfig})}
+\item{strokeCap}{}
 
-\item{height}{(\emph{ViewConfig}) Default height
+\item{strokeDash}{}
 
-\strong{Deprecated:} Since Vega-Lite 4.0. Please use continuousHeight and discreteHeight instead.}
+\item{strokeDashOffset}{}
 
-\item{opacity}{(\emph{ViewConfig}) The overall opacity (value between [0,1]).
+\item{strokeJoin}{}
 
-\strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick}, \code{circle}, or \code{square} marks or layered \code{bar} charts and \code{1} otherwise.}
+\item{strokeMiterLimit}{}
 
-\item{step}{(\emph{ViewConfig}) Default step size for x-/y- discrete fields.}
+\item{strokeOpacity}{}
 
-\item{stroke}{(\emph{ViewConfig}) The stroke color.
+\item{strokeWidth}{}
 
-\strong{Default value:} \code{"#ddd"}}
-
-\item{strokeCap}{(\emph{ViewConfig})}
-
-\item{strokeDash}{(\emph{ViewConfig})}
-
-\item{strokeDashOffset}{(\emph{ViewConfig})}
-
-\item{strokeJoin}{(\emph{ViewConfig})}
-
-\item{strokeMiterLimit}{(\emph{ViewConfig})}
-
-\item{strokeOpacity}{(\emph{ViewConfig})}
-
-\item{strokeWidth}{(\emph{ViewConfig})}
-
-\item{width}{(\emph{ViewConfig}) Default width
-
-\strong{Deprecated:} Since Vega-Lite 4.0. Please use continuousWidth and discreteWidth instead.}
+\item{width}{Default width #' #' \strong{Deprecated:} Since Vega-Lite 4.0. Please use continuousWidth and discreteWidth instead.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to ViewConfig definition.

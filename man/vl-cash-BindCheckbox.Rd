@@ -4,15 +4,15 @@
 \alias{vl$BindCheckbox}
 \title{BindCheckbox}
 \arguments{
-\item{debounce}{(\emph{BindCheckbox})}
+\item{debounce}{}
 
-\item{element}{(\emph{BindCheckbox})}
+\item{element}{}
 
-\item{input}{(\emph{BindCheckbox})}
+\item{input}{}
 
-\item{name}{(\emph{BindCheckbox})}
+\item{name}{}
 
-\item{type}{(\emph{BindCheckbox})}
+\item{type}{}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to BindCheckbox definition.

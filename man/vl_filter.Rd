@@ -11,13 +11,19 @@ vl_filter(spec, .object = NULL, filter = NULL)
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FilterTransform}
 
-\item{filter}{(\emph{FilterTransform}) The \code{filter} property must be a predication definition, which can take one of the following forms:
-\enumerate{
-\item an \href{https://vega.github.io/vega-lite/docs/types.html#expression}{expression} string, where \code{datum} can be used to refer to the current data object. For example, \code{{filter: "datum.b2 > 60"}} would make the output data includes only items that have values in the field \code{b2} over 60.
-\item one of the \href{https://vega.github.io/vega-lite/docs/predicate.html#field-predicate}{field predicates}:  \href{https://vega.github.io/vega-lite/docs/predicate.html#field-equal-predicate}{\code{equal}}, \href{https://vega.github.io/vega-lite/docs/predicate.html#lt-predicate}{\code{lt}}, \href{https://vega.github.io/vega-lite/docs/predicate.html#lte-predicate}{\code{lte}}, \href{https://vega.github.io/vega-lite/docs/predicate.html#gt-predicate}{\code{gt}}, \href{https://vega.github.io/vega-lite/docs/predicate.html#gte-predicate}{\code{gte}}, \href{https://vega.github.io/vega-lite/docs/predicate.html#range-predicate}{\code{range}}, \href{https://vega.github.io/vega-lite/docs/predicate.html#one-of-predicate}{\code{oneOf}}, or \href{https://vega.github.io/vega-lite/docs/predicate.html#valid-predicate}{\code{valid}},
-\item a \href{https://vega.github.io/vega-lite/docs/predicate.html#selection-predicate}{selection predicate}, which define the names of a selection that the data point should belong to (or a logical composition of selections).
-\item a \href{https://vega.github.io/vega-lite/docs/predicate.html#composition}{logical composition} of (1), (2), or (3).
-}}
+\item{filter}{The \code{filter} property must be a predication definition, which can take one of the following forms: #' #' 1) an
+\href{https://vega.github.io/vega-lite/docs/types.html#expression}{expression} string, where \code{datum} can be used to refer
+to the current data object. For example, \code{{filter: "datum.b2 > 60"}} would make the output data includes only items
+that have values in the field \code{b2} over 60. #' #' 2) one of the \href{https://vega.github.io/vega-lite/docs/predicate.html#field-predicate}{field predicates}:
+\href{https://vega.github.io/vega-lite/docs/predicate.html#field-equal-predicate}{\code{equal}},
+\href{https://vega.github.io/vega-lite/docs/predicate.html#lt-predicate}{\code{lt}},
+\href{https://vega.github.io/vega-lite/docs/predicate.html#lte-predicate}{\code{lte}},
+\href{https://vega.github.io/vega-lite/docs/predicate.html#gt-predicate}{\code{gt}},
+\href{https://vega.github.io/vega-lite/docs/predicate.html#gte-predicate}{\code{gte}},
+\href{https://vega.github.io/vega-lite/docs/predicate.html#range-predicate}{\code{range}},
+\href{https://vega.github.io/vega-lite/docs/predicate.html#one-of-predicate}{\code{oneOf}}, or
+\href{https://vega.github.io/vega-lite/docs/predicate.html#valid-predicate}{\code{valid}}, #' #' 3) a \href{https://vega.github.io/vega-lite/docs/predicate.html#selection-predicate}{selection predicate}, which define the names of a
+selection that the data point should belong to (or a logical composition of selections). #' #' 4) a \href{https://vega.github.io/vega-lite/docs/predicate.html#composition}{logical composition} of (1), (2), or (3).}
 }
 \value{
 A modified Vega-Lite Spec

@@ -24,13 +24,13 @@ vl_bind_checkbox_input(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindCheckbox}
 
-\item{debounce}{(\emph{BindCheckbox})}
+\item{debounce}{}
 
-\item{element}{(\emph{BindCheckbox})}
+\item{element}{}
 
-\item{name}{(\emph{BindCheckbox})}
+\item{name}{}
 
-\item{type}{(\emph{BindCheckbox})}
+\item{type}{}
 }
 \value{
 A modified Vega-Lite Spec

@@ -23,29 +23,29 @@ vl_mark_ErrorBar(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBarDef}
 
-\item{clip}{(\emph{ErrorBarDef}) Whether a composite mark be clipped to the enclosing group’s width and height.}
+\item{clip}{Whether a composite mark be clipped to the enclosing group’s width and height.}
 
-\item{color}{(\emph{ErrorBarDef}) Default color.
+\item{color}{Default color. #' #' \strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"} #' #' \strong{Note:} - This
+property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. - The
+\code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.}
 
-\strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
+\item{extent}{The extent of the rule. Available options include: - \code{"ci"}: Extend the rule to the confidence interval of the mean. -
+\code{"stderr"}: The size of rule are set to the value of standard error, extending from the mean. - \code{"stdev"}: The size
+of rule are set to the value of standard deviation, extending from the mean. - \code{"iqr"}: Extend the rule to the q1
+and q3. #' #' \strong{Default value:} \code{"stderr"}.}
 
-\strong{Note:} - This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. - The \code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.}
+\item{opacity}{The opacity (value between [0,1]) of the mark.}
 
-\item{extent}{(\emph{ErrorBarDef}) The extent of the rule. Available options include: - \code{"ci"}: Extend the rule to the confidence interval of the mean. - \code{"stderr"}: The size of rule are set to the value of standard error, extending from the mean. - \code{"stdev"}: The size of rule are set to the value of standard deviation, extending from the mean. - \code{"iqr"}: Extend the rule to the q1 and q3.
+\item{orient}{Orientation of the error bar. This is normally automatically determined, but can be specified when the orientation is
+ambiguous and cannot be automatically determined.}
 
-\strong{Default value:} \code{"stderr"}.}
+\item{rule}{}
 
-\item{opacity}{(\emph{ErrorBarDef}) The opacity (value between [0,1]) of the mark.}
+\item{size}{Size of the ticks of an error bar}
 
-\item{orient}{(\emph{ErrorBarDef}) Orientation of the error bar. This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.}
+\item{thickness}{Thickness of the ticks and the bar of an error bar}
 
-\item{rule}{(\emph{ErrorBarDef})}
-
-\item{size}{(\emph{ErrorBarDef}) Size of the ticks of an error bar}
-
-\item{thickness}{(\emph{ErrorBarDef}) Thickness of the ticks and the bar of an error bar}
-
-\item{ticks}{(\emph{ErrorBarDef})}
+\item{ticks}{}
 }
 \value{
 A modified Vega-Lite Spec

@@ -25,35 +25,34 @@ vl_mark_BoxPlot(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BoxPlotDef}
 
-\item{box}{(\emph{BoxPlotDef})}
+\item{box}{}
 
-\item{clip}{(\emph{BoxPlotDef}) Whether a composite mark be clipped to the enclosing group’s width and height.}
+\item{clip}{Whether a composite mark be clipped to the enclosing group’s width and height.}
 
-\item{color}{(\emph{BoxPlotDef}) Default color.
+\item{color}{Default color. #' #' \strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"} #' #' \strong{Note:} - This
+property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. - The
+\code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.}
 
-\strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
+\item{extent}{The extent of the whiskers. Available options include: - \code{"min-max"}: min and max are the lower and upper whiskers
+respectively. - A number representing multiple of the interquartile range. This number will be multiplied by the IQR
+to determine whisker boundary, which spans from the smallest data to the largest data within the range \emph{[Q1 - k *
+IQR, Q3 + k * IQR]} where \emph{Q1} and \emph{Q3} are the first and third quartiles while \emph{IQR} is the interquartile range
+(\emph{Q3-Q1}). #' #' \strong{Default value:} \code{1.5}.}
 
-\strong{Note:} - This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. - The \code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.}
+\item{median}{}
 
-\item{extent}{(\emph{BoxPlotDef}) The extent of the whiskers. Available options include: - \code{"min-max"}: min and max are the lower and upper whiskers respectively. - A number representing multiple of the interquartile range. This number will be multiplied by the IQR to determine whisker boundary, which spans from the smallest data to the largest data within the range \emph{[Q1 - k * IQR, Q3 + k * IQR]} where \emph{Q1} and \emph{Q3} are the first and third quartiles while \emph{IQR} is the interquartile range (\emph{Q3-Q1}).
+\item{opacity}{The opacity (value between [0,1]) of the mark.}
 
-\strong{Default value:} \code{1.5}.}
+\item{orient}{Orientation of the box plot. This is normally automatically determined based on types of fields on x and y channels.
+However, an explicit \code{orient} be specified when the orientation is ambiguous. #' #' \strong{Default value:} \code{"vertical"}.}
 
-\item{median}{(\emph{BoxPlotDef})}
+\item{outliers}{}
 
-\item{opacity}{(\emph{BoxPlotDef}) The opacity (value between [0,1]) of the mark.}
+\item{rule}{}
 
-\item{orient}{(\emph{BoxPlotDef}) Orientation of the box plot. This is normally automatically determined based on types of fields on x and y channels. However, an explicit \code{orient} be specified when the orientation is ambiguous.
+\item{size}{Size of the box and median tick of a box plot}
 
-\strong{Default value:} \code{"vertical"}.}
-
-\item{outliers}{(\emph{BoxPlotDef})}
-
-\item{rule}{(\emph{BoxPlotDef})}
-
-\item{size}{(\emph{BoxPlotDef}) Size of the box and median tick of a box plot}
-
-\item{ticks}{(\emph{BoxPlotDef})}
+\item{ticks}{}
 }
 \value{
 A modified Vega-Lite Spec

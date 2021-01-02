@@ -83,185 +83,184 @@ vl_config_text(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkConfig}
 
-\item{align}{(\emph{MarkConfig}) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of \code{"left"}, \code{"right"}, \code{"center"}.
+\item{align}{The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of \code{"left"}, \code{"right"},
+\code{"center"}. #' #' \strong{Note:} Expression reference is \emph{not} supported for range marks.}
 
-\strong{Note:} Expression reference is \emph{not} supported for range marks.}
+\item{angle}{}
 
-\item{angle}{(\emph{MarkConfig})}
+\item{aria}{}
 
-\item{aria}{(\emph{MarkConfig})}
+\item{ariaRole}{}
 
-\item{ariaRole}{(\emph{MarkConfig})}
+\item{ariaRoleDescription}{}
 
-\item{ariaRoleDescription}{(\emph{MarkConfig})}
+\item{aspect}{}
 
-\item{aspect}{(\emph{MarkConfig})}
+\item{baseline}{For text marks, the vertical text baseline. One of \code{"alphabetic"} (default), \code{"top"}, \code{"middle"}, \code{"bottom"},
+\code{"line-top"}, \code{"line-bottom"}, or an expression reference that provides one of the valid values. The \code{"line-top"}
+and \code{"line-bottom"} values operate similarly to \code{"top"} and \code{"bottom"}, but are calculated relative to the
+\code{lineHeight} rather than \code{fontSize} alone. #' #' For range marks, the vertical alignment of the marks. One of
+\code{"top"}, \code{"middle"}, \code{"bottom"}. #' #' \strong{Note:} Expression reference is \emph{not} supported for range marks.}
 
-\item{baseline}{(\emph{MarkConfig}) For text marks, the vertical text baseline. One of \code{"alphabetic"} (default), \code{"top"}, \code{"middle"}, \code{"bottom"}, \code{"line-top"}, \code{"line-bottom"}, or an expression reference that provides one of the valid values. The \code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"} and \code{"bottom"}, but are calculated relative to the \code{lineHeight} rather than \code{fontSize} alone.
+\item{blend}{}
 
-For range marks, the vertical alignment of the marks. One of \code{"top"}, \code{"middle"}, \code{"bottom"}.
+\item{color}{Default color. #' #' \strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"} #' #' \strong{Note:} - This
+property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. - The
+\code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.}
 
-\strong{Note:} Expression reference is \emph{not} supported for range marks.}
+\item{cornerRadius}{}
 
-\item{blend}{(\emph{MarkConfig})}
+\item{cornerRadiusBottomLeft}{}
 
-\item{color}{(\emph{MarkConfig}) Default color.
+\item{cornerRadiusBottomRight}{}
 
-\strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
+\item{cornerRadiusTopLeft}{}
 
-\strong{Note:} - This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. - The \code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.}
+\item{cornerRadiusTopRight}{}
 
-\item{cornerRadius}{(\emph{MarkConfig})}
+\item{cursor}{}
 
-\item{cornerRadiusBottomLeft}{(\emph{MarkConfig})}
+\item{description}{}
 
-\item{cornerRadiusBottomRight}{(\emph{MarkConfig})}
+\item{dir}{}
 
-\item{cornerRadiusTopLeft}{(\emph{MarkConfig})}
+\item{dx}{}
 
-\item{cornerRadiusTopRight}{(\emph{MarkConfig})}
+\item{dy}{}
 
-\item{cursor}{(\emph{MarkConfig})}
+\item{ellipsis}{}
 
-\item{description}{(\emph{MarkConfig})}
+\item{endAngle}{}
 
-\item{dir}{(\emph{MarkConfig})}
-
-\item{dx}{(\emph{MarkConfig})}
-
-\item{dy}{(\emph{MarkConfig})}
-
-\item{ellipsis}{(\emph{MarkConfig})}
-
-\item{endAngle}{(\emph{MarkConfig})}
-
-\item{fill}{(\emph{MarkConfig}) Default fill color. This property has higher precedence than \code{config.color}. Set to \code{null} to remove fill.
-
+\item{fill}{Default fill color. This property has higher precedence than \code{config.color}. Set to \code{null} to remove fill. #' #'
 \strong{Default value:} (None)}
 
-\item{fillOpacity}{(\emph{MarkConfig})}
+\item{fillOpacity}{}
 
-\item{filled}{(\emph{MarkConfig}) Whether the mark's color should be used as fill color instead of stroke color.
-
-\strong{Default value:} \code{false} for all \code{point}, \code{line}, and \code{rule} marks as well as \code{geoshape} marks for \href{https://vega.github.io/vega-lite/docs/data.html#graticule}{\code{graticule}} data sources; otherwise, \code{true}.
-
+\item{filled}{Whether the mark's color should be used as fill color instead of stroke color. #' #' \strong{Default value:} \code{false} for all
+\code{point}, \code{line}, and \code{rule} marks as well as \code{geoshape} marks for
+\href{https://vega.github.io/vega-lite/docs/data.html#graticule}{\code{graticule}} data sources; otherwise, \code{true}. #' #'
 \strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.}
 
-\item{font}{(\emph{MarkConfig})}
+\item{font}{}
 
-\item{fontSize}{(\emph{MarkConfig})}
+\item{fontSize}{}
 
-\item{fontStyle}{(\emph{MarkConfig})}
+\item{fontStyle}{}
 
-\item{fontWeight}{(\emph{MarkConfig})}
+\item{fontWeight}{}
 
-\item{height}{(\emph{MarkConfig})}
+\item{height}{}
 
-\item{href}{(\emph{MarkConfig})}
+\item{href}{}
 
-\item{innerRadius}{(\emph{MarkConfig}) The inner radius in pixels of arc marks. \code{innerRadius} is an alias for \code{radius2}.}
+\item{innerRadius}{The inner radius in pixels of arc marks. \code{innerRadius} is an alias for \code{radius2}.}
 
-\item{interpolate}{(\emph{MarkConfig})}
+\item{interpolate}{}
 
-\item{invalid}{(\emph{MarkConfig}) Defines how Vega-Lite should handle marks for invalid values (\code{null} and \code{NaN}). - If set to \code{"filter"} (default), all data items with null values will be skipped (for line, trail, and area marks) or filtered (for other marks). - If \code{null}, all data items are included. In this case, invalid values will be interpreted as zeroes.}
+\item{invalid}{Defines how Vega-Lite should handle marks for invalid values (\code{null} and \code{NaN}). - If set to \code{"filter"} (default), all
+data items with null values will be skipped (for line, trail, and area marks) or filtered (for other marks). - If
+\code{null}, all data items are included. In this case, invalid values will be interpreted as zeroes.}
 
-\item{limit}{(\emph{MarkConfig})}
+\item{limit}{}
 
-\item{lineBreak}{(\emph{MarkConfig})}
+\item{lineBreak}{}
 
-\item{lineHeight}{(\emph{MarkConfig})}
+\item{lineHeight}{}
 
-\item{opacity}{(\emph{MarkConfig}) The overall opacity (value between [0,1]).
+\item{opacity}{The overall opacity (value between [0,1]). #' #' \strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick},
+\code{circle}, or \code{square} marks or layered \code{bar} charts and \code{1} otherwise.}
 
-\strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick}, \code{circle}, or \code{square} marks or layered \code{bar} charts and \code{1} otherwise.}
+\item{order}{For line and trail marks, this \code{order} property can be set to \code{null} or \code{false} to make the lines use the original
+order in the data sources.}
 
-\item{order}{(\emph{MarkConfig}) For line and trail marks, this \code{order} property can be set to \code{null} or \code{false} to make the lines use the original order in the data sources.}
+\item{orient}{The orientation of a non-stacked bar, tick, area, and line charts. The value is either horizontal (default) or
+vertical. - For bar, rule and tick, this determines whether the size of the bar and tick should be applied to x or y
+dimension. - For area, this property determines the orient property of the Vega output. - For line and trail marks,
+this property determines the sort order of the points in the line if \code{config.sortLineBy} is not specified. For
+stacked charts, this is always determined by the orientation of the stack; therefore explicitly specified value will
+be ignored.}
 
-\item{orient}{(\emph{MarkConfig}) The orientation of a non-stacked bar, tick, area, and line charts. The value is either horizontal (default) or vertical. - For bar, rule and tick, this determines whether the size of the bar and tick should be applied to x or y dimension. - For area, this property determines the orient property of the Vega output. - For line and trail marks, this property determines the sort order of the points in the line if \code{config.sortLineBy} is not specified. For stacked charts, this is always determined by the orientation of the stack; therefore explicitly specified value will be ignored.}
+\item{outerRadius}{The outer radius in pixels of arc marks. \code{outerRadius} is an alias for \code{radius}.}
 
-\item{outerRadius}{(\emph{MarkConfig}) The outer radius in pixels of arc marks. \code{outerRadius} is an alias for \code{radius}.}
+\item{padAngle}{}
 
-\item{padAngle}{(\emph{MarkConfig})}
+\item{radius}{For arc mark, the primary (outer) radius in pixels. #' #' For text marks, polar coordinate radial offset, in pixels, of
+the text from the origin determined by the \code{x} and \code{y} properties.}
 
-\item{radius}{(\emph{MarkConfig}) For arc mark, the primary (outer) radius in pixels.
+\item{radius2}{The secondary (inner) radius in pixels of arc marks.}
 
-For text marks, polar coordinate radial offset, in pixels, of the text from the origin determined by the \code{x} and \code{y} properties.}
+\item{shape}{}
 
-\item{radius2}{(\emph{MarkConfig}) The secondary (inner) radius in pixels of arc marks.}
+\item{size}{Default size for marks. - For \code{point}/\code{circle}/\code{square}, this represents the pixel area of the marks. Note that this
+value sets the area of the symbol; the side lengths will increase with the square root of this value. - For \code{bar},
+this represents the band size of the bar, in pixels. - For \code{text}, this represents the font size, in pixels. #' #'
+\strong{Default value:} - \code{30} for point, circle, square marks; width/height's \code{step} - \code{2} for bar marks with discrete
+dimensions; - \code{5} for bar marks with continuous dimensions; - \code{11} for text marks.}
 
-\item{shape}{(\emph{MarkConfig})}
+\item{smooth}{}
 
-\item{size}{(\emph{MarkConfig}) Default size for marks. - For \code{point}/\code{circle}/\code{square}, this represents the pixel area of the marks. Note that this value sets the area of the symbol; the side lengths will increase with the square root of this value. - For \code{bar}, this represents the band size of the bar, in pixels. - For \code{text}, this represents the font size, in pixels.
+\item{startAngle}{}
 
-\strong{Default value:} - \code{30} for point, circle, square marks; width/height's \code{step} - \code{2} for bar marks with discrete dimensions; - \code{5} for bar marks with continuous dimensions; - \code{11} for text marks.}
-
-\item{smooth}{(\emph{MarkConfig})}
-
-\item{startAngle}{(\emph{MarkConfig})}
-
-\item{stroke}{(\emph{MarkConfig}) Default stroke color. This property has higher precedence than \code{config.color}. Set to \code{null} to remove stroke.
-
+\item{stroke}{Default stroke color. This property has higher precedence than \code{config.color}. Set to \code{null} to remove stroke. #' #'
 \strong{Default value:} (None)}
 
-\item{strokeCap}{(\emph{MarkConfig})}
+\item{strokeCap}{}
 
-\item{strokeDash}{(\emph{MarkConfig})}
+\item{strokeDash}{}
 
-\item{strokeDashOffset}{(\emph{MarkConfig})}
+\item{strokeDashOffset}{}
 
-\item{strokeJoin}{(\emph{MarkConfig})}
+\item{strokeJoin}{}
 
-\item{strokeMiterLimit}{(\emph{MarkConfig})}
+\item{strokeMiterLimit}{}
 
-\item{strokeOffset}{(\emph{MarkConfig})}
+\item{strokeOffset}{}
 
-\item{strokeOpacity}{(\emph{MarkConfig})}
+\item{strokeOpacity}{}
 
-\item{strokeWidth}{(\emph{MarkConfig})}
+\item{strokeWidth}{}
 
-\item{tension}{(\emph{MarkConfig})}
+\item{tension}{}
 
-\item{text}{(\emph{MarkConfig})}
+\item{text}{}
 
-\item{theta}{(\emph{MarkConfig}) - For arc marks, the arc length in radians if theta2 is not specified, otherwise the start arc angle. (A value of 0 indicates up or “north”, increasing values proceed clockwise.)
-\itemize{
-\item For text marks, polar coordinate angle in radians.
+\item{theta}{\itemize{
+\item For arc marks, the arc length in radians if theta2 is not specified, otherwise the start arc angle. (A value of 0
+indicates up or “north”, increasing values proceed clockwise.) #' #' - For text marks, polar coordinate angle in
+radians.
 }}
 
-\item{theta2}{(\emph{MarkConfig}) The end angle of arc marks in radians. A value of 0 indicates up or “north”, increasing values proceed clockwise.}
+\item{theta2}{The end angle of arc marks in radians. A value of 0 indicates up or “north”, increasing values proceed clockwise.}
 
-\item{timeUnitBand}{(\emph{MarkConfig}) Default relative band size for a time unit. If set to \code{1}, the bandwidth of the marks will be equal to the time unit band step. If set to \code{0.5}, bandwidth of the marks will be half of the time unit band step.}
+\item{timeUnitBand}{Default relative band size for a time unit. If set to \code{1}, the bandwidth of the marks will be equal to the time unit
+band step. If set to \code{0.5}, bandwidth of the marks will be half of the time unit band step.}
 
-\item{timeUnitBandPosition}{(\emph{MarkConfig}) Default relative band position for a time unit. If set to \code{0}, the marks will be positioned at the beginning of the time unit band step. If set to \code{0.5}, the marks will be positioned in the middle of the time unit band step.}
+\item{timeUnitBandPosition}{Default relative band position for a time unit. If set to \code{0}, the marks will be positioned at the beginning of the
+time unit band step. If set to \code{0.5}, the marks will be positioned in the middle of the time unit band step.}
 
-\item{tooltip}{(\emph{MarkConfig}) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
-\itemize{
-\item If \code{tooltip} is \code{true} or \code{{"content": "encoding"}}, then all fields from \code{encoding} will be used. - If \code{tooltip} is \code{{"content": "data"}}, then all fields that appear in the highlighted data point will be used. - If set to \code{null} or \code{false}, then no tooltip will be used.
-}
+\item{tooltip}{The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.
+#' #' - If \code{tooltip} is \code{true} or \code{{"content": "encoding"}}, then all fields from \code{encoding} will be used. - If
+\code{tooltip} is \code{{"content": "data"}}, then all fields that appear in the highlighted data point will be used. - If set
+to \code{null} or \code{false}, then no tooltip will be used. #' #' See the
+\href{https://vega.github.io/vega-lite/docs/tooltip.html}{\code{tooltip}} documentation for a detailed discussion about
+tooltip in Vega-Lite. #' #' \strong{Default value:} \code{null}}
 
-See the \href{https://vega.github.io/vega-lite/docs/tooltip.html}{\code{tooltip}} documentation for a detailed discussion about tooltip  in Vega-Lite.
+\item{url}{}
 
-\strong{Default value:} \code{null}}
+\item{width}{}
 
-\item{url}{(\emph{MarkConfig})}
+\item{x}{X coordinates of the marks, or width of horizontal \code{"bar"} and \code{"area"} without specified \code{x2} or \code{width}. #' #' The
+\code{value} of this channel can be a number or a string \code{"width"} for the width of the plot.}
 
-\item{width}{(\emph{MarkConfig})}
+\item{x2}{X2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and \code{"rule"}. #' #' The \code{value} of this channel can be a number
+or a string \code{"width"} for the width of the plot.}
 
-\item{x}{(\emph{MarkConfig}) X coordinates of the marks, or width of horizontal \code{"bar"} and \code{"area"} without specified \code{x2} or \code{width}.
+\item{y}{Y coordinates of the marks, or height of vertical \code{"bar"} and \code{"area"} without specified \code{y2} or \code{height}. #' #' The
+\code{value} of this channel can be a number or a string \code{"height"} for the height of the plot.}
 
-The \code{value} of this channel can be a number or a string \code{"width"} for the width of the plot.}
-
-\item{x2}{(\emph{MarkConfig}) X2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.
-
-The \code{value} of this channel can be a number or a string \code{"width"} for the width of the plot.}
-
-\item{y}{(\emph{MarkConfig}) Y coordinates of the marks, or height of vertical \code{"bar"} and \code{"area"} without specified \code{y2} or \code{height}.
-
-The \code{value} of this channel can be a number or a string \code{"height"} for the height of the plot.}
-
-\item{y2}{(\emph{MarkConfig}) Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and  \code{"rule"}.
-
-The \code{value} of this channel can be a number or a string \code{"height"} for the height of the plot.}
+\item{y2}{Y2 coordinates for ranged \code{"area"}, \code{"bar"}, \code{"rect"}, and \code{"rule"}. #' #' The \code{value} of this channel can be a number
+or a string \code{"height"} for the height of the plot.}
 }
 \value{
 A modified Vega-Lite Spec

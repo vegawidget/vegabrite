@@ -6,10 +6,7 @@ create_config_functions <- function(schema) {
   c(
     create_config(schema),
     purrr::map_chr(config_options, create_sub_config, schema = schema),
-    purrr::map_chr(config_objs, create_object, schema = schema),
-    purrr::map_chr(config_options, create_deprecated_sub_config),
-    create_deprecated("vl_add_config", "vl_config"),
-    purrr::map_chr(config_objs, create_deprecated_object)
+    purrr::map_chr(config_objs, create_object, schema = schema)
   )
 }
 
@@ -42,10 +39,4 @@ create_config <- function(schema) {
     ".add_config",
     description = glue::glue("Add top-level config to a vega-lite spec.")
   )
-}
-
-create_deprecated_sub_config <- function(prop) {
-  new <- glue("vl_config_{prop}")
-  old <- glue("vl_add_{prop}_config")
-  create_deprecated(old, new)
 }

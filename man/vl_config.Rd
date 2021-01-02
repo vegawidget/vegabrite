@@ -80,157 +80,171 @@ vl_config(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Config}
 
-\item{arc}{(\emph{Config}) Arc-specific Config}
+\item{arc}{Arc-specific Config}
 
-\item{area}{(\emph{Config}) Area-Specific Config}
+\item{area}{Area-Specific Config}
 
-\item{aria}{(\emph{Config}) A boolean flag indicating if ARIA default attributes should be included for marks and guides (SVG output only). If false, the \code{"aria-hidden"} attribute will be set for all guides, removing them from the ARIA accessibility tree and Vega-Lite will not generate default descriptions for marks.
+\item{aria}{A boolean flag indicating if ARIA default attributes should be included for marks and guides (SVG output only). If
+false, the \code{"aria-hidden"} attribute will be set for all guides, removing them from the ARIA accessibility tree and
+Vega-Lite will not generate default descriptions for marks. #' #' \strong{Default value:} \code{true}.}
 
-\strong{Default value:} \code{true}.}
+\item{autosize}{How the visualization size should be determined. If a string, should be one of \code{"pad"}, \code{"fit"} or \code{"none"}. Object
+values can additionally specify parameters for content sizing and automatic resizing. #' #' \strong{Default value}: \code{pad}}
 
-\item{autosize}{(\emph{Config}) How the visualization size should be determined. If a string, should be one of \code{"pad"}, \code{"fit"} or \code{"none"}. Object values can additionally specify parameters for content sizing and automatic resizing.
+\item{axis}{Axis configuration, which determines default properties for all \code{x} and \code{y}
+\href{https://vega.github.io/vega-lite/docs/axis.html}{axes}. For a full list of axis configuration options, please see
+the \href{https://vega.github.io/vega-lite/docs/axis.html#config}{corresponding section of the axis documentation}.}
 
-\strong{Default value}: \code{pad}}
+\item{axisBand}{Config for axes with "band" scales.}
 
-\item{axis}{(\emph{Config}) Axis configuration, which determines default properties for all \code{x} and \code{y} \href{https://vega.github.io/vega-lite/docs/axis.html}{axes}. For a full list of axis configuration options, please see the \href{https://vega.github.io/vega-lite/docs/axis.html#config}{corresponding section of the axis documentation}.}
+\item{axisBottom}{Config for x-axis along the bottom edge of the chart.}
 
-\item{axisBand}{(\emph{Config}) Config for axes with "band" scales.}
+\item{axisDiscrete}{Config for axes with "point" or "band" scales.}
 
-\item{axisBottom}{(\emph{Config}) Config for x-axis along the bottom edge of the chart.}
+\item{axisLeft}{Config for y-axis along the left edge of the chart.}
 
-\item{axisDiscrete}{(\emph{Config}) Config for axes with "point" or "band" scales.}
+\item{axisPoint}{Config for axes with "point" scales.}
 
-\item{axisLeft}{(\emph{Config}) Config for y-axis along the left edge of the chart.}
+\item{axisQuantitative}{Config for quantitative axes.}
 
-\item{axisPoint}{(\emph{Config}) Config for axes with "point" scales.}
+\item{axisRight}{Config for y-axis along the right edge of the chart.}
 
-\item{axisQuantitative}{(\emph{Config}) Config for quantitative axes.}
+\item{axisTemporal}{Config for temporal axes.}
 
-\item{axisRight}{(\emph{Config}) Config for y-axis along the right edge of the chart.}
+\item{axisTop}{Config for x-axis along the top edge of the chart.}
 
-\item{axisTemporal}{(\emph{Config}) Config for temporal axes.}
+\item{axisX}{X-axis specific config.}
 
-\item{axisTop}{(\emph{Config}) Config for x-axis along the top edge of the chart.}
+\item{axisXBand}{Config for x-axes with "band" scales.}
 
-\item{axisX}{(\emph{Config}) X-axis specific config.}
+\item{axisXDiscrete}{Config for x-axes with "point" or "band" scales.}
 
-\item{axisXBand}{(\emph{Config}) Config for x-axes with "band" scales.}
+\item{axisXPoint}{Config for x-axes with "point" scales.}
 
-\item{axisXDiscrete}{(\emph{Config}) Config for x-axes with "point" or "band" scales.}
+\item{axisXQuantitative}{Config for x-quantitative axes.}
 
-\item{axisXPoint}{(\emph{Config}) Config for x-axes with "point" scales.}
+\item{axisXTemporal}{Config for x-temporal axes.}
 
-\item{axisXQuantitative}{(\emph{Config}) Config for x-quantitative axes.}
+\item{axisY}{Y-axis specific config.}
 
-\item{axisXTemporal}{(\emph{Config}) Config for x-temporal axes.}
+\item{axisYBand}{Config for y-axes with "band" scales.}
 
-\item{axisY}{(\emph{Config}) Y-axis specific config.}
+\item{axisYDiscrete}{Config for y-axes with "point" or "band" scales.}
 
-\item{axisYBand}{(\emph{Config}) Config for y-axes with "band" scales.}
+\item{axisYPoint}{Config for y-axes with "point" scales.}
 
-\item{axisYDiscrete}{(\emph{Config}) Config for y-axes with "point" or "band" scales.}
+\item{axisYQuantitative}{Config for y-quantitative axes.}
 
-\item{axisYPoint}{(\emph{Config}) Config for y-axes with "point" scales.}
+\item{axisYTemporal}{Config for y-temporal axes.}
 
-\item{axisYQuantitative}{(\emph{Config}) Config for y-quantitative axes.}
+\item{background}{CSS color property to use as the background of the entire view. #' #' \strong{Default value:} \code{"white"}}
 
-\item{axisYTemporal}{(\emph{Config}) Config for y-temporal axes.}
+\item{bar}{Bar-Specific Config}
 
-\item{background}{(\emph{Config}) CSS color property to use as the background of the entire view.
+\item{boxplot}{Box Config}
 
-\strong{Default value:} \code{"white"}}
+\item{circle}{Circle-Specific Config}
 
-\item{bar}{(\emph{Config}) Bar-Specific Config}
+\item{concat}{Default configuration for all concatenation and repeat view composition operators (\code{concat}, \code{hconcat}, \code{vconcat}, and
+\code{repeat})}
 
-\item{boxplot}{(\emph{Config}) Box Config}
+\item{countTitle}{Default axis and legend title for count fields. #' #' \strong{Default value:} \verb{Count of Records}.}
 
-\item{circle}{(\emph{Config}) Circle-Specific Config}
+\item{customFormatTypes}{Allow the \code{formatType} property for text marks and guides to accept a custom formatter function \href{https://vega.github.io/vega-lite/usage/compile.html#format-type}{registered as a Vega expression}.}
 
-\item{concat}{(\emph{Config}) Default configuration for all concatenation and repeat view composition operators (\code{concat}, \code{hconcat}, \code{vconcat}, and \code{repeat})}
+\item{errorband}{ErrorBand Config}
 
-\item{countTitle}{(\emph{Config}) Default axis and legend title for count fields.
+\item{errorbar}{ErrorBar Config}
 
-\strong{Default value:} \verb{Count of Records}.}
+\item{facet}{Default configuration for the \code{facet} view composition operator}
 
-\item{customFormatTypes}{(\emph{Config}) Allow the \code{formatType} property for text marks and guides to accept a custom formatter function \href{https://vega.github.io/vega-lite/usage/compile.html#format-type}{registered as a Vega expression}.}
+\item{fieldTitle}{Defines how Vega-Lite generates title for fields. There are three possible styles: - \code{"verbal"} (Default) - displays
+function in a verbal style (e.g., "Sum of field", "Year-month of date", "field (binned)"). - \code{"function"} - displays
+function using parentheses and capitalized texts (e.g., "SUM(field)", "YEARMONTH(date)", "BIN(field)"). - \code{"plain"}
+\itemize{
+\item displays only the field name without functions (e.g., "field", "date", "field").
+}}
 
-\item{errorband}{(\emph{Config}) ErrorBand Config}
+\item{font}{Default font for all text marks, titles, and labels.}
 
-\item{errorbar}{(\emph{Config}) ErrorBar Config}
+\item{geoshape}{Geoshape-Specific Config}
 
-\item{facet}{(\emph{Config}) Default configuration for the \code{facet} view composition operator}
+\item{header}{Header configuration, which determines default properties for all
+\href{https://vega.github.io/vega-lite/docs/header.html}{headers}. #' #' For a full list of header configuration options,
+please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
 
-\item{fieldTitle}{(\emph{Config}) Defines how Vega-Lite generates title for fields. There are three possible styles: - \code{"verbal"} (Default) - displays function in a verbal style (e.g., "Sum of field", "Year-month of date", "field (binned)"). - \code{"function"} - displays function using parentheses and capitalized texts (e.g., "SUM(field)", "YEARMONTH(date)", "BIN(field)"). - \code{"plain"} - displays only the field name without functions (e.g., "field", "date", "field").}
+\item{headerColumn}{Header configuration, which determines default properties for column
+\href{https://vega.github.io/vega-lite/docs/header.html}{headers}. #' #' For a full list of header configuration options,
+please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
 
-\item{font}{(\emph{Config}) Default font for all text marks, titles, and labels.}
+\item{headerFacet}{Header configuration, which determines default properties for non-row/column facet
+\href{https://vega.github.io/vega-lite/docs/header.html}{headers}. #' #' For a full list of header configuration options,
+please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
 
-\item{geoshape}{(\emph{Config}) Geoshape-Specific Config}
+\item{headerRow}{Header configuration, which determines default properties for row
+\href{https://vega.github.io/vega-lite/docs/header.html}{headers}. #' #' For a full list of header configuration options,
+please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
 
-\item{header}{(\emph{Config}) Header configuration, which determines default properties for all \href{https://vega.github.io/vega-lite/docs/header.html}{headers}.
+\item{image}{Image-specific Config}
 
-For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
+\item{legend}{Legend configuration, which determines default properties for all
+\href{https://vega.github.io/vega-lite/docs/legend.html}{legends}. For a full list of legend configuration options,
+please see the \href{https://vega.github.io/vega-lite/docs/legend.html#config}{corresponding section of in the legend documentation}.}
 
-\item{headerColumn}{(\emph{Config}) Header configuration, which determines default properties for column \href{https://vega.github.io/vega-lite/docs/header.html}{headers}.
+\item{line}{Line-Specific Config}
 
-For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
+\item{lineBreak}{A delimiter, such as a newline character, upon which to break text strings into multiple lines. This property provides
+a global default for text marks, which is overridden by mark or style config settings, and by the lineBreak mark
+encoding channel. If signal-valued, either string or regular expression (regexp) values are valid.}
 
-\item{headerFacet}{(\emph{Config}) Header configuration, which determines default properties for non-row/column facet \href{https://vega.github.io/vega-lite/docs/header.html}{headers}.
+\item{mark}{Mark Config}
 
-For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
+\item{numberFormat}{D3 Number format for guide labels and text marks. For example \code{"s"} for SI units. Use \href{https://github.com/d3/d3-format#locale_format}{D3's number format pattern}.}
 
-\item{headerRow}{(\emph{Config}) Header configuration, which determines default properties for row \href{https://vega.github.io/vega-lite/docs/header.html}{headers}.
+\item{padding}{The default visualization padding, in pixels, from the edge of the visualization canvas to the data rectangle. If a
+number, specifies padding for all sides. If an object, the value should have the format \verb{\{"left": 5, "top": 5, "right": 5, "bottom": 5\}} to specify padding for each side of the visualization. #' #' \strong{Default value}: \code{5}}
 
-For a full list of header configuration options, please see the \href{https://vega.github.io/vega-lite/docs/header.html#config}{corresponding section of in the header documentation}.}
+\item{params}{Dynamic variables that parameterize a visualization.}
 
-\item{image}{(\emph{Config}) Image-specific Config}
+\item{point}{Point-Specific Config}
 
-\item{legend}{(\emph{Config}) Legend configuration, which determines default properties for all \href{https://vega.github.io/vega-lite/docs/legend.html}{legends}. For a full list of legend configuration options, please see the \href{https://vega.github.io/vega-lite/docs/legend.html#config}{corresponding section of in the legend documentation}.}
+\item{projection}{Projection configuration, which determines default properties for all
+\href{https://vega.github.io/vega-lite/docs/projection.html}{projections}. For a full list of projection configuration
+options, please see the \href{https://vega.github.io/vega-lite/docs/projection.html#config}{corresponding section of the projection documentation}.}
 
-\item{line}{(\emph{Config}) Line-Specific Config}
+\item{range}{An object hash that defines default range arrays or schemes for using with scales. For a full list of scale range
+configuration options, please see the \href{https://vega.github.io/vega-lite/docs/scale.html#config}{corresponding section of the scale documentation}.}
 
-\item{lineBreak}{(\emph{Config}) A delimiter, such as a newline character, upon which to break text strings into multiple lines. This property provides a global default for text marks, which is overridden by mark or style config settings, and by the lineBreak mark encoding channel. If signal-valued, either string or regular expression (regexp) values are valid.}
+\item{rect}{Rect-Specific Config}
 
-\item{mark}{(\emph{Config}) Mark Config}
+\item{rule}{Rule-Specific Config}
 
-\item{numberFormat}{(\emph{Config}) D3 Number format for guide labels and text marks. For example \code{"s"} for SI units. Use \href{https://github.com/d3/d3-format#locale_format}{D3's number format pattern}.}
+\item{scale}{Scale configuration determines default properties for all \href{https://vega.github.io/vega-lite/docs/scale.html}{scales}.
+For a full list of scale configuration options, please see the \href{https://vega.github.io/vega-lite/docs/scale.html#config}{corresponding section of the scale documentation}.}
 
-\item{padding}{(\emph{Config}) The default visualization padding, in pixels, from the edge of the visualization canvas to the data rectangle. If a number, specifies padding for all sides. If an object, the value should have the format \verb{\{"left": 5, "top": 5, "right": 5, "bottom": 5\}} to specify padding for each side of the visualization.
+\item{selection}{An object hash for defining default properties for each type of selections.}
 
-\strong{Default value}: \code{5}}
+\item{square}{Square-Specific Config}
 
-\item{params}{(\emph{Config}) Dynamic variables that parameterize a visualization.}
+\item{style}{An object hash that defines key-value mappings to determine default properties for marks with a given
+\href{https://vega.github.io/vega-lite/docs/mark.html#mark-def}{style}. The keys represent styles names; the values have
+to be valid \href{https://vega.github.io/vega-lite/docs/mark.html#config}{mark configuration objects}.}
 
-\item{point}{(\emph{Config}) Point-Specific Config}
+\item{text}{Text-Specific Config}
 
-\item{projection}{(\emph{Config}) Projection configuration, which determines default properties for all \href{https://vega.github.io/vega-lite/docs/projection.html}{projections}. For a full list of projection configuration options, please see the \href{https://vega.github.io/vega-lite/docs/projection.html#config}{corresponding section of the projection documentation}.}
+\item{tick}{Tick-Specific Config}
 
-\item{range}{(\emph{Config}) An object hash that defines default range arrays or schemes for using with scales. For a full list of scale range configuration options, please see the \href{https://vega.github.io/vega-lite/docs/scale.html#config}{corresponding section of the scale documentation}.}
+\item{timeFormat}{Default time format for raw time values (without time units) in text marks, legend labels and header labels. #' #'
+\strong{Default value:} \code{"\%b \%d, \%Y"} \strong{Note:} Axes automatically determine the format for each label automatically so
+this config does not affect axes.}
 
-\item{rect}{(\emph{Config}) Rect-Specific Config}
+\item{title}{Title configuration, which determines default properties for all
+\href{https://vega.github.io/vega-lite/docs/title.html}{titles}. For a full list of title configuration options, please
+see the \href{https://vega.github.io/vega-lite/docs/title.html#config}{corresponding section of the title documentation}.}
 
-\item{rule}{(\emph{Config}) Rule-Specific Config}
+\item{trail}{Trail-Specific Config}
 
-\item{scale}{(\emph{Config}) Scale configuration determines default properties for all \href{https://vega.github.io/vega-lite/docs/scale.html}{scales}. For a full list of scale configuration options, please see the \href{https://vega.github.io/vega-lite/docs/scale.html#config}{corresponding section of the scale documentation}.}
-
-\item{selection}{(\emph{Config}) An object hash for defining default properties for each type of selections.}
-
-\item{square}{(\emph{Config}) Square-Specific Config}
-
-\item{style}{(\emph{Config}) An object hash that defines key-value mappings to determine default properties for marks with a given \href{https://vega.github.io/vega-lite/docs/mark.html#mark-def}{style}. The keys represent styles names; the values have to be valid \href{https://vega.github.io/vega-lite/docs/mark.html#config}{mark configuration objects}.}
-
-\item{text}{(\emph{Config}) Text-Specific Config}
-
-\item{tick}{(\emph{Config}) Tick-Specific Config}
-
-\item{timeFormat}{(\emph{Config}) Default time format for raw time values (without time units) in text marks, legend labels and header labels.
-
-\strong{Default value:} \code{"\%b \%d, \%Y"} \strong{Note:} Axes automatically determine the format for each label automatically so this config does not affect axes.}
-
-\item{title}{(\emph{Config}) Title configuration, which determines default properties for all \href{https://vega.github.io/vega-lite/docs/title.html}{titles}. For a full list of title configuration options, please see the \href{https://vega.github.io/vega-lite/docs/title.html#config}{corresponding section of the title documentation}.}
-
-\item{trail}{(\emph{Config}) Trail-Specific Config}
-
-\item{view}{(\emph{Config}) Default properties for \href{https://vega.github.io/vega-lite/docs/spec.html#single}{single view plots}.}
+\item{view}{Default properties for \href{https://vega.github.io/vega-lite/docs/spec.html#single}{single view plots}.}
 }
 \value{
 A modified Vega-Lite Spec

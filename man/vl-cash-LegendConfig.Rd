@@ -4,171 +4,166 @@
 \alias{vl$LegendConfig}
 \title{LegendConfig}
 \arguments{
-\item{aria}{(\emph{LegendConfig})}
+\item{aria}{}
 
-\item{clipHeight}{(\emph{LegendConfig})}
+\item{clipHeight}{}
 
-\item{columnPadding}{(\emph{LegendConfig})}
+\item{columnPadding}{}
 
-\item{columns}{(\emph{LegendConfig})}
+\item{columns}{}
 
-\item{cornerRadius}{(\emph{LegendConfig})}
+\item{cornerRadius}{}
 
-\item{description}{(\emph{LegendConfig})}
+\item{description}{}
 
-\item{direction}{(\emph{LegendConfig}) The direction of the legend, one of \code{"vertical"} or \code{"horizontal"}.
+\item{direction}{The direction of the legend, one of \code{"vertical"} or \code{"horizontal"}. #' #' \strong{Default value:} - For
+top-/bottom-\code{orient}ed legends, \code{"horizontal"} - For left-/right-\code{orient}ed legends, \code{"vertical"} - For
+top/bottom-left/right-\code{orient}ed legends, \code{"horizontal"} for gradient legends and \code{"vertical"} for symbol legends.}
 
-\strong{Default value:} - For top-/bottom-\code{orient}ed legends, \code{"horizontal"} - For left-/right-\code{orient}ed legends, \code{"vertical"} - For top/bottom-left/right-\code{orient}ed legends, \code{"horizontal"} for gradient legends and \code{"vertical"} for symbol legends.}
+\item{disable}{Disable legend by default}
 
-\item{disable}{(\emph{LegendConfig}) Disable legend by default}
+\item{fillColor}{}
 
-\item{fillColor}{(\emph{LegendConfig})}
+\item{gradientDirection}{}
 
-\item{gradientDirection}{(\emph{LegendConfig})}
+\item{gradientHorizontalMaxLength}{Max legend length for a horizontal gradient when \code{config.legend.gradientLength} is undefined. #' #' \strong{Default value:}
+\code{200}}
 
-\item{gradientHorizontalMaxLength}{(\emph{LegendConfig}) Max legend length for a horizontal gradient when \code{config.legend.gradientLength} is undefined.
+\item{gradientHorizontalMinLength}{Min legend length for a horizontal gradient when \code{config.legend.gradientLength} is undefined. #' #' \strong{Default value:}
+\code{100}}
 
-\strong{Default value:} \code{200}}
+\item{gradientLabelLimit}{}
 
-\item{gradientHorizontalMinLength}{(\emph{LegendConfig}) Min legend length for a horizontal gradient when \code{config.legend.gradientLength} is undefined.
+\item{gradientLabelOffset}{}
 
-\strong{Default value:} \code{100}}
+\item{gradientLength}{}
 
-\item{gradientLabelLimit}{(\emph{LegendConfig})}
+\item{gradientOpacity}{}
 
-\item{gradientLabelOffset}{(\emph{LegendConfig})}
+\item{gradientStrokeColor}{}
 
-\item{gradientLength}{(\emph{LegendConfig})}
+\item{gradientStrokeWidth}{}
 
-\item{gradientOpacity}{(\emph{LegendConfig})}
+\item{gradientThickness}{}
 
-\item{gradientStrokeColor}{(\emph{LegendConfig})}
+\item{gradientVerticalMaxLength}{Max legend length for a vertical gradient when \code{config.legend.gradientLength} is undefined. #' #' \strong{Default value:}
+\code{200}}
 
-\item{gradientStrokeWidth}{(\emph{LegendConfig})}
+\item{gradientVerticalMinLength}{Min legend length for a vertical gradient when \code{config.legend.gradientLength} is undefined. #' #' \strong{Default value:}
+\code{100}}
 
-\item{gradientThickness}{(\emph{LegendConfig})}
+\item{gridAlign}{}
 
-\item{gradientVerticalMaxLength}{(\emph{LegendConfig}) Max legend length for a vertical gradient when \code{config.legend.gradientLength} is undefined.
+\item{labelAlign}{}
 
-\strong{Default value:} \code{200}}
+\item{labelBaseline}{}
 
-\item{gradientVerticalMinLength}{(\emph{LegendConfig}) Min legend length for a vertical gradient when \code{config.legend.gradientLength} is undefined.
+\item{labelColor}{}
 
-\strong{Default value:} \code{100}}
+\item{labelFont}{}
 
-\item{gridAlign}{(\emph{LegendConfig})}
+\item{labelFontSize}{}
 
-\item{labelAlign}{(\emph{LegendConfig})}
+\item{labelFontStyle}{}
 
-\item{labelBaseline}{(\emph{LegendConfig})}
+\item{labelFontWeight}{}
 
-\item{labelColor}{(\emph{LegendConfig})}
+\item{labelLimit}{}
 
-\item{labelFont}{(\emph{LegendConfig})}
+\item{labelOffset}{}
 
-\item{labelFontSize}{(\emph{LegendConfig})}
+\item{labelOpacity}{}
 
-\item{labelFontStyle}{(\emph{LegendConfig})}
+\item{labelOverlap}{The strategy to use for resolving overlap of labels in gradient legends. If \code{false}, no overlap reduction is attempted.
+If set to \code{true} or \code{"parity"}, a strategy of removing every other label is used. If set to \code{"greedy"}, a linear
+scan of the labels is performed, removing any label that overlaps with the last visible label (this often works
+better for log-scaled axes). #' #' \strong{Default value:} \code{"greedy"} for \verb{log scales otherwise }true`.}
 
-\item{labelFontWeight}{(\emph{LegendConfig})}
+\item{labelPadding}{}
 
-\item{labelLimit}{(\emph{LegendConfig})}
+\item{labelSeparation}{}
 
-\item{labelOffset}{(\emph{LegendConfig})}
+\item{layout}{}
 
-\item{labelOpacity}{(\emph{LegendConfig})}
+\item{legendX}{}
 
-\item{labelOverlap}{(\emph{LegendConfig}) The strategy to use for resolving overlap of labels in gradient legends. If \code{false}, no overlap reduction is attempted. If set to \code{true} or \code{"parity"}, a strategy of removing every other label is used. If set to \code{"greedy"}, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+\item{legendY}{}
 
-\strong{Default value:} \code{"greedy"} for \verb{log scales otherwise }true`.}
+\item{offset}{}
 
-\item{labelPadding}{(\emph{LegendConfig})}
-
-\item{labelSeparation}{(\emph{LegendConfig})}
-
-\item{layout}{(\emph{LegendConfig})}
-
-\item{legendX}{(\emph{LegendConfig})}
-
-\item{legendY}{(\emph{LegendConfig})}
-
-\item{offset}{(\emph{LegendConfig})}
-
-\item{orient}{(\emph{LegendConfig}) The orientation of the legend, which determines how the legend is positioned within the scene. One of \code{"left"}, \code{"right"}, \code{"top"}, \code{"bottom"}, \code{"top-left"}, \code{"top-right"}, \code{"bottom-left"}, \code{"bottom-right"}, \code{"none"}.
-
+\item{orient}{The orientation of the legend, which determines how the legend is positioned within the scene. One of \code{"left"},
+\code{"right"}, \code{"top"}, \code{"bottom"}, \code{"top-left"}, \code{"top-right"}, \code{"bottom-left"}, \code{"bottom-right"}, \code{"none"}. #' #'
 \strong{Default value:} \code{"right"}}
 
-\item{padding}{(\emph{LegendConfig})}
+\item{padding}{}
 
-\item{rowPadding}{(\emph{LegendConfig})}
+\item{rowPadding}{}
 
-\item{strokeColor}{(\emph{LegendConfig})}
+\item{strokeColor}{}
 
-\item{strokeDash}{(\emph{LegendConfig})}
+\item{strokeDash}{}
 
-\item{strokeWidth}{(\emph{LegendConfig})}
+\item{strokeWidth}{}
 
-\item{symbolBaseFillColor}{(\emph{LegendConfig})}
+\item{symbolBaseFillColor}{}
 
-\item{symbolBaseStrokeColor}{(\emph{LegendConfig})}
+\item{symbolBaseStrokeColor}{}
 
-\item{symbolDash}{(\emph{LegendConfig})}
+\item{symbolDash}{}
 
-\item{symbolDashOffset}{(\emph{LegendConfig})}
+\item{symbolDashOffset}{}
 
-\item{symbolDirection}{(\emph{LegendConfig})}
+\item{symbolDirection}{}
 
-\item{symbolFillColor}{(\emph{LegendConfig})}
+\item{symbolFillColor}{}
 
-\item{symbolLimit}{(\emph{LegendConfig})}
+\item{symbolLimit}{}
 
-\item{symbolOffset}{(\emph{LegendConfig})}
+\item{symbolOffset}{}
 
-\item{symbolOpacity}{(\emph{LegendConfig})}
+\item{symbolOpacity}{}
 
-\item{symbolSize}{(\emph{LegendConfig})}
+\item{symbolSize}{}
 
-\item{symbolStrokeColor}{(\emph{LegendConfig})}
+\item{symbolStrokeColor}{}
 
-\item{symbolStrokeWidth}{(\emph{LegendConfig})}
+\item{symbolStrokeWidth}{}
 
-\item{symbolType}{(\emph{LegendConfig})}
+\item{symbolType}{}
 
-\item{tickCount}{(\emph{LegendConfig})}
+\item{tickCount}{}
 
-\item{title}{(\emph{LegendConfig}) Set to null to disable title for the axis, legend, or header.}
+\item{title}{Set to null to disable title for the axis, legend, or header.}
 
-\item{titleAlign}{(\emph{LegendConfig})}
+\item{titleAlign}{}
 
-\item{titleAnchor}{(\emph{LegendConfig})}
+\item{titleAnchor}{}
 
-\item{titleBaseline}{(\emph{LegendConfig})}
+\item{titleBaseline}{}
 
-\item{titleColor}{(\emph{LegendConfig})}
+\item{titleColor}{}
 
-\item{titleFont}{(\emph{LegendConfig})}
+\item{titleFont}{}
 
-\item{titleFontSize}{(\emph{LegendConfig})}
+\item{titleFontSize}{}
 
-\item{titleFontStyle}{(\emph{LegendConfig})}
+\item{titleFontStyle}{}
 
-\item{titleFontWeight}{(\emph{LegendConfig})}
+\item{titleFontWeight}{}
 
-\item{titleLimit}{(\emph{LegendConfig})}
+\item{titleLimit}{}
 
-\item{titleLineHeight}{(\emph{LegendConfig})}
+\item{titleLineHeight}{}
 
-\item{titleOpacity}{(\emph{LegendConfig})}
+\item{titleOpacity}{}
 
-\item{titleOrient}{(\emph{LegendConfig})}
+\item{titleOrient}{}
 
-\item{titlePadding}{(\emph{LegendConfig})}
+\item{titlePadding}{}
 
-\item{unselectedOpacity}{(\emph{LegendConfig}) The opacity of unselected legend entries.
+\item{unselectedOpacity}{The opacity of unselected legend entries. #' #' \strong{Default value:} 0.35.}
 
-\strong{Default value:} 0.35.}
-
-\item{zindex}{(\emph{LegendConfig})}
+\item{zindex}{}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to LegendConfig definition.

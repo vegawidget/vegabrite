@@ -127,12 +127,13 @@ make_group_doc <- function(reference, schema, doc_group, title, description, exc
   param_docs <- get_param_docs(schema, reference, exclude = exclude_args)
   object_doc <- get_object_doc(schema, reference)
 
-  make_docs_helper(
+  paste(make_docs_helper(
     title,
     description,
     paste(spec_doc, object_doc, param_docs, sep = "\n"),
-    doc_group = doc_group
-  )
+    doc_group = doc_group,
+    export = FALSE,
+  ), "NULL", "#> NULL", sep = "\n")
 }
 
 
@@ -192,12 +193,13 @@ make_option_group_doc <- function(doc_group, option_name, options, title, descri
   spec_doc <- glue("#' @param spec An input vega-lite spec")
   param_docs <- glue("#' @param {option_name} One of {opts_to_list(options, na_option)}")
 
-  make_docs_helper(
+  paste(make_docs_helper(
     title,
     description,
     paste(spec_doc, param_docs, sep = "\n"),
-    doc_group = doc_group
-  )
+    doc_group = doc_group,
+    export = FALSE,
+  ), "NULL", "#> NULL", sep = "\n")
 }
 
 make_option_function_innards <- function(reference, option_name, adder_function, pass_to_adder) {

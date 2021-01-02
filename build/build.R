@@ -5,7 +5,8 @@ schema_file <- Sys.glob(file.path(system.file("schema",'vega-lite', package = 'v
 VL_SCHEMA <- jsonlite::read_json(schema_file)
 
 new_schema_path <- file.path(rprojroot::find_package_root_file(), "inst","schema", basename(schema_file))
-fs::file_copy(schema_file, new_schema_path, overwrite = TRUE)
+mini_json = jsonlite:::minify(jsonlite::toJSON(VL_SCHEMA))
+cat(mini_json, file = new_schema_path)
 
 r_api <- create_api(VL_SCHEMA)
 

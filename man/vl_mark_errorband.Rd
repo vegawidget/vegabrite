@@ -23,29 +23,40 @@ vl_mark_ErrorBand(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBandDef}
 
-\item{band}{(\emph{ErrorBandDef})}
+\item{band}{}
 
-\item{borders}{(\emph{ErrorBandDef})}
+\item{borders}{}
 
-\item{clip}{(\emph{ErrorBandDef}) Whether a composite mark be clipped to the enclosing group’s width and height.}
+\item{clip}{Whether a composite mark be clipped to the enclosing group’s width and height.}
 
-\item{color}{(\emph{ErrorBandDef}) Default color.
+\item{color}{Default color. #' #' \strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"} #' #' \strong{Note:} - This
+property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. - The
+\code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.}
 
-\strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
+\item{extent}{The extent of the band. Available options include: - \code{"ci"}: Extend the band to the confidence interval of the mean. -
+\code{"stderr"}: The size of band are set to the value of standard error, extending from the mean. - \code{"stdev"}: The size
+of band are set to the value of standard deviation, extending from the mean. - \code{"iqr"}: Extend the band to the q1
+and q3. #' #' \strong{Default value:} \code{"stderr"}.}
 
-\strong{Note:} - This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. - The \code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.}
+\item{interpolate}{The line interpolation method for the error band. One of the following: - \code{"linear"}: piecewise linear segments, as in
+a polyline. - \code{"linear-closed"}: close the linear segments to form a polygon. - \code{"step"}: a piecewise constant
+function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes at the
+midpoint of each pair of adjacent x-values. - \code{"step-before"}: a piecewise constant function (a step function)
+consisting of alternating horizontal and vertical lines. The y-value changes before the x-value. - \code{"step-after"}: a
+piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value
+changes after the x-value. - \code{"basis"}: a B-spline, with control point duplication on the ends. - \code{"basis-open"}: an
+open B-spline; may not intersect the start or end. - \code{"basis-closed"}: a closed B-spline, as in a loop. -
+\code{"cardinal"}: a Cardinal spline, with control point duplication on the ends. - \code{"cardinal-open"}: an open Cardinal
+spline; may not intersect the start or end, but will intersect other control points. - \code{"cardinal-closed"}: a closed
+Cardinal spline, as in a loop. - \code{"bundle"}: equivalent to basis, except the tension parameter is used to straighten
+the spline. - \code{"monotone"}: cubic interpolation that preserves monotonicity in y.}
 
-\item{extent}{(\emph{ErrorBandDef}) The extent of the band. Available options include: - \code{"ci"}: Extend the band to the confidence interval of the mean. - \code{"stderr"}: The size of band are set to the value of standard error, extending from the mean. - \code{"stdev"}: The size of band are set to the value of standard deviation, extending from the mean. - \code{"iqr"}: Extend the band to the q1 and q3.
+\item{opacity}{The opacity (value between [0,1]) of the mark.}
 
-\strong{Default value:} \code{"stderr"}.}
+\item{orient}{Orientation of the error band. This is normally automatically determined, but can be specified when the orientation is
+ambiguous and cannot be automatically determined.}
 
-\item{interpolate}{(\emph{ErrorBandDef}) The line interpolation method for the error band. One of the following: - \code{"linear"}: piecewise linear segments, as in a polyline. - \code{"linear-closed"}: close the linear segments to form a polygon. - \code{"step"}: a piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes at the midpoint of each pair of adjacent x-values. - \code{"step-before"}: a piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes before the x-value. - \code{"step-after"}: a piecewise constant function (a step function) consisting of alternating horizontal and vertical lines. The y-value changes after the x-value. - \code{"basis"}: a B-spline, with control point duplication on the ends. - \code{"basis-open"}: an open B-spline; may not intersect the start or end. - \code{"basis-closed"}: a closed B-spline, as in a loop. - \code{"cardinal"}: a Cardinal spline, with control point duplication on the ends. - \code{"cardinal-open"}: an open Cardinal spline; may not intersect the start or end, but will intersect other control points. - \code{"cardinal-closed"}: a closed Cardinal spline, as in a loop. - \code{"bundle"}: equivalent to basis, except the tension parameter is used to straighten the spline. - \code{"monotone"}: cubic interpolation that preserves monotonicity in y.}
-
-\item{opacity}{(\emph{ErrorBandDef}) The opacity (value between [0,1]) of the mark.}
-
-\item{orient}{(\emph{ErrorBandDef}) Orientation of the error band. This is normally automatically determined, but can be specified when the orientation is ambiguous and cannot be automatically determined.}
-
-\item{tension}{(\emph{ErrorBandDef}) The tension parameter for the interpolation type of the error band.}
+\item{tension}{The tension parameter for the interpolation type of the error band.}
 }
 \value{
 A modified Vega-Lite Spec

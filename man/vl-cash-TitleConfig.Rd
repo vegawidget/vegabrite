@@ -4,55 +4,57 @@
 \alias{vl$TitleConfig}
 \title{TitleConfig}
 \arguments{
-\item{align}{(\emph{BaseTitleNoValueRefs}) Horizontal text alignment for title text. One of \code{"left"}, \code{"center"}, or \code{"right"}.}
+\item{align}{Horizontal text alignment for title text. One of \code{"left"}, \code{"center"}, or \code{"right"}.}
 
-\item{anchor}{(\emph{BaseTitleNoValueRefs})}
+\item{anchor}{}
 
-\item{angle}{(\emph{BaseTitleNoValueRefs})}
+\item{angle}{}
 
-\item{aria}{(\emph{BaseTitleNoValueRefs})}
+\item{aria}{}
 
-\item{baseline}{(\emph{BaseTitleNoValueRefs}) Vertical text baseline for title and subtitle text. One of \code{"alphabetic"} (default), \code{"top"}, \code{"middle"}, \code{"bottom"}, \code{"line-top"}, or \code{"line-bottom"}. The \code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"} and \code{"bottom"}, but are calculated relative to the \emph{lineHeight} rather than \emph{fontSize} alone.}
+\item{baseline}{Vertical text baseline for title and subtitle text. One of \code{"alphabetic"} (default), \code{"top"}, \code{"middle"}, \code{"bottom"},
+\code{"line-top"}, or \code{"line-bottom"}. The \code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"} and
+\code{"bottom"}, but are calculated relative to the \emph{lineHeight} rather than \emph{fontSize} alone.}
 
-\item{color}{(\emph{BaseTitleNoValueRefs})}
+\item{color}{}
 
-\item{dx}{(\emph{BaseTitleNoValueRefs})}
+\item{dx}{}
 
-\item{dy}{(\emph{BaseTitleNoValueRefs})}
+\item{dy}{}
 
-\item{font}{(\emph{BaseTitleNoValueRefs})}
+\item{font}{}
 
-\item{fontSize}{(\emph{BaseTitleNoValueRefs})}
+\item{fontSize}{}
 
-\item{fontStyle}{(\emph{BaseTitleNoValueRefs})}
+\item{fontStyle}{}
 
-\item{fontWeight}{(\emph{BaseTitleNoValueRefs})}
+\item{fontWeight}{}
 
-\item{frame}{(\emph{BaseTitleNoValueRefs})}
+\item{frame}{}
 
-\item{limit}{(\emph{BaseTitleNoValueRefs})}
+\item{limit}{}
 
-\item{lineHeight}{(\emph{BaseTitleNoValueRefs})}
+\item{lineHeight}{}
 
-\item{offset}{(\emph{BaseTitleNoValueRefs})}
+\item{offset}{}
 
-\item{orient}{(\emph{BaseTitleNoValueRefs})}
+\item{orient}{}
 
-\item{subtitleColor}{(\emph{BaseTitleNoValueRefs})}
+\item{subtitleColor}{}
 
-\item{subtitleFont}{(\emph{BaseTitleNoValueRefs})}
+\item{subtitleFont}{}
 
-\item{subtitleFontSize}{(\emph{BaseTitleNoValueRefs})}
+\item{subtitleFontSize}{}
 
-\item{subtitleFontStyle}{(\emph{BaseTitleNoValueRefs})}
+\item{subtitleFontStyle}{}
 
-\item{subtitleFontWeight}{(\emph{BaseTitleNoValueRefs})}
+\item{subtitleFontWeight}{}
 
-\item{subtitleLineHeight}{(\emph{BaseTitleNoValueRefs})}
+\item{subtitleLineHeight}{}
 
-\item{subtitlePadding}{(\emph{BaseTitleNoValueRefs})}
+\item{subtitlePadding}{}
 
-\item{zindex}{(\emph{BaseTitleNoValueRefs})}
+\item{zindex}{}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to TitleConfig definition.

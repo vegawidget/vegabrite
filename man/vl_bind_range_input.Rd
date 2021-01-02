@@ -27,19 +27,19 @@ vl_bind_range_input(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRange}
 
-\item{debounce}{(\emph{BindRange})}
+\item{debounce}{}
 
-\item{element}{(\emph{BindRange})}
+\item{element}{}
 
-\item{max}{(\emph{BindRange})}
+\item{max}{}
 
-\item{min}{(\emph{BindRange})}
+\item{min}{}
 
-\item{name}{(\emph{BindRange})}
+\item{name}{}
 
-\item{step}{(\emph{BindRange})}
+\item{step}{}
 
-\item{type}{(\emph{BindRange})}
+\item{type}{}
 }
 \value{
 A modified Vega-Lite Spec

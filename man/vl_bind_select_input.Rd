@@ -26,17 +26,17 @@ vl_bind_select_input(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRadioSelect}
 
-\item{debounce}{(\emph{BindRadioSelect})}
+\item{debounce}{}
 
-\item{element}{(\emph{BindRadioSelect})}
+\item{element}{}
 
-\item{labels}{(\emph{BindRadioSelect})}
+\item{labels}{}
 
-\item{name}{(\emph{BindRadioSelect})}
+\item{name}{}
 
-\item{options}{(\emph{BindRadioSelect})}
+\item{options}{}
 
-\item{type}{(\emph{BindRadioSelect})}
+\item{type}{}
 }
 \value{
 A modified Vega-Lite Spec
