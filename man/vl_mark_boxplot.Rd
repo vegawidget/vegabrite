@@ -25,7 +25,9 @@ vl_mark_BoxPlot(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BoxPlotDef}
 
-\item{box}{}
+\item{box}{boolean
+
+Or: MarkConfig<ExprOrSignalRef>}
 
 \item{clip}{Whether a composite mark be clipped to the enclosing group’s width and height.}
 
@@ -46,7 +48,9 @@ first and third quartiles while \emph{IQR} is the interquartile range (\emph{Q3-
 
 \strong{Default value:} \code{1.5}.}
 
-\item{median}{}
+\item{median}{boolean
+
+Or: MarkConfig<ExprOrSignalRef>}
 
 \item{opacity}{The opacity (value between [0,1]) of the mark.}
 
@@ -56,13 +60,19 @@ when the orientation is ambiguous.
 
 \strong{Default value:} \code{"vertical"}.}
 
-\item{outliers}{}
+\item{outliers}{boolean
 
-\item{rule}{}
+Or: MarkConfig<ExprOrSignalRef>}
+
+\item{rule}{boolean
+
+Or: MarkConfig<ExprOrSignalRef>}
 
 \item{size}{Size of the box and median tick of a box plot}
 
-\item{ticks}{}
+\item{ticks}{boolean
+
+Or: MarkConfig<ExprOrSignalRef>}
 }
 \value{
 A modified Vega-Lite Spec

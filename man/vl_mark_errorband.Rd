@@ -23,9 +23,13 @@ vl_mark_ErrorBand(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBandDef}
 
-\item{band}{}
+\item{band}{boolean
 
-\item{borders}{}
+Or: MarkConfig<ExprOrSignalRef>}
+
+\item{borders}{boolean
+
+Or: MarkConfig<ExprOrSignalRef>}
 
 \item{clip}{Whether a composite mark be clipped to the enclosing group’s width and height.}
 

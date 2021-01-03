@@ -21,7 +21,9 @@ vl_config_boxplot(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BoxPlotConfig}
 
-\item{box}{}
+\item{box}{boolean
+
+Or: MarkConfig<ExprOrSignalRef>}
 
 \item{extent}{The extent of the whiskers. Available options include: - \code{"min-max"}: min and
 max are the lower and upper whiskers respectively. - A number representing
@@ -32,15 +34,23 @@ first and third quartiles while \emph{IQR} is the interquartile range (\emph{Q3-
 
 \strong{Default value:} \code{1.5}.}
 
-\item{median}{}
+\item{median}{boolean
 
-\item{outliers}{}
+Or: MarkConfig<ExprOrSignalRef>}
 
-\item{rule}{}
+\item{outliers}{boolean
+
+Or: MarkConfig<ExprOrSignalRef>}
+
+\item{rule}{boolean
+
+Or: MarkConfig<ExprOrSignalRef>}
 
 \item{size}{Size of the box and median tick of a box plot}
 
-\item{ticks}{}
+\item{ticks}{boolean
+
+Or: MarkConfig<ExprOrSignalRef>}
 }
 \value{
 A modified Vega-Lite Spec

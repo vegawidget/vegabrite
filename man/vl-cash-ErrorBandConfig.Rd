@@ -4,9 +4,13 @@
 \alias{vl$ErrorBandConfig}
 \title{ErrorBandConfig}
 \arguments{
-\item{band}{}
+\item{band}{boolean
 
-\item{borders}{}
+Or: MarkConfig<ExprOrSignalRef>}
+
+\item{borders}{boolean
+
+Or: MarkConfig<ExprOrSignalRef>}
 
 \item{extent}{The extent of the band. Available options include: - \code{"ci"}: Extend the band
 to the confidence interval of the mean. - \code{"stderr"}: The size of band are set

@@ -18,19 +18,21 @@ extent bounds are specified as an array \verb{[\[x0, y0\], \[x1, y1\]]}, where \
 the left-side of the viewport, \code{y0} is the top, \code{x1} is the right and \code{y1} is
 the bottom. If \code{null}, no viewport clipping is performed.}
 
-\item{coefficient}{}
+\item{coefficient}{number}
 
-\item{distance}{}
+\item{distance}{number}
 
-\item{extent}{}
+\item{extent}{Vector2<Vector2<number>>}
 
-\item{fit}{}
+\item{fit}{Fit
 
-\item{fraction}{}
+Or: array}
 
-\item{lobes}{}
+\item{fraction}{number}
 
-\item{parallel}{}
+\item{lobes}{number}
+
+\item{parallel}{number}
 
 \item{parallels}{For conic projections, the \href{https://en.wikipedia.org/wiki/Map_projection#Conic}{two standard parallels} that define the
 map layout. The default depends on the specific conic projection used.}
@@ -47,13 +49,13 @@ value in pixels. This value corresponds to the \href{http://en.wikipedia.org/wik
 If precision is not specified, returns the projection's current resampling
 precision which defaults to \verb{√0.5 ≅ 0.70710…}.}
 
-\item{radius}{}
+\item{radius}{number}
 
-\item{ratio}{}
+\item{ratio}{number}
 
-\item{reflectX}{}
+\item{reflectX}{boolean}
 
-\item{reflectY}{}
+\item{reflectY}{boolean}
 
 \item{rotate}{The projection's three-axis rotation to the specified angles, which must be a
 two- or three-element array of numbers [\code{lambda}, \code{phi}, \code{gamma}] specifying the
@@ -67,11 +69,11 @@ default scale is projection-specific. The scale factor corresponds linearly
 to the distance between projected points; however, scale factor values are not
 equivalent across projections.}
 
-\item{size}{}
+\item{size}{Vector2<number>}
 
-\item{spacing}{}
+\item{spacing}{number}
 
-\item{tilt}{}
+\item{tilt}{number}
 
 \item{translate}{The projection’s translation offset as a two-element array \verb{[tx, ty]}.}
 

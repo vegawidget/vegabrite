@@ -27,13 +27,17 @@ of rule are set to the value of standard deviation, extending from the mean. -
 
 \strong{Default value:} \code{"stderr"}.}
 
-\item{rule}{}
+\item{rule}{boolean
+
+Or: MarkConfig<ExprOrSignalRef>}
 
 \item{size}{Size of the ticks of an error bar}
 
 \item{thickness}{Thickness of the ticks and the bar of an error bar}
 
-\item{ticks}{}
+\item{ticks}{boolean
+
+Or: MarkConfig<ExprOrSignalRef>}
 }
 \value{
 A modified Vega-Lite Spec

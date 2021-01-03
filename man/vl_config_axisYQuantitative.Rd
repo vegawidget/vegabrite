@@ -93,27 +93,70 @@ vl_config_axisYQuantitative(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AxisConfig}
 
-\item{aria}{}
+\item{aria}{A boolean flag indicating if \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA attributes}
+should be included (SVG output only). If \code{false}, the "aria-hidden" attribute
+will be set on the output SVG group, removing the axis from the ARIA
+accessibility tree.
 
-\item{bandPosition}{}
+\strong{Default value:} \code{true}
 
-\item{description}{}
+Or: ExprRef}
+
+\item{bandPosition}{An interpolation fraction indicating where, for \code{band} scales, axis ticks should
+be positioned. A value of \code{0} places ticks at the left edge of their bands. A
+value of \code{0.5} places ticks in the middle of their bands.
+
+\strong{Default value:} \code{0.5}
+
+Or: ExprRef}
+
+\item{description}{A text description of this axis for \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA accessibility}
+(SVG output only). If the \code{aria} property
+is true, for SVG output the \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute}{"aria-label" attribute}
+will be set to this description. If the description is unspecified it will be
+automatically generated.
+
+Or: ExprRef}
 
 \item{disable}{Disable axis by default.}
 
-\item{domain}{}
+\item{domain}{A boolean flag indicating if the domain (the axis baseline) should be included
+as part of the axis.
 
-\item{domainCap}{}
+\strong{Default value:} \code{true}
 
-\item{domainColor}{}
+Or: ExprRef}
 
-\item{domainDash}{}
+\item{domainCap}{The stroke cap for the domain line's ending style. One of \code{"butt"}, \code{"round"} or
+\code{"square"}.
 
-\item{domainDashOffset}{}
+\strong{Default value:} \code{"butt"}
 
-\item{domainOpacity}{}
+Or: ExprRef}
 
-\item{domainWidth}{}
+\item{domainColor}{Color of axis domain line.
+
+\strong{Default value:} \code{"gray"}.
+
+Or: ExprRef}
+
+\item{domainDash}{An array of alternating [stroke, space] lengths for dashed domain lines.
+
+Or: ExprRef}
+
+\item{domainDashOffset}{The pixel offset at which to start drawing with the domain dash array.
+
+Or: ExprRef}
+
+\item{domainOpacity}{Opacity of the axis domain line.
+
+Or: ExprRef}
+
+\item{domainWidth}{Stroke width of axis domain line
+
+\strong{Default value:} \code{1}
+
+Or: ExprRef}
 
 \item{format}{When used with the default \code{"number"} and \code{"time"} format type, the text
 formatting pattern for labels of guides (axes, legends, headers) and text marks.
@@ -148,27 +191,87 @@ nominal fields without \code{timeUnit}.}
 \strong{Default value:} \code{true} for \href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{continuous scales} that are
 not binned; otherwise, \code{false}.}
 
-\item{gridCap}{}
+\item{gridCap}{The stroke cap for grid lines' ending style. One of \code{"butt"}, \code{"round"} or
+\code{"square"}.
 
-\item{gridColor}{}
+\strong{Default value:} \code{"butt"}
 
-\item{gridDash}{}
+Or: ExprRef}
 
-\item{gridDashOffset}{}
+\item{gridColor}{Color of gridlines.
 
-\item{gridOpacity}{}
+\strong{Default value:} \code{"lightGray"}.
 
-\item{gridWidth}{}
+Or: ExprRef
 
-\item{labelAlign}{}
+Or: ConditionalAxisColor}
 
-\item{labelAngle}{}
+\item{gridDash}{An array of alternating [stroke, space] lengths for dashed grid lines.
 
-\item{labelBaseline}{}
+Or: ExprRef
 
-\item{labelBound}{}
+Or: ConditionalAxisNumberArray}
 
-\item{labelColor}{}
+\item{gridDashOffset}{The pixel offset at which to start drawing with the grid dash array.
+
+Or: ExprRef
+
+Or: ConditionalAxisNumber}
+
+\item{gridOpacity}{The stroke opacity of grid (value between [0,1])
+
+\strong{Default value:} \code{1}
+
+Or: ExprRef
+
+Or: ConditionalAxisNumber}
+
+\item{gridWidth}{The grid width, in pixels.
+
+\strong{Default value:} \code{1}
+
+Or: ExprRef
+
+Or: ConditionalAxisNumber}
+
+\item{labelAlign}{Horizontal text alignment of axis tick labels, overriding the default setting
+for the current axis orientation.
+
+Or: ExprRef
+
+Or: ConditionalAxisLabelAlign}
+
+\item{labelAngle}{The rotation angle of the axis labels.
+
+\strong{Default value:} \code{-90} for nominal and ordinal fields; \code{0} otherwise.
+
+Or: ExprRef}
+
+\item{labelBaseline}{Vertical text baseline of axis tick labels, overriding the default setting
+for the current axis orientation. One of \code{"alphabetic"} (default), \code{"top"},
+\code{"middle"}, \code{"bottom"}, \code{"line-top"}, or \code{"line-bottom"}. The \code{"line-top"} and
+\code{"line-bottom"} values operate similarly to \code{"top"} and \code{"bottom"}, but are
+calculated relative to the \emph{lineHeight} rather than \emph{fontSize} alone.
+
+Or: ExprRef
+
+Or: ConditionalAxisLabelBaseline}
+
+\item{labelBound}{Indicates if labels should be hidden if they exceed the axis range. If \code{false}
+(the default) no bounds overlap analysis is performed. If \code{true}, labels will be
+hidden if they exceed the axis range by more than 1 pixel. If this property is
+a number, it specifies the pixel tolerance: the maximum amount by which a label
+bounding box may exceed the axis range.
+
+\strong{Default value:} \code{false}.
+
+Or: ExprRef}
+
+\item{labelColor}{The color of the tick label, can be in hex color code or regular color name.
+
+Or: ExprRef
+
+Or: ConditionalAxisColor}
 
 \item{labelExpr}{\href{https://vega.github.io/vega/docs/expressions/}{Vega expression} for customizing
 labels text.
@@ -187,23 +290,63 @@ sometimes help the labels better visually group with corresponding axis ticks.
 
 \strong{Default value:} \code{true} for axis of a continuous x-scale. Otherwise, \code{false}.}
 
-\item{labelFlushOffset}{}
+\item{labelFlushOffset}{Indicates the number of pixels by which to offset flush-adjusted labels. For
+example, a value of \code{2} will push flush-adjusted labels 2 pixels outward from
+the center of the axis. Offsets can help the labels better visually group with
+corresponding axis ticks.
 
-\item{labelFont}{}
+\strong{Default value:} \code{0}.
 
-\item{labelFontSize}{}
+Or: ExprRef}
 
-\item{labelFontStyle}{}
+\item{labelFont}{The font of the tick label.
 
-\item{labelFontWeight}{}
+Or: ExprRef
 
-\item{labelLimit}{}
+Or: ConditionalAxisString}
 
-\item{labelLineHeight}{}
+\item{labelFontSize}{The font size of the label, in pixels.
 
-\item{labelOffset}{}
+Or: ExprRef
 
-\item{labelOpacity}{}
+Or: ConditionalAxisNumber}
+
+\item{labelFontStyle}{Font style of the title.
+
+Or: ExprRef
+
+Or: ConditionalAxisLabelFontStyle}
+
+\item{labelFontWeight}{Font weight of axis tick labels.
+
+Or: ExprRef
+
+Or: ConditionalAxisLabelFontWeight}
+
+\item{labelLimit}{Maximum allowed pixel width of axis tick labels.
+
+\strong{Default value:} \code{180}
+
+Or: ExprRef}
+
+\item{labelLineHeight}{Line height in pixels for multi-line label text or label text with \code{"line-top"}
+or \code{"line-bottom"} baseline.
+
+Or: ExprRef}
+
+\item{labelOffset}{Position offset in pixels to apply to labels, in addition to tickOffset.
+
+\strong{Default value:} \code{0}
+
+Or: ExprRef
+
+Or: ConditionalAxisNumber}
+
+\item{labelOpacity}{The opacity of the labels.
+
+Or: ExprRef
+
+Or: ConditionalAxisNumber}
 
 \item{labelOverlap}{The strategy to use for resolving overlap of axis labels. If \code{false} (the
 default), no overlap reduction is attempted. If set to \code{true} or \code{"parity"},
@@ -215,15 +358,39 @@ better for log-scaled axes).
 \strong{Default value:} \code{true} for non-nominal fields with non-log scales; \code{"greedy"}
 for log scales; otherwise \code{false}.}
 
-\item{labelPadding}{}
+\item{labelPadding}{The padding in pixels between labels and ticks.
 
-\item{labelSeparation}{}
+\strong{Default value:} \code{2}
 
-\item{labels}{}
+Or: ExprRef
 
-\item{maxExtent}{}
+Or: ConditionalAxisNumber}
 
-\item{minExtent}{}
+\item{labelSeparation}{The minimum separation that must be between label bounding boxes for them
+to be considered non-overlapping (default \code{0}). This property is ignored if
+\emph{labelOverlap} resolution is not enabled.
+
+Or: ExprRef}
+
+\item{labels}{A boolean flag indicating if labels should be included as part of the axis.
+
+\strong{Default value:} \code{true}.
+
+Or: ExprRef}
+
+\item{maxExtent}{The maximum extent in pixels that axis ticks and labels should use. This
+determines a maximum offset value for axis titles.
+
+\strong{Default value:} \code{undefined}.
+
+Or: ExprRef}
+
+\item{minExtent}{The minimum extent in pixels that axis ticks and labels should use. This
+determines a minimum offset value for axis titles.
+
+\strong{Default value:} \code{30} for y-axis; \code{undefined} for x-axis.
+
+Or: ExprRef}
 
 \item{offset}{The offset, in pixels, by which to displace the axis from the edge of the
 enclosing group or data rectangle.
@@ -252,11 +419,25 @@ style is an array, later styles will override earlier styles.
 style. For example, an x-axis mark with \code{"style": "foo"} will use \code{config.axisX}
 and \code{config.style.foo} (the specified style \code{"foo"} has higher precedence).}
 
-\item{tickBand}{}
+\item{tickBand}{For band scales, indicates if ticks and grid lines should be placed at the
+\code{"center"} of a band (default) or at the band \code{"extent"}s to indicate intervals
 
-\item{tickCap}{}
+Or: ExprRef}
 
-\item{tickColor}{}
+\item{tickCap}{The stroke cap for the tick lines' ending style. One of \code{"butt"}, \code{"round"} or
+\code{"square"}.
+
+\strong{Default value:} \code{"butt"}
+
+Or: ExprRef}
+
+\item{tickColor}{The color of the axis's tick.
+
+\strong{Default value:} \code{"gray"}
+
+Or: ExprRef
+
+Or: ConditionalAxisColor}
 
 \item{tickCount}{A desired number of ticks, for axes visualizing quantitative scales. The
 resulting number may be different so that values are "nice" (multiples of 2, 5,
@@ -271,28 +452,69 @@ each quarter (Jan, Apr, Jul, Oct) boundary.
 \strong{Default value}: Determine using a formula \code{ceil(width/40)} for x and
 \code{ceil(height/40)} for y.}
 
-\item{tickDash}{}
+\item{tickDash}{An array of alternating [stroke, space] lengths for dashed tick mark lines.
 
-\item{tickDashOffset}{}
+Or: ExprRef
 
-\item{tickExtra}{}
+Or: ConditionalAxisNumberArray}
+
+\item{tickDashOffset}{The pixel offset at which to start drawing with the tick mark dash array.
+
+Or: ExprRef
+
+Or: ConditionalAxisNumber}
+
+\item{tickExtra}{Boolean flag indicating if an extra axis tick should be added for the initial
+position of the axis. This flag is useful for styling axes for \code{band} scales
+such that ticks are placed on band boundaries rather in the middle of a band.
+Use in conjunction with \code{"bandPosition": 1} and an axis \code{"padding"} value of
+\code{0}.
+
+Or: ExprRef}
 
 \item{tickMinStep}{The minimum desired step between axis ticks, in terms of scale domain values.
 For example, a value of \code{1} indicates that ticks should not be less than 1 unit
 apart. If \code{tickMinStep} is specified, the \code{tickCount} value will be adjusted, if
 necessary, to enforce the minimum step value.}
 
-\item{tickOffset}{}
+\item{tickOffset}{Position offset in pixels to apply to ticks, labels, and gridlines.
 
-\item{tickOpacity}{}
+Or: ExprRef}
 
-\item{tickRound}{}
+\item{tickOpacity}{Opacity of the ticks.
 
-\item{tickSize}{}
+Or: ExprRef
 
-\item{tickWidth}{}
+Or: ConditionalAxisNumber}
 
-\item{ticks}{}
+\item{tickRound}{Boolean flag indicating if pixel position values should be rounded to the
+nearest integer.
+
+\strong{Default value:} \code{true}
+
+Or: ExprRef}
+
+\item{tickSize}{The size in pixels of axis ticks.
+
+\strong{Default value:} \code{5}
+
+Or: ExprRef
+
+Or: ConditionalAxisNumber}
+
+\item{tickWidth}{The width, in pixels, of ticks.
+
+\strong{Default value:} \code{1}
+
+Or: ExprRef
+
+Or: ConditionalAxisNumber}
+
+\item{ticks}{Boolean value that determines whether the axis should include ticks.
+
+\strong{Default value:} \code{true}
+
+Or: ExprRef}
 
 \item{title}{A title for the field. If \code{null}, the title will be removed.
 
@@ -313,37 +535,82 @@ or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{\code{f
 defined, axis/header/legend title will be used.
 }}
 
-\item{titleAlign}{}
+\item{titleAlign}{Horizontal text alignment of axis titles.
 
-\item{titleAnchor}{}
+Or: ExprRef}
 
-\item{titleAngle}{}
+\item{titleAnchor}{Text anchor position for placing axis titles.
 
-\item{titleBaseline}{}
+Or: ExprRef}
 
-\item{titleColor}{}
+\item{titleAngle}{Angle in degrees of axis titles.
 
-\item{titleFont}{}
+Or: ExprRef}
 
-\item{titleFontSize}{}
+\item{titleBaseline}{Vertical text baseline for axis titles. One of \code{"alphabetic"} (default),
+\code{"top"}, \code{"middle"}, \code{"bottom"}, \code{"line-top"}, or \code{"line-bottom"}. The
+\code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"} and
+\code{"bottom"}, but are calculated relative to the \emph{lineHeight} rather than
+\emph{fontSize} alone.
 
-\item{titleFontStyle}{}
+Or: ExprRef}
 
-\item{titleFontWeight}{}
+\item{titleColor}{Color of the title, can be in hex color code or regular color name.
 
-\item{titleLimit}{}
+Or: ExprRef}
 
-\item{titleLineHeight}{}
+\item{titleFont}{Font of the title. (e.g., \code{"Helvetica Neue"}).
 
-\item{titleOpacity}{}
+Or: ExprRef}
 
-\item{titlePadding}{}
+\item{titleFontSize}{Font size of the title.
 
-\item{titleX}{}
+Or: ExprRef}
 
-\item{titleY}{}
+\item{titleFontStyle}{Font style of the title.
 
-\item{translate}{}
+Or: ExprRef}
+
+\item{titleFontWeight}{Font weight of the title. This can be either a string (e.g \code{"bold"}, \code{"normal"})
+or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and
+\code{"bold"} = \code{700}).
+
+Or: ExprRef}
+
+\item{titleLimit}{Maximum allowed pixel width of axis titles.
+
+Or: ExprRef}
+
+\item{titleLineHeight}{Line height in pixels for multi-line title text or title text with \code{"line-top"}
+or \code{"line-bottom"} baseline.
+
+Or: ExprRef}
+
+\item{titleOpacity}{Opacity of the axis title.
+
+Or: ExprRef}
+
+\item{titlePadding}{The padding, in pixels, between title and axis.
+
+Or: ExprRef}
+
+\item{titleX}{X-coordinate of the axis title relative to the axis group.
+
+Or: ExprRef}
+
+\item{titleY}{Y-coordinate of the axis title relative to the axis group.
+
+Or: ExprRef}
+
+\item{translate}{Coordinate space translation offset for axis layout. By default, axes are
+translated by a 0.5 pixel offset for both the x and y coordinates in order to
+align stroked lines with the pixel grid. However, for vector graphics output
+these pixel-specific adjustments may be undesirable, in which case translate can
+be changed (for example, to zero).
+
+\strong{Default value:} \code{0.5}
+
+Or: ExprRef}
 
 \item{values}{Explicitly set the visible axis tick values.}
 

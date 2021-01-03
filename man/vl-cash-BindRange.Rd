@@ -4,21 +4,21 @@
 \alias{vl$BindRange}
 \title{BindRange}
 \arguments{
-\item{debounce}{}
+\item{debounce}{number}
 
-\item{element}{}
+\item{element}{Element}
 
-\item{input}{}
+\item{input}{string}
 
-\item{max}{}
+\item{max}{number}
 
-\item{min}{}
+\item{min}{number}
 
-\item{name}{}
+\item{name}{string}
 
-\item{step}{}
+\item{step}{number}
 
-\item{type}{}
+\item{type}{string}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to BindRange definition.

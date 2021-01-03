@@ -47,7 +47,11 @@ has arc marks.
 
 \strong{Default value:} \code{200}}
 
-\item{cornerRadius}{}
+\item{cornerRadius}{The radius in pixels of rounded rectangles or arcs' corners.
+
+\strong{Default value:} \code{0}
+
+Or: ExprRef}
 
 \item{cursor}{The mouse cursor used over the view. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values}{CSS cursor type} can be
 used.}
@@ -68,7 +72,11 @@ object in the form of \code{{step: number}} defining the width per discrete step
 
 \strong{Default value:} \code{undefined}}
 
-\item{fillOpacity}{}
+\item{fillOpacity}{The fill opacity (value between [0,1]).
+
+\strong{Default value:} \code{1}
+
+Or: ExprRef}
 
 \item{height}{Default height
 
@@ -86,19 +94,40 @@ or \code{square} marks or layered \code{bar} charts and \code{1} otherwise.}
 
 \strong{Default value:} \code{"#ddd"}}
 
-\item{strokeCap}{}
+\item{strokeCap}{The stroke cap for line ending style. One of \code{"butt"}, \code{"round"}, or \code{"square"}.
 
-\item{strokeDash}{}
+\strong{Default value:} \code{"butt"}
 
-\item{strokeDashOffset}{}
+Or: ExprRef}
 
-\item{strokeJoin}{}
+\item{strokeDash}{An array of alternating stroke, space lengths for creating dashed or dotted
+lines.
 
-\item{strokeMiterLimit}{}
+Or: ExprRef}
 
-\item{strokeOpacity}{}
+\item{strokeDashOffset}{The offset (in pixels) into which to begin drawing with the stroke dash array.
 
-\item{strokeWidth}{}
+Or: ExprRef}
+
+\item{strokeJoin}{The stroke line join method. One of \code{"miter"}, \code{"round"} or \code{"bevel"}.
+
+\strong{Default value:} \code{"miter"}
+
+Or: ExprRef}
+
+\item{strokeMiterLimit}{The miter limit at which to bevel a line join.
+
+Or: ExprRef}
+
+\item{strokeOpacity}{The stroke opacity (value between [0,1]).
+
+\strong{Default value:} \code{1}
+
+Or: ExprRef}
+
+\item{strokeWidth}{The stroke width, in pixels.
+
+Or: ExprRef}
 
 \item{width}{Default width
 

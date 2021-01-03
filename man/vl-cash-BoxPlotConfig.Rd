@@ -4,7 +4,9 @@
 \alias{vl$BoxPlotConfig}
 \title{BoxPlotConfig}
 \arguments{
-\item{box}{}
+\item{box}{boolean
+
+Or: MarkConfig<ExprOrSignalRef>}
 
 \item{extent}{The extent of the whiskers. Available options include: - \code{"min-max"}: min and
 max are the lower and upper whiskers respectively. - A number representing
@@ -15,15 +17,23 @@ first and third quartiles while \emph{IQR} is the interquartile range (\emph{Q3-
 
 \strong{Default value:} \code{1.5}.}
 
-\item{median}{}
+\item{median}{boolean
 
-\item{outliers}{}
+Or: MarkConfig<ExprOrSignalRef>}
 
-\item{rule}{}
+\item{outliers}{boolean
+
+Or: MarkConfig<ExprOrSignalRef>}
+
+\item{rule}{boolean
+
+Or: MarkConfig<ExprOrSignalRef>}
 
 \item{size}{Size of the box and median tick of a box plot}
 
-\item{ticks}{}
+\item{ticks}{boolean
+
+Or: MarkConfig<ExprOrSignalRef>}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to BoxPlotConfig definition.

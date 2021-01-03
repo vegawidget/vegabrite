@@ -26,13 +26,27 @@ type_or_ref <- function(x) {
   }
 }
 
-get_description <- function(x) {
+get_description_terminal <- function(x) {
   if (hasName(x, "description")) {
     purrr::pluck(x, "description")
   } else if (hasName(x, "enum")) {
     paste(purrr::pluck(x, "enum"), collapse = ", ")
+  } else if (hasName(x, "type")) {
+    purrr::pluck(x, "type")
+  } else if (hasName(x, "$ref")) {
+    get_name_from_ref(x)
   } else {
-    " "
+    "?"
+  }
+}
+
+get_description <- function(x) {
+  if (hasName(x, "description")) {
+    purrr::pluck(x, "description")
+  } else if (hasName(x, "anyOf")) { 
+    paste(unique(unlist(purrr::map(x[["anyOf"]], ~get_description_terminal(.)))), collapse = "\n\nOr: ")
+  } else{
+    get_description_terminal(x)
   }
 }
 

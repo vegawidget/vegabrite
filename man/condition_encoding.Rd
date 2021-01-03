@@ -523,7 +523,7 @@ channels (e.g., \code{x}, \code{y}).
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/type.html}{\code{type}}
 documentation.}
 
-\item{datum}{}
+\item{datum}{?}
 
 \item{format}{When used with the default \code{"number"} and \code{"time"} format type, the text
 formatting pattern for labels of guides (axes, legends, headers) and text marks.

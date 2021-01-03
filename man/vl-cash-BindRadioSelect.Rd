@@ -4,19 +4,19 @@
 \alias{vl$BindRadioSelect}
 \title{BindRadioSelect}
 \arguments{
-\item{debounce}{}
+\item{debounce}{number}
 
-\item{element}{}
+\item{element}{Element}
 
 \item{input}{radio, select}
 
-\item{labels}{}
+\item{labels}{array}
 
-\item{name}{}
+\item{name}{string}
 
-\item{options}{}
+\item{options}{array}
 
-\item{type}{}
+\item{type}{string}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to BindRadioSelect definition.

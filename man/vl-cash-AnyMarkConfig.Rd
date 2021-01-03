@@ -9,24 +9,53 @@ rule). One of \code{"left"}, \code{"right"}, \code{"center"}.
 
 \strong{Note:} Expression reference is \emph{not} supported for range marks.}
 
-\item{angle}{Or: The rotation angle of the text, in degrees.}
+\item{angle}{The rotation angle of the text, in degrees.
 
-\item{aria}{Or: A boolean flag indicating if \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA attributes}
+Or: The rotation angle of the text, in degrees.
+
+Or: ExprRef}
+
+\item{aria}{A boolean flag indicating if \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA attributes}
 should be included (SVG output only). If \code{false}, the "aria-hidden" attribute
 will be set on the output SVG element, removing the mark item from the ARIA
-accessibility tree.}
+accessibility tree.
 
-\item{ariaRole}{Or: Sets the type of user interface element of the mark item for \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA accessibility}
+Or: A boolean flag indicating if \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA attributes}
+should be included (SVG output only). If \code{false}, the "aria-hidden" attribute
+will be set on the output SVG element, removing the mark item from the ARIA
+accessibility tree.
+
+Or: ExprRef}
+
+\item{ariaRole}{Sets the type of user interface element of the mark item for \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA accessibility}
 (SVG output only). If specified, this property determines the "role" attribute.
-Warning: this property is experimental and may be changed in the future.}
+Warning: this property is experimental and may be changed in the future.
 
-\item{ariaRoleDescription}{Or: A human-readable, author-localized description
+Or: Sets the type of user interface element of the mark item for \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA accessibility}
+(SVG output only). If specified, this property determines the "role" attribute.
+Warning: this property is experimental and may be changed in the future.
+
+Or: ExprRef}
+
+\item{ariaRoleDescription}{A human-readable, author-localized description
 for the role of the mark item for \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA accessibility}
 (SVG output only). If specified, this property determines the
 "aria-roledescription" attribute. Warning: this property is experimental and may
-be changed in the future.}
+be changed in the future.
 
-\item{aspect}{Or: Whether to keep aspect ratio of image marks.}
+Or: A human-readable, author-localized description
+for the role of the mark item for \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA accessibility}
+(SVG output only). If specified, this property determines the
+"aria-roledescription" attribute. Warning: this property is experimental and may
+be changed in the future.
+
+Or: ExprRef}
+
+\item{aspect}{Whether to keep aspect ratio of image marks.
+
+Or: Whether to keep aspect ratio of image marks.
+
+Or: ExprRef}
 
 \item{baseline}{For text marks, the vertical text baseline. One of \code{"alphabetic"} (default),
 \code{"top"}, \code{"middle"}, \code{"bottom"}, \code{"line-top"}, \code{"line-bottom"}, or an
@@ -39,11 +68,19 @@ For range marks, the vertical alignment of the marks. One of \code{"top"},
 
 \strong{Note:} Expression reference is \emph{not} supported for range marks.}
 
-\item{blend}{Or: The color blend mode for drawing an item
+\item{blend}{The color blend mode for drawing an item
 on its current background. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode}{CSS mix-blend-mode}
 value can be used.
 
-__Default value: \code{"source-over"}}
+__Default value: \code{"source-over"}
+
+Or: The color blend mode for drawing an item
+on its current background. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode}{CSS mix-blend-mode}
+value can be used.
+
+__Default value: \code{"source-over"}
+
+Or: ExprRef}
 
 \item{color}{Default color.
 
@@ -53,59 +90,134 @@ __Default value: \code{"source-over"}}
 \code{fill} and \code{stroke} properties have higher precedence than \code{color} and will
 override \code{color}.}
 
-\item{cornerRadius}{Or: The radius in pixels of rounded rectangles or arcs' corners.
+\item{cornerRadius}{The radius in pixels of rounded rectangles or arcs' corners.
 
-\strong{Default value:} \code{0}}
+\strong{Default value:} \code{0}
 
-\item{cornerRadiusBottomLeft}{Or: The radius in pixels of rounded rectangles' bottom left corner.
+Or: The radius in pixels of rounded rectangles or arcs' corners.
 
-\strong{Default value:} \code{0}}
+\strong{Default value:} \code{0}
 
-\item{cornerRadiusBottomRight}{Or: The radius in pixels of rounded rectangles' bottom right corner.
+Or: ExprRef}
 
-\strong{Default value:} \code{0}}
+\item{cornerRadiusBottomLeft}{The radius in pixels of rounded rectangles' bottom left corner.
 
-\item{cornerRadiusTopLeft}{Or: The radius in pixels of rounded rectangles' top right corner.
+\strong{Default value:} \code{0}
 
-\strong{Default value:} \code{0}}
+Or: The radius in pixels of rounded rectangles' bottom left corner.
 
-\item{cornerRadiusTopRight}{Or: The radius in pixels of rounded rectangles' top left corner.
+\strong{Default value:} \code{0}
 
-\strong{Default value:} \code{0}}
+Or: ExprRef}
 
-\item{cursor}{Or: The mouse cursor used over the mark. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values}{CSS cursor type} can be
-used.}
+\item{cornerRadiusBottomRight}{The radius in pixels of rounded rectangles' bottom right corner.
 
-\item{description}{Or: A text description of the mark item for \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA accessibility}
-(SVG output only). If specified, this property determines the \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute}{"aria-label" attribute}.}
+\strong{Default value:} \code{0}
 
-\item{dir}{Or: The direction of the text. One of \code{"ltr"} (left-to-right) or \code{"rtl"}
+Or: The radius in pixels of rounded rectangles' bottom right corner.
+
+\strong{Default value:} \code{0}
+
+Or: ExprRef}
+
+\item{cornerRadiusTopLeft}{The radius in pixels of rounded rectangles' top right corner.
+
+\strong{Default value:} \code{0}
+
+Or: The radius in pixels of rounded rectangles' top right corner.
+
+\strong{Default value:} \code{0}
+
+Or: ExprRef}
+
+\item{cornerRadiusTopRight}{The radius in pixels of rounded rectangles' top left corner.
+
+\strong{Default value:} \code{0}
+
+Or: The radius in pixels of rounded rectangles' top left corner.
+
+\strong{Default value:} \code{0}
+
+Or: ExprRef}
+
+\item{cursor}{The mouse cursor used over the mark. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values}{CSS cursor type} can be
+used.
+
+Or: The mouse cursor used over the mark. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values}{CSS cursor type} can be
+used.
+
+Or: ExprRef}
+
+\item{description}{A text description of the mark item for \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA accessibility}
+(SVG output only). If specified, this property determines the \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute}{"aria-label" attribute}.
+
+Or: A text description of the mark item for \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA accessibility}
+(SVG output only). If specified, this property determines the \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute}{"aria-label" attribute}.
+
+Or: ExprRef}
+
+\item{dir}{The direction of the text. One of \code{"ltr"} (left-to-right) or \code{"rtl"}
 (right-to-left). This property determines on which side is truncated in response
 to the limit parameter.
 
-\strong{Default value:} \code{"ltr"}}
+\strong{Default value:} \code{"ltr"}
 
-\item{dx}{Or: The horizontal offset, in pixels, between the text label and its anchor point.
-The offset is applied after rotation by the \emph{angle} property.}
+Or: The direction of the text. One of \code{"ltr"} (left-to-right) or \code{"rtl"}
+(right-to-left). This property determines on which side is truncated in response
+to the limit parameter.
 
-\item{dy}{Or: The vertical offset, in pixels, between the text label and its anchor point. The
-offset is applied after rotation by the \emph{angle} property.}
+\strong{Default value:} \code{"ltr"}
 
-\item{ellipsis}{Or: The ellipsis string for text truncated in response to the limit parameter.
+Or: ExprRef}
 
-\strong{Default value:} \code{"…"}}
+\item{dx}{The horizontal offset, in pixels, between the text label and its anchor point.
+The offset is applied after rotation by the \emph{angle} property.
 
-\item{endAngle}{Or: The end angle in radians for arc marks. A value of \code{0} indicates up (north),
-increasing values proceed clockwise.}
+Or: The horizontal offset, in pixels, between the text label and its anchor point.
+The offset is applied after rotation by the \emph{angle} property.
+
+Or: ExprRef}
+
+\item{dy}{The vertical offset, in pixels, between the text label and its anchor point. The
+offset is applied after rotation by the \emph{angle} property.
+
+Or: The vertical offset, in pixels, between the text label and its anchor point. The
+offset is applied after rotation by the \emph{angle} property.
+
+Or: ExprRef}
+
+\item{ellipsis}{The ellipsis string for text truncated in response to the limit parameter.
+
+\strong{Default value:} \code{"…"}
+
+Or: The ellipsis string for text truncated in response to the limit parameter.
+
+\strong{Default value:} \code{"…"}
+
+Or: ExprRef}
+
+\item{endAngle}{The end angle in radians for arc marks. A value of \code{0} indicates up (north),
+increasing values proceed clockwise.
+
+Or: The end angle in radians for arc marks. A value of \code{0} indicates up (north),
+increasing values proceed clockwise.
+
+Or: ExprRef}
 
 \item{fill}{Default fill color. This property has higher precedence than \code{config.color}. Set
 to \code{null} to remove fill.
 
 \strong{Default value:} (None)}
 
-\item{fillOpacity}{Or: The fill opacity (value between [0,1]).
+\item{fillOpacity}{The fill opacity (value between [0,1]).
 
-\strong{Default value:} \code{1}}
+\strong{Default value:} \code{1}
+
+Or: The fill opacity (value between [0,1]).
+
+\strong{Default value:} \code{1}
+
+Or: ExprRef}
 
 \item{filled}{Whether the mark's color should be used as fill color instead of stroke color.
 
@@ -116,26 +228,54 @@ sources; otherwise, \code{true}.
 
 \strong{Note:} This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.}
 
-\item{font}{Or: The typeface to set the text in (e.g., \code{"Helvetica Neue"}).}
+\item{font}{The typeface to set the text in (e.g., \code{"Helvetica Neue"}).
 
-\item{fontSize}{Or: The font size, in pixels.
+Or: The typeface to set the text in (e.g., \code{"Helvetica Neue"}).
 
-\strong{Default value:} \code{11}}
+Or: ExprRef}
 
-\item{fontStyle}{Or: The font style (e.g., \code{"italic"}).}
+\item{fontSize}{The font size, in pixels.
 
-\item{fontWeight}{Or: The font weight. This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a
+\strong{Default value:} \code{11}
+
+Or: The font size, in pixels.
+
+\strong{Default value:} \code{11}
+
+Or: ExprRef}
+
+\item{fontStyle}{The font style (e.g., \code{"italic"}).
+
+Or: The font style (e.g., \code{"italic"}).
+
+Or: ExprRef}
+
+\item{fontWeight}{The font weight. This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a
 number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} =
-\code{700}).}
+\code{700}).
 
-\item{height}{Or: Height of the marks.}
+Or: The font weight. This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a
+number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} =
+\code{700}).
 
-\item{href}{Or: A URL to load upon mouse click. If defined, the mark acts as a hyperlink.}
+Or: ExprRef}
+
+\item{height}{Height of the marks.
+
+Or: Height of the marks.
+
+Or: ExprRef}
+
+\item{href}{A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+
+Or: A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
+
+Or: ExprRef}
 
 \item{innerRadius}{The inner radius in pixels of arc marks. \code{innerRadius} is an alias for
 \code{radius2}.}
 
-\item{interpolate}{Or: The line interpolation method to use for line and area marks. One of the
+\item{interpolate}{The line interpolation method to use for line and area marks. One of the
 following: - \code{"linear"}: piecewise linear segments, as in a polyline. -
 \code{"linear-closed"}: close the linear segments to form a polygon. - \code{"step"}:
 alternate between horizontal and vertical segments, as in a step function.
@@ -151,7 +291,27 @@ end, but will intersect other control points. - \code{"cardinal-closed"}: a clos
 Cardinal spline, as in a loop. - \code{"bundle"}: equivalent to basis, except the
 tension parameter is used to straighten the spline. - \code{"monotone"}: cubic
 interpolation that preserves monotonicity in y.
-}}
+}
+
+Or: The line interpolation method to use for line and area marks. One of the
+following: - \code{"linear"}: piecewise linear segments, as in a polyline. -
+\code{"linear-closed"}: close the linear segments to form a polygon. - \code{"step"}:
+alternate between horizontal and vertical segments, as in a step function.
+\itemize{
+\item \code{"step-before"}: alternate between vertical and horizontal segments, as in
+a step function. - \code{"step-after"}: alternate between horizontal and vertical
+segments, as in a step function. - \code{"basis"}: a B-spline, with control point
+duplication on the ends. - \code{"basis-open"}: an open B-spline; may not intersect
+the start or end. - \code{"basis-closed"}: a closed B-spline, as in a loop. -
+\code{"cardinal"}: a Cardinal spline, with control point duplication on the ends.
+\item \code{"cardinal-open"}: an open Cardinal spline; may not intersect the start or
+end, but will intersect other control points. - \code{"cardinal-closed"}: a closed
+Cardinal spline, as in a loop. - \code{"bundle"}: equivalent to basis, except the
+tension parameter is used to straighten the spline. - \code{"monotone"}: cubic
+interpolation that preserves monotonicity in y.
+}
+
+Or: ExprRef}
 
 \item{invalid}{Defines how Vega-Lite should handle marks for invalid values (\code{null} and
 \code{NaN}). - If set to \code{"filter"} (default), all data items with null values will
@@ -159,16 +319,33 @@ be skipped (for line, trail, and area marks) or filtered (for other marks). -
 If \code{null}, all data items are included. In this case, invalid values will be
 interpreted as zeroes.}
 
-\item{limit}{Or: The maximum length of the text mark in pixels. The text value will be
+\item{limit}{The maximum length of the text mark in pixels. The text value will be
 automatically truncated if the rendered size exceeds the limit.
 
-\strong{Default value:} \code{0} -- indicating no limit}
+\strong{Default value:} \code{0} -- indicating no limit
 
-\item{lineBreak}{Or: A delimiter, such as a newline character, upon which to break text strings into
-multiple lines. This property is ignored if the text is array-valued.}
+Or: The maximum length of the text mark in pixels. The text value will be
+automatically truncated if the rendered size exceeds the limit.
 
-\item{lineHeight}{Or: The line height in pixels (the spacing between subsequent lines of text) for
-multi-line text marks.}
+\strong{Default value:} \code{0} -- indicating no limit
+
+Or: ExprRef}
+
+\item{lineBreak}{A delimiter, such as a newline character, upon which to break text strings into
+multiple lines. This property is ignored if the text is array-valued.
+
+Or: A delimiter, such as a newline character, upon which to break text strings into
+multiple lines. This property is ignored if the text is array-valued.
+
+Or: ExprRef}
+
+\item{lineHeight}{The line height in pixels (the spacing between subsequent lines of text) for
+multi-line text marks.
+
+Or: The line height in pixels (the spacing between subsequent lines of text) for
+multi-line text marks.
+
+Or: ExprRef}
 
 \item{opacity}{The overall opacity (value between [0,1]).
 
@@ -189,7 +366,11 @@ explicitly specified value will be ignored.}
 
 \item{outerRadius}{The outer radius in pixels of arc marks. \code{outerRadius} is an alias for \code{radius}.}
 
-\item{padAngle}{Or: The angular padding applied to sides of the arc, in radians.}
+\item{padAngle}{The angular padding applied to sides of the arc, in radians.
+
+Or: The angular padding applied to sides of the arc, in radians.
+
+Or: ExprRef}
 
 \item{radius}{For arc mark, the primary (outer) radius in pixels.
 
@@ -198,7 +379,7 @@ origin determined by the \code{x} and \code{y} properties.}
 
 \item{radius2}{The secondary (inner) radius in pixels of arc marks.}
 
-\item{shape}{Or: Shape of the point marks. Supported values include: - plotting shapes:
+\item{shape}{Shape of the point marks. Supported values include: - plotting shapes:
 \code{"circle"}, \code{"square"}, \code{"cross"}, \code{"diamond"}, \code{"triangle-up"},
 \code{"triangle-down"}, \code{"triangle-right"}, or \code{"triangle-left"}.
 \itemize{
@@ -208,7 +389,21 @@ correct sizing, custom shape paths should be defined within a square bounding
 box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
 }
 
-\strong{Default value:} \code{"circle"}}
+\strong{Default value:} \code{"circle"}
+
+Or: Shape of the point marks. Supported values include: - plotting shapes:
+\code{"circle"}, \code{"square"}, \code{"cross"}, \code{"diamond"}, \code{"triangle-up"},
+\code{"triangle-down"}, \code{"triangle-right"}, or \code{"triangle-left"}.
+\itemize{
+\item the line symbol \code{"stroke"} - centered directional shapes
+\code{"arrow"}, \code{"wedge"}, or \code{"triangle"} - a custom \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path string} (For
+correct sizing, custom shape paths should be defined within a square bounding
+box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
+}
+
+\strong{Default value:} \code{"circle"}
+
+Or: ExprRef}
 
 \item{size}{Default size for marks. - For \code{point}/\code{circle}/\code{square}, this represents the
 pixel area of the marks. Note that this value sets the area of the symbol; the
@@ -220,48 +415,110 @@ the font size, in pixels.
 \code{step} - \code{2} for bar marks with discrete dimensions; - \code{5} for bar marks with
 continuous dimensions; - \code{11} for text marks.}
 
-\item{smooth}{Or: A boolean flag (default true) indicating if the image should be smoothed when
+\item{smooth}{A boolean flag (default true) indicating if the image should be smoothed when
 resized. If false, individual pixels should be scaled directly rather than
 interpolated with smoothing. For SVG rendering, this option may not work in some
-browsers due to lack of standardization.}
+browsers due to lack of standardization.
 
-\item{startAngle}{Or: The start angle in radians for arc marks. A value of \code{0} indicates up (north),
-increasing values proceed clockwise.}
+Or: A boolean flag (default true) indicating if the image should be smoothed when
+resized. If false, individual pixels should be scaled directly rather than
+interpolated with smoothing. For SVG rendering, this option may not work in some
+browsers due to lack of standardization.
+
+Or: ExprRef}
+
+\item{startAngle}{The start angle in radians for arc marks. A value of \code{0} indicates up (north),
+increasing values proceed clockwise.
+
+Or: The start angle in radians for arc marks. A value of \code{0} indicates up (north),
+increasing values proceed clockwise.
+
+Or: ExprRef}
 
 \item{stroke}{Default stroke color. This property has higher precedence than \code{config.color}.
 Set to \code{null} to remove stroke.
 
 \strong{Default value:} (None)}
 
-\item{strokeCap}{Or: The stroke cap for line ending style. One of \code{"butt"}, \code{"round"}, or \code{"square"}.
+\item{strokeCap}{The stroke cap for line ending style. One of \code{"butt"}, \code{"round"}, or \code{"square"}.
 
-\strong{Default value:} \code{"butt"}}
+\strong{Default value:} \code{"butt"}
 
-\item{strokeDash}{Or: An array of alternating stroke, space lengths for creating dashed or dotted
-lines.}
+Or: The stroke cap for line ending style. One of \code{"butt"}, \code{"round"}, or \code{"square"}.
 
-\item{strokeDashOffset}{Or: The offset (in pixels) into which to begin drawing with the stroke dash array.}
+\strong{Default value:} \code{"butt"}
 
-\item{strokeJoin}{Or: The stroke line join method. One of \code{"miter"}, \code{"round"} or \code{"bevel"}.
+Or: ExprRef}
 
-\strong{Default value:} \code{"miter"}}
+\item{strokeDash}{An array of alternating stroke, space lengths for creating dashed or dotted
+lines.
 
-\item{strokeMiterLimit}{Or: The miter limit at which to bevel a line join.}
+Or: An array of alternating stroke, space lengths for creating dashed or dotted
+lines.
 
-\item{strokeOffset}{Or: The offset in pixels at which to draw the group stroke and fill. If unspecified,
+Or: ExprRef}
+
+\item{strokeDashOffset}{The offset (in pixels) into which to begin drawing with the stroke dash array.
+
+Or: The offset (in pixels) into which to begin drawing with the stroke dash array.
+
+Or: ExprRef}
+
+\item{strokeJoin}{The stroke line join method. One of \code{"miter"}, \code{"round"} or \code{"bevel"}.
+
+\strong{Default value:} \code{"miter"}
+
+Or: The stroke line join method. One of \code{"miter"}, \code{"round"} or \code{"bevel"}.
+
+\strong{Default value:} \code{"miter"}
+
+Or: ExprRef}
+
+\item{strokeMiterLimit}{The miter limit at which to bevel a line join.
+
+Or: The miter limit at which to bevel a line join.
+
+Or: ExprRef}
+
+\item{strokeOffset}{The offset in pixels at which to draw the group stroke and fill. If unspecified,
 the default behavior is to dynamically offset stroked groups such that 1 pixel
-stroke widths align with the pixel grid.}
+stroke widths align with the pixel grid.
 
-\item{strokeOpacity}{Or: The stroke opacity (value between [0,1]).
+Or: The offset in pixels at which to draw the group stroke and fill. If unspecified,
+the default behavior is to dynamically offset stroked groups such that 1 pixel
+stroke widths align with the pixel grid.
 
-\strong{Default value:} \code{1}}
+Or: ExprRef}
 
-\item{strokeWidth}{Or: The stroke width, in pixels.}
+\item{strokeOpacity}{The stroke opacity (value between [0,1]).
 
-\item{tension}{Or: Depending on the interpolation type, sets the tension parameter (for line and
-area marks).}
+\strong{Default value:} \code{1}
 
-\item{text}{Or: Placeholder text if the \code{text} channel is not specified}
+Or: The stroke opacity (value between [0,1]).
+
+\strong{Default value:} \code{1}
+
+Or: ExprRef}
+
+\item{strokeWidth}{The stroke width, in pixels.
+
+Or: The stroke width, in pixels.
+
+Or: ExprRef}
+
+\item{tension}{Depending on the interpolation type, sets the tension parameter (for line and
+area marks).
+
+Or: Depending on the interpolation type, sets the tension parameter (for line and
+area marks).
+
+Or: ExprRef}
+
+\item{text}{Placeholder text if the \code{text} channel is not specified
+
+Or: Placeholder text if the \code{text} channel is not specified
+
+Or: ExprRef}
 
 \item{theta}{\itemize{
 \item For arc marks, the arc length in radians if theta2 is not specified, otherwise
@@ -295,9 +552,17 @@ documentation for a detailed discussion about tooltip in Vega-Lite.
 
 \strong{Default value:} \code{null}}
 
-\item{url}{Or: The URL of the image file for image marks.}
+\item{url}{The URL of the image file for image marks.
 
-\item{width}{Or: Width of the marks.}
+Or: The URL of the image file for image marks.
+
+Or: ExprRef}
+
+\item{width}{Width of the marks.
+
+Or: Width of the marks.
+
+Or: ExprRef}
 
 \item{x}{X coordinates of the marks, or width of horizontal \code{"bar"} and \code{"area"} without
 specified \code{x2} or \code{width}.

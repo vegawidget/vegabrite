@@ -4,15 +4,15 @@
 \alias{vl$BindCheckbox}
 \title{BindCheckbox}
 \arguments{
-\item{debounce}{}
+\item{debounce}{number}
 
-\item{element}{}
+\item{element}{Element}
 
-\item{input}{}
+\item{input}{string}
 
-\item{name}{}
+\item{name}{string}
 
-\item{type}{}
+\item{type}{string}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to BindCheckbox definition.
