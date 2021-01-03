@@ -25,19 +25,27 @@ vl_mark_ErrorBar(
 
 \item{clip}{Whether a composite mark be clipped to the enclosing group’s width and height.}
 
-\item{color}{Default color. #' #' \strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"} #' #' \strong{Note:} - This
-property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. - The
-\code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.}
+\item{color}{Default color.
 
-\item{extent}{The extent of the rule. Available options include: - \code{"ci"}: Extend the rule to the confidence interval of the mean. -
-\code{"stderr"}: The size of rule are set to the value of standard error, extending from the mean. - \code{"stdev"}: The size
-of rule are set to the value of standard deviation, extending from the mean. - \code{"iqr"}: Extend the rule to the q1
-and q3. #' #' \strong{Default value:} \code{"stderr"}.}
+\strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
+
+\strong{Note:} - This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. - The
+\code{fill} and \code{stroke} properties have higher precedence than \code{color} and will
+override \code{color}.}
+
+\item{extent}{The extent of the rule. Available options include: - \code{"ci"}: Extend the rule
+to the confidence interval of the mean. - \code{"stderr"}: The size of rule are set
+to the value of standard error, extending from the mean. - \code{"stdev"}: The size
+of rule are set to the value of standard deviation, extending from the mean. -
+\code{"iqr"}: Extend the rule to the q1 and q3.
+
+\strong{Default value:} \code{"stderr"}.}
 
 \item{opacity}{The opacity (value between [0,1]) of the mark.}
 
-\item{orient}{Orientation of the error bar. This is normally automatically determined, but can be specified when the orientation is
-ambiguous and cannot be automatically determined.}
+\item{orient}{Orientation of the error bar. This is normally automatically determined, but
+can be specified when the orientation is ambiguous and cannot be automatically
+determined.}
 
 \item{rule}{}
 

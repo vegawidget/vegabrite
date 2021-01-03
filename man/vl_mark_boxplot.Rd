@@ -29,22 +29,32 @@ vl_mark_BoxPlot(
 
 \item{clip}{Whether a composite mark be clipped to the enclosing group’s width and height.}
 
-\item{color}{Default color. #' #' \strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"} #' #' \strong{Note:} - This
-property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. - The
-\code{fill} and \code{stroke} properties have higher precedence than \code{color} and will override \code{color}.}
+\item{color}{Default color.
 
-\item{extent}{The extent of the whiskers. Available options include: - \code{"min-max"}: min and max are the lower and upper whiskers
-respectively. - A number representing multiple of the interquartile range. This number will be multiplied by the IQR
-to determine whisker boundary, which spans from the smallest data to the largest data within the range \emph{[Q1 - k *
-IQR, Q3 + k * IQR]} where \emph{Q1} and \emph{Q3} are the first and third quartiles while \emph{IQR} is the interquartile range
-(\emph{Q3-Q1}). #' #' \strong{Default value:} \code{1.5}.}
+\strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
+
+\strong{Note:} - This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. - The
+\code{fill} and \code{stroke} properties have higher precedence than \code{color} and will
+override \code{color}.}
+
+\item{extent}{The extent of the whiskers. Available options include: - \code{"min-max"}: min and
+max are the lower and upper whiskers respectively. - A number representing
+multiple of the interquartile range. This number will be multiplied by the IQR
+to determine whisker boundary, which spans from the smallest data to the largest
+data within the range \emph{[Q1 - k * IQR, Q3 + k * IQR]} where \emph{Q1} and \emph{Q3} are the
+first and third quartiles while \emph{IQR} is the interquartile range (\emph{Q3-Q1}).
+
+\strong{Default value:} \code{1.5}.}
 
 \item{median}{}
 
 \item{opacity}{The opacity (value between [0,1]) of the mark.}
 
-\item{orient}{Orientation of the box plot. This is normally automatically determined based on types of fields on x and y channels.
-However, an explicit \code{orient} be specified when the orientation is ambiguous. #' #' \strong{Default value:} \code{"vertical"}.}
+\item{orient}{Orientation of the box plot. This is normally automatically determined based on
+types of fields on x and y channels. However, an explicit \code{orient} be specified
+when the orientation is ambiguous.
+
+\strong{Default value:} \code{"vertical"}.}
 
 \item{outliers}{}
 

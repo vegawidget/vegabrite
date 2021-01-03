@@ -4,14 +4,24 @@
 \alias{vl$CompositionConfig}
 \title{CompositionConfig}
 \arguments{
-\item{columns}{The number of columns to include in the view composition layout. #' #' \strong{Default value}: \code{undefined} -- An infinite
-number of columns (a single row) will be assumed. This is equivalent to \code{hconcat} (for \code{concat}) and to using the
-\code{column} channel (for \code{facet} and \code{repeat}). #' #' \strong{Note}: #' #' 1) This property is only for: - the general
-(wrappable) \code{concat} operator (not \code{hconcat}/\code{vconcat}) - the \code{facet} and \code{repeat} operator with one
-field/repetition definition (without row/column nesting) #' #' 2) Setting the \code{columns} to \code{1} is equivalent to
-\code{vconcat} (for \code{concat}) and to using the \code{row} channel (for \code{facet} and \code{repeat}).}
+\item{columns}{The number of columns to include in the view composition layout.
 
-\item{spacing}{The default spacing in pixels between composed sub-views. #' #' \strong{Default value}: \code{20}}
+\strong{Default value}: \code{undefined} -- An infinite number of columns (a single row)
+will be assumed. This is equivalent to \code{hconcat} (for \code{concat}) and to using the
+\code{column} channel (for \code{facet} and \code{repeat}).
+
+\strong{Note}:
+\enumerate{
+\item This property is only for: - the general (wrappable) \code{concat} operator
+(not \code{hconcat}/\code{vconcat}) - the \code{facet} and \code{repeat} operator with one
+field/repetition definition (without row/column nesting)
+\item Setting the \code{columns} to \code{1} is equivalent to \code{vconcat} (for \code{concat}) and to
+using the \code{row} channel (for \code{facet} and \code{repeat}).
+}}
+
+\item{spacing}{The default spacing in pixels between composed sub-views.
+
+\strong{Default value}: \code{20}}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to CompositionConfig definition.

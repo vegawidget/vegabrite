@@ -4,15 +4,19 @@
 \alias{vl$StackTransform}
 \title{StackTransform}
 \arguments{
-\item{as}{Output field names. This can be either a string or an array of strings with two elements denoting the name for the
-fields for stack start and stack end respectively. If a single string(e.g., \code{"val"}) is provided, the end field will
+\item{as}{Output field names. This can be either a string or an array of strings with
+two elements denoting the name for the fields for stack start and stack end
+respectively. If a single string(e.g., \code{"val"}) is provided, the end field will
 be \code{"val_end"}.}
 
 \item{groupby}{The data fields to group by.}
 
-\item{offset}{Mode for stacking marks. One of \code{"zero"} (default), \code{"center"}, or \code{"normalize"}. The \code{"zero"} offset will stack
-starting at \code{0}. The \code{"center"} offset will center the stacks. The \code{"normalize"} offset will compute percentage
-values for each stack point, with output values in the range \verb{[0,1]}. #' #' \strong{Default value:} \code{"zero"}}
+\item{offset}{Mode for stacking marks. One of \code{"zero"} (default), \code{"center"}, or
+\code{"normalize"}. The \code{"zero"} offset will stack starting at \code{0}. The \code{"center"}
+offset will center the stacks. The \code{"normalize"} offset will compute percentage
+values for each stack point, with output values in the range \verb{[0,1]}.
+
+\strong{Default value:} \code{"zero"}}
 
 \item{sort}{Field that determines the order of leaves in the stacked charts.}
 

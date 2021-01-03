@@ -16,25 +16,42 @@
 
 \item{description}{}
 
-\item{direction}{The direction of the legend, one of \code{"vertical"} or \code{"horizontal"}. #' #' \strong{Default value:} - For
-top-/bottom-\code{orient}ed legends, \code{"horizontal"} - For left-/right-\code{orient}ed legends, \code{"vertical"} - For
-top/bottom-left/right-\code{orient}ed legends, \code{"horizontal"} for gradient legends and \code{"vertical"} for symbol legends.}
+\item{direction}{The direction of the legend, one of \code{"vertical"} or \code{"horizontal"}.
+
+\strong{Default value:} - For top-/bottom-\code{orient}ed legends,
+\code{"horizontal"} - For left-/right-\code{orient}ed legends, \code{"vertical"} - For
+top/bottom-left/right-\code{orient}ed legends, \code{"horizontal"} for gradient legends
+and \code{"vertical"} for symbol legends.}
 
 \item{fillColor}{}
 
-\item{format}{When used with the default \code{"number"} and \code{"time"} format type, the text formatting pattern for labels of guides (axes,
-legends, headers) and text marks. #' #' - If the format type is \code{"number"} (e.g., for quantitative fields), this is
-D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern}. - If the format type is \code{"time"} (e.g.,
-for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}. #' #'
-See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more examples. #' #' When used
-with a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{custom \code{formatType}}, this value will
-be passed as \code{format} alongside \code{datum.value} to the registered function. #' #' \strong{Default value:} Derived from
-\href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for number format and from
-\href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for time format.}
+\item{format}{When used with the default \code{"number"} and \code{"time"} format type, the text
+formatting pattern for labels of guides (axes, legends, headers) and text marks.
+\itemize{
+\item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's
+\href{https://github.com/d3/d3-format#locale_format}{number format pattern}. - If the
+format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
+}
 
-\item{formatType}{The format type for labels. One of \code{"number"}, \code{"time"}, or a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{registered custom format type}. #' #' \strong{Default value:} - \code{"time"} for
-temporal fields and ordinal and nominal fields with \code{timeUnit}. - \code{"number"} for quantitative fields as well as
-ordinal and nominal fields without \code{timeUnit}.}
+See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more
+examples.
+
+When used with a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{custom \code{formatType}},
+this value will be passed as \code{format} alongside \code{datum.value} to the registered
+function.
+
+\strong{Default value:} Derived from
+\href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat}
+config for number format and from
+\href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config
+for time format.}
+
+\item{formatType}{The format type for labels. One of \code{"number"},
+\code{"time"}, or a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{registered custom format type}.
+
+\strong{Default value:} - \code{"time"} for temporal fields and ordinal and nominal fields
+with \code{timeUnit}. - \code{"number"} for quantitative fields as well as ordinal and
+nominal fields without \code{timeUnit}.}
 
 \item{gradientLength}{}
 
@@ -54,8 +71,11 @@ ordinal and nominal fields without \code{timeUnit}.}
 
 \item{labelColor}{}
 
-\item{labelExpr}{\href{https://vega.github.io/vega/docs/expressions/}{Vega expression} for customizing labels. #' #' \strong{Note:} The label text
-and value can be assessed via the \code{label} and \code{value} properties of the legend's backing \code{datum} object.}
+\item{labelExpr}{\href{https://vega.github.io/vega/docs/expressions/}{Vega expression} for customizing
+labels.
+
+\strong{Note:} The label text and value can be assessed via the \code{label} and \code{value}
+properties of the legend's backing \code{datum} object.}
 
 \item{labelFont}{}
 
@@ -83,8 +103,10 @@ and value can be assessed via the \code{label} and \code{value} properties of th
 
 \item{offset}{}
 
-\item{orient}{The orientation of the legend, which determines how the legend is positioned within the scene. One of \code{"left"},
-\code{"right"}, \code{"top"}, \code{"bottom"}, \code{"top-left"}, \code{"top-right"}, \code{"bottom-left"}, \code{"bottom-right"}, \code{"none"}. #' #'
+\item{orient}{The orientation of the legend, which determines how the legend is positioned
+within the scene. One of \code{"left"}, \code{"right"}, \code{"top"}, \code{"bottom"}, \code{"top-left"},
+\code{"top-right"}, \code{"bottom-left"}, \code{"bottom-right"}, \code{"none"}.
+
 \strong{Default value:} \code{"right"}}
 
 \item{padding}{}
@@ -115,18 +137,31 @@ and value can be assessed via the \code{label} and \code{value} properties of th
 
 \item{tickCount}{}
 
-\item{tickMinStep}{The minimum desired step between legend ticks, in terms of scale domain values. For example, a value of \code{1} indicates
-that ticks should not be less than 1 unit apart. If \code{tickMinStep} is specified, the \code{tickCount} value will be
-adjusted, if necessary, to enforce the minimum step value. #' #' \strong{Default value}: \code{undefined}}
+\item{tickMinStep}{The minimum desired step between legend ticks, in terms of scale domain values.
+For example, a value of \code{1} indicates that ticks should not be less than 1 unit
+apart. If \code{tickMinStep} is specified, the \code{tickCount} value will be adjusted, if
+necessary, to enforce the minimum step value.
 
-\item{title}{A title for the field. If \code{null}, the title will be removed. #' #' \strong{Default value:} derived from the field's name and
-transformation function (\code{aggregate}, \code{bin} and \code{timeUnit}). If the field has an aggregate function, the function is
-displayed as part of the title (e.g., \code{"Sum of Profit"}). If the field is binned or has a time unit applied, the
-applied function is shown in parentheses (e.g., \code{"Profit (binned)"}, \code{"Transaction Date (year-month)"}). Otherwise,
-the title is simply the field name. #' #' \strong{Notes}: #' #' 1) You can customize the default field title format by
-providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{\code{fieldTitle}} property in the
-\href{https://vega.github.io/vega-lite/docs/config.html}{config} or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{\code{fieldTitle} function via the \code{compile} function's options}. #' #' 2) If both field definition's
-\code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used.}
+\strong{Default value}: \code{undefined}}
+
+\item{title}{A title for the field. If \code{null}, the title will be removed.
+
+\strong{Default value:} derived from the field's name and transformation function
+(\code{aggregate}, \code{bin} and \code{timeUnit}). If the field has an aggregate function,
+the function is displayed as part of the title (e.g., \code{"Sum of Profit"}). If
+the field is binned or has a time unit applied, the applied function is shown
+in parentheses (e.g., \code{"Profit (binned)"}, \code{"Transaction Date (year-month)"}).
+Otherwise, the title is simply the field name.
+
+\strong{Notes}:
+\enumerate{
+\item You can customize the default field title format by providing the
+\href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{\code{fieldTitle}}
+property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config}
+or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{\code{fieldTitle} function via the \code{compile} function's options}.
+\item If both field definition's \code{title} and axis, header, or legend \code{title} are
+defined, axis/header/legend title will be used.
+}}
 
 \item{titleAlign}{}
 
@@ -154,13 +189,17 @@ providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-
 
 \item{titlePadding}{}
 
-\item{type}{The type of the legend. Use \code{"symbol"} to create a discrete legend and \code{"gradient"} for a continuous color gradient. #'
-#' \strong{Default value:} \code{"gradient"} for non-binned quantitative fields and temporal fields; \code{"symbol"} otherwise.}
+\item{type}{The type of the legend. Use \code{"symbol"} to create a discrete legend and
+\code{"gradient"} for a continuous color gradient.
+
+\strong{Default value:} \code{"gradient"} for non-binned quantitative fields and temporal
+fields; \code{"symbol"} otherwise.}
 
 \item{values}{Explicitly set the visible legend values.}
 
-\item{zindex}{A non-negative integer indicating the z-index of the legend. If zindex is 0, legend should be drawn behind all chart
-elements. To put them in front, use zindex = 1.}
+\item{zindex}{A non-negative integer indicating the z-index of the legend. If zindex is 0,
+legend should be drawn behind all chart elements. To put them in front, use
+zindex = 1.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to Legend definition.

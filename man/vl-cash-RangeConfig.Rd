@@ -4,17 +4,23 @@
 \alias{vl$RangeConfig}
 \title{RangeConfig}
 \arguments{
-\item{category}{Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for categorical data.}
+\item{category}{Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for
+categorical data.}
 
-\item{diverging}{Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for diverging quantitative ramps.}
+\item{diverging}{Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for diverging
+quantitative ramps.}
 
-\item{heatmap}{Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for quantitative heatmaps.}
+\item{heatmap}{Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for
+quantitative heatmaps.}
 
-\item{ordinal}{Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for rank-ordered data.}
+\item{ordinal}{Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for
+rank-ordered data.}
 
-\item{ramp}{Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for sequential quantitative ramps.}
+\item{ramp}{Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for sequential
+quantitative ramps.}
 
-\item{symbol}{Array of \href{https://vega.github.io/vega/docs/marks/symbol/}{symbol} names or paths for the default shape palette.}
+\item{symbol}{Array of \href{https://vega.github.io/vega/docs/marks/symbol/}{symbol} names or paths
+for the default shape palette.}
 
 \item{...}{Additional elements for constructing object.}
 }

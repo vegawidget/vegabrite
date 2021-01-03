@@ -4,10 +4,11 @@
 \alias{vl$JoinAggregateTransform}
 \title{JoinAggregateTransform}
 \arguments{
-\item{groupby}{The data fields for partitioning the data objects into separate groups. If unspecified, all data points will be in a
-single group.}
+\item{groupby}{The data fields for partitioning the data objects into separate groups. If
+unspecified, all data points will be in a single group.}
 
-\item{joinaggregate}{The definition of the fields in the join aggregate, and what calculations to use.}
+\item{joinaggregate}{The definition of the fields in the join aggregate, and what calculations to
+use.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to JoinAggregateTransform definition.

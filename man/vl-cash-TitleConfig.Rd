@@ -4,7 +4,8 @@
 \alias{vl$TitleConfig}
 \title{TitleConfig}
 \arguments{
-\item{align}{Horizontal text alignment for title text. One of \code{"left"}, \code{"center"}, or \code{"right"}.}
+\item{align}{Horizontal text alignment for title text. One of \code{"left"}, \code{"center"}, or
+\code{"right"}.}
 
 \item{anchor}{}
 
@@ -12,9 +13,11 @@
 
 \item{aria}{}
 
-\item{baseline}{Vertical text baseline for title and subtitle text. One of \code{"alphabetic"} (default), \code{"top"}, \code{"middle"}, \code{"bottom"},
-\code{"line-top"}, or \code{"line-bottom"}. The \code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"} and
-\code{"bottom"}, but are calculated relative to the \emph{lineHeight} rather than \emph{fontSize} alone.}
+\item{baseline}{Vertical text baseline for title and subtitle text. One of \code{"alphabetic"}
+(default), \code{"top"}, \code{"middle"}, \code{"bottom"}, \code{"line-top"}, or \code{"line-bottom"}.
+The \code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"}
+and \code{"bottom"}, but are calculated relative to the \emph{lineHeight} rather than
+\emph{fontSize} alone.}
 
 \item{color}{}
 

@@ -21,15 +21,19 @@ vl_quantile(
 
 \item{quantile}{The data field for which to perform quantile estimation.}
 
-\item{as}{The output field names for the probability and quantile values. #' #' \strong{Default value:} \verb{["prob", "value"]}}
+\item{as}{The output field names for the probability and quantile values.
 
-\item{groupby}{The data fields to group by. If not specified, a single group containing all data objects will be used.}
+\strong{Default value:} \verb{["prob", "value"]}}
 
-\item{probs}{An array of probabilities in the range (0, 1) for which to compute quantile values. If not specified, the \emph{step}
-parameter will be used.}
+\item{groupby}{The data fields to group by. If not specified, a single group containing all
+data objects will be used.}
 
-\item{step}{A probability step size (default 0.01) for sampling quantile values. All values from one-half the step size up to 1
-(exclusive) will be sampled. This parameter is only used if the \emph{probs} parameter is not provided.}
+\item{probs}{An array of probabilities in the range (0, 1) for which to compute quantile
+values. If not specified, the \emph{step} parameter will be used.}
+
+\item{step}{A probability step size (default 0.01) for sampling quantile values. All values
+from one-half the step size up to 1 (exclusive) will be sampled. This parameter
+is only used if the \emph{probs} parameter is not provided.}
 }
 \value{
 A modified Vega-Lite Spec

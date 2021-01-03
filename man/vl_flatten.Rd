@@ -11,12 +11,14 @@ vl_flatten(spec, .object = NULL, flatten = NULL, as = NULL)
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FlattenTransform}
 
-\item{flatten}{An array of one or more data fields containing arrays to flatten. If multiple fields are specified, their array values
-should have a parallel structure, ideally with the same length. If the lengths of parallel arrays do not match, the
-longest array will be used with \code{null} values added for missing entries.}
+\item{flatten}{An array of one or more data fields containing arrays to flatten. If multiple
+fields are specified, their array values should have a parallel structure,
+ideally with the same length. If the lengths of parallel arrays do not match,
+the longest array will be used with \code{null} values added for missing entries.}
 
-\item{as}{The output field names for extracted array values. #' #' \strong{Default value:} The field name of the corresponding array
-field}
+\item{as}{The output field names for extracted array values.
+
+\strong{Default value:} The field name of the corresponding array field}
 }
 \value{
 A modified Vega-Lite Spec

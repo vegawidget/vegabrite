@@ -16,9 +16,12 @@
 
 \item{description}{}
 
-\item{direction}{The direction of the legend, one of \code{"vertical"} or \code{"horizontal"}. #' #' \strong{Default value:} - For
-top-/bottom-\code{orient}ed legends, \code{"horizontal"} - For left-/right-\code{orient}ed legends, \code{"vertical"} - For
-top/bottom-left/right-\code{orient}ed legends, \code{"horizontal"} for gradient legends and \code{"vertical"} for symbol legends.}
+\item{direction}{The direction of the legend, one of \code{"vertical"} or \code{"horizontal"}.
+
+\strong{Default value:} - For top-/bottom-\code{orient}ed legends,
+\code{"horizontal"} - For left-/right-\code{orient}ed legends, \code{"vertical"} - For
+top/bottom-left/right-\code{orient}ed legends, \code{"horizontal"} for gradient legends
+and \code{"vertical"} for symbol legends.}
 
 \item{disable}{Disable legend by default}
 
@@ -26,11 +29,15 @@ top/bottom-left/right-\code{orient}ed legends, \code{"horizontal"} for gradient 
 
 \item{gradientDirection}{}
 
-\item{gradientHorizontalMaxLength}{Max legend length for a horizontal gradient when \code{config.legend.gradientLength} is undefined. #' #' \strong{Default value:}
-\code{200}}
+\item{gradientHorizontalMaxLength}{Max legend length for a horizontal gradient when \code{config.legend.gradientLength}
+is undefined.
 
-\item{gradientHorizontalMinLength}{Min legend length for a horizontal gradient when \code{config.legend.gradientLength} is undefined. #' #' \strong{Default value:}
-\code{100}}
+\strong{Default value:} \code{200}}
+
+\item{gradientHorizontalMinLength}{Min legend length for a horizontal gradient when \code{config.legend.gradientLength}
+is undefined.
+
+\strong{Default value:} \code{100}}
 
 \item{gradientLabelLimit}{}
 
@@ -46,11 +53,15 @@ top/bottom-left/right-\code{orient}ed legends, \code{"horizontal"} for gradient 
 
 \item{gradientThickness}{}
 
-\item{gradientVerticalMaxLength}{Max legend length for a vertical gradient when \code{config.legend.gradientLength} is undefined. #' #' \strong{Default value:}
-\code{200}}
+\item{gradientVerticalMaxLength}{Max legend length for a vertical gradient when \code{config.legend.gradientLength} is
+undefined.
 
-\item{gradientVerticalMinLength}{Min legend length for a vertical gradient when \code{config.legend.gradientLength} is undefined. #' #' \strong{Default value:}
-\code{100}}
+\strong{Default value:} \code{200}}
+
+\item{gradientVerticalMinLength}{Min legend length for a vertical gradient when \code{config.legend.gradientLength} is
+undefined.
+
+\strong{Default value:} \code{100}}
 
 \item{gridAlign}{}
 
@@ -74,10 +85,13 @@ top/bottom-left/right-\code{orient}ed legends, \code{"horizontal"} for gradient 
 
 \item{labelOpacity}{}
 
-\item{labelOverlap}{The strategy to use for resolving overlap of labels in gradient legends. If \code{false}, no overlap reduction is attempted.
-If set to \code{true} or \code{"parity"}, a strategy of removing every other label is used. If set to \code{"greedy"}, a linear
-scan of the labels is performed, removing any label that overlaps with the last visible label (this often works
-better for log-scaled axes). #' #' \strong{Default value:} \code{"greedy"} for \verb{log scales otherwise }true`.}
+\item{labelOverlap}{The strategy to use for resolving overlap of labels in gradient legends. If
+\code{false}, no overlap reduction is attempted. If set to \code{true} or \code{"parity"}, a
+strategy of removing every other label is used. If set to \code{"greedy"}, a linear
+scan of the labels is performed, removing any label that overlaps with the last
+visible label (this often works better for log-scaled axes).
+
+\strong{Default value:} \code{"greedy"} for \verb{log scales otherwise }true`.}
 
 \item{labelPadding}{}
 
@@ -91,8 +105,10 @@ better for log-scaled axes). #' #' \strong{Default value:} \code{"greedy"} for \
 
 \item{offset}{}
 
-\item{orient}{The orientation of the legend, which determines how the legend is positioned within the scene. One of \code{"left"},
-\code{"right"}, \code{"top"}, \code{"bottom"}, \code{"top-left"}, \code{"top-right"}, \code{"bottom-left"}, \code{"bottom-right"}, \code{"none"}. #' #'
+\item{orient}{The orientation of the legend, which determines how the legend is positioned
+within the scene. One of \code{"left"}, \code{"right"}, \code{"top"}, \code{"bottom"}, \code{"top-left"},
+\code{"top-right"}, \code{"bottom-left"}, \code{"bottom-right"}, \code{"none"}.
+
 \strong{Default value:} \code{"right"}}
 
 \item{padding}{}
@@ -161,7 +177,9 @@ better for log-scaled axes). #' #' \strong{Default value:} \code{"greedy"} for \
 
 \item{titlePadding}{}
 
-\item{unselectedOpacity}{The opacity of unselected legend entries. #' #' \strong{Default value:} 0.35.}
+\item{unselectedOpacity}{The opacity of unselected legend entries.
+
+\strong{Default value:} 0.35.}
 
 \item{zindex}{}
 }

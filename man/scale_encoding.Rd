@@ -444,141 +444,234 @@ vl_scale_y(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Scale}
 
-\item{align}{The alignment of the steps within the scale range. #' #' This value must lie in the range \verb{[0,1]}. A value of \code{0.5}
-indicates that the steps should be centered within the range. A value of \code{0} or \code{1} may be used to shift the bands
-to one side, say to position them adjacent to an axis. #' #' \strong{Default value:} \code{0.5}}
+\item{align}{The alignment of the steps within the scale range.
+
+This value must lie in the range \verb{[0,1]}. A value of \code{0.5} indicates that the
+steps should be centered within the range. A value of \code{0} or \code{1} may be used to
+shift the bands to one side, say to position them adjacent to an axis.
+
+\strong{Default value:} \code{0.5}}
 
 \item{base}{The logarithm base of the \code{log} scale (default \code{10}).}
 
-\item{bins}{Bin boundaries can be provided to scales as either an explicit array of bin boundaries or as a bin specification
-object. The legal values are: - An \href{../types/#Array}{array} literal of bin boundary values. For example, \verb{[0, 5, 10, 15, 20]}. The array must include both starting and ending boundaries. The previous example uses five values to
-indicate a total of four bin intervals: [0-5), [5-10), [10-15), [15-20]. Array literals may include signal
-references as elements. - A \href{https://vega.github.io/vega-lite/docs/scale.html#bins}{bin specification object} that
-indicates the bin \emph{step} size, and optionally the \emph{start} and \emph{stop} boundaries. - An array of bin boundaries over
-the scale domain. If provided, axes and legends will use the bin boundaries to inform the choice of tick marks and
-text labels.
+\item{bins}{Bin boundaries can be provided to scales as either an explicit array
+of bin boundaries or as a bin specification object. The legal values
+are: - An \href{../types/#Array}{array} literal of bin boundary values. For
+example, \verb{[0, 5, 10, 15, 20]}. The array must include both starting and
+ending boundaries. The previous example uses five values to indicate
+a total of four bin intervals: [0-5), [5-10), [10-15), [15-20]. Array
+literals may include signal references as elements. - A \href{https://vega.github.io/vega-lite/docs/scale.html#bins}{bin specification object} that indicates
+the bin \emph{step} size, and optionally the \emph{start} and \emph{stop} boundaries. - An
+array of bin boundaries over the scale domain. If provided, axes and legends
+will use the bin boundaries to inform the choice of tick marks and text labels.
 
 [15-20]: R:15-20\%5C
-[bin specification object]: R:bin\%20specification\%20object}
+[bin specification
+object]: R:bin\%20specification\%0Aobject}
 
-\item{clamp}{If \code{true}, values that exceed the data domain are clamped to either the minimum or maximum range value #' #' \strong{Default
-value:} derived from the \href{https://vega.github.io/vega-lite/docs/config.html#scale-config}{scale config}'s \code{clamp}
-(\code{true} by default).}
+\item{clamp}{If \code{true}, values that exceed the data domain are clamped to either the minimum
+or maximum range value
 
-\item{constant}{A constant determining the slope of the symlog function around zero. Only used for \code{symlog} scales. #' #' \strong{Default
-value:} \code{1}}
+\strong{Default value:} derived from the \href{https://vega.github.io/vega-lite/docs/config.html#scale-config}{scale config}'s
+\code{clamp} (\code{true} by default).}
 
-\item{domain}{Customized domain values in the form of constant values or dynamic values driven by a selection. #' #' 1) Constant
-\code{domain} for \emph{quantitative} fields can take one of the following forms: #' #' - A two-element array with minimum and
-maximum values. To create a diverging scale, this two-element array can be combined with the \code{domainMid} property. -
-An array with more than two entries, for \href{https://vega.github.io/vega-lite/docs/scale.html#piecewise}{Piecewise quantitative scales}. - A string value \code{"unaggregated"}, if the input
-field is aggregated, to indicate that the domain should include the raw data values prior to the aggregation. #' #'
-2) Constant \code{domain} for \emph{temporal} fields can be a two-element array with minimum and maximum values, in the form
-of either timestamps or the \href{https://vega.github.io/vega-lite/docs/types.html#datetime}{DateTime definition objects}. #' #' 3) Constant \code{domain} for \emph{ordinal} and
-\emph{nominal} fields can be an array that lists valid input values. #' #' 4) To combine (union) specified constant
-domain with the field's values, \code{domain} can be an object with a \code{unionWith} property that specify constant domain
-to be combined. For example, \verb{domain: \{unionWith: \[0, 100\]\}} for a quantitative scale means that the scale domain
-always includes \verb{[0, 100]}, but will include other values in the fields beyond \verb{[0, 100]}. #' #' 5) Domain can also
-takes an object defining a field or encoding of a selection that \href{https://vega.github.io/vega-lite/docs/selection.html#scale-domains}{interactively determines} the scale domain.}
+\item{constant}{A constant determining the slope of the symlog function around zero. Only used
+for \code{symlog} scales.
 
-\item{domainMax}{Sets the maximum value in the scale domain, overriding the \code{domain} property. This property is only intended for use
-with scales having continuous domains.}
+\strong{Default value:} \code{1}}
 
-\item{domainMid}{Inserts a single mid-point value into a two-element domain. The mid-point value must lie between the domain minimum and
-maximum values. This property can be useful for setting a midpoint for \href{https://vega.github.io/vega-lite/docs/scale.html#piecewise}{diverging color scales}. The domainMid property is only intended for use
-with scales supporting continuous, piecewise domains.}
+\item{domain}{Customized domain values in the form of constant values or dynamic values driven
+by a selection.
+\enumerate{
+\item Constant \code{domain} for \emph{quantitative} fields can take one of the following
+forms:
+}
+\itemize{
+\item A two-element array with minimum and maximum values. To create a
+diverging scale, this two-element array can be combined with the \code{domainMid}
+property. - An array with more than two entries, for \href{https://vega.github.io/vega-lite/docs/scale.html#piecewise}{Piecewise quantitative scales}. - A string
+value \code{"unaggregated"}, if the input field is aggregated, to indicate that the
+domain should include the raw data values prior to the aggregation.
+}
+\enumerate{
+\item Constant \code{domain} for \emph{temporal} fields can be a two-element array with
+minimum and maximum values, in the form of either timestamps or the \href{https://vega.github.io/vega-lite/docs/types.html#datetime}{DateTime definition objects}.
+\item Constant \code{domain} for \emph{ordinal} and \emph{nominal} fields can be an array that
+lists valid input values.
+\item To combine (union) specified constant domain with the field's values,
+\code{domain} can be an object with a \code{unionWith} property that specify constant
+domain to be combined. For example, \verb{domain: \{unionWith: \[0, 100\]\}} for a
+quantitative scale means that the scale domain always includes \verb{[0, 100]}, but
+will include other values in the fields beyond \verb{[0, 100]}.
+\item Domain can also takes an object defining a field
+or encoding of a selection that \href{https://vega.github.io/vega-lite/docs/selection.html#scale-domains}{interactively determines}
+the scale domain.
+}}
 
-\item{domainMin}{Sets the minimum value in the scale domain, overriding the domain property. This property is only intended for use with
-scales having continuous domains.}
+\item{domainMax}{Sets the maximum value in the scale domain, overriding the \code{domain} property.
+This property is only intended for use with scales having continuous domains.}
+
+\item{domainMid}{Inserts a single mid-point value into a two-element domain. The mid-point
+value must lie between the domain minimum and maximum values. This
+property can be useful for setting a midpoint for \href{https://vega.github.io/vega-lite/docs/scale.html#piecewise}{diverging color scales}. The
+domainMid property is only intended for use with scales supporting continuous,
+piecewise domains.}
+
+\item{domainMin}{Sets the minimum value in the scale domain, overriding the domain property. This
+property is only intended for use with scales having continuous domains.}
 
 \item{exponent}{The exponent of the \code{pow} scale.}
 
-\item{interpolate}{The interpolation method for range values. By default, a general interpolator for numbers, dates, strings and colors
-(in HCL space) is used. For color ranges, this property allows interpolation in alternative color spaces. Legal
-values include \code{rgb}, \code{hsl}, \code{hsl-long}, \code{lab}, \code{hcl}, \code{hcl-long}, \code{cubehelix} and \code{cubehelix-long} ('-long'
-variants use longer paths in polar coordinate spaces). If object-valued, this property accepts an object with a
-string-valued \emph{type} property and an optional numeric \emph{gamma} property applicable to rgb and cubehelix
-interpolators. For more, see the \href{https://github.com/d3/d3-interpolate}{d3-interpolate documentation}. #' #' *
-\strong{Default value:} \code{hcl}}
+\item{interpolate}{The interpolation method for range values. By default, a general interpolator
+for numbers, dates, strings and colors (in HCL space) is used. For color
+ranges, this property allows interpolation in alternative color spaces.
+Legal values include \code{rgb}, \code{hsl}, \code{hsl-long}, \code{lab}, \code{hcl}, \code{hcl-long},
+\code{cubehelix} and \code{cubehelix-long} ('-long' variants use longer paths in polar
+coordinate spaces). If object-valued, this property accepts an object with
+a string-valued \emph{type} property and an optional numeric \emph{gamma} property
+applicable to rgb and cubehelix interpolators. For more, see the \href{https://github.com/d3/d3-interpolate}{d3-interpolate documentation}.
+\itemize{
+\item \strong{Default value:} \code{hcl}
+}}
 
-\item{nice}{Extending the domain so that it starts and ends on nice round values. This method typically modifies the scale’s
-domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from
-data and may be irregular. For example, for a domain of \emph{[0.201479…, 0.996679…]}, a nice domain might be \emph{[0.2,
-1.0]}. #' #' For quantitative scales such as linear, \code{nice} can be either a boolean flag or a number. If \code{nice} is a
-number, it will represent a desired tick count. This allows greater control over the step size used to extend the
-bounds, guaranteeing that the returned ticks will exactly cover the domain. #' #' For temporal fields with time and
-utc scales, the \code{nice} value can be a string indicating the desired time interval. Legal values are \code{"millisecond"},
-\code{"second"}, \code{"minute"}, \code{"hour"}, \code{"day"}, \code{"week"}, \code{"month"}, and \code{"year"}. Alternatively, \code{time} and \code{utc} scales
-can accept an object-valued interval specifier of the form \verb{\{"interval": "month", "step": 3\}}, which includes a
-desired number of interval steps. Here, the domain would snap to quarter (Jan, Apr, Jul, Oct) boundaries. #' #'
+\item{nice}{Extending the domain so that it starts and ends on nice round values. This
+method typically modifies the scale’s domain, and may only extend the bounds to
+the nearest round value. Nicing is useful if the domain is computed from data
+and may be irregular. For example, for a domain of \emph{[0.201479…, 0.996679…]}, a
+nice domain might be \emph{[0.2, 1.0]}.
+
+For quantitative scales such as linear, \code{nice} can be either a boolean flag
+or a number. If \code{nice} is a number, it will represent a desired tick count.
+This allows greater control over the step size used to extend the bounds,
+guaranteeing that the returned ticks will exactly cover the domain.
+
+For temporal fields with time and utc scales, the \code{nice} value can be a
+string indicating the desired time interval. Legal values are \code{"millisecond"},
+\code{"second"}, \code{"minute"}, \code{"hour"}, \code{"day"}, \code{"week"}, \code{"month"}, and \code{"year"}.
+Alternatively, \code{time} and \code{utc} scales can accept an object-valued interval
+specifier of the form \verb{\{"interval": "month", "step": 3\}}, which includes a
+desired number of interval steps. Here, the domain would snap to quarter (Jan,
+Apr, Jul, Oct) boundaries.
+
 \strong{Default value:} \code{true} for unbinned \emph{quantitative} fields; \code{false} otherwise.}
 
-\item{padding}{For \emph{\href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{continuous}} scales, expands the scale domain to
-accommodate the specified number of pixels on each of the scale range. The scale range must represent pixels for
-this parameter to function as intended. Padding adjustment is performed prior to all other adjustments, including
-the effects of the \code{zero}, \code{nice}, \code{domainMin}, and \code{domainMax} properties. #' #' For
-\emph{\href{https://vega.github.io/vega-lite/docs/scale.html#band}{band}} scales, shortcut for setting \code{paddingInner} and
-\code{paddingOuter} to the same value. #' #' For \emph{\href{https://vega.github.io/vega-lite/docs/scale.html#point}{point}}
-scales, alias for \code{paddingOuter}. #' #' \strong{Default value:} For \emph{continuous} scales, derived from the \href{https://vega.github.io/vega-lite/docs/scale.html#config}{scale config}'s \code{continuousPadding}. For \emph{band and point} scales,
-see \code{paddingInner} and \code{paddingOuter}. By default, Vega-Lite sets padding such that \emph{width/height = number of unique
+\item{padding}{For \emph{\href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{continuous}}
+scales, expands the scale domain to accommodate the specified number of pixels
+on each of the scale range. The scale range must represent pixels for this
+parameter to function as intended. Padding adjustment is performed prior to all
+other adjustments, including the effects of the \code{zero}, \code{nice}, \code{domainMin},
+and \code{domainMax} properties.
+
+For \emph{\href{https://vega.github.io/vega-lite/docs/scale.html#band}{band}} scales,
+shortcut for setting \code{paddingInner} and \code{paddingOuter} to the same value.
+
+For \emph{\href{https://vega.github.io/vega-lite/docs/scale.html#point}{point}} scales,
+alias for \code{paddingOuter}.
+
+\strong{Default value:} For \emph{continuous} scales, derived from the \href{https://vega.github.io/vega-lite/docs/scale.html#config}{scale config}'s
+\code{continuousPadding}. For \emph{band and point} scales, see \code{paddingInner} and
+\code{paddingOuter}. By default, Vega-Lite sets padding such that \emph{width/height =
+number of unique values * step}.}
+
+\item{paddingInner}{The inner padding (spacing) within each band step of band scales, as a fraction
+of the step size. This value must lie in the range [0,1].
+
+For point scale, this property is invalid as point scales do not have internal
+band widths (only step sizes between bands).
+
+\strong{Default value:} derived from the \href{https://vega.github.io/vega-lite/docs/scale.html#config}{scale config}'s
+\code{bandPaddingInner}.}
+
+\item{paddingOuter}{The outer padding (spacing) at the ends of the range of band and point scales,
+as a fraction of the step size. This value must lie in the range [0,1].
+
+\strong{Default value:} derived from the \href{https://vega.github.io/vega-lite/docs/scale.html#config}{scale config}'s
+\code{bandPaddingOuter} for band scales and \code{pointPadding} for point scales. By
+default, Vega-Lite sets outer padding such that \emph{width/height = number of unique
 values * step}.}
 
-\item{paddingInner}{The inner padding (spacing) within each band step of band scales, as a fraction of the step size. This value must lie
-in the range [0,1]. #' #' For point scale, this property is invalid as point scales do not have internal band widths
-(only step sizes between bands). #' #' \strong{Default value:} derived from the \href{https://vega.github.io/vega-lite/docs/scale.html#config}{scale config}'s \code{bandPaddingInner}.}
+\item{range}{The range of the scale. One of:
+\itemize{
+\item A string indicating a \href{https://vega.github.io/vega-lite/docs/scale.html#range-config}{pre-defined named scale range} (e.g.,
+example, \code{"symbol"}, or \code{"diverging"}).
+\item For \href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{continuous scales},
+two-element array indicating minimum and maximum values, or an
+array with more than two entries for specifying a \href{https://vega.github.io/vega-lite/docs/scale.html#piecewise}{piecewise scale}.
+\item For \href{https://vega.github.io/vega-lite/docs/scale.html#discrete}{discrete} and
+\href{https://vega.github.io/vega-lite/docs/scale.html#discretizing}{discretizing}
+scales, an array of desired output values or an object with a \code{field} property
+representing the range values. For example, if a field \code{color} contains CSS
+color names, we can set \code{range} to \code{{field: "color"}}.
+}
 
-\item{paddingOuter}{The outer padding (spacing) at the ends of the range of band and point scales, as a fraction of the step size. This
-value must lie in the range [0,1]. #' #' \strong{Default value:} derived from the \href{https://vega.github.io/vega-lite/docs/scale.html#config}{scale config}'s \code{bandPaddingOuter} for band scales and
-\code{pointPadding} for point scales. By default, Vega-Lite sets outer padding such that \emph{width/height = number of unique
-values * step}.}
+\strong{Notes:}
+\enumerate{
+\item For color scales you can also specify a color
+\href{https://vega.github.io/vega-lite/docs/scale.html#scheme}{\code{scheme}} instead of
+\code{range}.
+\item Any directly specified \code{range} for \code{x} and \code{y} channels will
+be ignored. Range can be customized via the view's corresponding
+\href{https://vega.github.io/vega-lite/docs/size.html}{size} (\code{width} and \code{height}).
+}}
 
-\item{range}{The range of the scale. One of: #' #' - A string indicating a \href{https://vega.github.io/vega-lite/docs/scale.html#range-config}{pre-defined named scale range} (e.g., example, \code{"symbol"}, or \code{"diverging"}).
-#' #' - For \href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{continuous scales}, two-element array
-indicating minimum and maximum values, or an array with more than two entries for specifying a \href{https://vega.github.io/vega-lite/docs/scale.html#piecewise}{piecewise scale}. #' #' - For
-\href{https://vega.github.io/vega-lite/docs/scale.html#discrete}{discrete} and
-\href{https://vega.github.io/vega-lite/docs/scale.html#discretizing}{discretizing} scales, an array of desired output
-values or an object with a \code{field} property representing the range values.  For example, if a field \code{color} contains
-CSS color names, we can set \code{range} to \code{{field: "color"}}. #' #' \strong{Notes:} #' #' 1) For color scales you can also
-specify a color \href{https://vega.github.io/vega-lite/docs/scale.html#scheme}{\code{scheme}} instead of \code{range}. #' #' 2) Any
-directly specified \code{range} for \code{x} and \code{y} channels will be ignored. Range can be customized via the view's
-corresponding \href{https://vega.github.io/vega-lite/docs/size.html}{size} (\code{width} and \code{height}).}
+\item{rangeMax}{Sets the maximum value in the scale range, overriding the \code{range} property or
+the default range. This property is only intended for use with scales having
+continuous ranges.}
 
-\item{rangeMax}{Sets the maximum value in the scale range, overriding the \code{range} property or the default range. This property is only
-intended for use with scales having continuous ranges.}
-
-\item{rangeMin}{Sets the minimum value in the scale range, overriding the \code{range} property or the default range. This property is only
-intended for use with scales having continuous ranges.}
+\item{rangeMin}{Sets the minimum value in the scale range, overriding the \code{range} property or
+the default range. This property is only intended for use with scales having
+continuous ranges.}
 
 \item{reverse}{If true, reverses the order of the scale range. \strong{Default value:} \code{false}.}
 
-\item{round}{If \code{true}, rounds numeric output values to integers. This can be helpful for snapping to the pixel grid. #' #'
+\item{round}{If \code{true}, rounds numeric output values to integers. This can be helpful for
+snapping to the pixel grid.
+
 \strong{Default value:} \code{false}.}
 
-\item{scheme}{A string indicating a color \href{https://vega.github.io/vega-lite/docs/scale.html#scheme}{scheme} name (e.g.,
-\code{"category10"} or \code{"blues"}) or a \href{https://vega.github.io/vega-lite/docs/scale.html#scheme-params}{scheme parameter object}. #' #' Discrete color schemes may be used
-with \href{https://vega.github.io/vega-lite/docs/scale.html#discrete}{discrete} or
-\href{https://vega.github.io/vega-lite/docs/scale.html#discretizing}{discretizing} scales. Continuous color schemes are
-intended for use with color scales. #' #' For the full list of supported schemes, please refer to the \href{https://vega.github.io/vega/docs/schemes/#reference}{Vega Scheme} reference.}
+\item{scheme}{A string indicating a color
+\href{https://vega.github.io/vega-lite/docs/scale.html#scheme}{scheme}
+name (e.g., \code{"category10"} or \code{"blues"}) or a \href{https://vega.github.io/vega-lite/docs/scale.html#scheme-params}{scheme parameter object}.
 
-\item{type}{The type of scale. Vega-Lite supports the following categories of scale types: #' #' 1) \href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{\strong{Continuous Scales}} -- mapping continuous domains to continuous
-output ranges (\href{https://vega.github.io/vega-lite/docs/scale.html#linear}{\code{"linear"}},
+Discrete color schemes may be used with
+\href{https://vega.github.io/vega-lite/docs/scale.html#discrete}{discrete} or
+\href{https://vega.github.io/vega-lite/docs/scale.html#discretizing}{discretizing}
+scales. Continuous color schemes are intended for use with color scales.
+
+For the full list of supported schemes, please refer to the \href{https://vega.github.io/vega/docs/schemes/#reference}{Vega Scheme} reference.}
+
+\item{type}{The type of scale. Vega-Lite supports the following categories of scale types:
+\enumerate{
+\item \href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{\strong{Continuous Scales}}
+-- mapping continuous domains to continuous output ranges
+(\href{https://vega.github.io/vega-lite/docs/scale.html#linear}{\code{"linear"}},
 \href{https://vega.github.io/vega-lite/docs/scale.html#pow}{\code{"pow"}},
 \href{https://vega.github.io/vega-lite/docs/scale.html#sqrt}{\code{"sqrt"}},
 \href{https://vega.github.io/vega-lite/docs/scale.html#symlog}{\code{"symlog"}},
 \href{https://vega.github.io/vega-lite/docs/scale.html#log}{\code{"log"}},
 \href{https://vega.github.io/vega-lite/docs/scale.html#time}{\code{"time"}},
-\href{https://vega.github.io/vega-lite/docs/scale.html#utc}{\code{"utc"}}. #' #' 2) \href{https://vega.github.io/vega-lite/docs/scale.html#discrete}{\strong{Discrete Scales}} -- mapping discrete domains to discrete
-(\href{https://vega.github.io/vega-lite/docs/scale.html#ordinal}{\code{"ordinal"}}) or continuous
-(\href{https://vega.github.io/vega-lite/docs/scale.html#band}{\code{"band"}} and
-\href{https://vega.github.io/vega-lite/docs/scale.html#point}{\code{"point"}}) output ranges. #' #' 3) \href{https://vega.github.io/vega-lite/docs/scale.html#discretizing}{\strong{Discretizing Scales}} -- mapping continuous domains to discrete
-output ranges \href{https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal}{\code{"bin-ordinal"}},
+\href{https://vega.github.io/vega-lite/docs/scale.html#utc}{\code{"utc"}}.
+\item \href{https://vega.github.io/vega-lite/docs/scale.html#discrete}{\strong{Discrete Scales}}
+-- mapping discrete domains to discrete
+(\href{https://vega.github.io/vega-lite/docs/scale.html#ordinal}{\code{"ordinal"}}) or
+continuous (\href{https://vega.github.io/vega-lite/docs/scale.html#band}{\code{"band"}}
+and \href{https://vega.github.io/vega-lite/docs/scale.html#point}{\code{"point"}}) output
+ranges.
+\item \href{https://vega.github.io/vega-lite/docs/scale.html#discretizing}{\strong{Discretizing Scales}}
+-- mapping continuous domains to discrete output ranges
+\href{https://vega.github.io/vega-lite/docs/scale.html#bin-ordinal}{\code{"bin-ordinal"}},
 \href{https://vega.github.io/vega-lite/docs/scale.html#quantile}{\code{"quantile"}},
 \href{https://vega.github.io/vega-lite/docs/scale.html#quantize}{\code{"quantize"}} and
-\href{https://vega.github.io/vega-lite/docs/scale.html#threshold}{\code{"threshold"}}. #' #' \strong{Default value:} please see the
-\href{https://vega.github.io/vega-lite/docs/scale.html#type}{scale type table}.}
+\href{https://vega.github.io/vega-lite/docs/scale.html#threshold}{\code{"threshold"}}.
+}
 
-\item{zero}{If \code{true}, ensures that a zero baseline value is included in the scale domain. #' #' \strong{Default value:} \code{true} for x
-and y channels if the quantitative field is not binned and no custom \code{domain} is provided; \code{false} otherwise. #' #'
+\strong{Default value:} please see the \href{https://vega.github.io/vega-lite/docs/scale.html#type}{scale type table}.}
+
+\item{zero}{If \code{true}, ensures that a zero baseline value is included in the scale domain.
+
+\strong{Default value:} \code{true} for x and y channels if the quantitative field is not
+binned and no custom \code{domain} is provided; \code{false} otherwise.
+
 \strong{Note:} Log, time, and utc scales do not support \code{zero}.}
 }
 \value{

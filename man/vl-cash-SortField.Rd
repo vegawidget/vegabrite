@@ -6,8 +6,8 @@
 \arguments{
 \item{field}{The name of the field to sort.}
 
-\item{order}{Whether to sort the field in ascending or descending order. One of \code{"ascending"} (default), \code{"descending"}, or \code{null}
-(no not sort).}
+\item{order}{Whether to sort the field in ascending or descending order. One of \code{"ascending"}
+(default), \code{"descending"}, or \code{null} (no not sort).}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to SortField definition.

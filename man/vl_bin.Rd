@@ -11,10 +11,12 @@ vl_bin(spec, .object = NULL, bin = NULL, as = NULL, field = NULL)
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BinTransform}
 
-\item{bin}{An object indicating bin properties, or simply \code{true} for using default bin parameters.}
+\item{bin}{An object indicating bin properties, or simply \code{true} for using default bin
+parameters.}
 
-\item{as}{The output fields at which to write the start and end bin values. This can be either a string or an array of strings
-with two elements denoting the name for the fields for bin start and bin end respectively. If a single string (e.g.,
+\item{as}{The output fields at which to write the start and end bin values. This can be
+either a string or an array of strings with two elements denoting the name for
+the fields for bin start and bin end respectively. If a single string (e.g.,
 \code{"val"}) is provided, the end field will be \code{"val_end"}.}
 
 \item{field}{The data field to bin.}

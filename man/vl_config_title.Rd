@@ -39,7 +39,8 @@ vl_config_title(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BaseTitleNoValueRefs}
 
-\item{align}{Horizontal text alignment for title text. One of \code{"left"}, \code{"center"}, or \code{"right"}.}
+\item{align}{Horizontal text alignment for title text. One of \code{"left"}, \code{"center"}, or
+\code{"right"}.}
 
 \item{anchor}{}
 
@@ -47,9 +48,11 @@ vl_config_title(
 
 \item{aria}{}
 
-\item{baseline}{Vertical text baseline for title and subtitle text. One of \code{"alphabetic"} (default), \code{"top"}, \code{"middle"}, \code{"bottom"},
-\code{"line-top"}, or \code{"line-bottom"}. The \code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"} and
-\code{"bottom"}, but are calculated relative to the \emph{lineHeight} rather than \emph{fontSize} alone.}
+\item{baseline}{Vertical text baseline for title and subtitle text. One of \code{"alphabetic"}
+(default), \code{"top"}, \code{"middle"}, \code{"bottom"}, \code{"line-top"}, or \code{"line-bottom"}.
+The \code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"}
+and \code{"bottom"}, but are calculated relative to the \emph{lineHeight} rather than
+\emph{fontSize} alone.}
 
 \item{color}{}
 

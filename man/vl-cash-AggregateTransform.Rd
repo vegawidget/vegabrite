@@ -6,7 +6,8 @@
 \arguments{
 \item{aggregate}{Array of objects that define fields to aggregate.}
 
-\item{groupby}{The data fields to group by. If not specified, a single group containing all data objects will be used.}
+\item{groupby}{The data fields to group by. If not specified, a single group containing all
+data objects will be used.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to AggregateTransform definition.

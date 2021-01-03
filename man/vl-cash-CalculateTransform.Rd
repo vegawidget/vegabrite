@@ -6,8 +6,8 @@
 \arguments{
 \item{as}{The field for storing the computed formula value.}
 
-\item{calculate}{A \href{https://vega.github.io/vega-lite/docs/types.html#expression}{expression} string. Use the variable \code{datum} to refer
-to the current data object.}
+\item{calculate}{A \href{https://vega.github.io/vega-lite/docs/types.html#expression}{expression}
+string. Use the variable \code{datum} to refer to the current data object.}
 }
 \value{
 A component of a Vega-Lite spec, corresponding to CalculateTransform definition.

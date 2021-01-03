@@ -4,10 +4,13 @@
 \alias{vl$ErrorBarConfig}
 \title{ErrorBarConfig}
 \arguments{
-\item{extent}{The extent of the rule. Available options include: - \code{"ci"}: Extend the rule to the confidence interval of the mean. -
-\code{"stderr"}: The size of rule are set to the value of standard error, extending from the mean. - \code{"stdev"}: The size
-of rule are set to the value of standard deviation, extending from the mean. - \code{"iqr"}: Extend the rule to the q1
-and q3. #' #' \strong{Default value:} \code{"stderr"}.}
+\item{extent}{The extent of the rule. Available options include: - \code{"ci"}: Extend the rule
+to the confidence interval of the mean. - \code{"stderr"}: The size of rule are set
+to the value of standard error, extending from the mean. - \code{"stdev"}: The size
+of rule are set to the value of standard deviation, extending from the mean. -
+\code{"iqr"}: Extend the rule to the q1 and q3.
+
+\strong{Default value:} \code{"stderr"}.}
 
 \item{rule}{}
 

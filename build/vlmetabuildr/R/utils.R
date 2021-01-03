@@ -38,6 +38,8 @@ get_description <- function(x) {
 
 get_description_plus <- function(x) {
   d <- get_description(x)
+  d <- stringi::stri_wrap(stringr::str_split(d, "\n")[[1]], width = 80, whitespace_only = TRUE)
+  d <- paste(d, collapse = "\n")
   d <- stringr::str_replace_all(d, "\n", "\n#' ")
   d
 }
@@ -94,13 +96,13 @@ get_param_docs <- function(schema, ref, exclude = NULL) {
     objs <- unique(names(properties[purrr::map_lgl(properties, ~ hasName(., param))]))
     d <- purrr::map_chr(objs, ~ get_description_plus(properties[[.]][[param]]))
     grps <- split(objs, d)
-    grp_descs <- purrr::map_chr(names(grps), ~paste(strwrap(., prefix = "#' ", initial = "", width = 120), collapse = "\n"))
+    grp_descs <- names(grps)#purrr::map_chr(names(grps), ~paste(strwrap(., width = 120), collapse = "\n#' "))
     #purrr::map_chr(
       #names(grps),
       #~ glue('(_{paste(grps[[.]], collapse = ", ")}_) {.}')
     #)
     if (length(grp_descs) > 1) {
-      return(paste(grp_descs, collapse = "\n#' \n#' Or:"))
+      return(paste(grp_descs, collapse = "\n#' \n#' Or: "))
     }
     grp_descs
   }
