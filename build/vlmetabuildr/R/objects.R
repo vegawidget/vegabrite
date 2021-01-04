@@ -50,8 +50,9 @@ create_object <- function(obj, schema, reference = glue("#/definitions/{obj}")) 
   inner_function <- glue("  .modify_args(NULL, NULL)")
 
   ## Make the outer function
-  fn <- glue("vl$`{obj}` <- function({args}){{\n{inner_function}\n}}")
+  fn <- glue("vl$`{obj}` <- function({args}){{\n{inner_function}\n}}\n")
 
   # Combine docs and function
-  glue_collapse(c(docs, fn), sep = "\n", last = "\n")
+  #glue_collapse(c(docs, fn), sep = "\n", last = "\n")
+  fn
 }
