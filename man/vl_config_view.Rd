@@ -11,6 +11,7 @@ vl_config_view(
   continuousHeight = NULL,
   continuousWidth = NULL,
   cornerRadius = NULL,
+  cursor = NULL,
   discreteHeight = NULL,
   discreteWidth = NULL,
   fill = NULL,
@@ -34,69 +35,104 @@ vl_config_view(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ViewConfig}
 
-\item{clip}{(\emph{ViewConfig}) Whether the view should be clipped.}
+\item{clip}{Whether the view should be clipped.}
 
-\item{continuousHeight}{(\emph{ViewConfig}) The default height when the plot has a continuous y-field.
-
-\strong{Default value:} \code{200}}
-
-\item{continuousWidth}{(\emph{ViewConfig}) The default width when the plot has a continuous x-field.
+\item{continuousHeight}{The default height when the plot has a continuous y-field for x or latitude, or
+has arc marks.
 
 \strong{Default value:} \code{200}}
 
-\item{cornerRadius}{(\emph{ViewConfig}) The radius in pixels of rounded rectangle corners.
+\item{continuousWidth}{The default width when the plot has a continuous field for x or longitude, or
+has arc marks.
 
-\strong{Default value:} \code{0}}
+\strong{Default value:} \code{200}}
 
-\item{discreteHeight}{(\emph{ViewConfig}) The default height when the plot has either a discrete y-field or no y-field.
+\item{cornerRadius}{The radius in pixels of rounded rectangles or arcs' corners.
+
+\strong{Default value:} \code{0}
+
+Or: ExprRef}
+
+\item{cursor}{The mouse cursor used over the view. Any valid \href{https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values}{CSS cursor type} can be
+used.}
+
+\item{discreteHeight}{The default height when the plot has non arc marks and either a discrete y-field
+or no y-field. The height can be either a number indicating a fixed height or an
+object in the form of \code{{step: number}} defining the height per discrete step.
 
 \strong{Default value:} a step size based on \code{config.view.step}.}
 
-\item{discreteWidth}{(\emph{ViewConfig}) The default width when the plot has either a discrete x-field or no x-field.
+\item{discreteWidth}{The default width when the plot has non-arc marks and either a discrete x-field
+or no x-field. The width can be either a number indicating a fixed width or an
+object in the form of \code{{step: number}} defining the width per discrete step.
 
 \strong{Default value:} a step size based on \code{config.view.step}.}
 
-\item{fill}{(\emph{ViewConfig}) The fill color.
+\item{fill}{The fill color.
 
 \strong{Default value:} \code{undefined}}
 
-\item{fillOpacity}{(\emph{ViewConfig}) The fill opacity (value between [0,1]).
+\item{fillOpacity}{The fill opacity (value between [0,1]).
 
-\strong{Default value:} \code{1}}
+\strong{Default value:} \code{1}
 
-\item{height}{(\emph{ViewConfig}) Default height}
+Or: ExprRef}
 
-\item{opacity}{(\emph{ViewConfig}) The overall opacity (value between [0,1]).
+\item{height}{Default height
 
-\strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick}, \code{circle}, or \code{square} marks or layered \code{bar} charts and \code{1} otherwise.}
+\strong{Deprecated:} Since Vega-Lite 4.0. Please use continuousHeight and
+discreteHeight instead.}
 
-\item{step}{(\emph{ViewConfig}) Default step size for x-/y- discrete fields.}
+\item{opacity}{The overall opacity (value between [0,1]).
 
-\item{stroke}{(\emph{ViewConfig}) The stroke color.
+\strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick}, \code{circle},
+or \code{square} marks or layered \code{bar} charts and \code{1} otherwise.}
+
+\item{step}{Default step size for x-/y- discrete fields.}
+
+\item{stroke}{The stroke color.
 
 \strong{Default value:} \code{"#ddd"}}
 
-\item{strokeCap}{(\emph{ViewConfig}) The stroke cap for line ending style. One of \code{"butt"}, \code{"round"}, or \code{"square"}.
+\item{strokeCap}{The stroke cap for line ending style. One of \code{"butt"}, \code{"round"}, or \code{"square"}.
 
-\strong{Default value:} \code{"square"}}
+\strong{Default value:} \code{"butt"}
 
-\item{strokeDash}{(\emph{ViewConfig}) An array of alternating stroke, space lengths for creating dashed or dotted lines.}
+Or: ExprRef}
 
-\item{strokeDashOffset}{(\emph{ViewConfig}) The offset (in pixels) into which to begin drawing with the stroke dash array.}
+\item{strokeDash}{An array of alternating stroke, space lengths for creating dashed or dotted
+lines.
 
-\item{strokeJoin}{(\emph{ViewConfig}) The stroke line join method. One of \code{"miter"}, \code{"round"} or \code{"bevel"}.
+Or: ExprRef}
 
-\strong{Default value:} \code{"miter"}}
+\item{strokeDashOffset}{The offset (in pixels) into which to begin drawing with the stroke dash array.
 
-\item{strokeMiterLimit}{(\emph{ViewConfig}) The miter limit at which to bevel a line join.}
+Or: ExprRef}
 
-\item{strokeOpacity}{(\emph{ViewConfig}) The stroke opacity (value between [0,1]).
+\item{strokeJoin}{The stroke line join method. One of \code{"miter"}, \code{"round"} or \code{"bevel"}.
 
-\strong{Default value:} \code{1}}
+\strong{Default value:} \code{"miter"}
 
-\item{strokeWidth}{(\emph{ViewConfig}) The stroke width, in pixels.}
+Or: ExprRef}
 
-\item{width}{(\emph{ViewConfig}) Default width}
+\item{strokeMiterLimit}{The miter limit at which to bevel a line join.
+
+Or: ExprRef}
+
+\item{strokeOpacity}{The stroke opacity (value between [0,1]).
+
+\strong{Default value:} \code{1}
+
+Or: ExprRef}
+
+\item{strokeWidth}{The stroke width, in pixels.
+
+Or: ExprRef}
+
+\item{width}{Default width
+
+\strong{Deprecated:} Since Vega-Lite 4.0. Please use continuousWidth and
+discreteWidth instead.}
 }
 \value{
 A modified Vega-Lite Spec

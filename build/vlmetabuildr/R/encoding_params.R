@@ -116,7 +116,7 @@ create_aggregate_encoding_functions <- function(schema) {
   aggregate_doc <- make_option_group_doc(
     "aggregate_encoding",
     "aggregate",
-    unlist(enums("#/definitions/Aggregate", schema)),
+    unlist(enums("#/definitions/AggregateOp", schema)),
     "Add aggregate transform to encoding",
     "Add aggregate parameters to an encoding",
     na_option = TRUE
@@ -135,7 +135,7 @@ create_aggregate_for_encoding <- function(enc, schema) {
   make_option_function(
     "#/definitions/Aggregate",
     "aggregate",
-    unlist(enums("#/definitions/Aggregate", schema)),
+    unlist(enums("#/definitions/AggregateOp", schema)),
     glue("aggregate_{enc}"),
     ".add_aggregate_to_encoding",
     na_option = TRUE,
@@ -199,9 +199,13 @@ create_sort_encoding_functions <- function(schema) {
   spec_doc <- glue("#' @param spec An input vega-lite spec")
   param_docs <- glue("#' @param value One of 'ascending', 'descending', a list with a custom ordering, or NA to specify no sorting")
 
-  group_docs <- make_docs_helper(title, desc, paste(spec_doc, param_docs, sep = "\n"), doc_group = doc_group)
-
-
+  group_docs <- paste(
+    make_docs_helper(title, desc, paste(spec_doc, param_docs, sep = "\n"), doc_group = doc_group, export = FALSE,),
+    "NULL",
+    "#> NULL",
+    sep = "\n"
+  )
+  
   maker_func <- function(enc) {
     docs <- make_docs_for_group(doc_group)
 

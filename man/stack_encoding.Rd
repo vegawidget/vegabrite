@@ -2,10 +2,16 @@
 % Please edit documentation in R/zzz_autogen_api.R
 \name{stack_encoding}
 \alias{stack_encoding}
+\alias{vl_stack_radius}
+\alias{vl_stack_theta}
 \alias{vl_stack_x}
 \alias{vl_stack_y}
 \title{Add stack transform to encoding}
 \usage{
+vl_stack_radius(spec, stack = c("zero", "center", "normalize", NA))
+
+vl_stack_theta(spec, stack = c("zero", "center", "normalize", NA))
+
 vl_stack_x(spec, stack = c("zero", "center", "normalize", NA))
 
 vl_stack_y(spec, stack = c("zero", "center", "normalize", NA))

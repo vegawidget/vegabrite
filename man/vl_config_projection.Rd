@@ -12,10 +12,13 @@ vl_config_projection(
   clipExtent = NULL,
   coefficient = NULL,
   distance = NULL,
+  extent = NULL,
+  fit = NULL,
   fraction = NULL,
   lobes = NULL,
   parallel = NULL,
   parallels = NULL,
+  pointRadius = NULL,
   precision = NULL,
   radius = NULL,
   ratio = NULL,
@@ -23,6 +26,7 @@ vl_config_projection(
   reflectY = NULL,
   rotate = NULL,
   scale = NULL,
+  size = NULL,
   spacing = NULL,
   tilt = NULL,
   translate = NULL,
@@ -34,49 +38,82 @@ vl_config_projection(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Projection}
 
-\item{center}{(\emph{Projection}) The projection’s center to the specified center, a two-element array of longitude and latitude in degrees.
+\item{center}{The projection's center, a two-element array of longitude and latitude in
+degrees.
 
 \strong{Default value:} \verb{[0, 0]}}
 
-\item{clipAngle}{(\emph{Projection}) The projection’s clipping circle radius to the specified angle in degrees. If \code{null}, switches to \href{http://bl.ocks.org/mbostock/3788999}{antimeridian} cutting rather than small-circle clipping.}
+\item{clipAngle}{The projection's clipping circle radius to the specified angle in degrees. If
+\code{null}, switches to \href{http://bl.ocks.org/mbostock/3788999}{antimeridian} cutting
+rather than small-circle clipping.}
 
-\item{clipExtent}{(\emph{Projection}) The projection’s viewport clip extent to the specified bounds in pixels. The extent bounds are specified as an array \verb{[\[x0, y0\], \[x1, y1\]]}, where \code{x0} is the left-side of the viewport, \code{y0} is the top, \code{x1} is the right and \code{y1} is the bottom. If \code{null}, no viewport clipping is performed.}
+\item{clipExtent}{The projection's viewport clip extent to the specified bounds in pixels. The
+extent bounds are specified as an array \verb{[\[x0, y0\], \[x1, y1\]]}, where \code{x0} is
+the left-side of the viewport, \code{y0} is the top, \code{x1} is the right and \code{y1} is
+the bottom. If \code{null}, no viewport clipping is performed.}
 
-\item{coefficient}{(\emph{Projection})}
+\item{coefficient}{number}
 
-\item{distance}{(\emph{Projection})}
+\item{distance}{number}
 
-\item{fraction}{(\emph{Projection})}
+\item{extent}{Vector2<Vector2<number>>}
 
-\item{lobes}{(\emph{Projection})}
+\item{fit}{Fit
 
-\item{parallel}{(\emph{Projection})}
+Or: array}
 
-\item{parallels}{(\emph{Projection})}
+\item{fraction}{number}
 
-\item{precision}{(\emph{Projection}) The threshold for the projection’s \href{http://bl.ocks.org/mbostock/3795544}{adaptive resampling} to the specified value in pixels. This value corresponds to the \href{http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm}{Douglas–Peucker distance}. If precision is not specified, returns the projection’s current resampling precision which defaults to \verb{√0.5 ≅ 0.70710…}.}
+\item{lobes}{number}
 
-\item{radius}{(\emph{Projection})}
+\item{parallel}{number}
 
-\item{ratio}{(\emph{Projection})}
+\item{parallels}{For conic projections, the \href{https://en.wikipedia.org/wiki/Map_projection#Conic}{two standard parallels} that define the
+map layout. The default depends on the specific conic projection used.}
 
-\item{reflectX}{(\emph{Projection})}
+\item{pointRadius}{The default radius (in pixels) to use when drawing GeoJSON \code{Point} and
+\code{MultiPoint} geometries. This parameter sets a constant default value. To modify
+the point radius in response to data, see the corresponding parameter of the
+GeoPath and GeoShape transforms.
 
-\item{reflectY}{(\emph{Projection})}
+\strong{Default value:} \code{4.5}}
 
-\item{rotate}{(\emph{Projection}) The projection’s three-axis rotation to the specified angles, which must be a two- or three-element array of numbers [\code{lambda}, \code{phi}, \code{gamma}] specifying the rotation angles in degrees about each spherical axis. (These correspond to yaw, pitch and roll.)
+\item{precision}{The threshold for the projection's \href{http://bl.ocks.org/mbostock/3795544}{adaptive resampling} to the specified
+value in pixels. This value corresponds to the \href{http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm}{Douglas–Peucker distance}.
+If precision is not specified, returns the projection's current resampling
+precision which defaults to \verb{√0.5 ≅ 0.70710…}.}
+
+\item{radius}{number}
+
+\item{ratio}{number}
+
+\item{reflectX}{boolean}
+
+\item{reflectY}{boolean}
+
+\item{rotate}{The projection's three-axis rotation to the specified angles, which must be a
+two- or three-element array of numbers [\code{lambda}, \code{phi}, \code{gamma}] specifying the
+rotation angles in degrees about each spherical axis. (These correspond to yaw,
+pitch and roll.)
 
 \strong{Default value:} \verb{[0, 0, 0]}}
 
-\item{scale}{(\emph{Projection}) The projection's scale (zoom) value, overriding automatic fitting.}
+\item{scale}{The projection’s scale (zoom) factor, overriding automatic fitting. The
+default scale is projection-specific. The scale factor corresponds linearly
+to the distance between projected points; however, scale factor values are not
+equivalent across projections.}
 
-\item{spacing}{(\emph{Projection})}
+\item{size}{Vector2<number>}
 
-\item{tilt}{(\emph{Projection})}
+\item{spacing}{number}
 
-\item{translate}{(\emph{Projection}) The projection's translation (pan) value, overriding automatic fitting.}
+\item{tilt}{number}
 
-\item{type}{(\emph{Projection}) The cartographic projection to use. This value is case-insensitive, for example \code{"albers"} and \code{"Albers"} indicate the same projection type. You can find all valid projection types \href{https://vega.github.io/vega-lite/docs/projection.html#projection-types}{in the documentation}.
+\item{translate}{The projection’s translation offset as a two-element array \verb{[tx, ty]}.}
+
+\item{type}{The cartographic projection to use. This value is case-insensitive,
+for example \code{"albers"} and \code{"Albers"} indicate the same
+projection type. You can find all valid projection types \href{https://vega.github.io/vega-lite/docs/projection.html#projection-types}{in the documentation}.
 
 \strong{Default value:} \code{mercator}}
 }
