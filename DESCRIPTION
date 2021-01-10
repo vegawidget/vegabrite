@@ -23,4 +23,6 @@ Suggests:
     rmarkdown,
     rlang,
     testthat (>= 2.1.0)
+Remotes:  
+    vegawidget/vegawidget
 VignetteBuilder: knitr
