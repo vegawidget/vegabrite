@@ -16003,7 +16003,7 @@ vl$`SelectionParameter` <- function(`bind` = NULL, `name` = NULL, `select` = NUL
 #' 
 #' Add radio binding to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param selection_name Name of selection to add binding to
+#' @param parameter_name Name of selection to add binding to
 #' @param projection_name Name of projection (field or encoding) within selection
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRadioSelect
 #' @param debounce If defined, delays event handling until the specified milliseconds have elapsed
@@ -16018,9 +16018,9 @@ vl$`SelectionParameter` <- function(`bind` = NULL, `name` = NULL, `select` = NUL
 #' @param options An array of options to select from.
 #' @return A modified Vega-Lite Spec
 #' @export
-vl_bind_radio_input <- function(spec, selection_name, projection_name = NULL, .object = NULL, debounce = NULL, element = NULL, labels = NULL, name = NULL, options = NULL) {
-  obj <- .modify_args(list(input = 'radio'), c('projection_name', 'selection_name'))
-  .add_binding(spec, obj, '#/definitions/BindRadioSelect', selection_name = selection_name,
+vl_bind_radio_input <- function(spec, parameter_name, projection_name = NULL, .object = NULL, debounce = NULL, element = NULL, labels = NULL, name = NULL, options = NULL) {
+  obj <- .modify_args(list(input = 'radio'), c('projection_name', 'parameter_name'))
+  .add_binding(spec, obj, '#/definitions/BindRadioSelect', parameter_name = parameter_name,
 projection_name = projection_name)
 }
 
@@ -16028,7 +16028,7 @@ projection_name = projection_name)
 #' 
 #' Add select binding to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param selection_name Name of selection to add binding to
+#' @param parameter_name Name of selection to add binding to
 #' @param projection_name Name of projection (field or encoding) within selection
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRadioSelect
 #' @param debounce If defined, delays event handling until the specified milliseconds have elapsed
@@ -16043,9 +16043,9 @@ projection_name = projection_name)
 #' @param options An array of options to select from.
 #' @return A modified Vega-Lite Spec
 #' @export
-vl_bind_select_input <- function(spec, selection_name, projection_name = NULL, .object = NULL, debounce = NULL, element = NULL, labels = NULL, name = NULL, options = NULL) {
-  obj <- .modify_args(list(input = 'select'), c('projection_name', 'selection_name'))
-  .add_binding(spec, obj, '#/definitions/BindRadioSelect', selection_name = selection_name,
+vl_bind_select_input <- function(spec, parameter_name, projection_name = NULL, .object = NULL, debounce = NULL, element = NULL, labels = NULL, name = NULL, options = NULL) {
+  obj <- .modify_args(list(input = 'select'), c('projection_name', 'parameter_name'))
+  .add_binding(spec, obj, '#/definitions/BindRadioSelect', parameter_name = parameter_name,
 projection_name = projection_name)
 }
 
@@ -16053,7 +16053,7 @@ projection_name = projection_name)
 #' 
 #' Add checkbox binding to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param selection_name Name of selection to add binding to
+#' @param parameter_name Name of selection to add binding to
 #' @param projection_name Name of projection (field or encoding) within selection
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindCheckbox
 #' @param debounce If defined, delays event handling until the specified milliseconds have elapsed
@@ -16065,9 +16065,9 @@ projection_name = projection_name)
 #' property can be used instead to specify a custom label for the bound signal.
 #' @return A modified Vega-Lite Spec
 #' @export
-vl_bind_checkbox_input <- function(spec, selection_name, projection_name = NULL, .object = NULL, debounce = NULL, element = NULL, name = NULL) {
-  obj <- .modify_args(list(input = 'checkbox'), c('projection_name', 'selection_name'))
-  .add_binding(spec, obj, '#/definitions/BindCheckbox', selection_name = selection_name,
+vl_bind_checkbox_input <- function(spec, parameter_name, projection_name = NULL, .object = NULL, debounce = NULL, element = NULL, name = NULL) {
+  obj <- .modify_args(list(input = 'checkbox'), c('projection_name', 'parameter_name'))
+  .add_binding(spec, obj, '#/definitions/BindCheckbox', parameter_name = parameter_name,
 projection_name = projection_name)
 }
 
@@ -16075,7 +16075,7 @@ projection_name = projection_name)
 #' 
 #' Add range binding to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param selection_name Name of selection to add binding to
+#' @param parameter_name Name of selection to add binding to
 #' @param projection_name Name of projection (field or encoding) within selection
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRange
 #' @param debounce If defined, delays event handling until the specified milliseconds have elapsed
@@ -16093,9 +16093,9 @@ projection_name = projection_name)
 #' automatically determined based on the `min` and `max` values.
 #' @return A modified Vega-Lite Spec
 #' @export
-vl_bind_range_input <- function(spec, selection_name, projection_name = NULL, .object = NULL, debounce = NULL, element = NULL, max = NULL, min = NULL, name = NULL, step = NULL) {
-  obj <- .modify_args(list(input = 'range'), c('projection_name', 'selection_name'))
-  .add_binding(spec, obj, '#/definitions/BindRange', selection_name = selection_name,
+vl_bind_range_input <- function(spec, parameter_name, projection_name = NULL, .object = NULL, debounce = NULL, element = NULL, max = NULL, min = NULL, name = NULL, step = NULL) {
+  obj <- .modify_args(list(input = 'range'), c('projection_name', 'parameter_name'))
+  .add_binding(spec, obj, '#/definitions/BindRange', parameter_name = parameter_name,
 projection_name = projection_name)
 }
 

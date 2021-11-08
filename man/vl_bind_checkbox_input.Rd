@@ -6,7 +6,7 @@
 \usage{
 vl_bind_checkbox_input(
   spec,
-  selection_name,
+  parameter_name,
   projection_name = NULL,
   .object = NULL,
   debounce = NULL,
@@ -17,7 +17,7 @@ vl_bind_checkbox_input(
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{selection_name}{Name of selection to add binding to}
+\item{parameter_name}{Name of selection to add binding to}
 
 \item{projection_name}{Name of projection (field or encoding) within selection}
 

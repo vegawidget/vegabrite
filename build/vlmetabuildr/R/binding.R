@@ -14,7 +14,7 @@ create_binding <- function(schema, name, ref) {
   spec_doc <- glue("#' @param spec An input vega-lite spec")
   object_doc <- get_object_doc(schema, reference)
   extra_doc <- paste(
-    "#' @param selection_name Name of selection to add binding to",
+    "#' @param parameter_name Name of selection to add binding to",
     "#' @param projection_name Name of projection (field or encoding) within selection",
     object_doc,
     sep = "\n"
@@ -29,9 +29,9 @@ create_binding <- function(schema, name, ref) {
 
   ## Make the inner function
   param_names <- get_params(schema, reference)
-  modifier <- glue("  obj <- .modify_args(list(input = '{name}'), c('projection_name', 'selection_name'))")
+  modifier <- glue("  obj <- .modify_args(list(input = '{name}'), c('projection_name', 'parameter_name'))")
 
-  adder <- glue(".add_binding(spec, obj, '{reference}', selection_name = selection_name,
+  adder <- glue(".add_binding(spec, obj, '{reference}', parameter_name = parameter_name,
                 projection_name = projection_name)")
 
   inner_fn <- paste(
@@ -42,7 +42,7 @@ create_binding <- function(schema, name, ref) {
 
   ## Get args
   args <- paste(c("projection_name", ".object", get_params(schema, reference, exclude = "input")), "NULL", sep = " = ")
-  arg_list <- paste(c("spec", "selection_name", args), collapse = ", ")
+  arg_list <- paste(c("spec", "parameter_name", args), collapse = ", ")
 
   make_function_helper(suffix, docs, inner_fn, arg_list)
 }

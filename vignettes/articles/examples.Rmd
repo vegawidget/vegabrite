@@ -96,7 +96,7 @@ vl_chart() %>%
 ```{r}
 vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
-  vl_add_selection_parameter("org", select = c(type = "point", fields = list("Origin"))) %>%
+  vl_add_selection_parameter("org", select = c(type = "point", fields = list(list("Origin")))) %>%
   vl_bind_select_input("org", options = list(NA,"Europe","Japan","USA")) %>%
   vl_mark_point() %>%
   vl_encode_x(field = "Horsepower", type = "quantitative") %>%
