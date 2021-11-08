@@ -19,17 +19,21 @@ vl_config_errorbar(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBarConfig}
 
-\item{extent}{The extent of the rule. Available options include: - \code{"ci"}: Extend the rule
-to the confidence interval of the mean. - \code{"stderr"}: The size of rule are set
-to the value of standard error, extending from the mean. - \code{"stdev"}: The size
-of rule are set to the value of standard deviation, extending from the mean. -
-\code{"iqr"}: Extend the rule to the q1 and q3.
+\item{extent}{The extent of the rule. Available options include:
+\itemize{
+\item \code{"ci"}: Extend the rule to the confidence interval of the mean.
+\item \code{"stderr"}: The size of rule are set to the value of standard error, extending
+from the mean.
+\item \code{"stdev"}: The size of rule are set to the value of standard deviation,
+extending from the mean.
+\item \code{"iqr"}: Extend the rule to the q1 and q3.
+}
 
 \strong{Default value:} \code{"stderr"}.}
 
 \item{rule}{boolean
 
-Or: MarkConfig<ExprOrSignalRef>}
+Or: MarkConfig}
 
 \item{size}{Size of the ticks of an error bar}
 
@@ -37,7 +41,7 @@ Or: MarkConfig<ExprOrSignalRef>}
 
 \item{ticks}{boolean
 
-Or: MarkConfig<ExprOrSignalRef>}
+Or: MarkConfig}
 }
 \value{
 A modified Vega-Lite Spec

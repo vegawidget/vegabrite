@@ -127,10 +127,13 @@ Or: ExprRef}
 
 \item{direction}{The direction of the legend, one of \code{"vertical"} or \code{"horizontal"}.
 
-\strong{Default value:} - For top-/bottom-\code{orient}ed legends,
-\code{"horizontal"} - For left-/right-\code{orient}ed legends, \code{"vertical"} - For
-top/bottom-left/right-\code{orient}ed legends, \code{"horizontal"} for gradient legends
-and \code{"vertical"} for symbol legends.}
+\strong{Default value:}
+\itemize{
+\item For top-/bottom-\code{orient}ed legends, \code{"horizontal"}
+\item For left-/right-\code{orient}ed legends, \code{"vertical"}
+\item For top/bottom-left/right-\code{orient}ed legends, \code{"horizontal"} for gradient
+legends and \code{"vertical"} for symbol legends.
+}}
 
 \item{disable}{Disable legend by default}
 

@@ -50,8 +50,8 @@ vl_config_headerColumn(
 formatting pattern for labels of guides (axes, legends, headers) and text marks.
 \itemize{
 \item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's
-\href{https://github.com/d3/d3-format#locale_format}{number format pattern}. - If the
-format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
+\href{https://github.com/d3/d3-format#locale_format}{number format pattern}.
+\item If the format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
 }
 
 See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more
@@ -70,9 +70,12 @@ for time format.}
 \item{formatType}{The format type for labels. One of \code{"number"},
 \code{"time"}, or a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{registered custom format type}.
 
-\strong{Default value:} - \code{"time"} for temporal fields and ordinal and nominal fields
-with \code{timeUnit}. - \code{"number"} for quantitative fields as well as ordinal and
-nominal fields without \code{timeUnit}.}
+\strong{Default value:}
+\itemize{
+\item \code{"time"} for temporal fields and ordinal and nominal fields with \code{timeUnit}.
+\item \code{"number"} for quantitative fields as well as ordinal and nominal fields
+without \code{timeUnit}.
+}}
 
 \item{labelAlign}{Horizontal text alignment of header labels. One of \code{"left"}, \code{"center"}, or
 \code{"right"}.}

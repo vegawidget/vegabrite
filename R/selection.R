@@ -1,19 +1,16 @@
-.add_selection <- function(spec, ...) {
-  UseMethod(".add_selection", spec)
+.add_parameter <- function(spec, ...) {
+  UseMethod(".add_parameter", spec)
 }
 
-.add_selection.vegaspec_layer <- function(spec, ...) {
-  stop("Cant' add selection to layered spec")
+.add_parameter.vegaspec_layer <- function(spec, ...) {
+  stop("Cant' add parameter to layered spec")
 }
 
-.add_selection.vegaspec_vega_lite <- function(spec, obj, ref, selection_name, type) {
+.add_parameter.vegaspec_vega_lite <- function(spec, obj, ref) {
   fn <- function(spec) {
-    if (!hasName(spec, "selection")) spec$selection <- list()
-    new_sel <- list()
-    obj$type <- type
+    if (!hasName(spec, "params")) spec$params <- list()
     validate_sub_schema(obj, ref)
-    new_sel[[selection_name]] <- obj
-    spec[["selection"]] <- c(spec[["selection"]], new_sel)
+    spec[["params"]] <- c(spec[["params"]], list(obj))
     spec
   }
   modify_inner_spec(spec, fn)

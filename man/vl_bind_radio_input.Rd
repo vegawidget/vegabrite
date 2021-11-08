@@ -13,8 +13,7 @@ vl_bind_radio_input(
   element = NULL,
   labels = NULL,
   name = NULL,
-  options = NULL,
-  type = NULL
+  options = NULL
 )
 }
 \arguments{
@@ -26,17 +25,20 @@ vl_bind_radio_input(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRadioSelect}
 
-\item{debounce}{number}
+\item{debounce}{If defined, delays event handling until the specified milliseconds have elapsed
+since the last event was fired.}
 
-\item{element}{Element}
+\item{element}{An optional CSS selector string indicating the parent element to which the input
+element should be added. By default, all input elements are added within the
+parent container of the Vega view.}
 
-\item{labels}{array}
+\item{labels}{An array of label strings to represent the \code{options} values. If unspecified, the
+\code{options} value will be coerced to a string and used as the label.}
 
-\item{name}{string}
+\item{name}{By default, the signal name is used to label input elements. This \code{name}
+property can be used instead to specify a custom label for the bound signal.}
 
-\item{options}{array}
-
-\item{type}{string}
+\item{options}{An array of options to select from.}
 }
 \value{
 A modified Vega-Lite Spec

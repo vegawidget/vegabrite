@@ -454,16 +454,19 @@ shift the bands to one side, say to position them adjacent to an axis.
 
 \item{base}{The logarithm base of the \code{log} scale (default \code{10}).}
 
-\item{bins}{Bin boundaries can be provided to scales as either an explicit array
-of bin boundaries or as a bin specification object. The legal values
-are: - An \href{../types/#Array}{array} literal of bin boundary values. For
-example, \verb{[0, 5, 10, 15, 20]}. The array must include both starting and
-ending boundaries. The previous example uses five values to indicate
-a total of four bin intervals: [0-5), [5-10), [10-15), [15-20]. Array
-literals may include signal references as elements. - A \href{https://vega.github.io/vega-lite/docs/scale.html#bins}{bin specification object} that indicates
-the bin \emph{step} size, and optionally the \emph{start} and \emph{stop} boundaries. - An
-array of bin boundaries over the scale domain. If provided, axes and legends
-will use the bin boundaries to inform the choice of tick marks and text labels.
+\item{bins}{Bin boundaries can be provided to scales as either an explicit array of bin
+boundaries or as a bin specification object. The legal values are:
+\itemize{
+\item An \href{../types/#Array}{array} literal of bin boundary values. For example, \verb{[0, 5, 10, 15, 20]}. The array must include both starting and ending boundaries.
+The previous example uses five values to indicate a total of four bin intervals:
+[0-5), [5-10), [10-15), [15-20]. Array literals may include signal references as
+elements.
+\item A \href{https://vega.github.io/vega-lite/docs/scale.html#bins}{bin specification object} that indicates
+the bin \emph{step} size, and optionally the \emph{start} and \emph{stop} boundaries.
+\item An array of bin boundaries over the scale domain. If provided, axes and
+legends will use the bin boundaries to inform the choice of tick marks and text
+labels.
+}
 
 [15-20]: R:15-20\%5C
 [bin specification
@@ -481,17 +484,17 @@ for \code{symlog} scales.
 \strong{Default value:} \code{1}}
 
 \item{domain}{Customized domain values in the form of constant values or dynamic values driven
-by a selection.
+by a parameter.
 \enumerate{
 \item Constant \code{domain} for \emph{quantitative} fields can take one of the following
 forms:
 }
 \itemize{
-\item A two-element array with minimum and maximum values. To create a
-diverging scale, this two-element array can be combined with the \code{domainMid}
-property. - An array with more than two entries, for \href{https://vega.github.io/vega-lite/docs/scale.html#piecewise}{Piecewise quantitative scales}. - A string
-value \code{"unaggregated"}, if the input field is aggregated, to indicate that the
-domain should include the raw data values prior to the aggregation.
+\item A two-element array with minimum and maximum values. To create a diverging
+scale, this two-element array can be combined with the \code{domainMid} property.
+\item An array with more than two entries, for \href{https://vega.github.io/vega-lite/docs/scale.html#piecewise}{Piecewise quantitative scales}.
+\item A string value \code{"unaggregated"}, if the input field is aggregated, to indicate
+that the domain should include the raw data values prior to the aggregation.
 }
 \enumerate{
 \item Constant \code{domain} for \emph{temporal} fields can be a two-element array with
@@ -504,7 +507,7 @@ domain to be combined. For example, \verb{domain: \{unionWith: \[0, 100\]\}} for
 quantitative scale means that the scale domain always includes \verb{[0, 100]}, but
 will include other values in the fields beyond \verb{[0, 100]}.
 \item Domain can also takes an object defining a field
-or encoding of a selection that \href{https://vega.github.io/vega-lite/docs/selection.html#scale-domains}{interactively determines}
+or encoding of a parameter that \href{https://vega.github.io/vega-lite/docs/selection.html#scale-domains}{interactively determines}
 the scale domain.
 }}
 

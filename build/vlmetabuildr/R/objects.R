@@ -7,7 +7,8 @@ create_additional_objects <- function(schema) {
     "BindCheckbox",
     "BindRange",
     "BindRadioSelect",
-    "SortField"
+    "SortField",
+    "SelectionConfig"
   )
 
   c(
