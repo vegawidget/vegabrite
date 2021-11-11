@@ -23,5 +23,5 @@ Suggests:
     rlang,
     testthat (>= 2.1.0)
 Remotes:  
-    vegawidget/vegawidget
+    vegawidget/vegawidget#168
 VignetteBuilder: knitr

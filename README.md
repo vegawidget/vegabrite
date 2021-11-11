@@ -4,8 +4,6 @@
 <!-- badges: start -->
 
 ![Lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
-[![Travis build
-status](https://travis-ci.org/vegawidget/vlbuildr.svg?branch=master)](https://travis-ci.org/vegawidget/vlbuildr)
 <!-- badges: end -->
 
 # vlbuildr
