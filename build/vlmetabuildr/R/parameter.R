@@ -1,25 +1,39 @@
 create_parameter_functions <- function(schema) {
+  
+  variable_parameter <- make_function(
+    "#/definitions/VariableParameter",
+    schema,
+    'add_parameter',
+    ".add_parameter",
+    "Add a variable parameter to a spec.  See [add_point_selection()] and [add_interval_selection()] for adding selection parameters."
+  )
+  
+  selection_types <-  c("PointSelectionConfig","IntervalSelectionConfig")
   parameters <- list("VariableParameter","SelectionParameter")
+  
   c(
-    purrr::map_chr(parameters, create_parameter_type, schema = schema),
-    purrr::map_chr(parameters, create_object, schema = schema)
+    variable_parameter,
+    purrr::map_chr(selection_types, create_selection_function, schema = schema),
+    purrr::map_chr(parameters, create_object, schema = schema),
+    purrr::map_chr(selection_types, create_object, schema = schema)
   )
 }
 
 
-create_parameter_type <- function(type, schema) {
+create_selection_function <- function(type, schema) {
   
-  reference <- glue("#/definitions/{type}")
-  short_type <- tolower(stringr::str_remove(type, "Parameter"))
-  suffix <- glue::glue("add_{short_type}_parameter")
+  sub_reference <- glue("#/definitions/{type}")
+  short_type <- tolower(stringr::str_remove(type, "SelectionConfig"))
+  suffix <- glue::glue("add_{short_type}_selection")
   
-  make_function(reference,
-                schema,
-                suffix,
-                ".add_parameter",
-                "Add a paramter to a spec"
+  make_function(
+    "#/definitions/SelectionParameter",
+    schema,
+    suffix,
+    ".add_selection",
+    glue("Add a parameter for a {short_type} selection to a spec"),
+    override_args = list('type' = short_type),
+    sub_references = sub_reference
   )
-                
-}
-
   
+}

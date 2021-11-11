@@ -326,6 +326,7 @@ vl_chart <- function(data = NULL, `$schema` = vegawidget::vega_schema(), align =
 #' 
 #' 2) Setting the `columns` to `1` is equivalent to `vconcat` (for `concat`) and to
 #' using the `row` channel (for `facet` and `repeat`).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_add_properties <- function(spec, .object = NULL, align = NULL, autosize = NULL, background = NULL, bounds = NULL, center = NULL, datasets = NULL, description = NULL, height = NULL, name = NULL, padding = NULL, params = NULL, projection = NULL, spacing = NULL, title = NULL, usermeta = NULL, view = NULL, width = NULL, columns = NULL){
@@ -349,6 +350,7 @@ vl_add_properties <- function(spec, .object = NULL, align = NULL, autosize = NUL
 #' @param sequence Generate a sequence of numbers.
 #' @param sphere Generate sphere GeoJSON data for the full globe.
 #' @param graticule Generate graticule GeoJSON data for geographic reference lines.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_add_data <- function(spec, .object = NULL, values = NULL, format = NULL, name = NULL, url = NULL, graticule = NULL, sequence = NULL, sphere = NULL) {
@@ -776,6 +778,7 @@ vl_add_data <- function(spec, .object = NULL, values = NULL, format = NULL, name
 #' height of the plot.
 #' @param y2Offset Offset for y2-position.
 #' @param yOffset Offset for y-position.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_arc <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, clip = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusEnd = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, radius2Offset = NULL, radiusOffset = NULL, shape = NULL, size = NULL, smooth = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, theta2Offset = NULL, thetaOffset = NULL, thickness = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
@@ -1203,6 +1206,7 @@ vl_mark_arc <- function(spec, .object = NULL, align = NULL, angle = NULL, aria =
 #' height of the plot.
 #' @param y2Offset Offset for y2-position.
 #' @param yOffset Offset for y-position.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_area <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, clip = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusEnd = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, radius2Offset = NULL, radiusOffset = NULL, shape = NULL, size = NULL, smooth = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, theta2Offset = NULL, thetaOffset = NULL, thickness = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
@@ -1630,6 +1634,7 @@ vl_mark_area <- function(spec, .object = NULL, align = NULL, angle = NULL, aria 
 #' height of the plot.
 #' @param y2Offset Offset for y2-position.
 #' @param yOffset Offset for y-position.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_bar <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, clip = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusEnd = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, radius2Offset = NULL, radiusOffset = NULL, shape = NULL, size = NULL, smooth = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, theta2Offset = NULL, thetaOffset = NULL, thickness = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
@@ -2057,6 +2062,7 @@ vl_mark_bar <- function(spec, .object = NULL, align = NULL, angle = NULL, aria =
 #' height of the plot.
 #' @param y2Offset Offset for y2-position.
 #' @param yOffset Offset for y-position.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_image <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, clip = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusEnd = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, radius2Offset = NULL, radiusOffset = NULL, shape = NULL, size = NULL, smooth = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, theta2Offset = NULL, thetaOffset = NULL, thickness = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
@@ -2484,6 +2490,7 @@ vl_mark_image <- function(spec, .object = NULL, align = NULL, angle = NULL, aria
 #' height of the plot.
 #' @param y2Offset Offset for y2-position.
 #' @param yOffset Offset for y-position.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_line <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, clip = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusEnd = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, radius2Offset = NULL, radiusOffset = NULL, shape = NULL, size = NULL, smooth = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, theta2Offset = NULL, thetaOffset = NULL, thickness = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
@@ -2911,6 +2918,7 @@ vl_mark_line <- function(spec, .object = NULL, align = NULL, angle = NULL, aria 
 #' height of the plot.
 #' @param y2Offset Offset for y2-position.
 #' @param yOffset Offset for y-position.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_point <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, clip = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusEnd = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, radius2Offset = NULL, radiusOffset = NULL, shape = NULL, size = NULL, smooth = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, theta2Offset = NULL, thetaOffset = NULL, thickness = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
@@ -3338,6 +3346,7 @@ vl_mark_point <- function(spec, .object = NULL, align = NULL, angle = NULL, aria
 #' height of the plot.
 #' @param y2Offset Offset for y2-position.
 #' @param yOffset Offset for y-position.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_rect <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, clip = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusEnd = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, radius2Offset = NULL, radiusOffset = NULL, shape = NULL, size = NULL, smooth = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, theta2Offset = NULL, thetaOffset = NULL, thickness = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
@@ -3765,6 +3774,7 @@ vl_mark_rect <- function(spec, .object = NULL, align = NULL, angle = NULL, aria 
 #' height of the plot.
 #' @param y2Offset Offset for y2-position.
 #' @param yOffset Offset for y-position.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_rule <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, clip = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusEnd = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, radius2Offset = NULL, radiusOffset = NULL, shape = NULL, size = NULL, smooth = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, theta2Offset = NULL, thetaOffset = NULL, thickness = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
@@ -4192,6 +4202,7 @@ vl_mark_rule <- function(spec, .object = NULL, align = NULL, angle = NULL, aria 
 #' height of the plot.
 #' @param y2Offset Offset for y2-position.
 #' @param yOffset Offset for y-position.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_text <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, clip = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusEnd = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, radius2Offset = NULL, radiusOffset = NULL, shape = NULL, size = NULL, smooth = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, theta2Offset = NULL, thetaOffset = NULL, thickness = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
@@ -4619,6 +4630,7 @@ vl_mark_text <- function(spec, .object = NULL, align = NULL, angle = NULL, aria 
 #' height of the plot.
 #' @param y2Offset Offset for y2-position.
 #' @param yOffset Offset for y-position.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_tick <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, clip = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusEnd = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, radius2Offset = NULL, radiusOffset = NULL, shape = NULL, size = NULL, smooth = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, theta2Offset = NULL, thetaOffset = NULL, thickness = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
@@ -5046,6 +5058,7 @@ vl_mark_tick <- function(spec, .object = NULL, align = NULL, angle = NULL, aria 
 #' height of the plot.
 #' @param y2Offset Offset for y2-position.
 #' @param yOffset Offset for y-position.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_trail <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, clip = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusEnd = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, radius2Offset = NULL, radiusOffset = NULL, shape = NULL, size = NULL, smooth = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, theta2Offset = NULL, thetaOffset = NULL, thickness = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
@@ -5473,6 +5486,7 @@ vl_mark_trail <- function(spec, .object = NULL, align = NULL, angle = NULL, aria
 #' height of the plot.
 #' @param y2Offset Offset for y2-position.
 #' @param yOffset Offset for y-position.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_circle <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, clip = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusEnd = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, radius2Offset = NULL, radiusOffset = NULL, shape = NULL, size = NULL, smooth = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, theta2Offset = NULL, thetaOffset = NULL, thickness = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
@@ -5900,6 +5914,7 @@ vl_mark_circle <- function(spec, .object = NULL, align = NULL, angle = NULL, ari
 #' height of the plot.
 #' @param y2Offset Offset for y2-position.
 #' @param yOffset Offset for y-position.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_square <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, clip = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusEnd = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, radius2Offset = NULL, radiusOffset = NULL, shape = NULL, size = NULL, smooth = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, theta2Offset = NULL, thetaOffset = NULL, thickness = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
@@ -6327,6 +6342,7 @@ vl_mark_square <- function(spec, .object = NULL, align = NULL, angle = NULL, ari
 #' height of the plot.
 #' @param y2Offset Offset for y2-position.
 #' @param yOffset Offset for y-position.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_geoshape <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, clip = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusEnd = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, radius2Offset = NULL, radiusOffset = NULL, shape = NULL, size = NULL, smooth = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, style = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, theta2Offset = NULL, thetaOffset = NULL, thickness = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, x2Offset = NULL, xOffset = NULL, y = NULL, y2 = NULL, y2Offset = NULL, yOffset = NULL) {
@@ -6380,6 +6396,7 @@ vl_mark_geoshape <- function(spec, .object = NULL, align = NULL, angle = NULL, a
 #' @param ticks boolean
 #' 
 #' Or: MarkConfig
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_BoxPlot <- function(spec, .object = NULL, box = NULL, clip = NULL, color = NULL, extent = NULL, median = NULL, opacity = NULL, orient = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL) {
@@ -6423,6 +6440,7 @@ vl_mark_BoxPlot <- function(spec, .object = NULL, box = NULL, clip = NULL, color
 #' @param ticks boolean
 #' 
 #' Or: MarkConfig
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_ErrorBar <- function(spec, .object = NULL, clip = NULL, color = NULL, extent = NULL, opacity = NULL, orient = NULL, rule = NULL, size = NULL, thickness = NULL, ticks = NULL) {
@@ -6487,6 +6505,7 @@ vl_mark_ErrorBar <- function(spec, .object = NULL, clip = NULL, color = NULL, ex
 #' can be specified when the orientation is ambiguous and cannot be automatically
 #' determined.
 #' @param tension The tension parameter for the interpolation type of the error band.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_mark_ErrorBand <- function(spec, .object = NULL, band = NULL, borders = NULL, clip = NULL, color = NULL, extent = NULL, interpolate = NULL, opacity = NULL, orient = NULL, tension = NULL) {
@@ -6701,6 +6720,7 @@ vl_mark_ErrorBand <- function(spec, .object = NULL, band = NULL, borders = NULL,
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_angle <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, datum = NULL, value = NULL) {
@@ -6915,6 +6935,7 @@ vl_encode_angle <- function(spec, .object = NULL, field = NULL, type = NULL, agg
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_color <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, datum = NULL, value = NULL) {
@@ -7102,6 +7123,7 @@ vl_encode_color <- function(spec, .object = NULL, field = NULL, type = NULL, agg
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_description <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, value = NULL) {
@@ -7246,6 +7268,7 @@ vl_encode_description <- function(spec, .object = NULL, field = NULL, type = NUL
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html)
 #' documentation.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_detail <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, timeUnit = NULL, title = NULL) {
@@ -7460,6 +7483,7 @@ vl_encode_detail <- function(spec, .object = NULL, field = NULL, type = NULL, ag
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_fill <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, datum = NULL, value = NULL) {
@@ -7674,6 +7698,7 @@ vl_encode_fill <- function(spec, .object = NULL, field = NULL, type = NULL, aggr
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_fillOpacity <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, datum = NULL, value = NULL) {
@@ -7861,6 +7886,7 @@ vl_encode_fillOpacity <- function(spec, .object = NULL, field = NULL, type = NUL
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_href <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, value = NULL) {
@@ -8005,6 +8031,7 @@ vl_encode_href <- function(spec, .object = NULL, field = NULL, type = NULL, aggr
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html)
 #' documentation.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_key <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, timeUnit = NULL, title = NULL) {
@@ -8150,6 +8177,7 @@ vl_encode_key <- function(spec, .object = NULL, field = NULL, type = NULL, aggre
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html)
 #' documentation.
 #' @param datum A constant value in data domain.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_latitude <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, timeUnit = NULL, title = NULL, datum = NULL) {
@@ -8298,6 +8326,7 @@ vl_encode_latitude <- function(spec, .object = NULL, field = NULL, type = NULL, 
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_latitude2 <- function(spec, .object = NULL, field = NULL, type = NULL, value = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, timeUnit = NULL, title = NULL, datum = NULL) {
@@ -8443,6 +8472,7 @@ vl_encode_latitude2 <- function(spec, .object = NULL, field = NULL, type = NULL,
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html)
 #' documentation.
 #' @param datum A constant value in data domain.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_longitude <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, timeUnit = NULL, title = NULL, datum = NULL) {
@@ -8591,6 +8621,7 @@ vl_encode_longitude <- function(spec, .object = NULL, field = NULL, type = NULL,
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_longitude2 <- function(spec, .object = NULL, field = NULL, type = NULL, value = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, timeUnit = NULL, title = NULL, datum = NULL) {
@@ -8805,6 +8836,7 @@ vl_encode_longitude2 <- function(spec, .object = NULL, field = NULL, type = NULL
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_opacity <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, datum = NULL, value = NULL) {
@@ -8960,6 +8992,7 @@ vl_encode_opacity <- function(spec, .object = NULL, field = NULL, type = NULL, a
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_order <- function(spec, .object = NULL, field = NULL, type = NULL, value = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, sort = NULL, timeUnit = NULL, title = NULL, condition = NULL) {
@@ -9183,6 +9216,7 @@ vl_encode_order <- function(spec, .object = NULL, field = NULL, type = NULL, val
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_radius <- function(spec, .object = NULL, field = NULL, type = NULL, value = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, datum = NULL) {
@@ -9331,6 +9365,7 @@ vl_encode_radius <- function(spec, .object = NULL, field = NULL, type = NULL, va
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_radius2 <- function(spec, .object = NULL, field = NULL, type = NULL, value = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, timeUnit = NULL, title = NULL, datum = NULL) {
@@ -9545,6 +9580,7 @@ vl_encode_radius2 <- function(spec, .object = NULL, field = NULL, type = NULL, v
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_shape <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, datum = NULL, value = NULL) {
@@ -9759,6 +9795,7 @@ vl_encode_shape <- function(spec, .object = NULL, field = NULL, type = NULL, agg
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_size <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, datum = NULL, value = NULL) {
@@ -9973,6 +10010,7 @@ vl_encode_size <- function(spec, .object = NULL, field = NULL, type = NULL, aggr
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_stroke <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, datum = NULL, value = NULL) {
@@ -10187,6 +10225,7 @@ vl_encode_stroke <- function(spec, .object = NULL, field = NULL, type = NULL, ag
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_strokeDash <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, datum = NULL, value = NULL) {
@@ -10401,6 +10440,7 @@ vl_encode_strokeDash <- function(spec, .object = NULL, field = NULL, type = NULL
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_strokeOpacity <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, datum = NULL, value = NULL) {
@@ -10615,6 +10655,7 @@ vl_encode_strokeOpacity <- function(spec, .object = NULL, field = NULL, type = N
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_strokeWidth <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, condition = NULL, legend = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, datum = NULL, value = NULL) {
@@ -10803,6 +10844,7 @@ vl_encode_strokeWidth <- function(spec, .object = NULL, field = NULL, type = NUL
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_text <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, datum = NULL, value = NULL) {
@@ -11026,6 +11068,7 @@ vl_encode_text <- function(spec, .object = NULL, field = NULL, type = NULL, aggr
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_theta <- function(spec, .object = NULL, field = NULL, type = NULL, value = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, datum = NULL) {
@@ -11174,6 +11217,7 @@ vl_encode_theta <- function(spec, .object = NULL, field = NULL, type = NULL, val
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_theta2 <- function(spec, .object = NULL, field = NULL, type = NULL, value = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, timeUnit = NULL, title = NULL, datum = NULL) {
@@ -11361,6 +11405,7 @@ vl_encode_theta2 <- function(spec, .object = NULL, field = NULL, type = NULL, va
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_tooltip <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, value = NULL) {
@@ -11548,6 +11593,7 @@ vl_encode_tooltip <- function(spec, .object = NULL, field = NULL, type = NULL, a
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_url <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, condition = NULL, format = NULL, formatType = NULL, timeUnit = NULL, title = NULL, value = NULL) {
@@ -11786,6 +11832,7 @@ vl_encode_url <- function(spec, .object = NULL, field = NULL, type = NULL, aggre
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_x <- function(spec, .object = NULL, field = NULL, type = NULL, value = NULL, aggregate = NULL, axis = NULL, bandPosition = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, datum = NULL) {
@@ -11934,6 +11981,7 @@ vl_encode_x <- function(spec, .object = NULL, field = NULL, type = NULL, value =
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_x2 <- function(spec, .object = NULL, field = NULL, type = NULL, value = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, timeUnit = NULL, title = NULL, datum = NULL) {
@@ -12019,6 +12067,7 @@ vl_encode_x2 <- function(spec, .object = NULL, field = NULL, type = NULL, value 
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_xError <- function(spec, .object = NULL, field = NULL, value = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, timeUnit = NULL, title = NULL) {
@@ -12104,6 +12153,7 @@ vl_encode_xError <- function(spec, .object = NULL, field = NULL, value = NULL, a
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_xError2 <- function(spec, .object = NULL, field = NULL, value = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, timeUnit = NULL, title = NULL) {
@@ -12342,6 +12392,7 @@ vl_encode_xError2 <- function(spec, .object = NULL, field = NULL, value = NULL, 
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_y <- function(spec, .object = NULL, field = NULL, type = NULL, value = NULL, aggregate = NULL, axis = NULL, bandPosition = NULL, bin = NULL, impute = NULL, scale = NULL, sort = NULL, stack = NULL, timeUnit = NULL, title = NULL, datum = NULL) {
@@ -12490,6 +12541,7 @@ vl_encode_y <- function(spec, .object = NULL, field = NULL, type = NULL, value =
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_y2 <- function(spec, .object = NULL, field = NULL, type = NULL, value = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, timeUnit = NULL, title = NULL, datum = NULL) {
@@ -12575,6 +12627,7 @@ vl_encode_y2 <- function(spec, .object = NULL, field = NULL, type = NULL, value 
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_yError <- function(spec, .object = NULL, field = NULL, value = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, timeUnit = NULL, title = NULL) {
@@ -12660,6 +12713,7 @@ vl_encode_yError <- function(spec, .object = NULL, field = NULL, value = NULL, a
 #' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
 #' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
 #' color, values between `0` to `1` for opacity).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_yError2 <- function(spec, .object = NULL, field = NULL, value = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, timeUnit = NULL, title = NULL) {
@@ -12780,6 +12834,7 @@ vl$`YError2` <- function(`aggregate` = NULL, `bandPosition` = NULL, `bin` = NULL
 #' @param aggregate Array of objects that define fields to aggregate.
 #' @param groupby The data fields to group by. If not specified, a single group containing all
 #' data objects will be used.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_aggregate <- function(spec, .object = NULL, aggregate = NULL, groupby = NULL) {
@@ -12799,6 +12854,7 @@ vl_aggregate <- function(spec, .object = NULL, aggregate = NULL, groupby = NULL)
 #' @param bin An object indicating bin properties, or simply `true` for using default bin
 #' parameters.
 #' @param field The data field to bin.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_bin <- function(spec, .object = NULL, bin = NULL, as = NULL, field = NULL) {
@@ -12814,6 +12870,7 @@ vl_bin <- function(spec, .object = NULL, bin = NULL, as = NULL, field = NULL) {
 #' @param as The field for storing the computed formula value.
 #' @param calculate A [expression](https://vega.github.io/vega-lite/docs/types.html#expression)
 #' string. Use the variable `datum` to refer to the current data object.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_calculate <- function(spec, .object = NULL, calculate = NULL, as = NULL) {
@@ -12858,6 +12915,7 @@ vl_calculate <- function(spec, .object = NULL, calculate = NULL, as = NULL) {
 #' density. If specified, overrides both minsteps and maxsteps to set an exact
 #' number of uniform samples. Potentially useful in conjunction with a fixed extent
 #' to ensure consistent sample points for stacked densities.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_density <- function(spec, .object = NULL, density = NULL, as = NULL, bandwidth = NULL, counts = NULL, cumulative = NULL, extent = NULL, groupby = NULL, maxsteps = NULL, minsteps = NULL, steps = NULL) {
@@ -12898,6 +12956,7 @@ vl_density <- function(spec, .object = NULL, density = NULL, as = NULL, bandwidt
 #' 4) a [logical
 #' composition](https://vega.github.io/vega-lite/docs/predicate.html#composition)
 #' of (1), (2), or (3).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_filter <- function(spec, .object = NULL, filter = NULL) {
@@ -12917,6 +12976,7 @@ vl_filter <- function(spec, .object = NULL, filter = NULL) {
 #' fields are specified, their array values should have a parallel structure,
 #' ideally with the same length. If the lengths of parallel arrays do not match,
 #' the longest array will be used with `null` values added for missing entries.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_flatten <- function(spec, .object = NULL, flatten = NULL, as = NULL) {
@@ -12932,6 +12992,7 @@ vl_flatten <- function(spec, .object = NULL, flatten = NULL, as = NULL) {
 #' @param as The output field names for the key and value properties produced by the fold
 #' transform. __Default value:__ `["key", "value"]`
 #' @param fold An array of data fields indicating the properties to fold.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_fold <- function(spec, .object = NULL, fold = NULL, as = NULL) {
@@ -12974,6 +13035,7 @@ vl_fold <- function(spec, .object = NULL, fold = NULL, as = NULL) {
 #' 
 #' __Default value:__ `"value"`
 #' @param value The field value to use when the imputation `method` is `"value"`.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_impute <- function(spec, .object = NULL, impute = NULL, key = NULL, frame = NULL, groupby = NULL, keyvals = NULL, method = NULL, value = NULL) {
@@ -12990,6 +13052,7 @@ vl_impute <- function(spec, .object = NULL, impute = NULL, key = NULL, frame = N
 #' unspecified, all data points will be in a single group.
 #' @param joinaggregate The definition of the fields in the join aggregate, and what calculations to
 #' use.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_joinaggregate <- function(spec, .object = NULL, joinaggregate = NULL, groupby = NULL) {
@@ -13013,6 +13076,7 @@ vl_joinaggregate <- function(spec, .object = NULL, joinaggregate = NULL, groupby
 #' data objects will be used.
 #' @param loess The data field of the dependent variable to smooth.
 #' @param on The data field of the independent variable to use a predictor.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_loess <- function(spec, .object = NULL, loess = NULL, on = NULL, as = NULL, bandwidth = NULL, groupby = NULL) {
@@ -13039,6 +13103,7 @@ vl_loess <- function(spec, .object = NULL, loess = NULL, on = NULL, as = NULL, b
 #' __Default value:__ `null`
 #' @param from Data source or selection for secondary data reference.
 #' @param lookup Key in primary data source.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_lookup <- function(spec, .object = NULL, lookup = NULL, from = NULL, as = NULL, default = NULL) {
@@ -13062,6 +13127,7 @@ vl_lookup <- function(spec, .object = NULL, lookup = NULL, from = NULL, as = NUL
 #' @param step A probability step size (default 0.01) for sampling quantile values. All values
 #' from one-half the step size up to 1 (exclusive) will be sampled. This parameter
 #' is only used if the *probs* parameter is not provided.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_quantile <- function(spec, .object = NULL, quantile = NULL, as = NULL, groupby = NULL, probs = NULL, step = NULL) {
@@ -13098,6 +13164,7 @@ vl_quantile <- function(spec, .object = NULL, quantile = NULL, as = NULL, groupb
 #' 
 #' __Default value:__ `false`
 #' @param regression The data field of the dependent variable to predict.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_regression <- function(spec, .object = NULL, regression = NULL, on = NULL, as = NULL, extent = NULL, groupby = NULL, method = NULL, order = NULL, params = NULL) {
@@ -13113,6 +13180,7 @@ vl_regression <- function(spec, .object = NULL, regression = NULL, on = NULL, as
 #' @param as The output field to write the timeUnit value.
 #' @param field The data field to apply time unit.
 #' @param timeUnit The timeUnit.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_timeunit <- function(spec, .object = NULL, as = NULL, field = NULL, timeUnit = NULL) {
@@ -13128,6 +13196,7 @@ vl_timeunit <- function(spec, .object = NULL, as = NULL, field = NULL, timeUnit 
 #' @param sample The maximum number of data objects to include in the sample.
 #' 
 #' __Default value:__ `1000`
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_sample <- function(spec, .object = NULL, sample = NULL) {
@@ -13153,6 +13222,7 @@ vl_sample <- function(spec, .object = NULL, sample = NULL) {
 #' __Default value:__ `"zero"`
 #' @param sort Field that determines the order of leaves in the stacked charts.
 #' @param stack The field which is stacked.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_stack <- function(spec, .object = NULL, stack = NULL, as = NULL, groupby = NULL, offset = NULL, sort = NULL) {
@@ -13198,6 +13268,7 @@ vl_stack <- function(spec, .object = NULL, stack = NULL, as = NULL, groupby = NU
 #' objects are processed in the order they are observed and none are considered
 #' peers (the ignorePeers parameter is ignored and treated as if set to `true`).
 #' @param window The definition of the fields in the window, and what calculations to use.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_window <- function(spec, .object = NULL, window = NULL, frame = NULL, groupby = NULL, ignorePeers = NULL, sort = NULL) {
@@ -13221,6 +13292,7 @@ vl_window <- function(spec, .object = NULL, window = NULL, frame = NULL, groupby
 #' names in the output stream.
 #' @param value The data field to populate pivoted fields. The aggregate values of this field
 #' become the values of the new pivoted fields.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_pivot <- function(spec, .object = NULL, pivot = NULL, value = NULL, groupby = NULL, limit = NULL, op = NULL) {
@@ -15924,9 +15996,10 @@ vl_remove_axis_y <- function(spec) {
   .add_axis_to_encoding(spec, NA, '#/definitions/PositionFieldDef/properties/axis', encoding = 'y') 
 }
 
-#' vl_add_variable_parameter
+#' vl_add_parameter
 #' 
-#' Add a paramter to a spec
+#' Add a variable parameter to a spec.  See [add_point_selection()] and
+#' [add_interval_selection()] for adding selection parameters.
 #' @param spec An input vega-lite spec
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: VariableParameter
 #' @param bind Binds the parameter to an external input element such as a slider, selection
@@ -15942,16 +16015,17 @@ vl_remove_axis_y <- function(spec) {
 #' parameter.
 #' 
 #' __Default value:__ `undefined`
+
 #' @return A modified Vega-Lite Spec
 #' @export
-vl_add_variable_parameter <- function(spec, .object = NULL, name = NULL, bind = NULL, expr = NULL, value = NULL) {
+vl_add_parameter <- function(spec, .object = NULL, name = NULL, bind = NULL, expr = NULL, value = NULL) {
   obj <- .modify_args(NULL, NULL)
   .add_parameter(spec, obj, "#/definitions/VariableParameter")
 }
 
-#' vl_add_selection_parameter
+#' vl_add_point_selection
 #' 
-#' Add a paramter to a spec
+#' Add a parameter for a point selection to a spec
 #' @param spec An input vega-lite spec
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SelectionParameter
 #' @param bind When set, a selection is populated by input elements (also
@@ -15986,16 +16060,221 @@ vl_add_variable_parameter <- function(spec, .object = NULL, name = NULL, bind = 
 #' 
 #' __See also:__ [`init`](https://vega.github.io/vega-lite/docs/value.html)
 #' documentation.
+#' @param clear Clears the selection, emptying it of all values. This property can be a [Event
+#' Stream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable
+#' clear.
+#' 
+#' __Default value:__ `dblclick`.
+#' 
+#' __See also:__ [`clear`
+#' examples ](https://vega.github.io/vega-lite/docs/selection.html#clear) in the
+#' documentation.
+#' @param encodings An array of encoding channels. The corresponding data field values must match
+#' for a data tuple to fall within the selection.
+#' 
+#' __See also:__ The [projection with `encodings` and `fields`
+#' section](https://vega.github.io/vega-lite/docs/selection.html#project) in the
+#' documentation.
+#' @param fields An array of field names whose values must match for a data tuple to fall within
+#' the selection.
+#' 
+#' __See also:__ The [projection with `encodings` and `fields`
+#' section](https://vega.github.io/vega-lite/docs/selection.html#project) in the
+#' documentation.
+#' @param nearest When true, an invisible voronoi diagram is computed to accelerate discrete
+#' selection. The data value _nearest_ the mouse cursor is added to the selection.
+#' 
+#' __Default value:__ `false`, which means that data values must be interacted with
+#' directly (e.g., clicked on) to be added to the selection.
+#' 
+#' __See also:__ [`nearest`
+#' examples](https://vega.github.io/vega-lite/docs/selection.html#nearest)
+#' documentation.
+#' @param on A [Vega event stream](https://vega.github.io/vega/docs/event-streams/)
+#' (object or selector) that triggers the selection. For interval
+#' selections, the event stream must specify a [start and
+#' end](https://vega.github.io/vega/docs/event-streams/#between-filters).
+#' 
+#' __See also:__ [`on`
+#' examples](https://vega.github.io/vega-lite/docs/selection.html#on) in the
+#' documentation.
+#' @param resolve With layered and multi-view displays, a strategy that determines how selections'
+#' data queries are resolved when applied in a filter transform, conditional
+#' encoding rule, or scale domain.
+#' 
+#' One of:
+#' - `"global"` -- only one brush exists for the entire SPLOM. When the user begins
+#' to drag, any previous brushes are cleared, and a new one is constructed.
+#' - `"union"` -- each cell contains its own brush, and points are highlighted if
+#' they lie within _any_ of these individual brushes.
+#' - `"intersect"` -- each cell contains its own brush, and points are highlighted
+#' only if they fall within _all_ of these individual brushes.
+#' 
+#' __Default value:__ `global`.
+#' 
+#' __See also:__ [`resolve`
+#' examples](https://vega.github.io/vega-lite/docs/selection.html#resolve) in the
+#' documentation.
+#' @param toggle Controls whether data values should be toggled (inserted or removed from a point
+#' selection) or only ever inserted into multi selections.
+#' 
+#' One of:
+#' - `true` -- the default behavior, which corresponds to `"event.shiftKey"`. As
+#' a result, data values are toggled when the user interacts with the shift-key
+#' pressed.
+#' - `false` -- disables toggling behaviour; as the user interacts, data values are
+#' only inserted into the multi selection and never removed.
+#' - A [Vega expression](https://vega.github.io/vega/docs/expressions/) which is
+#' re-evaluated as the user interacts. If the expression evaluates to `true`, the
+#' data value is toggled into or out of the multi selection. If the expression
+#' evaluates to `false`, the multi selection is first clear, and the data value is
+#' then inserted. For example, setting the value to the Vega expression `"true"`
+#' will toggle data values without the user pressing the shift-key.
+#' 
+#' __Default value:__ `true`
+#' 
+#' __See also:__ [`toggle`
+#' examples](https://vega.github.io/vega-lite/docs/selection.html#toggle) in the
+#' documentation.
 #' @return A modified Vega-Lite Spec
 #' @export
-vl_add_selection_parameter <- function(spec, .object = NULL, name = NULL, select = NULL, bind = NULL, value = NULL) {
-  obj <- .modify_args(NULL, NULL)
-  .add_parameter(spec, obj, "#/definitions/SelectionParameter")
+vl_add_point_selection <- function(spec, .object = NULL, name = NULL, select = NULL, bind = NULL, value = NULL, clear = NULL, encodings = NULL, fields = NULL, nearest = NULL, on = NULL, resolve = NULL, toggle = NULL) {
+  obj <- .modify_args(list(type = "point"), NULL)
+  .add_selection(spec, obj, "#/definitions/SelectionParameter")
+}
+
+#' vl_add_interval_selection
+#' 
+#' Add a parameter for a interval selection to a spec
+#' @param spec An input vega-lite spec
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SelectionParameter
+#' @param bind When set, a selection is populated by input elements (also
+#' known as dynamic query widgets) or by interacting with the
+#' corresponding legend. Direct manipulation interaction is
+#' disabled by default; to re-enable it, set the selection's
+#' [`on`](https://vega.github.io/vega-lite/docs/selection.html#common-selection-properties)
+#' property.
+#' 
+#' Legend bindings are restricted to selections that only specify a single field or
+#' encoding.
+#' 
+#' Query widget binding takes the form of Vega's [input element binding
+#' definition](https://vega.github.io/vega/docs/signals/#bind) or can be a mapping
+#' between projected field/encodings and binding definitions.
+#' 
+#' __See also:__ [`bind`](https://vega.github.io/vega-lite/docs/bind.html)
+#' documentation.
+#' @param name Required. A unique name for the selection parameter. Selection names should be
+#' valid JavaScript identifiers: they should contain only alphanumeric characters
+#' (or "$", or "_") and may not start with a digit. Reserved keywords that may not
+#' be used as parameter names are "datum", "event", "item", and "parent".
+#' @param select Determines the default event processing and data query for the selection.
+#' Vega-Lite currently supports two selection types:
+#' 
+#' - `"point"` -- to select multiple discrete data values; the first value is
+#' selected on `click` and additional values toggled on shift-click.
+#' - `"interval"` -- to select a continuous range of data values on `drag`.
+#' @param value Initialize the selection with a mapping between [projected channels or field
+#' names](https://vega.github.io/vega-lite/docs/selection.html#project) and initial
+#' values.
+#' 
+#' __See also:__ [`init`](https://vega.github.io/vega-lite/docs/value.html)
+#' documentation.
+#' @param clear Clears the selection, emptying it of all values. This property can be a [Event
+#' Stream](https://vega.github.io/vega/docs/event-streams/) or `false` to disable
+#' clear.
+#' 
+#' __Default value:__ `dblclick`.
+#' 
+#' __See also:__ [`clear`
+#' examples ](https://vega.github.io/vega-lite/docs/selection.html#clear) in the
+#' documentation.
+#' @param encodings An array of encoding channels. The corresponding data field values must match
+#' for a data tuple to fall within the selection.
+#' 
+#' __See also:__ The [projection with `encodings` and `fields`
+#' section](https://vega.github.io/vega-lite/docs/selection.html#project) in the
+#' documentation.
+#' @param fields An array of field names whose values must match for a data tuple to fall within
+#' the selection.
+#' 
+#' __See also:__ The [projection with `encodings` and `fields`
+#' section](https://vega.github.io/vega-lite/docs/selection.html#project) in the
+#' documentation.
+#' @param mark An interval selection also adds a rectangle mark to depict the extents of the
+#' interval. The `mark` property can be used to customize the appearance of the
+#' mark.
+#' 
+#' __See also:__ [`mark`
+#' examples](https://vega.github.io/vega-lite/docs/selection.html#mark) in the
+#' documentation.
+#' @param on A [Vega event stream](https://vega.github.io/vega/docs/event-streams/)
+#' (object or selector) that triggers the selection. For interval
+#' selections, the event stream must specify a [start and
+#' end](https://vega.github.io/vega/docs/event-streams/#between-filters).
+#' 
+#' __See also:__ [`on`
+#' examples](https://vega.github.io/vega-lite/docs/selection.html#on) in the
+#' documentation.
+#' @param resolve With layered and multi-view displays, a strategy that determines how selections'
+#' data queries are resolved when applied in a filter transform, conditional
+#' encoding rule, or scale domain.
+#' 
+#' One of:
+#' - `"global"` -- only one brush exists for the entire SPLOM. When the user begins
+#' to drag, any previous brushes are cleared, and a new one is constructed.
+#' - `"union"` -- each cell contains its own brush, and points are highlighted if
+#' they lie within _any_ of these individual brushes.
+#' - `"intersect"` -- each cell contains its own brush, and points are highlighted
+#' only if they fall within _all_ of these individual brushes.
+#' 
+#' __Default value:__ `global`.
+#' 
+#' __See also:__ [`resolve`
+#' examples](https://vega.github.io/vega-lite/docs/selection.html#resolve) in the
+#' documentation.
+#' @param translate When truthy, allows a user to interactively move an interval selection
+#' back-and-forth. Can be `true`, `false` (to disable panning), or a [Vega event
+#' stream definition](https://vega.github.io/vega/docs/event-streams/) which must
+#' include a start and end event to trigger continuous panning. Discrete panning
+#' (e.g., pressing the left/right arrow keys) will be supported in future versions.
+#' 
+#' __Default value:__ `true`, which corresponds to `[mousedown, window:mouseup]
+#' > window:mousemove!`. This default allows users to clicks and drags within an
+#' interval selection to reposition it.
+#' 
+#' __See also:__ [`translate`
+#' examples](https://vega.github.io/vega-lite/docs/selection.html#translate) in the
+#' documentation.
+#' @param zoom When truthy, allows a user to interactively resize an interval selection.
+#' Can be `true`, `false` (to disable zooming), or a [Vega event stream
+#' definition](https://vega.github.io/vega/docs/event-streams/). Currently, only
+#' `wheel` events are supported, but custom event streams can still be used to
+#' specify filters, debouncing, and throttling. Future versions will expand the set
+#' of events that can trigger this transformation.
+#' 
+#' __Default value:__ `true`, which corresponds to `wheel!`. This default allows
+#' users to use the mouse wheel to resize an interval selection.
+#' 
+#' __See also:__ [`zoom`
+#' examples](https://vega.github.io/vega-lite/docs/selection.html#zoom) in the
+#' documentation.
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_add_interval_selection <- function(spec, .object = NULL, name = NULL, select = NULL, bind = NULL, value = NULL, clear = NULL, encodings = NULL, fields = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, zoom = NULL) {
+  obj <- .modify_args(list(type = "interval"), NULL)
+  .add_selection(spec, obj, "#/definitions/SelectionParameter")
 }
 vl$`VariableParameter` <- function(`bind` = NULL, `expr` = NULL, `name` = NULL, `value` = NULL){
   .modify_args(NULL, NULL)
 }
 vl$`SelectionParameter` <- function(`bind` = NULL, `name` = NULL, `select` = NULL, `value` = NULL){
+  .modify_args(NULL, NULL)
+}
+vl$`PointSelectionConfig` <- function(`clear` = NULL, `encodings` = NULL, `fields` = NULL, `nearest` = NULL, `on` = NULL, `resolve` = NULL, `toggle` = NULL, `type` = NULL){
+  .modify_args(NULL, NULL)
+}
+vl$`IntervalSelectionConfig` <- function(`clear` = NULL, `encodings` = NULL, `fields` = NULL, `mark` = NULL, `on` = NULL, `resolve` = NULL, `translate` = NULL, `type` = NULL, `zoom` = NULL){
   .modify_args(NULL, NULL)
 }
 
@@ -16261,6 +16540,7 @@ projection_name = projection_name)
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html)
 #' documentation.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_facet_row <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL) {
@@ -16430,6 +16710,7 @@ vl_facet_row <- function(spec, .object = NULL, field = NULL, type = NULL, aggreg
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html)
 #' documentation.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_facet_column <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL) {
@@ -16653,6 +16934,7 @@ vl_facet_column <- function(spec, .object = NULL, field = NULL, type = NULL, agg
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html)
 #' documentation.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_row <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, align = NULL, bandPosition = NULL, bin = NULL, bounds = NULL, center = NULL, columns = NULL, header = NULL, sort = NULL, spacing = NULL, timeUnit = NULL, title = NULL) {
@@ -16876,6 +17158,7 @@ vl_encode_row <- function(spec, .object = NULL, field = NULL, type = NULL, aggre
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html)
 #' documentation.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_column <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, align = NULL, bandPosition = NULL, bin = NULL, bounds = NULL, center = NULL, columns = NULL, header = NULL, sort = NULL, spacing = NULL, timeUnit = NULL, title = NULL) {
@@ -17099,6 +17382,7 @@ vl_encode_column <- function(spec, .object = NULL, field = NULL, type = NULL, ag
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html)
 #' documentation.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_encode_wrap <- function(spec, .object = NULL, field = NULL, type = NULL, aggregate = NULL, align = NULL, bandPosition = NULL, bin = NULL, bounds = NULL, center = NULL, columns = NULL, header = NULL, sort = NULL, spacing = NULL, timeUnit = NULL, title = NULL) {
@@ -17706,6 +17990,7 @@ vl_resolve_scale_y <- function(spec, how = c('independent', 'shared')) {
 #' @param trail Trail-Specific Config
 #' @param view Default properties for [single view
 #' plots](https://vega.github.io/vega-lite/docs/spec.html#single).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config <- function(spec, .object = NULL, arc = NULL, area = NULL, aria = NULL, autosize = NULL, axis = NULL, axisBand = NULL, axisBottom = NULL, axisDiscrete = NULL, axisLeft = NULL, axisPoint = NULL, axisQuantitative = NULL, axisRight = NULL, axisTemporal = NULL, axisTop = NULL, axisX = NULL, axisXBand = NULL, axisXDiscrete = NULL, axisXPoint = NULL, axisXQuantitative = NULL, axisXTemporal = NULL, axisY = NULL, axisYBand = NULL, axisYDiscrete = NULL, axisYPoint = NULL, axisYQuantitative = NULL, axisYTemporal = NULL, background = NULL, bar = NULL, boxplot = NULL, circle = NULL, concat = NULL, countTitle = NULL, customFormatTypes = NULL, errorband = NULL, errorbar = NULL, facet = NULL, fieldTitle = NULL, font = NULL, geoshape = NULL, header = NULL, headerColumn = NULL, headerFacet = NULL, headerRow = NULL, image = NULL, legend = NULL, line = NULL, lineBreak = NULL, locale = NULL, mark = NULL, numberFormat = NULL, padding = NULL, params = NULL, point = NULL, projection = NULL, range = NULL, rect = NULL, rule = NULL, scale = NULL, selection = NULL, square = NULL, style = NULL, text = NULL, tick = NULL, timeFormat = NULL, title = NULL, trail = NULL, view = NULL) {
@@ -18081,6 +18366,7 @@ vl_config <- function(spec, .object = NULL, arc = NULL, area = NULL, aria = NULL
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the
 #' height of the plot.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_arc <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, endAngle = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, radius = NULL, radius2 = NULL, shape = NULL, size = NULL, smooth = NULL, startAngle = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
@@ -18469,6 +18755,7 @@ vl_config_arc <- function(spec, .object = NULL, align = NULL, angle = NULL, aria
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the
 #' height of the plot.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_area <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, baseline = NULL, blend = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, endAngle = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, line = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, shape = NULL, size = NULL, smooth = NULL, startAngle = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
@@ -18931,6 +19218,7 @@ vl_config_area <- function(spec, .object = NULL, align = NULL, angle = NULL, ari
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axis <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -19393,6 +19681,7 @@ vl_config_axis <- function(spec, .object = NULL, aria = NULL, bandPosition = NUL
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisBand <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -19855,6 +20144,7 @@ vl_config_axisBand <- function(spec, .object = NULL, aria = NULL, bandPosition =
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisBottom <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -20317,6 +20607,7 @@ vl_config_axisBottom <- function(spec, .object = NULL, aria = NULL, bandPosition
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisDiscrete <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -20779,6 +21070,7 @@ vl_config_axisDiscrete <- function(spec, .object = NULL, aria = NULL, bandPositi
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisLeft <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -21241,6 +21533,7 @@ vl_config_axisLeft <- function(spec, .object = NULL, aria = NULL, bandPosition =
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisPoint <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -21703,6 +21996,7 @@ vl_config_axisPoint <- function(spec, .object = NULL, aria = NULL, bandPosition 
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisQuantitative <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -22165,6 +22459,7 @@ vl_config_axisQuantitative <- function(spec, .object = NULL, aria = NULL, bandPo
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisRight <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -22627,6 +22922,7 @@ vl_config_axisRight <- function(spec, .object = NULL, aria = NULL, bandPosition 
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisTemporal <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -23089,6 +23385,7 @@ vl_config_axisTemporal <- function(spec, .object = NULL, aria = NULL, bandPositi
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisTop <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -23551,6 +23848,7 @@ vl_config_axisTop <- function(spec, .object = NULL, aria = NULL, bandPosition = 
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisX <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -24013,6 +24311,7 @@ vl_config_axisX <- function(spec, .object = NULL, aria = NULL, bandPosition = NU
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisXBand <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -24475,6 +24774,7 @@ vl_config_axisXBand <- function(spec, .object = NULL, aria = NULL, bandPosition 
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisXDiscrete <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -24937,6 +25237,7 @@ vl_config_axisXDiscrete <- function(spec, .object = NULL, aria = NULL, bandPosit
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisXPoint <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -25399,6 +25700,7 @@ vl_config_axisXPoint <- function(spec, .object = NULL, aria = NULL, bandPosition
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisXQuantitative <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -25861,6 +26163,7 @@ vl_config_axisXQuantitative <- function(spec, .object = NULL, aria = NULL, bandP
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisXTemporal <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -26323,6 +26626,7 @@ vl_config_axisXTemporal <- function(spec, .object = NULL, aria = NULL, bandPosit
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisY <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -26785,6 +27089,7 @@ vl_config_axisY <- function(spec, .object = NULL, aria = NULL, bandPosition = NU
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisYBand <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -27247,6 +27552,7 @@ vl_config_axisYBand <- function(spec, .object = NULL, aria = NULL, bandPosition 
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisYDiscrete <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -27709,6 +28015,7 @@ vl_config_axisYDiscrete <- function(spec, .object = NULL, aria = NULL, bandPosit
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisYPoint <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -28171,6 +28478,7 @@ vl_config_axisYPoint <- function(spec, .object = NULL, aria = NULL, bandPosition
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisYQuantitative <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -28633,6 +28941,7 @@ vl_config_axisYQuantitative <- function(spec, .object = NULL, aria = NULL, bandP
 #' `1` or more.
 #' 
 #' __Default value:__ `0` (behind the marks).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_axisYTemporal <- function(spec, .object = NULL, aria = NULL, bandPosition = NULL, description = NULL, disable = NULL, domain = NULL, domainCap = NULL, domainColor = NULL, domainDash = NULL, domainDashOffset = NULL, domainOpacity = NULL, domainWidth = NULL, format = NULL, formatType = NULL, grid = NULL, gridCap = NULL, gridColor = NULL, gridDash = NULL, gridDashOffset = NULL, gridOpacity = NULL, gridWidth = NULL, labelAlign = NULL, labelAngle = NULL, labelBaseline = NULL, labelBound = NULL, labelColor = NULL, labelExpr = NULL, labelFlush = NULL, labelFlushOffset = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, labels = NULL, maxExtent = NULL, minExtent = NULL, offset = NULL, orient = NULL, position = NULL, style = NULL, tickBand = NULL, tickCap = NULL, tickColor = NULL, tickCount = NULL, tickDash = NULL, tickDashOffset = NULL, tickExtra = NULL, tickMinStep = NULL, tickOffset = NULL, tickOpacity = NULL, tickRound = NULL, tickSize = NULL, tickWidth = NULL, ticks = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titlePadding = NULL, titleX = NULL, titleY = NULL, translate = NULL, values = NULL, zindex = NULL) {
@@ -29011,6 +29320,7 @@ vl_config_axisYTemporal <- function(spec, .object = NULL, aria = NULL, bandPosit
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the
 #' height of the plot.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_bar <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusEnd = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, endAngle = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, radius = NULL, radius2 = NULL, shape = NULL, size = NULL, smooth = NULL, startAngle = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
@@ -29048,6 +29358,7 @@ vl_config_bar <- function(spec, .object = NULL, align = NULL, angle = NULL, aria
 #' @param ticks boolean
 #' 
 #' Or: MarkConfig
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_boxplot <- function(spec, .object = NULL, box = NULL, extent = NULL, median = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL) {
@@ -29414,6 +29725,7 @@ vl_config_boxplot <- function(spec, .object = NULL, box = NULL, extent = NULL, m
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the
 #' height of the plot.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_circle <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, baseline = NULL, blend = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, endAngle = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, radius = NULL, radius2 = NULL, shape = NULL, size = NULL, smooth = NULL, startAngle = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
@@ -29444,6 +29756,7 @@ vl_config_circle <- function(spec, .object = NULL, align = NULL, angle = NULL, a
 #' @param spacing The default spacing in pixels between composed sub-views.
 #' 
 #' __Default value__: `20`
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_concat <- function(spec, .object = NULL, columns = NULL, spacing = NULL) {
@@ -29494,6 +29807,7 @@ vl_config_concat <- function(spec, .object = NULL, columns = NULL, spacing = NUL
 #' straighten the spline.
 #' - `"monotone"`: cubic interpolation that preserves monotonicity in y.
 #' @param tension The tension parameter for the interpolation type of the error band.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_errorband <- function(spec, .object = NULL, band = NULL, borders = NULL, extent = NULL, interpolate = NULL, tension = NULL) {
@@ -29523,6 +29837,7 @@ vl_config_errorband <- function(spec, .object = NULL, band = NULL, borders = NUL
 #' @param ticks boolean
 #' 
 #' Or: MarkConfig
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_errorbar <- function(spec, .object = NULL, extent = NULL, rule = NULL, size = NULL, thickness = NULL, ticks = NULL) {
@@ -29553,6 +29868,7 @@ vl_config_errorbar <- function(spec, .object = NULL, extent = NULL, rule = NULL,
 #' @param spacing The default spacing in pixels between composed sub-views.
 #' 
 #' __Default value__: `20`
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_facet <- function(spec, .object = NULL, columns = NULL, spacing = NULL) {
@@ -29919,6 +30235,7 @@ vl_config_facet <- function(spec, .object = NULL, columns = NULL, spacing = NULL
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the
 #' height of the plot.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_geoshape <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, baseline = NULL, blend = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, endAngle = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, radius = NULL, radius2 = NULL, shape = NULL, size = NULL, smooth = NULL, startAngle = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
@@ -30032,6 +30349,7 @@ vl_config_geoshape <- function(spec, .object = NULL, align = NULL, angle = NULL,
 #' @param titlePadding The padding, in pixel, between facet header's title and the label.
 #' 
 #' __Default value:__ `10`
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_header <- function(spec, .object = NULL, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOrient = NULL, labelPadding = NULL, labels = NULL, orient = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOrient = NULL, titlePadding = NULL) {
@@ -30145,6 +30463,7 @@ vl_config_header <- function(spec, .object = NULL, format = NULL, formatType = N
 #' @param titlePadding The padding, in pixel, between facet header's title and the label.
 #' 
 #' __Default value:__ `10`
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_headerColumn <- function(spec, .object = NULL, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOrient = NULL, labelPadding = NULL, labels = NULL, orient = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOrient = NULL, titlePadding = NULL) {
@@ -30258,6 +30577,7 @@ vl_config_headerColumn <- function(spec, .object = NULL, format = NULL, formatTy
 #' @param titlePadding The padding, in pixel, between facet header's title and the label.
 #' 
 #' __Default value:__ `10`
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_headerFacet <- function(spec, .object = NULL, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOrient = NULL, labelPadding = NULL, labels = NULL, orient = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOrient = NULL, titlePadding = NULL) {
@@ -30371,6 +30691,7 @@ vl_config_headerFacet <- function(spec, .object = NULL, format = NULL, formatTyp
 #' @param titlePadding The padding, in pixel, between facet header's title and the label.
 #' 
 #' __Default value:__ `10`
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_headerRow <- function(spec, .object = NULL, format = NULL, formatType = NULL, labelAlign = NULL, labelAnchor = NULL, labelAngle = NULL, labelBaseline = NULL, labelColor = NULL, labelExpr = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelLineHeight = NULL, labelOrient = NULL, labelPadding = NULL, labels = NULL, orient = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleAngle = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOrient = NULL, titlePadding = NULL) {
@@ -30746,6 +31067,7 @@ vl_config_headerRow <- function(spec, .object = NULL, format = NULL, formatType 
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the
 #' height of the plot.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_image <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, endAngle = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, radius = NULL, radius2 = NULL, shape = NULL, size = NULL, smooth = NULL, startAngle = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
@@ -31082,6 +31404,7 @@ vl_config_image <- function(spec, .object = NULL, align = NULL, angle = NULL, ar
 #' other axis, mark, and legend groups.
 #' 
 #' Or: ExprRef
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_legend <- function(spec, .object = NULL, aria = NULL, clipHeight = NULL, columnPadding = NULL, columns = NULL, cornerRadius = NULL, description = NULL, direction = NULL, disable = NULL, fillColor = NULL, gradientDirection = NULL, gradientHorizontalMaxLength = NULL, gradientHorizontalMinLength = NULL, gradientLabelLimit = NULL, gradientLabelOffset = NULL, gradientLength = NULL, gradientOpacity = NULL, gradientStrokeColor = NULL, gradientStrokeWidth = NULL, gradientThickness = NULL, gradientVerticalMaxLength = NULL, gradientVerticalMinLength = NULL, gridAlign = NULL, labelAlign = NULL, labelBaseline = NULL, labelColor = NULL, labelFont = NULL, labelFontSize = NULL, labelFontStyle = NULL, labelFontWeight = NULL, labelLimit = NULL, labelOffset = NULL, labelOpacity = NULL, labelOverlap = NULL, labelPadding = NULL, labelSeparation = NULL, layout = NULL, legendX = NULL, legendY = NULL, offset = NULL, orient = NULL, padding = NULL, rowPadding = NULL, strokeColor = NULL, strokeDash = NULL, strokeWidth = NULL, symbolBaseFillColor = NULL, symbolBaseStrokeColor = NULL, symbolDash = NULL, symbolDashOffset = NULL, symbolDirection = NULL, symbolFillColor = NULL, symbolLimit = NULL, symbolOffset = NULL, symbolOpacity = NULL, symbolSize = NULL, symbolStrokeColor = NULL, symbolStrokeWidth = NULL, symbolType = NULL, tickCount = NULL, title = NULL, titleAlign = NULL, titleAnchor = NULL, titleBaseline = NULL, titleColor = NULL, titleFont = NULL, titleFontSize = NULL, titleFontStyle = NULL, titleFontWeight = NULL, titleLimit = NULL, titleLineHeight = NULL, titleOpacity = NULL, titleOrient = NULL, titlePadding = NULL, unselectedOpacity = NULL, zindex = NULL) {
@@ -31461,6 +31784,7 @@ vl_config_legend <- function(spec, .object = NULL, aria = NULL, clipHeight = NUL
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the
 #' height of the plot.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_line <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, baseline = NULL, blend = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, endAngle = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, shape = NULL, size = NULL, smooth = NULL, startAngle = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
@@ -31827,6 +32151,7 @@ vl_config_line <- function(spec, .object = NULL, align = NULL, angle = NULL, ari
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the
 #' height of the plot.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_mark <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, baseline = NULL, blend = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, endAngle = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, radius = NULL, radius2 = NULL, shape = NULL, size = NULL, smooth = NULL, startAngle = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
@@ -32193,6 +32518,7 @@ vl_config_mark <- function(spec, .object = NULL, align = NULL, angle = NULL, ari
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the
 #' height of the plot.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_point <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, baseline = NULL, blend = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, endAngle = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, radius = NULL, radius2 = NULL, shape = NULL, size = NULL, smooth = NULL, startAngle = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
@@ -32325,6 +32651,7 @@ vl_config_point <- function(spec, .object = NULL, align = NULL, angle = NULL, ar
 #' documentation](https://vega.github.io/vega-lite/docs/projection.html#projection-types).
 #' 
 #' __Default value:__ `equalEarth`
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_projection <- function(spec, .object = NULL, center = NULL, clipAngle = NULL, clipExtent = NULL, coefficient = NULL, distance = NULL, extent = NULL, fit = NULL, fraction = NULL, lobes = NULL, parallel = NULL, parallels = NULL, pointRadius = NULL, precision = NULL, radius = NULL, ratio = NULL, reflectX = NULL, reflectY = NULL, rotate = NULL, scale = NULL, size = NULL, spacing = NULL, tilt = NULL, translate = NULL, type = NULL) {
@@ -32350,6 +32677,7 @@ vl_config_projection <- function(spec, .object = NULL, center = NULL, clipAngle 
 #' @param symbol Array of [symbol](https://vega.github.io/vega/docs/marks/symbol/) names or paths
 #' for the default shape palette.
 #' @param ... Additional elements for constructing object.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_range <- function(spec, .object = NULL, category = NULL, diverging = NULL, heatmap = NULL, ordinal = NULL, ramp = NULL, symbol = NULL, ...) {
@@ -32725,6 +33053,7 @@ vl_config_range <- function(spec, .object = NULL, category = NULL, diverging = N
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the
 #' height of the plot.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_rect <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, baseline = NULL, binSpacing = NULL, blend = NULL, color = NULL, continuousBandSize = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, discreteBandSize = NULL, dx = NULL, dy = NULL, ellipsis = NULL, endAngle = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, radius = NULL, radius2 = NULL, shape = NULL, size = NULL, smooth = NULL, startAngle = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
@@ -33091,6 +33420,7 @@ vl_config_rect <- function(spec, .object = NULL, align = NULL, angle = NULL, ari
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the
 #' height of the plot.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_rule <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, baseline = NULL, blend = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, endAngle = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, radius = NULL, radius2 = NULL, shape = NULL, size = NULL, smooth = NULL, startAngle = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
@@ -33183,6 +33513,7 @@ vl_config_rule <- function(spec, .object = NULL, align = NULL, angle = NULL, ari
 #' 
 #' __Default value:__ `false`
 #' @param xReverse Reverse x-scale by default (useful for right-to-left charts).
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_scale <- function(spec, .object = NULL, bandPaddingInner = NULL, bandPaddingOuter = NULL, barBandPaddingInner = NULL, clamp = NULL, continuousPadding = NULL, maxBandSize = NULL, maxFontSize = NULL, maxOpacity = NULL, maxSize = NULL, maxStrokeWidth = NULL, minBandSize = NULL, minFontSize = NULL, minOpacity = NULL, minSize = NULL, minStrokeWidth = NULL, pointPadding = NULL, quantileCount = NULL, quantizeCount = NULL, rectBandPaddingInner = NULL, round = NULL, useUnaggregatedDomain = NULL, xReverse = NULL) {
@@ -33209,6 +33540,7 @@ vl_config_scale <- function(spec, .object = NULL, bandPaddingInner = NULL, bandP
 #' 
 #' For instance, setting `point` to `{"on": "dblclick"}` populates point selections
 #' on double-click by default.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_selection <- function(spec, .object = NULL, interval = NULL, point = NULL) {
@@ -33575,6 +33907,7 @@ vl_config_selection <- function(spec, .object = NULL, interval = NULL, point = N
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the
 #' height of the plot.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_square <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, baseline = NULL, blend = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, endAngle = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, radius = NULL, radius2 = NULL, shape = NULL, size = NULL, smooth = NULL, startAngle = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
@@ -33941,6 +34274,7 @@ vl_config_square <- function(spec, .object = NULL, align = NULL, angle = NULL, a
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the
 #' height of the plot.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_text <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, baseline = NULL, blend = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, endAngle = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, radius = NULL, radius2 = NULL, shape = NULL, size = NULL, smooth = NULL, startAngle = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
@@ -34314,6 +34648,7 @@ vl_config_text <- function(spec, .object = NULL, align = NULL, angle = NULL, ari
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the
 #' height of the plot.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_tick <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, bandSize = NULL, baseline = NULL, blend = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, endAngle = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, radius = NULL, radius2 = NULL, shape = NULL, size = NULL, smooth = NULL, startAngle = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, thickness = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
@@ -34421,6 +34756,7 @@ vl_config_tick <- function(spec, .object = NULL, align = NULL, angle = NULL, ari
 #' __Default value:__ `0`.
 #' 
 #' Or: ExprRef
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_title <- function(spec, .object = NULL, align = NULL, anchor = NULL, angle = NULL, aria = NULL, baseline = NULL, color = NULL, dx = NULL, dy = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, frame = NULL, limit = NULL, lineHeight = NULL, offset = NULL, orient = NULL, subtitleColor = NULL, subtitleFont = NULL, subtitleFontSize = NULL, subtitleFontStyle = NULL, subtitleFontWeight = NULL, subtitleLineHeight = NULL, subtitlePadding = NULL, zindex = NULL) {
@@ -34800,6 +35136,7 @@ vl_config_title <- function(spec, .object = NULL, align = NULL, anchor = NULL, a
 #' 
 #' The `value` of this channel can be a number or a string `"height"` for the
 #' height of the plot.
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_trail <- function(spec, .object = NULL, align = NULL, angle = NULL, aria = NULL, ariaRole = NULL, ariaRoleDescription = NULL, aspect = NULL, baseline = NULL, blend = NULL, color = NULL, cornerRadius = NULL, cornerRadiusBottomLeft = NULL, cornerRadiusBottomRight = NULL, cornerRadiusTopLeft = NULL, cornerRadiusTopRight = NULL, cursor = NULL, description = NULL, dir = NULL, dx = NULL, dy = NULL, ellipsis = NULL, endAngle = NULL, fill = NULL, fillOpacity = NULL, filled = NULL, font = NULL, fontSize = NULL, fontStyle = NULL, fontWeight = NULL, height = NULL, href = NULL, innerRadius = NULL, interpolate = NULL, invalid = NULL, limit = NULL, lineBreak = NULL, lineHeight = NULL, opacity = NULL, order = NULL, orient = NULL, outerRadius = NULL, padAngle = NULL, point = NULL, radius = NULL, radius2 = NULL, shape = NULL, size = NULL, smooth = NULL, startAngle = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOffset = NULL, strokeOpacity = NULL, strokeWidth = NULL, tension = NULL, text = NULL, theta = NULL, theta2 = NULL, timeUnitBandPosition = NULL, timeUnitBandSize = NULL, tooltip = NULL, url = NULL, width = NULL, x = NULL, x2 = NULL, y = NULL, y2 = NULL) {
@@ -34883,6 +35220,7 @@ vl_config_trail <- function(spec, .object = NULL, align = NULL, angle = NULL, ar
 #' @param strokeWidth The stroke width, in pixels.
 #' 
 #' Or: ExprRef
+
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_view <- function(spec, .object = NULL, clip = NULL, continuousHeight = NULL, continuousWidth = NULL, cornerRadius = NULL, cursor = NULL, discreteHeight = NULL, discreteWidth = NULL, fill = NULL, fillOpacity = NULL, opacity = NULL, step = NULL, stroke = NULL, strokeCap = NULL, strokeDash = NULL, strokeDashOffset = NULL, strokeJoin = NULL, strokeMiterLimit = NULL, strokeOpacity = NULL, strokeWidth = NULL) {
@@ -34983,9 +35321,6 @@ vl$`BindRadioSelect` <- function(`debounce` = NULL, `element` = NULL, `input` = 
   .modify_args(NULL, NULL)
 }
 vl$`SortField` <- function(`field` = NULL, `order` = NULL){
-  .modify_args(NULL, NULL)
-}
-vl$`SelectionConfig` <- function(`interval` = NULL, `point` = NULL){
   .modify_args(NULL, NULL)
 }
 vl$`Window` <- function(`as` = NULL, `field` = NULL, `op` = NULL, `param` = NULL){

@@ -16,6 +16,29 @@
   modify_inner_spec(spec, fn)
 }
 
+
+.add_selection <- function(spec, ...) {
+  UseMethod(".add_selection", spec)
+}
+
+.add_selection.vegaspec_layer <- function(spec, ...) {
+  stop("Cant' add selection to layered spec")
+}
+
+.add_selection.vegaspec_vega_lite <- function(spec, obj, ref) {
+  obj_names <- names(obj)
+  top_names <- c("name","bind","value","select")
+  other_names <- setdiff(obj_names, top_names)
+  select_subset <- obj[which(obj_names %in% other_names)]
+  obj[which(obj_names %in% other_names)] <- NULL
+  if (!hasName(obj, "select")) obj[["select"]] <- list()
+  obj[["select"]] <- c(obj[["select"]], select_subset)
+  
+  .add_parameter(spec, obj, ref)
+}
+
+
+
 .add_binding <- function(spec, ...) {
   UseMethod(".add_binding", spec)
 }
