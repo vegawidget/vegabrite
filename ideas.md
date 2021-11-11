@@ -9,5 +9,8 @@
 - [x] vl$ for make object functions
 - [ ] Roxygen consolidation -- use eval
 - [ ] tooltip sugar -- should be able to take array
+- [ ] Add examples for add_parameter
+- [ ] Add documentation!
+- [ ] Code cleanup -- remove use of $
 
 
