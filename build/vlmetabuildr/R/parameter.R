@@ -5,7 +5,7 @@ create_parameter_functions <- function(schema) {
     schema,
     'add_parameter',
     ".add_parameter",
-    "Add a variable parameter to a spec.  See [add_point_selection()] and [add_interval_selection()] for adding selection parameters."
+    "Add a variable parameter to a spec.  See [vlbuildr::vl_add_point_selection()] and [vlbuildr::vl_add_interval_selection()] for adding selection parameters."
   )
   
   selection_types <-  c("PointSelectionConfig","IntervalSelectionConfig")

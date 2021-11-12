@@ -15998,8 +15998,9 @@ vl_remove_axis_y <- function(spec) {
 
 #' vl_add_parameter
 #' 
-#' Add a variable parameter to a spec.  See [add_point_selection()] and
-#' [add_interval_selection()] for adding selection parameters.
+#' Add a variable parameter to a spec.  See
+#' [vlbuildr::vl_add_point_selection()] and
+#' [vlbuildr::vl_add_interval_selection()] for adding selection parameters.
 #' @param spec An input vega-lite spec
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: VariableParameter
 #' @param bind Binds the parameter to an external input element such as a slider, selection
@@ -16239,8 +16240,11 @@ vl_add_point_selection <- function(spec, .object = NULL, name = NULL, select = N
 #' include a start and end event to trigger continuous panning. Discrete panning
 #' (e.g., pressing the left/right arrow keys) will be supported in future versions.
 #' 
-#' __Default value:__ `true`, which corresponds to `[mousedown, window:mouseup]
-#' > window:mousemove!`. This default allows users to clicks and drags within an
+#' __Default value:__ `true`, which corresponds to 
+#' ```
+#' [mousedown, window:mouseup] > window:mousemove!
+#' ```
+#' . This default allows users to clicks and drags within an
 #' interval selection to reposition it.
 #' 
 #' __See also:__ [`translate`

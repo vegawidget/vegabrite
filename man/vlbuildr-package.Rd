@@ -4,7 +4,7 @@
 \name{vlbuildr-package}
 \alias{vlbuildr}
 \alias{vlbuildr-package}
-\title{vlbuildr: Build vega-lite specs in R}
+\title{vlbuildr: Build Vega-Lite Specs In R}
 \description{
 Build vegalite specs in R. Inspired by vegalite package as well as vega-lite-api and altair. Dependent on vegawidget for actually rendering specs!
 }

@@ -119,7 +119,11 @@ back-and-forth. Can be \code{true}, \code{false} (to disable panning), or a \hre
 include a start and end event to trigger continuous panning. Discrete panning
 (e.g., pressing the left/right arrow keys) will be supported in future versions.
 
-\strong{Default value:} \code{true}, which corresponds to `\link{mousedown, window:mouseup}window:mousemove!`. This default allows users to clicks and drags within aninterval selection to reposition it.
+\strong{Default value:} \code{true}, which corresponds to\preformatted{[mousedown, window:mouseup] > window:mousemove!
+}
+
+. This default allows users to clicks and drags within an
+interval selection to reposition it.
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/selection.html#translate}{\code{translate} examples} in the
 documentation.}

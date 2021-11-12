@@ -4,11 +4,9 @@ on:
   push:
     branches:
       - main
-      - master
   pull_request:
     branches:
       - main
-      - master
 
 name: R-CMD-check
 
@@ -45,8 +43,7 @@ jobs:
       - name: Install X11 dependencies on MacOS
         if: runner.os == 'macOS'
         run: |
-          brew cask install xquartz
-
+          brew install --cask xquartz
       - name: Query dependencies
         run: |
           install.packages('remotes')
@@ -69,11 +66,16 @@ jobs:
           do
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
-
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
+        shell: Rscript {0}
+
+      # custom code
+      - name: V8 engine
+        run: |
+          V8::engine_info()
         shell: Rscript {0}
 
       - name: Check

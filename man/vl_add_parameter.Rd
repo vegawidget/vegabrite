@@ -39,6 +39,7 @@ parameter.
 A modified Vega-Lite Spec
 }
 \description{
-Add a variable parameter to a spec.  See \code{\link[=add_point_selection]{add_point_selection()}} and
-\code{\link[=add_interval_selection]{add_interval_selection()}} for adding selection parameters.
+Add a variable parameter to a spec.  See
+\code{\link[=vl_add_point_selection]{vl_add_point_selection()}} and
+\code{\link[=vl_add_interval_selection]{vl_add_interval_selection()}} for adding selection parameters.
 }
