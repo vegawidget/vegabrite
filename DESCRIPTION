@@ -1,5 +1,5 @@
 Package: vlbuildr
-Title: Build Vega-Lite Specs In R
+Title: Build Vega-Lite Specs in R
 Version: 0.3.0.9000
 Authors@R: c(
   person("Alicia", "Schep", email = "aschep@gmail.com", role = c("aut", "cre")),
