@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="vl_config_legend — vl_config_legend" />
 <meta property="og:description" content="Add legend config (LegendConfig) to a vega-lite spec." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -123,80 +126,85 @@
     <p>Add legend config (LegendConfig) to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_config_legend</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>clipHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>columnPadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>columns</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cornerRadius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fillColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gradientDirection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gradientHorizontalMaxLength</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gradientHorizontalMinLength</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gradientLabelLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gradientLabelOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gradientLength</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gradientOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gradientStrokeColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gradientStrokeWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gradientThickness</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gradientVerticalMaxLength</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gradientVerticalMinLength</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gridAlign</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelAlign</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelBaseline</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelFont</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelFontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelFontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelFontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelOverlap</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelPadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelSeparation</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>layout</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>legendX</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>legendY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>offset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>orient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rowPadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>symbolBaseFillColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>symbolBaseStrokeColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>symbolDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>symbolDashOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>symbolDirection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>symbolFillColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>symbolLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>symbolOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>symbolOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>symbolSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>symbolStrokeColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>symbolStrokeWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>symbolType</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>tickCount</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleAlign</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleAnchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleBaseline</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleFont</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleFontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleFontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleFontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleLineHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleOrient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titlePadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>unselectedOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>vl_config_legend</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  aria <span class='op'>=</span> <span class='cn'>NULL</span>,
+  clipHeight <span class='op'>=</span> <span class='cn'>NULL</span>,
+  columnPadding <span class='op'>=</span> <span class='cn'>NULL</span>,
+  columns <span class='op'>=</span> <span class='cn'>NULL</span>,
+  cornerRadius <span class='op'>=</span> <span class='cn'>NULL</span>,
+  description <span class='op'>=</span> <span class='cn'>NULL</span>,
+  direction <span class='op'>=</span> <span class='cn'>NULL</span>,
+  disable <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fillColor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  gradientDirection <span class='op'>=</span> <span class='cn'>NULL</span>,
+  gradientHorizontalMaxLength <span class='op'>=</span> <span class='cn'>NULL</span>,
+  gradientHorizontalMinLength <span class='op'>=</span> <span class='cn'>NULL</span>,
+  gradientLabelLimit <span class='op'>=</span> <span class='cn'>NULL</span>,
+  gradientLabelOffset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  gradientLength <span class='op'>=</span> <span class='cn'>NULL</span>,
+  gradientOpacity <span class='op'>=</span> <span class='cn'>NULL</span>,
+  gradientStrokeColor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  gradientStrokeWidth <span class='op'>=</span> <span class='cn'>NULL</span>,
+  gradientThickness <span class='op'>=</span> <span class='cn'>NULL</span>,
+  gradientVerticalMaxLength <span class='op'>=</span> <span class='cn'>NULL</span>,
+  gradientVerticalMinLength <span class='op'>=</span> <span class='cn'>NULL</span>,
+  gridAlign <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelAlign <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelBaseline <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelColor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelFont <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelFontSize <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelFontStyle <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelFontWeight <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelLimit <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelOffset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelOpacity <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelOverlap <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelPadding <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelSeparation <span class='op'>=</span> <span class='cn'>NULL</span>,
+  layout <span class='op'>=</span> <span class='cn'>NULL</span>,
+  legendX <span class='op'>=</span> <span class='cn'>NULL</span>,
+  legendY <span class='op'>=</span> <span class='cn'>NULL</span>,
+  offset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  orient <span class='op'>=</span> <span class='cn'>NULL</span>,
+  padding <span class='op'>=</span> <span class='cn'>NULL</span>,
+  rowPadding <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeColor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeDash <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeWidth <span class='op'>=</span> <span class='cn'>NULL</span>,
+  symbolBaseFillColor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  symbolBaseStrokeColor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  symbolDash <span class='op'>=</span> <span class='cn'>NULL</span>,
+  symbolDashOffset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  symbolDirection <span class='op'>=</span> <span class='cn'>NULL</span>,
+  symbolFillColor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  symbolLimit <span class='op'>=</span> <span class='cn'>NULL</span>,
+  symbolOffset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  symbolOpacity <span class='op'>=</span> <span class='cn'>NULL</span>,
+  symbolSize <span class='op'>=</span> <span class='cn'>NULL</span>,
+  symbolStrokeColor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  symbolStrokeWidth <span class='op'>=</span> <span class='cn'>NULL</span>,
+  symbolType <span class='op'>=</span> <span class='cn'>NULL</span>,
+  tickCount <span class='op'>=</span> <span class='cn'>NULL</span>,
+  title <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleAlign <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleAnchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleBaseline <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleColor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleFont <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleFontSize <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleFontStyle <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleFontWeight <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleLimit <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleLineHeight <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleOpacity <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleOrient <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titlePadding <span class='op'>=</span> <span class='cn'>NULL</span>,
+  unselectedOpacity <span class='op'>=</span> <span class='cn'>NULL</span>,
+  zindex <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -210,317 +218,452 @@
       <td><p>Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LegendConfig</p></td>
     </tr>
     <tr>
+      <th>aria</th>
+      <td><p>A boolean flag indicating if <a href='https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA'>ARIA attributes</a>
+should be included (SVG output only). If <code>false</code>, the "aria-hidden" attribute
+will be set on the output SVG group, removing the legend from the ARIA
+accessibility tree.</p>
+<p><strong>Default value:</strong> <code>true</code></p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
       <th>clipHeight</th>
-      <td><p>(<em>LegendConfig</em>) The height in pixels to clip symbol legend entries and limit their size.</p></td>
+      <td><p>The height in pixels to clip symbol legend entries and limit their size.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>columnPadding</th>
-      <td><p>(<em>LegendConfig</em>) The horizontal padding in pixels between symbol legend entries.</p>
-<p><strong>Default value:</strong> <code>10</code>.</p></td>
+      <td><p>The horizontal padding in pixels between symbol legend entries.</p>
+<p><strong>Default value:</strong> <code>10</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>columns</th>
-      <td><p>(<em>LegendConfig</em>) The number of columns in which to arrange symbol legend entries. A value of <code>0</code> or lower indicates a single row with one column per entry.</p></td>
+      <td><p>The number of columns in which to arrange symbol legend entries. A value of <code>0</code>
+or lower indicates a single row with one column per entry.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>cornerRadius</th>
-      <td><p>(<em>LegendConfig</em>) Corner radius for the full legend.</p></td>
+      <td><p>Corner radius for the full legend.</p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
+      <th>description</th>
+      <td><p>A text description of this legend for <a href='https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA'>ARIA accessibility</a>
+(SVG output only). If the <code>aria</code> property
+is true, for SVG output the <a href='https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute'>"aria-label" attribute</a>
+will be set to this description. If the description is unspecified it will be
+automatically generated.</p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
+      <th>direction</th>
+      <td><p>The direction of the legend, one of <code>"vertical"</code> or <code>"horizontal"</code>.</p>
+<p><strong>Default value:</strong></p><ul>
+<li><p>For top-/bottom-<code>orient</code>ed legends, <code>"horizontal"</code></p></li>
+<li><p>For left-/right-<code>orient</code>ed legends, <code>"vertical"</code></p></li>
+<li><p>For top/bottom-left/right-<code>orient</code>ed legends, <code>"horizontal"</code> for gradient
+legends and <code>"vertical"</code> for symbol legends.</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>disable</th>
+      <td><p>Disable legend by default</p></td>
     </tr>
     <tr>
       <th>fillColor</th>
-      <td><p>(<em>LegendConfig</em>) Background fill color for the full legend.</p></td>
+      <td><p>Background fill color for the full legend.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>gradientDirection</th>
-      <td><p>(<em>LegendConfig</em>) The default direction (<code>"horizontal"</code> or <code>"vertical"</code>) for gradient legends.</p>
-<p><strong>Default value:</strong> <code>"vertical"</code>.</p></td>
+      <td><p>The default direction (<code>"horizontal"</code> or <code>"vertical"</code>) for gradient legends.</p>
+<p><strong>Default value:</strong> <code>"vertical"</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>gradientHorizontalMaxLength</th>
-      <td><p>(<em>LegendConfig</em>) Max legend length for a horizontal gradient when <code>config.legend.gradientLength</code> is undefined.</p>
+      <td><p>Max legend length for a horizontal gradient when <code>config.legend.gradientLength</code>
+is undefined.</p>
 <p><strong>Default value:</strong> <code>200</code></p></td>
     </tr>
     <tr>
       <th>gradientHorizontalMinLength</th>
-      <td><p>(<em>LegendConfig</em>) Min legend length for a horizontal gradient when <code>config.legend.gradientLength</code> is undefined.</p>
+      <td><p>Min legend length for a horizontal gradient when <code>config.legend.gradientLength</code>
+is undefined.</p>
 <p><strong>Default value:</strong> <code>100</code></p></td>
     </tr>
     <tr>
       <th>gradientLabelLimit</th>
-      <td><p>(<em>LegendConfig</em>) The maximum allowed length in pixels of color ramp gradient labels.</p></td>
+      <td><p>The maximum allowed length in pixels of color ramp gradient labels.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>gradientLabelOffset</th>
-      <td><p>(<em>LegendConfig</em>) Vertical offset in pixels for color ramp gradient labels.</p>
-<p><strong>Default value:</strong> <code>2</code>.</p></td>
+      <td><p>Vertical offset in pixels for color ramp gradient labels.</p>
+<p><strong>Default value:</strong> <code>2</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>gradientLength</th>
-      <td><p>(<em>LegendConfig</em>) The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.</p>
-<p><strong>Default value:</strong> <code>200</code>.</p></td>
+      <td><p>The length in pixels of the primary axis of a color gradient. This value
+corresponds to the height of a vertical gradient or the width of a horizontal
+gradient.</p>
+<p><strong>Default value:</strong> <code>200</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>gradientOpacity</th>
-      <td><p>(<em>LegendConfig</em>) Opacity of the color gradient.</p></td>
+      <td><p>Opacity of the color gradient.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>gradientStrokeColor</th>
-      <td><p>(<em>LegendConfig</em>) The color of the gradient stroke, can be in hex color code or regular color name.</p>
-<p><strong>Default value:</strong> <code>"lightGray"</code>.</p></td>
+      <td><p>The color of the gradient stroke, can be in hex color code or regular color
+name.</p>
+<p><strong>Default value:</strong> <code>"lightGray"</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>gradientStrokeWidth</th>
-      <td><p>(<em>LegendConfig</em>) The width of the gradient stroke, in pixels.</p>
-<p><strong>Default value:</strong> <code>0</code>.</p></td>
+      <td><p>The width of the gradient stroke, in pixels.</p>
+<p><strong>Default value:</strong> <code>0</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>gradientThickness</th>
-      <td><p>(<em>LegendConfig</em>) The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.</p>
-<p><strong>Default value:</strong> <code>16</code>.</p></td>
+      <td><p>The thickness in pixels of the color gradient. This value corresponds to the
+width of a vertical gradient or the height of a horizontal gradient.</p>
+<p><strong>Default value:</strong> <code>16</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>gradientVerticalMaxLength</th>
-      <td><p>(<em>LegendConfig</em>) Max legend length for a vertical gradient when <code>config.legend.gradientLength</code> is undefined.</p>
+      <td><p>Max legend length for a vertical gradient when <code>config.legend.gradientLength</code> is
+undefined.</p>
 <p><strong>Default value:</strong> <code>200</code></p></td>
     </tr>
     <tr>
       <th>gradientVerticalMinLength</th>
-      <td><p>(<em>LegendConfig</em>) Min legend length for a vertical gradient when <code>config.legend.gradientLength</code> is undefined.</p>
+      <td><p>Min legend length for a vertical gradient when <code>config.legend.gradientLength</code> is
+undefined.</p>
 <p><strong>Default value:</strong> <code>100</code></p></td>
     </tr>
     <tr>
       <th>gridAlign</th>
-      <td><p>(<em>LegendConfig</em>) The alignment to apply to symbol legends rows and columns. The supported string values are <code>"all"</code>, <code>"each"</code> (the default), and <code>none</code>. For more information, see the <a href='https://vega.github.io/vega/docs/layout'>grid layout documentation</a>.</p>
-<p><strong>Default value:</strong> <code>"each"</code>.</p></td>
+      <td><p>The alignment to apply to symbol legends rows and columns. The supported string
+values are <code>"all"</code>, <code>"each"</code> (the default), and <code>none</code>. For more information,
+see the <a href='https://vega.github.io/vega/docs/layout'>grid layout documentation</a>.</p>
+<p><strong>Default value:</strong> <code>"each"</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>labelAlign</th>
-      <td><p>(<em>LegendConfig</em>) The alignment of the legend label, can be left, center, or right.</p></td>
+      <td><p>The alignment of the legend label, can be left, center, or right.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>labelBaseline</th>
-      <td><p>(<em>LegendConfig</em>) The position of the baseline of legend label, can be <code>"top"</code>, <code>"middle"</code>, <code>"bottom"</code>, or <code>"alphabetic"</code>.</p>
-<p><strong>Default value:</strong> <code>"middle"</code>.</p></td>
+      <td><p>The position of the baseline of legend label, can be <code>"top"</code>, <code>"middle"</code>,
+<code>"bottom"</code>, or <code>"alphabetic"</code>.</p>
+<p><strong>Default value:</strong> <code>"middle"</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>labelColor</th>
-      <td><p>(<em>LegendConfig</em>) The color of the legend label, can be in hex color code or regular color name.</p></td>
+      <td><p>The color of the legend label, can be in hex color code or regular color name.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>labelFont</th>
-      <td><p>(<em>LegendConfig</em>) The font of the legend label.</p></td>
+      <td><p>The font of the legend label.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>labelFontSize</th>
-      <td><p>(<em>LegendConfig</em>) The font size of legend label.</p>
-<p><strong>Default value:</strong> <code>10</code>.</p></td>
+      <td><p>The font size of legend label.</p>
+<p><strong>Default value:</strong> <code>10</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>labelFontStyle</th>
-      <td><p>(<em>LegendConfig</em>) The font style of legend label.</p></td>
+      <td><p>The font style of legend label.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>labelFontWeight</th>
-      <td><p>(<em>LegendConfig</em>) The font weight of legend label.</p></td>
+      <td><p>The font weight of legend label.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>labelLimit</th>
-      <td><p>(<em>LegendConfig</em>) Maximum allowed pixel width of legend tick labels.</p>
-<p><strong>Default value:</strong> <code>160</code>.</p></td>
+      <td><p>Maximum allowed pixel width of legend tick labels.</p>
+<p><strong>Default value:</strong> <code>160</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>labelOffset</th>
-      <td><p>(<em>LegendConfig</em>) The offset of the legend label.</p></td>
+      <td><p>The offset of the legend label.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>labelOpacity</th>
-      <td><p>(<em>LegendConfig</em>) Opacity of labels.</p></td>
+      <td><p>Opacity of labels.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>labelOverlap</th>
-      <td><p>(<em>LegendConfig</em>) The strategy to use for resolving overlap of labels in gradient legends. If <code>false</code>, no overlap reduction is attempted. If set to <code>true</code> or <code>"parity"</code>, a strategy of removing every other label is used. If set to <code>"greedy"</code>, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).</p>
+      <td><p>The strategy to use for resolving overlap of labels in gradient legends. If
+<code>false</code>, no overlap reduction is attempted. If set to <code>true</code> or <code>"parity"</code>, a
+strategy of removing every other label is used. If set to <code>"greedy"</code>, a linear
+scan of the labels is performed, removing any label that overlaps with the last
+visible label (this often works better for log-scaled axes).</p>
 <p><strong>Default value:</strong> <code>"greedy"</code> for <code>log scales otherwise </code>true`.</p></td>
     </tr>
     <tr>
       <th>labelPadding</th>
-      <td><p>(<em>LegendConfig</em>) Padding in pixels between the legend and legend labels.</p></td>
+      <td><p>Padding in pixels between the legend and legend labels.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>labelSeparation</th>
-      <td><p>(<em>LegendConfig</em>) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default <code>0</code>). This property is ignored if <em>labelOverlap</em> resolution is not enabled.</p></td>
+      <td><p>The minimum separation that must be between label bounding boxes for them
+to be considered non-overlapping (default <code>0</code>). This property is ignored if
+<em>labelOverlap</em> resolution is not enabled.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>layout</th>
-      <td><p>(<em>LegendConfig</em>) Legend orient group layout parameters.</p></td>
+      <td><p>ExprRef</p></td>
     </tr>
     <tr>
       <th>legendX</th>
-      <td><p>(<em>LegendConfig</em>) Custom x-position for legend with orient "none".</p></td>
+      <td><p>Custom x-position for legend with orient "none".</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>legendY</th>
-      <td><p>(<em>LegendConfig</em>) Custom y-position for legend with orient "none".</p></td>
+      <td><p>Custom y-position for legend with orient "none".</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>offset</th>
-      <td><p>(<em>LegendConfig</em>) The offset in pixels by which to displace the legend from the data rectangle and axes.</p>
-<p><strong>Default value:</strong> <code>18</code>.</p></td>
+      <td><p>The offset in pixels by which to displace the legend from the data rectangle and
+axes.</p>
+<p><strong>Default value:</strong> <code>18</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>orient</th>
-      <td><p>(<em>LegendConfig</em>) The orientation of the legend, which determines how the legend is positioned within the scene. One of "left", "right", "top-left", "top-right", "bottom-left", "bottom-right", "none".</p>
+      <td><p>The orientation of the legend, which determines how the legend is positioned
+within the scene. One of <code>"left"</code>, <code>"right"</code>, <code>"top"</code>, <code>"bottom"</code>, <code>"top-left"</code>,
+<code>"top-right"</code>, <code>"bottom-left"</code>, <code>"bottom-right"</code>, <code>"none"</code>.</p>
 <p><strong>Default value:</strong> <code>"right"</code></p></td>
     </tr>
     <tr>
       <th>padding</th>
-      <td><p>(<em>LegendConfig</em>) The padding between the border and content of the legend group.</p>
-<p><strong>Default value:</strong> <code>0</code>.</p></td>
+      <td><p>The padding between the border and content of the legend group.</p>
+<p><strong>Default value:</strong> <code>0</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>rowPadding</th>
-      <td><p>(<em>LegendConfig</em>) The vertical padding in pixels between symbol legend entries.</p>
-<p><strong>Default value:</strong> <code>2</code>.</p></td>
+      <td><p>The vertical padding in pixels between symbol legend entries.</p>
+<p><strong>Default value:</strong> <code>2</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>strokeColor</th>
-      <td><p>(<em>LegendConfig</em>) Border stroke color for the full legend.</p></td>
+      <td><p>Border stroke color for the full legend.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>strokeDash</th>
-      <td><p>(<em>LegendConfig</em>) Border stroke dash pattern for the full legend.</p></td>
+      <td><p>Border stroke dash pattern for the full legend.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>strokeWidth</th>
-      <td><p>(<em>LegendConfig</em>) Border stroke width for the full legend.</p></td>
+      <td><p>Border stroke width for the full legend.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>symbolBaseFillColor</th>
-      <td><p>(<em>LegendConfig</em>) Default fill color for legend symbols. Only applied if there is no <code>"fill"</code> scale color encoding for the legend.</p>
-<p><strong>Default value:</strong> <code>"transparent"</code>.</p></td>
+      <td><p>Default fill color for legend symbols. Only applied if there is no <code>"fill"</code>
+scale color encoding for the legend.</p>
+<p><strong>Default value:</strong> <code>"transparent"</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>symbolBaseStrokeColor</th>
-      <td><p>(<em>LegendConfig</em>) Default stroke color for legend symbols. Only applied if there is no <code>"fill"</code> scale color encoding for the legend.</p>
-<p><strong>Default value:</strong> <code>"gray"</code>.</p></td>
+      <td><p>Default stroke color for legend symbols. Only applied if there is no <code>"fill"</code>
+scale color encoding for the legend.</p>
+<p><strong>Default value:</strong> <code>"gray"</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>symbolDash</th>
-      <td><p>(<em>LegendConfig</em>) An array of alternating [stroke, space] lengths for dashed symbol strokes.</p></td>
+      <td><p>An array of alternating [stroke, space] lengths for dashed symbol strokes.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>symbolDashOffset</th>
-      <td><p>(<em>LegendConfig</em>) The pixel offset at which to start drawing with the symbol stroke dash array.</p></td>
+      <td><p>The pixel offset at which to start drawing with the symbol stroke dash array.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>symbolDirection</th>
-      <td><p>(<em>LegendConfig</em>) The default direction (<code>"horizontal"</code> or <code>"vertical"</code>) for symbol legends.</p>
-<p><strong>Default value:</strong> <code>"vertical"</code>.</p></td>
+      <td><p>The default direction (<code>"horizontal"</code> or <code>"vertical"</code>) for symbol legends.</p>
+<p><strong>Default value:</strong> <code>"vertical"</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>symbolFillColor</th>
-      <td><p>(<em>LegendConfig</em>) The color of the legend symbol,</p></td>
+      <td><p>The color of the legend symbol,</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>symbolLimit</th>
-      <td><p>(<em>LegendConfig</em>) The maximum number of allowed entries for a symbol legend. Additional entries will be dropped.</p></td>
+      <td><p>The maximum number of allowed entries for a symbol legend. Additional entries
+will be dropped.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>symbolOffset</th>
-      <td><p>(<em>LegendConfig</em>) Horizontal pixel offset for legend symbols.</p>
-<p><strong>Default value:</strong> <code>0</code>.</p></td>
+      <td><p>Horizontal pixel offset for legend symbols.</p>
+<p><strong>Default value:</strong> <code>0</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>symbolOpacity</th>
-      <td><p>(<em>LegendConfig</em>) Opacity of the legend symbols.</p></td>
+      <td><p>Opacity of the legend symbols.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>symbolSize</th>
-      <td><p>(<em>LegendConfig</em>) The size of the legend symbol, in pixels.</p>
-<p><strong>Default value:</strong> <code>100</code>.</p></td>
+      <td><p>The size of the legend symbol, in pixels.</p>
+<p><strong>Default value:</strong> <code>100</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>symbolStrokeColor</th>
-      <td><p>(<em>LegendConfig</em>) Stroke color for legend symbols.</p></td>
+      <td><p>Stroke color for legend symbols.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>symbolStrokeWidth</th>
-      <td><p>(<em>LegendConfig</em>) The width of the symbol's stroke.</p>
-<p><strong>Default value:</strong> <code>1.5</code>.</p></td>
+      <td><p>The width of the symbol's stroke.</p>
+<p><strong>Default value:</strong> <code>1.5</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>symbolType</th>
-      <td><p>(<em>LegendConfig</em>) The symbol shape. One of the plotting shapes <code>circle</code> (default), <code>square</code>, <code>cross</code>, <code>diamond</code>, <code>triangle-up</code>, <code>triangle-down</code>, <code>triangle-right</code>, or <code>triangle-left</code>, the line symbol <code>stroke</code>, or one of the centered directional shapes <code>arrow</code>, <code>wedge</code>, or <code>triangle</code>. Alternatively, a custom <a href='https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths'>SVG path string</a> can be provided. For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.</p>
-<p><strong>Default value:</strong> <code>"circle"</code>.</p></td>
+      <td><p>The symbol shape. One of the plotting shapes <code>circle</code> (default), <code>square</code>,
+<code>cross</code>, <code>diamond</code>, <code>triangle-up</code>, <code>triangle-down</code>, <code>triangle-right</code>, or
+<code>triangle-left</code>, the line symbol <code>stroke</code>, or one of the centered directional
+shapes <code>arrow</code>, <code>wedge</code>, or <code>triangle</code>. Alternatively, a custom <a href='https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths'>SVG path string</a> can
+be provided. For correct sizing, custom shape paths should be defined within a
+square bounding box with coordinates ranging from -1 to 1 along both the x and y
+dimensions.</p>
+<p><strong>Default value:</strong> <code>"circle"</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>tickCount</th>
-      <td><p>(<em>LegendConfig</em>) The desired number of tick values for quantitative legends.</p></td>
+      <td><p>The desired number of tick values for quantitative legends.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>title</th>
-      <td><p>(<em>LegendConfig</em>) Set to null to disable title for the axis, legend, or header.</p></td>
+      <td><p>Set to null to disable title for the axis, legend, or header.</p></td>
     </tr>
     <tr>
       <th>titleAlign</th>
-      <td><p>(<em>LegendConfig</em>) Horizontal text alignment for legend titles.</p>
-<p><strong>Default value:</strong> <code>"left"</code>.</p></td>
+      <td><p>Horizontal text alignment for legend titles.</p>
+<p><strong>Default value:</strong> <code>"left"</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>titleAnchor</th>
-      <td><p>(<em>LegendConfig</em>) Text anchor position for placing legend titles.</p></td>
+      <td><p>Text anchor position for placing legend titles.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>titleBaseline</th>
-      <td><p>(<em>LegendConfig</em>) Vertical text baseline for legend titles.</p>
-<p><strong>Default value:</strong> <code>"top"</code>.</p></td>
+      <td><p>Vertical text baseline for legend titles. One of <code>"alphabetic"</code> (default),
+<code>"top"</code>, <code>"middle"</code>, <code>"bottom"</code>, <code>"line-top"</code>, or <code>"line-bottom"</code>. The
+<code>"line-top"</code> and <code>"line-bottom"</code> values operate similarly to <code>"top"</code> and
+<code>"bottom"</code>, but are calculated relative to the <em>lineHeight</em> rather than
+<em>fontSize</em> alone.</p>
+<p><strong>Default value:</strong> <code>"top"</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>titleColor</th>
-      <td><p>(<em>LegendConfig</em>) The color of the legend title, can be in hex color code or regular color name.</p></td>
+      <td><p>The color of the legend title, can be in hex color code or regular color name.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>titleFont</th>
-      <td><p>(<em>LegendConfig</em>) The font of the legend title.</p></td>
+      <td><p>The font of the legend title.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>titleFontSize</th>
-      <td><p>(<em>LegendConfig</em>) The font size of the legend title.</p></td>
+      <td><p>The font size of the legend title.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>titleFontStyle</th>
-      <td><p>(<em>LegendConfig</em>) The font style of the legend title.</p></td>
+      <td><p>The font style of the legend title.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>titleFontWeight</th>
-      <td><p>(<em>LegendConfig</em>) The font weight of the legend title.
-This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or a number (<code>100</code>, <code>200</code>, <code>300</code>, ..., <code>900</code> where <code>"normal"</code> = <code>400</code> and <code>"bold"</code> = <code>700</code>).</p></td>
+      <td><p>The font weight of the legend title. This can be either a string (e.g <code>"bold"</code>,
+<code>"normal"</code>) or a number (<code>100</code>, <code>200</code>, <code>300</code>, ..., <code>900</code> where <code>"normal"</code> =
+<code>400</code> and <code>"bold"</code> = <code>700</code>).</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>titleLimit</th>
-      <td><p>(<em>LegendConfig</em>) Maximum allowed pixel width of legend titles.</p>
-<p><strong>Default value:</strong> <code>180</code>.</p></td>
+      <td><p>Maximum allowed pixel width of legend titles.</p>
+<p><strong>Default value:</strong> <code>180</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>titleLineHeight</th>
-      <td><p>(<em>LegendConfig</em>) Line height in pixels for multi-line title text.</p></td>
+      <td><p>Line height in pixels for multi-line title text or title text with <code>"line-top"</code>
+or <code>"line-bottom"</code> baseline.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>titleOpacity</th>
-      <td><p>(<em>LegendConfig</em>) Opacity of the legend title.</p></td>
+      <td><p>Opacity of the legend title.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>titleOrient</th>
-      <td><p>(<em>LegendConfig</em>) Orientation of the legend title.</p></td>
+      <td><p>Orientation of the legend title.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>titlePadding</th>
-      <td><p>(<em>LegendConfig</em>) The padding, in pixels, between title and legend.</p>
-<p><strong>Default value:</strong> <code>5</code>.</p></td>
+      <td><p>The padding, in pixels, between title and legend.</p>
+<p><strong>Default value:</strong> <code>5</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>unselectedOpacity</th>
-      <td><p>(<em>LegendConfig</em>) The opacity of unselected legend entries.</p>
+      <td><p>The opacity of unselected legend entries.</p>
 <p><strong>Default value:</strong> 0.35.</p></td>
+    </tr>
+    <tr>
+      <th>zindex</th>
+      <td><p>The integer z-index indicating the layering of the legend group relative to
+other axis, mark, and legend groups.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     </table>
 
@@ -529,13 +672,10 @@ This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or 
     <p>A modified Vega-Lite Spec</p>
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -546,7 +686,7 @@ This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or 
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

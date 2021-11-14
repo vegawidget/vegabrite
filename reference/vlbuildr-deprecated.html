@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -38,7 +42,6 @@
 <meta property="og:title" content="Deprecated functions from vlbuildr — vlbuildr-deprecated" />
 <meta property="og:description" content="These functions have been deprecated in favor of a different
 naming convention." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -56,7 +59,7 @@ naming convention." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -70,7 +73,7 @@ naming convention." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -125,247 +128,6 @@ naming convention." />
 naming convention.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_make_Color</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Detail</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Fill</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_FillOpacity</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Href</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Key</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Latitude</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Latitude2</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Longitude</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Longitude2</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Opacity</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Order</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Shape</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Size</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Stroke</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_StrokeOpacity</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_StrokeWidth</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Text</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Tooltip</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Url</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_X</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_X2</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_XError</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_XError2</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Y</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Y2</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_YError</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_YError2</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_AggregateTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_BinTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_CalculateTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_DensityTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_FilterTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_FlattenTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_FoldTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_ImputeTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_JoinAggregateTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_LoessTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_LookupTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_QuantileTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_RegressionTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_TimeUnitTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_SampleTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_StackTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_WindowTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_PivotTransform</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_SingleSelection</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_MultiSelection</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_IntervalSelection</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_area_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_axis_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_axisBand_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_axisBottom_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_axisLeft_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_axisRight_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_axisTop_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_axisX_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_axisY_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_bar_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_boxplot_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_circle_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_concat_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_errorband_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_errorbar_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_facet_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_geoshape_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_header_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_headerColumn_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_headerFacet_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_headerRow_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_image_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_legend_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_line_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_mark_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_point_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_projection_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_range_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_rect_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_repeat_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_rule_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_scale_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_selection_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_square_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_text_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_tick_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_title_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_trail_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_view_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_add_config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_AreaConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_AxisConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_BaseMarkConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_BoxPlotConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_BrushConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_CompositionConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Config</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_ErrorBandConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_ErrorBarConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_HeaderConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_IntervalSelectionConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_LegendConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_LineConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_MarkConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_MultiSelectionConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_ProjectionConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_RangeConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_RectConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_ScaleConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_SelectionConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_SingleSelectionConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_TickConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_TitleConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_ViewConfig</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_BinParams</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Axis</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Scale</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_Legend</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_BindCheckbox</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_BindRange</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_BindRadioSelect</span>(<span class='no'>...</span>)
-
-<span class='fu'>vl_make_SortField</span>(<span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -378,12 +140,10 @@ naming convention.</p>
 
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -394,7 +154,7 @@ naming convention.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

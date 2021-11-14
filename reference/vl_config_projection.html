@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="vl_config_projection — vl_config_projection" />
 <meta property="og:description" content="Add projection config (ProjectionConfig) to a vega-lite spec." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -123,30 +126,34 @@
     <p>Add projection config (ProjectionConfig) to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_config_projection</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>center</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>clipAngle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>clipExtent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>coefficient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>distance</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fraction</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>lobes</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>parallels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>precision</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>radius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ratio</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>reflectX</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>reflectY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rotate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>spacing</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>tilt</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>translate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>vl_config_projection</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  center <span class='op'>=</span> <span class='cn'>NULL</span>,
+  clipAngle <span class='op'>=</span> <span class='cn'>NULL</span>,
+  clipExtent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  coefficient <span class='op'>=</span> <span class='cn'>NULL</span>,
+  distance <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fit <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fraction <span class='op'>=</span> <span class='cn'>NULL</span>,
+  lobes <span class='op'>=</span> <span class='cn'>NULL</span>,
+  parallel <span class='op'>=</span> <span class='cn'>NULL</span>,
+  parallels <span class='op'>=</span> <span class='cn'>NULL</span>,
+  pointRadius <span class='op'>=</span> <span class='cn'>NULL</span>,
+  precision <span class='op'>=</span> <span class='cn'>NULL</span>,
+  radius <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ratio <span class='op'>=</span> <span class='cn'>NULL</span>,
+  reflectX <span class='op'>=</span> <span class='cn'>NULL</span>,
+  reflectY <span class='op'>=</span> <span class='cn'>NULL</span>,
+  rotate <span class='op'>=</span> <span class='cn'>NULL</span>,
+  scale <span class='op'>=</span> <span class='cn'>NULL</span>,
+  size <span class='op'>=</span> <span class='cn'>NULL</span>,
+  spacing <span class='op'>=</span> <span class='cn'>NULL</span>,
+  tilt <span class='op'>=</span> <span class='cn'>NULL</span>,
+  translate <span class='op'>=</span> <span class='cn'>NULL</span>,
+  type <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,86 +168,161 @@
     </tr>
     <tr>
       <th>center</th>
-      <td><p>(<em>Projection</em>) The projection’s center to the specified center, a two-element array of longitude and latitude in degrees.</p>
-<p><strong>Default value:</strong> <code>[0, 0]</code></p></td>
+      <td><p>The projection's center, a two-element array of longitude and latitude in
+degrees.</p>
+<p><strong>Default value:</strong> <code>[0, 0]</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>clipAngle</th>
-      <td><p>(<em>Projection</em>) The projection’s clipping circle radius to the specified angle in degrees. If <code>null</code>, switches to <a href='http://bl.ocks.org/mbostock/3788999'>antimeridian</a> cutting rather than small-circle clipping.</p></td>
+      <td><p>The projection's clipping circle radius to the specified angle in degrees. If
+<code>null</code>, switches to <a href='http://bl.ocks.org/mbostock/3788999'>antimeridian</a> cutting
+rather than small-circle clipping.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>clipExtent</th>
-      <td><p>(<em>Projection</em>) The projection’s viewport clip extent to the specified bounds in pixels. The extent bounds are specified as an array <code>[\[x0, y0\], \[x1, y1\]]</code>, where <code>x0</code> is the left-side of the viewport, <code>y0</code> is the top, <code>x1</code> is the right and <code>y1</code> is the bottom. If <code>null</code>, no viewport clipping is performed.</p></td>
+      <td><p>The projection's viewport clip extent to the specified bounds in pixels. The
+extent bounds are specified as an array <code>[\[x0, y0\], \[x1, y1\]]</code>, where <code>x0</code> is
+the left-side of the viewport, <code>y0</code> is the top, <code>x1</code> is the right and <code>y1</code> is
+the bottom. If <code>null</code>, no viewport clipping is performed.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>coefficient</th>
-      <td><p>(<em>Projection</em>)</p></td>
+      <td><p>The coefficient parameter for the <code>hammer</code> projection.</p>
+<p><strong>Default value:</strong> <code>2</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>distance</th>
-      <td><p>(<em>Projection</em>)</p></td>
+      <td><p>For the <code>satellite</code> projection, the distance from the center of the sphere
+to the point of view, as a proportion of the sphere’s radius. The recommended
+maximum clip angle for a given <code>distance</code> is acos(1 / distance) converted
+to degrees. If tilt is also applied, then more conservative clipping may be
+necessary.</p>
+<p><strong>Default value:</strong> <code>2.0</code></p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
+      <th>extent</th>
+      <td><p>Vector2&lt;Vector2&lt;number&gt;&gt;</p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
+      <th>fit</th>
+      <td><p>array</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>fraction</th>
-      <td><p>(<em>Projection</em>)</p></td>
+      <td><p>The fraction parameter for the <code>bottomley</code> projection.</p>
+<p><strong>Default value:</strong> <code>0.5</code>, corresponding to a sin(ψ) where ψ = π/6.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>lobes</th>
-      <td><p>(<em>Projection</em>)</p></td>
+      <td><p>The number of lobes in projections that support multi-lobe views: <code>berghaus</code>,
+<code>gingery</code>, or <code>healpix</code>. The default value varies based on the projection type.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>parallel</th>
-      <td><p>(<em>Projection</em>)</p></td>
+      <td><p>The parallel parameter for projections that support it: <code>armadillo</code>,
+<code>bonne</code>, <code>craig</code>, <code>cylindricalEqualArea</code>, <code>cylindricalStereographic</code>,
+<code>hammerRetroazimuthal</code>, <code>loximuthal</code>, or <code>rectangularPolyconic</code>. The default
+value varies based on the projection type.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>parallels</th>
-      <td><p>(<em>Projection</em>)</p></td>
+      <td><p>For conic projections, the <a href='https://en.wikipedia.org/wiki/Map_projection#Conic'>two standard parallels</a> that define the
+map layout. The default depends on the specific conic projection used.</p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
+      <th>pointRadius</th>
+      <td><p>The default radius (in pixels) to use when drawing GeoJSON <code>Point</code> and
+<code>MultiPoint</code> geometries. This parameter sets a constant default value. To modify
+the point radius in response to data, see the corresponding parameter of the
+GeoPath and GeoShape transforms.</p>
+<p><strong>Default value:</strong> <code>4.5</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>precision</th>
-      <td><p>(<em>Projection</em>) The threshold for the projection’s <a href='http://bl.ocks.org/mbostock/3795544'>adaptive resampling</a> to the specified value in pixels. This value corresponds to the <a href='http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm'>Douglas–Peucker distance</a>. If precision is not specified, returns the projection’s current resampling precision which defaults to <code>√0.5 ≅ 0.70710…</code>.</p></td>
+      <td><p>The threshold for the projection's <a href='http://bl.ocks.org/mbostock/3795544'>adaptive resampling</a> to the specified
+value in pixels. This value corresponds to the <a href='http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm'>Douglas–Peucker distance</a>.
+If precision is not specified, returns the projection's current resampling
+precision which defaults to <code>√0.5 ≅ 0.70710…</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>radius</th>
-      <td><p>(<em>Projection</em>)</p></td>
+      <td><p>The radius parameter for the <code>airy</code> or <code>gingery</code> projection. The default value
+varies based on the projection type.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>ratio</th>
-      <td><p>(<em>Projection</em>)</p></td>
+      <td><p>The ratio parameter for the <code>hill</code>, <code>hufnagel</code>, or <code>wagner</code> projections. The
+default value varies based on the projection type.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>reflectX</th>
-      <td><p>(<em>Projection</em>)</p></td>
+      <td><p>Sets whether or not the x-dimension is reflected (negated) in the output.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>reflectY</th>
-      <td><p>(<em>Projection</em>)</p></td>
+      <td><p>Sets whether or not the y-dimension is reflected (negated) in the output.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>rotate</th>
-      <td><p>(<em>Projection</em>) The projection’s three-axis rotation to the specified angles, which must be a two- or three-element array of numbers [<code>lambda</code>, <code>phi</code>, <code>gamma</code>] specifying the rotation angles in degrees about each spherical axis. (These correspond to yaw, pitch and roll.)</p>
-<p><strong>Default value:</strong> <code>[0, 0, 0]</code></p></td>
+      <td><p>The projection's three-axis rotation to the specified angles, which must be a
+two- or three-element array of numbers [<code>lambda</code>, <code>phi</code>, <code>gamma</code>] specifying the
+rotation angles in degrees about each spherical axis. (These correspond to yaw,
+pitch and roll.)</p>
+<p><strong>Default value:</strong> <code>[0, 0, 0]</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>scale</th>
-      <td><p>(<em>Projection</em>) The projection's scale (zoom) value, overriding automatic fitting.</p></td>
+      <td><p>The projection’s scale (zoom) factor, overriding automatic fitting. The
+default scale is projection-specific. The scale factor corresponds linearly
+to the distance between projected points; however, scale factor values are not
+equivalent across projections.</p></td>
+    </tr>
+    <tr>
+      <th>size</th>
+      <td><p>Used in conjunction with fit, provides the width and height in pixels of the
+area to which the projection should be automatically fit.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>spacing</th>
-      <td><p>(<em>Projection</em>)</p></td>
+      <td><p>The spacing parameter for the <code>lagrange</code> projection.</p>
+<p><strong>Default value:</strong> <code>0.5</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>tilt</th>
-      <td><p>(<em>Projection</em>)</p></td>
+      <td><p>The tilt angle (in degrees) for the <code>satellite</code> projection.</p>
+<p><strong>Default value:</strong> <code>0</code>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>translate</th>
-      <td><p>(<em>Projection</em>) The projection's translation (pan) value, overriding automatic fitting.</p></td>
+      <td><p>The projection’s translation offset as a two-element array <code>[tx, ty]</code>.</p></td>
     </tr>
     <tr>
       <th>type</th>
-      <td><p>(<em>Projection</em>) The cartographic projection to use. This value is case-insensitive, for example <code>"albers"</code> and <code>"Albers"</code> indicate the same projection type. You can find all valid projection types <a href='https://vega.github.io/vega-lite/docs/projection.html#projection-types'>in the documentation</a>.</p>
-<p><strong>Default value:</strong> <code>mercator</code></p></td>
+      <td><p>The cartographic projection to use. This value is case-insensitive,
+for example <code>"albers"</code> and <code>"Albers"</code> indicate the same
+projection type. You can find all valid projection types <a href='https://vega.github.io/vega-lite/docs/projection.html#projection-types'>in the documentation</a>.</p>
+<p><strong>Default value:</strong> <code>equalEarth</code></p></td>
     </tr>
     </table>
 
@@ -249,13 +331,10 @@
     <p>A modified Vega-Lite Spec</p>
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -266,7 +345,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

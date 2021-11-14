@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="vl_impute — vl_impute" />
 <meta property="og:description" content="Add ImputeTransform to a vega-lite spec." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -123,17 +126,17 @@
     <p>Add ImputeTransform to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_impute</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>impute</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>key</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>frame</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>groupby</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>keyvals</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>vl_impute</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  impute <span class='op'>=</span> <span class='cn'>NULL</span>,
+  key <span class='op'>=</span> <span class='cn'>NULL</span>,
+  frame <span class='op'>=</span> <span class='cn'>NULL</span>,
+  groupby <span class='op'>=</span> <span class='cn'>NULL</span>,
+  keyvals <span class='op'>=</span> <span class='cn'>NULL</span>,
+  method <span class='op'>=</span> <span class='cn'>NULL</span>,
+  value <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -148,39 +151,49 @@
     </tr>
     <tr>
       <th>impute</th>
-      <td><p>(<em>ImputeTransform</em>) The data field for which the missing values should be imputed.</p></td>
+      <td><p>The data field for which the missing values should be imputed.</p></td>
     </tr>
     <tr>
       <th>key</th>
-      <td><p>(<em>ImputeTransform</em>) A key field that uniquely identifies data objects within a group.
-Missing key values (those occurring in the data but not in the current group) will be imputed.</p></td>
+      <td><p>A key field that uniquely identifies data objects within a group. Missing
+key values (those occurring in the data but not in the current group) will be
+imputed.</p></td>
     </tr>
     <tr>
       <th>frame</th>
-      <td><p>(<em>ImputeTransform</em>) A frame specification as a two-element array used to control the window over which the specified method is applied. The array entries should either be a number indicating the offset from the current data object, or null to indicate unbounded rows preceding or following the current data object. For example, the value <code>[-5, 5]</code> indicates that the window should include five objects preceding and five objects following the current object.</p>
-<p><strong>Default value:</strong>:  <code>[null, null]</code> indicating that the window includes all objects.</p></td>
+      <td><p>A frame specification as a two-element array used to control the window over
+which the specified method is applied. The array entries should either be a
+number indicating the offset from the current data object, or null to indicate
+unbounded rows preceding or following the current data object. For example, the
+value <code>[-5, 5]</code> indicates that the window should include five objects preceding
+and five objects following the current object.</p>
+<p><strong>Default value:</strong>: <code>[null, null]</code> indicating that the window includes all
+objects.</p></td>
     </tr>
     <tr>
       <th>groupby</th>
-      <td><p>(<em>ImputeTransform</em>) An optional array of fields by which to group the values.
-Imputation will then be performed on a per-group basis.</p></td>
+      <td><p>An optional array of fields by which to group the values. Imputation will then
+be performed on a per-group basis.</p></td>
     </tr>
     <tr>
       <th>keyvals</th>
-      <td><p>(<em>ImputeTransform</em>) Defines the key values that should be considered for imputation.
+      <td><p>Defines the key values that should be considered for imputation.
 An array of key values or an object defining a <a href='https://vega.github.io/vega-lite/docs/impute.html#sequence-def'>number sequence</a>.</p>
-<p>If provided, this will be used in addition to the key values observed within the input data. If not provided, the values will be derived from all unique values of the <code>key</code> field. For <code>impute</code> in <code>encoding</code>, the key field is the x-field if the y-field is imputed, or vice versa.</p>
+<p>If provided, this will be used in addition to the key values observed within the
+input data. If not provided, the values will be derived from all unique values
+of the <code>key</code> field. For <code>impute</code> in <code>encoding</code>, the key field is the x-field if
+the y-field is imputed, or vice versa.</p>
 <p>If there is no impute grouping, this property <em>must</em> be specified.</p></td>
     </tr>
     <tr>
       <th>method</th>
-      <td><p>(<em>ImputeTransform</em>) The imputation method to use for the field value of imputed data objects.
-One of <code>"value"</code>, <code>"mean"</code>, <code>"median"</code>, <code>"max"</code> or <code>"min"</code>.</p>
-<p><strong>Default value:</strong>  <code>"value"</code></p></td>
+      <td><p>The imputation method to use for the field value of imputed data objects. One of
+<code>"value"</code>, <code>"mean"</code>, <code>"median"</code>, <code>"max"</code> or <code>"min"</code>.</p>
+<p><strong>Default value:</strong> <code>"value"</code></p></td>
     </tr>
     <tr>
       <th>value</th>
-      <td><p>(<em>ImputeTransform</em>) The field value to use when the imputation <code>method</code> is <code>"value"</code>.</p></td>
+      <td><p>The field value to use when the imputation <code>method</code> is <code>"value"</code>.</p></td>
     </tr>
     </table>
 
@@ -189,13 +202,10 @@ One of <code>"value"</code>, <code>"mean"</code>, <code>"median"</code>, <code>"
     <p>A modified Vega-Lite Spec</p>
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -206,7 +216,7 @@ One of <code>"value"</code>, <code>"mean"</code>, <code>"median"</code>, <code>"
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

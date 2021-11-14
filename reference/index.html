@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -53,7 +57,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-index">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -67,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -130,6 +134,11 @@
           <p class="section-desc"><p>Initialize a Vega-Lite specification</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -144,6 +153,11 @@
           <p class="section-desc"><p>Add top level properties to a spec</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -164,7 +178,36 @@
           <p class="section-desc"><p>Add a mark to chart spec</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
+        
+        <td>
+          <p><code><a href="vl_mark_BoxPlot.html">vl_mark_BoxPlot()</a></code> </p>
+        </td>
+        <td><p>vl_mark_BoxPlot</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_mark_ErrorBand.html">vl_mark_ErrorBand()</a></code> </p>
+        </td>
+        <td><p>vl_mark_ErrorBand</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_mark_ErrorBar.html">vl_mark_ErrorBar()</a></code> </p>
+        </td>
+        <td><p>vl_mark_ErrorBar</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_mark_arc.html">vl_mark_arc()</a></code> </p>
+        </td>
+        <td><p>vl_mark_arc</p></td>
+      </tr><tr>
         
         <td>
           <p><code><a href="vl_mark_area.html">vl_mark_area()</a></code> </p>
@@ -179,27 +222,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="vl_mark_boxplot.html">vl_mark_boxplot()</a></code> </p>
-        </td>
-        <td><p>vl_mark_boxplot</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="vl_mark_circle.html">vl_mark_circle()</a></code> </p>
         </td>
         <td><p>vl_mark_circle</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl_mark_errorband.html">vl_mark_errorband()</a></code> </p>
-        </td>
-        <td><p>vl_mark_errorband</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl_mark_errorbar.html">vl_mark_errorbar()</a></code> </p>
-        </td>
-        <td><p>vl_mark_errorbar</p></td>
       </tr><tr>
         
         <td>
@@ -268,12 +293,23 @@
           <p class="section-desc"><p>Encode a channel</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
           <p><code><a href="vl_encode.html">vl_encode()</a></code> </p>
         </td>
         <td><p>vl_encode</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_encode_angle.html">vl_encode_angle()</a></code> </p>
+        </td>
+        <td><p>vl_encode_angle</p></td>
       </tr><tr>
         
         <td>
@@ -286,6 +322,12 @@
           <p><code><a href="vl_encode_column.html">vl_encode_column()</a></code> </p>
         </td>
         <td><p>vl_encode_column</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_encode_description.html">vl_encode_description()</a></code> </p>
+        </td>
+        <td><p>vl_encode_description</p></td>
       </tr><tr>
         
         <td>
@@ -355,6 +397,18 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="vl_encode_radius.html">vl_encode_radius()</a></code> </p>
+        </td>
+        <td><p>vl_encode_radius</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_encode_radius2.html">vl_encode_radius2()</a></code> </p>
+        </td>
+        <td><p>vl_encode_radius2</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="vl_encode_row.html">vl_encode_row()</a></code> </p>
         </td>
         <td><p>vl_encode_row</p></td>
@@ -379,6 +433,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="vl_encode_strokeDash.html">vl_encode_strokeDash()</a></code> </p>
+        </td>
+        <td><p>vl_encode_strokeDash</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="vl_encode_strokeOpacity.html">vl_encode_strokeOpacity()</a></code> </p>
         </td>
         <td><p>vl_encode_strokeOpacity</p></td>
@@ -394,6 +454,18 @@
           <p><code><a href="vl_encode_text.html">vl_encode_text()</a></code> </p>
         </td>
         <td><p>vl_encode_text</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_encode_theta.html">vl_encode_theta()</a></code> </p>
+        </td>
+        <td><p>vl_encode_theta</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_encode_theta2.html">vl_encode_theta2()</a></code> </p>
+        </td>
+        <td><p>vl_encode_theta2</p></td>
       </tr><tr>
         
         <td>
@@ -468,6 +540,11 @@
           <p class="section-desc"><p>Add property to an encoding channel</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -477,37 +554,37 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="scale_encoding.html">vl_scale_color()</a></code> <code><a href="scale_encoding.html">vl_scale_fill()</a></code> <code><a href="scale_encoding.html">vl_scale_fillOpacity()</a></code> <code><a href="scale_encoding.html">vl_scale_opacity()</a></code> <code><a href="scale_encoding.html">vl_scale_shape()</a></code> <code><a href="scale_encoding.html">vl_scale_size()</a></code> <code><a href="scale_encoding.html">vl_scale_stroke()</a></code> <code><a href="scale_encoding.html">vl_scale_strokeOpacity()</a></code> <code><a href="scale_encoding.html">vl_scale_strokeWidth()</a></code> <code><a href="scale_encoding.html">vl_scale_x()</a></code> <code><a href="scale_encoding.html">vl_scale_y()</a></code> </p>
+          <p><code><a href="scale_encoding.html">vl_scale_angle()</a></code> <code><a href="scale_encoding.html">vl_scale_color()</a></code> <code><a href="scale_encoding.html">vl_scale_fill()</a></code> <code><a href="scale_encoding.html">vl_scale_fillOpacity()</a></code> <code><a href="scale_encoding.html">vl_scale_opacity()</a></code> <code><a href="scale_encoding.html">vl_scale_radius()</a></code> <code><a href="scale_encoding.html">vl_scale_shape()</a></code> <code><a href="scale_encoding.html">vl_scale_size()</a></code> <code><a href="scale_encoding.html">vl_scale_stroke()</a></code> <code><a href="scale_encoding.html">vl_scale_strokeDash()</a></code> <code><a href="scale_encoding.html">vl_scale_strokeOpacity()</a></code> <code><a href="scale_encoding.html">vl_scale_strokeWidth()</a></code> <code><a href="scale_encoding.html">vl_scale_theta()</a></code> <code><a href="scale_encoding.html">vl_scale_x()</a></code> <code><a href="scale_encoding.html">vl_scale_y()</a></code> </p>
         </td>
         <td><p>Add scale to encoding</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="condition_encoding.html">vl_condition_color()</a></code> <code><a href="condition_encoding.html">vl_condition_fill()</a></code> <code><a href="condition_encoding.html">vl_condition_fillOpacity()</a></code> <code><a href="condition_encoding.html">vl_condition_href()</a></code> <code><a href="condition_encoding.html">vl_condition_opacity()</a></code> <code><a href="condition_encoding.html">vl_condition_shape()</a></code> <code><a href="condition_encoding.html">vl_condition_size()</a></code> <code><a href="condition_encoding.html">vl_condition_stroke()</a></code> <code><a href="condition_encoding.html">vl_condition_strokeOpacity()</a></code> <code><a href="condition_encoding.html">vl_condition_strokeWidth()</a></code> <code><a href="condition_encoding.html">vl_condition_text()</a></code> <code><a href="condition_encoding.html">vl_condition_tooltip()</a></code> <code><a href="condition_encoding.html">vl_condition_url()</a></code> </p>
+          <p><code><a href="condition_encoding.html">vl_condition_angle()</a></code> <code><a href="condition_encoding.html">vl_condition_color()</a></code> <code><a href="condition_encoding.html">vl_condition_description()</a></code> <code><a href="condition_encoding.html">vl_condition_fill()</a></code> <code><a href="condition_encoding.html">vl_condition_fillOpacity()</a></code> <code><a href="condition_encoding.html">vl_condition_href()</a></code> <code><a href="condition_encoding.html">vl_condition_opacity()</a></code> <code><a href="condition_encoding.html">vl_condition_order()</a></code> <code><a href="condition_encoding.html">vl_condition_shape()</a></code> <code><a href="condition_encoding.html">vl_condition_size()</a></code> <code><a href="condition_encoding.html">vl_condition_stroke()</a></code> <code><a href="condition_encoding.html">vl_condition_strokeDash()</a></code> <code><a href="condition_encoding.html">vl_condition_strokeOpacity()</a></code> <code><a href="condition_encoding.html">vl_condition_strokeWidth()</a></code> <code><a href="condition_encoding.html">vl_condition_text()</a></code> <code><a href="condition_encoding.html">vl_condition_tooltip()</a></code> <code><a href="condition_encoding.html">vl_condition_url()</a></code> </p>
         </td>
         <td><p>Add conditioning to an encoding</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="legend_encoding.html">vl_legend_color()</a></code> <code><a href="legend_encoding.html">vl_legend_fill()</a></code> <code><a href="legend_encoding.html">vl_legend_fillOpacity()</a></code> <code><a href="legend_encoding.html">vl_legend_opacity()</a></code> <code><a href="legend_encoding.html">vl_legend_shape()</a></code> <code><a href="legend_encoding.html">vl_legend_size()</a></code> <code><a href="legend_encoding.html">vl_legend_stroke()</a></code> <code><a href="legend_encoding.html">vl_legend_strokeOpacity()</a></code> <code><a href="legend_encoding.html">vl_legend_strokeWidth()</a></code> </p>
+          <p><code><a href="legend_encoding.html">vl_legend_angle()</a></code> <code><a href="legend_encoding.html">vl_legend_color()</a></code> <code><a href="legend_encoding.html">vl_legend_fill()</a></code> <code><a href="legend_encoding.html">vl_legend_fillOpacity()</a></code> <code><a href="legend_encoding.html">vl_legend_opacity()</a></code> <code><a href="legend_encoding.html">vl_legend_shape()</a></code> <code><a href="legend_encoding.html">vl_legend_size()</a></code> <code><a href="legend_encoding.html">vl_legend_stroke()</a></code> <code><a href="legend_encoding.html">vl_legend_strokeDash()</a></code> <code><a href="legend_encoding.html">vl_legend_strokeOpacity()</a></code> <code><a href="legend_encoding.html">vl_legend_strokeWidth()</a></code> </p>
         </td>
         <td><p>Add legend to encoding</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="sort_encoding.html">vl_sort_color()</a></code> <code><a href="sort_encoding.html">vl_sort_fill()</a></code> <code><a href="sort_encoding.html">vl_sort_fillOpacity()</a></code> <code><a href="sort_encoding.html">vl_sort_opacity()</a></code> <code><a href="sort_encoding.html">vl_sort_order()</a></code> <code><a href="sort_encoding.html">vl_sort_shape()</a></code> <code><a href="sort_encoding.html">vl_sort_size()</a></code> <code><a href="sort_encoding.html">vl_sort_stroke()</a></code> <code><a href="sort_encoding.html">vl_sort_strokeOpacity()</a></code> <code><a href="sort_encoding.html">vl_sort_strokeWidth()</a></code> <code><a href="sort_encoding.html">vl_sort_x()</a></code> <code><a href="sort_encoding.html">vl_sort_y()</a></code> </p>
+          <p><code><a href="sort_encoding.html">vl_sort_angle()</a></code> <code><a href="sort_encoding.html">vl_sort_color()</a></code> <code><a href="sort_encoding.html">vl_sort_fill()</a></code> <code><a href="sort_encoding.html">vl_sort_fillOpacity()</a></code> <code><a href="sort_encoding.html">vl_sort_opacity()</a></code> <code><a href="sort_encoding.html">vl_sort_order()</a></code> <code><a href="sort_encoding.html">vl_sort_radius()</a></code> <code><a href="sort_encoding.html">vl_sort_shape()</a></code> <code><a href="sort_encoding.html">vl_sort_size()</a></code> <code><a href="sort_encoding.html">vl_sort_stroke()</a></code> <code><a href="sort_encoding.html">vl_sort_strokeDash()</a></code> <code><a href="sort_encoding.html">vl_sort_strokeOpacity()</a></code> <code><a href="sort_encoding.html">vl_sort_strokeWidth()</a></code> <code><a href="sort_encoding.html">vl_sort_theta()</a></code> <code><a href="sort_encoding.html">vl_sort_x()</a></code> <code><a href="sort_encoding.html">vl_sort_y()</a></code> </p>
         </td>
         <td><p>#' Add sorting to an encoding</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="sort_encoding_by_encoding.html">vl_sort_color_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_fill_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_fillOpacity_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_opacity_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_order_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_shape_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_size_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_stroke_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_strokeOpacity_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_strokeWidth_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_x_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_y_by_encoding()</a></code> </p>
+          <p><code><a href="sort_encoding_by_encoding.html">vl_sort_angle_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_color_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_fill_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_fillOpacity_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_opacity_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_order_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_radius_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_shape_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_size_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_stroke_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_strokeDash_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_strokeOpacity_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_strokeWidth_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_theta_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_x_by_encoding()</a></code> <code><a href="sort_encoding_by_encoding.html">vl_sort_y_by_encoding()</a></code> </p>
         </td>
         <td><p>Add sort transform by encoding to encoding</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="sort_encoding_by_field.html">vl_sort_color_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_fill_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_fillOpacity_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_opacity_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_order_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_shape_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_size_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_stroke_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_strokeOpacity_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_strokeWidth_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_x_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_y_by_field()</a></code> </p>
+          <p><code><a href="sort_encoding_by_field.html">vl_sort_angle_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_color_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_fill_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_fillOpacity_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_opacity_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_order_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_radius_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_shape_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_size_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_stroke_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_strokeDash_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_strokeOpacity_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_strokeWidth_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_theta_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_x_by_field()</a></code> <code><a href="sort_encoding_by_field.html">vl_sort_y_by_field()</a></code> </p>
         </td>
         <td><p>Add sort transform by field to encoding</p></td>
       </tr>
@@ -518,10 +595,15 @@
           <p class="section-desc"><p>Add a transformation to a spec at the top level or to an encoding</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
-          <p><code><a href="aggregate_encoding.html">vl_aggregate_color()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_detail()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_fill()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_fillOpacity()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_href()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_key()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_latitude()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_latitude2()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_longitude()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_longitude2()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_opacity()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_order()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_shape()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_size()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_stroke()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_strokeOpacity()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_strokeWidth()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_text()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_tooltip()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_url()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_x()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_x2()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_xError()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_xError2()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_y()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_y2()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_yError()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_yError2()</a></code> </p>
+          <p><code><a href="aggregate_encoding.html">vl_aggregate_angle()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_color()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_description()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_detail()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_fill()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_fillOpacity()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_href()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_key()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_latitude()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_latitude2()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_longitude()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_longitude2()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_opacity()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_order()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_radius()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_radius2()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_shape()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_size()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_stroke()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_strokeDash()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_strokeOpacity()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_strokeWidth()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_text()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_theta()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_theta2()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_tooltip()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_url()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_x()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_x2()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_xError()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_xError2()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_y()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_y2()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_yError()</a></code> <code><a href="aggregate_encoding.html">vl_aggregate_yError2()</a></code> </p>
         </td>
         <td><p>Add aggregate transform to encoding</p></td>
       </tr><tr>
@@ -533,7 +615,7 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="bin_encoding.html">vl_bin_color()</a></code> <code><a href="bin_encoding.html">vl_bin_detail()</a></code> <code><a href="bin_encoding.html">vl_bin_fill()</a></code> <code><a href="bin_encoding.html">vl_bin_fillOpacity()</a></code> <code><a href="bin_encoding.html">vl_bin_href()</a></code> <code><a href="bin_encoding.html">vl_bin_key()</a></code> <code><a href="bin_encoding.html">vl_bin_latitude()</a></code> <code><a href="bin_encoding.html">vl_bin_latitude2()</a></code> <code><a href="bin_encoding.html">vl_bin_longitude()</a></code> <code><a href="bin_encoding.html">vl_bin_longitude2()</a></code> <code><a href="bin_encoding.html">vl_bin_opacity()</a></code> <code><a href="bin_encoding.html">vl_bin_order()</a></code> <code><a href="bin_encoding.html">vl_bin_shape()</a></code> <code><a href="bin_encoding.html">vl_bin_size()</a></code> <code><a href="bin_encoding.html">vl_bin_stroke()</a></code> <code><a href="bin_encoding.html">vl_bin_strokeOpacity()</a></code> <code><a href="bin_encoding.html">vl_bin_strokeWidth()</a></code> <code><a href="bin_encoding.html">vl_bin_text()</a></code> <code><a href="bin_encoding.html">vl_bin_tooltip()</a></code> <code><a href="bin_encoding.html">vl_bin_url()</a></code> <code><a href="bin_encoding.html">vl_bin_x()</a></code> <code><a href="bin_encoding.html">vl_bin_x2()</a></code> <code><a href="bin_encoding.html">vl_bin_xError()</a></code> <code><a href="bin_encoding.html">vl_bin_xError2()</a></code> <code><a href="bin_encoding.html">vl_bin_y()</a></code> <code><a href="bin_encoding.html">vl_bin_y2()</a></code> <code><a href="bin_encoding.html">vl_bin_yError()</a></code> <code><a href="bin_encoding.html">vl_bin_yError2()</a></code> </p>
+          <p><code><a href="bin_encoding.html">vl_bin_angle()</a></code> <code><a href="bin_encoding.html">vl_bin_color()</a></code> <code><a href="bin_encoding.html">vl_bin_description()</a></code> <code><a href="bin_encoding.html">vl_bin_detail()</a></code> <code><a href="bin_encoding.html">vl_bin_fill()</a></code> <code><a href="bin_encoding.html">vl_bin_fillOpacity()</a></code> <code><a href="bin_encoding.html">vl_bin_href()</a></code> <code><a href="bin_encoding.html">vl_bin_key()</a></code> <code><a href="bin_encoding.html">vl_bin_latitude()</a></code> <code><a href="bin_encoding.html">vl_bin_latitude2()</a></code> <code><a href="bin_encoding.html">vl_bin_longitude()</a></code> <code><a href="bin_encoding.html">vl_bin_longitude2()</a></code> <code><a href="bin_encoding.html">vl_bin_opacity()</a></code> <code><a href="bin_encoding.html">vl_bin_order()</a></code> <code><a href="bin_encoding.html">vl_bin_radius()</a></code> <code><a href="bin_encoding.html">vl_bin_radius2()</a></code> <code><a href="bin_encoding.html">vl_bin_shape()</a></code> <code><a href="bin_encoding.html">vl_bin_size()</a></code> <code><a href="bin_encoding.html">vl_bin_stroke()</a></code> <code><a href="bin_encoding.html">vl_bin_strokeDash()</a></code> <code><a href="bin_encoding.html">vl_bin_strokeOpacity()</a></code> <code><a href="bin_encoding.html">vl_bin_strokeWidth()</a></code> <code><a href="bin_encoding.html">vl_bin_text()</a></code> <code><a href="bin_encoding.html">vl_bin_theta()</a></code> <code><a href="bin_encoding.html">vl_bin_theta2()</a></code> <code><a href="bin_encoding.html">vl_bin_tooltip()</a></code> <code><a href="bin_encoding.html">vl_bin_url()</a></code> <code><a href="bin_encoding.html">vl_bin_x()</a></code> <code><a href="bin_encoding.html">vl_bin_x2()</a></code> <code><a href="bin_encoding.html">vl_bin_xError()</a></code> <code><a href="bin_encoding.html">vl_bin_xError2()</a></code> <code><a href="bin_encoding.html">vl_bin_y()</a></code> <code><a href="bin_encoding.html">vl_bin_y2()</a></code> <code><a href="bin_encoding.html">vl_bin_yError()</a></code> <code><a href="bin_encoding.html">vl_bin_yError2()</a></code> </p>
         </td>
         <td><p>Add bin to encoding</p></td>
       </tr><tr>
@@ -599,7 +681,7 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="stack_encoding.html">vl_stack_x()</a></code> <code><a href="stack_encoding.html">vl_stack_y()</a></code> </p>
+          <p><code><a href="stack_encoding.html">vl_stack_radius()</a></code> <code><a href="stack_encoding.html">vl_stack_theta()</a></code> <code><a href="stack_encoding.html">vl_stack_x()</a></code> <code><a href="stack_encoding.html">vl_stack_y()</a></code> </p>
         </td>
         <td><p>Add stack transform to encoding</p></td>
       </tr><tr>
@@ -628,6 +710,11 @@
           <p class="section-desc"><p>Combine specs via layering or concatenation</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -648,6 +735,11 @@
           <p class="section-desc"><p>Use faceting or repeating to make sub-plots</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -692,12 +784,23 @@
           <p class="section-desc"><p>Add configuration</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
           <p><code><a href="vl_config.html">vl_config()</a></code> </p>
         </td>
         <td><p>vl_config</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_config_arc.html">vl_config_arc()</a></code> </p>
+        </td>
+        <td><p>vl_config_arc</p></td>
       </tr><tr>
         
         <td>
@@ -725,15 +828,39 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="vl_config_axisDiscrete.html">vl_config_axisDiscrete()</a></code> </p>
+        </td>
+        <td><p>vl_config_axisDiscrete</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="vl_config_axisLeft.html">vl_config_axisLeft()</a></code> </p>
         </td>
         <td><p>vl_config_axisLeft</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="vl_config_axisPoint.html">vl_config_axisPoint()</a></code> </p>
+        </td>
+        <td><p>vl_config_axisPoint</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_config_axisQuantitative.html">vl_config_axisQuantitative()</a></code> </p>
+        </td>
+        <td><p>vl_config_axisQuantitative</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="vl_config_axisRight.html">vl_config_axisRight()</a></code> </p>
         </td>
         <td><p>vl_config_axisRight</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_config_axisTemporal.html">vl_config_axisTemporal()</a></code> </p>
+        </td>
+        <td><p>vl_config_axisTemporal</p></td>
       </tr><tr>
         
         <td>
@@ -749,9 +876,69 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="vl_config_axisXBand.html">vl_config_axisXBand()</a></code> </p>
+        </td>
+        <td><p>vl_config_axisXBand</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_config_axisXDiscrete.html">vl_config_axisXDiscrete()</a></code> </p>
+        </td>
+        <td><p>vl_config_axisXDiscrete</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_config_axisXPoint.html">vl_config_axisXPoint()</a></code> </p>
+        </td>
+        <td><p>vl_config_axisXPoint</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_config_axisXQuantitative.html">vl_config_axisXQuantitative()</a></code> </p>
+        </td>
+        <td><p>vl_config_axisXQuantitative</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_config_axisXTemporal.html">vl_config_axisXTemporal()</a></code> </p>
+        </td>
+        <td><p>vl_config_axisXTemporal</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="vl_config_axisY.html">vl_config_axisY()</a></code> </p>
         </td>
         <td><p>vl_config_axisY</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_config_axisYBand.html">vl_config_axisYBand()</a></code> </p>
+        </td>
+        <td><p>vl_config_axisYBand</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_config_axisYDiscrete.html">vl_config_axisYDiscrete()</a></code> </p>
+        </td>
+        <td><p>vl_config_axisYDiscrete</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_config_axisYPoint.html">vl_config_axisYPoint()</a></code> </p>
+        </td>
+        <td><p>vl_config_axisYPoint</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_config_axisYQuantitative.html">vl_config_axisYQuantitative()</a></code> </p>
+        </td>
+        <td><p>vl_config_axisYQuantitative</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vl_config_axisYTemporal.html">vl_config_axisYTemporal()</a></code> </p>
+        </td>
+        <td><p>vl_config_axisYTemporal</p></td>
       </tr><tr>
         
         <td>
@@ -875,12 +1062,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="vl_config_repeat.html">vl_config_repeat()</a></code> </p>
-        </td>
-        <td><p>vl_config_repeat</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="vl_config_rule.html">vl_config_rule()</a></code> </p>
         </td>
         <td><p>vl_config_rule</p></td>
@@ -940,6 +1121,11 @@
           <p class="section-desc"><p>Add selection to a spec</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -949,15 +1135,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="vl_add_multi_selection.html">vl_add_multi_selection()</a></code> </p>
+          <p><code><a href="vl_add_point_selection.html">vl_add_point_selection()</a></code> </p>
         </td>
-        <td><p>vl_add_multi_selection</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl_add_single_selection.html">vl_add_single_selection()</a></code> </p>
-        </td>
-        <td><p>vl_add_single_selection</p></td>
+        <td><p>vl_add_point_selection</p></td>
       </tr><tr>
         
         <td>
@@ -972,6 +1152,11 @@
           <p class="section-desc"><p>Add a binding to a selection</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -1004,10 +1189,15 @@
           <p class="section-desc"><p>Add instructions on how to resolve axis, legend, or scale in cases of composite plots</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
-          <p><code><a href="resolve.html">vl_resolve_axis_x()</a></code> <code><a href="resolve.html">vl_resolve_axis_y()</a></code> <code><a href="resolve.html">vl_resolve_legend_color()</a></code> <code><a href="resolve.html">vl_resolve_legend_fill()</a></code> <code><a href="resolve.html">vl_resolve_legend_fillOpacity()</a></code> <code><a href="resolve.html">vl_resolve_legend_opacity()</a></code> <code><a href="resolve.html">vl_resolve_legend_shape()</a></code> <code><a href="resolve.html">vl_resolve_legend_size()</a></code> <code><a href="resolve.html">vl_resolve_legend_stroke()</a></code> <code><a href="resolve.html">vl_resolve_legend_strokeOpacity()</a></code> <code><a href="resolve.html">vl_resolve_legend_strokeWidth()</a></code> <code><a href="resolve.html">vl_resolve_legend_x()</a></code> <code><a href="resolve.html">vl_resolve_legend_y()</a></code> <code><a href="resolve.html">vl_resolve_scale_color()</a></code> <code><a href="resolve.html">vl_resolve_scale_fill()</a></code> <code><a href="resolve.html">vl_resolve_scale_fillOpacity()</a></code> <code><a href="resolve.html">vl_resolve_scale_opacity()</a></code> <code><a href="resolve.html">vl_resolve_scale_shape()</a></code> <code><a href="resolve.html">vl_resolve_scale_size()</a></code> <code><a href="resolve.html">vl_resolve_scale_stroke()</a></code> <code><a href="resolve.html">vl_resolve_scale_strokeOpacity()</a></code> <code><a href="resolve.html">vl_resolve_scale_strokeWidth()</a></code> <code><a href="resolve.html">vl_resolve_scale_x()</a></code> <code><a href="resolve.html">vl_resolve_scale_y()</a></code> </p>
+          <p><code><a href="resolve.html">vl_resolve_axis_x()</a></code> <code><a href="resolve.html">vl_resolve_axis_y()</a></code> <code><a href="resolve.html">vl_resolve_legend_angle()</a></code> <code><a href="resolve.html">vl_resolve_legend_color()</a></code> <code><a href="resolve.html">vl_resolve_legend_fill()</a></code> <code><a href="resolve.html">vl_resolve_legend_fillOpacity()</a></code> <code><a href="resolve.html">vl_resolve_legend_opacity()</a></code> <code><a href="resolve.html">vl_resolve_legend_radius()</a></code> <code><a href="resolve.html">vl_resolve_legend_shape()</a></code> <code><a href="resolve.html">vl_resolve_legend_size()</a></code> <code><a href="resolve.html">vl_resolve_legend_stroke()</a></code> <code><a href="resolve.html">vl_resolve_legend_strokeDash()</a></code> <code><a href="resolve.html">vl_resolve_legend_strokeOpacity()</a></code> <code><a href="resolve.html">vl_resolve_legend_strokeWidth()</a></code> <code><a href="resolve.html">vl_resolve_legend_theta()</a></code> <code><a href="resolve.html">vl_resolve_legend_x()</a></code> <code><a href="resolve.html">vl_resolve_legend_y()</a></code> <code><a href="resolve.html">vl_resolve_scale_angle()</a></code> <code><a href="resolve.html">vl_resolve_scale_color()</a></code> <code><a href="resolve.html">vl_resolve_scale_fill()</a></code> <code><a href="resolve.html">vl_resolve_scale_fillOpacity()</a></code> <code><a href="resolve.html">vl_resolve_scale_opacity()</a></code> <code><a href="resolve.html">vl_resolve_scale_radius()</a></code> <code><a href="resolve.html">vl_resolve_scale_shape()</a></code> <code><a href="resolve.html">vl_resolve_scale_size()</a></code> <code><a href="resolve.html">vl_resolve_scale_stroke()</a></code> <code><a href="resolve.html">vl_resolve_scale_strokeDash()</a></code> <code><a href="resolve.html">vl_resolve_scale_strokeOpacity()</a></code> <code><a href="resolve.html">vl_resolve_scale_strokeWidth()</a></code> <code><a href="resolve.html">vl_resolve_scale_theta()</a></code> <code><a href="resolve.html">vl_resolve_scale_x()</a></code> <code><a href="resolve.html">vl_resolve_scale_y()</a></code> </p>
         </td>
         <td><p>Resolve axes, legends, or scales for composite charts</p></td>
       </tr>
@@ -1018,520 +1208,20 @@
           <p class="section-desc"><p>As opposed to other functions that modify / add to a spec, these make a sub-component of a Vega-lite spec</p></p>
         </th>
       </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="vl-cash-AggregateTransform.html">vl$AggregateTransform</a></code> </p>
-        </td>
-        <td><p>AggregateTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-AreaConfig.html">vl$AreaConfig</a></code> </p>
-        </td>
-        <td><p>AreaConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Axis.html">vl$Axis</a></code> </p>
-        </td>
-        <td><p>Axis</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-AxisConfig.html">vl$AxisConfig</a></code> </p>
-        </td>
-        <td><p>AxisConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-BaseMarkConfig.html">vl$BaseMarkConfig</a></code> </p>
-        </td>
-        <td><p>BaseMarkConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-BinParams.html">vl$BinParams</a></code> </p>
-        </td>
-        <td><p>BinParams</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-BinTransform.html">vl$BinTransform</a></code> </p>
-        </td>
-        <td><p>BinTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-BindCheckbox.html">vl$BindCheckbox</a></code> </p>
-        </td>
-        <td><p>BindCheckbox</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-BindRadioSelect.html">vl$BindRadioSelect</a></code> </p>
-        </td>
-        <td><p>BindRadioSelect</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-BindRange.html">vl$BindRange</a></code> </p>
-        </td>
-        <td><p>BindRange</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-BoxPlotConfig.html">vl$BoxPlotConfig</a></code> </p>
-        </td>
-        <td><p>BoxPlotConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-BrushConfig.html">vl$BrushConfig</a></code> </p>
-        </td>
-        <td><p>BrushConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-CalculateTransform.html">vl$CalculateTransform</a></code> </p>
-        </td>
-        <td><p>CalculateTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Color.html">vl$Color</a></code> </p>
-        </td>
-        <td><p>Color</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-CompositionConfig.html">vl$CompositionConfig</a></code> </p>
-        </td>
-        <td><p>CompositionConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Config.html">vl$Config</a></code> </p>
-        </td>
-        <td><p>Config</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-DensityTransform.html">vl$DensityTransform</a></code> </p>
-        </td>
-        <td><p>DensityTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Detail.html">vl$Detail</a></code> </p>
-        </td>
-        <td><p>Detail</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-ErrorBandConfig.html">vl$ErrorBandConfig</a></code> </p>
-        </td>
-        <td><p>ErrorBandConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-ErrorBarConfig.html">vl$ErrorBarConfig</a></code> </p>
-        </td>
-        <td><p>ErrorBarConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Fill.html">vl$Fill</a></code> </p>
-        </td>
-        <td><p>Fill</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-FillOpacity.html">vl$FillOpacity</a></code> </p>
-        </td>
-        <td><p>FillOpacity</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-FilterTransform.html">vl$FilterTransform</a></code> </p>
-        </td>
-        <td><p>FilterTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-FlattenTransform.html">vl$FlattenTransform</a></code> </p>
-        </td>
-        <td><p>FlattenTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-FoldTransform.html">vl$FoldTransform</a></code> </p>
-        </td>
-        <td><p>FoldTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-HeaderConfig.html">vl$HeaderConfig</a></code> </p>
-        </td>
-        <td><p>HeaderConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Href.html">vl$Href</a></code> </p>
-        </td>
-        <td><p>Href</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-ImputeTransform.html">vl$ImputeTransform</a></code> </p>
-        </td>
-        <td><p>ImputeTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-IntervalSelection.html">vl$IntervalSelection</a></code> </p>
-        </td>
-        <td><p>IntervalSelection</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-IntervalSelectionConfig.html">vl$IntervalSelectionConfig</a></code> </p>
-        </td>
-        <td><p>IntervalSelectionConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-JoinAggregateTransform.html">vl$JoinAggregateTransform</a></code> </p>
-        </td>
-        <td><p>JoinAggregateTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Key.html">vl$Key</a></code> </p>
-        </td>
-        <td><p>Key</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Latitude.html">vl$Latitude</a></code> </p>
-        </td>
-        <td><p>Latitude</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Latitude2.html">vl$Latitude2</a></code> </p>
-        </td>
-        <td><p>Latitude2</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Legend.html">vl$Legend</a></code> </p>
-        </td>
-        <td><p>Legend</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-LegendConfig.html">vl$LegendConfig</a></code> </p>
-        </td>
-        <td><p>LegendConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-LineConfig.html">vl$LineConfig</a></code> </p>
-        </td>
-        <td><p>LineConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-LoessTransform.html">vl$LoessTransform</a></code> </p>
-        </td>
-        <td><p>LoessTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Longitude.html">vl$Longitude</a></code> </p>
-        </td>
-        <td><p>Longitude</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Longitude2.html">vl$Longitude2</a></code> </p>
-        </td>
-        <td><p>Longitude2</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-LookupTransform.html">vl$LookupTransform</a></code> </p>
-        </td>
-        <td><p>LookupTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-MarkConfig.html">vl$MarkConfig</a></code> </p>
-        </td>
-        <td><p>MarkConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-MultiSelection.html">vl$MultiSelection</a></code> </p>
-        </td>
-        <td><p>MultiSelection</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-MultiSelectionConfig.html">vl$MultiSelectionConfig</a></code> </p>
-        </td>
-        <td><p>MultiSelectionConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Opacity.html">vl$Opacity</a></code> </p>
-        </td>
-        <td><p>Opacity</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Order.html">vl$Order</a></code> </p>
-        </td>
-        <td><p>Order</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-PivotTransform.html">vl$PivotTransform</a></code> </p>
-        </td>
-        <td><p>PivotTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-ProjectionConfig.html">vl$ProjectionConfig</a></code> </p>
-        </td>
-        <td><p>ProjectionConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-QuantileTransform.html">vl$QuantileTransform</a></code> </p>
-        </td>
-        <td><p>QuantileTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-RangeConfig.html">vl$RangeConfig</a></code> </p>
-        </td>
-        <td><p>RangeConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-RectConfig.html">vl$RectConfig</a></code> </p>
-        </td>
-        <td><p>RectConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-RegressionTransform.html">vl$RegressionTransform</a></code> </p>
-        </td>
-        <td><p>RegressionTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-SampleTransform.html">vl$SampleTransform</a></code> </p>
-        </td>
-        <td><p>SampleTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Scale.html">vl$Scale</a></code> </p>
-        </td>
-        <td><p>Scale</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-ScaleConfig.html">vl$ScaleConfig</a></code> </p>
-        </td>
-        <td><p>ScaleConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-SelectionConfig.html">vl$SelectionConfig</a></code> </p>
-        </td>
-        <td><p>SelectionConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Shape.html">vl$Shape</a></code> </p>
-        </td>
-        <td><p>Shape</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-SingleSelection.html">vl$SingleSelection</a></code> </p>
-        </td>
-        <td><p>SingleSelection</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-SingleSelectionConfig.html">vl$SingleSelectionConfig</a></code> </p>
-        </td>
-        <td><p>SingleSelectionConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Size.html">vl$Size</a></code> </p>
-        </td>
-        <td><p>Size</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-SortField.html">vl$SortField</a></code> </p>
-        </td>
-        <td><p>SortField</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-StackTransform.html">vl$StackTransform</a></code> </p>
-        </td>
-        <td><p>StackTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Stroke.html">vl$Stroke</a></code> </p>
-        </td>
-        <td><p>Stroke</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-StrokeOpacity.html">vl$StrokeOpacity</a></code> </p>
-        </td>
-        <td><p>StrokeOpacity</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-StrokeWidth.html">vl$StrokeWidth</a></code> </p>
-        </td>
-        <td><p>StrokeWidth</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Text.html">vl$Text</a></code> </p>
-        </td>
-        <td><p>Text</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-TickConfig.html">vl$TickConfig</a></code> </p>
-        </td>
-        <td><p>TickConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-TimeUnitTransform.html">vl$TimeUnitTransform</a></code> </p>
-        </td>
-        <td><p>TimeUnitTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-TitleConfig.html">vl$TitleConfig</a></code> </p>
-        </td>
-        <td><p>TitleConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Tooltip.html">vl$Tooltip</a></code> </p>
-        </td>
-        <td><p>Tooltip</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Url.html">vl$Url</a></code> </p>
-        </td>
-        <td><p>Url</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-ViewConfig.html">vl$ViewConfig</a></code> </p>
-        </td>
-        <td><p>ViewConfig</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Window.html">vl$Window</a></code> </p>
-        </td>
-        <td><p>Window</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-WindowTransform.html">vl$WindowTransform</a></code> </p>
-        </td>
-        <td><p>WindowTransform</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-X.html">vl$X</a></code> </p>
-        </td>
-        <td><p>X</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-X2.html">vl$X2</a></code> </p>
-        </td>
-        <td><p>X2</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-XError.html">vl$XError</a></code> </p>
-        </td>
-        <td><p>XError</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-XError2.html">vl$XError2</a></code> </p>
-        </td>
-        <td><p>XError2</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Y.html">vl$Y</a></code> </p>
-        </td>
-        <td><p>Y</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-Y2.html">vl$Y2</a></code> </p>
-        </td>
-        <td><p>Y2</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-YError.html">vl$YError</a></code> </p>
-        </td>
-        <td><p>YError</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vl-cash-YError2.html">vl$YError2</a></code> </p>
-        </td>
-        <td><p>YError2</p></td>
-      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      
     </tbody>
     </table>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-initialize-a-chart">Initialize a chart</a></li>
-      <li><a href="#section-top-level-properties">Top level properties</a></li>
-      <li><a href="#section-mark">Mark</a></li>
-      <li><a href="#section-encoding">Encoding</a></li>
-      <li><a href="#section-encoding-properties">Encoding properties</a></li>
-      <li><a href="#section-transforms-">Transforms </a></li>
-      <li><a href="#section-composition">Composition</a></li>
-      <li><a href="#section-faceting-repeating">Faceting &amp; repeating</a></li>
-      <li><a href="#section-config">Config</a></li>
-      <li><a href="#section-selection">Selection</a></li>
-      <li><a href="#section-binding">Binding</a></li>
-      <li><a href="#section-resolve">Resolve</a></li>
-      <li><a href="#section-make-spec-objects">Make spec objects</a></li>
-    </ul>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -1542,7 +1232,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

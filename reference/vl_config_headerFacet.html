@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="vl_config_headerFacet — vl_config_headerFacet" />
 <meta property="og:description" content="Add headerFacet config (HeaderConfig) to a vega-lite spec." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -123,38 +126,42 @@
     <p>Add headerFacet config (HeaderConfig) to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_config_headerFacet</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>formatType</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelAlign</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelAnchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelAngle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelExpr</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelFont</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelFontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelFontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelOrient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labelPadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleAlign</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleAnchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleAngle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleBaseline</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleFont</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleFontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleFontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleFontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleLineHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titleOrient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>titlePadding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>vl_config_headerFacet</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  format <span class='op'>=</span> <span class='cn'>NULL</span>,
+  formatType <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelAlign <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelAnchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelAngle <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelBaseline <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelColor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelExpr <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelFont <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelFontSize <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelFontStyle <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelFontWeight <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelLimit <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelLineHeight <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelOrient <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labelPadding <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labels <span class='op'>=</span> <span class='cn'>NULL</span>,
+  orient <span class='op'>=</span> <span class='cn'>NULL</span>,
+  title <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleAlign <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleAnchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleAngle <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleBaseline <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleColor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleFont <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleFontSize <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleFontStyle <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleFontWeight <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleLimit <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleLineHeight <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titleOrient <span class='op'>=</span> <span class='cn'>NULL</span>,
+  titlePadding <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,134 +176,184 @@
     </tr>
     <tr>
       <th>format</th>
-      <td><p>(<em>HeaderConfig</em>) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.</p><ul>
-<li><p>If the format type is <code>"number"</code> (e.g., for quantitative fields), this is D3's <a href='https://github.com/d3/d3-format#locale_format'>number format pattern</a>.</p></li>
+      <td><p>When used with the default <code>"number"</code> and <code>"time"</code> format type, the text
+formatting pattern for labels of guides (axes, legends, headers) and text marks.</p><ul>
+<li><p>If the format type is <code>"number"</code> (e.g., for quantitative fields), this is D3's
+<a href='https://github.com/d3/d3-format#locale_format'>number format pattern</a>.</p></li>
 <li><p>If the format type is <code>"time"</code> (e.g., for temporal fields), this is D3's <a href='https://github.com/d3/d3-time-format#locale_format'>time format pattern</a>.</p></li>
 </ul>
 
-<p>See the <a href='https://vega.github.io/vega-lite/docs/format.html'>format documentation</a> for more examples.</p>
-<p><strong>Default value:</strong>  Derived from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>numberFormat</a> config for number format and from <a href='https://vega.github.io/vega-lite/docs/config.html#format'>timeFormat</a> config for time format.</p></td>
+<p>See the <a href='https://vega.github.io/vega-lite/docs/format.html'>format documentation</a> for more
+examples.</p>
+<p>When used with a <a href='https://vega.github.io/vega-lite/docs/config.html#custom-format-type'>custom <code>formatType</code></a>,
+this value will be passed as <code>format</code> alongside <code>datum.value</code> to the registered
+function.</p>
+<p><strong>Default value:</strong> Derived from
+<a href='https://vega.github.io/vega-lite/docs/config.html#format'>numberFormat</a>
+config for number format and from
+<a href='https://vega.github.io/vega-lite/docs/config.html#format'>timeFormat</a> config
+for time format.</p></td>
     </tr>
     <tr>
       <th>formatType</th>
-      <td><p>(<em>HeaderConfig</em>) The format type for labels (<code>"number"</code> or <code>"time"</code>).</p>
+      <td><p>The format type for labels. One of <code>"number"</code>,
+<code>"time"</code>, or a <a href='https://vega.github.io/vega-lite/docs/config.html#custom-format-type'>registered custom format type</a>.</p>
 <p><strong>Default value:</strong></p><ul>
-<li><p><code>"time"</code> for temporal fields and ordinal and nomimal fields with <code>timeUnit</code>.</p></li>
-<li><p><code>"number"</code> for quantitative fields as well as ordinal and nomimal fields without <code>timeUnit</code>.</p></li>
+<li><p><code>"time"</code> for temporal fields and ordinal and nominal fields with <code>timeUnit</code>.</p></li>
+<li><p><code>"number"</code> for quantitative fields as well as ordinal and nominal fields
+without <code>timeUnit</code>.</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>labelAlign</th>
-      <td><p>(<em>HeaderConfig</em>) Horizontal text alignment of header labels. One of <code>"left"</code>, <code>"center"</code>, or <code>"right"</code>.</p></td>
+      <td><p>Horizontal text alignment of header labels. One of <code>"left"</code>, <code>"center"</code>, or
+<code>"right"</code>.</p></td>
     </tr>
     <tr>
       <th>labelAnchor</th>
-      <td><p>(<em>HeaderConfig</em>) The anchor position for placing the labels. One of <code>"start"</code>, <code>"middle"</code>, or <code>"end"</code>. For example, with a label orientation of top these anchor positions map to a left-, center-, or right-aligned label.</p></td>
+      <td><p>The anchor position for placing the labels. One of <code>"start"</code>, <code>"middle"</code>, or
+<code>"end"</code>. For example, with a label orientation of top these anchor positions map
+to a left-, center-, or right-aligned label.</p></td>
     </tr>
     <tr>
       <th>labelAngle</th>
-      <td><p>(<em>HeaderConfig</em>) The rotation angle of the header labels.</p>
+      <td><p>The rotation angle of the header labels.</p>
 <p><strong>Default value:</strong> <code>0</code> for column header, <code>-90</code> for row header.</p></td>
     </tr>
     <tr>
+      <th>labelBaseline</th>
+      <td><p>The vertical text baseline for the header labels. One of <code>"alphabetic"</code>
+(default), <code>"top"</code>, <code>"middle"</code>, <code>"bottom"</code>, <code>"line-top"</code>, or <code>"line-bottom"</code>.
+The <code>"line-top"</code> and <code>"line-bottom"</code> values operate similarly to <code>"top"</code> and
+<code>"bottom"</code>, but are calculated relative to the <code>titleLineHeight</code> rather than
+<code>titleFontSize</code> alone.</p></td>
+    </tr>
+    <tr>
       <th>labelColor</th>
-      <td><p>(<em>HeaderConfig</em>) The color of the header label, can be in hex color code or regular color name.</p></td>
+      <td><p>The color of the header label, can be in hex color code or regular color name.</p></td>
     </tr>
     <tr>
       <th>labelExpr</th>
-      <td><p>(<em>HeaderConfig</em>) <a href='https://vega.github.io/vega/docs/expressions/'>Vega expression</a> for customizing labels.</p>
-<p><strong>Note:</strong> The label text and value can be assessed via the <code>label</code> and <code>value</code> properties of the header's backing <code>datum</code> object.</p></td>
+      <td><p><a href='https://vega.github.io/vega/docs/expressions/'>Vega expression</a> for customizing
+labels.</p>
+<p><strong>Note:</strong> The label text and value can be assessed via the <code>label</code> and <code>value</code>
+properties of the header's backing <code>datum</code> object.</p></td>
     </tr>
     <tr>
       <th>labelFont</th>
-      <td><p>(<em>HeaderConfig</em>) The font of the header label.</p></td>
+      <td><p>The font of the header label.</p></td>
     </tr>
     <tr>
       <th>labelFontSize</th>
-      <td><p>(<em>HeaderConfig</em>) The font size of the header label, in pixels.</p></td>
+      <td><p>The font size of the header label, in pixels.</p></td>
     </tr>
     <tr>
       <th>labelFontStyle</th>
-      <td><p>(<em>HeaderConfig</em>) The font style of the header label.</p></td>
+      <td><p>The font style of the header label.</p></td>
+    </tr>
+    <tr>
+      <th>labelFontWeight</th>
+      <td><p>The font weight of the header label.</p></td>
     </tr>
     <tr>
       <th>labelLimit</th>
-      <td><p>(<em>HeaderConfig</em>) The maximum length of the header label in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.</p>
+      <td><p>The maximum length of the header label in pixels. The text value will be
+automatically truncated if the rendered size exceeds the limit.</p>
 <p><strong>Default value:</strong> <code>0</code>, indicating no limit</p></td>
     </tr>
     <tr>
+      <th>labelLineHeight</th>
+      <td><p>Line height in pixels for multi-line header labels or title text with
+<code>"line-top"</code> or <code>"line-bottom"</code> baseline.</p></td>
+    </tr>
+    <tr>
       <th>labelOrient</th>
-      <td><p>(<em>HeaderConfig</em>) The orientation of the header label. One of <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code> or <code>"right"</code>.</p></td>
+      <td><p>The orientation of the header label. One of <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code> or
+<code>"right"</code>.</p></td>
     </tr>
     <tr>
       <th>labelPadding</th>
-      <td><p>(<em>HeaderConfig</em>) The padding, in pixel, between facet header's label and the plot.</p>
+      <td><p>The padding, in pixel, between facet header's label and the plot.</p>
 <p><strong>Default value:</strong> <code>10</code></p></td>
     </tr>
     <tr>
       <th>labels</th>
-      <td><p>(<em>HeaderConfig</em>) A boolean flag indicating if labels should be included as part of the header.</p>
+      <td><p>A boolean flag indicating if labels should be included as part of the header.</p>
 <p><strong>Default value:</strong> <code>true</code>.</p></td>
     </tr>
     <tr>
+      <th>orient</th>
+      <td><p>Shortcut for setting both labelOrient and titleOrient.</p></td>
+    </tr>
+    <tr>
       <th>title</th>
-      <td><p>(<em>HeaderConfig</em>) Set to null to disable title for the axis, legend, or header.</p></td>
+      <td><p>Set to null to disable title for the axis, legend, or header.</p></td>
     </tr>
     <tr>
       <th>titleAlign</th>
-      <td><p>(<em>HeaderConfig</em>) Horizontal text alignment (to the anchor) of header titles.</p></td>
+      <td><p>Horizontal text alignment (to the anchor) of header titles.</p></td>
     </tr>
     <tr>
       <th>titleAnchor</th>
-      <td><p>(<em>HeaderConfig</em>) The anchor position for placing the title. One of <code>"start"</code>, <code>"middle"</code>, or <code>"end"</code>. For example, with an orientation of top these anchor positions map to a left-, center-, or right-aligned title.</p></td>
+      <td><p>The anchor position for placing the title. One of <code>"start"</code>, <code>"middle"</code>, or
+<code>"end"</code>. For example, with an orientation of top these anchor positions map to a
+left-, center-, or right-aligned title.</p></td>
     </tr>
     <tr>
       <th>titleAngle</th>
-      <td><p>(<em>HeaderConfig</em>) The rotation angle of the header title.</p>
+      <td><p>The rotation angle of the header title.</p>
 <p><strong>Default value:</strong> <code>0</code>.</p></td>
     </tr>
     <tr>
       <th>titleBaseline</th>
-      <td><p>(<em>HeaderConfig</em>) Vertical text baseline for the header title. One of <code>"top"</code>, <code>"bottom"</code>, <code>"middle"</code>.</p>
+      <td><p>The vertical text baseline for the header title. One of <code>"alphabetic"</code>
+(default), <code>"top"</code>, <code>"middle"</code>, <code>"bottom"</code>, <code>"line-top"</code>, or <code>"line-bottom"</code>.
+The <code>"line-top"</code> and <code>"line-bottom"</code> values operate similarly to <code>"top"</code> and
+<code>"bottom"</code>, but are calculated relative to the <code>titleLineHeight</code> rather than
+<code>titleFontSize</code> alone.</p>
 <p><strong>Default value:</strong> <code>"middle"</code></p></td>
     </tr>
     <tr>
       <th>titleColor</th>
-      <td><p>(<em>HeaderConfig</em>) Color of the header title, can be in hex color code or regular color name.</p></td>
+      <td><p>Color of the header title, can be in hex color code or regular color name.</p></td>
     </tr>
     <tr>
       <th>titleFont</th>
-      <td><p>(<em>HeaderConfig</em>) Font of the header title. (e.g., <code>"Helvetica Neue"</code>).</p></td>
+      <td><p>Font of the header title. (e.g., <code>"Helvetica Neue"</code>).</p></td>
     </tr>
     <tr>
       <th>titleFontSize</th>
-      <td><p>(<em>HeaderConfig</em>) Font size of the header title.</p></td>
+      <td><p>Font size of the header title.</p></td>
     </tr>
     <tr>
       <th>titleFontStyle</th>
-      <td><p>(<em>HeaderConfig</em>) The font style of the header title.</p></td>
+      <td><p>The font style of the header title.</p></td>
     </tr>
     <tr>
       <th>titleFontWeight</th>
-      <td><p>(<em>HeaderConfig</em>) Font weight of the header title.
-This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or a number (<code>100</code>, <code>200</code>, <code>300</code>, ..., <code>900</code> where <code>"normal"</code> = <code>400</code> and <code>"bold"</code> = <code>700</code>).</p></td>
+      <td><p>Font weight of the header title. This can be either a string (e.g <code>"bold"</code>,
+<code>"normal"</code>) or a number (<code>100</code>, <code>200</code>, <code>300</code>, ..., <code>900</code> where <code>"normal"</code> =
+<code>400</code> and <code>"bold"</code> = <code>700</code>).</p></td>
     </tr>
     <tr>
       <th>titleLimit</th>
-      <td><p>(<em>HeaderConfig</em>) The maximum length of the header title in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.</p>
+      <td><p>The maximum length of the header title in pixels. The text value will be
+automatically truncated if the rendered size exceeds the limit.</p>
 <p><strong>Default value:</strong> <code>0</code>, indicating no limit</p></td>
     </tr>
     <tr>
       <th>titleLineHeight</th>
-      <td><p>(<em>HeaderConfig</em>) Line height in pixels for multi-line title text.</p></td>
+      <td><p>Line height in pixels for multi-line header title text or title text with
+<code>"line-top"</code> or <code>"line-bottom"</code> baseline.</p></td>
     </tr>
     <tr>
       <th>titleOrient</th>
-      <td><p>(<em>HeaderConfig</em>) The orientation of the header title. One of <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code> or <code>"right"</code>.</p></td>
+      <td><p>The orientation of the header title. One of <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code> or
+<code>"right"</code>.</p></td>
     </tr>
     <tr>
       <th>titlePadding</th>
-      <td><p>(<em>HeaderConfig</em>) The padding, in pixel, between facet header's title and the label.</p>
+      <td><p>The padding, in pixel, between facet header's title and the label.</p>
 <p><strong>Default value:</strong> <code>10</code></p></td>
     </tr>
     </table>
@@ -306,13 +363,10 @@ This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or 
     <p>A modified Vega-Lite Spec</p>
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -323,7 +377,7 @@ This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or 
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

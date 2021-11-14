@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="vl_config_view — vl_config_view" />
 <meta property="og:description" content="Add view config (ViewConfig) to a vega-lite spec." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -123,30 +126,29 @@
     <p>Add view config (ViewConfig) to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_config_view</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>clip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>continuousHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>continuousWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cornerRadius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>discreteHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>discreteWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fill</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fillOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>opacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>stroke</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeCap</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeDashOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeJoin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeMiterLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>vl_config_view</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  clip <span class='op'>=</span> <span class='cn'>NULL</span>,
+  continuousHeight <span class='op'>=</span> <span class='cn'>NULL</span>,
+  continuousWidth <span class='op'>=</span> <span class='cn'>NULL</span>,
+  cornerRadius <span class='op'>=</span> <span class='cn'>NULL</span>,
+  cursor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  discreteHeight <span class='op'>=</span> <span class='cn'>NULL</span>,
+  discreteWidth <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fill <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fillOpacity <span class='op'>=</span> <span class='cn'>NULL</span>,
+  opacity <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  stroke <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeCap <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeDash <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeDashOffset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeJoin <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeMiterLimit <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeOpacity <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeWidth <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,95 +163,109 @@
     </tr>
     <tr>
       <th>clip</th>
-      <td><p>(<em>ViewConfig</em>) Whether the view should be clipped.</p></td>
+      <td><p>Whether the view should be clipped.</p></td>
     </tr>
     <tr>
       <th>continuousHeight</th>
-      <td><p>(<em>ViewConfig</em>) The default height when the plot has a continuous y-field.</p>
+      <td><p>The default height when the plot has a continuous y-field for x or latitude, or
+has arc marks.</p>
 <p><strong>Default value:</strong> <code>200</code></p></td>
     </tr>
     <tr>
       <th>continuousWidth</th>
-      <td><p>(<em>ViewConfig</em>) The default width when the plot has a continuous x-field.</p>
+      <td><p>The default width when the plot has a continuous field for x or longitude, or
+has arc marks.</p>
 <p><strong>Default value:</strong> <code>200</code></p></td>
     </tr>
     <tr>
       <th>cornerRadius</th>
-      <td><p>(<em>ViewConfig</em>) The radius in pixels of rounded rectangle corners.</p>
-<p><strong>Default value:</strong> <code>0</code></p></td>
+      <td><p>The radius in pixels of rounded rectangles or arcs' corners.</p>
+<p><strong>Default value:</strong> <code>0</code></p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
+      <th>cursor</th>
+      <td><p>The mouse cursor used over the view. Any valid <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values'>CSS cursor type</a> can be
+used.</p></td>
     </tr>
     <tr>
       <th>discreteHeight</th>
-      <td><p>(<em>ViewConfig</em>) The default height when the plot has either a discrete y-field or no y-field.</p>
+      <td><p>The default height when the plot has non arc marks and either a discrete y-field
+or no y-field. The height can be either a number indicating a fixed height or an
+object in the form of <code>{step: number}</code> defining the height per discrete step.</p>
 <p><strong>Default value:</strong> a step size based on <code>config.view.step</code>.</p></td>
     </tr>
     <tr>
       <th>discreteWidth</th>
-      <td><p>(<em>ViewConfig</em>) The default width when the plot has either a discrete x-field or no x-field.</p>
+      <td><p>The default width when the plot has non-arc marks and either a discrete x-field
+or no x-field. The width can be either a number indicating a fixed width or an
+object in the form of <code>{step: number}</code> defining the width per discrete step.</p>
 <p><strong>Default value:</strong> a step size based on <code>config.view.step</code>.</p></td>
     </tr>
     <tr>
       <th>fill</th>
-      <td><p>(<em>ViewConfig</em>) The fill color.</p>
+      <td><p>The fill color.</p>
 <p><strong>Default value:</strong> <code>undefined</code></p></td>
     </tr>
     <tr>
       <th>fillOpacity</th>
-      <td><p>(<em>ViewConfig</em>) The fill opacity (value between [0,1]).</p>
-<p><strong>Default value:</strong> <code>1</code></p></td>
-    </tr>
-    <tr>
-      <th>height</th>
-      <td><p>(<em>ViewConfig</em>) Default height</p></td>
+      <td><p>The fill opacity (value between [0,1]).</p>
+<p><strong>Default value:</strong> <code>1</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>opacity</th>
-      <td><p>(<em>ViewConfig</em>) The overall opacity (value between [0,1]).</p>
-<p><strong>Default value:</strong> <code>0.7</code> for non-aggregate plots with <code>point</code>, <code>tick</code>, <code>circle</code>, or <code>square</code> marks or layered <code>bar</code> charts and <code>1</code> otherwise.</p></td>
+      <td><p>The overall opacity (value between [0,1]).</p>
+<p><strong>Default value:</strong> <code>0.7</code> for non-aggregate plots with <code>point</code>, <code>tick</code>, <code>circle</code>,
+or <code>square</code> marks or layered <code>bar</code> charts and <code>1</code> otherwise.</p></td>
     </tr>
     <tr>
       <th>step</th>
-      <td><p>(<em>ViewConfig</em>) Default step size for x-/y- discrete fields.</p></td>
+      <td><p>Default step size for x-/y- discrete fields.</p></td>
     </tr>
     <tr>
       <th>stroke</th>
-      <td><p>(<em>ViewConfig</em>) The stroke color.</p>
+      <td><p>The stroke color.</p>
 <p><strong>Default value:</strong> <code>"#ddd"</code></p></td>
     </tr>
     <tr>
       <th>strokeCap</th>
-      <td><p>(<em>ViewConfig</em>) The stroke cap for line ending style. One of <code>"butt"</code>, <code>"round"</code>, or <code>"square"</code>.</p>
-<p><strong>Default value:</strong> <code>"square"</code></p></td>
+      <td><p>The stroke cap for line ending style. One of <code>"butt"</code>, <code>"round"</code>, or <code>"square"</code>.</p>
+<p><strong>Default value:</strong> <code>"butt"</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>strokeDash</th>
-      <td><p>(<em>ViewConfig</em>) An array of alternating stroke, space lengths for creating dashed or dotted lines.</p></td>
+      <td><p>An array of alternating stroke, space lengths for creating dashed or dotted
+lines.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>strokeDashOffset</th>
-      <td><p>(<em>ViewConfig</em>) The offset (in pixels) into which to begin drawing with the stroke dash array.</p></td>
+      <td><p>The offset (in pixels) into which to begin drawing with the stroke dash array.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>strokeJoin</th>
-      <td><p>(<em>ViewConfig</em>) The stroke line join method. One of <code>"miter"</code>, <code>"round"</code> or <code>"bevel"</code>.</p>
-<p><strong>Default value:</strong> <code>"miter"</code></p></td>
+      <td><p>The stroke line join method. One of <code>"miter"</code>, <code>"round"</code> or <code>"bevel"</code>.</p>
+<p><strong>Default value:</strong> <code>"miter"</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>strokeMiterLimit</th>
-      <td><p>(<em>ViewConfig</em>) The miter limit at which to bevel a line join.</p></td>
+      <td><p>The miter limit at which to bevel a line join.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>strokeOpacity</th>
-      <td><p>(<em>ViewConfig</em>) The stroke opacity (value between [0,1]).</p>
-<p><strong>Default value:</strong> <code>1</code></p></td>
+      <td><p>The stroke opacity (value between [0,1]).</p>
+<p><strong>Default value:</strong> <code>1</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>strokeWidth</th>
-      <td><p>(<em>ViewConfig</em>) The stroke width, in pixels.</p></td>
-    </tr>
-    <tr>
-      <th>width</th>
-      <td><p>(<em>ViewConfig</em>) Default width</p></td>
+      <td><p>The stroke width, in pixels.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     </table>
 
@@ -258,13 +274,10 @@
     <p>A modified Vega-Lite Spec</p>
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -275,7 +288,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

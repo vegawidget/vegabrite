@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="vl_mark_tick — vl_mark_tick" />
 <meta property="og:description" content="vl_mark_tick" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -123,74 +126,95 @@
     <p>vl_mark_tick</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_mark_tick</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>angle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>aspect</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>baseline</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binSpacing</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>clip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cornerRadius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cornerRadiusBottomLeft</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cornerRadiusBottomRight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cornerRadiusTopLeft</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cornerRadiusTopRight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cursor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>dx</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>dy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ellipsis</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fill</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fillOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>filled</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>font</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fontStyle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fontWeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>href</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>interpolate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>invalid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>limit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>line</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>lineBreak</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>lineHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>opacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>order</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>orient</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>point</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>radius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>shape</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>stroke</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeCap</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeDash</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeDashOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeJoin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeMiterLimit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeOpacity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strokeWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>tension</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>text</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>theta</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>thickness</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>timeUnitBand</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>timeUnitBandPosition</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>x2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>x2Offset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>xOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>y2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>y2Offset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>yOffset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>vl_mark_tick</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  align <span class='op'>=</span> <span class='cn'>NULL</span>,
+  angle <span class='op'>=</span> <span class='cn'>NULL</span>,
+  aria <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ariaRole <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ariaRoleDescription <span class='op'>=</span> <span class='cn'>NULL</span>,
+  aspect <span class='op'>=</span> <span class='cn'>NULL</span>,
+  bandSize <span class='op'>=</span> <span class='cn'>NULL</span>,
+  baseline <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binSpacing <span class='op'>=</span> <span class='cn'>NULL</span>,
+  blend <span class='op'>=</span> <span class='cn'>NULL</span>,
+  clip <span class='op'>=</span> <span class='cn'>NULL</span>,
+  color <span class='op'>=</span> <span class='cn'>NULL</span>,
+  continuousBandSize <span class='op'>=</span> <span class='cn'>NULL</span>,
+  cornerRadius <span class='op'>=</span> <span class='cn'>NULL</span>,
+  cornerRadiusBottomLeft <span class='op'>=</span> <span class='cn'>NULL</span>,
+  cornerRadiusBottomRight <span class='op'>=</span> <span class='cn'>NULL</span>,
+  cornerRadiusEnd <span class='op'>=</span> <span class='cn'>NULL</span>,
+  cornerRadiusTopLeft <span class='op'>=</span> <span class='cn'>NULL</span>,
+  cornerRadiusTopRight <span class='op'>=</span> <span class='cn'>NULL</span>,
+  cursor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  description <span class='op'>=</span> <span class='cn'>NULL</span>,
+  dir <span class='op'>=</span> <span class='cn'>NULL</span>,
+  discreteBandSize <span class='op'>=</span> <span class='cn'>NULL</span>,
+  dx <span class='op'>=</span> <span class='cn'>NULL</span>,
+  dy <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ellipsis <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fill <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fillOpacity <span class='op'>=</span> <span class='cn'>NULL</span>,
+  filled <span class='op'>=</span> <span class='cn'>NULL</span>,
+  font <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fontSize <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fontStyle <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fontWeight <span class='op'>=</span> <span class='cn'>NULL</span>,
+  height <span class='op'>=</span> <span class='cn'>NULL</span>,
+  href <span class='op'>=</span> <span class='cn'>NULL</span>,
+  innerRadius <span class='op'>=</span> <span class='cn'>NULL</span>,
+  interpolate <span class='op'>=</span> <span class='cn'>NULL</span>,
+  invalid <span class='op'>=</span> <span class='cn'>NULL</span>,
+  limit <span class='op'>=</span> <span class='cn'>NULL</span>,
+  line <span class='op'>=</span> <span class='cn'>NULL</span>,
+  lineBreak <span class='op'>=</span> <span class='cn'>NULL</span>,
+  lineHeight <span class='op'>=</span> <span class='cn'>NULL</span>,
+  opacity <span class='op'>=</span> <span class='cn'>NULL</span>,
+  order <span class='op'>=</span> <span class='cn'>NULL</span>,
+  orient <span class='op'>=</span> <span class='cn'>NULL</span>,
+  outerRadius <span class='op'>=</span> <span class='cn'>NULL</span>,
+  padAngle <span class='op'>=</span> <span class='cn'>NULL</span>,
+  point <span class='op'>=</span> <span class='cn'>NULL</span>,
+  radius <span class='op'>=</span> <span class='cn'>NULL</span>,
+  radius2 <span class='op'>=</span> <span class='cn'>NULL</span>,
+  radius2Offset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  radiusOffset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  shape <span class='op'>=</span> <span class='cn'>NULL</span>,
+  size <span class='op'>=</span> <span class='cn'>NULL</span>,
+  smooth <span class='op'>=</span> <span class='cn'>NULL</span>,
+  stroke <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeCap <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeDash <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeDashOffset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeJoin <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeMiterLimit <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeOffset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeOpacity <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strokeWidth <span class='op'>=</span> <span class='cn'>NULL</span>,
+  style <span class='op'>=</span> <span class='cn'>NULL</span>,
+  tension <span class='op'>=</span> <span class='cn'>NULL</span>,
+  text <span class='op'>=</span> <span class='cn'>NULL</span>,
+  theta <span class='op'>=</span> <span class='cn'>NULL</span>,
+  theta2 <span class='op'>=</span> <span class='cn'>NULL</span>,
+  theta2Offset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  thetaOffset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  thickness <span class='op'>=</span> <span class='cn'>NULL</span>,
+  timeUnitBandPosition <span class='op'>=</span> <span class='cn'>NULL</span>,
+  timeUnitBandSize <span class='op'>=</span> <span class='cn'>NULL</span>,
+  tooltip <span class='op'>=</span> <span class='cn'>NULL</span>,
+  url <span class='op'>=</span> <span class='cn'>NULL</span>,
+  width <span class='op'>=</span> <span class='cn'>NULL</span>,
+  x <span class='op'>=</span> <span class='cn'>NULL</span>,
+  x2 <span class='op'>=</span> <span class='cn'>NULL</span>,
+  x2Offset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  xOffset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  y <span class='op'>=</span> <span class='cn'>NULL</span>,
+  y2 <span class='op'>=</span> <span class='cn'>NULL</span>,
+  y2Offset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  yOffset <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -205,161 +229,284 @@
     </tr>
     <tr>
       <th>align</th>
-      <td><p>(<em>MarkDef</em>) The horizontal alignment of the text or ranged marks (area, bar, image, rect, rule). One of <code>"left"</code>, <code>"right"</code>, <code>"center"</code>.</p></td>
+      <td><p>The horizontal alignment of the text or ranged marks (area, bar, image, rect,
+rule). One of <code>"left"</code>, <code>"right"</code>, <code>"center"</code>.</p>
+<p><strong>Note:</strong> Expression reference is <em>not</em> supported for range marks.</p></td>
     </tr>
     <tr>
       <th>angle</th>
-      <td><p>(<em>MarkDef</em>) The rotation angle of the text, in degrees.</p></td>
+      <td><p>The rotation angle of the text, in degrees.</p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
+      <th>aria</th>
+      <td><p>A boolean flag indicating if <a href='https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA'>ARIA attributes</a>
+should be included (SVG output only). If <code>false</code>, the "aria-hidden" attribute
+will be set on the output SVG element, removing the mark item from the ARIA
+accessibility tree.</p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
+      <th>ariaRole</th>
+      <td><p>Sets the type of user interface element of the mark item for <a href='https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA'>ARIA accessibility</a>
+(SVG output only). If specified, this property determines the "role" attribute.
+Warning: this property is experimental and may be changed in the future.</p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
+      <th>ariaRoleDescription</th>
+      <td><p>A human-readable, author-localized description
+for the role of the mark item for <a href='https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA'>ARIA accessibility</a>
+(SVG output only). If specified, this property determines the
+"aria-roledescription" attribute. Warning: this property is experimental and may
+be changed in the future.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>aspect</th>
-      <td><p>(<em>MarkDef</em>) Whether to keep aspect ratio of image marks.</p></td>
+      <td><p>Whether to keep aspect ratio of image marks.</p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
+      <th>bandSize</th>
+      <td><p>The width of the ticks.</p>
+<p><strong>Default value:</strong> 3/4 of step (width step for horizontal ticks and height step
+for vertical ticks).</p></td>
     </tr>
     <tr>
       <th>baseline</th>
-      <td><p>(<em>MarkDef</em>) The vertical alignment of the text or ranged marks (area, bar, image, rect, rule). One of <code>"top"</code>, <code>"middle"</code>, <code>"bottom"</code>.</p>
-<p><strong>Default value:</strong> <code>"middle"</code></p></td>
+      <td><p>For text marks, the vertical text baseline. One of <code>"alphabetic"</code> (default),
+<code>"top"</code>, <code>"middle"</code>, <code>"bottom"</code>, <code>"line-top"</code>, <code>"line-bottom"</code>, or an
+expression reference that provides one of the valid values. The <code>"line-top"</code>
+and <code>"line-bottom"</code> values operate similarly to <code>"top"</code> and <code>"bottom"</code>, but are
+calculated relative to the <code>lineHeight</code> rather than <code>fontSize</code> alone.</p>
+<p>For range marks, the vertical alignment of the marks. One of <code>"top"</code>,
+<code>"middle"</code>, <code>"bottom"</code>.</p>
+<p><strong>Note:</strong> Expression reference is <em>not</em> supported for range marks.</p></td>
     </tr>
     <tr>
       <th>binSpacing</th>
-      <td><p>(<em>MarkDef</em>) Offset between bars for binned field. The ideal value for this is either 0 (preferred by statisticians) or 1 (Vega-Lite default, D3 example style).</p>
+      <td><p>Offset between bars for binned field. The ideal value for this is either 0
+(preferred by statisticians) or 1 (Vega-Lite default, D3 example style).</p>
 <p><strong>Default value:</strong> <code>1</code></p></td>
     </tr>
     <tr>
+      <th>blend</th>
+      <td><p>The color blend mode for drawing an item
+on its current background. Any valid <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode'>CSS mix-blend-mode</a>
+value can be used.</p>
+<p>__Default value: <code>"source-over"</code></p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
       <th>clip</th>
-      <td><p>(<em>MarkDef</em>) Whether a mark be clipped to the enclosing group’s width and height.</p></td>
+      <td><p>Whether a mark be clipped to the enclosing group’s width and height.</p></td>
     </tr>
     <tr>
       <th>color</th>
-      <td><p>(<em>MarkDef</em>) Default color.</p>
+      <td><p>Default color.</p>
 <p><strong>Default value:</strong> &lt;span style="color: #4682b4;"&gt;■&lt;/span&gt; <code>"#4682b4"</code></p>
 <p><strong>Note:</strong></p><ul>
 <li><p>This property cannot be used in a <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style config</a>.</p></li>
-<li><p>The <code>fill</code> and <code>stroke</code> properties have higher precedence than <code>color</code> and will override <code>color</code>.</p></li>
+<li><p>The <code>fill</code> and <code>stroke</code> properties have higher precedence than <code>color</code> and
+will override <code>color</code>.</p></li>
 </ul></td>
     </tr>
     <tr>
+      <th>continuousBandSize</th>
+      <td><p>The default size of the bars on continuous scales.</p>
+<p><strong>Default value:</strong> <code>5</code></p></td>
+    </tr>
+    <tr>
       <th>cornerRadius</th>
-      <td><p>(<em>MarkDef</em>) The radius in pixels of rounded rectangle corners.</p>
-<p><strong>Default value:</strong> <code>0</code></p></td>
+      <td><p>The radius in pixels of rounded rectangles or arcs' corners.</p>
+<p><strong>Default value:</strong> <code>0</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>cornerRadiusBottomLeft</th>
-      <td><p>(<em>MarkDef</em>) The radius in pixels of rounded rectangle bottom left corner.</p>
-<p><strong>Default value:</strong> <code>0</code></p></td>
+      <td><p>The radius in pixels of rounded rectangles' bottom left corner.</p>
+<p><strong>Default value:</strong> <code>0</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>cornerRadiusBottomRight</th>
-      <td><p>(<em>MarkDef</em>) The radius in pixels of rounded rectangle bottom right corner.</p>
-<p><strong>Default value:</strong> <code>0</code></p></td>
+      <td><p>The radius in pixels of rounded rectangles' bottom right corner.</p>
+<p><strong>Default value:</strong> <code>0</code></p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
+      <th>cornerRadiusEnd</th>
+      <td><ul>
+<li><p>For vertical bars, top-left and top-right corner radius.</p></li>
+<li><p>For horizontal bars, top-right and bottom-right corner radius.</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>cornerRadiusTopLeft</th>
-      <td><p>(<em>MarkDef</em>) The radius in pixels of rounded rectangle top right corner.</p>
-<p><strong>Default value:</strong> <code>0</code></p></td>
+      <td><p>The radius in pixels of rounded rectangles' top right corner.</p>
+<p><strong>Default value:</strong> <code>0</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>cornerRadiusTopRight</th>
-      <td><p>(<em>MarkDef</em>) The radius in pixels of rounded rectangle top left corner.</p>
-<p><strong>Default value:</strong> <code>0</code></p></td>
+      <td><p>The radius in pixels of rounded rectangles' top left corner.</p>
+<p><strong>Default value:</strong> <code>0</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>cursor</th>
-      <td><p>(<em>MarkDef</em>) The mouse cursor used over the mark. Any valid <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values'>CSS cursor type</a> can be used.</p></td>
+      <td><p>The mouse cursor used over the mark. Any valid <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#Values'>CSS cursor type</a> can be
+used.</p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
+      <th>description</th>
+      <td><p>A text description of the mark item for <a href='https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA'>ARIA accessibility</a>
+(SVG output only). If specified, this property determines the <a href='https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute'>"aria-label" attribute</a>.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>dir</th>
-      <td><p>(<em>MarkDef</em>) The direction of the text. One of <code>"ltr"</code> (left-to-right) or <code>"rtl"</code> (right-to-left). This property determines on which side is truncated in response to the limit parameter.</p>
-<p><strong>Default value:</strong> <code>"ltr"</code></p></td>
+      <td><p>The direction of the text. One of <code>"ltr"</code> (left-to-right) or <code>"rtl"</code>
+(right-to-left). This property determines on which side is truncated in response
+to the limit parameter.</p>
+<p><strong>Default value:</strong> <code>"ltr"</code></p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
+      <th>discreteBandSize</th>
+      <td><p>The default size of the bars with discrete dimensions. If unspecified, the
+default size is <code>step-2</code>, which provides 2 pixel offset between bars.</p></td>
     </tr>
     <tr>
       <th>dx</th>
-      <td><p>(<em>MarkDef</em>) The horizontal offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the <em>angle</em> property.</p></td>
+      <td><p>The horizontal offset, in pixels, between the text label and its anchor point.
+The offset is applied after rotation by the <em>angle</em> property.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>dy</th>
-      <td><p>(<em>MarkDef</em>) The vertical offset, in pixels, between the text label and its anchor point. The offset is applied after rotation by the <em>angle</em> property.</p></td>
+      <td><p>The vertical offset, in pixels, between the text label and its anchor point. The
+offset is applied after rotation by the <em>angle</em> property.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>ellipsis</th>
-      <td><p>(<em>MarkDef</em>) The ellipsis string for text truncated in response to the limit parameter.</p>
-<p><strong>Default value:</strong> <code>"…"</code></p></td>
+      <td><p>The ellipsis string for text truncated in response to the limit parameter.</p>
+<p><strong>Default value:</strong> <code>"…"</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>fill</th>
-      <td><p>(<em>MarkDef</em>) Default Fill Color. This has higher precedence than <code>config.color</code>.</p>
+      <td><p>Default fill color. This property has higher precedence than <code>config.color</code>. Set
+to <code>null</code> to remove fill.</p>
 <p><strong>Default value:</strong> (None)</p></td>
     </tr>
     <tr>
       <th>fillOpacity</th>
-      <td><p>(<em>MarkDef</em>) The fill opacity (value between [0,1]).</p>
-<p><strong>Default value:</strong> <code>1</code></p></td>
+      <td><p>The fill opacity (value between [0,1]).</p>
+<p><strong>Default value:</strong> <code>1</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>filled</th>
-      <td><p>(<em>MarkDef</em>) Whether the mark's color should be used as fill color instead of stroke color.</p>
-<p><strong>Default value:</strong> <code>false</code> for all <code>point</code>, <code>line</code>, and <code>rule</code> marks as well as <code>geoshape</code> marks for <a href='https://vega.github.io/vega-lite/docs/data.html#graticule'><code>graticule</code></a> data sources; otherwise, <code>true</code>.</p>
+      <td><p>Whether the mark's color should be used as fill color instead of stroke color.</p>
+<p><strong>Default value:</strong> <code>false</code> for all <code>point</code>, <code>line</code>,
+and <code>rule</code> marks as well as <code>geoshape</code> marks for
+<a href='https://vega.github.io/vega-lite/docs/data.html#graticule'><code>graticule</code></a> data
+sources; otherwise, <code>true</code>.</p>
 <p><strong>Note:</strong> This property cannot be used in a <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style config</a>.</p></td>
     </tr>
     <tr>
       <th>font</th>
-      <td><p>(<em>MarkDef</em>) The typeface to set the text in (e.g., <code>"Helvetica Neue"</code>).</p></td>
+      <td><p>The typeface to set the text in (e.g., <code>"Helvetica Neue"</code>).</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>fontSize</th>
-      <td><p>(<em>MarkDef</em>) The font size, in pixels.</p></td>
+      <td><p>The font size, in pixels.</p>
+<p><strong>Default value:</strong> <code>11</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>fontStyle</th>
-      <td><p>(<em>MarkDef</em>) The font style (e.g., <code>"italic"</code>).</p></td>
+      <td><p>The font style (e.g., <code>"italic"</code>).</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>fontWeight</th>
-      <td><p>(<em>MarkDef</em>) The font weight.
-This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or a number (<code>100</code>, <code>200</code>, <code>300</code>, ..., <code>900</code> where <code>"normal"</code> = <code>400</code> and <code>"bold"</code> = <code>700</code>).</p></td>
+      <td><p>The font weight. This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or a
+number (<code>100</code>, <code>200</code>, <code>300</code>, ..., <code>900</code> where <code>"normal"</code> = <code>400</code> and <code>"bold"</code> =
+<code>700</code>).</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>height</th>
-      <td><p>(<em>MarkDef</em>) Height of the marks.</p></td>
+      <td><p>Height of the marks. One of:</p><ul>
+<li><p>A number representing a fixed pixel height.</p></li>
+<li><p>A relative band size definition. For example, <code>{band: 0.5}</code> represents half of
+the band</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>href</th>
-      <td><p>(<em>MarkDef</em>) A URL to load upon mouse click. If defined, the mark acts as a hyperlink.</p></td>
+      <td><p>A URL to load upon mouse click. If defined, the mark acts as a hyperlink.</p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
+      <th>innerRadius</th>
+      <td><p>The inner radius in pixels of arc marks. <code>innerRadius</code> is an alias for
+<code>radius2</code>.</p></td>
     </tr>
     <tr>
       <th>interpolate</th>
-      <td><p>(<em>MarkDef</em>) The line interpolation method to use for line and area marks. One of the following:</p><ul>
+      <td><p>The line interpolation method to use for line and area marks. One of the
+following:</p><ul>
 <li><p><code>"linear"</code>: piecewise linear segments, as in a polyline.</p></li>
 <li><p><code>"linear-closed"</code>: close the linear segments to form a polygon.</p></li>
-<li><p><code>"step"</code>: alternate between horizontal and vertical segments, as in a step function.</p></li>
-<li><p><code>"step-before"</code>: alternate between vertical and horizontal segments, as in a step function.</p></li>
-<li><p><code>"step-after"</code>: alternate between horizontal and vertical segments, as in a step function.</p></li>
+<li><p><code>"step"</code>: alternate between horizontal and vertical segments, as in a step
+function.</p></li>
+<li><p><code>"step-before"</code>: alternate between vertical and horizontal segments, as in a
+step function.</p></li>
+<li><p><code>"step-after"</code>: alternate between horizontal and vertical segments, as in a
+step function.</p></li>
 <li><p><code>"basis"</code>: a B-spline, with control point duplication on the ends.</p></li>
 <li><p><code>"basis-open"</code>: an open B-spline; may not intersect the start or end.</p></li>
 <li><p><code>"basis-closed"</code>: a closed B-spline, as in a loop.</p></li>
 <li><p><code>"cardinal"</code>: a Cardinal spline, with control point duplication on the ends.</p></li>
-<li><p><code>"cardinal-open"</code>: an open Cardinal spline; may not intersect the start or end, but will intersect other control points.</p></li>
+<li><p><code>"cardinal-open"</code>: an open Cardinal spline; may not intersect the start or
+end, but will intersect other control points.</p></li>
 <li><p><code>"cardinal-closed"</code>: a closed Cardinal spline, as in a loop.</p></li>
-<li><p><code>"bundle"</code>: equivalent to basis, except the tension parameter is used to straighten the spline.</p></li>
+<li><p><code>"bundle"</code>: equivalent to basis, except the tension parameter is used to
+straighten the spline.</p></li>
 <li><p><code>"monotone"</code>: cubic interpolation that preserves monotonicity in y.</p></li>
-</ul></td>
+</ul>
+
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>invalid</th>
-      <td><p>(<em>MarkDef</em>) Defines how Vega-Lite should handle marks for invalid values (<code>null</code> and <code>NaN</code>).</p><ul>
-<li><p>If set to <code>"filter"</code> (default), all data items with null values will be skipped (for line, trail, and area marks) or filtered (for other marks).</p></li>
-<li><p>If <code>null</code>, all data items are included. In this case, invalid values will be interpreted as zeroes.</p></li>
+      <td><p>Defines how Vega-Lite should handle marks for invalid values (<code>null</code> and <code>NaN</code>).</p><ul>
+<li><p>If set to <code>"filter"</code> (default), all data items with null values will be
+skipped (for line, trail, and area marks) or filtered (for other marks).</p></li>
+<li><p>If <code>null</code>, all data items are included. In this case, invalid values will be
+interpreted as zeroes.</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>limit</th>
-      <td><p>(<em>MarkDef</em>) The maximum length of the text mark in pixels. The text value will be automatically truncated if the rendered size exceeds the limit.</p>
-<p><strong>Default value:</strong> <code>0</code>, indicating no limit</p></td>
+      <td><p>The maximum length of the text mark in pixels. The text value will be
+automatically truncated if the rendered size exceeds the limit.</p>
+<p><strong>Default value:</strong> <code>0</code> -- indicating no limit</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>line</th>
-      <td><p>(<em>MarkDef</em>) A flag for overlaying line on top of area marks, or an object defining the properties of the overlayed lines.</p><ul>
-<li><p>If this value is an empty object (<code>{}</code>) or <code>true</code>, lines with default properties will be used.</p></li>
+      <td><p>A flag for overlaying line on top of area marks, or an object defining the
+properties of the overlayed lines.</p><ul>
+<li><p>If this value is an empty object (<code><a href='https://rdrr.io/r/base/Paren.html'>{}</a></code>) or <code>true</code>, lines with default
+properties will be used.</p></li>
 <li><p>If this value is <code>false</code>, no lines would be automatically added to area marks.</p></li>
 </ul>
 
@@ -367,63 +514,102 @@ This can be either a string (e.g <code>"bold"</code>, <code>"normal"</code>) or 
     </tr>
     <tr>
       <th>lineBreak</th>
-      <td><p>(<em>MarkDef</em>) A delimiter, such as a newline character, upon which to break text strings into multiple lines. This property will be ignored if the text property is array-valued.</p></td>
+      <td><p>A delimiter, such as a newline character, upon which to break text strings into
+multiple lines. This property is ignored if the text is array-valued.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>lineHeight</th>
-      <td><p>(<em>MarkDef</em>) The height, in pixels, of each line of text in a multi-line text mark.</p></td>
+      <td><p>The line height in pixels (the spacing between subsequent lines of text) for
+multi-line text marks.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>opacity</th>
-      <td><p>(<em>MarkDef</em>) The overall opacity (value between [0,1]).</p>
-<p><strong>Default value:</strong> <code>0.7</code> for non-aggregate plots with <code>point</code>, <code>tick</code>, <code>circle</code>, or <code>square</code> marks or layered <code>bar</code> charts and <code>1</code> otherwise.</p></td>
+      <td><p>The overall opacity (value between [0,1]).</p>
+<p><strong>Default value:</strong> <code>0.7</code> for non-aggregate plots with <code>point</code>, <code>tick</code>, <code>circle</code>,
+or <code>square</code> marks or layered <code>bar</code> charts and <code>1</code> otherwise.</p></td>
     </tr>
     <tr>
       <th>order</th>
-      <td><p>(<em>MarkDef</em>) For line and trail marks, this <code>order</code> property can be set to <code>null</code> or <code>false</code> to make the lines use the original order in the data sources.</p></td>
+      <td><p>For line and trail marks, this <code>order</code> property can be set to <code>null</code> or <code>false</code>
+to make the lines use the original order in the data sources.</p></td>
     </tr>
     <tr>
       <th>orient</th>
-      <td><p>(<em>MarkDef</em>) The orientation of a non-stacked bar, tick, area, and line charts.
-The value is either horizontal (default) or vertical.</p><ul>
+      <td><p>The orientation of a non-stacked bar, tick, area, and line charts. The value is
+either horizontal (default) or vertical.</p><ul>
 <li><p>For bar, rule and tick, this determines whether the size of the bar and tick
 should be applied to x or y dimension.</p></li>
 <li><p>For area, this property determines the orient property of the Vega output.</p></li>
-<li><p>For line and trail marks, this property determines the sort order of the points in the line
-if <code>config.sortLineBy</code> is not specified.
-For stacked charts, this is always determined by the orientation of the stack;
-therefore explicitly specified value will be ignored.</p></li>
+<li><p>For line and trail marks, this property determines the sort order of the
+points in the line if <code>config.sortLineBy</code> is not specified. For stacked charts,
+this is always determined by the orientation of the stack; therefore explicitly
+specified value will be ignored.</p></li>
 </ul></td>
     </tr>
     <tr>
+      <th>outerRadius</th>
+      <td><p>The outer radius in pixels of arc marks. <code>outerRadius</code> is an alias for <code>radius</code>.</p></td>
+    </tr>
+    <tr>
+      <th>padAngle</th>
+      <td><p>The angular padding applied to sides of the arc, in radians.</p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
       <th>point</th>
-      <td><p>(<em>MarkDef</em>) A flag for overlaying points on top of line or area marks, or an object defining the properties of the overlayed points.</p><ul>
-<li><p>If this property is <code>"transparent"</code>, transparent points will be used (for enhancing tooltips and selections).</p></li>
-<li><p>If this property is an empty object (<code>{}</code>) or <code>true</code>, filled points with default properties will be used.</p></li>
-<li><p>If this property is <code>false</code>, no points would be automatically added to line or area marks.</p></li>
+      <td><p>A flag for overlaying points on top of line or area marks, or an object defining
+the properties of the overlayed points.</p><ul>
+<li><p>If this property is <code>"transparent"</code>, transparent points will be used (for
+enhancing tooltips and selections).</p></li>
+<li><p>If this property is an empty object (<code><a href='https://rdrr.io/r/base/Paren.html'>{}</a></code>) or <code>true</code>, filled points with
+default properties will be used.</p></li>
+<li><p>If this property is <code>false</code>, no points would be automatically added to line or
+area marks.</p></li>
 </ul>
 
 <p><strong>Default value:</strong> <code>false</code>.</p></td>
     </tr>
     <tr>
       <th>radius</th>
-      <td><p>(<em>MarkDef</em>) Polar coordinate radial offset, in pixels, of the text label from the origin determined by the <code>x</code> and <code>y</code> properties.</p></td>
+      <td><p>For arc mark, the primary (outer) radius in pixels.</p>
+<p>For text marks, polar coordinate radial offset, in pixels, of the text from the
+origin determined by the <code>x</code> and <code>y</code> properties.</p></td>
+    </tr>
+    <tr>
+      <th>radius2</th>
+      <td><p>The secondary (inner) radius in pixels of arc marks.</p></td>
+    </tr>
+    <tr>
+      <th>radius2Offset</th>
+      <td><p>Offset for radius2.</p></td>
+    </tr>
+    <tr>
+      <th>radiusOffset</th>
+      <td><p>Offset for radius.</p></td>
     </tr>
     <tr>
       <th>shape</th>
-      <td><p>(<em>MarkDef</em>) Shape of the point marks. Supported values include:</p><ul>
-<li><p>plotting shapes: <code>"circle"</code>, <code>"square"</code>, <code>"cross"</code>, <code>"diamond"</code>, <code>"triangle-up"</code>, <code>"triangle-down"</code>, <code>"triangle-right"</code>, or <code>"triangle-left"</code>.</p></li>
+      <td><p>Shape of the point marks. Supported values include:</p><ul>
+<li><p>plotting shapes: <code>"circle"</code>, <code>"square"</code>, <code>"cross"</code>, <code>"diamond"</code>,
+<code>"triangle-up"</code>, <code>"triangle-down"</code>, <code>"triangle-right"</code>, or <code>"triangle-left"</code>.</p></li>
 <li><p>the line symbol <code>"stroke"</code></p></li>
 <li><p>centered directional shapes <code>"arrow"</code>, <code>"wedge"</code>, or <code>"triangle"</code></p></li>
-<li><p>a custom <a href='https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths'>SVG path string</a> (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)</p></li>
+<li><p>a custom <a href='https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths'>SVG path string</a> (For
+correct sizing, custom shape paths should be defined within a square bounding
+box with coordinates ranging from -1 to 1 along both the x and y dimensions.)</p></li>
 </ul>
 
-<p><strong>Default value:</strong> <code>"circle"</code></p></td>
+<p><strong>Default value:</strong> <code>"circle"</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>size</th>
-      <td><p>(<em>MarkDef</em>) Default size for marks.</p><ul>
-<li><p>For <code>point</code>/<code>circle</code>/<code>square</code>, this represents the pixel area of the marks. For example: in the case of circles, the radius is determined in part by the square root of the size value.</p></li>
+      <td><p>Default size for marks.</p><ul>
+<li><p>For <code>point</code>/<code>circle</code>/<code>square</code>, this represents the pixel area of the marks.
+Note that this value sets the area of the symbol; the side lengths will increase
+with the square root of this value.</p></li>
 <li><p>For <code>bar</code>, this represents the band size of the bar, in pixels.</p></li>
 <li><p>For <code>text</code>, this represents the font size, in pixels.</p></li>
 </ul>
@@ -436,124 +622,197 @@ therefore explicitly specified value will be ignored.</p></li>
 </ul></td>
     </tr>
     <tr>
+      <th>smooth</th>
+      <td><p>A boolean flag (default true) indicating if the image should be smoothed when
+resized. If false, individual pixels should be scaled directly rather than
+interpolated with smoothing. For SVG rendering, this option may not work in some
+browsers due to lack of standardization.</p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
       <th>stroke</th>
-      <td><p>(<em>MarkDef</em>) Default Stroke Color. This has higher precedence than <code>config.color</code>.</p>
+      <td><p>Default stroke color. This property has higher precedence than <code>config.color</code>.
+Set to <code>null</code> to remove stroke.</p>
 <p><strong>Default value:</strong> (None)</p></td>
     </tr>
     <tr>
       <th>strokeCap</th>
-      <td><p>(<em>MarkDef</em>) The stroke cap for line ending style. One of <code>"butt"</code>, <code>"round"</code>, or <code>"square"</code>.</p>
-<p><strong>Default value:</strong> <code>"square"</code></p></td>
+      <td><p>The stroke cap for line ending style. One of <code>"butt"</code>, <code>"round"</code>, or <code>"square"</code>.</p>
+<p><strong>Default value:</strong> <code>"butt"</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>strokeDash</th>
-      <td><p>(<em>MarkDef</em>) An array of alternating stroke, space lengths for creating dashed or dotted lines.</p></td>
+      <td><p>An array of alternating stroke, space lengths for creating dashed or dotted
+lines.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>strokeDashOffset</th>
-      <td><p>(<em>MarkDef</em>) The offset (in pixels) into which to begin drawing with the stroke dash array.</p></td>
+      <td><p>The offset (in pixels) into which to begin drawing with the stroke dash array.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>strokeJoin</th>
-      <td><p>(<em>MarkDef</em>) The stroke line join method. One of <code>"miter"</code>, <code>"round"</code> or <code>"bevel"</code>.</p>
-<p><strong>Default value:</strong> <code>"miter"</code></p></td>
+      <td><p>The stroke line join method. One of <code>"miter"</code>, <code>"round"</code> or <code>"bevel"</code>.</p>
+<p><strong>Default value:</strong> <code>"miter"</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>strokeMiterLimit</th>
-      <td><p>(<em>MarkDef</em>) The miter limit at which to bevel a line join.</p></td>
+      <td><p>The miter limit at which to bevel a line join.</p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
+      <th>strokeOffset</th>
+      <td><p>The offset in pixels at which to draw the group stroke and fill. If unspecified,
+the default behavior is to dynamically offset stroked groups such that 1 pixel
+stroke widths align with the pixel grid.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>strokeOpacity</th>
-      <td><p>(<em>MarkDef</em>) The stroke opacity (value between [0,1]).</p>
-<p><strong>Default value:</strong> <code>1</code></p></td>
+      <td><p>The stroke opacity (value between [0,1]).</p>
+<p><strong>Default value:</strong> <code>1</code></p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>strokeWidth</th>
-      <td><p>(<em>MarkDef</em>) The stroke width, in pixels.</p></td>
+      <td><p>The stroke width, in pixels.</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>style</th>
-      <td><p>(<em>MarkDef</em>) A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style configuration</a>. If style is an array, later styles will override earlier styles. Any <a href='https://vega.github.io/vega-lite/docs/encoding.html#mark-prop'>mark properties</a> explicitly defined within the <code>encoding</code> will override a style default.</p>
-<p><strong>Default value:</strong> The mark's name. For example, a bar mark will have style <code>"bar"</code> by default.
-<strong>Note:</strong> Any specified style will augment the default style. For example, a bar mark with <code>"style": "foo"</code> will receive from <code>config.style.bar</code> and <code>config.style.foo</code> (the specified style <code>"foo"</code> has higher precedence).</p></td>
+      <td><p>A string or array of strings indicating the name of custom
+styles to apply to the mark. A style is a named collection
+of mark property defaults defined within the <a href='https://vega.github.io/vega-lite/docs/mark.html#style-config'>style configuration</a>.
+If style is an array, later styles will override earlier styles. Any <a href='https://vega.github.io/vega-lite/docs/encoding.html#mark-prop'>mark properties</a>
+explicitly defined within the <code>encoding</code> will override a style default.</p>
+<p><strong>Default value:</strong> The mark's name. For example, a bar mark will have style
+<code>"bar"</code> by default. <strong>Note:</strong> Any specified style will augment the default
+style. For example, a bar mark with <code>"style": "foo"</code> will receive from
+<code>config.style.bar</code> and <code>config.style.foo</code> (the specified style <code>"foo"</code> has
+higher precedence).</p></td>
     </tr>
     <tr>
       <th>tension</th>
-      <td><p>(<em>MarkDef</em>) Depending on the interpolation type, sets the tension parameter (for line and area marks).</p></td>
+      <td><p>Depending on the interpolation type, sets the tension parameter (for line and
+area marks).</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>text</th>
-      <td><p>(<em>MarkDef</em>) Placeholder text if the <code>text</code> channel is not specified</p></td>
+      <td><p>Placeholder text if the <code>text</code> channel is not specified</p>
+<p>Or: ExprRef</p></td>
     </tr>
     <tr>
       <th>theta</th>
-      <td><p>(<em>MarkDef</em>) Polar coordinate angle, in radians, of the text label from the origin determined by the <code>x</code> and <code>y</code> properties. Values for <code>theta</code> follow the same convention of <code>arc</code> mark <code>startAngle</code> and <code>endAngle</code> properties: angles are measured in radians, with <code>0</code> indicating "north".</p></td>
+      <td><ul>
+<li><p>For arc marks, the arc length in radians if theta2 is not specified, otherwise
+the start arc angle. (A value of 0 indicates up or “north”, increasing values
+proceed clockwise.)</p></li>
+<li><p>For text marks, polar coordinate angle in radians.</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>theta2</th>
+      <td><p>The end angle of arc marks in radians. A value of 0 indicates up or “north”,
+increasing values proceed clockwise.</p></td>
+    </tr>
+    <tr>
+      <th>theta2Offset</th>
+      <td><p>Offset for theta2.</p></td>
+    </tr>
+    <tr>
+      <th>thetaOffset</th>
+      <td><p>Offset for theta.</p></td>
     </tr>
     <tr>
       <th>thickness</th>
-      <td><p>(<em>MarkDef</em>) Thickness of the tick mark.</p>
-<p><strong>Default value:</strong>  <code>1</code></p></td>
-    </tr>
-    <tr>
-      <th>timeUnitBand</th>
-      <td><p>(<em>MarkDef</em>) Default relative band size for a time unit. If set to <code>1</code>, the bandwidth of the marks will be equal to the time unit band step.
-If set to <code>0.5</code>, bandwidth of the marks will be half of the time unit band step.</p></td>
+      <td><p>Thickness of the tick mark.</p>
+<p><strong>Default value:</strong> <code>1</code></p></td>
     </tr>
     <tr>
       <th>timeUnitBandPosition</th>
-      <td><p>(<em>MarkDef</em>) Default relative band position for a time unit. If set to <code>0</code>, the marks will be positioned at the beginning of the time unit band step.
-If set to <code>0.5</code>, the marks will be positioned in the middle of the time unit band step.</p></td>
+      <td><p>Default relative band position for a time unit. If set to <code>0</code>, the marks will
+be positioned at the beginning of the time unit band step. If set to <code>0.5</code>, the
+marks will be positioned in the middle of the time unit band step.</p></td>
+    </tr>
+    <tr>
+      <th>timeUnitBandSize</th>
+      <td><p>Default relative band size for a time unit. If set to <code>1</code>, the bandwidth of the
+marks will be equal to the time unit band step. If set to <code>0.5</code>, bandwidth of
+the marks will be half of the time unit band step.</p></td>
     </tr>
     <tr>
       <th>tooltip</th>
-      <td><p>(<em>MarkDef</em>) The tooltip text string to show upon mouse hover or an object defining which fields should the tooltip be derived from.</p><ul>
-<li><p>If <code>tooltip</code> is <code>true</code> or <code>{"content": "encoding"}</code>, then all fields from <code>encoding</code> will be used.</p></li>
-<li><p>If <code>tooltip</code> is <code>{"content": "data"}</code>, then all fields that appear in the highlighted data point will be used.</p></li>
+      <td><p>The tooltip text string to show upon mouse hover or an object defining which
+fields should the tooltip be derived from.</p><ul>
+<li><p>If <code>tooltip</code> is <code>true</code> or <code>{"content": "encoding"}</code>, then all fields from
+<code>encoding</code> will be used.</p></li>
+<li><p>If <code>tooltip</code> is <code>{"content": "data"}</code>, then all fields that appear in the
+highlighted data point will be used.</p></li>
 <li><p>If set to <code>null</code> or <code>false</code>, then no tooltip will be used.</p></li>
 </ul>
 
-<p>See the <a href='https://vega.github.io/vega-lite/docs/tooltip.html'><code>tooltip</code></a> documentation for a detailed discussion about tooltip  in Vega-Lite.</p>
+<p>See the <a href='https://vega.github.io/vega-lite/docs/tooltip.html'><code>tooltip</code></a>
+documentation for a detailed discussion about tooltip in Vega-Lite.</p>
 <p><strong>Default value:</strong> <code>null</code></p></td>
     </tr>
     <tr>
+      <th>url</th>
+      <td><p>The URL of the image file for image marks.</p>
+<p>Or: ExprRef</p></td>
+    </tr>
+    <tr>
       <th>width</th>
-      <td><p>(<em>MarkDef</em>) Width of the marks.</p></td>
+      <td><p>Width of the marks. One of:</p><ul>
+<li><p>A number representing a fixed pixel width.</p></li>
+<li><p>A relative band size definition. For example, <code>{band: 0.5}</code> represents half of
+the band.</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>x</th>
-      <td><p>(<em>MarkDef</em>) X coordinates of the marks, or width of horizontal <code>"bar"</code> and <code>"area"</code> without specified <code>x2</code> or <code>width</code>.</p>
-<p>The <code>value</code> of this channel can be a number or a string <code>"width"</code> for the width of the plot.</p></td>
+      <td><p>X coordinates of the marks, or width of horizontal <code>"bar"</code> and <code>"area"</code> without
+specified <code>x2</code> or <code>width</code>.</p>
+<p>The <code>value</code> of this channel can be a number or a string <code>"width"</code> for the width
+of the plot.</p></td>
     </tr>
     <tr>
       <th>x2</th>
-      <td><p>(<em>MarkDef</em>) X2 coordinates for ranged <code>"area"</code>, <code>"bar"</code>, <code>"rect"</code>, and  <code>"rule"</code>.</p>
-<p>The <code>value</code> of this channel can be a number or a string <code>"width"</code> for the width of the plot.</p></td>
+      <td><p>X2 coordinates for ranged <code>"area"</code>, <code>"bar"</code>, <code>"rect"</code>, and <code>"rule"</code>.</p>
+<p>The <code>value</code> of this channel can be a number or a string <code>"width"</code> for the width
+of the plot.</p></td>
     </tr>
     <tr>
       <th>x2Offset</th>
-      <td><p>(<em>MarkDef</em>) Offset for x2-position.</p></td>
+      <td><p>Offset for x2-position.</p></td>
     </tr>
     <tr>
       <th>xOffset</th>
-      <td><p>(<em>MarkDef</em>) Offset for x-position.</p></td>
+      <td><p>Offset for x-position.</p></td>
     </tr>
     <tr>
       <th>y</th>
-      <td><p>(<em>MarkDef</em>) Y coordinates of the marks, or height of vertical <code>"bar"</code> and <code>"area"</code> without specified <code>y2</code> or <code>height</code>.</p>
-<p>The <code>value</code> of this channel can be a number or a string <code>"height"</code> for the height of the plot.</p></td>
+      <td><p>Y coordinates of the marks, or height of vertical <code>"bar"</code> and <code>"area"</code> without
+specified <code>y2</code> or <code>height</code>.</p>
+<p>The <code>value</code> of this channel can be a number or a string <code>"height"</code> for the
+height of the plot.</p></td>
     </tr>
     <tr>
       <th>y2</th>
-      <td><p>(<em>MarkDef</em>) Y2 coordinates for ranged <code>"area"</code>, <code>"bar"</code>, <code>"rect"</code>, and  <code>"rule"</code>.</p>
-<p>The <code>value</code> of this channel can be a number or a string <code>"height"</code> for the height of the plot.</p></td>
+      <td><p>Y2 coordinates for ranged <code>"area"</code>, <code>"bar"</code>, <code>"rect"</code>, and <code>"rule"</code>.</p>
+<p>The <code>value</code> of this channel can be a number or a string <code>"height"</code> for the
+height of the plot.</p></td>
     </tr>
     <tr>
       <th>y2Offset</th>
-      <td><p>(<em>MarkDef</em>) Offset for y2-position.</p></td>
+      <td><p>Offset for y2-position.</p></td>
     </tr>
     <tr>
       <th>yOffset</th>
-      <td><p>(<em>MarkDef</em>) Offset for y-position.</p></td>
+      <td><p>Offset for y-position.</p></td>
     </tr>
     </table>
 
@@ -562,13 +821,10 @@ If set to <code>0.5</code>, the marks will be positioned in the middle of the ti
     <p>A modified Vega-Lite Spec</p>
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -579,7 +835,7 @@ If set to <code>0.5</code>, the marks will be positioned in the middle of the ti
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

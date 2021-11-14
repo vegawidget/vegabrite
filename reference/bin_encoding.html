@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="Add bin to encoding — bin_encoding" />
 <meta property="og:description" content="Add bin parameters to an encoding" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -123,425 +126,530 @@
     <p>Add bin parameters to an encoding</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_bin_color</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+    <pre class="usage"><span class='fu'>vl_bin_angle</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_detail</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_color</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_fill</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_description</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_fillOpacity</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_detail</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_href</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_fill</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_key</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_fillOpacity</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_latitude</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_href</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_latitude2</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_key</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_longitude</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_latitude</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_longitude2</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_latitude2</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_opacity</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_longitude</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_order</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_longitude2</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_shape</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_opacity</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_size</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_order</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_stroke</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_radius</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_strokeOpacity</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_radius2</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_strokeWidth</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_shape</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_text</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_size</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_tooltip</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_stroke</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_url</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_strokeDash</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_x</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_strokeOpacity</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_x2</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_strokeWidth</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_xError</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_text</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_xError2</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_theta</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_y</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_theta2</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_y2</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_tooltip</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_yError</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+<span class='fu'>vl_bin_url</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>vl_bin_yError2</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>anchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>binned</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>divide</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxbins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minstep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>steps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+<span class='fu'>vl_bin_x</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
+
+<span class='fu'>vl_bin_x2</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
+
+<span class='fu'>vl_bin_xError</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
+
+<span class='fu'>vl_bin_xError2</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
+
+<span class='fu'>vl_bin_y</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
+
+<span class='fu'>vl_bin_y2</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
+
+<span class='fu'>vl_bin_yError</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
+
+<span class='fu'>vl_bin_yError2</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  anchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  base <span class='op'>=</span> <span class='cn'>NULL</span>,
+  binned <span class='op'>=</span> <span class='cn'>NULL</span>,
+  divide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxbins <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minstep <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nice <span class='op'>=</span> <span class='cn'>NULL</span>,
+  step <span class='op'>=</span> <span class='cn'>NULL</span>,
+  steps <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -556,49 +664,56 @@
     </tr>
     <tr>
       <th>anchor</th>
-      <td><p>(<em>BinParams</em>) A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.</p>
+      <td><p>A value in the binned domain at which to anchor the bins, shifting the bin
+boundaries if necessary to ensure that a boundary aligns with the anchor value.</p>
 <p><strong>Default value:</strong> the minimum bin extent value</p></td>
     </tr>
     <tr>
       <th>base</th>
-      <td><p>(<em>BinParams</em>) The number base to use for automatic bin determination (default is base 10).</p>
+      <td><p>The number base to use for automatic bin determination (default is base 10).</p>
 <p><strong>Default value:</strong> <code>10</code></p></td>
     </tr>
     <tr>
       <th>binned</th>
-      <td><p>(<em>BinParams</em>) When set to <code>true</code>, Vega-Lite treats the input data as already binned.</p></td>
+      <td><p>When set to <code>true</code>, Vega-Lite treats the input data as already binned.</p></td>
     </tr>
     <tr>
       <th>divide</th>
-      <td><p>(<em>BinParams</em>) Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.</p>
+      <td><p>Scale factors indicating allowable subdivisions. The default value is [5, 2],
+which indicates that for base 10 numbers (the default base), the method may
+consider dividing bin sizes by 5 and/or 2. For example, for an initial step
+size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (=
+10/(5*2)) might also satisfy the given constraints.</p>
 <p><strong>Default value:</strong> <code>[5, 2]</code></p></td>
     </tr>
     <tr>
       <th>extent</th>
-      <td><p>(<em>BinParams</em>) A two-element (<code>[min, max]</code>) array indicating the range of desired bin values.</p></td>
+      <td><p>A two-element (<code>[min, max]</code>) array indicating the range of desired bin values.</p></td>
     </tr>
     <tr>
       <th>maxbins</th>
-      <td><p>(<em>BinParams</em>) Maximum number of bins.</p>
-<p><strong>Default value:</strong> <code>6</code> for <code>row</code>, <code>column</code> and <code>shape</code> channels; <code>10</code> for other channels</p></td>
+      <td><p>Maximum number of bins.</p>
+<p><strong>Default value:</strong> <code>6</code> for <code>row</code>, <code>column</code> and <code>shape</code> channels; <code>10</code> for other
+channels</p></td>
     </tr>
     <tr>
       <th>minstep</th>
-      <td><p>(<em>BinParams</em>) A minimum allowable step size (particularly useful for integer values).</p></td>
+      <td><p>A minimum allowable step size (particularly useful for integer values).</p></td>
     </tr>
     <tr>
       <th>nice</th>
-      <td><p>(<em>BinParams</em>) If true, attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten.</p>
+      <td><p>If true, attempts to make the bin boundaries use human-friendly boundaries, such
+as multiples of ten.</p>
 <p><strong>Default value:</strong> <code>true</code></p></td>
     </tr>
     <tr>
       <th>step</th>
-      <td><p>(<em>BinParams</em>) An exact step size to use between bins.</p>
+      <td><p>An exact step size to use between bins.</p>
 <p><strong>Note:</strong> If provided, options such as maxbins will be ignored.</p></td>
     </tr>
     <tr>
       <th>steps</th>
-      <td><p>(<em>BinParams</em>) An array of allowable step sizes to choose from.</p></td>
+      <td><p>An array of allowable step sizes to choose from.</p></td>
     </tr>
     </table>
 
@@ -607,13 +722,10 @@
     <p>A modified Vega-Lite Spec</p>
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -624,7 +736,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

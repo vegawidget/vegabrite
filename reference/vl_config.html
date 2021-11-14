@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="vl_config — vl_config" />
 <meta property="og:description" content="Add top-level config to a vega-lite spec." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -123,57 +126,77 @@
     <p>Add top-level config to a vega-lite spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vl_config</span>(
-  <span class='no'>spec</span>,
-  <span class='kw'>.object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>area</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>autosize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>axis</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>axisBand</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>axisBottom</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>axisLeft</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>axisRight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>axisTop</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>axisX</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>axisY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>background</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>bar</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>boxplot</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>circle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>concat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>countTitle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>errorband</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>errorbar</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>facet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fieldTitle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>geoshape</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>header</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>headerColumn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>headerFacet</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>headerRow</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>image</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>legend</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>line</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>mark</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>numberFormat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>point</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>projection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rect</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>`repeat`</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rule</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>selection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>square</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>text</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>tick</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>timeFormat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>trail</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>view</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>vl_config</span><span class='op'>(</span>
+  <span class='va'>spec</span>,
+  .object <span class='op'>=</span> <span class='cn'>NULL</span>,
+  arc <span class='op'>=</span> <span class='cn'>NULL</span>,
+  area <span class='op'>=</span> <span class='cn'>NULL</span>,
+  aria <span class='op'>=</span> <span class='cn'>NULL</span>,
+  autosize <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axis <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisBand <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisBottom <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisDiscrete <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisLeft <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisPoint <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisQuantitative <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisRight <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisTemporal <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisTop <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisX <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisXBand <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisXDiscrete <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisXPoint <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisXQuantitative <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisXTemporal <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisY <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisYBand <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisYDiscrete <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisYPoint <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisYQuantitative <span class='op'>=</span> <span class='cn'>NULL</span>,
+  axisYTemporal <span class='op'>=</span> <span class='cn'>NULL</span>,
+  background <span class='op'>=</span> <span class='cn'>NULL</span>,
+  bar <span class='op'>=</span> <span class='cn'>NULL</span>,
+  boxplot <span class='op'>=</span> <span class='cn'>NULL</span>,
+  circle <span class='op'>=</span> <span class='cn'>NULL</span>,
+  concat <span class='op'>=</span> <span class='cn'>NULL</span>,
+  countTitle <span class='op'>=</span> <span class='cn'>NULL</span>,
+  customFormatTypes <span class='op'>=</span> <span class='cn'>NULL</span>,
+  errorband <span class='op'>=</span> <span class='cn'>NULL</span>,
+  errorbar <span class='op'>=</span> <span class='cn'>NULL</span>,
+  facet <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fieldTitle <span class='op'>=</span> <span class='cn'>NULL</span>,
+  font <span class='op'>=</span> <span class='cn'>NULL</span>,
+  geoshape <span class='op'>=</span> <span class='cn'>NULL</span>,
+  header <span class='op'>=</span> <span class='cn'>NULL</span>,
+  headerColumn <span class='op'>=</span> <span class='cn'>NULL</span>,
+  headerFacet <span class='op'>=</span> <span class='cn'>NULL</span>,
+  headerRow <span class='op'>=</span> <span class='cn'>NULL</span>,
+  image <span class='op'>=</span> <span class='cn'>NULL</span>,
+  legend <span class='op'>=</span> <span class='cn'>NULL</span>,
+  line <span class='op'>=</span> <span class='cn'>NULL</span>,
+  lineBreak <span class='op'>=</span> <span class='cn'>NULL</span>,
+  locale <span class='op'>=</span> <span class='cn'>NULL</span>,
+  mark <span class='op'>=</span> <span class='cn'>NULL</span>,
+  numberFormat <span class='op'>=</span> <span class='cn'>NULL</span>,
+  padding <span class='op'>=</span> <span class='cn'>NULL</span>,
+  params <span class='op'>=</span> <span class='cn'>NULL</span>,
+  point <span class='op'>=</span> <span class='cn'>NULL</span>,
+  projection <span class='op'>=</span> <span class='cn'>NULL</span>,
+  range <span class='op'>=</span> <span class='cn'>NULL</span>,
+  rect <span class='op'>=</span> <span class='cn'>NULL</span>,
+  rule <span class='op'>=</span> <span class='cn'>NULL</span>,
+  scale <span class='op'>=</span> <span class='cn'>NULL</span>,
+  selection <span class='op'>=</span> <span class='cn'>NULL</span>,
+  square <span class='op'>=</span> <span class='cn'>NULL</span>,
+  style <span class='op'>=</span> <span class='cn'>NULL</span>,
+  text <span class='op'>=</span> <span class='cn'>NULL</span>,
+  tick <span class='op'>=</span> <span class='cn'>NULL</span>,
+  timeFormat <span class='op'>=</span> <span class='cn'>NULL</span>,
+  title <span class='op'>=</span> <span class='cn'>NULL</span>,
+  trail <span class='op'>=</span> <span class='cn'>NULL</span>,
+  view <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -187,209 +210,333 @@
       <td><p>Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Config</p></td>
     </tr>
     <tr>
+      <th>arc</th>
+      <td><p>Arc-specific Config</p></td>
+    </tr>
+    <tr>
       <th>area</th>
-      <td><p>(<em>Config</em>) Area-Specific Config</p></td>
+      <td><p>Area-Specific Config</p></td>
+    </tr>
+    <tr>
+      <th>aria</th>
+      <td><p>A boolean flag indicating if ARIA default attributes should be included for
+marks and guides (SVG output only). If false, the <code>"aria-hidden"</code> attribute
+will be set for all guides, removing them from the ARIA accessibility tree and
+Vega-Lite will not generate default descriptions for marks.</p>
+<p><strong>Default value:</strong> <code>true</code>.</p></td>
     </tr>
     <tr>
       <th>autosize</th>
-      <td><p>(<em>Config</em>) How the visualization size should be determined. If a string, should be one of <code>"pad"</code>, <code>"fit"</code> or <code>"none"</code>.
-Object values can additionally specify parameters for content sizing and automatic resizing.</p>
+      <td><p>How the visualization size should be determined. If a string, should be one of
+<code>"pad"</code>, <code>"fit"</code> or <code>"none"</code>. Object values can additionally specify parameters
+for content sizing and automatic resizing.</p>
 <p><strong>Default value</strong>: <code>pad</code></p></td>
     </tr>
     <tr>
       <th>axis</th>
-      <td><p>(<em>Config</em>) Axis configuration, which determines default properties for all <code>x</code> and <code>y</code> <a href='https://vega.github.io/vega-lite/docs/axis.html'>axes</a>. For a full list of axis configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/axis.html#config'>corresponding section of the axis documentation</a>.</p></td>
+      <td><p>Axis configuration, which determines default properties for all <code>x</code> and <code>y</code>
+<a href='https://vega.github.io/vega-lite/docs/axis.html'>axes</a>. For a full list of
+axis configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/axis.html#config'>corresponding section of the axis documentation</a>.</p></td>
     </tr>
     <tr>
       <th>axisBand</th>
-      <td><p>(<em>Config</em>) Specific axis config for axes with "band" scales.</p></td>
+      <td><p>Config for axes with "band" scales.</p></td>
     </tr>
     <tr>
       <th>axisBottom</th>
-      <td><p>(<em>Config</em>) Specific axis config for x-axis along the bottom edge of the chart.</p></td>
+      <td><p>Config for x-axis along the bottom edge of the chart.</p></td>
+    </tr>
+    <tr>
+      <th>axisDiscrete</th>
+      <td><p>Config for axes with "point" or "band" scales.</p></td>
     </tr>
     <tr>
       <th>axisLeft</th>
-      <td><p>(<em>Config</em>) Specific axis config for y-axis along the left edge of the chart.</p></td>
+      <td><p>Config for y-axis along the left edge of the chart.</p></td>
+    </tr>
+    <tr>
+      <th>axisPoint</th>
+      <td><p>Config for axes with "point" scales.</p></td>
+    </tr>
+    <tr>
+      <th>axisQuantitative</th>
+      <td><p>Config for quantitative axes.</p></td>
     </tr>
     <tr>
       <th>axisRight</th>
-      <td><p>(<em>Config</em>) Specific axis config for y-axis along the right edge of the chart.</p></td>
+      <td><p>Config for y-axis along the right edge of the chart.</p></td>
+    </tr>
+    <tr>
+      <th>axisTemporal</th>
+      <td><p>Config for temporal axes.</p></td>
     </tr>
     <tr>
       <th>axisTop</th>
-      <td><p>(<em>Config</em>) Specific axis config for x-axis along the top edge of the chart.</p></td>
+      <td><p>Config for x-axis along the top edge of the chart.</p></td>
     </tr>
     <tr>
       <th>axisX</th>
-      <td><p>(<em>Config</em>) X-axis specific config.</p></td>
+      <td><p>X-axis specific config.</p></td>
+    </tr>
+    <tr>
+      <th>axisXBand</th>
+      <td><p>Config for x-axes with "band" scales.</p></td>
+    </tr>
+    <tr>
+      <th>axisXDiscrete</th>
+      <td><p>Config for x-axes with "point" or "band" scales.</p></td>
+    </tr>
+    <tr>
+      <th>axisXPoint</th>
+      <td><p>Config for x-axes with "point" scales.</p></td>
+    </tr>
+    <tr>
+      <th>axisXQuantitative</th>
+      <td><p>Config for x-quantitative axes.</p></td>
+    </tr>
+    <tr>
+      <th>axisXTemporal</th>
+      <td><p>Config for x-temporal axes.</p></td>
     </tr>
     <tr>
       <th>axisY</th>
-      <td><p>(<em>Config</em>) Y-axis specific config.</p></td>
+      <td><p>Y-axis specific config.</p></td>
+    </tr>
+    <tr>
+      <th>axisYBand</th>
+      <td><p>Config for y-axes with "band" scales.</p></td>
+    </tr>
+    <tr>
+      <th>axisYDiscrete</th>
+      <td><p>Config for y-axes with "point" or "band" scales.</p></td>
+    </tr>
+    <tr>
+      <th>axisYPoint</th>
+      <td><p>Config for y-axes with "point" scales.</p></td>
+    </tr>
+    <tr>
+      <th>axisYQuantitative</th>
+      <td><p>Config for y-quantitative axes.</p></td>
+    </tr>
+    <tr>
+      <th>axisYTemporal</th>
+      <td><p>Config for y-temporal axes.</p></td>
     </tr>
     <tr>
       <th>background</th>
-      <td><p>(<em>Config</em>) CSS color property to use as the background of the entire view.</p>
+      <td><p>CSS color property to use as the background of the entire view.</p>
 <p><strong>Default value:</strong> <code>"white"</code></p></td>
     </tr>
     <tr>
       <th>bar</th>
-      <td><p>(<em>Config</em>) Bar-Specific Config</p></td>
+      <td><p>Bar-Specific Config</p></td>
     </tr>
     <tr>
       <th>boxplot</th>
-      <td><p>(<em>Config</em>) Box Config</p></td>
+      <td><p>Box Config</p></td>
     </tr>
     <tr>
       <th>circle</th>
-      <td><p>(<em>Config</em>) Circle-Specific Config</p></td>
+      <td><p>Circle-Specific Config</p></td>
     </tr>
     <tr>
       <th>concat</th>
-      <td><p>(<em>Config</em>) Default configuration for all concatenation view composition operators (<code>concat</code>, <code>hconcat</code>, and <code>vconcat</code>)</p></td>
+      <td><p>Default configuration for all concatenation and repeat view composition
+operators (<code>concat</code>, <code>hconcat</code>, <code>vconcat</code>, and <code>repeat</code>)</p></td>
     </tr>
     <tr>
       <th>countTitle</th>
-      <td><p>(<em>Config</em>) Default axis and legend title for count fields.</p>
+      <td><p>Default axis and legend title for count fields.</p>
 <p><strong>Default value:</strong> <code>Count of Records</code>.</p></td>
     </tr>
     <tr>
+      <th>customFormatTypes</th>
+      <td><p>Allow the <code>formatType</code> property for text marks and guides
+to accept a custom formatter function <a href='https://vega.github.io/vega-lite/usage/compile.html#format-type'>registered as a Vega expression</a>.</p></td>
+    </tr>
+    <tr>
       <th>errorband</th>
-      <td><p>(<em>Config</em>) ErrorBand Config</p></td>
+      <td><p>ErrorBand Config</p></td>
     </tr>
     <tr>
       <th>errorbar</th>
-      <td><p>(<em>Config</em>) ErrorBar Config</p></td>
+      <td><p>ErrorBar Config</p></td>
     </tr>
     <tr>
       <th>facet</th>
-      <td><p>(<em>Config</em>) Default configuration for the <code>facet</code> view composition operator</p></td>
+      <td><p>Default configuration for the <code>facet</code> view composition operator</p></td>
     </tr>
     <tr>
       <th>fieldTitle</th>
-      <td><p>(<em>Config</em>) Defines how Vega-Lite generates title for fields. There are three possible styles:</p><ul>
-<li><p><code>"verbal"</code> (Default) - displays function in a verbal style (e.g., "Sum of field", "Year-month of date", "field (binned)").</p></li>
-<li><p><code>"function"</code> - displays function using parentheses and capitalized texts (e.g., "SUM(field)", "YEARMONTH(date)", "BIN(field)").</p></li>
-<li><p><code>"plain"</code> - displays only the field name without functions (e.g., "field", "date", "field").</p></li>
+      <td><p>Defines how Vega-Lite generates title for fields. There are three possible
+styles:</p><ul>
+<li><p><code>"verbal"</code> (Default) - displays function in a verbal style (e.g., "Sum of
+field", "Year-month of date", "field (binned)").</p></li>
+<li><p><code>"function"</code> - displays function using parentheses and capitalized texts
+(e.g., "SUM(field)", "YEARMONTH(date)", "BIN(field)").</p></li>
+<li><p><code>"plain"</code> - displays only the field name without functions (e.g., "field",
+"date", "field").</p></li>
 </ul></td>
     </tr>
     <tr>
+      <th>font</th>
+      <td><p>Default font for all text marks, titles, and labels.</p></td>
+    </tr>
+    <tr>
       <th>geoshape</th>
-      <td><p>(<em>Config</em>) Geoshape-Specific Config</p></td>
+      <td><p>Geoshape-Specific Config</p></td>
     </tr>
     <tr>
       <th>header</th>
-      <td><p>(<em>Config</em>) Header configuration, which determines default properties for all <a href='https://vega.github.io/vega-lite/docs/header.html'>headers</a>.</p>
-<p>For a full list of header configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/header.html#config'>corresponding section of in the header documentation</a>.</p></td>
+      <td><p>Header configuration, which determines default properties for all
+<a href='https://vega.github.io/vega-lite/docs/header.html'>headers</a>.</p>
+<p>For a full list of header configuration options,
+please see the <a href='https://vega.github.io/vega-lite/docs/header.html#config'>corresponding section of in the header documentation</a>.</p></td>
     </tr>
     <tr>
       <th>headerColumn</th>
-      <td><p>(<em>Config</em>) Header configuration, which determines default properties for column <a href='https://vega.github.io/vega-lite/docs/header.html'>headers</a>.</p>
-<p>For a full list of header configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/header.html#config'>corresponding section of in the header documentation</a>.</p></td>
+      <td><p>Header configuration, which determines default properties for column
+<a href='https://vega.github.io/vega-lite/docs/header.html'>headers</a>.</p>
+<p>For a full list of header configuration options,
+please see the <a href='https://vega.github.io/vega-lite/docs/header.html#config'>corresponding section of in the header documentation</a>.</p></td>
     </tr>
     <tr>
       <th>headerFacet</th>
-      <td><p>(<em>Config</em>) Header configuration, which determines default properties for non-row/column facet <a href='https://vega.github.io/vega-lite/docs/header.html'>headers</a>.</p>
-<p>For a full list of header configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/header.html#config'>corresponding section of in the header documentation</a>.</p></td>
+      <td><p>Header configuration, which determines default properties for non-row/column
+facet <a href='https://vega.github.io/vega-lite/docs/header.html'>headers</a>.</p>
+<p>For a full list of header configuration options,
+please see the <a href='https://vega.github.io/vega-lite/docs/header.html#config'>corresponding section of in the header documentation</a>.</p></td>
     </tr>
     <tr>
       <th>headerRow</th>
-      <td><p>(<em>Config</em>) Header configuration, which determines default properties for row <a href='https://vega.github.io/vega-lite/docs/header.html'>headers</a>.</p>
-<p>For a full list of header configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/header.html#config'>corresponding section of in the header documentation</a>.</p></td>
+      <td><p>Header configuration, which determines default properties for row
+<a href='https://vega.github.io/vega-lite/docs/header.html'>headers</a>.</p>
+<p>For a full list of header configuration options,
+please see the <a href='https://vega.github.io/vega-lite/docs/header.html#config'>corresponding section of in the header documentation</a>.</p></td>
     </tr>
     <tr>
       <th>image</th>
-      <td><p>(<em>Config</em>) Image-specific Config</p></td>
+      <td><p>Image-specific Config</p></td>
     </tr>
     <tr>
       <th>legend</th>
-      <td><p>(<em>Config</em>) Legend configuration, which determines default properties for all <a href='https://vega.github.io/vega-lite/docs/legend.html'>legends</a>. For a full list of legend configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/legend.html#config'>corresponding section of in the legend documentation</a>.</p></td>
+      <td><p>Legend configuration, which determines default properties for all
+<a href='https://vega.github.io/vega-lite/docs/legend.html'>legends</a>. For a full list
+of legend configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/legend.html#config'>corresponding section of in the legend documentation</a>.</p></td>
     </tr>
     <tr>
       <th>line</th>
-      <td><p>(<em>Config</em>) Line-Specific Config</p></td>
+      <td><p>Line-Specific Config</p></td>
+    </tr>
+    <tr>
+      <th>lineBreak</th>
+      <td><p>A delimiter, such as a newline character, upon which to break text strings into
+multiple lines. This property provides a global default for text marks, which is
+overridden by mark or style config settings, and by the lineBreak mark encoding
+channel. If signal-valued, either string or regular expression (regexp) values
+are valid.</p></td>
+    </tr>
+    <tr>
+      <th>locale</th>
+      <td><p>Locale definitions for string parsing and formatting of number and date values.
+The locale object should contain <code>number</code> and/or <code>time</code> properties with <a href='https://vega.github.io/vega/docs/api/locale/'>locale definitions</a>. Locale definitions
+provided in the config block may be overridden by the View constructor locale
+option.</p></td>
     </tr>
     <tr>
       <th>mark</th>
-      <td><p>(<em>Config</em>) Mark Config</p></td>
+      <td><p>Mark Config</p></td>
     </tr>
     <tr>
       <th>numberFormat</th>
-      <td><p>(<em>Config</em>) D3 Number format for guide labels and text marks. For example "s" for SI units. Use <a href='https://github.com/d3/d3-format#locale_format'>D3's number format pattern</a>.</p></td>
+      <td><p>D3 Number format for guide labels and text marks. For
+example <code>"s"</code> for SI units. Use <a href='https://github.com/d3/d3-format#locale_format'>D3's number format pattern</a>.</p></td>
     </tr>
     <tr>
       <th>padding</th>
-      <td><p>(<em>Config</em>) The default visualization padding, in pixels, from the edge of the visualization canvas to the data rectangle. If a number, specifies padding for all sides.
-If an object, the value should have the format <code>{"left": 5, "top": 5, "right": 5, "bottom": 5}</code> to specify padding for each side of the visualization.</p>
+      <td><p>The default visualization padding, in pixels, from the edge of the visualization
+canvas to the data rectangle. If a number, specifies padding for all sides. If
+an object, the value should have the format <code>{"left": 5, "top": 5, "right": 5, "bottom": 5}</code> to specify padding for each side of the visualization.</p>
 <p><strong>Default value</strong>: <code>5</code></p></td>
     </tr>
     <tr>
+      <th>params</th>
+      <td><p>Dynamic variables or selections that parameterize a visualization.</p></td>
+    </tr>
+    <tr>
       <th>point</th>
-      <td><p>(<em>Config</em>) Point-Specific Config</p></td>
+      <td><p>Point-Specific Config</p></td>
     </tr>
     <tr>
       <th>projection</th>
-      <td><p>(<em>Config</em>) Projection configuration, which determines default properties for all <a href='https://vega.github.io/vega-lite/docs/projection.html'>projections</a>. For a full list of projection configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/projection.html#config'>corresponding section of the projection documentation</a>.</p></td>
+      <td><p>Projection configuration, which determines default properties for all
+<a href='https://vega.github.io/vega-lite/docs/projection.html'>projections</a>.
+For a full list of projection configuration options,
+please see the <a href='https://vega.github.io/vega-lite/docs/projection.html#config'>corresponding section of the projection documentation</a>.</p></td>
     </tr>
     <tr>
       <th>range</th>
-      <td><p>(<em>Config</em>) An object hash that defines default range arrays or schemes for using with scales.
-For a full list of scale range configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/scale.html#config'>corresponding section of the scale documentation</a>.</p></td>
+      <td><p>An object hash that defines default range arrays or schemes for
+using with scales. For a full list of scale range configuration
+options, please see the <a href='https://vega.github.io/vega-lite/docs/scale.html#config'>corresponding section of the scale documentation</a>.</p></td>
     </tr>
     <tr>
       <th>rect</th>
-      <td><p>(<em>Config</em>) Rect-Specific Config</p></td>
-    </tr>
-    <tr>
-      <th>repeat</th>
-      <td><p>(<em>Config</em>) Default configuration for the <code>repeat</code> view composition operator</p></td>
+      <td><p>Rect-Specific Config</p></td>
     </tr>
     <tr>
       <th>rule</th>
-      <td><p>(<em>Config</em>) Rule-Specific Config</p></td>
+      <td><p>Rule-Specific Config</p></td>
     </tr>
     <tr>
       <th>scale</th>
-      <td><p>(<em>Config</em>) Scale configuration determines default properties for all <a href='https://vega.github.io/vega-lite/docs/scale.html'>scales</a>. For a full list of scale configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/scale.html#config'>corresponding section of the scale documentation</a>.</p></td>
+      <td><p>Scale configuration determines default properties for all
+<a href='https://vega.github.io/vega-lite/docs/scale.html'>scales</a>. For a full list of
+scale configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/scale.html#config'>corresponding section of the scale documentation</a>.</p></td>
     </tr>
     <tr>
       <th>selection</th>
-      <td><p>(<em>Config</em>) An object hash for defining default properties for each type of selections.</p></td>
+      <td><p>An object hash for defining default properties for each type of selections.</p></td>
     </tr>
     <tr>
       <th>square</th>
-      <td><p>(<em>Config</em>) Square-Specific Config</p></td>
+      <td><p>Square-Specific Config</p></td>
     </tr>
     <tr>
       <th>style</th>
-      <td><p>(<em>Config</em>) An object hash that defines key-value mappings to determine default properties for marks with a given <a href='https://vega.github.io/vega-lite/docs/mark.html#mark-def'>style</a>. The keys represent styles names; the values have to be valid <a href='https://vega.github.io/vega-lite/docs/mark.html#config'>mark configuration objects</a>.</p></td>
+      <td><p>An object hash that defines key-value mappings to
+determine default properties for marks with a given
+<a href='https://vega.github.io/vega-lite/docs/mark.html#mark-def'>style</a>. The keys
+represent styles names; the values have to be valid <a href='https://vega.github.io/vega-lite/docs/mark.html#config'>mark configuration objects</a>.</p></td>
     </tr>
     <tr>
       <th>text</th>
-      <td><p>(<em>Config</em>) Text-Specific Config</p></td>
+      <td><p>Text-Specific Config</p></td>
     </tr>
     <tr>
       <th>tick</th>
-      <td><p>(<em>Config</em>) Tick-Specific Config</p></td>
+      <td><p>Tick-Specific Config</p></td>
     </tr>
     <tr>
       <th>timeFormat</th>
-      <td><p>(<em>Config</em>) Default time format for raw time values (without time units) in text marks, legend labels and header labels.</p>
-<p><strong>Default value:</strong> <code>"%b %d, %Y"</code>
-<strong>Note:</strong> Axes automatically determine format each label automatically so this config would not affect axes.</p></td>
+      <td><p>Default time format for raw time values (without time units) in text marks,
+legend labels and header labels.</p>
+<p><strong>Default value:</strong> <code>"%b %d, %Y"</code> <strong>Note:</strong> Axes automatically determine the
+format for each label automatically so this config does not affect axes.</p></td>
     </tr>
     <tr>
       <th>title</th>
-      <td><p>(<em>Config</em>) Title configuration, which determines default properties for all <a href='https://vega.github.io/vega-lite/docs/title.html'>titles</a>. For a full list of title configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/title.html#config'>corresponding section of the title documentation</a>.</p></td>
+      <td><p>Title configuration, which determines default properties for all
+<a href='https://vega.github.io/vega-lite/docs/title.html'>titles</a>. For a full list of
+title configuration options, please see the <a href='https://vega.github.io/vega-lite/docs/title.html#config'>corresponding section of the title documentation</a>.</p></td>
     </tr>
     <tr>
       <th>trail</th>
-      <td><p>(<em>Config</em>) Trail-Specific Config</p></td>
+      <td><p>Trail-Specific Config</p></td>
     </tr>
     <tr>
       <th>view</th>
-      <td><p>(<em>Config</em>) Default properties for <a href='https://vega.github.io/vega-lite/docs/spec.html#single'>single view plots</a>.</p></td>
+      <td><p>Default properties for <a href='https://vega.github.io/vega-lite/docs/spec.html#single'>single view plots</a>.</p></td>
     </tr>
     </table>
 
@@ -398,13 +545,10 @@ For a full list of scale range configuration options, please see the <a href='ht
     <p>A modified Vega-Lite Spec</p>
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -415,7 +559,7 @@ For a full list of scale range configuration options, please see the <a href='ht
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
