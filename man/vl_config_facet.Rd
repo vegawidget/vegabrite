@@ -11,10 +11,11 @@ vl_config_facet(spec, .object = NULL, columns = NULL, spacing = NULL)
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: CompositionConfig}
 
-\item{columns}{(\emph{CompositionConfig}) The number of columns to include in the view composition layout.
+\item{columns}{The number of columns to include in the view composition layout.
 
-\strong{Default value}: \code{undefined} -- An infinite number of columns (a single row) will be assumed. This is equivalent to
-\code{hconcat} (for \code{concat}) and to using the \code{column} channel (for \code{facet} and \code{repeat}).
+\strong{Default value}: \code{undefined} -- An infinite number of columns (a single row)
+will be assumed. This is equivalent to \code{hconcat} (for \code{concat}) and to using the
+\code{column} channel (for \code{facet} and \code{repeat}).
 
 \strong{Note}:
 \enumerate{
@@ -22,13 +23,15 @@ vl_config_facet(spec, .object = NULL, columns = NULL, spacing = NULL)
 }
 \itemize{
 \item the general (wrappable) \code{concat} operator (not \code{hconcat}/\code{vconcat})
-\item the \code{facet} and \code{repeat} operator with one field/repetition definition (without row/column nesting)
+\item the \code{facet} and \code{repeat} operator with one field/repetition definition
+(without row/column nesting)
 }
 \enumerate{
-\item Setting the \code{columns} to \code{1} is equivalent to \code{vconcat} (for \code{concat}) and to using the \code{row} channel (for \code{facet} and \code{repeat}).
+\item Setting the \code{columns} to \code{1} is equivalent to \code{vconcat} (for \code{concat}) and to
+using the \code{row} channel (for \code{facet} and \code{repeat}).
 }}
 
-\item{spacing}{(\emph{CompositionConfig}) The default spacing in pixels between composed sub-views.
+\item{spacing}{The default spacing in pixels between composed sub-views.
 
 \strong{Default value}: \code{20}}
 }

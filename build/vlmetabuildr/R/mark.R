@@ -16,16 +16,8 @@ create_mark <- function(mark, schema) {
   )
 }
 
-# Helper function to get the reference for a composite definition
-get_composite_def <- function(schema, comp) {
-  def_names <- stringr::str_subset(names(schema$definitions), "Def$")
-  comp_def <- def_names[stringr::str_replace(tolower(def_names), "def$", "") == comp]
-
-  glue::glue("#/definitions/{comp_def}")
-}
-
 create_mark_composite <- function(mark, schema) {
-  make_function(get_composite_def(schema, mark),
+  make_function(glue::glue("#/definitions/{mark}Def"),
     schema,
     glue::glue("mark_{mark}"),
     ".add_mark",

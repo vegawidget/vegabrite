@@ -43,7 +43,7 @@ is_valid_string <- function(x, enum = NULL) {
 is_valid_array <- function(x, items, schema) {
   # Can make more efficient by early exit...
   if (hasName(items, "anyOf")) {
-    any(vapply(items$anyOf, function(any_of) is_valid_array(x, any_of, schema)))
+    any(vapply(items$anyOf, function(any_of) is_valid_array(x, any_of, schema), FALSE))
   } else {
     all_return_true(x, function(y) is_valid_subschema(y, items, schema))
   }

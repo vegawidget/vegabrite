@@ -2,7 +2,9 @@
 % Please edit documentation in R/zzz_autogen_api.R
 \name{bin_encoding}
 \alias{bin_encoding}
+\alias{vl_bin_angle}
 \alias{vl_bin_color}
+\alias{vl_bin_description}
 \alias{vl_bin_detail}
 \alias{vl_bin_fill}
 \alias{vl_bin_fillOpacity}
@@ -14,12 +16,17 @@
 \alias{vl_bin_longitude2}
 \alias{vl_bin_opacity}
 \alias{vl_bin_order}
+\alias{vl_bin_radius}
+\alias{vl_bin_radius2}
 \alias{vl_bin_shape}
 \alias{vl_bin_size}
 \alias{vl_bin_stroke}
+\alias{vl_bin_strokeDash}
 \alias{vl_bin_strokeOpacity}
 \alias{vl_bin_strokeWidth}
 \alias{vl_bin_text}
+\alias{vl_bin_theta}
+\alias{vl_bin_theta2}
 \alias{vl_bin_tooltip}
 \alias{vl_bin_url}
 \alias{vl_bin_x}
@@ -32,7 +39,37 @@
 \alias{vl_bin_yError2}
 \title{Add bin to encoding}
 \usage{
+vl_bin_angle(
+  spec,
+  .object = NULL,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL
+)
+
 vl_bin_color(
+  spec,
+  .object = NULL,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL
+)
+
+vl_bin_description(
   spec,
   .object = NULL,
   anchor = NULL,
@@ -212,6 +249,36 @@ vl_bin_order(
   steps = NULL
 )
 
+vl_bin_radius(
+  spec,
+  .object = NULL,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL
+)
+
+vl_bin_radius2(
+  spec,
+  .object = NULL,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL
+)
+
 vl_bin_shape(
   spec,
   .object = NULL,
@@ -257,6 +324,21 @@ vl_bin_stroke(
   steps = NULL
 )
 
+vl_bin_strokeDash(
+  spec,
+  .object = NULL,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL
+)
+
 vl_bin_strokeOpacity(
   spec,
   .object = NULL,
@@ -288,6 +370,36 @@ vl_bin_strokeWidth(
 )
 
 vl_bin_text(
+  spec,
+  .object = NULL,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL
+)
+
+vl_bin_theta(
+  spec,
+  .object = NULL,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL
+)
+
+vl_bin_theta2(
   spec,
   .object = NULL,
   anchor = NULL,
@@ -457,37 +569,44 @@ vl_bin_yError2(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BinParams}
 
-\item{anchor}{(\emph{BinParams}) A value in the binned domain at which to anchor the bins, shifting the bin boundaries if necessary to ensure that a boundary aligns with the anchor value.
+\item{anchor}{A value in the binned domain at which to anchor the bins, shifting the bin
+boundaries if necessary to ensure that a boundary aligns with the anchor value.
 
 \strong{Default value:} the minimum bin extent value}
 
-\item{base}{(\emph{BinParams}) The number base to use for automatic bin determination (default is base 10).
+\item{base}{The number base to use for automatic bin determination (default is base 10).
 
 \strong{Default value:} \code{10}}
 
-\item{binned}{(\emph{BinParams}) When set to \code{true}, Vega-Lite treats the input data as already binned.}
+\item{binned}{When set to \code{true}, Vega-Lite treats the input data as already binned.}
 
-\item{divide}{(\emph{BinParams}) Scale factors indicating allowable subdivisions. The default value is [5, 2], which indicates that for base 10 numbers (the default base), the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
+\item{divide}{Scale factors indicating allowable subdivisions. The default value is [5, 2],
+which indicates that for base 10 numbers (the default base), the method may
+consider dividing bin sizes by 5 and/or 2. For example, for an initial step
+size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (=
+10/(5*2)) might also satisfy the given constraints.
 
 \strong{Default value:} \verb{[5, 2]}}
 
-\item{extent}{(\emph{BinParams}) A two-element (\verb{[min, max]}) array indicating the range of desired bin values.}
+\item{extent}{A two-element (\verb{[min, max]}) array indicating the range of desired bin values.}
 
-\item{maxbins}{(\emph{BinParams}) Maximum number of bins.
+\item{maxbins}{Maximum number of bins.
 
-\strong{Default value:} \code{6} for \code{row}, \code{column} and \code{shape} channels; \code{10} for other channels}
+\strong{Default value:} \code{6} for \code{row}, \code{column} and \code{shape} channels; \code{10} for other
+channels}
 
-\item{minstep}{(\emph{BinParams}) A minimum allowable step size (particularly useful for integer values).}
+\item{minstep}{A minimum allowable step size (particularly useful for integer values).}
 
-\item{nice}{(\emph{BinParams}) If true, attempts to make the bin boundaries use human-friendly boundaries, such as multiples of ten.
+\item{nice}{If true, attempts to make the bin boundaries use human-friendly boundaries, such
+as multiples of ten.
 
 \strong{Default value:} \code{true}}
 
-\item{step}{(\emph{BinParams}) An exact step size to use between bins.
+\item{step}{An exact step size to use between bins.
 
 \strong{Note:} If provided, options such as maxbins will be ignored.}
 
-\item{steps}{(\emph{BinParams}) An array of allowable step sizes to choose from.}
+\item{steps}{An array of allowable step sizes to choose from.}
 }
 \value{
 A modified Vega-Lite Spec

@@ -2,20 +2,32 @@
 % Please edit documentation in R/zzz_autogen_api.R
 \name{sort_encoding_by_field}
 \alias{sort_encoding_by_field}
+\alias{vl_sort_angle_by_field}
 \alias{vl_sort_color_by_field}
 \alias{vl_sort_fill_by_field}
 \alias{vl_sort_fillOpacity_by_field}
 \alias{vl_sort_opacity_by_field}
 \alias{vl_sort_order_by_field}
+\alias{vl_sort_radius_by_field}
 \alias{vl_sort_shape_by_field}
 \alias{vl_sort_size_by_field}
 \alias{vl_sort_stroke_by_field}
+\alias{vl_sort_strokeDash_by_field}
 \alias{vl_sort_strokeOpacity_by_field}
 \alias{vl_sort_strokeWidth_by_field}
+\alias{vl_sort_theta_by_field}
 \alias{vl_sort_x_by_field}
 \alias{vl_sort_y_by_field}
 \title{Add sort transform by field to encoding}
 \usage{
+vl_sort_angle_by_field(
+  spec,
+  .object = NULL,
+  field = NULL,
+  op = NULL,
+  order = NULL
+)
+
 vl_sort_color_by_field(
   spec,
   .object = NULL,
@@ -56,6 +68,14 @@ vl_sort_order_by_field(
   order = NULL
 )
 
+vl_sort_radius_by_field(
+  spec,
+  .object = NULL,
+  field = NULL,
+  op = NULL,
+  order = NULL
+)
+
 vl_sort_shape_by_field(
   spec,
   .object = NULL,
@@ -80,6 +100,14 @@ vl_sort_stroke_by_field(
   order = NULL
 )
 
+vl_sort_strokeDash_by_field(
+  spec,
+  .object = NULL,
+  field = NULL,
+  op = NULL,
+  order = NULL
+)
+
 vl_sort_strokeOpacity_by_field(
   spec,
   .object = NULL,
@@ -96,6 +124,14 @@ vl_sort_strokeWidth_by_field(
   order = NULL
 )
 
+vl_sort_theta_by_field(
+  spec,
+  .object = NULL,
+  field = NULL,
+  op = NULL,
+  order = NULL
+)
+
 vl_sort_x_by_field(spec, .object = NULL, field = NULL, op = NULL, order = NULL)
 
 vl_sort_y_by_field(spec, .object = NULL, field = NULL, op = NULL, order = NULL)
@@ -105,19 +141,24 @@ vl_sort_y_by_field(spec, .object = NULL, field = NULL, op = NULL, order = NULL)
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: EncodingSortField}
 
-\item{field}{(\emph{EncodingSortField}) The data \href{https://vega.github.io/vega-lite/docs/field.html}{field} to sort by.
+\item{field}{The data \href{https://vega.github.io/vega-lite/docs/field.html}{field} to sort by.
 
-\strong{Default value:} If unspecified, defaults to the field specified in the outer data reference.}
+\strong{Default value:} If unspecified, defaults to the field specified in the outer
+data reference.}
 
-\item{op}{(\emph{EncodingSortField}) An \href{https://vega.github.io/vega-lite/docs/aggregate.html#ops}{aggregate operation} to perform on the field prior to sorting (e.g., \code{"count"}, \code{"mean"} and \code{"median"}).
-An aggregation is required when there are multiple values of the sort field for each encoded data field.
-The input data objects will be aggregated, grouped by the encoded data field.
+\item{op}{An \href{https://vega.github.io/vega-lite/docs/aggregate.html#ops}{aggregate operation} to perform
+on the field prior to sorting (e.g., \code{"count"}, \code{"mean"} and \code{"median"}). An
+aggregation is required when there are multiple values of the sort field for
+each encoded data field. The input data objects will be aggregated, grouped by
+the encoded data field.
 
-For a full list of operations, please see the documentation for \href{https://vega.github.io/vega-lite/docs/aggregate.html#ops}{aggregate}.
+For a full list of operations, please see the documentation for
+\href{https://vega.github.io/vega-lite/docs/aggregate.html#ops}{aggregate}.
 
-\strong{Default value:} \code{"sum"} for stacked plots. Otherwise, \code{"mean"}.}
+\strong{Default value:} \code{"sum"} for stacked plots. Otherwise, \code{"min"}.}
 
-\item{order}{(\emph{EncodingSortField}) The sort order. One of \code{"ascending"} (default), \code{"descending"}, or \code{null} (no not sort).}
+\item{order}{The sort order. One of \code{"ascending"} (default), \code{"descending"}, or \code{null} (no
+not sort).}
 }
 \value{
 A modified Vega-Lite Spec

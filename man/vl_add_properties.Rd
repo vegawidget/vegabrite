@@ -7,23 +7,24 @@
 vl_add_properties(
   spec,
   .object = NULL,
+  align = NULL,
   autosize = NULL,
   background = NULL,
   bounds = NULL,
+  center = NULL,
   datasets = NULL,
   description = NULL,
   height = NULL,
   name = NULL,
   padding = NULL,
+  params = NULL,
   projection = NULL,
+  spacing = NULL,
   title = NULL,
   usermeta = NULL,
   view = NULL,
   width = NULL,
-  align = NULL,
-  center = NULL,
-  columns = NULL,
-  spacing = NULL
+  columns = NULL
 )
 }
 \arguments{
@@ -31,102 +32,149 @@ vl_add_properties(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec or TopLevelHConcatSpec}
 
-\item{autosize}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) How the visualization size should be determined. If a string, should be one of \code{"pad"}, \code{"fit"} or \code{"none"}.
-Object values can additionally specify parameters for content sizing and automatic resizing.
+\item{align}{The alignment to apply to grid rows and columns. The supported string values are
+\code{"all"}, \code{"each"}, and \code{"none"}.
+\itemize{
+\item For \code{"none"}, a flow layout will be used, in which adjacent subviews are
+simply placed one after the other.
+\item For \code{"each"}, subviews will be aligned into a clean grid structure, but each
+row or column may be of variable size.
+\item For \code{"all"}, subviews will be aligned and each row or column will be sized
+identically based on the maximum observed size. String values for this property
+will be applied to both grid rows and columns.
+}
+
+Alternatively, an object value of the form \verb{\{"row": string, "column": string\}}
+can be used to supply different alignments for rows and columns.
+
+\strong{Default value:} \code{"all"}.}
+
+\item{autosize}{How the visualization size should be determined. If a string, should be one of
+\code{"pad"}, \code{"fit"} or \code{"none"}. Object values can additionally specify parameters
+for content sizing and automatic resizing.
 
 \strong{Default value}: \code{pad}}
 
-\item{background}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) CSS color property to use as the background of the entire view.
+\item{background}{CSS color property to use as the background of the entire view.
 
 \strong{Default value:} \code{"white"}}
 
-\item{bounds}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) The bounds calculation method to use for determining the extent of a sub-plot. One of \code{full} (the default) or \code{flush}.
+\item{bounds}{The bounds calculation method to use for determining the extent of a sub-plot.
+One of \code{full} (the default) or \code{flush}.
 \itemize{
-\item If set to \code{full}, the entire calculated bounds (including axes, title, and legend) will be used.
-\item If set to \code{flush}, only the specified width and height values for the sub-view will be used. The \code{flush} setting can be useful when attempting to place sub-plots without axes or legends into a uniform grid structure.
+\item If set to \code{full}, the entire calculated bounds (including axes, title, and
+legend) will be used.
+\item If set to \code{flush}, only the specified width and height values for the sub-view
+will be used. The \code{flush} setting can be useful when attempting to place
+sub-plots without axes or legends into a uniform grid structure.
 }
 
 \strong{Default value:} \code{"full"}}
 
-\item{datasets}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) A global data store for named datasets. This is a mapping from names to inline datasets.
-This can be an array of objects or primitive values or a string. Arrays of primitive values are ingested as objects with a \code{data} property.}
-
-\item{description}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Description of this mark for commenting purpose.}
-
-\item{height}{(\emph{TopLevelUnitSpec, TopLevelLayerSpec}) The height of a visualization.
-\itemize{
-\item For a plot with a continuous y-field, height should be a number.
-\item For a plot with either a discrete y-field or no y-field, height can be either a number indicating a fixed height or an object in the form of \code{{step: number}} defining the height per discrete step. (No y-field is equivalent to having one discrete step.)
-\item To enable responsive sizing on height, it should be set to \code{"container"}.
-}
-
-\strong{Default value:} Based on \code{config.view.continuousHeight} for a plot with a continuous y-field and \code{config.view.discreteHeight} otherwise.
-
-\strong{Note:} For plots with \href{https://vega.github.io/vega-lite/docs/encoding.html#facet}{\code{row} and \code{column} channels}, this represents the height of a single view and the \code{"container"} option cannot be used.
-
-\strong{See also:} \href{https://vega.github.io/vega-lite/docs/size.html}{\code{height}} documentation.}
-
-\item{name}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Name of the visualization for later reference.}
-
-\item{padding}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) The default visualization padding, in pixels, from the edge of the visualization canvas to the data rectangle. If a number, specifies padding for all sides.
-If an object, the value should have the format \verb{\{"left": 5, "top": 5, "right": 5, "bottom": 5\}} to specify padding for each side of the visualization.
-
-\strong{Default value}: \code{5}}
-
-\item{projection}{(\emph{TopLevelUnitSpec}) An object defining properties of geographic projection, which will be applied to \code{shape} path for \code{"geoshape"} marks
-and to \code{latitude} and \code{"longitude"} channels for other marks.
-
-(\emph{TopLevelLayerSpec}) An object defining properties of the geographic projection shared by underlying layers.}
-
-\item{title}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Title for the plot.}
-
-\item{usermeta}{(\emph{TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec, TopLevelHConcatSpec}) Optional metadata that will be passed to Vega.
-This object is completely ignored by Vega and Vega-Lite and can be used for custom metadata.}
-
-\item{view}{(\emph{TopLevelUnitSpec, TopLevelLayerSpec}) An object defining the view background's fill and stroke.
-
-\strong{Default value:} none (transparent)}
-
-\item{width}{(\emph{TopLevelUnitSpec, TopLevelLayerSpec}) The width of a visualization.
-\itemize{
-\item For a plot with a continuous x-field, width should be a number.
-\item For a plot with either a discrete x-field or no x-field, width can be either a number indicating a fixed width or an object in the form of \code{{step: number}} defining the width per discrete step. (No x-field is equivalent to having one discrete step.)
-\item To enable responsive sizing on width, it should be set to \code{"container"}.
-}
-
-\strong{Default value:}
-Based on \code{config.view.continuousWidth} for a plot with a continuous x-field and \code{config.view.discreteWidth} otherwise.
-
-\strong{Note:} For plots with \href{https://vega.github.io/vega-lite/docs/encoding.html#facet}{\code{row} and \code{column} channels}, this represents the width of a single view and the \code{"container"} option cannot be used.
-
-\strong{See also:} \href{https://vega.github.io/vega-lite/docs/size.html}{\code{width}} documentation.}
-
-\item{align}{(\emph{TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) The alignment to apply to grid rows and columns.
-The supported string values are \code{"all"}, \code{"each"}, and \code{"none"}.
-\itemize{
-\item For \code{"none"}, a flow layout will be used, in which adjacent subviews are simply placed one after the other.
-\item For \code{"each"}, subviews will be aligned into a clean grid structure, but each row or column may be of variable size.
-\item For \code{"all"}, subviews will be aligned and each row or column will be sized identically based on the maximum observed size. String values for this property will be applied to both grid rows and columns.
-}
-
-Alternatively, an object value of the form \verb{\{"row": string, "column": string\}} can be used to supply different alignments for rows and columns.
-
-\strong{Default value:} \code{"all"}.}
-
-\item{center}{(\emph{TopLevelVConcatSpec, TopLevelHConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
+\item{center}{Boolean flag indicating if subviews should be centered relative to their
+respective rows or columns.
 
 \strong{Default value:} \code{false}
 
-(\emph{TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) Boolean flag indicating if subviews should be centered relative to their respective rows or columns.
+Or: Boolean flag indicating if subviews should be centered relative to their
+respective rows or columns.
 
-An object value of the form \verb{\{"row": boolean, "column": boolean\}} can be used to supply different centering values for rows and columns.
+An object value of the form \verb{\{"row": boolean, "column": boolean\}} can be used to
+supply different centering values for rows and columns.
 
 \strong{Default value:} \code{false}}
 
-\item{columns}{(\emph{TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) The number of columns to include in the view composition layout.
+\item{datasets}{A global data store for named datasets. This is a mapping from names to inline
+datasets. This can be an array of objects or primitive values or a string.
+Arrays of primitive values are ingested as objects with a \code{data} property.}
 
-\strong{Default value}: \code{undefined} -- An infinite number of columns (a single row) will be assumed. This is equivalent to
-\code{hconcat} (for \code{concat}) and to using the \code{column} channel (for \code{facet} and \code{repeat}).
+\item{description}{Description of this mark for commenting purpose.}
+
+\item{height}{The height of a visualization.
+\itemize{
+\item For a plot with a continuous y-field, height should be a number.
+\item For a plot with either a discrete y-field or no y-field, height can be either
+a number indicating a fixed height or an object in the form of \code{{step: number}}
+defining the height per discrete step. (No y-field is equivalent to having one
+discrete step.)
+\item To enable responsive sizing on height, it should be set to \code{"container"}.
+}
+
+\strong{Default value:} Based on \code{config.view.continuousHeight} for a plot with a
+continuous y-field and \code{config.view.discreteHeight} otherwise.
+
+\strong{Note:} For plots with \href{https://vega.github.io/vega-lite/docs/encoding.html#facet}{\code{row} and \code{column} channels}, this
+represents the height of a single view and the \code{"container"} option cannot be
+used.
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/size.html}{\code{height}}
+documentation.}
+
+\item{name}{Name of the visualization for later reference.}
+
+\item{padding}{The default visualization padding, in pixels, from the edge of the visualization
+canvas to the data rectangle. If a number, specifies padding for all sides. If
+an object, the value should have the format \verb{\{"left": 5, "top": 5, "right": 5, "bottom": 5\}} to specify padding for each side of the visualization.
+
+\strong{Default value}: \code{5}}
+
+\item{params}{An array of parameters that may either be simple variables, or more complex
+selections that map user input to data queries.
+
+Or: Dynamic variables or selections that parameterize a visualization.}
+
+\item{projection}{An object defining properties of geographic projection, which will be applied to
+\code{shape} path for \code{"geoshape"} marks and to \code{latitude} and \code{"longitude"} channels
+for other marks.
+
+Or: An object defining properties of the geographic projection shared by underlying
+layers.}
+
+\item{spacing}{The spacing in pixels between sub-views of the composition operator. An object
+of the form \verb{\{"row": number, "column": number\}} can be used to set different
+spacing values for rows and columns.
+
+\strong{Default value}: Depends on \code{"spacing"} property of \href{https://vega.github.io/vega-lite/docs/config.html#view-config}{the view composition configuration}
+(\code{20} by default)
+
+Or: The spacing in pixels between sub-views of the concat operator.
+
+\strong{Default value}: \code{10}}
+
+\item{title}{Title for the plot.}
+
+\item{usermeta}{Optional metadata that will be passed to Vega. This object is completely ignored
+by Vega and Vega-Lite and can be used for custom metadata.}
+
+\item{view}{An object defining the view background's fill and stroke.
+
+\strong{Default value:} none (transparent)}
+
+\item{width}{The width of a visualization.
+\itemize{
+\item For a plot with a continuous x-field, width should be a number.
+\item For a plot with either a discrete x-field or no x-field, width can be either
+a number indicating a fixed width or an object in the form of \code{{step: number}}
+defining the width per discrete step. (No x-field is equivalent to having one
+discrete step.)
+\item To enable responsive sizing on width, it should be set to \code{"container"}.
+}
+
+\strong{Default value:} Based on \code{config.view.continuousWidth} for a plot with a
+continuous x-field and \code{config.view.discreteWidth} otherwise.
+
+\strong{Note:} For plots with \href{https://vega.github.io/vega-lite/docs/encoding.html#facet}{\code{row} and \code{column} channels}, this
+represents the width of a single view and the \code{"container"} option cannot be
+used.
+
+\strong{See also:} \href{https://vega.github.io/vega-lite/docs/size.html}{\code{width}}
+documentation.}
+
+\item{columns}{The number of columns to include in the view composition layout.
+
+\strong{Default value}: \code{undefined} -- An infinite number of columns (a single row)
+will be assumed. This is equivalent to \code{hconcat} (for \code{concat}) and to using the
+\code{column} channel (for \code{facet} and \code{repeat}).
 
 \strong{Note}:
 \enumerate{
@@ -134,21 +182,13 @@ An object value of the form \verb{\{"row": boolean, "column": boolean\}} can be 
 }
 \itemize{
 \item the general (wrappable) \code{concat} operator (not \code{hconcat}/\code{vconcat})
-\item the \code{facet} and \code{repeat} operator with one field/repetition definition (without row/column nesting)
+\item the \code{facet} and \code{repeat} operator with one field/repetition definition
+(without row/column nesting)
 }
 \enumerate{
-\item Setting the \code{columns} to \code{1} is equivalent to \code{vconcat} (for \code{concat}) and to using the \code{row} channel (for \code{facet} and \code{repeat}).
+\item Setting the \code{columns} to \code{1} is equivalent to \code{vconcat} (for \code{concat}) and to
+using the \code{row} channel (for \code{facet} and \code{repeat}).
 }}
-
-\item{spacing}{(\emph{TopLevelFacetSpec, TopLevelRepeatSpec, TopLevelConcatSpec}) The spacing in pixels between sub-views of the composition operator.
-An object of the form \verb{\{"row": number, "column": number\}} can be used to set
-different spacing values for rows and columns.
-
-\strong{Default value}: Depends on \code{"spacing"} property of \href{https://vega.github.io/vega-lite/docs/config.html#view-config}{the view composition configuration} (\code{20} by default)
-
-(\emph{TopLevelVConcatSpec, TopLevelHConcatSpec}) The spacing in pixels between sub-views of the concat operator.
-
-\strong{Default value}: \code{10}}
 }
 \value{
 A modified Vega-Lite Spec

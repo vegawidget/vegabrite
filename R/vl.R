@@ -1,6 +1,10 @@
 #' vl
 #'
-#' Holds functions for making objects based on Vega-Lite spec
+#' Holds functions for making objects based on Vega-Lite spec. 
+#' For example `vl$X(field = 'crop', type = 'nominal')` could 
+#' be used to build a list with an X axis encoding. See online Vega-Lite documentation
+#' for information about parameters.
+#' 
 #' @export
 vl <- structure(new.env(parent = emptyenv()), class = c("vl", "environment"))
 

@@ -21,25 +21,39 @@ vl_config_boxplot(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BoxPlotConfig}
 
-\item{box}{(\emph{BoxPlotConfig})}
+\item{box}{boolean
 
-\item{extent}{(\emph{BoxPlotConfig}) The extent of the whiskers. Available options include:
+Or: MarkConfig}
+
+\item{extent}{The extent of the whiskers. Available options include:
 \itemize{
 \item \code{"min-max"}: min and max are the lower and upper whiskers respectively.
-\item A number representing multiple of the interquartile range. This number will be multiplied by the IQR to determine whisker boundary, which spans from the smallest data to the largest data within the range \emph{[Q1 - k * IQR, Q3 + k * IQR]} where \emph{Q1} and \emph{Q3} are the first and third quartiles while \emph{IQR} is the interquartile range (\emph{Q3-Q1}).
+\item A number representing multiple of the interquartile range. This number will
+be multiplied by the IQR to determine whisker boundary, which spans from the
+smallest data to the largest data within the range \emph{[Q1 - k * IQR, Q3 + k *
+IQR]} where \emph{Q1} and \emph{Q3} are the first and third quartiles while \emph{IQR} is the
+interquartile range (\emph{Q3-Q1}).
 }
 
 \strong{Default value:} \code{1.5}.}
 
-\item{median}{(\emph{BoxPlotConfig})}
+\item{median}{boolean
 
-\item{outliers}{(\emph{BoxPlotConfig})}
+Or: MarkConfig}
 
-\item{rule}{(\emph{BoxPlotConfig})}
+\item{outliers}{boolean
 
-\item{size}{(\emph{BoxPlotConfig}) Size of the box and median tick of a box plot}
+Or: MarkConfig}
 
-\item{ticks}{(\emph{BoxPlotConfig})}
+\item{rule}{boolean
+
+Or: MarkConfig}
+
+\item{size}{Size of the box and median tick of a box plot}
+
+\item{ticks}{boolean
+
+Or: MarkConfig}
 }
 \value{
 A modified Vega-Lite Spec

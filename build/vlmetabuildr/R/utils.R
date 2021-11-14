@@ -26,18 +26,34 @@ type_or_ref <- function(x) {
   }
 }
 
-get_description <- function(x) {
+get_description_terminal <- function(x) {
   if (hasName(x, "description")) {
     purrr::pluck(x, "description")
   } else if (hasName(x, "enum")) {
     paste(purrr::pluck(x, "enum"), collapse = ", ")
+  } else if (hasName(x, "type")) {
+    purrr::pluck(x, "type")
+  } else if (hasName(x, "$ref")) {
+    get_name_from_ref(x)
   } else {
-    " "
+    "?"
+  }
+}
+
+get_description <- function(x) {
+  if (hasName(x, "description")) {
+    purrr::pluck(x, "description")
+  } else if (hasName(x, "anyOf")) { 
+    paste(unique(unlist(purrr::map(x[["anyOf"]], ~get_description_terminal(.)))), collapse = "\n\nOr: ")
+  } else{
+    get_description_terminal(x)
   }
 }
 
 get_description_plus <- function(x) {
   d <- get_description(x)
+  d <- stringi::stri_wrap(stringr::str_split(d, "\n")[[1]], width = 80, whitespace_only = TRUE)
+  d <- paste(d, collapse = "\n")
   d <- stringr::str_replace_all(d, "\n", "\n#' ")
   d
 }
@@ -94,12 +110,13 @@ get_param_docs <- function(schema, ref, exclude = NULL) {
     objs <- unique(names(properties[purrr::map_lgl(properties, ~ hasName(., param))]))
     d <- purrr::map_chr(objs, ~ get_description_plus(properties[[.]][[param]]))
     grps <- split(objs, d)
-    grp_descs <- purrr::map_chr(
-      names(grps),
-      ~ glue('(_{paste(grps[[.]], collapse = ", ")}_) {.}')
-    )
+    grp_descs <- names(grps)#purrr::map_chr(names(grps), ~paste(strwrap(., width = 120), collapse = "\n#' "))
+    #purrr::map_chr(
+      #names(grps),
+      #~ glue('(_{paste(grps[[.]], collapse = ", ")}_) {.}')
+    #)
     if (length(grp_descs) > 1) {
-      return(paste(grp_descs, collapse = "\n#' \n#' "))
+      return(paste(grp_descs, collapse = "\n#' \n#' Or: "))
     }
     grp_descs
   }
@@ -120,13 +137,22 @@ get_param_docs <- function(schema, ref, exclude = NULL) {
     "(?<!`)\\[([^[\\]_]]*)\\](?![\\(`])",
     "\\\\\\[\\1\\\\\\]"
   )
-
+  
+  # Particular case -- To do: whether a coherent way 
+  # to generalize with above
+  param_desc <- stringr::str_replace_all(
+    param_desc,
+    "`\\[mousedown, window:mouseup\\]\n#' > window:mousemove!`",
+    "\n#' ```\n#' [mousedown, window:mouseup] > window:mousemove!\n#' ```\n#' "
+  )
+  
   # Very specific fix for an issue...
   param_desc <- stringr::str_replace_all(
     param_desc,
     "`'Count of Records`",
     "`Count of Records`"
   )
+  
 
   if (additional_properties_allowed(ref, schema)) {
     param_names <- c(param_names, "...")

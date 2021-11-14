@@ -21,21 +21,23 @@ vl_add_data(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: UrlData, InlineData, NamedData, SequenceGenerator, SphereGenerator or GraticuleGenerator}
 
-\item{values}{(\emph{InlineData}) The full data set, included inline. This can be an array of objects or primitive values, an object, or a string.
-Arrays of primitive values are ingested as objects with a \code{data} property. Strings are parsed according to the specified format type.}
+\item{values}{The full data set, included inline. This can be an array of objects or primitive
+values, an object, or a string. Arrays of primitive values are ingested as
+objects with a \code{data} property. Strings are parsed according to the specified
+format type.}
 
-\item{format}{(\emph{UrlData, InlineData, NamedData}) An object that specifies the format for parsing the data.}
+\item{format}{An object that specifies the format for parsing the data.}
 
-\item{name}{(\emph{UrlData, InlineData, NamedData, SequenceGenerator, SphereGenerator, GraticuleGenerator}) Provide a placeholder name and bind data at runtime.}
+\item{name}{Provide a placeholder name and bind data at runtime.}
 
-\item{url}{(\emph{UrlData}) An URL from which to load the data set. Use the \code{format.type} property
-to ensure the loaded data is correctly parsed.}
+\item{url}{An URL from which to load the data set. Use the \code{format.type} property to ensure
+the loaded data is correctly parsed.}
 
-\item{graticule}{(\emph{GraticuleGenerator}) Generate graticule GeoJSON data for geographic reference lines.}
+\item{graticule}{Generate graticule GeoJSON data for geographic reference lines.}
 
-\item{sequence}{(\emph{SequenceGenerator}) Generate a sequence of numbers.}
+\item{sequence}{Generate a sequence of numbers.}
 
-\item{sphere}{(\emph{SphereGenerator}) Generate sphere GeoJSON data for the full globe.}
+\item{sphere}{Generate sphere GeoJSON data for the full globe.}
 }
 \value{
 A modified Vega-Lite Spec

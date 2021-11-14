@@ -27,7 +27,8 @@ vl_config_scale(
   quantizeCount = NULL,
   rectBandPaddingInner = NULL,
   round = NULL,
-  useUnaggregatedDomain = NULL
+  useUnaggregatedDomain = NULL,
+  xReverse = NULL
 )
 }
 \arguments{
@@ -35,7 +36,7 @@ vl_config_scale(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ScaleConfig}
 
-\item{bandPaddingInner}{(\emph{ScaleConfig}) Default inner padding for \code{x} and \code{y} band-ordinal scales.
+\item{bandPaddingInner}{Default inner padding for \code{x} and \code{y} band-ordinal scales.
 
 \strong{Default value:}
 \itemize{
@@ -43,85 +44,101 @@ vl_config_scale(
 \item \code{rectBandPaddingInner} for rect and other marks (\code{0} by default)
 }}
 
-\item{bandPaddingOuter}{(\emph{ScaleConfig}) Default outer padding for \code{x} and \code{y} band-ordinal scales.
+\item{bandPaddingOuter}{Default outer padding for \code{x} and \code{y} band-ordinal scales.
 
-\strong{Default value:} \code{paddingInner/2} (which makes \emph{width/height = number of unique values * step})}
+\strong{Default value:} \code{paddingInner/2} (which makes \emph{width/height = number of
+unique values * step})}
 
-\item{barBandPaddingInner}{(\emph{ScaleConfig}) Default inner padding for \code{x} and \code{y} band-ordinal scales of \code{"bar"} marks.
+\item{barBandPaddingInner}{Default inner padding for \code{x} and \code{y} band-ordinal scales of \code{"bar"} marks.
 
 \strong{Default value:} \code{0.1}}
 
-\item{clamp}{(\emph{ScaleConfig}) If true, values that exceed the data domain are clamped to either the minimum or maximum range value}
+\item{clamp}{If true, values that exceed the data domain are clamped to either the minimum or
+maximum range value}
 
-\item{continuousPadding}{(\emph{ScaleConfig}) Default padding for continuous scales.
+\item{continuousPadding}{Default padding for continuous scales.
 
-\strong{Default:} \code{5} for continuous x-scale of a vertical bar and continuous y-scale of a horizontal bar.; \code{0} otherwise.}
+\strong{Default:} \code{5} for continuous x-scale of a vertical bar and continuous y-scale
+of a horizontal bar.; \code{0} otherwise.}
 
-\item{maxBandSize}{(\emph{ScaleConfig}) The default max value for mapping quantitative fields to bar's size/bandSize.
+\item{maxBandSize}{The default max value for mapping quantitative fields to bar's size/bandSize.
 
 If undefined (default), we will use the axis's size (width or height) - 1.}
 
-\item{maxFontSize}{(\emph{ScaleConfig}) The default max value for mapping quantitative fields to text's size/fontSize.
+\item{maxFontSize}{The default max value for mapping quantitative fields to text's size/fontSize.
 
 \strong{Default value:} \code{40}}
 
-\item{maxOpacity}{(\emph{ScaleConfig}) Default max opacity for mapping a field to opacity.
+\item{maxOpacity}{Default max opacity for mapping a field to opacity.
 
 \strong{Default value:} \code{0.8}}
 
-\item{maxSize}{(\emph{ScaleConfig}) Default max value for point size scale.}
+\item{maxSize}{Default max value for point size scale.}
 
-\item{maxStrokeWidth}{(\emph{ScaleConfig}) Default max strokeWidth for the scale of strokeWidth for rule and line marks and of size for trail marks.
+\item{maxStrokeWidth}{Default max strokeWidth for the scale of strokeWidth for rule and line marks and
+of size for trail marks.
 
 \strong{Default value:} \code{4}}
 
-\item{minBandSize}{(\emph{ScaleConfig}) The default min value for mapping quantitative fields to bar and tick's size/bandSize scale with zero=false.
+\item{minBandSize}{The default min value for mapping quantitative fields to bar and tick's
+size/bandSize scale with zero=false.
 
 \strong{Default value:} \code{2}}
 
-\item{minFontSize}{(\emph{ScaleConfig}) The default min value for mapping quantitative fields to tick's size/fontSize scale with zero=false
+\item{minFontSize}{The default min value for mapping quantitative fields to tick's size/fontSize
+scale with zero=false
 
 \strong{Default value:} \code{8}}
 
-\item{minOpacity}{(\emph{ScaleConfig}) Default minimum opacity for mapping a field to opacity.
+\item{minOpacity}{Default minimum opacity for mapping a field to opacity.
 
 \strong{Default value:} \code{0.3}}
 
-\item{minSize}{(\emph{ScaleConfig}) Default minimum value for point size scale with zero=false.
+\item{minSize}{Default minimum value for point size scale with zero=false.
 
 \strong{Default value:} \code{9}}
 
-\item{minStrokeWidth}{(\emph{ScaleConfig}) Default minimum strokeWidth for the scale of strokeWidth for rule and line marks and of size for trail marks with zero=false.
+\item{minStrokeWidth}{Default minimum strokeWidth for the scale of strokeWidth for rule and line marks
+and of size for trail marks with zero=false.
 
 \strong{Default value:} \code{1}}
 
-\item{pointPadding}{(\emph{ScaleConfig}) Default outer padding for \code{x} and \code{y} point-ordinal scales.
+\item{pointPadding}{Default outer padding for \code{x} and \code{y} point-ordinal scales.
 
-\strong{Default value:} \code{0.5} (which makes \emph{width/height = number of unique values * step})}
+\strong{Default value:} \code{0.5} (which makes \emph{width/height = number of unique values *
+step})}
 
-\item{quantileCount}{(\emph{ScaleConfig}) Default range cardinality for \href{https://vega.github.io/vega-lite/docs/scale.html#quantile}{\code{quantile}} scale.
-
-\strong{Default value:} \code{4}}
-
-\item{quantizeCount}{(\emph{ScaleConfig}) Default range cardinality for \href{https://vega.github.io/vega-lite/docs/scale.html#quantize}{\code{quantize}} scale.
+\item{quantileCount}{Default range cardinality for
+\href{https://vega.github.io/vega-lite/docs/scale.html#quantile}{\code{quantile}} scale.
 
 \strong{Default value:} \code{4}}
 
-\item{rectBandPaddingInner}{(\emph{ScaleConfig}) Default inner padding for \code{x} and \code{y} band-ordinal scales of \code{"rect"} marks.
+\item{quantizeCount}{Default range cardinality for
+\href{https://vega.github.io/vega-lite/docs/scale.html#quantize}{\code{quantize}} scale.
+
+\strong{Default value:} \code{4}}
+
+\item{rectBandPaddingInner}{Default inner padding for \code{x} and \code{y} band-ordinal scales of \code{"rect"} marks.
 
 \strong{Default value:} \code{0}}
 
-\item{round}{(\emph{ScaleConfig}) If true, rounds numeric output values to integers.
-This can be helpful for snapping to the pixel grid.
-(Only available for \code{x}, \code{y}, and \code{size} scales.)}
+\item{round}{If true, rounds numeric output values to integers. This can be helpful for
+snapping to the pixel grid. (Only available for \code{x}, \code{y}, and \code{size} scales.)}
 
-\item{useUnaggregatedDomain}{(\emph{ScaleConfig}) Use the source data range before aggregation as scale domain instead of aggregated data for aggregate axis.
+\item{useUnaggregatedDomain}{Use the source data range before aggregation as scale domain instead of
+aggregated data for aggregate axis.
 
-This is equivalent to setting \code{domain} to \code{"unaggregate"} for aggregated \emph{quantitative} fields by default.
+This is equivalent to setting \code{domain} to \code{"unaggregate"} for aggregated
+\emph{quantitative} fields by default.
 
-This property only works with aggregate functions that produce values within the raw data domain (\code{"mean"}, \code{"average"}, \code{"median"}, \code{"q1"}, \code{"q3"}, \code{"min"}, \code{"max"}). For other aggregations that produce values outside of the raw data domain (e.g. \code{"count"}, \code{"sum"}), this property is ignored.
+This property only works with aggregate functions that produce values within
+the raw data domain (\code{"mean"}, \code{"average"}, \code{"median"}, \code{"q1"}, \code{"q3"}, \code{"min"},
+\code{"max"}). For other aggregations that produce values outside of the raw data
+domain (e.g. \code{"count"}, \code{"sum"}), this property is ignored.
 
 \strong{Default value:} \code{false}}
+
+\item{xReverse}{Reverse x-scale by default (useful for right-to-left charts).}
 }
 \value{
 A modified Vega-Lite Spec

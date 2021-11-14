@@ -193,6 +193,10 @@ vl_chart(mtcars) %>%
   vl_encode_tooltip('_row')
 ```
 
+## Parameters
+
+More to come here... 
+
 ## Selections
 
 More to come here... 

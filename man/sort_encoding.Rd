@@ -2,20 +2,26 @@
 % Please edit documentation in R/zzz_autogen_api.R
 \name{sort_encoding}
 \alias{sort_encoding}
+\alias{vl_sort_angle}
 \alias{vl_sort_color}
 \alias{vl_sort_fill}
 \alias{vl_sort_fillOpacity}
 \alias{vl_sort_opacity}
 \alias{vl_sort_order}
+\alias{vl_sort_radius}
 \alias{vl_sort_shape}
 \alias{vl_sort_size}
 \alias{vl_sort_stroke}
+\alias{vl_sort_strokeDash}
 \alias{vl_sort_strokeOpacity}
 \alias{vl_sort_strokeWidth}
+\alias{vl_sort_theta}
 \alias{vl_sort_x}
 \alias{vl_sort_y}
 \title{#' Add sorting to an encoding}
 \usage{
+vl_sort_angle(spec, value)
+
 vl_sort_color(spec, value)
 
 vl_sort_fill(spec, value)
@@ -26,15 +32,21 @@ vl_sort_opacity(spec, value)
 
 vl_sort_order(spec, value)
 
+vl_sort_radius(spec, value)
+
 vl_sort_shape(spec, value)
 
 vl_sort_size(spec, value)
 
 vl_sort_stroke(spec, value)
 
+vl_sort_strokeDash(spec, value)
+
 vl_sort_strokeOpacity(spec, value)
 
 vl_sort_strokeWidth(spec, value)
+
+vl_sort_theta(spec, value)
 
 vl_sort_x(spec, value)
 

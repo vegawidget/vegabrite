@@ -2,6 +2,7 @@
 % Please edit documentation in R/zzz_autogen_api.R
 \name{legend_encoding}
 \alias{legend_encoding}
+\alias{vl_legend_angle}
 \alias{vl_legend_color}
 \alias{vl_legend_fill}
 \alias{vl_legend_fillOpacity}
@@ -9,17 +10,91 @@
 \alias{vl_legend_shape}
 \alias{vl_legend_size}
 \alias{vl_legend_stroke}
+\alias{vl_legend_strokeDash}
 \alias{vl_legend_strokeOpacity}
 \alias{vl_legend_strokeWidth}
 \title{Add legend to encoding}
 \usage{
-vl_legend_color(
+vl_legend_angle(
   spec,
   .object = NULL,
+  aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
   columns = NULL,
   cornerRadius = NULL,
+  description = NULL,
+  direction = NULL,
+  fillColor = NULL,
+  format = NULL,
+  formatType = NULL,
+  gradientLength = NULL,
+  gradientOpacity = NULL,
+  gradientStrokeColor = NULL,
+  gradientStrokeWidth = NULL,
+  gradientThickness = NULL,
+  gridAlign = NULL,
+  labelAlign = NULL,
+  labelBaseline = NULL,
+  labelColor = NULL,
+  labelExpr = NULL,
+  labelFont = NULL,
+  labelFontSize = NULL,
+  labelFontStyle = NULL,
+  labelFontWeight = NULL,
+  labelLimit = NULL,
+  labelOffset = NULL,
+  labelOpacity = NULL,
+  labelOverlap = NULL,
+  labelPadding = NULL,
+  labelSeparation = NULL,
+  legendX = NULL,
+  legendY = NULL,
+  offset = NULL,
+  orient = NULL,
+  padding = NULL,
+  rowPadding = NULL,
+  strokeColor = NULL,
+  symbolDash = NULL,
+  symbolDashOffset = NULL,
+  symbolFillColor = NULL,
+  symbolLimit = NULL,
+  symbolOffset = NULL,
+  symbolOpacity = NULL,
+  symbolSize = NULL,
+  symbolStrokeColor = NULL,
+  symbolStrokeWidth = NULL,
+  symbolType = NULL,
+  tickCount = NULL,
+  tickMinStep = NULL,
+  title = NULL,
+  titleAlign = NULL,
+  titleAnchor = NULL,
+  titleBaseline = NULL,
+  titleColor = NULL,
+  titleFont = NULL,
+  titleFontSize = NULL,
+  titleFontStyle = NULL,
+  titleFontWeight = NULL,
+  titleLimit = NULL,
+  titleLineHeight = NULL,
+  titleOpacity = NULL,
+  titleOrient = NULL,
+  titlePadding = NULL,
+  type = NULL,
+  values = NULL,
+  zindex = NULL
+)
+
+vl_legend_color(
+  spec,
+  .object = NULL,
+  aria = NULL,
+  clipHeight = NULL,
+  columnPadding = NULL,
+  columns = NULL,
+  cornerRadius = NULL,
+  description = NULL,
   direction = NULL,
   fillColor = NULL,
   format = NULL,
@@ -85,10 +160,12 @@ vl_legend_color(
 vl_legend_fill(
   spec,
   .object = NULL,
+  aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
   columns = NULL,
   cornerRadius = NULL,
+  description = NULL,
   direction = NULL,
   fillColor = NULL,
   format = NULL,
@@ -154,10 +231,12 @@ vl_legend_fill(
 vl_legend_fillOpacity(
   spec,
   .object = NULL,
+  aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
   columns = NULL,
   cornerRadius = NULL,
+  description = NULL,
   direction = NULL,
   fillColor = NULL,
   format = NULL,
@@ -223,10 +302,12 @@ vl_legend_fillOpacity(
 vl_legend_opacity(
   spec,
   .object = NULL,
+  aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
   columns = NULL,
   cornerRadius = NULL,
+  description = NULL,
   direction = NULL,
   fillColor = NULL,
   format = NULL,
@@ -292,10 +373,12 @@ vl_legend_opacity(
 vl_legend_shape(
   spec,
   .object = NULL,
+  aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
   columns = NULL,
   cornerRadius = NULL,
+  description = NULL,
   direction = NULL,
   fillColor = NULL,
   format = NULL,
@@ -361,10 +444,12 @@ vl_legend_shape(
 vl_legend_size(
   spec,
   .object = NULL,
+  aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
   columns = NULL,
   cornerRadius = NULL,
+  description = NULL,
   direction = NULL,
   fillColor = NULL,
   format = NULL,
@@ -430,10 +515,83 @@ vl_legend_size(
 vl_legend_stroke(
   spec,
   .object = NULL,
+  aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
   columns = NULL,
   cornerRadius = NULL,
+  description = NULL,
+  direction = NULL,
+  fillColor = NULL,
+  format = NULL,
+  formatType = NULL,
+  gradientLength = NULL,
+  gradientOpacity = NULL,
+  gradientStrokeColor = NULL,
+  gradientStrokeWidth = NULL,
+  gradientThickness = NULL,
+  gridAlign = NULL,
+  labelAlign = NULL,
+  labelBaseline = NULL,
+  labelColor = NULL,
+  labelExpr = NULL,
+  labelFont = NULL,
+  labelFontSize = NULL,
+  labelFontStyle = NULL,
+  labelFontWeight = NULL,
+  labelLimit = NULL,
+  labelOffset = NULL,
+  labelOpacity = NULL,
+  labelOverlap = NULL,
+  labelPadding = NULL,
+  labelSeparation = NULL,
+  legendX = NULL,
+  legendY = NULL,
+  offset = NULL,
+  orient = NULL,
+  padding = NULL,
+  rowPadding = NULL,
+  strokeColor = NULL,
+  symbolDash = NULL,
+  symbolDashOffset = NULL,
+  symbolFillColor = NULL,
+  symbolLimit = NULL,
+  symbolOffset = NULL,
+  symbolOpacity = NULL,
+  symbolSize = NULL,
+  symbolStrokeColor = NULL,
+  symbolStrokeWidth = NULL,
+  symbolType = NULL,
+  tickCount = NULL,
+  tickMinStep = NULL,
+  title = NULL,
+  titleAlign = NULL,
+  titleAnchor = NULL,
+  titleBaseline = NULL,
+  titleColor = NULL,
+  titleFont = NULL,
+  titleFontSize = NULL,
+  titleFontStyle = NULL,
+  titleFontWeight = NULL,
+  titleLimit = NULL,
+  titleLineHeight = NULL,
+  titleOpacity = NULL,
+  titleOrient = NULL,
+  titlePadding = NULL,
+  type = NULL,
+  values = NULL,
+  zindex = NULL
+)
+
+vl_legend_strokeDash(
+  spec,
+  .object = NULL,
+  aria = NULL,
+  clipHeight = NULL,
+  columnPadding = NULL,
+  columns = NULL,
+  cornerRadius = NULL,
+  description = NULL,
   direction = NULL,
   fillColor = NULL,
   format = NULL,
@@ -499,10 +657,12 @@ vl_legend_stroke(
 vl_legend_strokeOpacity(
   spec,
   .object = NULL,
+  aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
   columns = NULL,
   cornerRadius = NULL,
+  description = NULL,
   direction = NULL,
   fillColor = NULL,
   format = NULL,
@@ -568,10 +728,12 @@ vl_legend_strokeOpacity(
 vl_legend_strokeWidth(
   spec,
   .object = NULL,
+  aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
   columns = NULL,
   cornerRadius = NULL,
+  description = NULL,
   direction = NULL,
   fillColor = NULL,
   format = NULL,
@@ -639,215 +801,401 @@ vl_legend_strokeWidth(
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Legend}
 
-\item{clipHeight}{(\emph{Legend}) The height in pixels to clip symbol legend entries and limit their size.}
+\item{aria}{A boolean flag indicating if \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA attributes}
+should be included (SVG output only). If \code{false}, the "aria-hidden" attribute
+will be set on the output SVG group, removing the legend from the ARIA
+accessibility tree.
 
-\item{columnPadding}{(\emph{Legend}) The horizontal padding in pixels between symbol legend entries.
+\strong{Default value:} \code{true}
 
-\strong{Default value:} \code{10}.}
+Or: ExprRef}
 
-\item{columns}{(\emph{Legend}) The number of columns in which to arrange symbol legend entries. A value of \code{0} or lower indicates a single row with one column per entry.}
+\item{clipHeight}{The height in pixels to clip symbol legend entries and limit their size.
 
-\item{cornerRadius}{(\emph{Legend}) Corner radius for the full legend.}
+Or: ExprRef}
 
-\item{direction}{(\emph{Legend}) The direction of the legend, one of \code{"vertical"} or \code{"horizontal"}.
+\item{columnPadding}{The horizontal padding in pixels between symbol legend entries.
+
+\strong{Default value:} \code{10}.
+
+Or: ExprRef}
+
+\item{columns}{The number of columns in which to arrange symbol legend entries. A value of \code{0}
+or lower indicates a single row with one column per entry.
+
+Or: ExprRef}
+
+\item{cornerRadius}{Corner radius for the full legend.
+
+Or: ExprRef}
+
+\item{description}{A text description of this legend for \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA accessibility}
+(SVG output only). If the \code{aria} property
+is true, for SVG output the \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute}{"aria-label" attribute}
+will be set to this description. If the description is unspecified it will be
+automatically generated.
+
+Or: ExprRef}
+
+\item{direction}{The direction of the legend, one of \code{"vertical"} or \code{"horizontal"}.
 
 \strong{Default value:}
 \itemize{
 \item For top-/bottom-\code{orient}ed legends, \code{"horizontal"}
 \item For left-/right-\code{orient}ed legends, \code{"vertical"}
-\item For top/bottom-left/right-\code{orient}ed legends, \code{"horizontal"} for gradient legends and \code{"vertical"} for symbol legends.
+\item For top/bottom-left/right-\code{orient}ed legends, \code{"horizontal"} for gradient
+legends and \code{"vertical"} for symbol legends.
 }}
 
-\item{fillColor}{(\emph{Legend}) Background fill color for the full legend.}
+\item{fillColor}{Background fill color for the full legend.
 
-\item{format}{(\emph{Legend}) The text formatting pattern for labels of guides (axes, legends, headers) and text marks.
+Or: ExprRef}
+
+\item{format}{When used with the default \code{"number"} and \code{"time"} format type, the text
+formatting pattern for labels of guides (axes, legends, headers) and text marks.
 \itemize{
-\item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's \href{https://github.com/d3/d3-format#locale_format}{number format pattern}.
+\item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's
+\href{https://github.com/d3/d3-format#locale_format}{number format pattern}.
 \item If the format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
 }
 
-See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more examples.
+See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more
+examples.
 
-\strong{Default value:}  Derived from \href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat} config for number format and from \href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config for time format.}
+When used with a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{custom \code{formatType}},
+this value will be passed as \code{format} alongside \code{datum.value} to the registered
+function.
 
-\item{formatType}{(\emph{Legend}) The format type for labels (\code{"number"} or \code{"time"}).
+\strong{Default value:} Derived from
+\href{https://vega.github.io/vega-lite/docs/config.html#format}{numberFormat}
+config for number format and from
+\href{https://vega.github.io/vega-lite/docs/config.html#format}{timeFormat} config
+for time format.}
+
+\item{formatType}{The format type for labels. One of \code{"number"},
+\code{"time"}, or a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{registered custom format type}.
 
 \strong{Default value:}
 \itemize{
-\item \code{"time"} for temporal fields and ordinal and nomimal fields with \code{timeUnit}.
-\item \code{"number"} for quantitative fields as well as ordinal and nomimal fields without \code{timeUnit}.
+\item \code{"time"} for temporal fields and ordinal and nominal fields with \code{timeUnit}.
+\item \code{"number"} for quantitative fields as well as ordinal and nominal fields
+without \code{timeUnit}.
 }}
 
-\item{gradientLength}{(\emph{Legend}) The length in pixels of the primary axis of a color gradient. This value corresponds to the height of a vertical gradient or the width of a horizontal gradient.
+\item{gradientLength}{The length in pixels of the primary axis of a color gradient. This value
+corresponds to the height of a vertical gradient or the width of a horizontal
+gradient.
 
-\strong{Default value:} \code{200}.}
+\strong{Default value:} \code{200}.
 
-\item{gradientOpacity}{(\emph{Legend}) Opacity of the color gradient.}
+Or: ExprRef}
 
-\item{gradientStrokeColor}{(\emph{Legend}) The color of the gradient stroke, can be in hex color code or regular color name.
+\item{gradientOpacity}{Opacity of the color gradient.
 
-\strong{Default value:} \code{"lightGray"}.}
+Or: ExprRef}
 
-\item{gradientStrokeWidth}{(\emph{Legend}) The width of the gradient stroke, in pixels.
+\item{gradientStrokeColor}{The color of the gradient stroke, can be in hex color code or regular color
+name.
 
-\strong{Default value:} \code{0}.}
+\strong{Default value:} \code{"lightGray"}.
 
-\item{gradientThickness}{(\emph{Legend}) The thickness in pixels of the color gradient. This value corresponds to the width of a vertical gradient or the height of a horizontal gradient.
+Or: ExprRef}
 
-\strong{Default value:} \code{16}.}
+\item{gradientStrokeWidth}{The width of the gradient stroke, in pixels.
 
-\item{gridAlign}{(\emph{Legend}) The alignment to apply to symbol legends rows and columns. The supported string values are \code{"all"}, \code{"each"} (the default), and \code{none}. For more information, see the \href{https://vega.github.io/vega/docs/layout}{grid layout documentation}.
+\strong{Default value:} \code{0}.
 
-\strong{Default value:} \code{"each"}.}
+Or: ExprRef}
 
-\item{labelAlign}{(\emph{Legend}) The alignment of the legend label, can be left, center, or right.}
+\item{gradientThickness}{The thickness in pixels of the color gradient. This value corresponds to the
+width of a vertical gradient or the height of a horizontal gradient.
 
-\item{labelBaseline}{(\emph{Legend}) The position of the baseline of legend label, can be \code{"top"}, \code{"middle"}, \code{"bottom"}, or \code{"alphabetic"}.
+\strong{Default value:} \code{16}.
 
-\strong{Default value:} \code{"middle"}.}
+Or: ExprRef}
 
-\item{labelColor}{(\emph{Legend}) The color of the legend label, can be in hex color code or regular color name.}
+\item{gridAlign}{The alignment to apply to symbol legends rows and columns. The supported string
+values are \code{"all"}, \code{"each"} (the default), and \code{none}. For more information,
+see the \href{https://vega.github.io/vega/docs/layout}{grid layout documentation}.
 
-\item{labelExpr}{(\emph{Legend}) \href{https://vega.github.io/vega/docs/expressions/}{Vega expression} for customizing labels.
+\strong{Default value:} \code{"each"}.
 
-\strong{Note:} The label text and value can be assessed via the \code{label} and \code{value} properties of the legend's backing \code{datum} object.}
+Or: ExprRef}
 
-\item{labelFont}{(\emph{Legend}) The font of the legend label.}
+\item{labelAlign}{The alignment of the legend label, can be left, center, or right.
 
-\item{labelFontSize}{(\emph{Legend}) The font size of legend label.
+Or: ExprRef}
 
-\strong{Default value:} \code{10}.}
+\item{labelBaseline}{The position of the baseline of legend label, can be \code{"top"}, \code{"middle"},
+\code{"bottom"}, or \code{"alphabetic"}.
 
-\item{labelFontStyle}{(\emph{Legend}) The font style of legend label.}
+\strong{Default value:} \code{"middle"}.
 
-\item{labelFontWeight}{(\emph{Legend}) The font weight of legend label.}
+Or: ExprRef}
 
-\item{labelLimit}{(\emph{Legend}) Maximum allowed pixel width of legend tick labels.
+\item{labelColor}{The color of the legend label, can be in hex color code or regular color name.
 
-\strong{Default value:} \code{160}.}
+Or: ExprRef}
 
-\item{labelOffset}{(\emph{Legend}) The offset of the legend label.}
+\item{labelExpr}{\href{https://vega.github.io/vega/docs/expressions/}{Vega expression} for customizing
+labels.
 
-\item{labelOpacity}{(\emph{Legend}) Opacity of labels.}
+\strong{Note:} The label text and value can be assessed via the \code{label} and \code{value}
+properties of the legend's backing \code{datum} object.}
 
-\item{labelOverlap}{(\emph{Legend}) The strategy to use for resolving overlap of labels in gradient legends. If \code{false}, no overlap reduction is attempted. If set to \code{true} (default) or \code{"parity"}, a strategy of removing every other label is used. If set to \code{"greedy"}, a linear scan of the labels is performed, removing any label that overlaps with the last visible label (this often works better for log-scaled axes).
+\item{labelFont}{The font of the legend label.
 
-\strong{Default value:} \code{true}.}
+Or: ExprRef}
 
-\item{labelPadding}{(\emph{Legend}) Padding in pixels between the legend and legend labels.}
+\item{labelFontSize}{The font size of legend label.
 
-\item{labelSeparation}{(\emph{Legend}) The minimum separation that must be between label bounding boxes for them to be considered non-overlapping (default \code{0}). This property is ignored if \emph{labelOverlap} resolution is not enabled.}
+\strong{Default value:} \code{10}.
 
-\item{legendX}{(\emph{Legend}) Custom x-position for legend with orient "none".}
+Or: ExprRef}
 
-\item{legendY}{(\emph{Legend}) Custom y-position for legend with orient "none".}
+\item{labelFontStyle}{The font style of legend label.
 
-\item{offset}{(\emph{Legend}) The offset in pixels by which to displace the legend from the data rectangle and axes.
+Or: ExprRef}
 
-\strong{Default value:} \code{18}.}
+\item{labelFontWeight}{The font weight of legend label.
 
-\item{orient}{(\emph{Legend}) The orientation of the legend, which determines how the legend is positioned within the scene. One of \code{"left"}, \code{"right"}, \code{"top"}, \code{"bottom"}, \code{"top-left"}, \code{"top-right"}, \code{"bottom-left"}, \code{"bottom-right"}, \code{"none"}.
+Or: ExprRef}
+
+\item{labelLimit}{Maximum allowed pixel width of legend tick labels.
+
+\strong{Default value:} \code{160}.
+
+Or: ExprRef}
+
+\item{labelOffset}{The offset of the legend label.
+
+Or: ExprRef}
+
+\item{labelOpacity}{Opacity of labels.
+
+Or: ExprRef}
+
+\item{labelOverlap}{The strategy to use for resolving overlap of labels in gradient legends.
+If \code{false}, no overlap reduction is attempted. If set to \code{true} (default)
+or \code{"parity"}, a strategy of removing every other label is used. If set to
+\code{"greedy"}, a linear scan of the labels is performed, removing any label that
+overlaps with the last visible label (this often works better for log-scaled
+axes).
+
+\strong{Default value:} \code{true}.
+
+Or: ExprRef}
+
+\item{labelPadding}{Padding in pixels between the legend and legend labels.
+
+Or: ExprRef}
+
+\item{labelSeparation}{The minimum separation that must be between label bounding boxes for them
+to be considered non-overlapping (default \code{0}). This property is ignored if
+\emph{labelOverlap} resolution is not enabled.
+
+Or: ExprRef}
+
+\item{legendX}{Custom x-position for legend with orient "none".
+
+Or: ExprRef}
+
+\item{legendY}{Custom y-position for legend with orient "none".
+
+Or: ExprRef}
+
+\item{offset}{The offset in pixels by which to displace the legend from the data rectangle and
+axes.
+
+\strong{Default value:} \code{18}.
+
+Or: ExprRef}
+
+\item{orient}{The orientation of the legend, which determines how the legend is positioned
+within the scene. One of \code{"left"}, \code{"right"}, \code{"top"}, \code{"bottom"}, \code{"top-left"},
+\code{"top-right"}, \code{"bottom-left"}, \code{"bottom-right"}, \code{"none"}.
 
 \strong{Default value:} \code{"right"}}
 
-\item{padding}{(\emph{Legend}) The padding between the border and content of the legend group.
+\item{padding}{The padding between the border and content of the legend group.
 
-\strong{Default value:} \code{0}.}
+\strong{Default value:} \code{0}.
 
-\item{rowPadding}{(\emph{Legend}) The vertical padding in pixels between symbol legend entries.
+Or: ExprRef}
 
-\strong{Default value:} \code{2}.}
+\item{rowPadding}{The vertical padding in pixels between symbol legend entries.
 
-\item{strokeColor}{(\emph{Legend}) Border stroke color for the full legend.}
+\strong{Default value:} \code{2}.
 
-\item{symbolDash}{(\emph{Legend}) An array of alternating [stroke, space] lengths for dashed symbol strokes.}
+Or: ExprRef}
 
-\item{symbolDashOffset}{(\emph{Legend}) The pixel offset at which to start drawing with the symbol stroke dash array.}
+\item{strokeColor}{Border stroke color for the full legend.
 
-\item{symbolFillColor}{(\emph{Legend}) The color of the legend symbol,}
+Or: ExprRef}
 
-\item{symbolLimit}{(\emph{Legend}) The maximum number of allowed entries for a symbol legend. Additional entries will be dropped.}
+\item{symbolDash}{An array of alternating [stroke, space] lengths for dashed symbol strokes.
 
-\item{symbolOffset}{(\emph{Legend}) Horizontal pixel offset for legend symbols.
+Or: ExprRef}
 
-\strong{Default value:} \code{0}.}
+\item{symbolDashOffset}{The pixel offset at which to start drawing with the symbol stroke dash array.
 
-\item{symbolOpacity}{(\emph{Legend}) Opacity of the legend symbols.}
+Or: ExprRef}
 
-\item{symbolSize}{(\emph{Legend}) The size of the legend symbol, in pixels.
+\item{symbolFillColor}{The color of the legend symbol,
 
-\strong{Default value:} \code{100}.}
+Or: ExprRef}
 
-\item{symbolStrokeColor}{(\emph{Legend}) Stroke color for legend symbols.}
+\item{symbolLimit}{The maximum number of allowed entries for a symbol legend. Additional entries
+will be dropped.
 
-\item{symbolStrokeWidth}{(\emph{Legend}) The width of the symbol's stroke.
+Or: ExprRef}
 
-\strong{Default value:} \code{1.5}.}
+\item{symbolOffset}{Horizontal pixel offset for legend symbols.
 
-\item{symbolType}{(\emph{Legend}) The symbol shape. One of the plotting shapes \code{circle} (default), \code{square}, \code{cross}, \code{diamond}, \code{triangle-up}, \code{triangle-down}, \code{triangle-right}, or \code{triangle-left}, the line symbol \code{stroke}, or one of the centered directional shapes \code{arrow}, \code{wedge}, or \code{triangle}. Alternatively, a custom \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path string} can be provided. For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.
+\strong{Default value:} \code{0}.
 
-\strong{Default value:} \code{"circle"}.}
+Or: ExprRef}
 
-\item{tickCount}{(\emph{Legend}) The desired number of tick values for quantitative legends.}
+\item{symbolOpacity}{Opacity of the legend symbols.
 
-\item{tickMinStep}{(\emph{Legend}) The minimum desired step between legend ticks, in terms of scale domain values. For example, a value of \code{1} indicates that ticks should not be less than 1 unit apart. If \code{tickMinStep} is specified, the \code{tickCount} value will be adjusted, if necessary, to enforce the minimum step value.
+Or: ExprRef}
+
+\item{symbolSize}{The size of the legend symbol, in pixels.
+
+\strong{Default value:} \code{100}.
+
+Or: ExprRef}
+
+\item{symbolStrokeColor}{Stroke color for legend symbols.
+
+Or: ExprRef}
+
+\item{symbolStrokeWidth}{The width of the symbol's stroke.
+
+\strong{Default value:} \code{1.5}.
+
+Or: ExprRef}
+
+\item{symbolType}{The symbol shape. One of the plotting shapes \code{circle} (default), \code{square},
+\code{cross}, \code{diamond}, \code{triangle-up}, \code{triangle-down}, \code{triangle-right}, or
+\code{triangle-left}, the line symbol \code{stroke}, or one of the centered directional
+shapes \code{arrow}, \code{wedge}, or \code{triangle}. Alternatively, a custom \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path string} can
+be provided. For correct sizing, custom shape paths should be defined within a
+square bounding box with coordinates ranging from -1 to 1 along both the x and y
+dimensions.
+
+\strong{Default value:} \code{"circle"}.
+
+Or: ExprRef}
+
+\item{tickCount}{The desired number of tick values for quantitative legends.
+
+Or: ExprRef}
+
+\item{tickMinStep}{The minimum desired step between legend ticks, in terms of scale domain values.
+For example, a value of \code{1} indicates that ticks should not be less than 1 unit
+apart. If \code{tickMinStep} is specified, the \code{tickCount} value will be adjusted, if
+necessary, to enforce the minimum step value.
 
 \strong{Default value}: \code{undefined}}
 
-\item{title}{(\emph{Legend}) A title for the field. If \code{null}, the title will be removed.
+\item{title}{A title for the field. If \code{null}, the title will be removed.
 
-\strong{Default value:}  derived from the field's name and transformation function (\code{aggregate}, \code{bin} and \code{timeUnit}). If the field has an aggregate function, the function is displayed as part of the title (e.g., \code{"Sum of Profit"}). If the field is binned or has a time unit applied, the applied function is shown in parentheses (e.g., \code{"Profit (binned)"}, \code{"Transaction Date (year-month)"}). Otherwise, the title is simply the field name.
+\strong{Default value:} derived from the field's name and transformation function
+(\code{aggregate}, \code{bin} and \code{timeUnit}). If the field has an aggregate function,
+the function is displayed as part of the title (e.g., \code{"Sum of Profit"}). If
+the field is binned or has a time unit applied, the applied function is shown
+in parentheses (e.g., \code{"Profit (binned)"}, \code{"Transaction Date (year-month)"}).
+Otherwise, the title is simply the field name.
 
 \strong{Notes}:
 \enumerate{
-\item You can customize the default field title format by providing the \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{\code{fieldTitle}} property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config} or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{\code{fieldTitle} function via the \code{compile} function's options}.
-\item If both field definition's \code{title} and axis, header, or legend \code{title} are defined, axis/header/legend title will be used.
+\item You can customize the default field title format by providing the
+\href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{\code{fieldTitle}}
+property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config}
+or \href{https://vega.github.io/vega-lite/usage/compile.html#field-title}{\code{fieldTitle} function via the \code{compile} function's options}.
+\item If both field definition's \code{title} and axis, header, or legend \code{title} are
+defined, axis/header/legend title will be used.
 }}
 
-\item{titleAlign}{(\emph{Legend}) Horizontal text alignment for legend titles.
+\item{titleAlign}{Horizontal text alignment for legend titles.
 
-\strong{Default value:} \code{"left"}.}
+\strong{Default value:} \code{"left"}.
 
-\item{titleAnchor}{(\emph{Legend}) Text anchor position for placing legend titles.}
+Or: ExprRef}
 
-\item{titleBaseline}{(\emph{Legend}) Vertical text baseline for legend titles.
+\item{titleAnchor}{Text anchor position for placing legend titles.
 
-\strong{Default value:} \code{"top"}.}
+Or: ExprRef}
 
-\item{titleColor}{(\emph{Legend}) The color of the legend title, can be in hex color code or regular color name.}
+\item{titleBaseline}{Vertical text baseline for legend titles. One of \code{"alphabetic"} (default),
+\code{"top"}, \code{"middle"}, \code{"bottom"}, \code{"line-top"}, or \code{"line-bottom"}. The
+\code{"line-top"} and \code{"line-bottom"} values operate similarly to \code{"top"} and
+\code{"bottom"}, but are calculated relative to the \emph{lineHeight} rather than
+\emph{fontSize} alone.
 
-\item{titleFont}{(\emph{Legend}) The font of the legend title.}
+\strong{Default value:} \code{"top"}.
 
-\item{titleFontSize}{(\emph{Legend}) The font size of the legend title.}
+Or: ExprRef}
 
-\item{titleFontStyle}{(\emph{Legend}) The font style of the legend title.}
+\item{titleColor}{The color of the legend title, can be in hex color code or regular color name.
 
-\item{titleFontWeight}{(\emph{Legend}) The font weight of the legend title.
-This can be either a string (e.g \code{"bold"}, \code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} = \code{400} and \code{"bold"} = \code{700}).}
+Or: ExprRef}
 
-\item{titleLimit}{(\emph{Legend}) Maximum allowed pixel width of legend titles.
+\item{titleFont}{The font of the legend title.
 
-\strong{Default value:} \code{180}.}
+Or: ExprRef}
 
-\item{titleLineHeight}{(\emph{Legend}) Line height in pixels for multi-line title text.}
+\item{titleFontSize}{The font size of the legend title.
 
-\item{titleOpacity}{(\emph{Legend}) Opacity of the legend title.}
+Or: ExprRef}
 
-\item{titleOrient}{(\emph{Legend}) Orientation of the legend title.}
+\item{titleFontStyle}{The font style of the legend title.
 
-\item{titlePadding}{(\emph{Legend}) The padding, in pixels, between title and legend.
+Or: ExprRef}
 
-\strong{Default value:} \code{5}.}
+\item{titleFontWeight}{The font weight of the legend title. This can be either a string (e.g \code{"bold"},
+\code{"normal"}) or a number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"} =
+\code{400} and \code{"bold"} = \code{700}).
 
-\item{type}{(\emph{Legend}) The type of the legend. Use \code{"symbol"} to create a discrete legend and \code{"gradient"} for a continuous color gradient.
+Or: ExprRef}
 
-\strong{Default value:} \code{"gradient"} for non-binned quantitative fields and temporal fields; \code{"symbol"} otherwise.}
+\item{titleLimit}{Maximum allowed pixel width of legend titles.
 
-\item{values}{(\emph{Legend}) Explicitly set the visible legend values.}
+\strong{Default value:} \code{180}.
 
-\item{zindex}{(\emph{Legend}) A non-negative integer indicating the z-index of the legend.
-If zindex is 0, legend should be drawn behind all chart elements.
-To put them in front, use zindex = 1.}
+Or: ExprRef}
+
+\item{titleLineHeight}{Line height in pixels for multi-line title text or title text with \code{"line-top"}
+or \code{"line-bottom"} baseline.
+
+Or: ExprRef}
+
+\item{titleOpacity}{Opacity of the legend title.
+
+Or: ExprRef}
+
+\item{titleOrient}{Orientation of the legend title.
+
+Or: ExprRef}
+
+\item{titlePadding}{The padding, in pixels, between title and legend.
+
+\strong{Default value:} \code{5}.
+
+Or: ExprRef}
+
+\item{type}{The type of the legend. Use \code{"symbol"} to create a discrete legend and
+\code{"gradient"} for a continuous color gradient.
+
+\strong{Default value:} \code{"gradient"} for non-binned quantitative fields and temporal
+fields; \code{"symbol"} otherwise.}
+
+\item{values}{Explicitly set the visible legend values.}
+
+\item{zindex}{A non-negative integer indicating the z-index of the legend. If zindex is 0,
+legend should be drawn behind all chart elements. To put them in front, use
+zindex = 1.}
 }
 \value{
 A modified Vega-Lite Spec

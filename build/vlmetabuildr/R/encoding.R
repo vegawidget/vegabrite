@@ -3,8 +3,7 @@ create_encoding_functions <- function(schema) {
 
   c(
     purrr::map_chr(names(encoding_options), create_encoder, schema = schema),
-    purrr::map_chr(names(encoding_options), create_encode_object, schema = schema),
-    purrr::map_chr(names(encoding_options), create_deprecated_encode_object)
+    purrr::map_chr(names(encoding_options), create_encode_object, schema = schema)
   )
 }
 
@@ -22,9 +21,4 @@ create_encoder <- function(enc, schema) {
 create_encode_object <- function(enc, schema) {
   Enc <- capitalize(enc)
   create_object(Enc, schema, reference = glue("#/definitions/Encoding/properties/{enc}"))
-}
-
-create_deprecated_encode_object <- function(enc) {
-  Enc <- capitalize(enc)
-  create_deprecated_object(Enc)
 }
