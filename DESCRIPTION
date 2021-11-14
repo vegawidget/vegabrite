@@ -21,7 +21,9 @@ Suggests:
     knitr,
     rmarkdown,
     rlang,
+    vdiffr,
     V8,
+    fs,
     testthat (>= 2.1.0)
 Remotes:  
     vegawidget/vegawidget
