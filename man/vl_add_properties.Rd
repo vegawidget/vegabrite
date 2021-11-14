@@ -30,14 +30,15 @@ vl_add_properties(
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelNormalizedConcatSpec<GenericSpec>, TopLevelNormalizedVConcatSpec<GenericSpec> or TopLevelNormalizedHConcatSpec<GenericSpec>}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec or TopLevelHConcatSpec}
 
 \item{align}{The alignment to apply to grid rows and columns. The supported string values are
 \code{"all"}, \code{"each"}, and \code{"none"}.
 \itemize{
 \item For \code{"none"}, a flow layout will be used, in which adjacent subviews are
-simply placed one after the other. - For \code{"each"}, subviews will be aligned
-into a clean grid structure, but each row or column may be of variable size.
+simply placed one after the other.
+\item For \code{"each"}, subviews will be aligned into a clean grid structure, but each
+row or column may be of variable size.
 \item For \code{"all"}, subviews will be aligned and each row or column will be sized
 identically based on the maximum observed size. String values for this property
 will be applied to both grid rows and columns.
@@ -62,10 +63,10 @@ for content sizing and automatic resizing.
 One of \code{full} (the default) or \code{flush}.
 \itemize{
 \item If set to \code{full}, the entire calculated bounds (including axes, title, and
-legend) will be used. - If set to \code{flush}, only the specified width and height
-values for the sub-view will be used. The \code{flush} setting can be useful when
-attempting to place sub-plots without axes or legends into a uniform grid
-structure.
+legend) will be used.
+\item If set to \code{flush}, only the specified width and height values for the sub-view
+will be used. The \code{flush} setting can be useful when attempting to place
+sub-plots without axes or legends into a uniform grid structure.
 }
 
 \strong{Default value:} \code{"full"}}
@@ -91,12 +92,12 @@ Arrays of primitive values are ingested as objects with a \code{data} property.}
 
 \item{height}{The height of a visualization.
 \itemize{
-\item For a plot with a continuous y-field, height should be a number. - For a
-plot with either a discrete y-field or no y-field, height can be either a
-number indicating a fixed height or an object in the form of \code{{step: number}}
+\item For a plot with a continuous y-field, height should be a number.
+\item For a plot with either a discrete y-field or no y-field, height can be either
+a number indicating a fixed height or an object in the form of \code{{step: number}}
 defining the height per discrete step. (No y-field is equivalent to having one
-discrete step.) - To enable responsive sizing on height, it should be set to
-\code{"container"}.
+discrete step.)
+\item To enable responsive sizing on height, it should be set to \code{"container"}.
 }
 
 \strong{Default value:} Based on \code{config.view.continuousHeight} for a plot with a
@@ -117,7 +118,10 @@ an object, the value should have the format \verb{\{"left": 5, "top": 5, "right"
 
 \strong{Default value}: \code{5}}
 
-\item{params}{Dynamic variables that parameterize a visualization.}
+\item{params}{An array of parameters that may either be simple variables, or more complex
+selections that map user input to data queries.
+
+Or: Dynamic variables or selections that parameterize a visualization.}
 
 \item{projection}{An object defining properties of geographic projection, which will be applied to
 \code{shape} path for \code{"geoshape"} marks and to \code{latitude} and \code{"longitude"} channels
@@ -148,12 +152,12 @@ by Vega and Vega-Lite and can be used for custom metadata.}
 
 \item{width}{The width of a visualization.
 \itemize{
-\item For a plot with a continuous x-field, width should be a number. - For a
-plot with either a discrete x-field or no x-field, width can be either a
-number indicating a fixed width or an object in the form of \code{{step: number}}
+\item For a plot with a continuous x-field, width should be a number.
+\item For a plot with either a discrete x-field or no x-field, width can be either
+a number indicating a fixed width or an object in the form of \code{{step: number}}
 defining the width per discrete step. (No x-field is equivalent to having one
-discrete step.) - To enable responsive sizing on width, it should be set to
-\code{"container"}.
+discrete step.)
+\item To enable responsive sizing on width, it should be set to \code{"container"}.
 }
 
 \strong{Default value:} Based on \code{config.view.continuousWidth} for a plot with a
@@ -174,9 +178,14 @@ will be assumed. This is equivalent to \code{hconcat} (for \code{concat}) and to
 
 \strong{Note}:
 \enumerate{
-\item This property is only for: - the general (wrappable) \code{concat} operator
-(not \code{hconcat}/\code{vconcat}) - the \code{facet} and \code{repeat} operator with one
-field/repetition definition (without row/column nesting)
+\item This property is only for:
+}
+\itemize{
+\item the general (wrappable) \code{concat} operator (not \code{hconcat}/\code{vconcat})
+\item the \code{facet} and \code{repeat} operator with one field/repetition definition
+(without row/column nesting)
+}
+\enumerate{
 \item Setting the \code{columns} to \code{1} is equivalent to \code{vconcat} (for \code{concat}) and to
 using the \code{row} channel (for \code{facet} and \code{repeat}).
 }}

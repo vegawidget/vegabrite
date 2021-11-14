@@ -38,8 +38,11 @@ vl_config_scale(
 
 \item{bandPaddingInner}{Default inner padding for \code{x} and \code{y} band-ordinal scales.
 
-\strong{Default value:} - \code{barBandPaddingInner} for bar marks (\code{0.1} by default) -
-\code{rectBandPaddingInner} for rect and other marks (\code{0} by default)}
+\strong{Default value:}
+\itemize{
+\item \code{barBandPaddingInner} for bar marks (\code{0.1} by default)
+\item \code{rectBandPaddingInner} for rect and other marks (\code{0} by default)
+}}
 
 \item{bandPaddingOuter}{Default outer padding for \code{x} and \code{y} band-ordinal scales.
 

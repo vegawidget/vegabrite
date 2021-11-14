@@ -23,7 +23,7 @@ vl_chart() %>%
    vl_encode_y("mpg")
 ```
 
-
+For a more thorough introduction to how to use the package, see [introduction vignette](https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html). For example charts see the [examples vignette](https://vegawidget.github.io/vlbuildr/articles/articles/examples.html).
 
 ## Underlying objects
 

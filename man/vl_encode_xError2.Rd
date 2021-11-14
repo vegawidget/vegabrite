@@ -10,7 +10,7 @@ vl_encode_xError2(
   field = NULL,
   value = NULL,
   aggregate = NULL,
-  band = NULL,
+  bandPosition = NULL,
   bin = NULL,
   timeUnit = NULL,
   title = NULL
@@ -47,15 +47,9 @@ color, values between \code{0} to \code{1} for opacity).}
 \href{https://vega.github.io/vega-lite/docs/aggregate.html}{\code{aggregate}}
 documentation.}
 
-\item{band}{For rect-based marks (\code{rect}, \code{bar}, and
-\code{image}), mark size relative to bandwidth of \href{https://vega.github.io/vega-lite/docs/scale.html#band}{band scales}, bins or time
-units. If set to \code{1}, the mark size is set to the bandwidth, the bin interval,
-or the time unit interval. If set to \code{0.5}, the mark size is half of the
-bandwidth or the time unit interval.
-
-For other marks, relative position on a band of a stacked, binned, time unit or
-band scale. If set to \code{0}, the marks will be positioned at the beginning of the
-band. If set to \code{0.5}, the marks will be positioned in the middle of the band.}
+\item{bandPosition}{Relative position on a band of a stacked, binned, time unit, or band scale. For
+example, the marks will be positioned at the beginning of the band if set to
+\code{0}, and at the middle of the band if set to \code{0.5}.}
 
 \item{bin}{A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or
 indicating that the data for \code{x} or \code{y} channel are binned before they are
@@ -97,7 +91,7 @@ Otherwise, the title is simply the field name.
 \item You can customize the default field title format by providing the
 \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{\code{fieldTitle}}
 property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config}
-or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{\code{fieldTitle} function via the \code{compile} function's options}.
+or \href{https://vega.github.io/vega-lite/usage/compile.html#field-title}{\code{fieldTitle} function via the \code{compile} function's options}.
 \item If both field definition's \code{title} and axis, header, or legend \code{title} are
 defined, axis/header/legend title will be used.
 }}

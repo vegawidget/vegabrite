@@ -27,7 +27,7 @@ vl_mark_BoxPlot(
 
 \item{box}{boolean
 
-Or: MarkConfig<ExprOrSignalRef>}
+Or: MarkConfig}
 
 \item{clip}{Whether a composite mark be clipped to the enclosing group’s width and height.}
 
@@ -35,22 +35,28 @@ Or: MarkConfig<ExprOrSignalRef>}
 
 \strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
 
-\strong{Note:} - This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. - The
-\code{fill} and \code{stroke} properties have higher precedence than \code{color} and will
-override \code{color}.}
+\strong{Note:}
+\itemize{
+\item This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.
+\item The \code{fill} and \code{stroke} properties have higher precedence than \code{color} and
+will override \code{color}.
+}}
 
-\item{extent}{The extent of the whiskers. Available options include: - \code{"min-max"}: min and
-max are the lower and upper whiskers respectively. - A number representing
-multiple of the interquartile range. This number will be multiplied by the IQR
-to determine whisker boundary, which spans from the smallest data to the largest
-data within the range \emph{[Q1 - k * IQR, Q3 + k * IQR]} where \emph{Q1} and \emph{Q3} are the
-first and third quartiles while \emph{IQR} is the interquartile range (\emph{Q3-Q1}).
+\item{extent}{The extent of the whiskers. Available options include:
+\itemize{
+\item \code{"min-max"}: min and max are the lower and upper whiskers respectively.
+\item A number representing multiple of the interquartile range. This number will
+be multiplied by the IQR to determine whisker boundary, which spans from the
+smallest data to the largest data within the range \emph{[Q1 - k * IQR, Q3 + k *
+IQR]} where \emph{Q1} and \emph{Q3} are the first and third quartiles while \emph{IQR} is the
+interquartile range (\emph{Q3-Q1}).
+}
 
 \strong{Default value:} \code{1.5}.}
 
 \item{median}{boolean
 
-Or: MarkConfig<ExprOrSignalRef>}
+Or: MarkConfig}
 
 \item{opacity}{The opacity (value between [0,1]) of the mark.}
 
@@ -62,17 +68,17 @@ when the orientation is ambiguous.
 
 \item{outliers}{boolean
 
-Or: MarkConfig<ExprOrSignalRef>}
+Or: MarkConfig}
 
 \item{rule}{boolean
 
-Or: MarkConfig<ExprOrSignalRef>}
+Or: MarkConfig}
 
 \item{size}{Size of the box and median tick of a box plot}
 
 \item{ticks}{boolean
 
-Or: MarkConfig<ExprOrSignalRef>}
+Or: MarkConfig}
 }
 \value{
 A modified Vega-Lite Spec

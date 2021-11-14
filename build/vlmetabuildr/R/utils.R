@@ -137,7 +137,15 @@ get_param_docs <- function(schema, ref, exclude = NULL) {
     "(?<!`)\\[([^[\\]_]]*)\\](?![\\(`])",
     "\\\\\\[\\1\\\\\\]"
   )
-
+  
+  # Particular case -- To do: whether a coherent way 
+  # to generalize with above
+  param_desc <- stringr::str_replace_all(
+    param_desc,
+    "`\\[mousedown, window:mouseup\\]\n#' > window:mousemove!`",
+    "\n#' ```\n#' [mousedown, window:mouseup] > window:mousemove!\n#' ```\n#' "
+  )
+  
   # Very specific fix for an issue...
   param_desc <- stringr::str_replace_all(
     param_desc,

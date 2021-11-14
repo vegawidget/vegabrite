@@ -79,8 +79,8 @@ vl_mark_image(
   theta2Offset = NULL,
   thetaOffset = NULL,
   thickness = NULL,
-  timeUnitBand = NULL,
   timeUnitBandPosition = NULL,
+  timeUnitBandSize = NULL,
   tooltip = NULL,
   url = NULL,
   width = NULL,
@@ -168,9 +168,12 @@ Or: ExprRef}
 
 \strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
 
-\strong{Note:} - This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. - The
-\code{fill} and \code{stroke} properties have higher precedence than \code{color} and will
-override \code{color}.}
+\strong{Note:}
+\itemize{
+\item This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.
+\item The \code{fill} and \code{stroke} properties have higher precedence than \code{color} and
+will override \code{color}.
+}}
 
 \item{continuousBandSize}{The default size of the bars on continuous scales.
 
@@ -195,8 +198,8 @@ Or: ExprRef}
 Or: ExprRef}
 
 \item{cornerRadiusEnd}{\itemize{
-\item For vertical bars, top-left and top-right corner radius. - For horizontal
-bars, top-right and bottom-right corner radius.
+\item For vertical bars, top-left and top-right corner radius.
+\item For horizontal bars, top-right and bottom-right corner radius.
 }}
 
 \item{cornerRadiusTopLeft}{The radius in pixels of rounded rectangles' top right corner.
@@ -288,9 +291,12 @@ number (\code{100}, \code{200}, \code{300}, ..., \code{900} where \code{"normal"
 
 Or: ExprRef}
 
-\item{height}{Height of the marks.
-
-Or: ExprRef}
+\item{height}{Height of the marks. One of:
+\itemize{
+\item A number representing a fixed pixel height.
+\item A relative band size definition. For example, \code{{band: 0.5}} represents half of
+the band
+}}
 
 \item{href}{A URL to load upon mouse click. If defined, the mark acts as a hyperlink.
 
@@ -300,30 +306,37 @@ Or: ExprRef}
 \code{radius2}.}
 
 \item{interpolate}{The line interpolation method to use for line and area marks. One of the
-following: - \code{"linear"}: piecewise linear segments, as in a polyline. -
-\code{"linear-closed"}: close the linear segments to form a polygon. - \code{"step"}:
-alternate between horizontal and vertical segments, as in a step function.
+following:
 \itemize{
-\item \code{"step-before"}: alternate between vertical and horizontal segments, as in
-a step function. - \code{"step-after"}: alternate between horizontal and vertical
-segments, as in a step function. - \code{"basis"}: a B-spline, with control point
-duplication on the ends. - \code{"basis-open"}: an open B-spline; may not intersect
-the start or end. - \code{"basis-closed"}: a closed B-spline, as in a loop. -
-\code{"cardinal"}: a Cardinal spline, with control point duplication on the ends.
+\item \code{"linear"}: piecewise linear segments, as in a polyline.
+\item \code{"linear-closed"}: close the linear segments to form a polygon.
+\item \code{"step"}: alternate between horizontal and vertical segments, as in a step
+function.
+\item \code{"step-before"}: alternate between vertical and horizontal segments, as in a
+step function.
+\item \code{"step-after"}: alternate between horizontal and vertical segments, as in a
+step function.
+\item \code{"basis"}: a B-spline, with control point duplication on the ends.
+\item \code{"basis-open"}: an open B-spline; may not intersect the start or end.
+\item \code{"basis-closed"}: a closed B-spline, as in a loop.
+\item \code{"cardinal"}: a Cardinal spline, with control point duplication on the ends.
 \item \code{"cardinal-open"}: an open Cardinal spline; may not intersect the start or
-end, but will intersect other control points. - \code{"cardinal-closed"}: a closed
-Cardinal spline, as in a loop. - \code{"bundle"}: equivalent to basis, except the
-tension parameter is used to straighten the spline. - \code{"monotone"}: cubic
-interpolation that preserves monotonicity in y.
+end, but will intersect other control points.
+\item \code{"cardinal-closed"}: a closed Cardinal spline, as in a loop.
+\item \code{"bundle"}: equivalent to basis, except the tension parameter is used to
+straighten the spline.
+\item \code{"monotone"}: cubic interpolation that preserves monotonicity in y.
 }
 
 Or: ExprRef}
 
-\item{invalid}{Defines how Vega-Lite should handle marks for invalid values (\code{null} and
-\code{NaN}). - If set to \code{"filter"} (default), all data items with null values will
-be skipped (for line, trail, and area marks) or filtered (for other marks). -
-If \code{null}, all data items are included. In this case, invalid values will be
-interpreted as zeroes.}
+\item{invalid}{Defines how Vega-Lite should handle marks for invalid values (\code{null} and \code{NaN}).
+\itemize{
+\item If set to \code{"filter"} (default), all data items with null values will be
+skipped (for line, trail, and area marks) or filtered (for other marks).
+\item If \code{null}, all data items are included. In this case, invalid values will be
+interpreted as zeroes.
+}}
 
 \item{limit}{The maximum length of the text mark in pixels. The text value will be
 automatically truncated if the rendered size exceeds the limit.
@@ -360,14 +373,17 @@ or \code{square} marks or layered \code{bar} charts and \code{1} otherwise.}
 \item{order}{For line and trail marks, this \code{order} property can be set to \code{null} or \code{false}
 to make the lines use the original order in the data sources.}
 
-\item{orient}{The orientation of a non-stacked bar, tick, area, and line charts. The value
-is either horizontal (default) or vertical. - For bar, rule and tick, this
-determines whether the size of the bar and tick should be applied to x or y
-dimension. - For area, this property determines the orient property of the Vega
-output. - For line and trail marks, this property determines the sort order
-of the points in the line if \code{config.sortLineBy} is not specified. For stacked
-charts, this is always determined by the orientation of the stack; therefore
-explicitly specified value will be ignored.}
+\item{orient}{The orientation of a non-stacked bar, tick, area, and line charts. The value is
+either horizontal (default) or vertical.
+\itemize{
+\item For bar, rule and tick, this determines whether the size of the bar and tick
+should be applied to x or y dimension.
+\item For area, this property determines the orient property of the Vega output.
+\item For line and trail marks, this property determines the sort order of the
+points in the line if \code{config.sortLineBy} is not specified. For stacked charts,
+this is always determined by the orientation of the stack; therefore explicitly
+specified value will be ignored.
+}}
 
 \item{outerRadius}{The outer radius in pixels of arc marks. \code{outerRadius} is an alias for \code{radius}.}
 
@@ -399,12 +415,13 @@ origin determined by the \code{x} and \code{y} properties.}
 
 \item{radiusOffset}{Offset for radius.}
 
-\item{shape}{Shape of the point marks. Supported values include: - plotting shapes:
-\code{"circle"}, \code{"square"}, \code{"cross"}, \code{"diamond"}, \code{"triangle-up"},
-\code{"triangle-down"}, \code{"triangle-right"}, or \code{"triangle-left"}.
+\item{shape}{Shape of the point marks. Supported values include:
 \itemize{
-\item the line symbol \code{"stroke"} - centered directional shapes
-\code{"arrow"}, \code{"wedge"}, or \code{"triangle"} - a custom \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path string} (For
+\item plotting shapes: \code{"circle"}, \code{"square"}, \code{"cross"}, \code{"diamond"},
+\code{"triangle-up"}, \code{"triangle-down"}, \code{"triangle-right"}, or \code{"triangle-left"}.
+\item the line symbol \code{"stroke"}
+\item centered directional shapes \code{"arrow"}, \code{"wedge"}, or \code{"triangle"}
+\item a custom \href{https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths}{SVG path string} (For
 correct sizing, custom shape paths should be defined within a square bounding
 box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
 }
@@ -413,15 +430,22 @@ box with coordinates ranging from -1 to 1 along both the x and y dimensions.)
 
 Or: ExprRef}
 
-\item{size}{Default size for marks. - For \code{point}/\code{circle}/\code{square}, this represents the
-pixel area of the marks. Note that this value sets the area of the symbol; the
-side lengths will increase with the square root of this value. - For \code{bar}, this
-represents the band size of the bar, in pixels. - For \code{text}, this represents
-the font size, in pixels.
+\item{size}{Default size for marks.
+\itemize{
+\item For \code{point}/\code{circle}/\code{square}, this represents the pixel area of the marks.
+Note that this value sets the area of the symbol; the side lengths will increase
+with the square root of this value.
+\item For \code{bar}, this represents the band size of the bar, in pixels.
+\item For \code{text}, this represents the font size, in pixels.
+}
 
-\strong{Default value:} - \code{30} for point, circle, square marks; width/height's
-\code{step} - \code{2} for bar marks with discrete dimensions; - \code{5} for bar marks with
-continuous dimensions; - \code{11} for text marks.}
+\strong{Default value:}
+\itemize{
+\item \code{30} for point, circle, square marks; width/height's \code{step}
+\item \code{2} for bar marks with discrete dimensions;
+\item \code{5} for bar marks with continuous dimensions;
+\item \code{11} for text marks.
+}}
 
 \item{smooth}{A boolean flag (default true) indicating if the image should be smoothed when
 resized. If false, individual pixels should be scaled directly rather than
@@ -515,21 +539,22 @@ increasing values proceed clockwise.}
 
 \strong{Default value:} \code{1}}
 
-\item{timeUnitBand}{Default relative band size for a time unit. If set to \code{1}, the bandwidth of the
-marks will be equal to the time unit band step. If set to \code{0.5}, bandwidth of
-the marks will be half of the time unit band step.}
-
 \item{timeUnitBandPosition}{Default relative band position for a time unit. If set to \code{0}, the marks will
 be positioned at the beginning of the time unit band step. If set to \code{0.5}, the
 marks will be positioned in the middle of the time unit band step.}
+
+\item{timeUnitBandSize}{Default relative band size for a time unit. If set to \code{1}, the bandwidth of the
+marks will be equal to the time unit band step. If set to \code{0.5}, bandwidth of
+the marks will be half of the time unit band step.}
 
 \item{tooltip}{The tooltip text string to show upon mouse hover or an object defining which
 fields should the tooltip be derived from.
 \itemize{
 \item If \code{tooltip} is \code{true} or \code{{"content": "encoding"}}, then all fields from
-\code{encoding} will be used. - If \code{tooltip} is \code{{"content": "data"}}, then all
-fields that appear in the highlighted data point will be used. - If set to
-\code{null} or \code{false}, then no tooltip will be used.
+\code{encoding} will be used.
+\item If \code{tooltip} is \code{{"content": "data"}}, then all fields that appear in the
+highlighted data point will be used.
+\item If set to \code{null} or \code{false}, then no tooltip will be used.
 }
 
 See the \href{https://vega.github.io/vega-lite/docs/tooltip.html}{\code{tooltip}}
@@ -541,9 +566,12 @@ documentation for a detailed discussion about tooltip in Vega-Lite.
 
 Or: ExprRef}
 
-\item{width}{Width of the marks.
-
-Or: ExprRef}
+\item{width}{Width of the marks. One of:
+\itemize{
+\item A number representing a fixed pixel width.
+\item A relative band size definition. For example, \code{{band: 0.5}} represents half of
+the band.
+}}
 
 \item{x}{X coordinates of the marks, or width of horizontal \code{"bar"} and \code{"area"} without
 specified \code{x2} or \code{width}.

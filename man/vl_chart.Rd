@@ -23,7 +23,6 @@ vl_chart(
   params = NULL,
   projection = NULL,
   resolve = NULL,
-  selection = NULL,
   spacing = NULL,
   title = NULL,
   transform = NULL,
@@ -46,7 +45,7 @@ source. If no data is set, it is derived from the parent.}
 
 \item{$schema}{URL to \href{http://json-schema.org/}{JSON schema} for a Vega-Lite
 specification. Unless you have a reason to change this, use
-\verb{https://vega.github.io/schema/vega-lite/v4.json}. Setting the \verb{$schema}
+\verb{https://vega.github.io/schema/vega-lite/v5.json}. Setting the \verb{$schema}
 property allows automatic validation and autocomplete in editors that support
 JSON schema.}
 
@@ -54,8 +53,9 @@ JSON schema.}
 \code{"all"}, \code{"each"}, and \code{"none"}.
 \itemize{
 \item For \code{"none"}, a flow layout will be used, in which adjacent subviews are
-simply placed one after the other. - For \code{"each"}, subviews will be aligned
-into a clean grid structure, but each row or column may be of variable size.
+simply placed one after the other.
+\item For \code{"each"}, subviews will be aligned into a clean grid structure, but each
+row or column may be of variable size.
 \item For \code{"all"}, subviews will be aligned and each row or column will be sized
 identically based on the maximum observed size. String values for this property
 will be applied to both grid rows and columns.
@@ -80,10 +80,10 @@ for content sizing and automatic resizing.
 One of \code{full} (the default) or \code{flush}.
 \itemize{
 \item If set to \code{full}, the entire calculated bounds (including axes, title, and
-legend) will be used. - If set to \code{flush}, only the specified width and height
-values for the sub-view will be used. The \code{flush} setting can be useful when
-attempting to place sub-plots without axes or legends into a uniform grid
-structure.
+legend) will be used.
+\item If set to \code{flush}, only the specified width and height values for the sub-view
+will be used. The \code{flush} setting can be useful when attempting to place
+sub-plots without axes or legends into a uniform grid structure.
 }
 
 \strong{Default value:} \code{"full"}}
@@ -117,12 +117,12 @@ the underlying layers.}
 
 \item{height}{The height of a visualization.
 \itemize{
-\item For a plot with a continuous y-field, height should be a number. - For a
-plot with either a discrete y-field or no y-field, height can be either a
-number indicating a fixed height or an object in the form of \code{{step: number}}
+\item For a plot with a continuous y-field, height should be a number.
+\item For a plot with either a discrete y-field or no y-field, height can be either
+a number indicating a fixed height or an object in the form of \code{{step: number}}
 defining the height per discrete step. (No y-field is equivalent to having one
-discrete step.) - To enable responsive sizing on height, it should be set to
-\code{"container"}.
+discrete step.)
+\item To enable responsive sizing on height, it should be set to \code{"container"}.
 }
 
 \strong{Default value:} Based on \code{config.view.continuousHeight} for a plot with a
@@ -147,7 +147,10 @@ an object, the value should have the format \verb{\{"left": 5, "top": 5, "right"
 
 \strong{Default value}: \code{5}}
 
-\item{params}{Dynamic variables that parameterize a visualization.}
+\item{params}{An array of parameters that may either be simple variables, or more complex
+selections that map user input to data queries.
+
+Or: Dynamic variables or selections that parameterize a visualization.}
 
 \item{projection}{An object defining properties of geographic projection, which will be applied to
 \code{shape} path for \code{"geoshape"} marks and to \code{latitude} and \code{"longitude"} channels
@@ -157,8 +160,6 @@ Or: An object defining properties of the geographic projection shared by underly
 layers.}
 
 \item{resolve}{Scale, axis, and legend resolutions for view composition specifications.}
-
-\item{selection}{A key-value mapping between selection names and definitions.}
 
 \item{spacing}{The spacing in pixels between sub-views of the composition operator. An object
 of the form \verb{\{"row": number, "column": number\}} can be used to set different
@@ -184,12 +185,12 @@ by Vega and Vega-Lite and can be used for custom metadata.}
 
 \item{width}{The width of a visualization.
 \itemize{
-\item For a plot with a continuous x-field, width should be a number. - For a
-plot with either a discrete x-field or no x-field, width can be either a
-number indicating a fixed width or an object in the form of \code{{step: number}}
+\item For a plot with a continuous x-field, width should be a number.
+\item For a plot with either a discrete x-field or no x-field, width can be either
+a number indicating a fixed width or an object in the form of \code{{step: number}}
 defining the width per discrete step. (No x-field is equivalent to having one
-discrete step.) - To enable responsive sizing on width, it should be set to
-\code{"container"}.
+discrete step.)
+\item To enable responsive sizing on width, it should be set to \code{"container"}.
 }
 
 \strong{Default value:} Based on \code{config.view.continuousWidth} for a plot with a
@@ -210,9 +211,14 @@ will be assumed. This is equivalent to \code{hconcat} (for \code{concat}) and to
 
 \strong{Note}:
 \enumerate{
-\item This property is only for: - the general (wrappable) \code{concat} operator
-(not \code{hconcat}/\code{vconcat}) - the \code{facet} and \code{repeat} operator with one
-field/repetition definition (without row/column nesting)
+\item This property is only for:
+}
+\itemize{
+\item the general (wrappable) \code{concat} operator (not \code{hconcat}/\code{vconcat})
+\item the \code{facet} and \code{repeat} operator with one field/repetition definition
+(without row/column nesting)
+}
+\enumerate{
 \item Setting the \code{columns} to \code{1} is equivalent to \code{vconcat} (for \code{concat}) and to
 using the \code{row} channel (for \code{facet} and \code{repeat}).
 }}

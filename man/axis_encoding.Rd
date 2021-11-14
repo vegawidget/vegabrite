@@ -211,9 +211,7 @@ Or: ExprRef}
 \item{domain}{A boolean flag indicating if the domain (the axis baseline) should be included
 as part of the axis.
 
-\strong{Default value:} \code{true}
-
-Or: ExprRef}
+\strong{Default value:} \code{true}}
 
 \item{domainCap}{The stroke cap for the domain line's ending style. One of \code{"butt"}, \code{"round"} or
 \code{"square"}.
@@ -250,8 +248,8 @@ Or: ExprRef}
 formatting pattern for labels of guides (axes, legends, headers) and text marks.
 \itemize{
 \item If the format type is \code{"number"} (e.g., for quantitative fields), this is D3's
-\href{https://github.com/d3/d3-format#locale_format}{number format pattern}. - If the
-format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
+\href{https://github.com/d3/d3-format#locale_format}{number format pattern}.
+\item If the format type is \code{"time"} (e.g., for temporal fields), this is D3's \href{https://github.com/d3/d3-time-format#locale_format}{time format pattern}.
 }
 
 See the \href{https://vega.github.io/vega-lite/docs/format.html}{format documentation} for more
@@ -270,9 +268,12 @@ for time format.}
 \item{formatType}{The format type for labels. One of \code{"number"},
 \code{"time"}, or a \href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{registered custom format type}.
 
-\strong{Default value:} - \code{"time"} for temporal fields and ordinal and nominal fields
-with \code{timeUnit}. - \code{"number"} for quantitative fields as well as ordinal and
-nominal fields without \code{timeUnit}.}
+\strong{Default value:}
+\itemize{
+\item \code{"time"} for temporal fields and ordinal and nominal fields with \code{timeUnit}.
+\item \code{"number"} for quantitative fields as well as ordinal and nominal fields
+without \code{timeUnit}.
+}}
 
 \item{grid}{A boolean flag indicating if grid lines should be included as part of the axis
 
@@ -462,9 +463,7 @@ Or: ExprRef}
 
 \item{labels}{A boolean flag indicating if labels should be included as part of the axis.
 
-\strong{Default value:} \code{true}.
-
-Or: ExprRef}
+\strong{Default value:} \code{true}.}
 
 \item{maxExtent}{The maximum extent in pixels that axis ticks and labels should use. This
 determines a maximum offset value for axis titles.
@@ -556,9 +555,7 @@ Or: ConditionalAxisNumber}
 position of the axis. This flag is useful for styling axes for \code{band} scales
 such that ticks are placed on band boundaries rather in the middle of a band.
 Use in conjunction with \code{"bandPosition": 1} and an axis \code{"padding"} value of
-\code{0}.
-
-Or: ExprRef}
+\code{0}.}
 
 \item{tickMinStep}{The minimum desired step between axis ticks, in terms of scale domain values.
 For example, a value of \code{1} indicates that ticks should not be less than 1 unit
@@ -578,9 +575,7 @@ Or: ConditionalAxisNumber}
 \item{tickRound}{Boolean flag indicating if pixel position values should be rounded to the
 nearest integer.
 
-\strong{Default value:} \code{true}
-
-Or: ExprRef}
+\strong{Default value:} \code{true}}
 
 \item{tickSize}{The size in pixels of axis ticks.
 
@@ -600,9 +595,7 @@ Or: ConditionalAxisNumber}
 
 \item{ticks}{Boolean value that determines whether the axis should include ticks.
 
-\strong{Default value:} \code{true}
-
-Or: ExprRef}
+\strong{Default value:} \code{true}}
 
 \item{title}{A title for the field. If \code{null}, the title will be removed.
 
@@ -618,7 +611,7 @@ Otherwise, the title is simply the field name.
 \item You can customize the default field title format by providing the
 \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{\code{fieldTitle}}
 property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config}
-or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{\code{fieldTitle} function via the \code{compile} function's options}.
+or \href{https://vega.github.io/vega-lite/usage/compile.html#field-title}{\code{fieldTitle} function via the \code{compile} function's options}.
 \item If both field definition's \code{title} and axis, header, or legend \code{title} are
 defined, axis/header/legend title will be used.
 }}

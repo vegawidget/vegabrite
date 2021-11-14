@@ -2,6 +2,8 @@
 title: "Examples"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
@@ -82,25 +84,25 @@ vl_chart() %>%
 ```{r}
 vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
-  vl_add_interval_selection("brush",init = list(x = c(55,160), y = c(13,37))) %>%
+  vl_add_interval_selection(name = "brush", value = list(x = c(55,160), y = c(13,37))) %>%
   vl_mark_point() %>%
   vl_encode_x(field = "Horsepower", type = "quantitative") %>%
   vl_encode_y(field = "Miles_per_Gallon", type = "quantitative") %>%
   vl_encode_color(value = "grey") %>%
-  vl_condition_color(selection = "brush", field = "Cylinders", type = "ordinal")
+  vl_condition_color(param = "brush", field = "Cylinders", type = "ordinal")
 ```
 
 
 ```{r}
 vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
-  vl_add_single_selection("org", fields = list("Origin")) %>%
+  vl_add_point_selection("org",fields = list("Origin")) %>%
   vl_bind_select_input("org", options = list(NA,"Europe","Japan","USA")) %>%
   vl_mark_point() %>%
   vl_encode_x(field = "Horsepower", type = "quantitative") %>%
   vl_encode_y(field = "Miles_per_Gallon", type = "quantitative") %>%
   vl_encode_color(value = "grey") %>%
-  vl_condition_color(selection = "org", field = "Cylinders", type = "ordinal")
+  vl_condition_color(param = "org", field = "Cylinders", type = "ordinal")
 
 ```
 
@@ -108,16 +110,16 @@ vl_chart() %>%
 vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
   vl_calculate(calculate = "year(datum.Year)", as = "Year") %>%
-  vl_add_single_selection("CylYr", fields = list("Cylinders","Year")) %>%
+  vl_add_point_selection("CylYr",  fields = c("Cylinders","Year")) %>%
   vl_bind_range_input("CylYr", "Cylinders", min = 3, max = 8, step = 1) %>%
   vl_bind_range_input("CylYr", "Year", min = 1969, max = 1981, step = 1) %>%
   vl_mark_circle() %>%
   vl_encode_x(field = "Horsepower", type = "quantitative") %>%
   vl_encode_y(field = "Miles_per_Gallon", type = "quantitative") %>%
   vl_encode_color(value = "grey") %>%
-  vl_condition_color(selection = "CylYr", field = "Origin", type = "nominal") %>%
+  vl_condition_color(param = "CylYr", field = "Origin", type = "nominal") %>%
   vl_encode_size(value = 50) %>%
-  vl_condition_size(selection = "CylYr", value = 100)
+  vl_condition_size(param = "CylYr", value = 100)
 ```
 
 ```{r}
@@ -192,7 +194,7 @@ vl_chart() %>%
   vl_encode_y(field = list("repeat" = "row"), type = "quantitative") %>%
   vl_add_interval_selection("brush", resolve = "global") %>%
   vl_encode_color(value = "grey") %>%
-  vl_condition_color(selection = "brush", field = "Origin", type = "nominal") %>%
+  vl_condition_color(param = "brush", field = "Origin", type = "nominal") %>%
   vl_repeat_row("Horsepower", "Acceleration", "Miles_per_Gallon") %>%
   vl_repeat_col("Miles_per_Gallon", "Acceleration", "Horsepower")
 ```

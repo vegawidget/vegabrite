@@ -11,7 +11,7 @@ vl_encode_x2(
   type = NULL,
   value = NULL,
   aggregate = NULL,
-  band = NULL,
+  bandPosition = NULL,
   bin = NULL,
   timeUnit = NULL,
   title = NULL,
@@ -50,41 +50,53 @@ an ordinal scale for a field with \code{bin} or \code{timeUnit}.
 
 \strong{Default value:}
 \enumerate{
-\item For a data \code{field}, \code{"nominal"} is the default data type unless the
-field encoding has \code{aggregate}, \code{channel}, \code{bin}, scale type, \code{sort}, or
-\code{timeUnit} that satisfies the following criteria: - \code{"quantitative"} is
-the default type if (1) the encoded field contains \code{bin} or \code{aggregate}
-except \code{"argmin"} and \code{"argmax"}, (2) the encoding channel is \code{latitude} or
-\code{longitude} channel or (3) if the specified scale type is \href{https://vega.github.io/vega-lite/docs/scale.html#type}{a quantitative scale}. - \code{"temporal"}
-is the default type if (1) the encoded field contains \code{timeUnit} or
-(2) the specified scale type is a time or utc scale - \verb{ordinal""} is
-the default type if (1) the encoded field contains a \href{https://vega.github.io/vega-lite/docs/sort.html#specifying-custom-sort-order}{custom \code{sort} order},
+\item For a data \code{field}, \code{"nominal"} is the default data type unless the field
+encoding has \code{aggregate}, \code{channel}, \code{bin}, scale type, \code{sort}, or \code{timeUnit}
+that satisfies the following criteria:
+}
+\itemize{
+\item \code{"quantitative"} is the default type if (1) the encoded field contains \code{bin}
+or \code{aggregate} except \code{"argmin"} and \code{"argmax"}, (2) the encoding channel is
+\code{latitude} or \code{longitude} channel or (3) if the specified scale type is \href{https://vega.github.io/vega-lite/docs/scale.html#type}{a quantitative scale}.
+\item \code{"temporal"} is the default type if (1) the encoded field contains \code{timeUnit}
+or (2) the specified scale type is a time or utc scale
+\item \verb{ordinal""} is the default type if (1)
+the encoded field contains a \href{https://vega.github.io/vega-lite/docs/sort.html#specifying-custom-sort-order}{custom \code{sort} order},
 (2) the specified scale type is an ordinal/point/band scale, or (3) the encoding
 channel is \code{order}.
-\item For a constant value in data domain (\code{datum}): -
-\code{"quantitative"} if the datum is a number - \code{"nominal"} if the
-datum is a string - \code{"temporal"} if the datum is \href{https://vega.github.io/vega-lite/docs/datetime.html}{a date time object}
+}
+\enumerate{
+\item For a constant value in data domain (\code{datum}):
+}
+\itemize{
+\item \code{"quantitative"} if the datum is a number
+\item \code{"nominal"} if the datum is a string
+\item \code{"temporal"} if the datum is \href{https://vega.github.io/vega-lite/docs/datetime.html}{a date time object}
 }
 
-\strong{Note:} - Data \code{type} describes the semantics of the data rather than the
-primitive data types (number, string, etc.). The same primitive data type can
-have different types of measurement. For example, numeric data can represent
-quantitative, ordinal, or nominal data. - Data values for a temporal field
-can be either a date-time string (e.g., \code{"2015-03-07 12:32:17"}, \code{"17:01"},
-\code{"2015-03-16"}. \code{"2015"}) or a timestamp number (e.g., \code{1552199579097}).
+\strong{Note:}
 \itemize{
+\item Data \code{type} describes the semantics of the data rather than the primitive data
+types (number, string, etc.). The same primitive data type can have different
+types of measurement. For example, numeric data can represent quantitative,
+ordinal, or nominal data.
+\item Data values for a temporal field can be either a date-time string (e.g.,
+\code{"2015-03-07 12:32:17"}, \code{"17:01"}, \code{"2015-03-16"}. \code{"2015"}) or a timestamp
+number (e.g., \code{1552199579097}).
 \item When using with \href{https://vega.github.io/vega-lite/docs/bin.html}{\code{bin}},
 the \code{type} property can be either \code{"quantitative"} (for using
-a linear bin scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{\code{"ordinal"} (for using an ordinal bin scale)}. - When
-using with \href{https://vega.github.io/vega-lite/docs/timeunit.html}{\code{timeUnit}},
+a linear bin scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{\code{"ordinal"} (for using an ordinal bin scale)}.
+\item When using with
+\href{https://vega.github.io/vega-lite/docs/timeunit.html}{\code{timeUnit}},
 the \code{type} property can be either \code{"temporal"} (default, for
-using a temporal scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{\code{"ordinal"} (for using an ordinal scale)}. - When using
-with \href{https://vega.github.io/vega-lite/docs/aggregate.html}{\code{aggregate}}, the
-\code{type} property refers to the post-aggregation data type. For example, we can
-calculate count \code{distinct} of a categorical field \code{"cat"} using \verb{\{"aggregate": "distinct", "field": "cat"\}}. The \code{"type"} of the aggregate output is
-\code{"quantitative"}. - Secondary channels (e.g., \code{x2}, \code{y2}, \code{xError}, \code{yError})
-do not have \code{type} as they must have exactly the same type as their primary
-channels (e.g., \code{x}, \code{y}).
+using a temporal scale) or \href{https://vega.github.io/vega-lite/docs/type.html#cast-bin}{\code{"ordinal"} (for using an ordinal scale)}.
+\item When using with
+\href{https://vega.github.io/vega-lite/docs/aggregate.html}{\code{aggregate}}, the \code{type}
+property refers to the post-aggregation data type. For example, we can calculate
+count \code{distinct} of a categorical field \code{"cat"} using \verb{\{"aggregate": "distinct", "field": "cat"\}}. The \code{"type"} of the aggregate output is \code{"quantitative"}.
+\item Secondary channels (e.g., \code{x2}, \code{y2}, \code{xError}, \code{yError}) do not have \code{type}
+as they must have exactly the same type as their primary channels (e.g., \code{x},
+\code{y}).
 }
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/type.html}{\code{type}}
@@ -102,15 +114,9 @@ color, values between \code{0} to \code{1} for opacity).}
 \href{https://vega.github.io/vega-lite/docs/aggregate.html}{\code{aggregate}}
 documentation.}
 
-\item{band}{For rect-based marks (\code{rect}, \code{bar}, and
-\code{image}), mark size relative to bandwidth of \href{https://vega.github.io/vega-lite/docs/scale.html#band}{band scales}, bins or time
-units. If set to \code{1}, the mark size is set to the bandwidth, the bin interval,
-or the time unit interval. If set to \code{0.5}, the mark size is half of the
-bandwidth or the time unit interval.
-
-For other marks, relative position on a band of a stacked, binned, time unit or
-band scale. If set to \code{0}, the marks will be positioned at the beginning of the
-band. If set to \code{0.5}, the marks will be positioned in the middle of the band.}
+\item{bandPosition}{Relative position on a band of a stacked, binned, time unit, or band scale. For
+example, the marks will be positioned at the beginning of the band if set to
+\code{0}, and at the middle of the band if set to \code{0.5}.}
 
 \item{bin}{A flag for binning a \code{quantitative} field, \href{https://vega.github.io/vega-lite/docs/bin.html#params}{an object defining binning parameters}, or
 indicating that the data for \code{x} or \code{y} channel are binned before they are
@@ -152,7 +158,7 @@ Otherwise, the title is simply the field name.
 \item You can customize the default field title format by providing the
 \href{https://vega.github.io/vega-lite/docs/config.html#top-level-config}{\code{fieldTitle}}
 property in the \href{https://vega.github.io/vega-lite/docs/config.html}{config}
-or \href{https://vega.github.io/vega-lite/docs/compile.html#field-title}{\code{fieldTitle} function via the \code{compile} function's options}.
+or \href{https://vega.github.io/vega-lite/usage/compile.html#field-title}{\code{fieldTitle} function via the \code{compile} function's options}.
 \item If both field definition's \code{title} and axis, header, or legend \code{title} are
 defined, axis/header/legend title will be used.
 }}

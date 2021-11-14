@@ -29,15 +29,22 @@ vl_mark_ErrorBar(
 
 \strong{Default value:} <span style="color: #4682b4;">■</span> \code{"#4682b4"}
 
-\strong{Note:} - This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}. - The
-\code{fill} and \code{stroke} properties have higher precedence than \code{color} and will
-override \code{color}.}
+\strong{Note:}
+\itemize{
+\item This property cannot be used in a \href{https://vega.github.io/vega-lite/docs/mark.html#style-config}{style config}.
+\item The \code{fill} and \code{stroke} properties have higher precedence than \code{color} and
+will override \code{color}.
+}}
 
-\item{extent}{The extent of the rule. Available options include: - \code{"ci"}: Extend the rule
-to the confidence interval of the mean. - \code{"stderr"}: The size of rule are set
-to the value of standard error, extending from the mean. - \code{"stdev"}: The size
-of rule are set to the value of standard deviation, extending from the mean. -
-\code{"iqr"}: Extend the rule to the q1 and q3.
+\item{extent}{The extent of the rule. Available options include:
+\itemize{
+\item \code{"ci"}: Extend the rule to the confidence interval of the mean.
+\item \code{"stderr"}: The size of rule are set to the value of standard error, extending
+from the mean.
+\item \code{"stdev"}: The size of rule are set to the value of standard deviation,
+extending from the mean.
+\item \code{"iqr"}: Extend the rule to the q1 and q3.
+}
 
 \strong{Default value:} \code{"stderr"}.}
 
@@ -49,7 +56,7 @@ determined.}
 
 \item{rule}{boolean
 
-Or: MarkConfig<ExprOrSignalRef>}
+Or: MarkConfig}
 
 \item{size}{Size of the ticks of an error bar}
 
@@ -57,7 +64,7 @@ Or: MarkConfig<ExprOrSignalRef>}
 
 \item{ticks}{boolean
 
-Or: MarkConfig<ExprOrSignalRef>}
+Or: MarkConfig}
 }
 \value{
 A modified Vega-Lite Spec

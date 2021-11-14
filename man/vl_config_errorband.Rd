@@ -21,39 +21,47 @@ vl_config_errorband(
 
 \item{band}{boolean
 
-Or: MarkConfig<ExprOrSignalRef>}
+Or: MarkConfig}
 
 \item{borders}{boolean
 
-Or: MarkConfig<ExprOrSignalRef>}
+Or: MarkConfig}
 
-\item{extent}{The extent of the band. Available options include: - \code{"ci"}: Extend the band
-to the confidence interval of the mean. - \code{"stderr"}: The size of band are set
-to the value of standard error, extending from the mean. - \code{"stdev"}: The size
-of band are set to the value of standard deviation, extending from the mean. -
-\code{"iqr"}: Extend the band to the q1 and q3.
+\item{extent}{The extent of the band. Available options include:
+\itemize{
+\item \code{"ci"}: Extend the band to the confidence interval of the mean.
+\item \code{"stderr"}: The size of band are set to the value of standard error, extending
+from the mean.
+\item \code{"stdev"}: The size of band are set to the value of standard deviation,
+extending from the mean.
+\item \code{"iqr"}: Extend the band to the q1 and q3.
+}
 
 \strong{Default value:} \code{"stderr"}.}
 
-\item{interpolate}{The line interpolation method for the error band. One of the following: -
-\code{"linear"}: piecewise linear segments, as in a polyline. - \code{"linear-closed"}:
-close the linear segments to form a polygon. - \code{"step"}: a piecewise constant
-function (a step function) consisting of alternating horizontal and vertical
-lines. The y-value changes at the midpoint of each pair of adjacent x-values.
+\item{interpolate}{The line interpolation method for the error band. One of the following:
 \itemize{
+\item \code{"linear"}: piecewise linear segments, as in a polyline.
+\item \code{"linear-closed"}: close the linear segments to form a polygon.
+\item \code{"step"}: a piecewise constant function (a step function) consisting of
+alternating horizontal and vertical lines. The y-value changes at the midpoint
+of each pair of adjacent x-values.
 \item \code{"step-before"}: a piecewise constant function (a step function) consisting
 of alternating horizontal and vertical lines. The y-value changes before the
-x-value. - \code{"step-after"}: a piecewise constant function (a step function)
-consisting of alternating horizontal and vertical lines. The y-value changes
-after the x-value. - \code{"basis"}: a B-spline, with control point duplication
-on the ends. - \code{"basis-open"}: an open B-spline; may not intersect the
-start or end. - \code{"basis-closed"}: a closed B-spline, as in a loop. -
-\code{"cardinal"}: a Cardinal spline, with control point duplication on the ends.
+x-value.
+\item \code{"step-after"}: a piecewise constant function (a step function) consisting
+of alternating horizontal and vertical lines. The y-value changes after the
+x-value.
+\item \code{"basis"}: a B-spline, with control point duplication on the ends.
+\item \code{"basis-open"}: an open B-spline; may not intersect the start or end.
+\item \code{"basis-closed"}: a closed B-spline, as in a loop.
+\item \code{"cardinal"}: a Cardinal spline, with control point duplication on the ends.
 \item \code{"cardinal-open"}: an open Cardinal spline; may not intersect the start or
-end, but will intersect other control points. - \code{"cardinal-closed"}: a closed
-Cardinal spline, as in a loop. - \code{"bundle"}: equivalent to basis, except the
-tension parameter is used to straighten the spline. - \code{"monotone"}: cubic
-interpolation that preserves monotonicity in y.
+end, but will intersect other control points.
+\item \code{"cardinal-closed"}: a closed Cardinal spline, as in a loop.
+\item \code{"bundle"}: equivalent to basis, except the tension parameter is used to
+straighten the spline.
+\item \code{"monotone"}: cubic interpolation that preserves monotonicity in y.
 }}
 
 \item{tension}{The tension parameter for the interpolation type of the error band.}

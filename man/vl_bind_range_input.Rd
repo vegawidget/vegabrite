@@ -6,7 +6,7 @@
 \usage{
 vl_bind_range_input(
   spec,
-  selection_name,
+  parameter_name,
   projection_name = NULL,
   .object = NULL,
   debounce = NULL,
@@ -14,32 +14,36 @@ vl_bind_range_input(
   max = NULL,
   min = NULL,
   name = NULL,
-  step = NULL,
-  type = NULL
+  step = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{selection_name}{Name of selection to add binding to}
+\item{parameter_name}{Name of selection to add binding to}
 
 \item{projection_name}{Name of projection (field or encoding) within selection}
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRange}
 
-\item{debounce}{number}
+\item{debounce}{If defined, delays event handling until the specified milliseconds have elapsed
+since the last event was fired.}
 
-\item{element}{Element}
+\item{element}{An optional CSS selector string indicating the parent element to which the input
+element should be added. By default, all input elements are added within the
+parent container of the Vega view.}
 
-\item{max}{number}
+\item{max}{Sets the maximum slider value. Defaults to the larger of the signal value and
+\code{100}.}
 
-\item{min}{number}
+\item{min}{Sets the minimum slider value. Defaults to the smaller of the signal value and
+\code{0}.}
 
-\item{name}{string}
+\item{name}{By default, the signal name is used to label input elements. This \code{name}
+property can be used instead to specify a custom label for the bound signal.}
 
-\item{step}{number}
-
-\item{type}{string}
+\item{step}{Sets the minimum slider increment. If undefined, the step size will be
+automatically determined based on the \code{min} and \code{max} values.}
 }
 \value{
 A modified Vega-Lite Spec

@@ -6,31 +6,32 @@
 \usage{
 vl_bind_checkbox_input(
   spec,
-  selection_name,
+  parameter_name,
   projection_name = NULL,
   .object = NULL,
   debounce = NULL,
   element = NULL,
-  name = NULL,
-  type = NULL
+  name = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{selection_name}{Name of selection to add binding to}
+\item{parameter_name}{Name of selection to add binding to}
 
 \item{projection_name}{Name of projection (field or encoding) within selection}
 
 \item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindCheckbox}
 
-\item{debounce}{number}
+\item{debounce}{If defined, delays event handling until the specified milliseconds have elapsed
+since the last event was fired.}
 
-\item{element}{Element}
+\item{element}{An optional CSS selector string indicating the parent element to which the input
+element should be added. By default, all input elements are added within the
+parent container of the Vega view.}
 
-\item{name}{string}
-
-\item{type}{string}
+\item{name}{By default, the signal name is used to label input elements. This \code{name}
+property can be used instead to specify a custom label for the bound signal.}
 }
 \value{
 A modified Vega-Lite Spec

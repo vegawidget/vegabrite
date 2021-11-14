@@ -54,6 +54,7 @@ vl_config(
   legend = NULL,
   line = NULL,
   lineBreak = NULL,
+  locale = NULL,
   mark = NULL,
   numberFormat = NULL,
   padding = NULL,
@@ -170,11 +171,15 @@ to accept a custom formatter function \href{https://vega.github.io/vega-lite/usa
 \item{facet}{Default configuration for the \code{facet} view composition operator}
 
 \item{fieldTitle}{Defines how Vega-Lite generates title for fields. There are three possible
-styles: - \code{"verbal"} (Default) - displays function in a verbal style (e.g.,
-"Sum of field", "Year-month of date", "field (binned)"). - \code{"function"} -
-displays function using parentheses and capitalized texts (e.g., "SUM(field)",
-"YEARMONTH(date)", "BIN(field)"). - \code{"plain"} - displays only the field name
-without functions (e.g., "field", "date", "field").}
+styles:
+\itemize{
+\item \code{"verbal"} (Default) - displays function in a verbal style (e.g., "Sum of
+field", "Year-month of date", "field (binned)").
+\item \code{"function"} - displays function using parentheses and capitalized texts
+(e.g., "SUM(field)", "YEARMONTH(date)", "BIN(field)").
+\item \code{"plain"} - displays only the field name without functions (e.g., "field",
+"date", "field").
+}}
 
 \item{font}{Default font for all text marks, titles, and labels.}
 
@@ -218,6 +223,11 @@ overridden by mark or style config settings, and by the lineBreak mark encoding
 channel. If signal-valued, either string or regular expression (regexp) values
 are valid.}
 
+\item{locale}{Locale definitions for string parsing and formatting of number and date values.
+The locale object should contain \code{number} and/or \code{time} properties with \href{https://vega.github.io/vega/docs/api/locale/}{locale definitions}. Locale definitions
+provided in the config block may be overridden by the View constructor locale
+option.}
+
 \item{mark}{Mark Config}
 
 \item{numberFormat}{D3 Number format for guide labels and text marks. For
@@ -229,7 +239,7 @@ an object, the value should have the format \verb{\{"left": 5, "top": 5, "right"
 
 \strong{Default value}: \code{5}}
 
-\item{params}{Dynamic variables that parameterize a visualization.}
+\item{params}{Dynamic variables or selections that parameterize a visualization.}
 
 \item{point}{Point-Specific Config}
 

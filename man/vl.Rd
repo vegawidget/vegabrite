@@ -5,12 +5,15 @@
 \alias{vl}
 \title{vl}
 \format{
-An object of class \code{vl} (inherits from \code{environment}) of length 90.
+An object of class \code{vl} (inherits from \code{environment}) of length 88.
 }
 \usage{
 vl
 }
 \description{
-Holds functions for making objects based on Vega-Lite spec
+Holds functions for making objects based on Vega-Lite spec.
+For example \code{vl$X(field = 'crop', type = 'nominal')} could
+be used to build a list with an X axis encoding. See online Vega-Lite documentation
+for information about parameters.
 }
 \keyword{datasets}

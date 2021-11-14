@@ -16,7 +16,6 @@ vl_config_view(
   discreteWidth = NULL,
   fill = NULL,
   fillOpacity = NULL,
-  height = NULL,
   opacity = NULL,
   step = NULL,
   stroke = NULL,
@@ -26,8 +25,7 @@ vl_config_view(
   strokeJoin = NULL,
   strokeMiterLimit = NULL,
   strokeOpacity = NULL,
-  strokeWidth = NULL,
-  width = NULL
+  strokeWidth = NULL
 )
 }
 \arguments{
@@ -78,11 +76,6 @@ object in the form of \code{{step: number}} defining the width per discrete step
 
 Or: ExprRef}
 
-\item{height}{Default height
-
-\strong{Deprecated:} Since Vega-Lite 4.0. Please use continuousHeight and
-discreteHeight instead.}
-
 \item{opacity}{The overall opacity (value between [0,1]).
 
 \strong{Default value:} \code{0.7} for non-aggregate plots with \code{point}, \code{tick}, \code{circle},
@@ -128,11 +121,6 @@ Or: ExprRef}
 \item{strokeWidth}{The stroke width, in pixels.
 
 Or: ExprRef}
-
-\item{width}{Default width
-
-\strong{Deprecated:} Since Vega-Lite 4.0. Please use continuousWidth and
-discreteWidth instead.}
 }
 \value{
 A modified Vega-Lite Spec

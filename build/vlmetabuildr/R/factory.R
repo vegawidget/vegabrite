@@ -17,13 +17,15 @@ make_function <- function(
                           override_args = NULL,
                           priority_args = NULL,
                           pass_to_adder = NULL,
-                          doc_group = NULL) {
+                          doc_group = NULL,
+                          sub_references = NULL) {
 
   # Make the documentation
   if (is.null(doc_group)) {
     docs <- make_docs(reference, schema, suffix,
       exclude_args = names(override_args),
-      description = description
+      description = description, 
+      sub_references = sub_references
     )
   } else {
     docs <- make_docs_for_group(doc_group)
@@ -33,7 +35,7 @@ make_function <- function(
   inner_fn <- make_function_innards(reference, schema, override_args, adder_function, pass_to_adder)
 
   ## Get args
-  args <- make_arg_list(reference, schema, names(override_args), priority_args)
+  args <- make_arg_list(reference, schema, names(override_args), priority_args, sub_references = sub_references )
 
   ## Assemble
   make_function_helper(suffix, docs, inner_fn, args)
@@ -59,8 +61,12 @@ make_function_innards <- function(reference, schema, override_args, adder_functi
   )
 }
 
-make_arg_list <- function(reference, schema, exclude_args, priority_args) {
+make_arg_list <- function(reference, schema, exclude_args, priority_args, sub_references = NULL) {
   param_names <- get_params(schema, reference, exclude_args)
+  
+  if (!is.null(sub_references)) {
+    param_names <- c(param_names, unlist(purrr::map(sub_references, ~get_params(schema, ., exclude = exclude_args))))
+  }
 
   # If param is named repeat, need to change
   param_names[param_names == "repeat"] <- "`repeat`"
@@ -105,15 +111,20 @@ make_docs_helper <- function(title, description, param_docs,
   )
 }
 
-make_docs <- function(reference, schema, suffix, exclude_args, description = "") {
+make_docs <- function(reference, schema, suffix, exclude_args, description = "", sub_references = NULL) {
   spec_doc <- glue("#' @param spec An input vega-lite spec")
   param_docs <- get_param_docs(schema, reference, exclude = exclude_args)
+  if (!is.null(sub_references)) {
+    param_docs_extra <- paste(purrr::map_chr(sub_references, ~get_param_docs(schema, ., exclude = exclude_args)), sep = "\n")
+  } else { 
+    param_docs_extra <- ""
+  }
   object_doc <- get_object_doc(schema, reference)
 
   make_docs_helper(
     glue("vl_{suffix}"),
     description,
-    paste(spec_doc, object_doc, param_docs, sep = "\n")
+    paste(spec_doc, object_doc, param_docs, param_docs_extra, sep = "\n")
   )
 }
 

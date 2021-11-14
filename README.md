@@ -1,11 +1,10 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 <!-- badges: start -->
 
 ![Lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
-[![Travis build
-status](https://travis-ci.org/vegawidget/vlbuildr.svg?branch=master)](https://travis-ci.org/vegawidget/vlbuildr)
+[![R-CMD-check](https://github.com/vegawidget/vlbuildr/workflows/R-CMD-check/badge.svg)](https://github.com/vegawidget/vlbuildr/actions)
+
 <!-- badges: end -->
 
 # vlbuildr
@@ -65,9 +64,9 @@ vl_chart() %>%
    vl_mark_point() %>%
    vl_encode_x("wt") %>%
    vl_encode_y("mpg") 
+#> [1] "Error printing vegawidget in non-HTML format:"                       
+#> [2] "Package(s): \"V8\" needed for this function to work. Please install."
 ```
-
-![](man/figures/README-example-1.svg)<!-- -->
 
 ``` r
 vl_chart() %>%
@@ -80,6 +79,6 @@ vl_chart() %>%
   vl_aggregate_y("sum") %>%
   vl_axis_y(title = "population") %>%
   vl_mark_bar() 
+#> [1] "Error printing vegawidget in non-HTML format:"                       
+#> [2] "Package(s): \"V8\" needed for this function to work. Please install."
 ```
-
-![](man/figures/README-example2-1.svg)<!-- -->
