@@ -64,9 +64,9 @@ vl_chart() %>%
    vl_mark_point() %>%
    vl_encode_x("wt") %>%
    vl_encode_y("mpg") 
-#> [1] "Error printing vegawidget in non-HTML format:"                       
-#> [2] "Package(s): \"V8\" needed for this function to work. Please install."
 ```
+
+![](man/figures/README-example-1.svg)<!-- -->
 
 ``` r
 vl_chart() %>%
@@ -79,6 +79,9 @@ vl_chart() %>%
   vl_aggregate_y("sum") %>%
   vl_axis_y(title = "population") %>%
   vl_mark_bar() 
-#> [1] "Error printing vegawidget in non-HTML format:"                       
-#> [2] "Package(s): \"V8\" needed for this function to work. Please install."
+#> Warning in readLines(filename, encoding = "UTF-8"): incomplete final line
+#> found on '/var/folders/2p/v3ngqg4j4f7_vplnnym80c7c0000gn/T//RtmpbBxkd7/
+#> file44107848d4e0'
 ```
+
+![](man/figures/README-example2-1.svg)<!-- -->
