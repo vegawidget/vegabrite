@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 ![Lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
+[![R-CMD-check](https://github.com/vegawidget/vlbuildr/workflows/R-CMD-check/badge.svg)](https://github.com/vegawidget/vlbuildr/actions)
 
 <!-- badges: end -->
 
