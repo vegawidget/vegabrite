@@ -108,9 +108,8 @@
    <span class="fu"><a href="reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
    <span class="fu"><a href="reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
    <span class="fu"><a href="reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">"wt"</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
-   <span class="fu"><a href="reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">"mpg"</span><span class="op">)</span> 
-<span class="co">#&gt; [1] "Error printing vegawidget in non-HTML format:"                       </span>
-<span class="co">#&gt; [2] "Package(s): \"V8\" needed for this function to work. Please install."</span></code></pre></div>
+   <span class="fu"><a href="reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">"mpg"</span><span class="op">)</span> </code></pre></div>
+<p><img src="reference/figures/README-example-1.svg"><!-- --></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu"><a href="reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://vega.github.io/vega-editor/app/data/population.json"</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
@@ -122,8 +121,10 @@
   <span class="fu"><a href="reference/aggregate_encoding.html">vl_aggregate_y</a></span><span class="op">(</span><span class="st">"sum"</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu"><a href="reference/axis_encoding.html">vl_axis_y</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"population"</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu"><a href="reference/vl_mark_bar.html">vl_mark_bar</a></span><span class="op">(</span><span class="op">)</span> 
-<span class="co">#&gt; [1] "Error printing vegawidget in non-HTML format:"                       </span>
-<span class="co">#&gt; [2] "Package(s): \"V8\" needed for this function to work. Please install."</span></code></pre></div>
+<span class="co">#&gt; Warning in readLines(filename, encoding = "UTF-8"): incomplete final line</span>
+<span class="co">#&gt; found on '/var/folders/2p/v3ngqg4j4f7_vplnnym80c7c0000gn/T//RtmpbBxkd7/</span>
+<span class="co">#&gt; file44107848d4e0'</span></code></pre></div>
+<p><img src="reference/figures/README-example2-1.svg"><!-- --></p>
 </div>
 </div>
 
