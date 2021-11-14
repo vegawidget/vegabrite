@@ -79,9 +79,6 @@ vl_chart() %>%
   vl_aggregate_y("sum") %>%
   vl_axis_y(title = "population") %>%
   vl_mark_bar() 
-#> Warning in readLines(filename, encoding = "UTF-8"): incomplete final line
-#> found on '/var/folders/2p/v3ngqg4j4f7_vplnnym80c7c0000gn/T//RtmpbBxkd7/
-#> file44107848d4e0'
 ```
 
 ![](man/figures/README-example2-1.svg)<!-- -->
