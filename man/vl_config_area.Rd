@@ -6,7 +6,6 @@
 \usage{
 vl_config_area(
   spec,
-  .object = NULL,
   align = NULL,
   angle = NULL,
   aria = NULL,
@@ -82,8 +81,6 @@ vl_config_area(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AreaConfig}
 
 \item{align}{The horizontal alignment of the text or ranged marks (area, bar, image, rect,
 rule). One of \code{"left"}, \code{"right"}, \code{"center"}.

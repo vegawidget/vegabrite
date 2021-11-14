@@ -16,7 +16,7 @@ create_binding <- function(schema, name, ref) {
   extra_doc <- paste(
     "#' @param parameter_name Name of selection to add binding to",
     "#' @param projection_name Name of projection (field or encoding) within selection",
-    object_doc,
+    #object_doc,
     sep = "\n"
   )
   param_docs <- get_param_docs(schema, reference, exclude = "input")
@@ -41,7 +41,13 @@ create_binding <- function(schema, name, ref) {
   )
 
   ## Get args
-  args <- paste(c("projection_name", ".object", get_params(schema, reference, exclude = "input")), "NULL", sep = " = ")
+  args <- paste(
+    c(
+      "projection_name", 
+      #".object", 
+      get_params(schema, reference, exclude = "input")), 
+    "NULL", 
+    sep = " = ")
   arg_list <- paste(c("spec", "parameter_name", args), collapse = ", ")
 
   make_function_helper(suffix, docs, inner_fn, arg_list)

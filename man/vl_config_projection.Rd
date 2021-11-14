@@ -6,7 +6,6 @@
 \usage{
 vl_config_projection(
   spec,
-  .object = NULL,
   center = NULL,
   clipAngle = NULL,
   clipExtent = NULL,
@@ -35,8 +34,6 @@ vl_config_projection(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Projection}
 
 \item{center}{The projection's center, a two-element array of longitude and latitude in
 degrees.

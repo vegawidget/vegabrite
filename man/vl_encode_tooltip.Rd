@@ -2,11 +2,11 @@
 % Please edit documentation in R/zzz_autogen_api.R
 \name{vl_encode_tooltip}
 \alias{vl_encode_tooltip}
+\alias{vl_encode_tooltip_array}
 \title{vl_encode_tooltip}
 \usage{
 vl_encode_tooltip(
   spec,
-  .object = NULL,
   field = NULL,
   type = NULL,
   aggregate = NULL,
@@ -19,11 +19,11 @@ vl_encode_tooltip(
   title = NULL,
   value = NULL
 )
+
+vl_encode_tooltip_array(spec, array)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldOrDatumDefWithCondition<StringFieldDef,string>, ValueDefWithCondition<MarkPropFieldOrDatumDef,(string|null)>, array of StringFieldDef or null}
 
 \item{field}{\strong{Required.} A string defining the name of the field from which
 to pull a data value or an object defining iterated values from the
@@ -204,6 +204,8 @@ defined, axis/header/legend title will be used.
 
 \item{value}{A constant value in visual domain (e.g., \code{"red"} / \code{"#0099ff"} / \href{https://vega.github.io/vega-lite/docs/types.html#gradient}{gradient definition} for
 color, values between \code{0} to \code{1} for opacity).}
+
+\item{array}{Array of inputs for tooltip}
 }
 \value{
 A modified Vega-Lite Spec

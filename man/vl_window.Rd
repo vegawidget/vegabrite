@@ -6,7 +6,6 @@
 \usage{
 vl_window(
   spec,
-  .object = NULL,
   window = NULL,
   frame = NULL,
   groupby = NULL,
@@ -16,8 +15,6 @@ vl_window(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: WindowTransform}
 
 \item{window}{The definition of the fields in the window, and what calculations to use.}
 

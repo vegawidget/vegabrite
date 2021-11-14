@@ -6,7 +6,6 @@
 \usage{
 vl_regression(
   spec,
-  .object = NULL,
   regression = NULL,
   on = NULL,
   as = NULL,
@@ -19,8 +18,6 @@ vl_regression(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RegressionTransform}
 
 \item{regression}{The data field of the dependent variable to predict.}
 

@@ -4,12 +4,10 @@
 \alias{vl_filter}
 \title{vl_filter}
 \usage{
-vl_filter(spec, .object = NULL, filter = NULL)
+vl_filter(spec, filter = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FilterTransform}
 
 \item{filter}{The \code{filter} property must be a predication definition, which can take one of
 the following forms:

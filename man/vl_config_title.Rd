@@ -6,7 +6,6 @@
 \usage{
 vl_config_title(
   spec,
-  .object = NULL,
   align = NULL,
   anchor = NULL,
   angle = NULL,
@@ -36,8 +35,6 @@ vl_config_title(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BaseTitleNoValueRefs}
 
 \item{align}{Horizontal text alignment for title text. One of \code{"left"}, \code{"center"}, or
 \code{"right"}.}

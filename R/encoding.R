@@ -76,11 +76,25 @@ TYPE_MAPPING <- list(
 
     if (!hasName(spec, "encoding")) spec$encoding <- list()
     validate_sub_schema(enc, ref)
-    spec[["encoding"]][[encoding]] <- enc
+    if (encoding == 'tooltip' && hasName(spec[["encoding"]], 'tooltip')) { 
+      if (!is.null(names(spec[["encoding"]][[encoding]]))) {
+        spec[["encoding"]][[encoding]] <- list(spec[["encoding"]][[encoding]])
+      } 
+      spec[["encoding"]][[encoding]] <- c(spec[["encoding"]][[encoding]], list(enc))
+    } else {
+      spec[["encoding"]][[encoding]] <- enc
+    }
     spec
   }
 
   modify_inner_spec(spec, fn)
+}
+
+.add_encoding_array <- function(spec, array, ref, encoding) {
+  for (x in array) { 
+    spec <- .add_encoding(spec, x, ref, encoding)
+  }
+  spec
 }
 
 .add_param_to_encoding <- function(spec, obj, ref, encoding, param, ...) {
@@ -94,6 +108,7 @@ TYPE_MAPPING <- list(
     }
     validate_sub_schema(obj, ref)
     spec[["encoding"]][[encoding]][[param]] <- obj
+
     spec
   }
 

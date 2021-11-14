@@ -6,7 +6,6 @@
 \usage{
 vl_config_range(
   spec,
-  .object = NULL,
   category = NULL,
   diverging = NULL,
   heatmap = NULL,
@@ -18,8 +17,6 @@ vl_config_range(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RangeConfig}
 
 \item{category}{Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for
 categorical data.}

@@ -6,7 +6,6 @@
 \usage{
 vl_facet_row(
   spec,
-  .object = NULL,
   field = NULL,
   type = NULL,
   aggregate = NULL,
@@ -20,8 +19,6 @@ vl_facet_row(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FacetFieldDef}
 
 \item{field}{\strong{Required.} A string defining the name of the field from which
 to pull a data value or an object defining iterated values from the

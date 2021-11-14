@@ -11,31 +11,8 @@ TOP_LEVEL_KEYS <- c(
   args_eval <- lapply(args_syms, eval, env = sys.parent(1))
   args_nn <- args_eval[!vapply(args_eval, is.null, FALSE)]
   args_nn <- c(args_nn, override)
-  is_obj <- !(names(args_nn) %in% c(exclude, ".object", "spec"))
-  ## If .object is provided, use that instead...
-  if (".object" %in% names(args_nn)) {
-    if (sum(is_obj) > 0) {
-      # Get the name of first arg...
-      first_obj_arg <- names(args_formal)[!(names(args_formal) %in% c(exclude, ".object", "spec"))][1]
-      if (!hasName(args_nn, first_obj_arg)) {
-        args_obj <- args_nn[is_obj]
-        args_obj[[first_obj_arg]] <- args_nn[[".object"]]
-      } else {
-        fn <- sys.calls()[[sys.nframe() - 1]][[1]]
-        stop("Error in arguments to ",
-          fn,
-          ".\n  When passing arguments to make a new object to add to the spec other than .object",
-          ", if .object is passed as well it is treated as the first other argument, which in this",
-          " case was already provided. See help('vlbuidlr').",
-          call. = FALSE
-        )
-      }
-    } else {
-      args_obj <- args_nn[[".object"]]
-    }
-  } else {
-    args_obj <- args_nn[is_obj]
-  }
+  is_obj <- !(names(args_nn) %in% c(exclude,  "spec"))
+  args_obj <- args_nn[is_obj]
 
   args_obj
 }

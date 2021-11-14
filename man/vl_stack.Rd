@@ -6,7 +6,6 @@
 \usage{
 vl_stack(
   spec,
-  .object = NULL,
   stack = NULL,
   as = NULL,
   groupby = NULL,
@@ -16,8 +15,6 @@ vl_stack(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: StackTransform}
 
 \item{stack}{The field which is stacked.}
 

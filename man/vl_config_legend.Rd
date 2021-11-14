@@ -6,7 +6,6 @@
 \usage{
 vl_config_legend(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -86,8 +85,6 @@ vl_config_legend(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LegendConfig}
 
 \item{aria}{A boolean flag indicating if \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA attributes}
 should be included (SVG output only). If \code{false}, the "aria-hidden" attribute

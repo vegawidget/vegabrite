@@ -4,12 +4,10 @@
 \alias{vl_config_selection}
 \title{vl_config_selection}
 \usage{
-vl_config_selection(spec, .object = NULL, interval = NULL, point = NULL)
+vl_config_selection(spec, interval = NULL, point = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SelectionConfig}
 
 \item{interval}{The default definition for an
 \href{https://vega.github.io/vega-lite/docs/parameter.html#select}{\code{interval}}

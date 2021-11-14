@@ -41,7 +41,6 @@
 \usage{
 vl_bin_angle(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -56,7 +55,6 @@ vl_bin_angle(
 
 vl_bin_color(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -71,7 +69,6 @@ vl_bin_color(
 
 vl_bin_description(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -86,7 +83,6 @@ vl_bin_description(
 
 vl_bin_detail(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -101,7 +97,6 @@ vl_bin_detail(
 
 vl_bin_fill(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -116,7 +111,6 @@ vl_bin_fill(
 
 vl_bin_fillOpacity(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -131,7 +125,6 @@ vl_bin_fillOpacity(
 
 vl_bin_href(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -146,7 +139,6 @@ vl_bin_href(
 
 vl_bin_key(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -161,7 +153,6 @@ vl_bin_key(
 
 vl_bin_latitude(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -176,7 +167,6 @@ vl_bin_latitude(
 
 vl_bin_latitude2(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -191,7 +181,6 @@ vl_bin_latitude2(
 
 vl_bin_longitude(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -206,7 +195,6 @@ vl_bin_longitude(
 
 vl_bin_longitude2(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -221,7 +209,6 @@ vl_bin_longitude2(
 
 vl_bin_opacity(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -236,7 +223,6 @@ vl_bin_opacity(
 
 vl_bin_order(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -251,7 +237,6 @@ vl_bin_order(
 
 vl_bin_radius(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -266,7 +251,6 @@ vl_bin_radius(
 
 vl_bin_radius2(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -281,7 +265,6 @@ vl_bin_radius2(
 
 vl_bin_shape(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -296,7 +279,6 @@ vl_bin_shape(
 
 vl_bin_size(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -311,7 +293,6 @@ vl_bin_size(
 
 vl_bin_stroke(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -326,7 +307,6 @@ vl_bin_stroke(
 
 vl_bin_strokeDash(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -341,7 +321,6 @@ vl_bin_strokeDash(
 
 vl_bin_strokeOpacity(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -356,7 +335,6 @@ vl_bin_strokeOpacity(
 
 vl_bin_strokeWidth(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -371,7 +349,6 @@ vl_bin_strokeWidth(
 
 vl_bin_text(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -386,7 +363,6 @@ vl_bin_text(
 
 vl_bin_theta(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -401,7 +377,6 @@ vl_bin_theta(
 
 vl_bin_theta2(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -416,7 +391,6 @@ vl_bin_theta2(
 
 vl_bin_tooltip(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -431,7 +405,6 @@ vl_bin_tooltip(
 
 vl_bin_url(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -446,7 +419,6 @@ vl_bin_url(
 
 vl_bin_x(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -461,7 +433,6 @@ vl_bin_x(
 
 vl_bin_x2(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -476,7 +447,6 @@ vl_bin_x2(
 
 vl_bin_xError(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -491,7 +461,6 @@ vl_bin_xError(
 
 vl_bin_xError2(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -506,7 +475,6 @@ vl_bin_xError2(
 
 vl_bin_y(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -521,7 +489,6 @@ vl_bin_y(
 
 vl_bin_y2(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -536,7 +503,6 @@ vl_bin_y2(
 
 vl_bin_yError(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -551,7 +517,6 @@ vl_bin_yError(
 
 vl_bin_yError2(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -566,8 +531,6 @@ vl_bin_yError2(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BinParams}
 
 \item{anchor}{A value in the binned domain at which to anchor the bins, shifting the bin
 boundaries if necessary to ensure that a boundary aligns with the anchor value.

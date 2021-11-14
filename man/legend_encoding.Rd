@@ -17,7 +17,6 @@
 \usage{
 vl_legend_angle(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -88,7 +87,6 @@ vl_legend_angle(
 
 vl_legend_color(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -159,7 +157,6 @@ vl_legend_color(
 
 vl_legend_fill(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -230,7 +227,6 @@ vl_legend_fill(
 
 vl_legend_fillOpacity(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -301,7 +297,6 @@ vl_legend_fillOpacity(
 
 vl_legend_opacity(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -372,7 +367,6 @@ vl_legend_opacity(
 
 vl_legend_shape(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -443,7 +437,6 @@ vl_legend_shape(
 
 vl_legend_size(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -514,7 +507,6 @@ vl_legend_size(
 
 vl_legend_stroke(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -585,7 +577,6 @@ vl_legend_stroke(
 
 vl_legend_strokeDash(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -656,7 +647,6 @@ vl_legend_strokeDash(
 
 vl_legend_strokeOpacity(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -727,7 +717,6 @@ vl_legend_strokeOpacity(
 
 vl_legend_strokeWidth(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -798,8 +787,6 @@ vl_legend_strokeWidth(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Legend}
 
 \item{aria}{A boolean flag indicating if \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA attributes}
 should be included (SVG output only). If \code{false}, the "aria-hidden" attribute

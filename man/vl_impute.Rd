@@ -6,7 +6,6 @@
 \usage{
 vl_impute(
   spec,
-  .object = NULL,
   impute = NULL,
   key = NULL,
   frame = NULL,
@@ -18,8 +17,6 @@ vl_impute(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ImputeTransform}
 
 \item{impute}{The data field for which the missing values should be imputed.}
 

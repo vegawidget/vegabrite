@@ -10,7 +10,6 @@
 \usage{
 vl_axis_x(
   spec,
-  .object = NULL,
   aria = NULL,
   bandPosition = NULL,
   description = NULL,
@@ -93,7 +92,6 @@ vl_axis_x(
 
 vl_axis_y(
   spec,
-  .object = NULL,
   aria = NULL,
   bandPosition = NULL,
   description = NULL,
@@ -180,8 +178,6 @@ vl_remove_axis_y(spec)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Axis}
 
 \item{aria}{A boolean flag indicating if \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA attributes}
 should be included (SVG output only). If \code{false}, the "aria-hidden" attribute

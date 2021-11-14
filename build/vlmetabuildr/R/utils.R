@@ -110,11 +110,8 @@ get_param_docs <- function(schema, ref, exclude = NULL) {
     objs <- unique(names(properties[purrr::map_lgl(properties, ~ hasName(., param))]))
     d <- purrr::map_chr(objs, ~ get_description_plus(properties[[.]][[param]]))
     grps <- split(objs, d)
-    grp_descs <- names(grps)#purrr::map_chr(names(grps), ~paste(strwrap(., width = 120), collapse = "\n#' "))
-    #purrr::map_chr(
-      #names(grps),
-      #~ glue('(_{paste(grps[[.]], collapse = ", ")}_) {.}')
-    #)
+    grp_descs <- names(grps)
+    
     if (length(grp_descs) > 1) {
       return(paste(grp_descs, collapse = "\n#' \n#' Or: "))
     }

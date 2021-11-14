@@ -6,7 +6,6 @@
 \usage{
 vl_add_properties(
   spec,
-  .object = NULL,
   align = NULL,
   autosize = NULL,
   background = NULL,
@@ -29,8 +28,6 @@ vl_add_properties(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec or TopLevelHConcatSpec}
 
 \item{align}{The alignment to apply to grid rows and columns. The supported string values are
 \code{"all"}, \code{"each"}, and \code{"none"}.

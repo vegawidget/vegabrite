@@ -21,7 +21,6 @@
 \usage{
 vl_scale_angle(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -49,7 +48,6 @@ vl_scale_angle(
 
 vl_scale_color(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -77,7 +75,6 @@ vl_scale_color(
 
 vl_scale_fill(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -105,7 +102,6 @@ vl_scale_fill(
 
 vl_scale_fillOpacity(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -133,7 +129,6 @@ vl_scale_fillOpacity(
 
 vl_scale_opacity(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -161,7 +156,6 @@ vl_scale_opacity(
 
 vl_scale_radius(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -189,7 +183,6 @@ vl_scale_radius(
 
 vl_scale_shape(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -217,7 +210,6 @@ vl_scale_shape(
 
 vl_scale_size(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -245,7 +237,6 @@ vl_scale_size(
 
 vl_scale_stroke(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -273,7 +264,6 @@ vl_scale_stroke(
 
 vl_scale_strokeDash(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -301,7 +291,6 @@ vl_scale_strokeDash(
 
 vl_scale_strokeOpacity(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -329,7 +318,6 @@ vl_scale_strokeOpacity(
 
 vl_scale_strokeWidth(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -357,7 +345,6 @@ vl_scale_strokeWidth(
 
 vl_scale_theta(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -385,7 +372,6 @@ vl_scale_theta(
 
 vl_scale_x(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -413,7 +399,6 @@ vl_scale_x(
 
 vl_scale_y(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -441,8 +426,6 @@ vl_scale_y(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Scale}
 
 \item{align}{The alignment of the steps within the scale range.
 

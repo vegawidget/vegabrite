@@ -6,7 +6,6 @@
 \usage{
 vl_mark_ErrorBar(
   spec,
-  .object = NULL,
   clip = NULL,
   color = NULL,
   extent = NULL,
@@ -20,8 +19,6 @@ vl_mark_ErrorBar(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBarDef}
 
 \item{clip}{Whether a composite mark be clipped to the enclosing group’s width and height.}
 

@@ -23,7 +23,6 @@
 \usage{
 vl_condition_angle(
   spec,
-  .object = NULL,
   value = NULL,
   param = NULL,
   test = NULL,
@@ -43,7 +42,6 @@ vl_condition_angle(
 
 vl_condition_color(
   spec,
-  .object = NULL,
   value = NULL,
   param = NULL,
   test = NULL,
@@ -63,7 +61,6 @@ vl_condition_color(
 
 vl_condition_description(
   spec,
-  .object = NULL,
   param = NULL,
   test = NULL,
   value = NULL,
@@ -83,7 +80,6 @@ vl_condition_description(
 
 vl_condition_fill(
   spec,
-  .object = NULL,
   value = NULL,
   param = NULL,
   test = NULL,
@@ -103,7 +99,6 @@ vl_condition_fill(
 
 vl_condition_fillOpacity(
   spec,
-  .object = NULL,
   value = NULL,
   param = NULL,
   test = NULL,
@@ -123,7 +118,6 @@ vl_condition_fillOpacity(
 
 vl_condition_href(
   spec,
-  .object = NULL,
   param = NULL,
   test = NULL,
   value = NULL,
@@ -143,7 +137,6 @@ vl_condition_href(
 
 vl_condition_opacity(
   spec,
-  .object = NULL,
   value = NULL,
   param = NULL,
   test = NULL,
@@ -161,18 +154,10 @@ vl_condition_opacity(
   datum = NULL
 )
 
-vl_condition_order(
-  spec,
-  .object = NULL,
-  value = NULL,
-  param = NULL,
-  test = NULL,
-  empty = NULL
-)
+vl_condition_order(spec, value = NULL, param = NULL, test = NULL, empty = NULL)
 
 vl_condition_shape(
   spec,
-  .object = NULL,
   value = NULL,
   param = NULL,
   test = NULL,
@@ -192,7 +177,6 @@ vl_condition_shape(
 
 vl_condition_size(
   spec,
-  .object = NULL,
   value = NULL,
   param = NULL,
   test = NULL,
@@ -212,7 +196,6 @@ vl_condition_size(
 
 vl_condition_stroke(
   spec,
-  .object = NULL,
   value = NULL,
   param = NULL,
   test = NULL,
@@ -232,7 +215,6 @@ vl_condition_stroke(
 
 vl_condition_strokeDash(
   spec,
-  .object = NULL,
   value = NULL,
   param = NULL,
   test = NULL,
@@ -252,7 +234,6 @@ vl_condition_strokeDash(
 
 vl_condition_strokeOpacity(
   spec,
-  .object = NULL,
   value = NULL,
   param = NULL,
   test = NULL,
@@ -272,7 +253,6 @@ vl_condition_strokeOpacity(
 
 vl_condition_strokeWidth(
   spec,
-  .object = NULL,
   value = NULL,
   param = NULL,
   test = NULL,
@@ -292,7 +272,6 @@ vl_condition_strokeWidth(
 
 vl_condition_text(
   spec,
-  .object = NULL,
   value = NULL,
   param = NULL,
   test = NULL,
@@ -310,7 +289,6 @@ vl_condition_text(
 
 vl_condition_tooltip(
   spec,
-  .object = NULL,
   param = NULL,
   test = NULL,
   value = NULL,
@@ -330,7 +308,6 @@ vl_condition_tooltip(
 
 vl_condition_url(
   spec,
-  .object = NULL,
   param = NULL,
   test = NULL,
   value = NULL,
@@ -350,8 +327,6 @@ vl_condition_url(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ConditionalPredicate<ValueDef<(number|ExprRef)>>, ConditionalParameter<ValueDef<(number|ExprRef)>> or array of ConditionalValueDef<(number|ExprRef)>}
 
 \item{value}{A constant value in visual domain (e.g., \code{"red"} / \code{"#0099ff"} / \href{https://vega.github.io/vega-lite/docs/types.html#gradient}{gradient definition} for
 color, values between \code{0} to \code{1} for opacity).}

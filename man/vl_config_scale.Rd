@@ -6,7 +6,6 @@
 \usage{
 vl_config_scale(
   spec,
-  .object = NULL,
   bandPaddingInner = NULL,
   bandPaddingOuter = NULL,
   barBandPaddingInner = NULL,
@@ -33,8 +32,6 @@ vl_config_scale(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ScaleConfig}
 
 \item{bandPaddingInner}{Default inner padding for \code{x} and \code{y} band-ordinal scales.
 

@@ -4,12 +4,10 @@
 \alias{vl_sample}
 \title{vl_sample}
 \usage{
-vl_sample(spec, .object = NULL, sample = NULL)
+vl_sample(spec, sample = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SampleTransform}
 
 \item{sample}{The maximum number of data objects to include in the sample.
 

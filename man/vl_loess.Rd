@@ -6,7 +6,6 @@
 \usage{
 vl_loess(
   spec,
-  .object = NULL,
   loess = NULL,
   on = NULL,
   as = NULL,
@@ -16,8 +15,6 @@ vl_loess(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LoessTransform}
 
 \item{loess}{The data field of the dependent variable to smooth.}
 

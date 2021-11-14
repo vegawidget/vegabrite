@@ -6,7 +6,6 @@
 \usage{
 vl_encode_yError(
   spec,
-  .object = NULL,
   field = NULL,
   value = NULL,
   aggregate = NULL,
@@ -18,8 +17,6 @@ vl_encode_yError(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SecondaryFieldDef or ValueDef<number>}
 
 \item{field}{\strong{Required.} A string defining the name of the field from which
 to pull a data value or an object defining iterated values from the

@@ -8,7 +8,6 @@ vl_bind_range_input(
   spec,
   parameter_name,
   projection_name = NULL,
-  .object = NULL,
   debounce = NULL,
   element = NULL,
   max = NULL,
@@ -23,8 +22,6 @@ vl_bind_range_input(
 \item{parameter_name}{Name of selection to add binding to}
 
 \item{projection_name}{Name of projection (field or encoding) within selection}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRange}
 
 \item{debounce}{If defined, delays event handling until the specified milliseconds have elapsed
 since the last event was fired.}

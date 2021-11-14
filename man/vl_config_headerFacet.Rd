@@ -6,7 +6,6 @@
 \usage{
 vl_config_headerFacet(
   spec,
-  .object = NULL,
   format = NULL,
   formatType = NULL,
   labelAlign = NULL,
@@ -43,8 +42,6 @@ vl_config_headerFacet(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: HeaderConfig}
 
 \item{format}{When used with the default \code{"number"} and \code{"time"} format type, the text
 formatting pattern for labels of guides (axes, legends, headers) and text marks.

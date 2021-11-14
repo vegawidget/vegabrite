@@ -6,7 +6,6 @@
 \usage{
 vl_add_interval_selection(
   spec,
-  .object = NULL,
   name = NULL,
   select = NULL,
   bind = NULL,
@@ -23,8 +22,6 @@ vl_add_interval_selection(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SelectionParameter}
 
 \item{name}{Required. A unique name for the selection parameter. Selection names should be
 valid JavaScript identifiers: they should contain only alphanumeric characters

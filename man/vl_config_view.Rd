@@ -6,7 +6,6 @@
 \usage{
 vl_config_view(
   spec,
-  .object = NULL,
   clip = NULL,
   continuousHeight = NULL,
   continuousWidth = NULL,
@@ -30,8 +29,6 @@ vl_config_view(
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ViewConfig}
 
 \item{clip}{Whether the view should be clipped.}
 
