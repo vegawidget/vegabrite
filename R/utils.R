@@ -8,12 +8,21 @@ TOP_LEVEL_KEYS <- c(
   # First do inputs <- as.list(environment())
   # Remove nulls
   inputs <- inputs[!vapply(inputs, is.null, FALSE)]
-  if (!is.null(override)) {
-    inputs <- utils::modifyList(inputs, override)
-  }
-  inputs <- inputs[!(names(inputs) %in% c(exclude, "spec"))]
   
-  inputs
+  if ('.object' %in% names(inputs)) {
+    obj <- inputs[['.object']]
+    if (any(!(names(inputs) %in% c(exclude,"spec",".object")))) {
+      warning("Ignoring some inputs as .object was passed in.")
+    }
+  } else {
+    obj <- inputs[!(names(inputs) %in% c(exclude, "spec"))]    
+  }
+
+  if (!is.null(override)) {
+    obj <- utils::modifyList(obj, override)
+  }
+  
+  obj
 }
 
 

@@ -86,6 +86,7 @@ get_single_object_desc <- function(name, info) {
   }
 }
 
+### This has been removed.
 get_object_desc <- function(schema, ref) {
   object_types <- types(ref, schema)
 

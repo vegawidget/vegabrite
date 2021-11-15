@@ -24,7 +24,8 @@ vl_config_view(
   strokeJoin = NULL,
   strokeMiterLimit = NULL,
   strokeOpacity = NULL,
-  strokeWidth = NULL
+  strokeWidth = NULL,
+  .object = NULL
 )
 }
 \arguments{
@@ -118,6 +119,8 @@ Or: ExprRef}
 \item{strokeWidth}{The stroke width, in pixels.
 
 Or: ExprRef}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ViewConfig}
 }
 \value{
 A modified Vega-Lite Spec

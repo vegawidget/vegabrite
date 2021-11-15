@@ -50,7 +50,8 @@ vl_bin_angle(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_color(
@@ -64,7 +65,8 @@ vl_bin_color(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_description(
@@ -78,7 +80,8 @@ vl_bin_description(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_detail(
@@ -92,7 +95,8 @@ vl_bin_detail(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_fill(
@@ -106,7 +110,8 @@ vl_bin_fill(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_fillOpacity(
@@ -120,7 +125,8 @@ vl_bin_fillOpacity(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_href(
@@ -134,7 +140,8 @@ vl_bin_href(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_key(
@@ -148,7 +155,8 @@ vl_bin_key(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_latitude(
@@ -162,7 +170,8 @@ vl_bin_latitude(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_latitude2(
@@ -176,7 +185,8 @@ vl_bin_latitude2(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_longitude(
@@ -190,7 +200,8 @@ vl_bin_longitude(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_longitude2(
@@ -204,7 +215,8 @@ vl_bin_longitude2(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_opacity(
@@ -218,7 +230,8 @@ vl_bin_opacity(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_order(
@@ -232,7 +245,8 @@ vl_bin_order(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_radius(
@@ -246,7 +260,8 @@ vl_bin_radius(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_radius2(
@@ -260,7 +275,8 @@ vl_bin_radius2(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_shape(
@@ -274,7 +290,8 @@ vl_bin_shape(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_size(
@@ -288,7 +305,8 @@ vl_bin_size(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_stroke(
@@ -302,7 +320,8 @@ vl_bin_stroke(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_strokeDash(
@@ -316,7 +335,8 @@ vl_bin_strokeDash(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_strokeOpacity(
@@ -330,7 +350,8 @@ vl_bin_strokeOpacity(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_strokeWidth(
@@ -344,7 +365,8 @@ vl_bin_strokeWidth(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_text(
@@ -358,7 +380,8 @@ vl_bin_text(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_theta(
@@ -372,7 +395,8 @@ vl_bin_theta(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_theta2(
@@ -386,7 +410,8 @@ vl_bin_theta2(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_tooltip(
@@ -400,7 +425,8 @@ vl_bin_tooltip(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_url(
@@ -414,7 +440,8 @@ vl_bin_url(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_x(
@@ -428,7 +455,8 @@ vl_bin_x(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_x2(
@@ -442,7 +470,8 @@ vl_bin_x2(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_xError(
@@ -456,7 +485,8 @@ vl_bin_xError(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_xError2(
@@ -470,7 +500,8 @@ vl_bin_xError2(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_y(
@@ -484,7 +515,8 @@ vl_bin_y(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_y2(
@@ -498,7 +530,8 @@ vl_bin_y2(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_yError(
@@ -512,7 +545,8 @@ vl_bin_yError(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_yError2(
@@ -526,7 +560,8 @@ vl_bin_yError2(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 }
 \arguments{
@@ -570,6 +605,8 @@ as multiples of ten.
 \strong{Note:} If provided, options such as maxbins will be ignored.}
 
 \item{steps}{An array of allowable step sizes to choose from.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BinParams}
 }
 \value{
 A modified Vega-Lite Spec

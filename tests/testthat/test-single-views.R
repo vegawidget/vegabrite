@@ -35,6 +35,19 @@ test_that("can build simple bar chart", {
   expect_equivalent_json(chart, spec)
 })
 
+test_that("can build simple bar chart using .object", {
+  spec <- jsonlite::fromJSON(json1)
+  data <- spec$data$values
+  
+  chart <- vl_chart(description = "A simple bar chart with embedded data.") %>%
+    vl_add_data(.object = list(values = data)) %>%
+    vl_mark_bar() %>%
+    vl_encode_x(.object = list(field = "a", type = "ordinal")) %>%
+    vl_encode_y(.object = list(field = "b", type = "quantitative"))
+  
+  expect_equivalent_json(chart, spec)
+})
+
 # Example based on https://vega.github.io/vega-lite/examples/bar_aggregate.html
 
 json2 <- '
