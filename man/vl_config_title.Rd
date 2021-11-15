@@ -30,8 +30,7 @@ vl_config_title(
   subtitleFontWeight = NULL,
   subtitleLineHeight = NULL,
   subtitlePadding = NULL,
-  zindex = NULL,
-  .object = NULL
+  zindex = NULL
 )
 }
 \arguments{
@@ -155,8 +154,6 @@ axis, mark, and legend groups.
 \strong{Default value:} \code{0}.
 
 Or: ExprRef}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BaseTitleNoValueRefs}
 }
 \value{
 A modified Vega-Lite Spec

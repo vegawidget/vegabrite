@@ -82,8 +82,7 @@ vl_legend_angle(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL,
-  .object = NULL
+  zindex = NULL
 )
 
 vl_legend_color(
@@ -153,8 +152,7 @@ vl_legend_color(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL,
-  .object = NULL
+  zindex = NULL
 )
 
 vl_legend_fill(
@@ -224,8 +222,7 @@ vl_legend_fill(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL,
-  .object = NULL
+  zindex = NULL
 )
 
 vl_legend_fillOpacity(
@@ -295,8 +292,7 @@ vl_legend_fillOpacity(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL,
-  .object = NULL
+  zindex = NULL
 )
 
 vl_legend_opacity(
@@ -366,8 +362,7 @@ vl_legend_opacity(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL,
-  .object = NULL
+  zindex = NULL
 )
 
 vl_legend_shape(
@@ -437,8 +432,7 @@ vl_legend_shape(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL,
-  .object = NULL
+  zindex = NULL
 )
 
 vl_legend_size(
@@ -508,8 +502,7 @@ vl_legend_size(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL,
-  .object = NULL
+  zindex = NULL
 )
 
 vl_legend_stroke(
@@ -579,8 +572,7 @@ vl_legend_stroke(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL,
-  .object = NULL
+  zindex = NULL
 )
 
 vl_legend_strokeDash(
@@ -650,8 +642,7 @@ vl_legend_strokeDash(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL,
-  .object = NULL
+  zindex = NULL
 )
 
 vl_legend_strokeOpacity(
@@ -721,8 +712,7 @@ vl_legend_strokeOpacity(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL,
-  .object = NULL
+  zindex = NULL
 )
 
 vl_legend_strokeWidth(
@@ -792,8 +782,7 @@ vl_legend_strokeWidth(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL,
-  .object = NULL
+  zindex = NULL
 )
 }
 \arguments{
@@ -1194,8 +1183,6 @@ fields; \code{"symbol"} otherwise.}
 \item{zindex}{A non-negative integer indicating the z-index of the legend. If zindex is 0,
 legend should be drawn behind all chart elements. To put them in front, use
 zindex = 1.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Legend}
 }
 \value{
 A modified Vega-Lite Spec

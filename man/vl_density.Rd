@@ -15,8 +15,7 @@ vl_density(
   groupby = NULL,
   maxsteps = NULL,
   minsteps = NULL,
-  steps = NULL,
-  .object = NULL
+  steps = NULL
 )
 }
 \arguments{
@@ -63,8 +62,6 @@ density.
 density. If specified, overrides both minsteps and maxsteps to set an exact
 number of uniform samples. Potentially useful in conjunction with a fixed extent
 to ensure consistent sample points for stacked densities.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: DensityTransform}
 }
 \value{
 A modified Vega-Lite Spec

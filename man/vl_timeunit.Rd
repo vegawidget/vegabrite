@@ -4,7 +4,7 @@
 \alias{vl_timeunit}
 \title{vl_timeunit}
 \usage{
-vl_timeunit(spec, as = NULL, field = NULL, timeUnit = NULL, .object = NULL)
+vl_timeunit(spec, as = NULL, field = NULL, timeUnit = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -14,8 +14,6 @@ vl_timeunit(spec, as = NULL, field = NULL, timeUnit = NULL, .object = NULL)
 \item{field}{The data field to apply time unit.}
 
 \item{timeUnit}{The timeUnit.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TimeUnitTransform}
 }
 \value{
 A modified Vega-Lite Spec

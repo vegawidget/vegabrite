@@ -17,8 +17,7 @@ vl_add_interval_selection(
   on = NULL,
   resolve = NULL,
   translate = NULL,
-  zoom = NULL,
-  .object = NULL
+  zoom = NULL
 )
 }
 \arguments{
@@ -137,8 +136,6 @@ users to use the mouse wheel to resize an interval selection.
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/selection.html#zoom}{\code{zoom} examples} in the
 documentation.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SelectionParameter}
 }
 \value{
 A modified Vega-Lite Spec

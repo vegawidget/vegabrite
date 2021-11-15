@@ -16,8 +16,7 @@ vl_add_point_selection(
   nearest = NULL,
   on = NULL,
   resolve = NULL,
-  toggle = NULL,
-  .object = NULL
+  toggle = NULL
 )
 }
 \arguments{
@@ -135,8 +134,6 @@ will toggle data values without the user pressing the shift-key.
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/selection.html#toggle}{\code{toggle} examples} in the
 documentation.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SelectionParameter}
 }
 \value{
 A modified Vega-Lite Spec

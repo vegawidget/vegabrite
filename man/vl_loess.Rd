@@ -10,8 +10,7 @@ vl_loess(
   on = NULL,
   as = NULL,
   bandwidth = NULL,
-  groupby = NULL,
-  .object = NULL
+  groupby = NULL
 )
 }
 \arguments{
@@ -32,8 +31,6 @@ smoothing.
 
 \item{groupby}{The data fields to group by. If not specified, a single group containing all
 data objects will be used.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LoessTransform}
 }
 \value{
 A modified Vega-Lite Spec

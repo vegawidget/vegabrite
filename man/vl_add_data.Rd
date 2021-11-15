@@ -12,8 +12,7 @@ vl_add_data(
   url = NULL,
   graticule = NULL,
   sequence = NULL,
-  sphere = NULL,
-  .object = NULL
+  sphere = NULL
 )
 }
 \arguments{
@@ -36,8 +35,6 @@ the loaded data is correctly parsed.}
 \item{sequence}{Generate a sequence of numbers.}
 
 \item{sphere}{Generate sphere GeoJSON data for the full globe.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: UrlData, InlineData, NamedData, SequenceGenerator, SphereGenerator or GraticuleGenerator}
 }
 \value{
 A modified Vega-Lite Spec

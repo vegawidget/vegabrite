@@ -4,7 +4,7 @@
 \alias{vl_flatten}
 \title{vl_flatten}
 \usage{
-vl_flatten(spec, flatten = NULL, as = NULL, .object = NULL)
+vl_flatten(spec, flatten = NULL, as = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -17,8 +17,6 @@ the longest array will be used with \code{null} values added for missing entries
 \item{as}{The output field names for extracted array values.
 
 \strong{Default value:} The field name of the corresponding array field}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FlattenTransform}
 }
 \value{
 A modified Vega-Lite Spec

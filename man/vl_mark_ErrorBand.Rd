@@ -14,8 +14,7 @@ vl_mark_ErrorBand(
   interpolate = NULL,
   opacity = NULL,
   orient = NULL,
-  tension = NULL,
-  .object = NULL
+  tension = NULL
 )
 }
 \arguments{
@@ -86,8 +85,6 @@ can be specified when the orientation is ambiguous and cannot be automatically
 determined.}
 
 \item{tension}{The tension parameter for the interpolation type of the error band.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBandDef}
 }
 \value{
 A modified Vega-Lite Spec

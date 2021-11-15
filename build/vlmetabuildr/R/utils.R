@@ -159,8 +159,3 @@ get_param_docs <- function(schema, ref, exclude = NULL) {
 
   paste("#' @param", param_names, param_desc, sep = " ", collapse = "\n")
 }
-
-get_object_doc <- function(schema, ref) {
-  object_desc <- get_object_desc(schema, ref)
-  glue("#' @param .object {object_desc}")
-}

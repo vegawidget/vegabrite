@@ -4,14 +4,7 @@
 \alias{vl_add_parameter}
 \title{vl_add_parameter}
 \usage{
-vl_add_parameter(
-  spec,
-  name = NULL,
-  bind = NULL,
-  expr = NULL,
-  value = NULL,
-  .object = NULL
-)
+vl_add_parameter(spec, name = NULL, bind = NULL, expr = NULL, value = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -32,8 +25,6 @@ upstream parameter changes.}
 parameter.
 
 \strong{Default value:} \code{undefined}}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: VariableParameter}
 }
 \value{
 A modified Vega-Lite Spec

@@ -6,23 +6,9 @@
 \alias{vl_impute_y}
 \title{Add impute to encoding}
 \usage{
-vl_impute_x(
-  spec,
-  frame = NULL,
-  keyvals = NULL,
-  method = NULL,
-  value = NULL,
-  .object = NULL
-)
+vl_impute_x(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL)
 
-vl_impute_y(
-  spec,
-  frame = NULL,
-  keyvals = NULL,
-  method = NULL,
-  value = NULL,
-  .object = NULL
-)
+vl_impute_y(spec, frame = NULL, keyvals = NULL, method = NULL, value = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
@@ -53,8 +39,6 @@ If there is no impute grouping, this property \emph{must} be specified.}
 \strong{Default value:} \code{"value"}}
 
 \item{value}{The field value to use when the imputation \code{method} is \code{"value"}.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ImputeParams}
 }
 \value{
 A modified Vega-Lite Spec

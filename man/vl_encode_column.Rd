@@ -19,8 +19,7 @@ vl_encode_column(
   sort = NULL,
   spacing = NULL,
   timeUnit = NULL,
-  title = NULL,
-  .object = NULL
+  title = NULL
 )
 }
 \arguments{
@@ -253,8 +252,6 @@ or \href{https://vega.github.io/vega-lite/usage/compile.html#field-title}{\code{
 \item If both field definition's \code{title} and axis, header, or legend \code{title} are
 defined, axis/header/legend title will be used.
 }}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FacetEncodingFieldDef}
 }
 \value{
 A modified Vega-Lite Spec

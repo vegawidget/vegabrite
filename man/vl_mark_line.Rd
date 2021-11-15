@@ -90,8 +90,7 @@ vl_mark_line(
   y = NULL,
   y2 = NULL,
   y2Offset = NULL,
-  yOffset = NULL,
-  .object = NULL
+  yOffset = NULL
 )
 }
 \arguments{
@@ -600,8 +599,6 @@ height of the plot.}
 \item{y2Offset}{Offset for y2-position.}
 
 \item{yOffset}{Offset for y-position.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef}
 }
 \value{
 A modified Vega-Lite Spec

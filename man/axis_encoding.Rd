@@ -87,8 +87,7 @@ vl_axis_x(
   titleY = NULL,
   translate = NULL,
   values = NULL,
-  zindex = NULL,
-  .object = NULL
+  zindex = NULL
 )
 
 vl_axis_y(
@@ -170,8 +169,7 @@ vl_axis_y(
   titleY = NULL,
   translate = NULL,
   values = NULL,
-  zindex = NULL,
-  .object = NULL
+  zindex = NULL
 )
 
 vl_remove_axis_x(spec)
@@ -698,8 +696,6 @@ should be drawn behind all chart elements. To put them in front, set \code{zinde
 \code{1} or more.
 
 \strong{Default value:} \code{0} (behind the marks).}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Axis}
 }
 \value{
 A modified Vega-Lite Spec

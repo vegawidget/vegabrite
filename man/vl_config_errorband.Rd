@@ -10,8 +10,7 @@ vl_config_errorband(
   borders = NULL,
   extent = NULL,
   interpolate = NULL,
-  tension = NULL,
-  .object = NULL
+  tension = NULL
 )
 }
 \arguments{
@@ -63,8 +62,6 @@ straighten the spline.
 }}
 
 \item{tension}{The tension parameter for the interpolation type of the error band.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBandConfig}
 }
 \value{
 A modified Vega-Lite Spec

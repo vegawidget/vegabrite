@@ -10,8 +10,7 @@ vl_stack(
   as = NULL,
   groupby = NULL,
   offset = NULL,
-  sort = NULL,
-  .object = NULL
+  sort = NULL
 )
 }
 \arguments{
@@ -34,8 +33,6 @@ values for each stack point, with output values in the range \verb{[0,1]}.
 \strong{Default value:} \code{"zero"}}
 
 \item{sort}{Field that determines the order of leaves in the stacked charts.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: StackTransform}
 }
 \value{
 A modified Vega-Lite Spec

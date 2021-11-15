@@ -43,8 +43,7 @@ vl_scale_angle(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL,
-  .object = NULL
+  zero = NULL
 )
 
 vl_scale_color(
@@ -71,8 +70,7 @@ vl_scale_color(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL,
-  .object = NULL
+  zero = NULL
 )
 
 vl_scale_fill(
@@ -99,8 +97,7 @@ vl_scale_fill(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL,
-  .object = NULL
+  zero = NULL
 )
 
 vl_scale_fillOpacity(
@@ -127,8 +124,7 @@ vl_scale_fillOpacity(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL,
-  .object = NULL
+  zero = NULL
 )
 
 vl_scale_opacity(
@@ -155,8 +151,7 @@ vl_scale_opacity(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL,
-  .object = NULL
+  zero = NULL
 )
 
 vl_scale_radius(
@@ -183,8 +178,7 @@ vl_scale_radius(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL,
-  .object = NULL
+  zero = NULL
 )
 
 vl_scale_shape(
@@ -211,8 +205,7 @@ vl_scale_shape(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL,
-  .object = NULL
+  zero = NULL
 )
 
 vl_scale_size(
@@ -239,8 +232,7 @@ vl_scale_size(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL,
-  .object = NULL
+  zero = NULL
 )
 
 vl_scale_stroke(
@@ -267,8 +259,7 @@ vl_scale_stroke(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL,
-  .object = NULL
+  zero = NULL
 )
 
 vl_scale_strokeDash(
@@ -295,8 +286,7 @@ vl_scale_strokeDash(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL,
-  .object = NULL
+  zero = NULL
 )
 
 vl_scale_strokeOpacity(
@@ -323,8 +313,7 @@ vl_scale_strokeOpacity(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL,
-  .object = NULL
+  zero = NULL
 )
 
 vl_scale_strokeWidth(
@@ -351,8 +340,7 @@ vl_scale_strokeWidth(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL,
-  .object = NULL
+  zero = NULL
 )
 
 vl_scale_theta(
@@ -379,8 +367,7 @@ vl_scale_theta(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL,
-  .object = NULL
+  zero = NULL
 )
 
 vl_scale_x(
@@ -407,8 +394,7 @@ vl_scale_x(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL,
-  .object = NULL
+  zero = NULL
 )
 
 vl_scale_y(
@@ -435,8 +421,7 @@ vl_scale_y(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL,
-  .object = NULL
+  zero = NULL
 )
 }
 \arguments{
@@ -674,8 +659,6 @@ ranges.
 binned and no custom \code{domain} is provided; \code{false} otherwise.
 
 \strong{Note:} Log, time, and utc scales do not support \code{zero}.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Scale}
 }
 \value{
 A modified Vega-Lite Spec

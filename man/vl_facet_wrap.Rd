@@ -15,8 +15,7 @@ vl_facet_wrap(
   sort = NULL,
   timeUnit = NULL,
   title = NULL,
-  type = NULL,
-  .object = NULL
+  type = NULL
 )
 }
 \arguments{
@@ -187,8 +186,6 @@ as they must have exactly the same type as their primary channels (e.g., \code{x
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/type.html}{\code{type}}
 documentation.}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FacetFieldDef}
 }
 \value{
 A modified Vega-Lite Spec
