@@ -193,6 +193,17 @@ vl_chart(mtcars) %>%
   vl_encode_tooltip('_row')
 ```
 
+If you want to pass multiple entries to the toolip, use `vl_encode_tooltip_array` instead.  
+
+```{r}
+vl_chart(mtcars) %>%
+  vl_mark_point() %>%
+  vl_encode_x('wt') %>%
+  vl_encode_y('mpg') %>% 
+  vl_encode_tooltip_array(c('_row','wt','mpg'))
+```
+
+
 ## Parameters
 
 More to come here... 

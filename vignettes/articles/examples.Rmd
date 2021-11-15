@@ -23,7 +23,7 @@ vl_chart() %>%
    vl_mark_point() %>%
    vl_encode_x("wt") %>%
    vl_encode_y("mpg") %>% 
-   vl_encode_tooltip(c("_row","mpg","wt"))
+   vl_encode_tooltip_array(c("_row","mpg","wt"))
 ```
 
 

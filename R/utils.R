@@ -3,19 +3,19 @@ TOP_LEVEL_KEYS <- c(
   "padding", "usermeta"
 )
 
-.modify_args <- function(override, exclude) {
-  ## Capture inputs provided by user and make into an object
-  args_formal <- formals(fun = sys.function(sys.parent(1)))
-  args_syms <- lapply(names(args_formal), as.symbol)
-  names(args_syms) <- names(args_formal)
-  args_eval <- lapply(args_syms, eval, env = sys.parent(1))
-  args_nn <- args_eval[!vapply(args_eval, is.null, FALSE)]
-  args_nn <- c(args_nn, override)
-  is_obj <- !(names(args_nn) %in% c(exclude,  "spec"))
-  args_obj <- args_nn[is_obj]
 
-  args_obj
+.make_object <- function(inputs, override, exclude) {
+  # First do inputs <- as.list(environment())
+  # Remove nulls
+  inputs <- inputs[!vapply(inputs, is.null, FALSE)]
+  if (!is.null(override)) {
+    inputs <- utils::modifyList(inputs, override)
+  }
+  inputs <- inputs[!(names(inputs) %in% c(exclude, "spec"))]
+  
+  inputs
 }
+
 
 .add_to_top_spec <- function(spec, x, name, ref,
                              how = c("replace", "append", "match")) {

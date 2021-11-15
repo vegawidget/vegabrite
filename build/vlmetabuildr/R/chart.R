@@ -15,7 +15,7 @@ create_chart <- function(schema) {
   chart_args <- paste(chart_names, defaults, sep = " = ")
   arg_list <- paste(chart_args, collapse = ", ")
 
-  inner_fn <- "  obj <- .modify_args(NULL, NULL)\n  .chart_initialize(obj)"
+  inner_fn <- "  obj <- as.list(environment())\n  obj <- .make_object(obj, NULL, NULL)\n  .chart_initialize(obj)"
 
   ## Make the outer function
   make_function_helper(suffix, docs, inner_fn, arg_list)
