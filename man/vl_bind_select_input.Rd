@@ -12,7 +12,8 @@ vl_bind_select_input(
   element = NULL,
   labels = NULL,
   name = NULL,
-  options = NULL
+  options = NULL,
+  .object = NULL
 )
 }
 \arguments{
@@ -36,6 +37,8 @@ parent container of the Vega view.}
 property can be used instead to specify a custom label for the bound signal.}
 
 \item{options}{An array of options to select from.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRadioSelect}
 }
 \value{
 A modified Vega-Lite Spec

@@ -14,7 +14,8 @@ vl_mark_ErrorBar(
   rule = NULL,
   size = NULL,
   thickness = NULL,
-  ticks = NULL
+  ticks = NULL,
+  .object = NULL
 )
 }
 \arguments{
@@ -62,6 +63,8 @@ Or: MarkConfig}
 \item{ticks}{boolean
 
 Or: MarkConfig}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBarDef}
 }
 \value{
 A modified Vega-Lite Spec

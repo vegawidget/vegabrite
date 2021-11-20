@@ -37,7 +37,8 @@ vl_condition_angle(
   timeUnit = NULL,
   title = NULL,
   type = NULL,
-  datum = NULL
+  datum = NULL,
+  .object = NULL
 )
 
 vl_condition_color(
@@ -56,7 +57,8 @@ vl_condition_color(
   timeUnit = NULL,
   title = NULL,
   type = NULL,
-  datum = NULL
+  datum = NULL,
+  .object = NULL
 )
 
 vl_condition_description(
@@ -75,7 +77,8 @@ vl_condition_description(
   timeUnit = NULL,
   title = NULL,
   type = NULL,
-  datum = NULL
+  datum = NULL,
+  .object = NULL
 )
 
 vl_condition_fill(
@@ -94,7 +97,8 @@ vl_condition_fill(
   timeUnit = NULL,
   title = NULL,
   type = NULL,
-  datum = NULL
+  datum = NULL,
+  .object = NULL
 )
 
 vl_condition_fillOpacity(
@@ -113,7 +117,8 @@ vl_condition_fillOpacity(
   timeUnit = NULL,
   title = NULL,
   type = NULL,
-  datum = NULL
+  datum = NULL,
+  .object = NULL
 )
 
 vl_condition_href(
@@ -132,7 +137,8 @@ vl_condition_href(
   timeUnit = NULL,
   title = NULL,
   type = NULL,
-  datum = NULL
+  datum = NULL,
+  .object = NULL
 )
 
 vl_condition_opacity(
@@ -151,10 +157,18 @@ vl_condition_opacity(
   timeUnit = NULL,
   title = NULL,
   type = NULL,
-  datum = NULL
+  datum = NULL,
+  .object = NULL
 )
 
-vl_condition_order(spec, value = NULL, param = NULL, test = NULL, empty = NULL)
+vl_condition_order(
+  spec,
+  value = NULL,
+  param = NULL,
+  test = NULL,
+  empty = NULL,
+  .object = NULL
+)
 
 vl_condition_shape(
   spec,
@@ -172,7 +186,8 @@ vl_condition_shape(
   timeUnit = NULL,
   title = NULL,
   type = NULL,
-  datum = NULL
+  datum = NULL,
+  .object = NULL
 )
 
 vl_condition_size(
@@ -191,7 +206,8 @@ vl_condition_size(
   timeUnit = NULL,
   title = NULL,
   type = NULL,
-  datum = NULL
+  datum = NULL,
+  .object = NULL
 )
 
 vl_condition_stroke(
@@ -210,7 +226,8 @@ vl_condition_stroke(
   timeUnit = NULL,
   title = NULL,
   type = NULL,
-  datum = NULL
+  datum = NULL,
+  .object = NULL
 )
 
 vl_condition_strokeDash(
@@ -229,7 +246,8 @@ vl_condition_strokeDash(
   timeUnit = NULL,
   title = NULL,
   type = NULL,
-  datum = NULL
+  datum = NULL,
+  .object = NULL
 )
 
 vl_condition_strokeOpacity(
@@ -248,7 +266,8 @@ vl_condition_strokeOpacity(
   timeUnit = NULL,
   title = NULL,
   type = NULL,
-  datum = NULL
+  datum = NULL,
+  .object = NULL
 )
 
 vl_condition_strokeWidth(
@@ -267,7 +286,8 @@ vl_condition_strokeWidth(
   timeUnit = NULL,
   title = NULL,
   type = NULL,
-  datum = NULL
+  datum = NULL,
+  .object = NULL
 )
 
 vl_condition_text(
@@ -284,7 +304,8 @@ vl_condition_text(
   formatType = NULL,
   timeUnit = NULL,
   title = NULL,
-  type = NULL
+  type = NULL,
+  .object = NULL
 )
 
 vl_condition_tooltip(
@@ -303,7 +324,8 @@ vl_condition_tooltip(
   timeUnit = NULL,
   title = NULL,
   type = NULL,
-  datum = NULL
+  datum = NULL,
+  .object = NULL
 )
 
 vl_condition_url(
@@ -322,7 +344,8 @@ vl_condition_url(
   timeUnit = NULL,
   title = NULL,
   type = NULL,
-  datum = NULL
+  datum = NULL,
+  .object = NULL
 )
 }
 \arguments{
@@ -529,6 +552,8 @@ as they must have exactly the same type as their primary channels (e.g., \code{x
 documentation.}
 
 \item{datum}{?}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ConditionalPredicate<ValueDef<(number|ExprRef)>>, ConditionalParameter<ValueDef<(number|ExprRef)>> or array of ConditionalValueDef<(number|ExprRef)>}
 
 \item{format}{When used with the default \code{"number"} and \code{"time"} format type, the text
 formatting pattern for labels of guides (axes, legends, headers) and text marks.

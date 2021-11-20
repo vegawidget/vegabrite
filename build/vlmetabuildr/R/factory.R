@@ -75,7 +75,7 @@ make_arg_list <- function(reference, schema, exclude_args, priority_args, sub_re
 
   param_names <- unique(c(intersect(priority_args, param_names), intersect(required, param_names), param_names))
   args <- paste(param_names, "NULL", sep = " = ")
-  arg_list <- paste(c("spec", args), collapse = ", ")
+  arg_list <- paste(c("spec", args, ".object = NULL"), collapse = ", ")
 
   if (additional_properties_allowed(reference, schema)) {
     arg_list <- paste0(arg_list, ", ...")
@@ -119,6 +119,7 @@ make_docs <- function(reference, schema, suffix, exclude_args, description = "",
   } else { 
     param_docs_extra <- ""
   }
+  object_doc <- get_object_doc(schema, reference)
 
   make_docs_helper(
     glue("vl_{suffix}"),
@@ -127,6 +128,7 @@ make_docs <- function(reference, schema, suffix, exclude_args, description = "",
       spec_doc, 
       param_docs, 
       param_docs_extra, 
+      object_doc,
       sep = "\n")
   )
 }
@@ -139,6 +141,7 @@ make_docs_for_group <- function(doc_group) {
 make_group_doc <- function(reference, schema, doc_group, title, description, exclude_args = NULL) {
   spec_doc <- glue("#' @param spec An input vega-lite spec")
   param_docs <- get_param_docs(schema, reference, exclude = exclude_args)
+  object_doc <- get_object_doc(schema, reference)
 
   paste(make_docs_helper(
     title,
@@ -146,6 +149,7 @@ make_group_doc <- function(reference, schema, doc_group, title, description, exc
     paste(
         spec_doc, 
         param_docs, 
+        object_doc, 
         sep = "\n"
     ),
     doc_group = doc_group,
