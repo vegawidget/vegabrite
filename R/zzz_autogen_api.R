@@ -355,7 +355,7 @@ obj <- .make_object(obj, NULL, NULL)
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: UrlData, InlineData, NamedData, SequenceGenerator, SphereGenerator or GraticuleGenerator
 #' @return A modified Vega-Lite Spec
 #' @export
-vl_add_data <- function(spec, values = NULL, format = NULL, name = NULL, url = NULL, graticule = NULL, sequence = NULL, sphere = NULL, vl_object = NULL) {
+vl_add_data <- function(spec, values = NULL, format = NULL, name = NULL, url = NULL, graticule = NULL, sequence = NULL, sphere = NULL, .object = NULL) {
 obj <- as.list(environment())
 obj <- .make_object(obj, NULL, NULL)
   .add_data(spec, obj, "#/definitions/Data")

@@ -10,16 +10,21 @@ Build vegalite specs in R. Inspired by vegalite package as well as vega-lite-api
 }
 \section{Types of functions}{
 
-This package has three types of functions:
+This package has three main types of functions:
 \itemize{
-\item \code{vl_chart} initializes a new vega-lite specification which can be build upon.
-\item Other \code{vl_} functions which build components to add to the spec and add them
-at the correct place.
+\item \code{vl_chart} initializes a new Vega-Lite specification which can be build upon.
+\item Other \code{vl_} functions which build up an object for a component of the spec and add it
+into the input spec. These functions enable iteratively building up all the different parts of a
+spec.
 \item Functions grouped in \code{vl} list and accessible via \verb{vl$}.
-These functions make a sub-component of Vega-Lite spec. These can help build components
-that might be arguments to a \code{vl_} function, although generally the goal is for the \code{vl_} functions
-to be granular enough that vcomplex inputs are not needed.
+These functions make an object representing some sub-component of a spec. These can be used to build
+up an object that gets passed to a \code{vl_} function argument in cases where that argument is an object
+itself. Such objects can also be made as simple lists, but these helpers can be used for
+clarity and for the benefit of seeing what fields are available.
 }
+
+The goal of the package is to add sufficient functions that most common use cases won't
+require using these \verb{vl$} functions, but they can be helpful for more complex charts.
 }
 
 \seealso{
