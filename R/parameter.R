@@ -48,7 +48,7 @@
 }
 
 .get_names_helper <- function(x) {
-  vapply(x, function(y) y[['name']], "")
+  vapply(x, function(y) y[["name"]], "")
 }
 
 .add_binding.vegaspec_vega_lite <- function(spec, obj, ref, parameter_name, projection_name = NULL) {

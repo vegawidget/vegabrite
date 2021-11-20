@@ -285,7 +285,7 @@ title configuration options, please see the \href{https://vega.github.io/vega-li
 
 \item{view}{Default properties for \href{https://vega.github.io/vega-lite/docs/spec.html#single}{single view plots}.}
 
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Config}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: Config}
 }
 \value{
 A modified Vega-Lite Spec

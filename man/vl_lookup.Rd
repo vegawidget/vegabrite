@@ -34,7 +34,7 @@ specified, it must correspond to \code{from.fields}.}
 
 \strong{Default value:} \code{null}}
 
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LookupTransform}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: LookupTransform}
 }
 \value{
 A modified Vega-Lite Spec

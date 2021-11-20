@@ -14,7 +14,7 @@ vl_fold(spec, fold = NULL, as = NULL, .object = NULL)
 \item{as}{The output field names for the key and value properties produced by the fold
 transform. \strong{Default value:} \verb{["key", "value"]}}
 
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FoldTransform}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: FoldTransform}
 }
 \value{
 A modified Vega-Lite Spec

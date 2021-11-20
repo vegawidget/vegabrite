@@ -42,7 +42,7 @@ make_function <- function(
 }
 
 make_function_innards <- function(reference, schema, override_args, adder_function, pass_to_adder) {
-  modifier <- glue("  obj <- as.list(environment())\n  obj <- .make_object(obj, {deparse_c(override_args)}, NULL)")
+  modifier <- glue("  obj <- .make_object({deparse_c(override_args)}, NULL)")
 
   extras <- if (!is.null(pass_to_adder)) {
     paste(c(" ", paste(names(pass_to_adder), purrr::map_chr(pass_to_adder, deparse_c), sep = " = ")),
@@ -234,7 +234,7 @@ make_option_function_innards <- function(reference, option_name, adder_function,
     ""
   }
 
-  adder <- glue("{adder_function}(spec, {option_name}, '{reference}'{extras})")
+  adder <- glue("{adder_function}(spec, {option_name}, \"{reference}\"{extras})")
 
   paste(
     matcher,
@@ -252,7 +252,7 @@ create_deprecated <- function(old, new) {
     "#' @export",
     "#' @name vlbuildr-deprecated",
     "{old} <- function(...) {{",
-    "  .Deprecated('{new}', package = 'vlbuidlr')",
+    "  .Deprecated('{new}', package = \"vlbuidlr\")",
     "  {new}(...)",
     "}}",
     .sep = "\n", .trim = FALSE

@@ -33,7 +33,7 @@ logical composition of selections).
 of (1), (2), or (3).
 }}
 
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FilterTransform}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: FilterTransform}
 }
 \value{
 A modified Vega-Lite Spec

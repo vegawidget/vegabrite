@@ -3,7 +3,7 @@ create_encoding_functions <- function(schema) {
 
   c(
     purrr::map_chr(names(encoding_options), create_encoder, schema = schema),
-    create_encoder_array('tooltip',schema),
+    create_encoder_array("tooltip",schema),
     purrr::map_chr(names(encoding_options), create_encode_object, schema = schema)
   )
 }

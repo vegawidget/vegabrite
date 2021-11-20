@@ -158,7 +158,7 @@ For a full list of operations, please see the documentation for
 \item{order}{The sort order. One of \code{"ascending"} (default), \code{"descending"}, or \code{null} (no
 not sort).}
 
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: EncodingSortField}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: EncodingSortField}
 }
 \value{
 A modified Vega-Lite Spec

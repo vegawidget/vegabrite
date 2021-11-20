@@ -31,7 +31,7 @@ parent container of the Vega view.}
 \item{name}{By default, the signal name is used to label input elements. This \code{name}
 property can be used instead to specify a custom label for the bound signal.}
 
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindCheckbox}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: BindCheckbox}
 }
 \value{
 A modified Vega-Lite Spec

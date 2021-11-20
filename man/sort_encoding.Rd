@@ -55,11 +55,11 @@ vl_sort_y(spec, value)
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{value}{One of 'ascending', 'descending', a list with a custom ordering, or NA to specify no sorting}
+\item{value}{One of "ascending", "descending", a list with a custom ordering, or NA to specify no sorting}
 }
 \value{
 A modified Vega-Lite Spec
 }
 \description{
-#' Sort an encoding in 'ascending' or 'descending' order, or by given array
+#' Sort an encoding in "ascending" or "descending" order, or by given array
 }

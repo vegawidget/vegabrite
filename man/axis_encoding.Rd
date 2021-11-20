@@ -699,7 +699,7 @@ should be drawn behind all chart elements. To put them in front, set \code{zinde
 
 \strong{Default value:} \code{0} (behind the marks).}
 
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Axis}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: Axis}
 }
 \value{
 A modified Vega-Lite Spec

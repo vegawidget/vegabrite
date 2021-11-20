@@ -61,7 +61,7 @@ create_remove_axis_function <- function(enc, schema) {
 
   ## Make the inner function
 
-  inner_fn <- glue("  .add_axis_to_encoding(spec, NA, '#/definitions/PositionFieldDef/properties/axis', encoding = '{enc}') ")
+  inner_fn <- glue("  .add_axis_to_encoding(spec, NA, \"#/definitions/PositionFieldDef/properties/axis\", encoding = \"{enc}\") ")
 
 
   ## Make the outer function
@@ -195,9 +195,9 @@ create_sort_encoding_functions <- function(schema) {
   doc_group <- "sort_encoding"
 
   title <- roxy_wrap("Add sorting to an encoding")
-  desc <- roxy_wrap("Sort an encoding in 'ascending' or 'descending' order, or by given array")
+  desc <- roxy_wrap("Sort an encoding in \"ascending\" or \"descending\" order, or by given array")
   spec_doc <- glue("#' @param spec An input vega-lite spec")
-  param_docs <- glue("#' @param value One of 'ascending', 'descending', a list with a custom ordering, or NA to specify no sorting")
+  param_docs <- glue("#' @param value One of \"ascending\", \"descending\", a list with a custom ordering, or NA to specify no sorting")
 
   group_docs <- paste(
     make_docs_helper(title, desc, paste(spec_doc, param_docs, sep = "\n"), doc_group = doc_group, export = FALSE,),
@@ -210,7 +210,7 @@ create_sort_encoding_functions <- function(schema) {
     docs <- make_docs_for_group(doc_group)
 
     ## Make the inner function
-    inner_fn <- glue("  .add_sort_to_encoding(spec, value, '#/definitions/Sort', encoding = '{enc}')")
+    inner_fn <- glue("  .add_sort_to_encoding(spec, value, \"#/definitions/Sort\", encoding = \"{enc}\")")
 
     ## Get args
     args <- "spec, value"

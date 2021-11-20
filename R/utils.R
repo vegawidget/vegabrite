@@ -4,14 +4,16 @@ TOP_LEVEL_KEYS <- c(
 )
 
 
-.make_object <- function(inputs, override, exclude) {
-  # Caller function can do inputs <- as.list(environment())
+.make_object <- function(override, exclude) {
+  # Get names from parent
+  env <- parent.frame()
+  inputs <- as.list(env, all.names = TRUE)
   
   # Remove nulls
   inputs <- inputs[!vapply(inputs, is.null, FALSE)]
   
-  if ('.object' %in% names(inputs)) {
-    obj <- inputs[['.object']]
+  if (".object" %in% names(inputs)) {
+    obj <- inputs[[".object"]]
     if (any(!(names(inputs) %in% c(exclude,"spec",".object")))) {
       warning("Ignoring some inputs as .object was passed in.")
     }

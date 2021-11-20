@@ -52,7 +52,7 @@ value (indicating the total variance explained by the model).
 
 \strong{Default value:} \code{false}}
 
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RegressionTransform}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: RegressionTransform}
 }
 \value{
 A modified Vega-Lite Spec

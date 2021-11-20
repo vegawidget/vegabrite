@@ -206,7 +206,7 @@ defined, axis/header/legend title will be used.
 \item{value}{A constant value in visual domain (e.g., \code{"red"} / \code{"#0099ff"} / \href{https://vega.github.io/vega-lite/docs/types.html#gradient}{gradient definition} for
 color, values between \code{0} to \code{1} for opacity).}
 
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldOrDatumDefWithCondition<StringFieldDef,string>, ValueDefWithCondition<MarkPropFieldOrDatumDef,(string|null)>, array of StringFieldDef or null}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: FieldOrDatumDefWithCondition<StringFieldDef,string>, ValueDefWithCondition<MarkPropFieldOrDatumDef,(string|null)>, array of StringFieldDef or null}
 
 \item{array}{Array of inputs for tooltip}
 }

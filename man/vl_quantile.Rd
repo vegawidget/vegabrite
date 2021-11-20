@@ -33,7 +33,7 @@ values. If not specified, the \emph{step} parameter will be used.}
 from one-half the step size up to 1 (exclusive) will be sampled. This parameter
 is only used if the \emph{probs} parameter is not provided.}
 
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: QuantileTransform}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: QuantileTransform}
 }
 \value{
 A modified Vega-Lite Spec

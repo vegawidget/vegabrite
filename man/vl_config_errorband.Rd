@@ -64,7 +64,7 @@ straighten the spline.
 
 \item{tension}{The tension parameter for the interpolation type of the error band.}
 
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ErrorBandConfig}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: ErrorBandConfig}
 }
 \value{
 A modified Vega-Lite Spec

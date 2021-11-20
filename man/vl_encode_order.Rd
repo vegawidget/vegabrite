@@ -170,7 +170,7 @@ defined, axis/header/legend title will be used.
 property can only contain \href{https://vega.github.io/vega-lite/docs/condition.html#value}{conditional value definitions} since
 Vega-Lite only allows at most one encoded field per encoding channel.}
 
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: OrderFieldDef, array of OrderFieldDef or OrderValueDef}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: OrderFieldDef, array of OrderFieldDef or OrderValueDef}
 }
 \value{
 A modified Vega-Lite Spec

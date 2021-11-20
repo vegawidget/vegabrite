@@ -521,7 +521,7 @@ height of the plot.}
 The \code{value} of this channel can be a number or a string \code{"height"} for the
 height of the plot.}
 
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TickConfig}
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: TickConfig}
 }
 \value{
 A modified Vega-Lite Spec
