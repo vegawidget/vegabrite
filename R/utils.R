@@ -5,7 +5,8 @@ TOP_LEVEL_KEYS <- c(
 
 
 .make_object <- function(inputs, override, exclude) {
-  # First do inputs <- as.list(environment())
+  # Caller function can do inputs <- as.list(environment())
+  
   # Remove nulls
   inputs <- inputs[!vapply(inputs, is.null, FALSE)]
   

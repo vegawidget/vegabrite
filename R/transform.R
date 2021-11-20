@@ -6,6 +6,16 @@
     new_obj[[.trans]] <- obj
     obj <- new_obj
   }
+  # Sugar -- enable passing single value instead of list to 
+  # window transform
+  if (.trans == "window") {
+    if (hasName(obj,'window') && !is.null(names(obj[['window']]))) {
+      obj[['window']] <- list(obj[['window']])
+    } 
+    if (hasName(obj,'sort') && !is.null(names(obj[['sort']]))) {
+      obj[['sort']] <- list(obj[['sort']])
+    } 
+  }
   validate_sub_schema(obj, reference)
   spec[["transform"]] <- c(spec[["transform"]], list(obj))
   spec
