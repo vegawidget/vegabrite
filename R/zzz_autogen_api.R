@@ -35422,6 +35422,10 @@ vl$`SortField` <- function(`field` = NULL, `order` = NULL){
   obj <- .make_object(NULL, NULL)
   obj
 }
+vl$`Expr` <- function(){
+  obj <- .make_object(NULL, NULL)
+  obj
+}
 vl$`Window` <- function(`as` = NULL, `field` = NULL, `op` = NULL, `param` = NULL){
   obj <- .make_object(NULL, NULL)
   obj

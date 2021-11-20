@@ -25,6 +25,12 @@ vl_chart() %>%
 
 For a more thorough introduction to how to use the package, see [introduction vignette](https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html). For example charts see the [examples vignette](https://vegawidget.github.io/vlbuildr/articles/articles/examples.html).
 
+## Goals and non-goals
+
+A goal of this package is to enable building any chart that is possible to build with Vega-Lite using this package. However, it is not a goal to be build any possible spec that is valid in Vega-Lite -- there can be multiple ways to build the same chart in Vega-Lite, and this package might only enable building one format of that spec.
+
+It is a goal to make it possible to build common / simple plots without needing to provide nested arguments. However, more complex charts will require some amount of complicated nested list inputs -- it is not a goal to enable all charts to be built without any nested arguments.
+
 ## Underlying objects
 
 At the moment, the various top-level specs are S3 classes that are basically treated as lists.  A few of the internal functions take advantage of the classes to help determine the right way to add a component.

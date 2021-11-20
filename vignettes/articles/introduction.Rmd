@@ -206,9 +206,43 @@ vl_chart(mtcars) %>%
 
 ## Parameters
 
-More to come here... 
+Parameters enable interactive manipulation of charts. There are two main types of parameters -- variable parameters and selection parameters.  Variable parameters are added using `vl_add_parameter`.  For selection parameters, see next section of this doc.  
+A parameter can be a simple value or expression that can be used in other parts of the spec, or it can be something that is mapped to user input via a binding. 
+
+An example of adding a parameter that is fixed:
+
+```{r}
+vl_chart(mtcars) %>%
+  vl_add_parameter("radius", value = 10) %>% 
+  vl_mark_bar(cornerRadius = list(expr = 'radius')) %>%
+  vl_encode_x('wt', bin = TRUE) %>%
+  vl_encode_y( aggregate = 'count')
+```
+The radius of the bar corners was set to a fixed variable of 15.
+
+To bind a parameter to a user input, use the `vl_bind_*` family of functions:
+* `vl_bind_range_input`
+* `vl_bind_checkbox_input`
+* `vl_bind_radio_input` 
+
+An example of adding a parameter controlled by a range input:
+
+```{r}
+vl_chart(mtcars) %>%
+  vl_add_parameter("radius", value = 10) %>% 
+  vl_bind_range_input("radius", min = 0, max = 15, step = 1) %>% 
+  vl_mark_bar(cornerRadius = list(expr = 'radius')) %>%
+  vl_encode_x('wt', bin = TRUE) %>%
+  vl_encode_y( aggregate = 'count')
+```
 
 ## Selections
+
+More complex parameters are "selections" -- these map data queries to a parameter. There are two types of selections -- interval and point, which can be added using `vl_add_interval_selection` or `vl_add_point_selection`, respectively.
+
+### Interval Selections
+
+### Point Selections
 
 More to come here... 
 
