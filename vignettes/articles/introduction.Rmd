@@ -220,10 +220,10 @@ vl_chart(mtcars) %>%
 ```
 The radius of the bar corners was set to a fixed variable of 15.
 
-To bind a parameter to a user input, use the `vl_bind_*` family of functions:
-* `vl_bind_range_input`
-* `vl_bind_checkbox_input`
-* `vl_bind_radio_input` 
+To bind a parameter to a user input, use the `vl_bind_*` family of functions, for example
+* `vl_bind_range_input` for binding to a slider
+* `vl_bind_checkbox_input` for binding to checkbox selections
+* `vl_bind_radio_input` for binding to radio selections
 
 An example of adding a parameter controlled by a range input:
 
