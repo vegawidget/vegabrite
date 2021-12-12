@@ -83,40 +83,4 @@
   modify_inner_spec(spec, fn)
 }
 
-#' vl_bind_legend
-#' 
-#' Bind legend to a parameter
-#' @param spec An input Vega-Lite spec
-#' @param legend Name of a vega event stream, or an event stream defintion
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than `spec`. Objects can be of type:LegendBinding
-#' @return A modified Vega-Lite Spec
-#' @export
-vl_bind_legend <- function(spec, parameter_name, legend = NULL, .object = NULL) {
-  # A bit of a special case here
-  if (!isNULL(.object)) {
-    obj <- .object
-  } else if (!is.null(legend)) {
-    obj <- list(legend = legend)
-  } else {
-    obj <- "legend"
-  }
-  .add_binding(spec, obj, "#/definitions/LegendBinding", parameter_name = parameter_name,
-               projection_name = NULL)
-}
-
-#' vl_bind_scale
-#' 
-#' Bind scale to a parameter
-#' @param spec An input Vega-Lite spec
-#' @return A modified Vega-Lite Spec
-#' @export
-vl_bind_scale <- function(spec, parameter_name) {
-  # A bit of a special case here
-   obj <- "scale"
-  .add_binding(spec, obj, "string", parameter_name = parameter_name,
-               projection_name = NULL)
-}
-
-
-
 

@@ -16349,7 +16349,7 @@ vl$`IntervalSelectionConfig` <- function(`clear` = NULL, `encodings` = NULL, `fi
 #' 
 #' Add radio binding to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param parameter_name Name of selection to add binding to
+#' @param parameter_name Name of parameter to add binding to
 #' @param projection_name Name of projection (field or encoding) within selection
 #' @param debounce If defined, delays event handling until the specified milliseconds have elapsed
 #' since the last event was fired.
@@ -16370,28 +16370,55 @@ vl_bind_radio_input <- function(spec, parameter_name, projection_name = NULL, de
 projection_name = projection_name)
 }
 
-#' vl_bind_select_input
+#' vl_bind_input
 #' 
-#' Add select binding to a vega-lite spec.
+#' Add input binding to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param parameter_name Name of selection to add binding to
+#' @param parameter_name Name of parameter to add binding to
 #' @param projection_name Name of projection (field or encoding) within selection
+#' @param autocomplete A hint for form autofill. See the [HTML autocomplete
+#' attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)
+#' for additional information.
 #' @param debounce If defined, delays event handling until the specified milliseconds have elapsed
 #' since the last event was fired.
 #' @param element An optional CSS selector string indicating the parent element to which the input
 #' element should be added. By default, all input elements are added within the
 #' parent container of the Vega view.
-#' @param labels An array of label strings to represent the `options` values. If unspecified, the
-#' `options` value will be coerced to a string and used as the label.
 #' @param name By default, the signal name is used to label input elements. This `name`
 #' property can be used instead to specify a custom label for the bound signal.
-#' @param options An array of options to select from.
-#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than `spec`. Objects can be of type: BindRadioSelect
+#' @param placeholder Text that appears in the form control when it has no value set.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than `spec`. Objects can be of type: BindInput
 #' @return A modified Vega-Lite Spec
 #' @export
-vl_bind_select_input <- function(spec, parameter_name, projection_name = NULL, debounce = NULL, element = NULL, labels = NULL, name = NULL, options = NULL, .object = NULL) {
-  obj <- .make_object(list(input = 'select'), c('projection_name', 'parameter_name'))
-  .add_binding(spec, obj, "#/definitions/BindRadioSelect", parameter_name = parameter_name,
+vl_bind_input <- function(spec, parameter_name, projection_name = NULL, autocomplete = NULL, debounce = NULL, element = NULL, name = NULL, placeholder = NULL, .object = NULL) {
+  obj <- .make_object(list(input = 'input'), c('projection_name', 'parameter_name'))
+  .add_binding(spec, obj, "#/definitions/BindInput", parameter_name = parameter_name,
+projection_name = projection_name)
+}
+
+#' vl_bind_direct_input
+#' 
+#' Add direct binding to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param parameter_name Name of parameter to add binding to
+#' @param projection_name Name of projection (field or encoding) within selection
+#' @param debounce If defined, delays event handling until the specified milliseconds have elapsed
+#' since the last event was fired.
+#' @param element An input element that exposes a _value_ property and supports the
+#' [EventTarget](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget)
+#' interface, or a CSS selector string to such an element. When the element updates
+#' and dispatches an event, the _value_ property will be used as the new, bound
+#' signal value. When the signal updates independent of the element, the _value_
+#' property will be set to the signal value and a new event will be dispatched on
+#' the element.
+#' @param event The event (default `"input"`) to listen for to track changes on the external
+#' element.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than `spec`. Objects can be of type: BindDirect
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_bind_direct_input <- function(spec, parameter_name, projection_name = NULL, debounce = NULL, element = NULL, event = NULL, .object = NULL) {
+  obj <- .make_object(list(input = 'direct'), c('projection_name', 'parameter_name'))
+  .add_binding(spec, obj, "#/definitions/BindDirect", parameter_name = parameter_name,
 projection_name = projection_name)
 }
 
@@ -16399,7 +16426,7 @@ projection_name = projection_name)
 #' 
 #' Add checkbox binding to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param parameter_name Name of selection to add binding to
+#' @param parameter_name Name of parameter to add binding to
 #' @param projection_name Name of projection (field or encoding) within selection
 #' @param debounce If defined, delays event handling until the specified milliseconds have elapsed
 #' since the last event was fired.
@@ -16421,7 +16448,7 @@ projection_name = projection_name)
 #' 
 #' Add range binding to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param parameter_name Name of selection to add binding to
+#' @param parameter_name Name of parameter to add binding to
 #' @param projection_name Name of projection (field or encoding) within selection
 #' @param debounce If defined, delays event handling until the specified milliseconds have elapsed
 #' since the last event was fired.
@@ -16442,6 +16469,31 @@ projection_name = projection_name)
 vl_bind_range_input <- function(spec, parameter_name, projection_name = NULL, debounce = NULL, element = NULL, max = NULL, min = NULL, name = NULL, step = NULL, .object = NULL) {
   obj <- .make_object(list(input = 'range'), c('projection_name', 'parameter_name'))
   .add_binding(spec, obj, "#/definitions/BindRange", parameter_name = parameter_name,
+projection_name = projection_name)
+}
+
+#' vl_bind_select_input
+#' 
+#' Add select binding to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param parameter_name Name of parameter to add binding to
+#' @param projection_name Name of projection (field or encoding) within selection
+#' @param debounce If defined, delays event handling until the specified milliseconds have elapsed
+#' since the last event was fired.
+#' @param element An optional CSS selector string indicating the parent element to which the input
+#' element should be added. By default, all input elements are added within the
+#' parent container of the Vega view.
+#' @param labels An array of label strings to represent the `options` values. If unspecified, the
+#' `options` value will be coerced to a string and used as the label.
+#' @param name By default, the signal name is used to label input elements. This `name`
+#' property can be used instead to specify a custom label for the bound signal.
+#' @param options An array of options to select from.
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than `spec`. Objects can be of type: BindRadioSelect
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_bind_select_input <- function(spec, parameter_name, projection_name = NULL, debounce = NULL, element = NULL, labels = NULL, name = NULL, options = NULL, .object = NULL) {
+  obj <- .make_object(list(input = 'select'), c('projection_name', 'parameter_name'))
+  .add_binding(spec, obj, "#/definitions/BindRadioSelect", parameter_name = parameter_name,
 projection_name = projection_name)
 }
 

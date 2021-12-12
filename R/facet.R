@@ -16,7 +16,7 @@
     columns <- obj$columns
     obj$columns <- NULL
   }
-  obj <- .facet_sugar(obj)
+  obj <- .facet_sugar(obj, spec)
   validate_sub_schema(obj, ref)
   if (.type == "row") {
     spec[["facet"]][["row"]] <- obj
@@ -42,7 +42,7 @@
     columns <- obj$columns
     obj$columns <- NULL
   }
-  obj <- .facet_sugar(obj)
+  obj <- .facet_sugar(obj, spec)
   validate_sub_schema(obj, ref)
   if (.type == "row") {
     spec[["facet"]][["row"]] <- obj
@@ -68,7 +68,7 @@
     columns <- obj$columns
     obj$columns <- NULL
   }
-  obj <- .facet_sugar(obj)
+  obj <- .facet_sugar(obj,spec)
   validate_sub_schema(obj, ref)
   if (.type == "row") {
     spec[["facet"]][["row"]] <- obj

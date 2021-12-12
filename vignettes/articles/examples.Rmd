@@ -259,3 +259,17 @@ vl_chart() %>%
   
 ```
 
+
+```{r}
+vl_chart(data = 'https://vega.github.io/vega-editor/app/data/unemployment-across-industries.json') %>%
+  vl_mark_area() %>%
+  vl_encode_x(field = 'date', timeUnit = 'yearmonth') %>%
+  vl_axis_x(domain = FALSE, format = '%Y', tickSize = 0) %>% 
+  vl_encode_y(field = 'count', aggregate = 'sum', stack = 'center', axis = NULL) %>%
+  vl_encode_color(field = 'series') %>%
+  vl_scale_color(scheme = 'category20b') %>%
+  vl_encode_opacity(value = 0.2) %>%
+  vl_condition_opacity(param = 'industry', value = 1) %>%
+  vl_add_point_selection(name = 'industry', fields = list('series'), bind = 'legend') 
+```
+

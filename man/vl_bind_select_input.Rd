@@ -19,7 +19,7 @@ vl_bind_select_input(
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{parameter_name}{Name of selection to add binding to}
+\item{parameter_name}{Name of parameter to add binding to}
 
 \item{projection_name}{Name of projection (field or encoding) within selection}
 

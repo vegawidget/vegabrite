@@ -4,13 +4,18 @@ create_binding_functions <- function(schema) {
     create_binding(schema, "input", "BindInput"),
     create_binding(schema, "direct", "BindDirect"),
     create_binding(schema, "checkbox", "BindCheckbox"),
-    create_binding(schema, "range", "BindRange")
+    create_binding(schema, "range", "BindRange"),
+    create_binding(schema, "select", "BindRadioSelect")
   )
 }
 
 create_binding <- function(schema, name, ref) {
   reference <- glue("#/definitions/{ref}")
-  suffix <- glue::glue("bind_{name}")
+  if (name != 'input') {
+    suffix <- glue::glue("bind_{name}_input")
+  } else {
+    suffix <- glue::glue("bind_input")
+  }
 
   spec_doc <- glue("#' @param spec An input vega-lite spec")
   object_doc <- get_object_doc(schema, reference)
