@@ -1,6 +1,5 @@
 ---
 title: "Design"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Design}

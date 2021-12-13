@@ -1,6 +1,5 @@
 ---
 title: "How to make a plot using vlbuildr"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_document
 ---
 
@@ -13,7 +12,7 @@ knitr::opts_chunk$set(
 
 This vignette covers the basics of how to make a chart using `vlbuildr`.For more about the design philosophy of the package, see the [design vignette](https://vegawidget.github.io/vlbuildr/articles/design.html). For example charts see the [examples vignette](https://vegawidget.github.io/vlbuildr/articles/articles/examples.html).  For much more information about what is possible with Vega-Lite, see the [Vega-Lite documentation](https://vega.github.io/vega-lite/docs/).  
 
-# The three basic components
+## The basics: data + mark + encoding
 
 All plots require **data**, a **mark** and **encodings**. To intialize a chart you use
 
@@ -24,7 +23,7 @@ vl_chart()
 
 Without the other components it will be empty! But this output can be piped into commands to add the other components. Some components can also be added directly via that function call.  
 
-## data
+### Data
 
 ```{r}
 vl_chart() %>%
@@ -40,7 +39,7 @@ vl_chart(mtcars)
 
 Data can also be passed as a url using `vl_add_data_url` or the `url` argument to `vl_add_data`. `vl_chart` should also be able to recognize if the argument to `data` is a url and treat it as such.
 
-## Mark
+### Mark
 
 The 'mark' is the type of shape being plotted, e.g. 'point', 'line', 'bar'.
 
@@ -60,7 +59,7 @@ vl_chart() %>%
   vl_mark_point(color = 'red')
 ```
 
-## Encoding
+### Encoding
 
 The encoding tells the plot what to use along the x or y axis, as well as what to use for color, tooltips, links, and other aspects of the plot that might be controlled by a column of your data. Encodings can also take constant values (generally with the `value` argument).
 
@@ -83,7 +82,7 @@ vl_chart() %>%
   vl_encode_y(field = 'mpg', type = 'quantitative')
 ```
 
-### Type shorthands
+#### Type shorthands
 
 A shorthand can be used to specify the type. The field name can be joined using a colon with a single letter abbreviation. The abbreviations are:
 
@@ -96,7 +95,7 @@ vl_chart() %>%
   vl_encode_y('mpg:Q')
 ```
 
-### Type inference
+#### Type inference
 
 When the data has been added to the spec already and is given directly by an R data.frame (rather than a URL or a transformation), the type can also be inferred and does not need to be given.
 
@@ -108,7 +107,7 @@ vl_chart() %>%
   vl_encode_y('mpg')
 ```
 
-### `vl_encode`
+#### `vl_encode`
 
 Each encoding can be passed by a separate function, or a single call to `vl_encode` can be used:
 
@@ -133,15 +132,15 @@ vl_chart() %>%
     )
 ```
 
-# View Composition
+## View Composition
 
 Sub-plots or 'views' can be combined in a number of ways. Layering assembles views into the same plot. Facetting splits views based on a column of data with the same encodings per view. Repeating splits views based on what field to use as one or two of the encodings. Concatenation combines arbitrary views together.  
 
-## Layering
+### Layering
 
 Layering assembles views into the same plot. A single view can only have one 'mark', so layering is how a plot can be made with multiple marks. Those marks can have different encodings or the same encodings.
 
-### vl_layer
+#### vl_layer
 
 Two charts can be layered via `vl_layer`. Additional modifications can then be made to the resulting layered chart, although there are some limitations to the kinds of modifications that can be made to layered charts versus single view charts.  
 
@@ -164,7 +163,7 @@ vl_layer(points_plot, avg_plot) %>%
 
 In this case the data is added afterwards. That can help make sure the data isn't duplicated, and helps keep the size of the spec smaller. Note that layers can have different data, too, in which case the data would get added to each chart first before layering.
 
-### The `+` operator
+#### The `+` operator
 
 Layering can also be performed by using the `+` operator.
 
@@ -173,13 +172,13 @@ Layering can also be performed by using the `+` operator.
   vl_add_data_url("https://vega.github.io/vega-editor/app/data/movies.json")
 ```
 
-## Facet
+### Facet
 
 Facetting splits up your data into different subplots based on a field in the data. This can be done across rows and/or columns.  Facets can get added in two ways: via `vl_facet_` functions or as encodings, eg `vl_encode_row`.
 
 In terms of which option to use, they have slightly different options in terms of the parameters that can be given, but often are interchangeable.
 
-### Facets as encoding
+#### Facets as encoding
 
 This example splits the data between rows based on the country of origin.
 
@@ -207,7 +206,7 @@ vl_chart() %>%
   vl_facet_row(field = "Origin", type = "nominal")
 ```
 
-## Repeating
+### Repeating
 
 Adding a 'repeat' is similar in some ways to facetting, except the same data gets shown in each subplot. Instead, what changes between subplots is what field gets used in the encoding. 
 
@@ -235,7 +234,7 @@ vl_chart() %>%
   vl_repeat_wrap("Horsepower", "Miles_per_Gallon", "Acceleration", "Displacement")
 ```
 
-## Concatenation
+### Concatenation
 
 Different charts can be concatenated together via `vl_concat`, `vl_hconcat`, or `vl_vconcat` to concatenate in wrapping fashion (with number of columns set by `columns` arguments), horizontally, or vertically.  Data can be set for each individual view (and can then be different) or can be set for the concatenated version.
 
@@ -271,13 +270,13 @@ Concatenation can also be done via the `|` or `&` operators, to do horizontal or
 ```
 
 
-# Interactivity
+## Interactivity
 
-## Tooltips
+### Tooltips
 
 There are three ways to get tooltips:
 
-### All the encodings
+#### All the encodings
 
 To get a tooltip that shows the values for fields set in the encoding, use `tooltip = TRUE` in the call to add a mark to the plot.
 
@@ -288,7 +287,7 @@ vl_chart(mtcars) %>%
   vl_encode_y('mpg')
 ```
 
-### All data associated with point
+#### All data associated with point
 
 To get all the data to show up (not just what is used by encoding) pass `list(content = "data")` to the tooltip argument.
 
@@ -308,7 +307,7 @@ vl_chart(mtcars) %>%
   vl_encode_y('mpg')
 ```
 
-### To some constant value 
+#### To some constant value 
 
 You can also set the tooltip to a constant value -- e.g. to get each point to say "Hi!":
 
@@ -319,7 +318,7 @@ vl_chart(mtcars) %>%
   vl_encode_y('mpg')
 ```
 
-### Via an encoding channel
+#### Via an encoding channel
 
 We can also use a column of the data by passing the tooltip as an encoding. If we want to use the `row.names` of the `data.frame` we can use `'_row'` as the name:    
 
@@ -342,7 +341,7 @@ vl_chart(mtcars) %>%
 ```
 
 
-## Parameters
+### Parameters
 
 Parameters enable interactive manipulation of charts. There are two main types of parameters -- variable parameters and selection parameters.  Variable parameters are added using `vl_add_parameter`.  For selection parameters, see next section of this doc.  
 A parameter can be a simple value or expression that can be used in other parts of the spec, or it can be something that is mapped to user input via a binding. 
@@ -377,13 +376,13 @@ vl_chart(mtcars) %>%
   vl_encode_y( aggregate = 'count')
 ```
 
-## Selections
+### Selections
 
 More complex parameters are "selections" -- these map data queries to a parameter. There are two types of selections -- interval and point, which can be added using `vl_add_interval_selection` or `vl_add_point_selection`, respectively.
 
 The `vl_condition_*` family of functions can be used to condition an encoding on the selection.
 
-### Interval Selections
+#### Interval Selections
 
 Interval selections enable selecting an interval on the chart. Below shows an example of adding an interval selection and conditioning the color on that selection.  If you select an area of the plot, that area will remain colored by the `hp` field, and the remainder of the color will be 'gray'. 
 
@@ -397,7 +396,7 @@ vl_chart(mtcars) %>%
   vl_condition_color(param = 'brush', field = 'cyl')
 ```
 
-#### Binding interval to scales
+##### Binding interval to scales
 
 Interval selections can be controlled via the scales, using `bind = 'scales'`. This enables using the view to pan and zoom on the data.  An example -- drag the plot panel to shift the area shown. 
 
@@ -410,7 +409,7 @@ vl_chart(mtcars) %>%
 ```
 
 
-### Point Selections
+#### Point Selections
 
 A point selection enables directly interacting with points (or lines, areas) on the chart.  In the below example, clicking on a point will cause it to change color to red.  
 
@@ -426,7 +425,7 @@ vl_chart(mtcars) %>%
 
 These selections can be customized in wheter they respond to hover instead of click, whether they select the nearest point, how multiple items can be clicked, and how selections can be cleared.  See (Vega-Lite documentation)[https://vega.github.io/vega-lite/docs/selection.html] for more that is possible with selections!
 
-#### Binding legend to selection
+##### Binding legend to selection
 
 A point selection can be controlled via the legend, using `bind = 'legend'`.  For example:
 
