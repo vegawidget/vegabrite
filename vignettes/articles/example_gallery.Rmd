@@ -1,0 +1,243 @@
+---
+title: "Example Gallery"
+output: 
+  rmarkdown::html_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r}
+library (vlbuildr)
+
+knitr::knit_hooks$get("output")
+```
+
+
+## Single-view plots
+
+### Bar charts {.tabset}
+
+#### Simple Bar Chart
+
+```{r}
+values <- tibble::tribble(
+  ~a, ~b,
+  "A", 28, 
+  "B", 55, 
+  "C",  43,
+  "D", 91, 
+  "E",  81, 
+  "F", 53,
+  "G",19, 
+  "H", 87, 
+  "I", 52
+)
+
+vl_chart(values) %>% 
+  vl_mark_bar() %>%
+  vl_encode_x('a') %>% 
+  vl_axis_x(labelAngle = 0) %>%
+  vl_encode_y('b')
+```
+
+#### Aggregate Bar Chart 
+
+```{r aggregate-bar-chart}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/population.json") %>%
+  vl_filter("datum.year == 2000") %>%
+  vl_encode_y(field = "age", 
+              type = "ordinal") %>%
+  vl_encode_x(field = "people", 
+              type = "quantitative", 
+              aggregate = "sum",
+              axis = list(title = "population"), 
+              stack = "normalize") %>%
+  vl_mark_bar() %>%
+  vl_sort_y_by_encoding(encoding = "x")
+
+```
+
+#### Stacked Bar Chart
+
+```{r stacked-bar-chart}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/seattle-weather.csv") %>%
+  vl_mark_bar() %>%
+  vl_encode_x(field = 'date', type = 'ordinal', timeUnit = 'month', 
+              title = 'Month of the year') %>%
+  vl_encode_y(aggregate = 'count', type = 'quantitative') %>%
+  vl_encode_color('weather', type = 'nominal', title = 'Weather type') %>%
+  vl_scale_color(domain = list("sun", "fog", "drizzle", "rain", "snow"),
+                 range = list("#e7ba52", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd"))
+```
+
+#### Normalized Stacked Bar Chart 
+
+```{r normalized-stacked-bar-chart}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/population.json") %>%
+  vl_calculate(calculate = "datum.sex == 2 ? 'Female' : 'Male'", 
+               as = "gender") %>%
+  vl_filter("datum.year == 2000") %>%
+  vl_encode_x(field = "age", 
+              type = "ordinal") %>%
+  vl_encode_y(field = "people", type = "quantitative") %>%
+  vl_stack_y("normalize") %>%
+  vl_aggregate_y(aggregate = "sum") %>%
+  vl_axis_y(title = "population") %>%
+  vl_encode_color(field = "gender", type = "nominal") %>%
+  vl_mark_bar() %>% 
+  vl_config_axis(domainWidth = 1) %>%
+  vl_config_view(stroke = "transparent")
+```
+
+
+
+
+### Histograms and Density Plots {.tabset}
+
+#### Histogram 
+
+```{r histogram}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/movies.json") %>%
+  vl_encode_x(field = "IMDB_Rating", type = "quantitative") %>%
+  vl_encode_y(type = "quantitative", aggregate = "count") %>%
+  vl_bin_x(maxbins=10) %>%
+  vl_mark_bar()
+```
+
+#### 2D Histogram
+
+```{r 2d-histogram}
+vl_chart() %>%
+  vl_add_data(url = 'https://vega.github.io/vega-editor/app/data/movies.json') %>%
+  vl_filter('isDefined(datum["IMDB_Rating"]) && isDefined(datum["Rotten_Tomatoes_Rating"])') %>%
+  vl_encode_x(field = 'IMDB_Rating', type = 'quantitative') %>%
+  vl_encode_y(field = 'Rotten_Tomatoes_Rating', type = 'quantitative') %>%
+  vl_encode_color(type = 'quantitative', aggregate = 'count') %>%
+  vl_bin_x(maxbins=60) %>%
+  vl_bin_y(maxbins=40) %>%
+  vl_mark_rect() %>%
+  vl_config_view(stroke = 'transparent')
+```
+
+#### Density Plot
+
+```{r density}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/movies.json") %>%
+  vl_density("IMDB_Rating", bandwidth = 0.3) %>%
+  vl_encode_x(field = "value", type = "quantitative", title = "IMDB Rating") %>%
+  vl_encode_y(field = "density", type = "quantitative") %>%
+  vl_mark_area()
+```
+
+
+### Scatter & Strip Plots {.tabset}
+
+#### Scatterplot
+
+```{r scatter}
+vl_chart() %>%
+   vl_add_data(values = mtcars) %>%
+   vl_mark_point() %>%
+   vl_encode_x("wt") %>%
+   vl_encode_y("mpg") %>% 
+   vl_encode_tooltip_array(c("_row","mpg","wt"))
+```
+
+
+#### 1D Striplot
+
+```{r 1d-strip}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/seattle-weather.csv") %>%
+  vl_encode_x(field = "precipitation", type = "quantitative") %>%
+  vl_mark_tick()
+```
+
+
+#### Strip plot
+
+```{r strip}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_encode_x(field = "Horsepower", type = "quantitative") %>%
+  vl_encode_y(field = "Cylinders", type = "ordinal") %>%
+  vl_mark_tick()
+```
+
+#### Bubble plot
+
+```{r bubble-gapminder}
+vl_chart(width = 500, height = 300) %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/gapminder-health-income.csv") %>%
+  vl_add_interval_selection("view", bind = "scales") %>%
+  vl_mark_circle() %>%
+  vl_encode_x(field = 'income', type = "quantitative") %>%
+  vl_scale_x(type = 'log') %>%
+  vl_encode_y(field = 'health', type = "quantitative") %>%
+  vl_scale_y(zero = FALSE) %>%
+  vl_axis_y(minExtent = 30) %>%
+  vl_encode_size(field = "population", type = 'quantitative') %>%
+  vl_encode_color(value = '#000')
+```
+
+### Line Charts {.tabset}
+
+#### Line Chart
+
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/stocks.csv") %>%
+  vl_filter('datum.symbol==="GOOG"') %>%
+  vl_mark_line() %>%
+  vl_encode_x('date:T') %>%
+  vl_encode_y('price:Q')
+```
+
+#### Multi-series line chart with point markers
+
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/stocks.csv") %>%
+  vl_mark_line(point = TRUE) %>%
+  vl_encode_x('date', timeUnit = 'year') %>%
+  vl_encode_y('price:Q', aggregate = 'mean') %>%
+  vl_encode_color('symbol:N')
+```
+
+#### Multi-series line chart with repeat operator
+
+```{r multi-series-line-repeat}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/movies.json") %>%
+  vl_repeat_layer('US_Gross', 'Worldwide_Gross') %>%
+  vl_encode_x(field = "IMDB_Rating", type = "quantitative", bin = TRUE) %>%
+  vl_encode_y(field = list(`repeat` = "layer"), type = "quantitative", aggregate = "mean", 
+              title = "Mean of US and Worldwide Gross") %>% 
+  vl_encode_color(datum = list(`repeat` = "layer"), type = "nominal") %>%
+  vl_mark_line()
+
+```
+
+#### Connected Scatterplot
+
+#### Slope Graph
+
+### Area charts & streamgraphs {.tabset}
+
+### Table-based plots {.tabset}
+
+### Circular plots {.tabset}
+
+### Advanced Calculations {.tabset}
+
+## Composite Marks 

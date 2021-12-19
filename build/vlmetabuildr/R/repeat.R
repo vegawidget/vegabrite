@@ -1,6 +1,6 @@
 
 create_repeat_functions <- function(schema) {
-  purrr::map_chr(c("row", "col", "wrap"), create_repeat, schema = schema)
+  purrr::map_chr(c("row", "col", "wrap","layer"), create_repeat, schema = schema)
 }
 
 create_repeat <- function(type, schema) {

@@ -17715,6 +17715,18 @@ vl_repeat_wrap <- function(spec, ..., columns = 2) {
   .add_repeat(spec, list(...), '#/definitions/RepeatSpec/properties/repeat', columns = columns, .type = 'wrap')
 }
 
+#' vl_repeat_layer
+#' 
+#' Add repeat to a vega-lite spec.
+#' @param spec An input vega-lite spec
+
+#' @param ... fields to use for repeat (strings)
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_repeat_layer <- function(spec, ...) {
+  .add_repeat(spec, list(...), '#/definitions/RepeatSpec/properties/repeat', .type = 'layer')
+}
+
 #' Resolve axes, legends, or scales for composite charts
 #' 
 #' When faceting, layering, repeating, or concatenating a chart, one can choose
