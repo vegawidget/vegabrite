@@ -17,6 +17,8 @@ library (vlbuildr)
 knitr::knit_hooks$get("output")
 ```
 
+Most of these examples are adapted from the [Vega-Lite example gallery](https://vega.github.io/vega-lite/examples/).See that example gallery for more examples of plots that can be made with Vega-Lite and thus likely can be built with `vlbuildr`.
+
 
 ## Single-view plots
 
@@ -230,14 +232,375 @@ vl_chart() %>%
 
 #### Connected Scatterplot
 
+```{r connected-scatterplot}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/driving.json") %>%
+  vl_encode_x('miles:Q') %>%
+  vl_scale_x(zero = FALSE) %>%
+  vl_encode_y('gas:Q') %>%
+  vl_scale_y(zero = FALSE) %>%
+  vl_encode_order('year') %>%
+  vl_mark_line(point = TRUE)
+
+```
+
 #### Slope Graph
+
+```{r slope-graph}
+vl_chart(width = list(step = 50)) %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/barley.json") %>%
+  vl_mark_line() %>%
+  vl_encode_x('year:O') %>%
+  vl_scale_x(padding = 0.5) %>%
+  vl_encode_y('yield:Q', aggregate = 'median') %>%
+  vl_encode_color('site:N') %>%
+  vl_mark_line()
+
+```
 
 ### Area charts & streamgraphs {.tabset}
 
+#### Area chart
+
+```{r area}
+vl_chart(data = 'https://vega.github.io/vega-editor/app/data/unemployment-across-industries.json', width = 300, height = 200) %>%
+  vl_mark_area() %>%
+  vl_encode_x(field = 'date', timeUnit = 'yearmonth') %>%
+  vl_axis_x(format = '%Y') %>% 
+  vl_encode_y(field = 'count', aggregate = 'sum') 
+```
+
+#### Stacked Area chart
+
+```{r stacked-area}
+vl_chart(data = 'https://vega.github.io/vega-editor/app/data/unemployment-across-industries.json', width = 300, height = 200) %>%
+  vl_mark_area() %>%
+  vl_encode_x(field = 'date', timeUnit = 'yearmonth') %>%
+  vl_axis_x(format = '%Y') %>% 
+  vl_encode_y(field = 'count', aggregate = 'sum') %>%
+  vl_encode_color('series') %>%
+  vl_scale_color(scheme = 'category20b')
+```
+
+#### Normalized stacked aea chart
+
+```{r normalized-area}
+vl_chart(data = 'https://vega.github.io/vega-editor/app/data/unemployment-across-industries.json', width = 300, height = 200) %>%
+  vl_mark_area() %>%
+  vl_encode_x(field = 'date', timeUnit = 'yearmonth') %>%
+  vl_axis_x(format = '%Y') %>% 
+  vl_encode_y(field = 'count', aggregate = 'sum', stack = 'normalize', axis = NA) %>%
+  vl_encode_color('series') %>%
+  vl_scale_color(scheme = 'category20b')
+```
+
+#### Streamgraph
+
+```{r stream-graph}
+vl_chart(data = 'https://vega.github.io/vega-editor/app/data/unemployment-across-industries.json') %>%
+  vl_mark_area() %>%
+  vl_encode_x(field = 'date', timeUnit = 'yearmonth') %>%
+  vl_axis_x(domain = FALSE, format = '%Y', tickSize = 0) %>% 
+  vl_encode_y(field = 'count', aggregate = 'sum', stack = 'center', axis = NULL) %>%
+  vl_encode_color(field = 'series') %>%
+  vl_scale_color(scheme = 'category20b') %>%
+  vl_encode_opacity(value = 0.2) %>%
+  vl_condition_opacity(param = 'industry', value = 1) %>%
+  vl_add_point_selection(name = 'industry', fields = list('series'), bind = 'legend') 
+```
+
+
+
 ### Table-based plots {.tabset}
+
+#### Heatmap
+
+```{r weather-heatmap}
+
+vl_chart(title = "Daily Max Temperatures (C) in Seattle, WA") %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/seattle-weather.csv") %>%
+  vl_mark_rect() %>%
+  vl_encode_x(field = 'date', type = 'ordinal', timeUnit = 'date', 
+              title = 'Day') %>%
+  vl_axis_x(labelAngle = 0, format = '%e') %>%
+  vl_encode_y(field = 'date', type = 'ordinal', timeUnit = 'month', title = 'Month') %>%
+  vl_encode_color('temp_max', type = 'quantitative', aggregate = 'max') %>%
+  vl_legend_color(title = NA) 
+
+
+```
+
+
+#### Heatmap with labels
+
+```{r heatmap-labels}
+color_layer <- vl_chart() %>%
+  vl_mark_rect() %>%
+  vl_encode_color('num_cars:Q', title = 'Count of Records') %>%
+  vl_legend_color(direction = 'horizontal')
+  
+text_layer <- vl_chart() %>%
+  vl_mark_text() %>%
+  vl_encode_text('num_cars:N') %>%
+  vl_encode_color(value = "white") %>%
+  vl_condition_color(test = 'datum["num_cars"] < 40', value = 'black') 
+  
+
+vl_layer(color_layer, text_layer) %>% 
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_aggregate(aggregate = list(list(op = 'count', as = 'num_cars')),
+               groupby= list('Origin','Cylinders')) %>%
+  vl_encode_y(field = "Origin", type = "ordinal") %>%
+  vl_encode_x(field = "Cylinders", type = "ordinal") %>%
+  vl_config_axis(grid = TRUE, tickBand = 'extent')
+```
+
+
+
+#### Time-series Heatmap (Lasagna Plot)
+
+Note: This is an example where a good bit of manual nested json still needs to be made to get 
+the axis sub-element conditioning.
+
+```{r}
+vl_chart(width = 300, height = 100) %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/stocks.csv") %>%
+  vl_filter('datum.symbol != "GOOG"') %>%
+  vl_mark_rect() %>%
+  vl_encode_x('date:O', timeUnit = 'yearmonthdate', title = 'Time') %>%
+  vl_axis_x(format = '%Y', labelAngle = 0, labelOverlap = FALSE,
+            labelColor = list(
+              condition = list( 
+                test = list(
+                  timeUnit = 'monthdate', 
+                  field = 'value', 
+                  equal = list(month = 1, date = 1)
+                  ),
+                value = 'black'
+                ),
+              value = NA
+              ),
+            tickColor = list(
+              condition = list( 
+                test = list(
+                  timeUnit = 'monthdate', 
+                  field = 'value', 
+                  equal = list(month = 1, date = 1)
+                  ),
+                value = 'black'
+                ),
+              value = NA
+              )
+            ) %>%
+  vl_encode_color('price:Q', aggregate = 'sum', title = 'Price') %>%
+  vl_encode_y('symbol:N', title = NA)
+```
 
 ### Circular plots {.tabset}
 
+
 ### Advanced Calculations {.tabset}
 
-## Composite Marks 
+### Error bars and bands {.tabset}
+
+### Box plots {.tabset}
+
+### Layered Plots {.tabset}
+
+### Maps & Geographic Displays { .tabset}
+
+
+### Interactive {.tabset}
+
+#### Brush-linked color
+
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_add_interval_selection(name = "brush", value = list(x = c(55,160), y = c(13,37))) %>%
+  vl_mark_point() %>%
+  vl_encode_x(field = "Horsepower", type = "quantitative") %>%
+  vl_encode_y(field = "Miles_per_Gallon", type = "quantitative") %>%
+  vl_encode_color(value = "grey") %>%
+  vl_condition_color(param = "brush", field = "Cylinders", type = "ordinal")
+```
+
+#### Drop-down controlled parameter
+
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/movies.json") %>%
+  vl_encode_x(field = "IMDB_Rating", type = "quantitative") %>%
+  vl_encode_y(type = "quantitative", aggregate = "count") %>%
+  vl_bin_x(maxbins=10) %>%
+  vl_mark_bar(cornerRadius = list(expr = "cornerRadius")) %>%
+  vl_add_parameter("cornerRadius", value = 0) %>% 
+  vl_bind_range_input("cornerRadius", min = 0, max = 10, step = 1)
+```
+
+#### Selection sliders
+
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_calculate(calculate = "year(datum.Year)", as = "Year") %>%
+  vl_add_point_selection("CylYr",  fields = c("Cylinders","Year")) %>%
+  vl_bind_range_input("CylYr", "Cylinders", min = 3, max = 8, step = 1) %>%
+  vl_bind_range_input("CylYr", "Year", min = 1969, max = 1981, step = 1) %>%
+  vl_mark_circle() %>%
+  vl_encode_x(field = "Horsepower", type = "quantitative") %>%
+  vl_encode_y(field = "Miles_per_Gallon", type = "quantitative") %>%
+  vl_encode_color(value = "grey") %>%
+  vl_condition_color(param = "CylYr", field = "Origin", type = "nominal") %>%
+  vl_encode_size(value = 50) %>%
+  vl_condition_size(param = "CylYr", value = 100)
+```
+
+#### Selection dropdown
+
+```{r dropdown-select}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_add_point_selection("org",fields = list("Origin")) %>%
+  vl_bind_select_input("org", options = list(NA,"Europe","Japan","USA")) %>%
+  vl_mark_point() %>%
+  vl_encode_x(field = "Horsepower", type = "quantitative") %>%
+  vl_encode_y(field = "Miles_per_Gallon", type = "quantitative") %>%
+  vl_encode_color(value = "grey") %>%
+  vl_condition_color(param = "org", field = "Cylinders", type = "ordinal")
+```
+
+
+## Multi-view display
+
+### Faceting / Small Multiple {.tabset}
+
+#### Row Facet
+
+```{r facet-row}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_mark_bar() %>%
+  vl_encode_x(field = "Horsepower", type = "quantitative") %>%
+  vl_bin_x(maxbins = 15) %>%
+  vl_encode_y(aggregate = "count", type = "quantitative") %>%
+  vl_facet_row(field = "Origin", type = "nominal")
+
+```
+
+#### Column Facet
+
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/population.json") %>%
+  vl_filter("datum.year == 2000") %>%
+  vl_calculate(as = "gender", calculate = 'datum.sex == 2 ? "Female" : "Male"') %>%
+  vl_encode_x(field = "gender", type = "nominal") %>%
+  vl_encode_y(field = "people", type = "quantitative", aggregate = "sum") %>%
+  vl_encode_color(field = "gender", type = "nominal") %>%
+  vl_scale_color(range = c("#EA98D2", "#659CCA")) %>%
+  vl_encode_column(field = "age", type = "ordinal", spacing = 10) %>%
+  vl_remove_axis_x() %>%
+  vl_axis_y(title = "population", grid = FALSE) %>%
+  vl_config_view(strokeWidth = 0) %>%
+  vl_mark_bar()%>% 
+  vl_config_axis(domainWidth = 1) %>%
+  vl_config_view(stroke = "transparent") %>%
+  vl_add_properties(width = 10)
+
+```
+
+
+#### Facetted layered plot
+
+```{r facet-layers}
+heatmap <- vl_chart() %>%
+  vl_encode_color(aggregate = "count", type = "Q") %>%
+  vl_scale_color(scheme = "darkred") %>%
+  vl_encode_x(field = "Cylinders:O") %>%
+  vl_scale_x(paddingInner = 0) %>%
+  vl_encode_y(field = "Year:O") %>%
+  vl_scale_x(paddingInner = 0) %>%
+  vl_mark_rect()
+
+text <- vl_chart() %>%
+  vl_encode_color(value = "white") %>%
+  vl_encode_x(field = "Cylinders:O") %>%
+  vl_encode_y(field = "Year:O") %>%
+  vl_encode_text(aggregate = "count", type = "Q") %>%
+  vl_mark_text(baseline = "middle")
+
+vl_layer(heatmap, text) %>%
+  vl_add_data_url("https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_facet_column(field = "Origin", type = "nominal") 
+```
+
+### Repeat and concatenation {.tabset}
+
+#### Horizontal concatenation
+
+```{r}
+bar_chart <- vl_chart() %>%
+  vl_mark_bar() %>%
+  vl_encode_x(field = "date:O", timeUnit = "month") %>%
+  vl_encode_y(field = "precipitation:Q", aggregate = "mean")
+
+point_chart <- vl_chart() %>%
+  vl_mark_point() %>%
+  vl_encode_x(field = "temp_min:Q", bin = TRUE) %>%
+  vl_encode_y(field = "temp_max:Q", bin = TRUE) %>%
+  vl_encode_size(aggregate = "count", type = "quantitative")
+  
+vl_hconcat(bar_chart, point_chart) %>% 
+  vl_add_data(url = "https://vega.github.io/vega-lite/data/weather.csv") %>%
+  vl_filter("datum.location === 'Seattle'")
+```
+
+#### Repeat wrap
+
+```{r repeat-wrap}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_mark_bar() %>%
+  vl_encode_x(field = list(`repeat` = "repeat"), type = "quantitative", bin = TRUE) %>%
+  vl_encode_y(aggregate = "count", type = "quantitative") %>%
+  vl_encode_color(field = "Origin", type = "nominal") %>%
+  vl_repeat_wrap("Horsepower", "Miles_per_Gallon", "Acceleration", "Displacement")
+```
+
+#### Repeat color
+
+```{r}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_mark_point() %>%
+  vl_encode_x(field = "Horsepower", type = "quantitative") %>%
+  vl_encode_y(field = "Miles_per_Gallon", type = "quantitative") %>%
+  vl_encode_color(field = list("repeat" = "column"), type = "nominal") %>%
+  vl_repeat_col("Origin", "Cylinders") %>%
+  vl_resolve_scale_color("independent")
+```
+
+
+### Interactive multiple-view {.tabset}
+
+#### Overview and detail
+
+#### Cross-filter
+
+#### Cross-filter scatterplot matrix
+
+```{r repeat-cross-filter}
+vl_chart() %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_mark_point() %>%
+  vl_encode_x(field = list("repeat" = "column"), type = "quantitative") %>%
+  vl_encode_y(field = list("repeat" = "row"), type = "quantitative") %>%
+  vl_add_interval_selection("brush", resolve = "global") %>%
+  vl_encode_color(value = "grey") %>%
+  vl_condition_color(param = "brush", field = "Origin", type = "nominal") %>%
+  vl_repeat_row("Horsepower", "Acceleration", "Miles_per_Gallon") %>%
+  vl_repeat_col("Miles_per_Gallon", "Acceleration", "Horsepower")
+```
+
+
