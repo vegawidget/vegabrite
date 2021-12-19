@@ -7,13 +7,15 @@
 NULL
 
 #' @rdname vlbuildr-deprecated
+#' @export
 vl_facet_wrap <- function(...) {
-  .Deprecated('vl_facet', package = 'vlbuildr', "vl_facet_wrap has been replaced with vl_facet")
+  .Deprecated('vl_facet', package = 'vlbuildr', "vl_facet_wrap has been replaced with vl_facet and will be removed in future package versions")
   vl_facet(...)
 }
 
 #' @rdname vlbuildr-deprecated
+#' Export
 vl_encode_wrap <- function(...) {
-  .Deprecated('vl_encode_facet', package = 'vlbuildr', "vl_encode_wrap has been replaced with vl_encode_facet")
+  .Deprecated('vl_encode_facet', package = 'vlbuildr', "vl_encode_wrap has been replaced with vl_encode_facet and will be removed in future package versions")
   vl_facet(...)
 }
