@@ -12,7 +12,7 @@
 }
 
 .add_facet.vegaspec_facet <- function(spec, obj, ref, .type, columns = NULL) {
-  if (.type == "wrap" && is.null(columns)) {
+  if (.type == "facet" && is.null(columns)) {
     columns <- obj$columns
     obj$columns <- NULL
   }
@@ -38,7 +38,7 @@
   spec <- spec[keep]
   spec$spec <- old_spec[move]
   
-  if (.type == "wrap" && is.null(columns)) {
+  if (.type == "facet" && is.null(columns)) {
     columns <- obj$columns
     obj$columns <- NULL
   }
@@ -64,7 +64,7 @@
   spec <- spec[keep]
   spec$spec <- old_spec[move]
 
-  if (.type == "wrap" && is.null(columns)) {
+  if (.type == "facet" && is.null(columns)) {
     columns <- obj$columns
     obj$columns <- NULL
   }
@@ -91,5 +91,5 @@
 }
 
 .add_facet_wrap <- function(spec, ...) {
-  .add_facet(spec, ..., .type = "wrap")
+  .add_facet(spec, ..., .type = "facet")
 }

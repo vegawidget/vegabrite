@@ -11,13 +11,11 @@ knitr::opts_chunk$set(
 )
 ```
 
+Most of these examples are adapted from the [Vega-Lite example gallery](https://vega.github.io/vega-lite/examples/).See that example gallery for more examples of plots that can be made with Vega-Lite and thus likely can be built with `vlbuildr`.
+
 ```{r}
 library (vlbuildr)
-
-knitr::knit_hooks$get("output")
 ```
-
-Most of these examples are adapted from the [Vega-Lite example gallery](https://vega.github.io/vega-lite/examples/).See that example gallery for more examples of plots that can be made with Vega-Lite and thus likely can be built with `vlbuildr`.
 
 
 ## Single-view plots
@@ -485,28 +483,41 @@ vl_chart() %>%
   vl_bin_x(maxbins = 15) %>%
   vl_encode_y(aggregate = "count", type = "quantitative") %>%
   vl_facet_row(field = "Origin", type = "nominal")
+  # Alternatively could use (will change how facet added to underlying spec):
+  # vl_encode_row('Origin:N') 
 
 ```
 
 #### Column Facet
 
-```{r}
+```{r facet-column}
 vl_chart() %>%
-  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/population.json") %>%
-  vl_filter("datum.year == 2000") %>%
-  vl_calculate(as = "gender", calculate = 'datum.sex == 2 ? "Female" : "Male"') %>%
-  vl_encode_x(field = "gender", type = "nominal") %>%
-  vl_encode_y(field = "people", type = "quantitative", aggregate = "sum") %>%
-  vl_encode_color(field = "gender", type = "nominal") %>%
-  vl_scale_color(range = c("#EA98D2", "#659CCA")) %>%
-  vl_encode_column(field = "age", type = "ordinal", spacing = 10) %>%
-  vl_remove_axis_x() %>%
-  vl_axis_y(title = "population", grid = FALSE) %>%
-  vl_config_view(strokeWidth = 0) %>%
-  vl_mark_bar()%>% 
-  vl_config_axis(domainWidth = 1) %>%
-  vl_config_view(stroke = "transparent") %>%
-  vl_add_properties(width = 10)
+  vl_add_data(url = 'https://vega.github.io/vega-editor/app/data/barley.json') %>%
+  vl_mark_bar() %>%
+  vl_encode_y('variety:N') %>%
+  vl_encode_x('yield:Q', aggregate = "sum") %>%
+  vl_encode_color('site:N') %>%
+  vl_encode_column("year:N")
+  # Alternatively could use (will change how facet added to underlying spec):
+  # vl_facet_column('year:N') 
+
+```
+
+
+
+#### Facet Wrap
+
+```{r facet-wrap}
+vl_chart() %>%
+  vl_add_data(url = 'https://vega.github.io/vega-editor/app/data/barley.json') %>%
+  vl_mark_point() %>%
+  vl_encode_y('variety:N', sort = '-x') %>%
+  vl_encode_x('yield:Q', aggregate = "median") %>%
+  vl_scale_x(zero = FALSE) %>%
+  vl_encode_color('year:N') %>%
+  vl_encode_facet("site:O", columns = 2, sort = list(op = 'median', field = 'yield')) 
+  # Alternatively could use (will change how facet added to underlying spec):
+  #vl_facet("site:O", columns = 2, sort = list(op = 'median', field = 'yield')) 
 
 ```
 

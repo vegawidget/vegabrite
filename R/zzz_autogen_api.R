@@ -17285,9 +17285,9 @@ vl_encode_column <- function(spec, field = NULL, type = NULL, aggregate = NULL, 
   .add_encoding(spec, obj, "#/definitions/FacetEncodingFieldDef" , encoding = "column")
 }
 
-#' vl_encode_wrap
+#' vl_encode_facet
 #' 
-#' Add faceting by wrap to a vega-lite spec.
+#' Add faceting by facet to a vega-lite spec.
 #' @param spec An input vega-lite spec
 #' @param aggregate Aggregation function for the field (e.g., `"mean"`, `"sum"`, `"median"`,
 #' `"min"`, `"max"`, `"count"`).
@@ -17504,16 +17504,15 @@ vl_encode_column <- function(spec, field = NULL, type = NULL, aggregate = NULL, 
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than `spec`. Objects can be of type: FacetEncodingFieldDef
 #' @return A modified Vega-Lite Spec
 #' @export
-vl_encode_wrap <- function(spec, field = NULL, type = NULL, aggregate = NULL, align = NULL, bandPosition = NULL, bin = NULL, bounds = NULL, center = NULL, columns = NULL, header = NULL, sort = NULL, spacing = NULL, timeUnit = NULL, title = NULL, .object = NULL) {
+vl_encode_facet <- function(spec, field = NULL, type = NULL, aggregate = NULL, align = NULL, bandPosition = NULL, bin = NULL, bounds = NULL, center = NULL, columns = NULL, header = NULL, sort = NULL, spacing = NULL, timeUnit = NULL, title = NULL, .object = NULL) {
   obj <- .make_object(NULL, NULL)
-  .add_encoding(spec, obj, "#/definitions/FacetEncodingFieldDef" , encoding = "wrap")
+  .add_encoding(spec, obj, "#/definitions/FacetEncodingFieldDef" , encoding = "facet")
 }
 
-#' vl_facet_wrap
+#' vl_facet
 #' 
-#' Add wrap facetting to a vega-lite spec.
+#' Add wrapped facetting to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param columns number of columns to add
 #' @param aggregate Aggregation function for the field (e.g., `"mean"`, `"sum"`, `"median"`,
 #' `"min"`, `"max"`, `"count"`).
 #' 
@@ -17671,10 +17670,11 @@ vl_encode_wrap <- function(spec, field = NULL, type = NULL, aggregate = NULL, al
 #' 
 #' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html)
 #' documentation.
+#' @param columns number of columns to add
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than `spec`. Objects can be of type: FacetFieldDef
 #' @return A modified Vega-Lite Spec
 #' @export
-vl_facet_wrap <- function(spec, columns = 2, aggregate = NULL, bandPosition = NULL, bin = NULL, field = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL, type = NULL, .object = NULL){
+vl_facet <- function(spec, field = NULL, type = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, header = NULL, sort = NULL, timeUnit = NULL, title = NULL, columns = 2, .object = NULL){
   obj <- .make_object(NULL, "columns")
   .add_facet_wrap(spec, obj, "#/definitions/FacetFieldDef", columns = columns)
 }

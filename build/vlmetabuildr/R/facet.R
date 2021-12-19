@@ -4,7 +4,7 @@ create_facet_functions <- function(schema) {
     create_facet_type(schema, "column"),
     create_facet_encoding(schema, "row"),
     create_facet_encoding(schema, "column"),
-    create_facet_encoding(schema, "wrap"),
+    create_facet_encoding(schema, "facet"),
     create_facet_wrap(schema)
   )
 }
@@ -33,7 +33,7 @@ create_facet_encoding <- function(schema, type) {
 
 create_facet_wrap <- function(schema) {
   reference <- glue("#/definitions/FacetFieldDef")
-  suffix <- "facet_wrap"
+  suffix <- "facet"
 
   spec_doc <- glue("#' @param spec An input vega-lite spec")
   object_doc <- get_object_doc(schema, reference)
@@ -42,11 +42,11 @@ create_facet_wrap <- function(schema) {
 
   docs <- make_docs_helper(
     glue("vl_{suffix}"),
-    glue::glue("Add wrap facetting to a vega-lite spec."),
+    glue::glue("Add wrapped facetting to a vega-lite spec."),
     paste(
       spec_doc, 
-      extra_doc, 
       param_docs, 
+      extra_doc,
       object_doc,
       sep = "\n")
   )
@@ -64,11 +64,13 @@ create_facet_wrap <- function(schema) {
   )
 
   ## Get args
+  param_names <- unique(c(c("field","type"), param_names))
+
   args <- paste(param_names, "NULL", sep = " = ")
   arg_list <- paste(
     c("spec", 
-      "columns = 2", 
       args,
+      "columns = 2",
       ".object = NULL"), 
     collapse = ", ")
 
