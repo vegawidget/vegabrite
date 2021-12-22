@@ -18,6 +18,9 @@
 \alias{vl_sort_theta}
 \alias{vl_sort_x}
 \alias{vl_sort_y}
+\alias{vl_sort_facet}
+\alias{vl_sort_row}
+\alias{vl_sort_column}
 \title{#' Add sorting to an encoding}
 \usage{
 vl_sort_angle(spec, value)
@@ -51,6 +54,12 @@ vl_sort_theta(spec, value)
 vl_sort_x(spec, value)
 
 vl_sort_y(spec, value)
+
+vl_sort_facet(spec, value)
+
+vl_sort_row(spec, value)
+
+vl_sort_column(spec, value)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

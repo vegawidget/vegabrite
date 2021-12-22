@@ -19,8 +19,8 @@ create_mark <- function(mark, schema) {
 create_mark_composite <- function(mark, schema) {
   make_function(glue::glue("#/definitions/{mark}Def"),
     schema,
-    glue::glue("mark_{mark}"),
+    glue::glue("mark_{tolower(mark)}"),
     ".add_mark",
-    override_args = list(type = mark)
+    override_args = list(type = tolower(mark))
   )
 }

@@ -18,6 +18,9 @@
 \alias{vl_sort_theta_by_field}
 \alias{vl_sort_x_by_field}
 \alias{vl_sort_y_by_field}
+\alias{vl_sort_facet_by_field}
+\alias{vl_sort_row_by_field}
+\alias{vl_sort_column_by_field}
 \title{Add sort transform by field to encoding}
 \usage{
 vl_sort_angle_by_field(
@@ -135,6 +138,30 @@ vl_sort_theta_by_field(
 vl_sort_x_by_field(spec, field = NULL, op = NULL, order = NULL, .object = NULL)
 
 vl_sort_y_by_field(spec, field = NULL, op = NULL, order = NULL, .object = NULL)
+
+vl_sort_facet_by_field(
+  spec,
+  field = NULL,
+  op = NULL,
+  order = NULL,
+  .object = NULL
+)
+
+vl_sort_row_by_field(
+  spec,
+  field = NULL,
+  op = NULL,
+  order = NULL,
+  .object = NULL
+)
+
+vl_sort_column_by_field(
+  spec,
+  field = NULL,
+  op = NULL,
+  order = NULL,
+  .object = NULL
+)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}

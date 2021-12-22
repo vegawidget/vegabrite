@@ -396,14 +396,115 @@ vl_chart(width = 300, height = 100) %>%
 
 ### Circular plots {.tabset}
 
+#### Pie chart 
+
+```{r}
+vl_chart(mtcars) %>%
+  vl_mark_arc() %>%
+  vl_encode_angle( aggregate = 'count') %>%
+  vl_encode_color('cyl:N')
+```
+
+#### Donut Chart
+
+```{r}
+vl_chart(mtcars) %>%
+  vl_mark_arc(innerRadius = 50) %>%
+  vl_encode_angle( aggregate = 'count') %>%
+  vl_encode_color('cyl:N')
+```
+
+#### Pie chart with labels
+
+```{r}
+pie_layer <- vl_chart() %>% 
+  vl_mark_arc(outerRadius = 80)  %>%
+  vl_encode_color('cyl:N')
+
+text_layer <- vl_chart() %>% 
+  vl_mark_text(radius = 90) %>%
+  vl_encode_text('cyl:N')
+ 
+vl_layer(pie_layer, text_layer) %>%
+  vl_add_data(mtcars) %>%
+  vl_encode_theta( aggregate = 'count', stack = TRUE)
+```
+
+
+
 
 ### Advanced Calculations {.tabset}
 
-### Error bars and bands {.tabset}
 
-### Box plots {.tabset}
+### Composite marks: Boxplots, error bars, and error bands {.tabset}
+
+#### Box plot
+
+```{r}
+vl_chart(data = 'https://vega.github.io/editor/data/penguins.json') %>%
+  vl_mark_boxplot() %>%
+  vl_encode_x('Species:N') %>%
+  vl_encode_y('Body Mass (g)', type = 'quantitative') %>%
+  vl_scale_y(zero = FALSE) %>%
+  vl_encode_color('Species:N', legend = NA)
+  
+```
+
+#### Error bars with confidence interval
+
+```{r error-bar-ci}
+points <- vl_chart() %>%
+  vl_mark_point() %>%
+  vl_encode_x('yield:Q', aggregate = 'mean', title = 'Barley Yield') %>% 
+  vl_scale_x(zero = FALSE) %>%
+  vl_encode_color(value = 'black')
+  
+ci <- vl_chart() %>%
+  vl_mark_errorbar(extent = 'ci') %>%
+  vl_encode_x('yield:Q', title = 'Barley Yield') 
+
+vl_layer(points, ci) %>%
+  vl_add_data(url = 'https://vega.github.io/vega-editor/app/data/barley.json') %>%
+  vl_encode_y('variety:O') 
+```
+
+#### Error bars with standard deviation
+
+```{r error-bar-sd}
+points <- vl_chart() %>%
+  vl_mark_point() %>%
+  vl_encode_x('yield:Q', aggregate = 'mean', title = 'Barley Yield') %>% 
+  vl_scale_x(zero = FALSE) %>%
+  vl_encode_color(value = 'black')
+  
+ci <- vl_chart() %>%
+  vl_mark_errorbar(extent = 'stdev') %>%
+  vl_encode_x('yield:Q', title = 'Barley Yield') 
+
+vl_layer(points, ci) %>%
+  vl_add_data(url = 'https://vega.github.io/vega-editor/app/data/barley.json') %>%
+  vl_encode_y('variety:O') 
+```
+#### Line chart with confidence interval band
+
+```{r error-band}
+line <- vl_chart() %>%
+  vl_mark_line() %>%
+  vl_encode_y('Miles_per_Gallon:Q', aggregate = 'mean')
+  
+ci <- vl_chart() %>%
+  vl_mark_errorband(extent = 'ci') %>%
+  vl_encode_y('Miles_per_Gallon:Q', title = 'Mean of Miles per Gallon (95% CIs)')
+
+vl_layer(line, ci) %>%
+  vl_add_data(url = 'https://vega.github.io/vega-editor/app/data/cars.json') %>%
+  vl_encode_x('Year', timeUnit = 'year') 
+```
+
 
 ### Layered Plots {.tabset}
+
+
 
 ### Maps & Geographic Displays { .tabset}
 
@@ -515,9 +616,11 @@ vl_chart() %>%
   vl_encode_x('yield:Q', aggregate = "median") %>%
   vl_scale_x(zero = FALSE) %>%
   vl_encode_color('year:N') %>%
-  vl_encode_facet("site:O", columns = 2, sort = list(op = 'median', field = 'yield')) 
+  vl_encode_facet("site:O", columns = 2) %>%
+  vl_sort_facet_by_field(op = 'median', field = 'yield')
   # Alternatively could use (will change how facet added to underlying spec):
-  #vl_facet("site:O", columns = 2, sort = list(op = 'median', field = 'yield')) 
+  # vl_facet("site:O", columns = 2, sort = list(op = 'median', field = 'yield'))S
+  
 
 ```
 

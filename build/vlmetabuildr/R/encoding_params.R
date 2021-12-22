@@ -25,7 +25,12 @@ get_enc_with_prop <- function(schema, prop) {
         prop %in% prop_names
       }
     )
-  encs[with_prop]
+  out <- encs[with_prop]
+  
+  if (prop %in% names(props(glue("#/definitions/FacetEncodingFieldDef"), schema))) {
+    out <- c(out, c("facet","row","column"))
+  }
+  out
 }
 
 create_function_for_encode_param <- function(enc, param, reference, schema) {

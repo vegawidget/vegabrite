@@ -37,6 +37,9 @@
 \alias{vl_bin_y2}
 \alias{vl_bin_yError}
 \alias{vl_bin_yError2}
+\alias{vl_bin_facet}
+\alias{vl_bin_row}
+\alias{vl_bin_column}
 \title{Add bin to encoding}
 \usage{
 vl_bin_angle(
@@ -550,6 +553,51 @@ vl_bin_yError(
 )
 
 vl_bin_yError2(
+  spec,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL,
+  .object = NULL
+)
+
+vl_bin_facet(
+  spec,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL,
+  .object = NULL
+)
+
+vl_bin_row(
+  spec,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL,
+  .object = NULL
+)
+
+vl_bin_column(
   spec,
   anchor = NULL,
   base = NULL,

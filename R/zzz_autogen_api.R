@@ -6350,7 +6350,7 @@ vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, aria = NULL, aria
   .add_mark(spec, obj, "#/definitions/MarkDef")
 }
 
-#' vl_mark_BoxPlot
+#' vl_mark_boxplot
 #' 
 #'
 #' @param spec An input vega-lite spec
@@ -6399,12 +6399,12 @@ vl_mark_geoshape <- function(spec, align = NULL, angle = NULL, aria = NULL, aria
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than `spec`. Objects can be of type: BoxPlotDef
 #' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_BoxPlot <- function(spec, box = NULL, clip = NULL, color = NULL, extent = NULL, median = NULL, opacity = NULL, orient = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL, .object = NULL) {
-  obj <- .make_object(list(type = "BoxPlot"), NULL)
+vl_mark_boxplot <- function(spec, box = NULL, clip = NULL, color = NULL, extent = NULL, median = NULL, opacity = NULL, orient = NULL, outliers = NULL, rule = NULL, size = NULL, ticks = NULL, .object = NULL) {
+  obj <- .make_object(list(type = "boxplot"), NULL)
   .add_mark(spec, obj, "#/definitions/BoxPlotDef")
 }
 
-#' vl_mark_ErrorBar
+#' vl_mark_errorbar
 #' 
 #'
 #' @param spec An input vega-lite spec
@@ -6443,12 +6443,12 @@ vl_mark_BoxPlot <- function(spec, box = NULL, clip = NULL, color = NULL, extent 
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than `spec`. Objects can be of type: ErrorBarDef
 #' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_ErrorBar <- function(spec, clip = NULL, color = NULL, extent = NULL, opacity = NULL, orient = NULL, rule = NULL, size = NULL, thickness = NULL, ticks = NULL, .object = NULL) {
-  obj <- .make_object(list(type = "ErrorBar"), NULL)
+vl_mark_errorbar <- function(spec, clip = NULL, color = NULL, extent = NULL, opacity = NULL, orient = NULL, rule = NULL, size = NULL, thickness = NULL, ticks = NULL, .object = NULL) {
+  obj <- .make_object(list(type = "errorbar"), NULL)
   .add_mark(spec, obj, "#/definitions/ErrorBarDef")
 }
 
-#' vl_mark_ErrorBand
+#' vl_mark_errorband
 #' 
 #'
 #' @param spec An input vega-lite spec
@@ -6508,8 +6508,8 @@ vl_mark_ErrorBar <- function(spec, clip = NULL, color = NULL, extent = NULL, opa
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than `spec`. Objects can be of type: ErrorBandDef
 #' @return A modified Vega-Lite Spec
 #' @export
-vl_mark_ErrorBand <- function(spec, band = NULL, borders = NULL, clip = NULL, color = NULL, extent = NULL, interpolate = NULL, opacity = NULL, orient = NULL, tension = NULL, .object = NULL) {
-  obj <- .make_object(list(type = "ErrorBand"), NULL)
+vl_mark_errorband <- function(spec, band = NULL, borders = NULL, clip = NULL, color = NULL, extent = NULL, interpolate = NULL, opacity = NULL, orient = NULL, tension = NULL, .object = NULL) {
+  obj <- .make_object(list(type = "errorband"), NULL)
   .add_mark(spec, obj, "#/definitions/ErrorBandDef")
 }
 
@@ -13697,6 +13697,27 @@ vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divi
   .add_bin_to_encoding(spec, obj, "#/definitions/BinParams" , encoding = "yError2")
 }
 
+#' @name bin_encoding
+#' @export
+vl_bin_facet <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_bin_to_encoding(spec, obj, "#/definitions/BinParams" , encoding = "facet")
+}
+
+#' @name bin_encoding
+#' @export
+vl_bin_row <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_bin_to_encoding(spec, obj, "#/definitions/BinParams" , encoding = "row")
+}
+
+#' @name bin_encoding
+#' @export
+vl_bin_column <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_bin_to_encoding(spec, obj, "#/definitions/BinParams" , encoding = "column")
+}
+
 #' Add impute to encoding
 #' 
 #' Add impute parameters to an encoding
@@ -15671,6 +15692,27 @@ vl_aggregate_yError2 <- function(spec, aggregate = c('argmax', 'argmin', 'averag
   .add_aggregate_to_encoding(spec, aggregate, "#/definitions/Aggregate" , encoding = "yError2")
 }
 
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_facet <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'product', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, "#/definitions/Aggregate" , encoding = "facet")
+}
+
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_row <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'product', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, "#/definitions/Aggregate" , encoding = "row")
+}
+
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_column <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'product', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, "#/definitions/Aggregate" , encoding = "column")
+}
+
 #' #' Add sorting to an encoding
 #' 
 #' #' Sort an encoding in "ascending" or "descending" order, or by given array
@@ -15775,6 +15817,24 @@ vl_sort_x <- function(spec, value) {
 #' @export
 vl_sort_y <- function(spec, value) {
   .add_sort_to_encoding(spec, value, "#/definitions/Sort", encoding = "y")
+}
+
+#' @name sort_encoding
+#' @export
+vl_sort_facet <- function(spec, value) {
+  .add_sort_to_encoding(spec, value, "#/definitions/Sort", encoding = "facet")
+}
+
+#' @name sort_encoding
+#' @export
+vl_sort_row <- function(spec, value) {
+  .add_sort_to_encoding(spec, value, "#/definitions/Sort", encoding = "row")
+}
+
+#' @name sort_encoding
+#' @export
+vl_sort_column <- function(spec, value) {
+  .add_sort_to_encoding(spec, value, "#/definitions/Sort", encoding = "column")
 }
 
 #' Add sort transform by field to encoding
@@ -15916,6 +15976,27 @@ vl_sort_y_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .obj
   .add_sort_to_encoding(spec, obj, "#/definitions/EncodingSortField" , encoding = "y")
 }
 
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_facet_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_sort_to_encoding(spec, obj, "#/definitions/EncodingSortField" , encoding = "facet")
+}
+
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_row_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_sort_to_encoding(spec, obj, "#/definitions/EncodingSortField" , encoding = "row")
+}
+
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_column_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_sort_to_encoding(spec, obj, "#/definitions/EncodingSortField" , encoding = "column")
+}
+
 #' Add sort transform by encoding to encoding
 #' 
 #' Add sort by encoding parameters to an encoding
@@ -16041,6 +16122,27 @@ vl_sort_x_by_encoding <- function(spec, encoding = NULL, order = NULL, .object =
 vl_sort_y_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL) {
   obj <- .make_object(NULL, NULL)
   .add_sort_to_encoding(spec, obj, "#/definitions/SortByEncoding" , encoding = "y")
+}
+
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_facet_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_sort_to_encoding(spec, obj, "#/definitions/SortByEncoding" , encoding = "facet")
+}
+
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_row_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_sort_to_encoding(spec, obj, "#/definitions/SortByEncoding" , encoding = "row")
+}
+
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_column_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_sort_to_encoding(spec, obj, "#/definitions/SortByEncoding" , encoding = "column")
 }
 
 #' @name axis_encoding

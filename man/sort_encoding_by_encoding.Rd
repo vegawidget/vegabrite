@@ -18,6 +18,9 @@
 \alias{vl_sort_theta_by_encoding}
 \alias{vl_sort_x_by_encoding}
 \alias{vl_sort_y_by_encoding}
+\alias{vl_sort_facet_by_encoding}
+\alias{vl_sort_row_by_encoding}
+\alias{vl_sort_column_by_encoding}
 \title{Add sort transform by encoding to encoding}
 \usage{
 vl_sort_angle_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
@@ -76,6 +79,12 @@ vl_sort_theta_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 vl_sort_x_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 
 vl_sort_y_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
+
+vl_sort_facet_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
+
+vl_sort_row_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
+
+vl_sort_column_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
