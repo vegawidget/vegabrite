@@ -435,6 +435,44 @@ vl_layer(pie_layer, text_layer) %>%
 
 ### Advanced Calculations {.tabset}
 
+#### Rolling average
+
+```{r}
+points <- vl_chart() %>% 
+  vl_mark_point() %>%
+  vl_encode_y(field = 'temp_max', 
+              title = 'Max Temperature')
+
+line <- vl_chart() %>% 
+  vl_mark_line(color = 'red', size = 3) %>%
+  vl_encode_y(field = 'rolling_mean', 
+              title = 'Rolling Mean of Max Temperature')
+
+vl_layer(points, line) %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/seattle-weather.csv") %>%
+  vl_window(window = list(vl$Window(op = "mean", field = "temp_max", as = "rolling_mean")), frame = list(15,15)) %>%
+  vl_encode_x('date:T', title = 'Date') %>%
+  vl_encode_y(type = 'quantitative') %>%
+  vl_axis_y(title = 'Max Temperature and Rolling Mean') %>%
+  vl_add_properties(width = 400, height = 300)
+```
+
+#### Loess transform
+
+```{r}
+points <- vl_chart() %>% 
+  vl_mark_point(filled = TRUE) %>%
+  vl_encode_y('IMDB_Rating:Q') 
+
+line <- vl_chart() %>% 
+  vl_loess(loess = 'IMDB_Rating', on = 'Rotten_Tomatoes_Rating') %>%
+  vl_mark_line(color = 'firebrick') %>%
+  vl_encode_y('IMDB_Rating:Q') 
+
+vl_layer(points, line) %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/movies.json") %>%
+  vl_encode_x('Rotten_Tomatoes_Rating:Q')
+```
 
 ### Composite marks: Boxplots, error bars, and error bands {.tabset}
 
@@ -501,12 +539,52 @@ vl_layer(line, ci) %>%
   vl_encode_x('Year', timeUnit = 'year') 
 ```
 
-
-### Layered Plots {.tabset}
-
-
-
 ### Maps & Geographic Displays { .tabset}
+
+#### Chloropleth
+
+```{r chloropleth}
+vl_chart(width = 500, height = 300) %>%
+  vl_add_data(
+    url = 'https://vega.github.io/vega-editor/app/data/us-10m.json',
+    format = list(type = 'topojson', feature = 'counties')
+  ) %>%
+  vl_lookup(
+    lookup = 'id', 
+    from = list(
+      data = list(url = 'https://vega.github.io/vega-editor/app/data/unemployment.tsv'),
+      key = 'id', 
+      fields = list('rate')
+    )
+  ) %>%
+  vl_add_properties(projection = list(type = 'albersUsa')) %>%
+  vl_mark_geoshape() %>%
+  vl_encode_color('rate:Q')
+```
+#### Points overlayed on U.S. map
+
+```{r dots-map}
+map <- vl_chart(projection = list(type = 'albersUsa')) %>%
+  vl_add_data(
+    url = 'https://vega.github.io/vega-editor/app/data/us-10m.json',
+    format = list(type = 'topojson', feature = 'states')
+  ) %>%
+  vl_mark_geoshape(fill = 'lightgray', stroke = 'white') 
+
+points <- vl_chart(projection = list(type = 'albersUsa')) %>%
+  vl_add_data(
+    url = 'https://vega.github.io/vega-editor/app/data/airports.csv',
+  ) %>%
+  vl_mark_circle() %>%
+  vl_encode_longitude('longitude:Q') %>%
+  vl_encode_latitude('latitude:Q') %>%
+  vl_encode_size(value = 10) %>%
+  vl_encode_color(value = 'steelblue')
+
+vl_layer(map,points) %>%
+  vl_add_properties(width = 500, height = 300)
+
+```
 
 
 ### Interactive {.tabset}
@@ -583,9 +661,7 @@ vl_chart() %>%
   vl_encode_x(field = "Horsepower", type = "quantitative") %>%
   vl_bin_x(maxbins = 15) %>%
   vl_encode_y(aggregate = "count", type = "quantitative") %>%
-  vl_facet_row(field = "Origin", type = "nominal")
-  # Alternatively could use (will change how facet added to underlying spec):
-  # vl_encode_row('Origin:N') 
+  vl_encode_row(field = "Origin", type = "nominal")
 
 ```
 
@@ -599,8 +675,6 @@ vl_chart() %>%
   vl_encode_x('yield:Q', aggregate = "sum") %>%
   vl_encode_color('site:N') %>%
   vl_encode_column("year:N")
-  # Alternatively could use (will change how facet added to underlying spec):
-  # vl_facet_column('year:N') 
 
 ```
 
@@ -618,9 +692,6 @@ vl_chart() %>%
   vl_encode_color('year:N') %>%
   vl_encode_facet("site:O", columns = 2) %>%
   vl_sort_facet_by_field(op = 'median', field = 'yield')
-  # Alternatively could use (will change how facet added to underlying spec):
-  # vl_facet("site:O", columns = 2, sort = list(op = 'median', field = 'yield'))S
-  
 
 ```
 
@@ -700,9 +771,32 @@ vl_chart() %>%
 
 #### Overview and detail
 
-#### Cross-filter
+Brush on the bottom plot to zoom in on the top plot.
+
+```{r}
+detail <- vl_chart(width = 480) %>%
+  vl_mark_area() %>%
+  vl_encode_x('date:T') %>%
+  vl_scale_x(domain = list(param = 'brush')) %>%
+  vl_axis_x(title = '') %>%
+  vl_encode_y('price:Q')
+
+overview <- vl_chart(width = 480, height = 60) %>%
+  vl_mark_area() %>%
+  vl_add_interval_selection(name = 'brush', encodings = list('x')) %>%
+  vl_encode_x('date:T') %>%
+  vl_encode_y('price:Q') %>%
+  vl_axis_y(tickCount = 3, grid = FALSE)
+
+
+vl_vconcat(detail, overview) %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/sp500.csv") 
+
+```
 
 #### Cross-filter scatterplot matrix
+
+Select an area on any sub-plot to color points on all plots.
 
 ```{r repeat-cross-filter}
 vl_chart() %>%
