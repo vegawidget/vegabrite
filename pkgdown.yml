@@ -1,9 +1,12 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1
+pkgdown: 2.0.1
 pkgdown_sha: ~
 articles:
-  articles/examples: examples.html
-  articles/introduction: introduction.html
+  example_gallery: example_gallery.html
+  introduction: introduction.html
   design: design.html
-last_built: 2021-11-14T18:10Z
+last_built: 2021-12-23T23:24Z
+urls:
+  reference: https://vegawidget.github.io/vlbuildr/reference
+  article: https://vegawidget.github.io/vlbuildr/articles
 

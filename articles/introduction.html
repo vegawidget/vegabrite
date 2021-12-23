@@ -4,120 +4,113 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="vlbuildr">
 <title>How to make a plot using vlbuildr • vlbuildr</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="How to make a plot using vlbuildr">
-<meta property="og:description" content="">
-<meta name="twitter:card" content="summary">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="How to make a plot using vlbuildr">
+<meta property="og:description" content="vlbuildr">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body>
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">vlbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
-      </span>
-    </div>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    
+    <a class="navbar-brand me-2" href="../index.html">vlbuildr</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9000</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-2">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
-<li>
-  <a href="../reference/index.html">Reference</a>
+<li class="nav-item">
+  <a class="nav-link" href="../articles/articles/introduction.html">Getting Started</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/design.html">Design</a>
-    </li>
-    <li>
-      <a href="../articles/examples.html">Examples</a>
-    </li>
-    <li>
-      <a href="../articles/introduction.html">How to make a plot using vlbuildr</a>
-    </li>
-  </ul>
+<li class="nav-item">
+  <a class="nav-link" href="../articles/design.html">Design</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="../articles/articles/example_gallery.html">Example Gallery</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/vegawidget/vlbuildr">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
-<!--/.nav-collapse -->
+
+    
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
-
-      
-
-      </header><script src="introduction_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="introduction_files/vega-5.9.0/vega.min.js"></script><script src="introduction_files/vega-lite-4.0.2/vega-lite.min.js"></script><link href="introduction_files/vega-embed-6.2.0/vega-embed.css" rel="stylesheet">
-<script src="introduction_files/vega-embed-6.2.0/vega-embed.js"></script><script src="introduction_files/vegawidget-binding-0.3.1/vegawidget.js"></script><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1>How to make a plot using vlbuildr</h1>
-                        <h4 class="author">Alicia Schep</h4>
+</nav><div class="container template-article">
+<script src="introduction_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="introduction_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="introduction_files/vega-5.20.0/vega.min.js"></script><script src="introduction_files/vega-lite-5.1.0/vega-lite.min.js"></script><link href="introduction_files/vega-embed-6.17.0/vega-embed.css" rel="stylesheet">
+<script src="introduction_files/vega-embed-6.17.0/vega-embed.min.js"></script><script src="introduction_files/vegawidget-binding-0.3.3.9001/vegawidget.js"></script><div class="row">
+  <main id="main"><div class="page-header">
+      <img src="" class="logo" alt=""><h1>How to make a plot using vlbuildr</h1>
             
-            <h4 class="date">2020-01-30</h4>
       
       
-      <div class="hidden name"><code>introduction.Rmd</code></div>
-
+      <div class="d-none name"><code>introduction.Rmd</code></div>
     </div>
 
     
     
-<p>This vignette covers the basics of how to make a chart using <code>vlbuildr</code>.For more about the design philosophy of the package, see the <a href="https://vegawidget.github.io/vlbuildr/articles/design.html">design vignette</a>. For example charts see the <a href="https://vegawidget.github.io/vlbuildr/articles/examples.html">examples vignette</a>.</p>
-<div id="the-three-basic-components" class="section level1">
-<h1 class="hasAnchor">
-<a href="#the-three-basic-components" class="anchor"></a>The three basic components</h1>
+<p>This vignette covers the basics of how to make a chart using <code>vlbuildr</code>.For more about the design philosophy of the package, see the <a href="https://vegawidget.github.io/vlbuildr/articles/design.html">design vignette</a>. For example charts see the <a href="https://vegawidget.github.io/vlbuildr/articles/articles/example_gallery.html">examples vignette</a>. For much more information about what is possible with Vega-Lite, see the <a href="https://vega.github.io/vega-lite/docs/" class="external-link">Vega-Lite documentation</a>.</p>
+<div class="section level2">
+<h2 id="the-basics-data-mark-encoding">The basics: data + mark + encoding<a class="anchor" aria-label="anchor" href="#the-basics-data-mark-encoding"></a>
+</h2>
 <p>All plots require <strong>data</strong>, a <strong>mark</strong> and <strong>encodings</strong>. To intialize a chart you use</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(vlbuildr)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>()</a></code></pre></div>
-<div id="htmlwidget-64ef475f384b83c4c53f" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-64ef475f384b83c4c53f">{"x":{
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://vegawidget.github.io/vlbuildr/index.html">vlbuildr</a></span><span class="op">)</span>
+<span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-37e2f4579f44905d9bcb" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-37e2f4579f44905d9bcb">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json"
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json"
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script><p>Without the other components it will be empty! But this output can be piped into commands to add the other components. Some components can also be added directly via that function call.</p>
-<div id="data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data" class="anchor"></a>data</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars)</a></code></pre></div>
-<p></p>
-<div id="htmlwidget-3bfe1b07507d047e7bd7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3bfe1b07507d047e7bd7">{"x":{
+<div class="section level3">
+<h3 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
+</h3>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-f906d2c9874f97805290" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f906d2c9874f97805290">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
       "values": [
         {
@@ -572,14 +565,15 @@
     }
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
-},"evals":[],"jsHooks":[]}</script> Still empty! Need to set mark and encoding
+},"evals":[],"jsHooks":[]}</script><p>Still empty! Need to set mark and encoding</p>
 <p>We could also have passed the data directly to <code>vl_chart</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>(mtcars) </a></code></pre></div>
-<div id="htmlwidget-092d9432004626a1510b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-092d9432004626a1510b">{"x":{
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> </code></pre></div>
+<div id="htmlwidget-362de4d656fdbb9ff8b2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-362de4d656fdbb9ff8b2">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -1033,25 +1027,26 @@
         }
       ]
     },
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json"
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json"
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script><p>Data can also be passed as a url using <code>vl_add_data_url</code> or the <code>url</code> argument to <code>vl_add_data</code>. <code>vl_chart</code> should also be able to recognize if the argument to <code>data</code> is a url and treat it as such.</p>
 </div>
-<div id="mark" class="section level2">
-<h2 class="hasAnchor">
-<a href="#mark" class="anchor"></a>Mark</h2>
-<p>The ‘mark’ is the type of shape being plotted, e.g. ‘point’, ‘line’, ‘bar’.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span>()</a></code></pre></div>
-<div id="htmlwidget-7a33c280fe134ee56dc1" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7a33c280fe134ee56dc1">{"x":{
+<div class="section level3">
+<h3 id="mark">Mark<a class="anchor" aria-label="anchor" href="#mark"></a>
+</h3>
+<p>The ‘mark’ is the type of shape being plotted, e.g. ‘point’, ‘line’, ‘bar’.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-3df5d3cd2108e821c3d7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3df5d3cd2108e821c3d7">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
       "values": [
         {
@@ -1509,18 +1504,19 @@
     }
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script><p>Without encodings, all the points show up on top of each other!</p>
 <p>It can be passed without arguments besides the input spec (which often will be piped in), but also can take in arguments to change its properties.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span>(<span class="dt">color =</span> <span class="st">'red'</span>)</a></code></pre></div>
-<div id="htmlwidget-b78aedf2bae74b2e0e8e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b78aedf2bae74b2e0e8e">{"x":{
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">'red'</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-03c21adfb21721ed2f2e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-03c21adfb21721ed2f2e">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
       "values": [
         {
@@ -1979,24 +1975,25 @@
     }
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="encoding" class="section level2">
-<h2 class="hasAnchor">
-<a href="#encoding" class="anchor"></a>Encoding</h2>
+<div class="section level3">
+<h3 id="encoding">Encoding<a class="anchor" aria-label="anchor" href="#encoding"></a>
+</h3>
 <p>The encoding tells the plot what to use along the x or y axis, as well as what to use for color, tooltips, links, and other aspects of the plot that might be controlled by a column of your data. Encodings can also take constant values (generally with the <code>value</code> argument).</p>
-<p>Functions to add an encoding are of the format <code>vl_encode_*</code> where the <code><a href="https://rdrr.io/r/base/Arithmetic.html">*</a></code> is the name of the encoding, e.g. <code>x</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="dt">field =</span> <span class="st">'wt'</span>, <span class="dt">type =</span> <span class="st">'quantitative'</span>)</a></code></pre></div>
-<div id="htmlwidget-ffe7db6dc0596102da7d" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ffe7db6dc0596102da7d">{"x":{
+<p>Functions to add an encoding are of the format <code>vl_encode_*</code> where the <code>*</code> is the name of the encoding, e.g. <code>x</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">'wt'</span>, type <span class="op">=</span> <span class="st">'quantitative'</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-caac3743f3d76ec3f698" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-caac3743f3d76ec3f698">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
       "values": [
         {
@@ -2460,19 +2457,20 @@
     }
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script><p>Multiple encodings can be added; it does not matter what order they are added.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="dt">field =</span> <span class="st">'wt'</span>, <span class="dt">type =</span> <span class="st">'quantitative'</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="dt">field =</span> <span class="st">'mpg'</span>, <span class="dt">type =</span> <span class="st">'quantitative'</span>)</a></code></pre></div>
-<div id="htmlwidget-19993d33f7697a444332" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-19993d33f7697a444332">{"x":{
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">'wt'</span>, type <span class="op">=</span> <span class="st">'quantitative'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">'mpg'</span>, type <span class="op">=</span> <span class="st">'quantitative'</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-5c1e1c9b0ad92bcffb0d" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5c1e1c9b0ad92bcffb0d">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
       "values": [
         {
@@ -2940,22 +2938,23 @@
     }
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
-},"evals":[],"jsHooks":[]}</script><div id="type-shorthands" class="section level3">
-<h3 class="hasAnchor">
-<a href="#type-shorthands" class="anchor"></a>Type shorthands</h3>
+},"evals":[],"jsHooks":[]}</script><div class="section level4">
+<h4 id="type-shorthands">Type shorthands<a class="anchor" aria-label="anchor" href="#type-shorthands"></a>
+</h4>
 <p>A shorthand can be used to specify the type. The field name can be joined using a colon with a single letter abbreviation. The abbreviations are:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">'wt:Q'</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">'mpg:Q'</span>)</a></code></pre></div>
-<div id="htmlwidget-7a79834ad0e2cab13d6b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7a79834ad0e2cab13d6b">{"x":{
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt:Q'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg:Q'</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-d22518eb74969bd44a31" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d22518eb74969bd44a31">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
       "values": [
         {
@@ -3423,24 +3422,25 @@
     }
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="type-inference" class="section level3">
-<h3 class="hasAnchor">
-<a href="#type-inference" class="anchor"></a>Type inference</h3>
+<div class="section level4">
+<h4 id="type-inference">Type inference<a class="anchor" aria-label="anchor" href="#type-inference"></a>
+</h4>
 <p>When the data has been added to the spec already and is given directly by an R data.frame (rather than a URL or a transformation), the type can also be inferred and does not need to be given.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">'wt'</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">'mpg'</span>)</a></code></pre></div>
-<div id="htmlwidget-712073a26c3e96d34f8e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-712073a26c3e96d34f8e">{"x":{
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-795948d42b1ac87ab6e5" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-795948d42b1ac87ab6e5">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
       "values": [
         {
@@ -3908,24 +3908,25 @@
     }
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="vl_encode" class="section level3">
-<h3 class="hasAnchor">
-<a href="#vl_encode" class="anchor"></a><code>vl_encode</code>
-</h3>
+<div class="section level4">
+<h4 id="vl_encode">
+<code>vl_encode</code><a class="anchor" aria-label="anchor" href="#vl_encode"></a>
+</h4>
 <p>Each encoding can be passed by a separate function, or a single call to <code>vl_encode</code> can be used:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode.html">vl_encode</a></span>(<span class="dt">x =</span> <span class="st">'wt'</span>, <span class="dt">y =</span> <span class="st">"mpg"</span>)</a></code></pre></div>
-<div id="htmlwidget-cb0443d4041ac6a0b1a8" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cb0443d4041ac6a0b1a8">{"x":{
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode.html">vl_encode</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">'wt'</span>, y <span class="op">=</span> <span class="st">"mpg"</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-b7021eb7d702021bfbbb" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b7021eb7d702021bfbbb">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
       "values": [
         {
@@ -4393,22 +4394,23 @@
     }
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script><p>When not providing additional arguments for x or y encoding this form can be more succinct, but specifying each encoding separately can be easier when passing lots of arguments.</p>
 <p>For help constructing a full encoding object to <code>vl_encode</code> one can use functions within <code>vl</code> list of functions.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/vl_add_data.html">vl_add_data</a></span>(<span class="dt">values =</span> mtcars) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode.html">vl_encode</a></span>(</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">    <span class="dt">x =</span> vl<span class="op">$</span><span class="kw">X</span>(<span class="dt">field =</span> <span class="st">'wt'</span>, <span class="dt">title =</span> <span class="st">"weight"</span>), </a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">     <span class="dt">y =</span> <span class="st">"mpg"</span></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">    )</a></code></pre></div>
-<div id="htmlwidget-88c47c2101f5ae8c2ac1" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-88c47c2101f5ae8c2ac1">{"x":{
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode.html">vl_encode</a></span><span class="op">(</span>
+    x <span class="op">=</span> <span class="va">vl</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span>field <span class="op">=</span> <span class="st">'wt'</span>, title <span class="op">=</span> <span class="st">"weight"</span><span class="op">)</span>, 
+     y <span class="op">=</span> <span class="st">"mpg"</span>
+    <span class="op">)</span></code></pre></div>
+<div id="htmlwidget-619a38c82d424c47ea40" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-619a38c82d424c47ea40">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
       "values": [
         {
@@ -4877,30 +4879,580 @@
     }
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
-<div id="interactivity" class="section level1">
-<h1 class="hasAnchor">
-<a href="#interactivity" class="anchor"></a>Interactivity</h1>
-<div id="tooltips" class="section level2">
-<h2 class="hasAnchor">
-<a href="#tooltips" class="anchor"></a>Tooltips</h2>
+<div class="section level2">
+<h2 id="view-composition">View Composition<a class="anchor" aria-label="anchor" href="#view-composition"></a>
+</h2>
+<p>Sub-plots or ‘views’ can be combined in a number of ways. Layering assembles views into the same plot. Facetting splits views based on a column of data with the same encodings per view. Repeating splits views based on what field to use as one or two of the encodings. Concatenation combines arbitrary views together.</p>
+<div class="section level3">
+<h3 id="layering">Layering<a class="anchor" aria-label="anchor" href="#layering"></a>
+</h3>
+<p>Layering assembles views into the same plot. A single view can only have one ‘mark’, so layering is how a plot can be made with multiple marks. Those marks can have different encodings or the same encodings.</p>
+<div class="section level4">
+<h4 id="vl_layer">vl_layer<a class="anchor" aria-label="anchor" href="#vl_layer"></a>
+</h4>
+<p>Two charts can be layered via <code>vl_layer</code>. Additional modifications can then be made to the resulting layered chart, although there are some limitations to the kinds of modifications that can be made to layered charts versus single view charts.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">points_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"IMDB_Rating"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"quantitative"</span>, aggregate <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/bin_encoding.html">vl_bin_x</a></span><span class="op">(</span>maxbins<span class="op">=</span><span class="fl">10</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_bar.html">vl_mark_bar</a></span><span class="op">(</span><span class="op">)</span>
+  
+<span class="va">avg_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"IMDB_Rating"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span>, aggregate <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_color.html">vl_encode_color</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_size.html">vl_encode_size</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_rule.html">vl_mark_rule</a></span><span class="op">(</span><span class="op">)</span>
+
+<span class="fu"><a href="../reference/layer.html">vl_layer</a></span><span class="op">(</span><span class="va">points_plot</span>, <span class="va">avg_plot</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_data_url.html">vl_add_data_url</a></span><span class="op">(</span><span class="st">"https://vega.github.io/vega-editor/app/data/movies.json"</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-9c7152eb2ea872d381f3" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9c7152eb2ea872d381f3">{"x":{
+  "chart_spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "layer": [
+      {
+        "encoding": {
+          "x": {
+            "field": "IMDB_Rating",
+            "type": "quantitative",
+            "bin": {
+              "maxbins": 10
+            }
+          },
+          "y": {
+            "type": "quantitative",
+            "aggregate": "count"
+          }
+        },
+        "mark": {
+          "type": "bar"
+        }
+      },
+      {
+        "encoding": {
+          "x": {
+            "field": "IMDB_Rating",
+            "type": "quantitative",
+            "aggregate": "mean"
+          },
+          "color": {
+            "value": "red"
+          },
+          "size": {
+            "value": 5
+          }
+        },
+        "mark": {
+          "type": "rule"
+        }
+      }
+    ],
+    "data": {
+      "url": "https://vega.github.io/vega-editor/app/data/movies.json"
+    }
+  },
+  "embed_options": {
+    "renderer": "canvas",
+    "defaultStyle": true
+  }
+},"evals":[],"jsHooks":[]}</script><p>In this case the data is added afterwards. That can help make sure the data isn’t duplicated, and helps keep the size of the spec smaller. Note that layers can have different data, too, in which case the data would get added to each chart first before layering.</p>
+</div>
+<div class="section level4">
+<h4 id="the-operator">The <code>+</code> operator<a class="anchor" aria-label="anchor" href="#the-operator"></a>
+</h4>
+<p>Layering can also be performed by using the <code>+</code> operator.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="va">points_plot</span> <span class="op">+</span> <span class="va">avg_plot</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_data_url.html">vl_add_data_url</a></span><span class="op">(</span><span class="st">"https://vega.github.io/vega-editor/app/data/movies.json"</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-3f16163f2d66dd757db7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3f16163f2d66dd757db7">{"x":{
+  "chart_spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "layer": [
+      {
+        "encoding": {
+          "x": {
+            "field": "IMDB_Rating",
+            "type": "quantitative",
+            "bin": {
+              "maxbins": 10
+            }
+          },
+          "y": {
+            "type": "quantitative",
+            "aggregate": "count"
+          }
+        },
+        "mark": {
+          "type": "bar"
+        }
+      },
+      {
+        "encoding": {
+          "x": {
+            "field": "IMDB_Rating",
+            "type": "quantitative",
+            "aggregate": "mean"
+          },
+          "color": {
+            "value": "red"
+          },
+          "size": {
+            "value": 5
+          }
+        },
+        "mark": {
+          "type": "rule"
+        }
+      }
+    ],
+    "data": {
+      "url": "https://vega.github.io/vega-editor/app/data/movies.json"
+    }
+  },
+  "embed_options": {
+    "renderer": "canvas",
+    "defaultStyle": true
+  }
+},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="section level3">
+<h3 id="facet">Facet<a class="anchor" aria-label="anchor" href="#facet"></a>
+</h3>
+<p>Facetting splits up your data into different subplots based on a field in the data. This can be done across rows and/or columns. Facets can get added in two ways: via <code>vl_facet_</code> functions or as encodings, eg <code>vl_encode_row</code>.</p>
+<p>In terms of which option to use, they have slightly different options in terms of the parameters that can be given, but often are interchangeable.</p>
+<div class="section level4">
+<h4 id="facets-as-encoding">Facets as encoding<a class="anchor" aria-label="anchor" href="#facets-as-encoding"></a>
+</h4>
+<p>This example splits the data between rows based on the country of origin.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://vega.github.io/vega-editor/app/data/cars.json"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_bar.html">vl_mark_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Horsepower"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/bin_encoding.html">vl_bin_x</a></span><span class="op">(</span>maxbins <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span>aggregate <span class="op">=</span> <span class="st">"count"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_row.html">vl_encode_row</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Origin"</span>, type <span class="op">=</span> <span class="st">"nominal"</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-02b6915d62a15eeb5a22" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-02b6915d62a15eeb5a22">{"x":{
+  "chart_spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://vega.github.io/vega-editor/app/data/cars.json"
+    },
+    "mark": {
+      "type": "bar"
+    },
+    "encoding": {
+      "x": {
+        "field": "Horsepower",
+        "type": "quantitative",
+        "bin": {
+          "maxbins": 15
+        }
+      },
+      "y": {
+        "type": "quantitative",
+        "aggregate": "count"
+      },
+      "row": {
+        "field": "Origin",
+        "type": "nominal"
+      }
+    }
+  },
+  "embed_options": {
+    "renderer": "canvas",
+    "defaultStyle": true
+  }
+},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="section level3">
+<h3 id="adding-facets-with-facet-functions">Adding facets with facet functions<a class="anchor" aria-label="anchor" href="#adding-facets-with-facet-functions"></a>
+</h3>
+<p>The following does the same as above, except via the <code>vl_facet_row</code> function.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://vega.github.io/vega-editor/app/data/cars.json"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_bar.html">vl_mark_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Horsepower"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/bin_encoding.html">vl_bin_x</a></span><span class="op">(</span>maxbins <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span>aggregate <span class="op">=</span> <span class="st">"count"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_facet_row.html">vl_facet_row</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Origin"</span>, type <span class="op">=</span> <span class="st">"nominal"</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-96deec1837daec06a2fa" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-96deec1837daec06a2fa">{"x":{
+  "chart_spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://vega.github.io/vega-editor/app/data/cars.json"
+    },
+    "spec": {
+      "mark": {
+        "type": "bar"
+      },
+      "encoding": {
+        "x": {
+          "field": "Horsepower",
+          "type": "quantitative",
+          "bin": {
+            "maxbins": 15
+          }
+        },
+        "y": {
+          "type": "quantitative",
+          "aggregate": "count"
+        }
+      }
+    },
+    "facet": {
+      "row": {
+        "field": "Origin",
+        "type": "nominal"
+      }
+    }
+  },
+  "embed_options": {
+    "renderer": "canvas",
+    "defaultStyle": true
+  }
+},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="section level3">
+<h3 id="repeating">Repeating<a class="anchor" aria-label="anchor" href="#repeating"></a>
+</h3>
+<p>Adding a ‘repeat’ is similar in some ways to facetting, except the same data gets shown in each subplot. Instead, what changes between subplots is what field gets used in the encoding.</p>
+<p>To use ‘repeat’ one needs to both call a <code>vl_repeat_*</code> function (where <code>*</code> is <code>wrap</code>, <code>row</code>, or <code>column</code>) with the field names to use, and specify the <code>field</code> for an encoding as <code>repeat:*</code> with the matching value of <code>*</code>.For example:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://vega.github.io/vega-editor/app/data/cars.json"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_bar.html">vl_mark_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"repeat:wrap"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span>, bin <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span>aggregate <span class="op">=</span> <span class="st">"count"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_color.html">vl_encode_color</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Origin"</span>, type <span class="op">=</span> <span class="st">"nominal"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_repeat_wrap.html">vl_repeat_wrap</a></span><span class="op">(</span><span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Acceleration"</span>, <span class="st">"Displacement"</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-22994db3f1651d871976" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-22994db3f1651d871976">{"x":{
+  "chart_spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://vega.github.io/vega-editor/app/data/cars.json"
+    },
+    "spec": {
+      "mark": {
+        "type": "bar"
+      },
+      "encoding": {
+        "x": {
+          "field": {
+            "repeat": "repeat"
+          },
+          "type": "quantitative",
+          "bin": true
+        },
+        "y": {
+          "type": "quantitative",
+          "aggregate": "count"
+        },
+        "color": {
+          "field": "Origin",
+          "type": "nominal"
+        }
+      }
+    },
+    "repeat": [
+      "Horsepower",
+      "Miles_per_Gallon",
+      "Acceleration",
+      "Displacement"
+    ],
+    "columns": 2
+  },
+  "embed_options": {
+    "renderer": "canvas",
+    "defaultStyle": true
+  }
+},"evals":[],"jsHooks":[]}</script><p>Alternatively a longer specification for the field can be used:</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://vega.github.io/vega-editor/app/data/cars.json"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_bar.html">vl_mark_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span>field <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>`repeat` <span class="op">=</span> <span class="st">"repeat"</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"quantitative"</span>, bin <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span>aggregate <span class="op">=</span> <span class="st">"count"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_color.html">vl_encode_color</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Origin"</span>, type <span class="op">=</span> <span class="st">"nominal"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_repeat_wrap.html">vl_repeat_wrap</a></span><span class="op">(</span><span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Acceleration"</span>, <span class="st">"Displacement"</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-8debf6aa0f33ceafced3" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8debf6aa0f33ceafced3">{"x":{
+  "chart_spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://vega.github.io/vega-editor/app/data/cars.json"
+    },
+    "spec": {
+      "mark": {
+        "type": "bar"
+      },
+      "encoding": {
+        "x": {
+          "field": {
+            "repeat": "repeat"
+          },
+          "type": "quantitative",
+          "bin": true
+        },
+        "y": {
+          "type": "quantitative",
+          "aggregate": "count"
+        },
+        "color": {
+          "field": "Origin",
+          "type": "nominal"
+        }
+      }
+    },
+    "repeat": [
+      "Horsepower",
+      "Miles_per_Gallon",
+      "Acceleration",
+      "Displacement"
+    ],
+    "columns": 2
+  },
+  "embed_options": {
+    "renderer": "canvas",
+    "defaultStyle": true
+  }
+},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="section level3">
+<h3 id="concatenation">Concatenation<a class="anchor" aria-label="anchor" href="#concatenation"></a>
+</h3>
+<p>Different charts can be concatenated together via <code>vl_concat</code>, <code>vl_hconcat</code>, or <code>vl_vconcat</code> to concatenate in wrapping fashion (with number of columns set by <code>columns</code> arguments), horizontally, or vertically. Data can be set for each individual view (and can then be different) or can be set for the concatenated version.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">bar_chart</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_bar.html">vl_mark_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"date:O"</span>, timeUnit <span class="op">=</span> <span class="st">"month"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"precipitation:Q"</span>, aggregate <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span>
+
+<span class="va">point_chart</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"temp_min:Q"</span>, bin <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"temp_max:Q"</span>, bin <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_size.html">vl_encode_size</a></span><span class="op">(</span>aggregate <span class="op">=</span> <span class="st">"count"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span>
+  
+<span class="fu"><a href="../reference/concat.html">vl_hconcat</a></span><span class="op">(</span><span class="va">bar_chart</span>, <span class="va">point_chart</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://vega.github.io/vega-lite/data/weather.csv"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_filter.html">vl_filter</a></span><span class="op">(</span><span class="st">"datum.location === 'Seattle'"</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-73910d0035dd1a6be0f2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-73910d0035dd1a6be0f2">{"x":{
+  "chart_spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "hconcat": [
+      {
+        "mark": {
+          "type": "bar"
+        },
+        "encoding": {
+          "x": {
+            "field": "date",
+            "timeUnit": "month",
+            "type": "ordinal"
+          },
+          "y": {
+            "field": "precipitation",
+            "aggregate": "mean",
+            "type": "quantitative"
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "point"
+        },
+        "encoding": {
+          "x": {
+            "field": "temp_min",
+            "bin": true,
+            "type": "quantitative"
+          },
+          "y": {
+            "field": "temp_max",
+            "bin": true,
+            "type": "quantitative"
+          },
+          "size": {
+            "type": "quantitative",
+            "aggregate": "count"
+          }
+        }
+      }
+    ],
+    "data": {
+      "url": "https://vega.github.io/vega-lite/data/weather.csv"
+    },
+    "transform": [
+      {
+        "filter": "datum.location === 'Seattle'"
+      }
+    ]
+  },
+  "embed_options": {
+    "renderer": "canvas",
+    "defaultStyle": true
+  }
+},"evals":[],"jsHooks":[]}</script><p>Concatenation can also be done via the <code>|</code> or <code>&amp;</code> operators, to do horizontal or vertical concatenation respectively.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="va">bar_chart</span> <span class="op">|</span> <span class="va">point_chart</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://vega.github.io/vega-lite/data/weather.csv"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_filter.html">vl_filter</a></span><span class="op">(</span><span class="st">"datum.location === 'Seattle'"</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-94868cbdc1b9990d513b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-94868cbdc1b9990d513b">{"x":{
+  "chart_spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "hconcat": [
+      {
+        "mark": {
+          "type": "bar"
+        },
+        "encoding": {
+          "x": {
+            "field": "date",
+            "timeUnit": "month",
+            "type": "ordinal"
+          },
+          "y": {
+            "field": "precipitation",
+            "aggregate": "mean",
+            "type": "quantitative"
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "point"
+        },
+        "encoding": {
+          "x": {
+            "field": "temp_min",
+            "bin": true,
+            "type": "quantitative"
+          },
+          "y": {
+            "field": "temp_max",
+            "bin": true,
+            "type": "quantitative"
+          },
+          "size": {
+            "type": "quantitative",
+            "aggregate": "count"
+          }
+        }
+      }
+    ],
+    "data": {
+      "url": "https://vega.github.io/vega-lite/data/weather.csv"
+    },
+    "transform": [
+      {
+        "filter": "datum.location === 'Seattle'"
+      }
+    ]
+  },
+  "embed_options": {
+    "renderer": "canvas",
+    "defaultStyle": true
+  }
+},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="va">bar_chart</span> <span class="op">&amp;</span> <span class="va">point_chart</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://vega.github.io/vega-lite/data/weather.csv"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_filter.html">vl_filter</a></span><span class="op">(</span><span class="st">"datum.location === 'Seattle'"</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-d4d2f9d83e7efd92b9d0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d4d2f9d83e7efd92b9d0">{"x":{
+  "chart_spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "vconcat": [
+      {
+        "mark": {
+          "type": "bar"
+        },
+        "encoding": {
+          "x": {
+            "field": "date",
+            "timeUnit": "month",
+            "type": "ordinal"
+          },
+          "y": {
+            "field": "precipitation",
+            "aggregate": "mean",
+            "type": "quantitative"
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "point"
+        },
+        "encoding": {
+          "x": {
+            "field": "temp_min",
+            "bin": true,
+            "type": "quantitative"
+          },
+          "y": {
+            "field": "temp_max",
+            "bin": true,
+            "type": "quantitative"
+          },
+          "size": {
+            "type": "quantitative",
+            "aggregate": "count"
+          }
+        }
+      }
+    ],
+    "data": {
+      "url": "https://vega.github.io/vega-lite/data/weather.csv"
+    },
+    "transform": [
+      {
+        "filter": "datum.location === 'Seattle'"
+      }
+    ]
+  },
+  "embed_options": {
+    "renderer": "canvas",
+    "defaultStyle": true
+  }
+},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="section level2">
+<h2 id="interactivity">Interactivity<a class="anchor" aria-label="anchor" href="#interactivity"></a>
+</h2>
+<div class="section level3">
+<h3 id="tooltips">Tooltips<a class="anchor" aria-label="anchor" href="#tooltips"></a>
+</h3>
 <p>There are three ways to get tooltips:</p>
-<div id="all-the-encodings" class="section level3">
-<h3 class="hasAnchor">
-<a href="#all-the-encodings" class="anchor"></a>All the encodings</h3>
+<div class="section level4">
+<h4 id="all-the-encodings">All the encodings<a class="anchor" aria-label="anchor" href="#all-the-encodings"></a>
+</h4>
 <p>To get a tooltip that shows the values for fields set in the encoding, use <code>tooltip = TRUE</code> in the call to add a mark to the plot.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>(mtcars) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span>(<span class="dt">tooltip =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">'wt'</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">'mpg'</span>)</a></code></pre></div>
-<div id="htmlwidget-7ae2bf22318502825744" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7ae2bf22318502825744">{"x":{
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span>tooltip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-8853642f9677e5467026" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8853642f9677e5467026">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -5354,7 +5906,7 @@
         }
       ]
     },
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "mark": {
       "tooltip": true,
       "type": "point"
@@ -5371,21 +5923,22 @@
     }
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="all-data-associated-with-point" class="section level3">
-<h3 class="hasAnchor">
-<a href="#all-data-associated-with-point" class="anchor"></a>All data associated with point</h3>
-<p>To get all the data to show up (not just what is used by encoding) pass <code><a href="https://rdrr.io/r/base/list.html">list(content = "data")</a></code> to the tooltip argument.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>(mtcars) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span>(<span class="dt">tooltip =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">content =</span> <span class="st">"data"</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">'wt'</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">'mpg'</span>)</a></code></pre></div>
-<div id="htmlwidget-15d3fe902e4c1f0d7ae0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-15d3fe902e4c1f0d7ae0">{"x":{
+<div class="section level4">
+<h4 id="all-data-associated-with-point">All data associated with point<a class="anchor" aria-label="anchor" href="#all-data-associated-with-point"></a>
+</h4>
+<p>To get all the data to show up (not just what is used by encoding) pass <code>list(content = "data")</code> to the tooltip argument.</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span>tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>content <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-87946e01d4bc84d28d5c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-87946e01d4bc84d28d5c">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -5839,7 +6392,7 @@
         }
       ]
     },
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "mark": {
       "tooltip": {
         "content": "data"
@@ -5858,16 +6411,17 @@
     }
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script><p><code>vlbuildr</code> also has a shortcut, whereby if you pass “data” or “encoding” to the tooltip argument, it will transform it into the above list format in the spec. So the following will do the same thing:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>(mtcars) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span>(<span class="dt">tooltip =</span> <span class="st">"data"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">'wt'</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">'mpg'</span>)</a></code></pre></div>
-<div id="htmlwidget-b7e6134af99394228976" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b7e6134af99394228976">{"x":{
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span>tooltip <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-b6a83c0f7a3577ee424a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b6a83c0f7a3577ee424a">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -6321,7 +6875,7 @@
         }
       ]
     },
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "mark": {
       "tooltip": {
         "content": "data"
@@ -6340,21 +6894,22 @@
     }
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="to-some-constant-value" class="section level3">
-<h3 class="hasAnchor">
-<a href="#to-some-constant-value" class="anchor"></a>To some constant value</h3>
+<div class="section level4">
+<h4 id="to-some-constant-value">To some constant value<a class="anchor" aria-label="anchor" href="#to-some-constant-value"></a>
+</h4>
 <p>You can also set the tooltip to a constant value – e.g. to get each point to say “Hi!”:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>(mtcars) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span>(<span class="dt">tooltip =</span> <span class="st">"Hi!"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">'wt'</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">'mpg'</span>)</a></code></pre></div>
-<div id="htmlwidget-806e6bee709f380f5458" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-806e6bee709f380f5458">{"x":{
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span>tooltip <span class="op">=</span> <span class="st">"Hi!"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-451976316812af412d8c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-451976316812af412d8c">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -6808,7 +7363,7 @@
         }
       ]
     },
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "mark": {
       "tooltip": "Hi!",
       "type": "point"
@@ -6825,22 +7380,23 @@
     }
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="via-an-encoding-channel" class="section level3">
-<h3 class="hasAnchor">
-<a href="#via-an-encoding-channel" class="anchor"></a>Via an encoding channel</h3>
+<div class="section level4">
+<h4 id="via-an-encoding-channel">Via an encoding channel<a class="anchor" aria-label="anchor" href="#via-an-encoding-channel"></a>
+</h4>
 <p>We can also use a column of the data by passing the tooltip as an encoding. If we want to use the <code>row.names</code> of the <code>data.frame</code> we can use <code>'_row'</code> as the name:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>(mtcars) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="st">'wt'</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="st">'mpg'</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_tooltip.html">vl_encode_tooltip</a></span>(<span class="st">'_row'</span>)</a></code></pre></div>
-<div id="htmlwidget-9b212f422e3f305e60b1" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9b212f422e3f305e60b1">{"x":{
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/vl_encode_tooltip.html">vl_encode_tooltip</a></span><span class="op">(</span><span class="st">'_row'</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-84c35902f67dbdcf49f6" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-84c35902f67dbdcf49f6">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -7294,7 +7850,7 @@
         }
       ]
     },
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "mark": {
       "type": "point"
     },
@@ -7314,230 +7870,3108 @@
     }
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
+  }
+},"evals":[],"jsHooks":[]}</script><p>If you want to pass multiple entries to the toolip, use <code>vl_encode_tooltip_array</code> instead.</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/vl_encode_tooltip.html">vl_encode_tooltip_array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'_row'</span>,<span class="st">'wt'</span>,<span class="st">'mpg'</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-5ab68259e3d88faa5472" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5ab68259e3d88faa5472">{"x":{
+  "chart_spec": {
+    "data": {
+      "values": [
+        {
+          "mpg": 21,
+          "cyl": 6,
+          "disp": 160,
+          "hp": 110,
+          "drat": 3.9,
+          "wt": 2.62,
+          "qsec": 16.46,
+          "vs": 0,
+          "am": 1,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Mazda RX4"
+        },
+        {
+          "mpg": 21,
+          "cyl": 6,
+          "disp": 160,
+          "hp": 110,
+          "drat": 3.9,
+          "wt": 2.875,
+          "qsec": 17.02,
+          "vs": 0,
+          "am": 1,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Mazda RX4 Wag"
+        },
+        {
+          "mpg": 22.8,
+          "cyl": 4,
+          "disp": 108,
+          "hp": 93,
+          "drat": 3.85,
+          "wt": 2.32,
+          "qsec": 18.61,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Datsun 710"
+        },
+        {
+          "mpg": 21.4,
+          "cyl": 6,
+          "disp": 258,
+          "hp": 110,
+          "drat": 3.08,
+          "wt": 3.215,
+          "qsec": 19.44,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Hornet 4 Drive"
+        },
+        {
+          "mpg": 18.7,
+          "cyl": 8,
+          "disp": 360,
+          "hp": 175,
+          "drat": 3.15,
+          "wt": 3.44,
+          "qsec": 17.02,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Hornet Sportabout"
+        },
+        {
+          "mpg": 18.1,
+          "cyl": 6,
+          "disp": 225,
+          "hp": 105,
+          "drat": 2.76,
+          "wt": 3.46,
+          "qsec": 20.22,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Valiant"
+        },
+        {
+          "mpg": 14.3,
+          "cyl": 8,
+          "disp": 360,
+          "hp": 245,
+          "drat": 3.21,
+          "wt": 3.57,
+          "qsec": 15.84,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Duster 360"
+        },
+        {
+          "mpg": 24.4,
+          "cyl": 4,
+          "disp": 146.7,
+          "hp": 62,
+          "drat": 3.69,
+          "wt": 3.19,
+          "qsec": 20,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Merc 240D"
+        },
+        {
+          "mpg": 22.8,
+          "cyl": 4,
+          "disp": 140.8,
+          "hp": 95,
+          "drat": 3.92,
+          "wt": 3.15,
+          "qsec": 22.9,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Merc 230"
+        },
+        {
+          "mpg": 19.2,
+          "cyl": 6,
+          "disp": 167.6,
+          "hp": 123,
+          "drat": 3.92,
+          "wt": 3.44,
+          "qsec": 18.3,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Merc 280"
+        },
+        {
+          "mpg": 17.8,
+          "cyl": 6,
+          "disp": 167.6,
+          "hp": 123,
+          "drat": 3.92,
+          "wt": 3.44,
+          "qsec": 18.9,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Merc 280C"
+        },
+        {
+          "mpg": 16.4,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 4.07,
+          "qsec": 17.4,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SE"
+        },
+        {
+          "mpg": 17.3,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 3.73,
+          "qsec": 17.6,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SL"
+        },
+        {
+          "mpg": 15.2,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 3.78,
+          "qsec": 18,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SLC"
+        },
+        {
+          "mpg": 10.4,
+          "cyl": 8,
+          "disp": 472,
+          "hp": 205,
+          "drat": 2.93,
+          "wt": 5.25,
+          "qsec": 17.98,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Cadillac Fleetwood"
+        },
+        {
+          "mpg": 10.4,
+          "cyl": 8,
+          "disp": 460,
+          "hp": 215,
+          "drat": 3,
+          "wt": 5.424,
+          "qsec": 17.82,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Lincoln Continental"
+        },
+        {
+          "mpg": 14.7,
+          "cyl": 8,
+          "disp": 440,
+          "hp": 230,
+          "drat": 3.23,
+          "wt": 5.345,
+          "qsec": 17.42,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Chrysler Imperial"
+        },
+        {
+          "mpg": 32.4,
+          "cyl": 4,
+          "disp": 78.7,
+          "hp": 66,
+          "drat": 4.08,
+          "wt": 2.2,
+          "qsec": 19.47,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Fiat 128"
+        },
+        {
+          "mpg": 30.4,
+          "cyl": 4,
+          "disp": 75.7,
+          "hp": 52,
+          "drat": 4.93,
+          "wt": 1.615,
+          "qsec": 18.52,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Honda Civic"
+        },
+        {
+          "mpg": 33.9,
+          "cyl": 4,
+          "disp": 71.1,
+          "hp": 65,
+          "drat": 4.22,
+          "wt": 1.835,
+          "qsec": 19.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Toyota Corolla"
+        },
+        {
+          "mpg": 21.5,
+          "cyl": 4,
+          "disp": 120.1,
+          "hp": 97,
+          "drat": 3.7,
+          "wt": 2.465,
+          "qsec": 20.01,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Toyota Corona"
+        },
+        {
+          "mpg": 15.5,
+          "cyl": 8,
+          "disp": 318,
+          "hp": 150,
+          "drat": 2.76,
+          "wt": 3.52,
+          "qsec": 16.87,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Dodge Challenger"
+        },
+        {
+          "mpg": 15.2,
+          "cyl": 8,
+          "disp": 304,
+          "hp": 150,
+          "drat": 3.15,
+          "wt": 3.435,
+          "qsec": 17.3,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "AMC Javelin"
+        },
+        {
+          "mpg": 13.3,
+          "cyl": 8,
+          "disp": 350,
+          "hp": 245,
+          "drat": 3.73,
+          "wt": 3.84,
+          "qsec": 15.41,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Camaro Z28"
+        },
+        {
+          "mpg": 19.2,
+          "cyl": 8,
+          "disp": 400,
+          "hp": 175,
+          "drat": 3.08,
+          "wt": 3.845,
+          "qsec": 17.05,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Pontiac Firebird"
+        },
+        {
+          "mpg": 27.3,
+          "cyl": 4,
+          "disp": 79,
+          "hp": 66,
+          "drat": 4.08,
+          "wt": 1.935,
+          "qsec": 18.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Fiat X1-9"
+        },
+        {
+          "mpg": 26,
+          "cyl": 4,
+          "disp": 120.3,
+          "hp": 91,
+          "drat": 4.43,
+          "wt": 2.14,
+          "qsec": 16.7,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 2,
+          "_row": "Porsche 914-2"
+        },
+        {
+          "mpg": 30.4,
+          "cyl": 4,
+          "disp": 95.1,
+          "hp": 113,
+          "drat": 3.77,
+          "wt": 1.513,
+          "qsec": 16.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 5,
+          "carb": 2,
+          "_row": "Lotus Europa"
+        },
+        {
+          "mpg": 15.8,
+          "cyl": 8,
+          "disp": 351,
+          "hp": 264,
+          "drat": 4.22,
+          "wt": 3.17,
+          "qsec": 14.5,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 4,
+          "_row": "Ford Pantera L"
+        },
+        {
+          "mpg": 19.7,
+          "cyl": 6,
+          "disp": 145,
+          "hp": 175,
+          "drat": 3.62,
+          "wt": 2.77,
+          "qsec": 15.5,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 6,
+          "_row": "Ferrari Dino"
+        },
+        {
+          "mpg": 15,
+          "cyl": 8,
+          "disp": 301,
+          "hp": 335,
+          "drat": 3.54,
+          "wt": 3.57,
+          "qsec": 14.6,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 8,
+          "_row": "Maserati Bora"
+        },
+        {
+          "mpg": 21.4,
+          "cyl": 4,
+          "disp": 121,
+          "hp": 109,
+          "drat": 4.11,
+          "wt": 2.78,
+          "qsec": 18.6,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Volvo 142E"
+        }
+      ]
+    },
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "mark": {
+      "type": "point"
+    },
+    "encoding": {
+      "x": {
+        "field": "wt",
+        "type": "quantitative"
+      },
+      "y": {
+        "field": "mpg",
+        "type": "quantitative"
+      },
+      "tooltip": [
+        {
+          "field": "_row",
+          "type": "nominal"
+        },
+        {
+          "field": "wt",
+          "type": "quantitative"
+        },
+        {
+          "field": "mpg",
+          "type": "quantitative"
+        }
+      ]
+    }
+  },
+  "embed_options": {
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="selections" class="section level2">
-<h2 class="hasAnchor">
-<a href="#selections" class="anchor"></a>Selections</h2>
-<p>More to come here…</p>
-</div>
-</div>
-<div id="view-composition" class="section level1">
-<h1 class="hasAnchor">
-<a href="#view-composition" class="anchor"></a>View Composition</h1>
-<p>Sub-plots or ‘views’ can be combined in a number of ways. Layering assembles views into the same plot. Facetting splits views based on a column of data with the same encodings per view. Repeating splits views based on what field to use as one or two of the encodings. Concatenation combines arbitrary views together.</p>
-<div id="layering" class="section level2">
-<h2 class="hasAnchor">
-<a href="#layering" class="anchor"></a>Layering</h2>
-<p>Layering assembles views into the same plot. A single view can only have one ‘mark’, so layering is how a plot can be made with multiple marks. Those marks can have different encodings or the same encodings.</p>
-<div id="vl_layer" class="section level3">
-<h3 class="hasAnchor">
-<a href="#vl_layer" class="anchor"></a>vl_layer</h3>
-<p>Two charts can be layered via <code>vl_layer</code>. Additional modifications can then be made to the resulting layered chart, although there are some limitations to the kinds of modifications that can be made to layered charts versus single view charts.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">points_plot &lt;-<span class="st"> </span><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="dt">field =</span> <span class="st">"IMDB_Rating"</span>, <span class="dt">type =</span> <span class="st">"quantitative"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span>(<span class="dt">type =</span> <span class="st">"quantitative"</span>, <span class="dt">aggregate =</span> <span class="st">"count"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/bin_encoding.html">vl_bin_x</a></span>(<span class="dt">maxbins=</span><span class="dv">10</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/vl_mark_bar.html">vl_mark_bar</a></span>()</a>
-<a class="sourceLine" id="cb17-6" data-line-number="6">  </a>
-<a class="sourceLine" id="cb17-7" data-line-number="7">avg_plot &lt;-<span class="st"> </span><span class="kw"><a href="../reference/vl_chart.html">vl_chart</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span>(<span class="dt">field =</span> <span class="st">"IMDB_Rating"</span>, <span class="dt">type =</span> <span class="st">"quantitative"</span>, <span class="dt">aggregate =</span> <span class="st">"mean"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_color.html">vl_encode_color</a></span>(<span class="dt">value =</span> <span class="st">"red"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="../reference/vl_encode_size.html">vl_encode_size</a></span>(<span class="dt">value =</span> <span class="dv">5</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="../reference/vl_mark_rule.html">vl_mark_rule</a></span>()</a>
-<a class="sourceLine" id="cb17-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb17-13" data-line-number="13"><span class="kw"><a href="../reference/layer.html">vl_layer</a></span>(points_plot, avg_plot) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="../reference/vl_add_data_url.html">vl_add_data_url</a></span>(<span class="st">"https://vega.github.io/vega-editor/app/data/movies.json"</span>)</a></code></pre></div>
-<div id="htmlwidget-ab452a984b18bff958ef" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ab452a984b18bff958ef">{"x":{
+<div class="section level3">
+<h3 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a>
+</h3>
+<p>Parameters enable interactive manipulation of charts. There are two main types of parameters – variable parameters and selection parameters. Variable parameters are added using <code>vl_add_parameter</code>. For selection parameters, see next section of this doc.<br>
+A parameter can be a simple value or expression that can be used in other parts of the spec, or it can be something that is mapped to user input via a binding.</p>
+<p>An example of adding a parameter that is fixed:</p>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_parameter.html">vl_add_parameter</a></span><span class="op">(</span><span class="st">"radius"</span>, value <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/vl_mark_bar.html">vl_mark_bar</a></span><span class="op">(</span>cornerRadius <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>expr <span class="op">=</span> <span class="st">'radius'</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span>, bin <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span> aggregate <span class="op">=</span> <span class="st">'count'</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-fe8c736fbeeed0d3a359" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fe8c736fbeeed0d3a359">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-    "layer": [
-      {
-        "encoding": {
-          "x": {
-            "field": "IMDB_Rating",
-            "type": "quantitative",
-            "bin": {
-              "maxbins": 10
-            }
-          },
-          "y": {
-            "type": "quantitative",
-            "aggregate": "count"
-          }
+    "data": {
+      "values": [
+        {
+          "mpg": 21,
+          "cyl": 6,
+          "disp": 160,
+          "hp": 110,
+          "drat": 3.9,
+          "wt": 2.62,
+          "qsec": 16.46,
+          "vs": 0,
+          "am": 1,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Mazda RX4"
         },
-        "mark": {
-          "type": "bar"
-        }
-      },
-      {
-        "encoding": {
-          "x": {
-            "field": "IMDB_Rating",
-            "type": "quantitative",
-            "aggregate": "mean"
-          },
-          "color": {
-            "value": "red"
-          },
-          "size": {
-            "value": 5
-          }
+        {
+          "mpg": 21,
+          "cyl": 6,
+          "disp": 160,
+          "hp": 110,
+          "drat": 3.9,
+          "wt": 2.875,
+          "qsec": 17.02,
+          "vs": 0,
+          "am": 1,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Mazda RX4 Wag"
         },
-        "mark": {
-          "type": "rule"
+        {
+          "mpg": 22.8,
+          "cyl": 4,
+          "disp": 108,
+          "hp": 93,
+          "drat": 3.85,
+          "wt": 2.32,
+          "qsec": 18.61,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Datsun 710"
+        },
+        {
+          "mpg": 21.4,
+          "cyl": 6,
+          "disp": 258,
+          "hp": 110,
+          "drat": 3.08,
+          "wt": 3.215,
+          "qsec": 19.44,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Hornet 4 Drive"
+        },
+        {
+          "mpg": 18.7,
+          "cyl": 8,
+          "disp": 360,
+          "hp": 175,
+          "drat": 3.15,
+          "wt": 3.44,
+          "qsec": 17.02,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Hornet Sportabout"
+        },
+        {
+          "mpg": 18.1,
+          "cyl": 6,
+          "disp": 225,
+          "hp": 105,
+          "drat": 2.76,
+          "wt": 3.46,
+          "qsec": 20.22,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Valiant"
+        },
+        {
+          "mpg": 14.3,
+          "cyl": 8,
+          "disp": 360,
+          "hp": 245,
+          "drat": 3.21,
+          "wt": 3.57,
+          "qsec": 15.84,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Duster 360"
+        },
+        {
+          "mpg": 24.4,
+          "cyl": 4,
+          "disp": 146.7,
+          "hp": 62,
+          "drat": 3.69,
+          "wt": 3.19,
+          "qsec": 20,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Merc 240D"
+        },
+        {
+          "mpg": 22.8,
+          "cyl": 4,
+          "disp": 140.8,
+          "hp": 95,
+          "drat": 3.92,
+          "wt": 3.15,
+          "qsec": 22.9,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Merc 230"
+        },
+        {
+          "mpg": 19.2,
+          "cyl": 6,
+          "disp": 167.6,
+          "hp": 123,
+          "drat": 3.92,
+          "wt": 3.44,
+          "qsec": 18.3,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Merc 280"
+        },
+        {
+          "mpg": 17.8,
+          "cyl": 6,
+          "disp": 167.6,
+          "hp": 123,
+          "drat": 3.92,
+          "wt": 3.44,
+          "qsec": 18.9,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Merc 280C"
+        },
+        {
+          "mpg": 16.4,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 4.07,
+          "qsec": 17.4,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SE"
+        },
+        {
+          "mpg": 17.3,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 3.73,
+          "qsec": 17.6,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SL"
+        },
+        {
+          "mpg": 15.2,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 3.78,
+          "qsec": 18,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SLC"
+        },
+        {
+          "mpg": 10.4,
+          "cyl": 8,
+          "disp": 472,
+          "hp": 205,
+          "drat": 2.93,
+          "wt": 5.25,
+          "qsec": 17.98,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Cadillac Fleetwood"
+        },
+        {
+          "mpg": 10.4,
+          "cyl": 8,
+          "disp": 460,
+          "hp": 215,
+          "drat": 3,
+          "wt": 5.424,
+          "qsec": 17.82,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Lincoln Continental"
+        },
+        {
+          "mpg": 14.7,
+          "cyl": 8,
+          "disp": 440,
+          "hp": 230,
+          "drat": 3.23,
+          "wt": 5.345,
+          "qsec": 17.42,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Chrysler Imperial"
+        },
+        {
+          "mpg": 32.4,
+          "cyl": 4,
+          "disp": 78.7,
+          "hp": 66,
+          "drat": 4.08,
+          "wt": 2.2,
+          "qsec": 19.47,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Fiat 128"
+        },
+        {
+          "mpg": 30.4,
+          "cyl": 4,
+          "disp": 75.7,
+          "hp": 52,
+          "drat": 4.93,
+          "wt": 1.615,
+          "qsec": 18.52,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Honda Civic"
+        },
+        {
+          "mpg": 33.9,
+          "cyl": 4,
+          "disp": 71.1,
+          "hp": 65,
+          "drat": 4.22,
+          "wt": 1.835,
+          "qsec": 19.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Toyota Corolla"
+        },
+        {
+          "mpg": 21.5,
+          "cyl": 4,
+          "disp": 120.1,
+          "hp": 97,
+          "drat": 3.7,
+          "wt": 2.465,
+          "qsec": 20.01,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Toyota Corona"
+        },
+        {
+          "mpg": 15.5,
+          "cyl": 8,
+          "disp": 318,
+          "hp": 150,
+          "drat": 2.76,
+          "wt": 3.52,
+          "qsec": 16.87,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Dodge Challenger"
+        },
+        {
+          "mpg": 15.2,
+          "cyl": 8,
+          "disp": 304,
+          "hp": 150,
+          "drat": 3.15,
+          "wt": 3.435,
+          "qsec": 17.3,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "AMC Javelin"
+        },
+        {
+          "mpg": 13.3,
+          "cyl": 8,
+          "disp": 350,
+          "hp": 245,
+          "drat": 3.73,
+          "wt": 3.84,
+          "qsec": 15.41,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Camaro Z28"
+        },
+        {
+          "mpg": 19.2,
+          "cyl": 8,
+          "disp": 400,
+          "hp": 175,
+          "drat": 3.08,
+          "wt": 3.845,
+          "qsec": 17.05,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Pontiac Firebird"
+        },
+        {
+          "mpg": 27.3,
+          "cyl": 4,
+          "disp": 79,
+          "hp": 66,
+          "drat": 4.08,
+          "wt": 1.935,
+          "qsec": 18.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Fiat X1-9"
+        },
+        {
+          "mpg": 26,
+          "cyl": 4,
+          "disp": 120.3,
+          "hp": 91,
+          "drat": 4.43,
+          "wt": 2.14,
+          "qsec": 16.7,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 2,
+          "_row": "Porsche 914-2"
+        },
+        {
+          "mpg": 30.4,
+          "cyl": 4,
+          "disp": 95.1,
+          "hp": 113,
+          "drat": 3.77,
+          "wt": 1.513,
+          "qsec": 16.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 5,
+          "carb": 2,
+          "_row": "Lotus Europa"
+        },
+        {
+          "mpg": 15.8,
+          "cyl": 8,
+          "disp": 351,
+          "hp": 264,
+          "drat": 4.22,
+          "wt": 3.17,
+          "qsec": 14.5,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 4,
+          "_row": "Ford Pantera L"
+        },
+        {
+          "mpg": 19.7,
+          "cyl": 6,
+          "disp": 145,
+          "hp": 175,
+          "drat": 3.62,
+          "wt": 2.77,
+          "qsec": 15.5,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 6,
+          "_row": "Ferrari Dino"
+        },
+        {
+          "mpg": 15,
+          "cyl": 8,
+          "disp": 301,
+          "hp": 335,
+          "drat": 3.54,
+          "wt": 3.57,
+          "qsec": 14.6,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 8,
+          "_row": "Maserati Bora"
+        },
+        {
+          "mpg": 21.4,
+          "cyl": 4,
+          "disp": 121,
+          "hp": 109,
+          "drat": 4.11,
+          "wt": 2.78,
+          "qsec": 18.6,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Volvo 142E"
         }
+      ]
+    },
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "params": [
+      {
+        "name": "radius",
+        "value": 10
       }
     ],
-    "data": {
-      "url": "https://vega.github.io/vega-editor/app/data/movies.json"
+    "mark": {
+      "cornerRadius": {
+        "expr": "radius"
+      },
+      "type": "bar"
+    },
+    "encoding": {
+      "x": {
+        "field": "wt",
+        "bin": true,
+        "type": "quantitative"
+      },
+      "y": {
+        "aggregate": "count"
+      }
     }
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
-},"evals":[],"jsHooks":[]}</script><p>In this case the data is added afterwards. That can help make sure the data isn’t duplicated, and helps keep the size of the spec smaller. Note that layers can have different data, too, in which case the data would get added to each chart first before layering.</p>
-</div>
-<div id="the-operator" class="section level3">
-<h3 class="hasAnchor">
-<a href="#the-operator" class="anchor"></a>The <code>+</code> operator</h3>
-<p>Layering can also be performed by using the <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> operator.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">(points_plot <span class="op">+</span><span class="st"> </span>avg_plot) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/vl_add_data_url.html">vl_add_data_url</a></span>(<span class="st">"https://vega.github.io/vega-editor/app/data/movies.json"</span>)</a></code></pre></div>
-<div id="htmlwidget-3f5fe8bf3e5ccf059d77" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3f5fe8bf3e5ccf059d77">{"x":{
+},"evals":[],"jsHooks":[]}</script><p>The radius of the bar corners was set to a fixed variable of 15.</p>
+<p>To bind a parameter to a user input, use the <code>vl_bind_*</code> family of functions, for example * <code>vl_bind_range_input</code> for binding to a slider * <code>vl_bind_checkbox_input</code> for binding to checkbox selections * <code>vl_bind_radio_input</code> for binding to radio selections * <code>vl_bind_select_input</code> for binding to dropdown selections * <code>vl_bind_input</code> for binding to any hmtl input * <code>vl_bind_direct_input</code> for binding to an externally defined element</p>
+<p>An example of adding a parameter controlled by a range input:</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_parameter.html">vl_add_parameter</a></span><span class="op">(</span><span class="st">"radius"</span>, value <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/vl_bind_range_input.html">vl_bind_range_input</a></span><span class="op">(</span><span class="st">"radius"</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">15</span>, step <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/vl_mark_bar.html">vl_mark_bar</a></span><span class="op">(</span>cornerRadius <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>expr <span class="op">=</span> <span class="st">'radius'</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span>, bin <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span> aggregate <span class="op">=</span> <span class="st">'count'</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-7705010bc1bafd5faf2c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7705010bc1bafd5faf2c">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-    "layer": [
-      {
-        "encoding": {
-          "x": {
-            "field": "IMDB_Rating",
-            "type": "quantitative",
-            "bin": {
-              "maxbins": 10
-            }
-          },
-          "y": {
-            "type": "quantitative",
-            "aggregate": "count"
-          }
+    "data": {
+      "values": [
+        {
+          "mpg": 21,
+          "cyl": 6,
+          "disp": 160,
+          "hp": 110,
+          "drat": 3.9,
+          "wt": 2.62,
+          "qsec": 16.46,
+          "vs": 0,
+          "am": 1,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Mazda RX4"
         },
-        "mark": {
-          "type": "bar"
+        {
+          "mpg": 21,
+          "cyl": 6,
+          "disp": 160,
+          "hp": 110,
+          "drat": 3.9,
+          "wt": 2.875,
+          "qsec": 17.02,
+          "vs": 0,
+          "am": 1,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Mazda RX4 Wag"
+        },
+        {
+          "mpg": 22.8,
+          "cyl": 4,
+          "disp": 108,
+          "hp": 93,
+          "drat": 3.85,
+          "wt": 2.32,
+          "qsec": 18.61,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Datsun 710"
+        },
+        {
+          "mpg": 21.4,
+          "cyl": 6,
+          "disp": 258,
+          "hp": 110,
+          "drat": 3.08,
+          "wt": 3.215,
+          "qsec": 19.44,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Hornet 4 Drive"
+        },
+        {
+          "mpg": 18.7,
+          "cyl": 8,
+          "disp": 360,
+          "hp": 175,
+          "drat": 3.15,
+          "wt": 3.44,
+          "qsec": 17.02,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Hornet Sportabout"
+        },
+        {
+          "mpg": 18.1,
+          "cyl": 6,
+          "disp": 225,
+          "hp": 105,
+          "drat": 2.76,
+          "wt": 3.46,
+          "qsec": 20.22,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Valiant"
+        },
+        {
+          "mpg": 14.3,
+          "cyl": 8,
+          "disp": 360,
+          "hp": 245,
+          "drat": 3.21,
+          "wt": 3.57,
+          "qsec": 15.84,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Duster 360"
+        },
+        {
+          "mpg": 24.4,
+          "cyl": 4,
+          "disp": 146.7,
+          "hp": 62,
+          "drat": 3.69,
+          "wt": 3.19,
+          "qsec": 20,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Merc 240D"
+        },
+        {
+          "mpg": 22.8,
+          "cyl": 4,
+          "disp": 140.8,
+          "hp": 95,
+          "drat": 3.92,
+          "wt": 3.15,
+          "qsec": 22.9,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Merc 230"
+        },
+        {
+          "mpg": 19.2,
+          "cyl": 6,
+          "disp": 167.6,
+          "hp": 123,
+          "drat": 3.92,
+          "wt": 3.44,
+          "qsec": 18.3,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Merc 280"
+        },
+        {
+          "mpg": 17.8,
+          "cyl": 6,
+          "disp": 167.6,
+          "hp": 123,
+          "drat": 3.92,
+          "wt": 3.44,
+          "qsec": 18.9,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Merc 280C"
+        },
+        {
+          "mpg": 16.4,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 4.07,
+          "qsec": 17.4,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SE"
+        },
+        {
+          "mpg": 17.3,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 3.73,
+          "qsec": 17.6,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SL"
+        },
+        {
+          "mpg": 15.2,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 3.78,
+          "qsec": 18,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SLC"
+        },
+        {
+          "mpg": 10.4,
+          "cyl": 8,
+          "disp": 472,
+          "hp": 205,
+          "drat": 2.93,
+          "wt": 5.25,
+          "qsec": 17.98,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Cadillac Fleetwood"
+        },
+        {
+          "mpg": 10.4,
+          "cyl": 8,
+          "disp": 460,
+          "hp": 215,
+          "drat": 3,
+          "wt": 5.424,
+          "qsec": 17.82,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Lincoln Continental"
+        },
+        {
+          "mpg": 14.7,
+          "cyl": 8,
+          "disp": 440,
+          "hp": 230,
+          "drat": 3.23,
+          "wt": 5.345,
+          "qsec": 17.42,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Chrysler Imperial"
+        },
+        {
+          "mpg": 32.4,
+          "cyl": 4,
+          "disp": 78.7,
+          "hp": 66,
+          "drat": 4.08,
+          "wt": 2.2,
+          "qsec": 19.47,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Fiat 128"
+        },
+        {
+          "mpg": 30.4,
+          "cyl": 4,
+          "disp": 75.7,
+          "hp": 52,
+          "drat": 4.93,
+          "wt": 1.615,
+          "qsec": 18.52,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Honda Civic"
+        },
+        {
+          "mpg": 33.9,
+          "cyl": 4,
+          "disp": 71.1,
+          "hp": 65,
+          "drat": 4.22,
+          "wt": 1.835,
+          "qsec": 19.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Toyota Corolla"
+        },
+        {
+          "mpg": 21.5,
+          "cyl": 4,
+          "disp": 120.1,
+          "hp": 97,
+          "drat": 3.7,
+          "wt": 2.465,
+          "qsec": 20.01,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Toyota Corona"
+        },
+        {
+          "mpg": 15.5,
+          "cyl": 8,
+          "disp": 318,
+          "hp": 150,
+          "drat": 2.76,
+          "wt": 3.52,
+          "qsec": 16.87,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Dodge Challenger"
+        },
+        {
+          "mpg": 15.2,
+          "cyl": 8,
+          "disp": 304,
+          "hp": 150,
+          "drat": 3.15,
+          "wt": 3.435,
+          "qsec": 17.3,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "AMC Javelin"
+        },
+        {
+          "mpg": 13.3,
+          "cyl": 8,
+          "disp": 350,
+          "hp": 245,
+          "drat": 3.73,
+          "wt": 3.84,
+          "qsec": 15.41,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Camaro Z28"
+        },
+        {
+          "mpg": 19.2,
+          "cyl": 8,
+          "disp": 400,
+          "hp": 175,
+          "drat": 3.08,
+          "wt": 3.845,
+          "qsec": 17.05,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Pontiac Firebird"
+        },
+        {
+          "mpg": 27.3,
+          "cyl": 4,
+          "disp": 79,
+          "hp": 66,
+          "drat": 4.08,
+          "wt": 1.935,
+          "qsec": 18.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Fiat X1-9"
+        },
+        {
+          "mpg": 26,
+          "cyl": 4,
+          "disp": 120.3,
+          "hp": 91,
+          "drat": 4.43,
+          "wt": 2.14,
+          "qsec": 16.7,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 2,
+          "_row": "Porsche 914-2"
+        },
+        {
+          "mpg": 30.4,
+          "cyl": 4,
+          "disp": 95.1,
+          "hp": 113,
+          "drat": 3.77,
+          "wt": 1.513,
+          "qsec": 16.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 5,
+          "carb": 2,
+          "_row": "Lotus Europa"
+        },
+        {
+          "mpg": 15.8,
+          "cyl": 8,
+          "disp": 351,
+          "hp": 264,
+          "drat": 4.22,
+          "wt": 3.17,
+          "qsec": 14.5,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 4,
+          "_row": "Ford Pantera L"
+        },
+        {
+          "mpg": 19.7,
+          "cyl": 6,
+          "disp": 145,
+          "hp": 175,
+          "drat": 3.62,
+          "wt": 2.77,
+          "qsec": 15.5,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 6,
+          "_row": "Ferrari Dino"
+        },
+        {
+          "mpg": 15,
+          "cyl": 8,
+          "disp": 301,
+          "hp": 335,
+          "drat": 3.54,
+          "wt": 3.57,
+          "qsec": 14.6,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 8,
+          "_row": "Maserati Bora"
+        },
+        {
+          "mpg": 21.4,
+          "cyl": 4,
+          "disp": 121,
+          "hp": 109,
+          "drat": 4.11,
+          "wt": 2.78,
+          "qsec": 18.6,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Volvo 142E"
         }
-      },
+      ]
+    },
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "params": [
       {
-        "encoding": {
-          "x": {
-            "field": "IMDB_Rating",
-            "type": "quantitative",
-            "aggregate": "mean"
-          },
-          "color": {
-            "value": "red"
-          },
-          "size": {
-            "value": 5
-          }
-        },
-        "mark": {
-          "type": "rule"
+        "name": "radius",
+        "value": 10,
+        "bind": {
+          "max": 15,
+          "min": 0,
+          "step": 1,
+          "input": "range"
         }
       }
     ],
-    "data": {
-      "url": "https://vega.github.io/vega-editor/app/data/movies.json"
+    "mark": {
+      "cornerRadius": {
+        "expr": "radius"
+      },
+      "type": "bar"
+    },
+    "encoding": {
+      "x": {
+        "field": "wt",
+        "bin": true,
+        "type": "quantitative"
+      },
+      "y": {
+        "aggregate": "count"
+      }
     }
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
+  }
+},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="section level3">
+<h3 id="selections">Selections<a class="anchor" aria-label="anchor" href="#selections"></a>
+</h3>
+<p>More complex parameters are “selections” – these map data queries to a parameter. There are two types of selections – interval and point, which can be added using <code>vl_add_interval_selection</code> or <code>vl_add_point_selection</code>, respectively.</p>
+<p>The <code>vl_condition_*</code> family of functions can be used to condition an encoding on the selection.</p>
+<div class="section level4">
+<h4 id="interval-selections">Interval Selections<a class="anchor" aria-label="anchor" href="#interval-selections"></a>
+</h4>
+<p>Interval selections enable selecting an interval on the chart. Below shows an example of adding an interval selection and conditioning the color on that selection. If you select an area of the plot, that area will remain colored by the <code>hp</code> field, and the remainder of the color will be ‘gray’.</p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/vl_add_interval_selection.html">vl_add_interval_selection</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">'brush'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_color.html">vl_encode_color</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">'gray'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/condition_encoding.html">vl_condition_color</a></span><span class="op">(</span>param <span class="op">=</span> <span class="st">'brush'</span>, field <span class="op">=</span> <span class="st">'cyl'</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-5e1e1e5938e2c849753b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5e1e1e5938e2c849753b">{"x":{
+  "chart_spec": {
+    "data": {
+      "values": [
+        {
+          "mpg": 21,
+          "cyl": 6,
+          "disp": 160,
+          "hp": 110,
+          "drat": 3.9,
+          "wt": 2.62,
+          "qsec": 16.46,
+          "vs": 0,
+          "am": 1,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Mazda RX4"
+        },
+        {
+          "mpg": 21,
+          "cyl": 6,
+          "disp": 160,
+          "hp": 110,
+          "drat": 3.9,
+          "wt": 2.875,
+          "qsec": 17.02,
+          "vs": 0,
+          "am": 1,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Mazda RX4 Wag"
+        },
+        {
+          "mpg": 22.8,
+          "cyl": 4,
+          "disp": 108,
+          "hp": 93,
+          "drat": 3.85,
+          "wt": 2.32,
+          "qsec": 18.61,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Datsun 710"
+        },
+        {
+          "mpg": 21.4,
+          "cyl": 6,
+          "disp": 258,
+          "hp": 110,
+          "drat": 3.08,
+          "wt": 3.215,
+          "qsec": 19.44,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Hornet 4 Drive"
+        },
+        {
+          "mpg": 18.7,
+          "cyl": 8,
+          "disp": 360,
+          "hp": 175,
+          "drat": 3.15,
+          "wt": 3.44,
+          "qsec": 17.02,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Hornet Sportabout"
+        },
+        {
+          "mpg": 18.1,
+          "cyl": 6,
+          "disp": 225,
+          "hp": 105,
+          "drat": 2.76,
+          "wt": 3.46,
+          "qsec": 20.22,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Valiant"
+        },
+        {
+          "mpg": 14.3,
+          "cyl": 8,
+          "disp": 360,
+          "hp": 245,
+          "drat": 3.21,
+          "wt": 3.57,
+          "qsec": 15.84,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Duster 360"
+        },
+        {
+          "mpg": 24.4,
+          "cyl": 4,
+          "disp": 146.7,
+          "hp": 62,
+          "drat": 3.69,
+          "wt": 3.19,
+          "qsec": 20,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Merc 240D"
+        },
+        {
+          "mpg": 22.8,
+          "cyl": 4,
+          "disp": 140.8,
+          "hp": 95,
+          "drat": 3.92,
+          "wt": 3.15,
+          "qsec": 22.9,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Merc 230"
+        },
+        {
+          "mpg": 19.2,
+          "cyl": 6,
+          "disp": 167.6,
+          "hp": 123,
+          "drat": 3.92,
+          "wt": 3.44,
+          "qsec": 18.3,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Merc 280"
+        },
+        {
+          "mpg": 17.8,
+          "cyl": 6,
+          "disp": 167.6,
+          "hp": 123,
+          "drat": 3.92,
+          "wt": 3.44,
+          "qsec": 18.9,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Merc 280C"
+        },
+        {
+          "mpg": 16.4,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 4.07,
+          "qsec": 17.4,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SE"
+        },
+        {
+          "mpg": 17.3,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 3.73,
+          "qsec": 17.6,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SL"
+        },
+        {
+          "mpg": 15.2,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 3.78,
+          "qsec": 18,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SLC"
+        },
+        {
+          "mpg": 10.4,
+          "cyl": 8,
+          "disp": 472,
+          "hp": 205,
+          "drat": 2.93,
+          "wt": 5.25,
+          "qsec": 17.98,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Cadillac Fleetwood"
+        },
+        {
+          "mpg": 10.4,
+          "cyl": 8,
+          "disp": 460,
+          "hp": 215,
+          "drat": 3,
+          "wt": 5.424,
+          "qsec": 17.82,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Lincoln Continental"
+        },
+        {
+          "mpg": 14.7,
+          "cyl": 8,
+          "disp": 440,
+          "hp": 230,
+          "drat": 3.23,
+          "wt": 5.345,
+          "qsec": 17.42,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Chrysler Imperial"
+        },
+        {
+          "mpg": 32.4,
+          "cyl": 4,
+          "disp": 78.7,
+          "hp": 66,
+          "drat": 4.08,
+          "wt": 2.2,
+          "qsec": 19.47,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Fiat 128"
+        },
+        {
+          "mpg": 30.4,
+          "cyl": 4,
+          "disp": 75.7,
+          "hp": 52,
+          "drat": 4.93,
+          "wt": 1.615,
+          "qsec": 18.52,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Honda Civic"
+        },
+        {
+          "mpg": 33.9,
+          "cyl": 4,
+          "disp": 71.1,
+          "hp": 65,
+          "drat": 4.22,
+          "wt": 1.835,
+          "qsec": 19.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Toyota Corolla"
+        },
+        {
+          "mpg": 21.5,
+          "cyl": 4,
+          "disp": 120.1,
+          "hp": 97,
+          "drat": 3.7,
+          "wt": 2.465,
+          "qsec": 20.01,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Toyota Corona"
+        },
+        {
+          "mpg": 15.5,
+          "cyl": 8,
+          "disp": 318,
+          "hp": 150,
+          "drat": 2.76,
+          "wt": 3.52,
+          "qsec": 16.87,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Dodge Challenger"
+        },
+        {
+          "mpg": 15.2,
+          "cyl": 8,
+          "disp": 304,
+          "hp": 150,
+          "drat": 3.15,
+          "wt": 3.435,
+          "qsec": 17.3,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "AMC Javelin"
+        },
+        {
+          "mpg": 13.3,
+          "cyl": 8,
+          "disp": 350,
+          "hp": 245,
+          "drat": 3.73,
+          "wt": 3.84,
+          "qsec": 15.41,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Camaro Z28"
+        },
+        {
+          "mpg": 19.2,
+          "cyl": 8,
+          "disp": 400,
+          "hp": 175,
+          "drat": 3.08,
+          "wt": 3.845,
+          "qsec": 17.05,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Pontiac Firebird"
+        },
+        {
+          "mpg": 27.3,
+          "cyl": 4,
+          "disp": 79,
+          "hp": 66,
+          "drat": 4.08,
+          "wt": 1.935,
+          "qsec": 18.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Fiat X1-9"
+        },
+        {
+          "mpg": 26,
+          "cyl": 4,
+          "disp": 120.3,
+          "hp": 91,
+          "drat": 4.43,
+          "wt": 2.14,
+          "qsec": 16.7,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 2,
+          "_row": "Porsche 914-2"
+        },
+        {
+          "mpg": 30.4,
+          "cyl": 4,
+          "disp": 95.1,
+          "hp": 113,
+          "drat": 3.77,
+          "wt": 1.513,
+          "qsec": 16.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 5,
+          "carb": 2,
+          "_row": "Lotus Europa"
+        },
+        {
+          "mpg": 15.8,
+          "cyl": 8,
+          "disp": 351,
+          "hp": 264,
+          "drat": 4.22,
+          "wt": 3.17,
+          "qsec": 14.5,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 4,
+          "_row": "Ford Pantera L"
+        },
+        {
+          "mpg": 19.7,
+          "cyl": 6,
+          "disp": 145,
+          "hp": 175,
+          "drat": 3.62,
+          "wt": 2.77,
+          "qsec": 15.5,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 6,
+          "_row": "Ferrari Dino"
+        },
+        {
+          "mpg": 15,
+          "cyl": 8,
+          "disp": 301,
+          "hp": 335,
+          "drat": 3.54,
+          "wt": 3.57,
+          "qsec": 14.6,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 8,
+          "_row": "Maserati Bora"
+        },
+        {
+          "mpg": 21.4,
+          "cyl": 4,
+          "disp": 121,
+          "hp": 109,
+          "drat": 4.11,
+          "wt": 2.78,
+          "qsec": 18.6,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Volvo 142E"
+        }
+      ]
+    },
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "mark": {
+      "type": "point"
+    },
+    "encoding": {
+      "x": {
+        "field": "wt",
+        "type": "quantitative"
+      },
+      "y": {
+        "field": "mpg",
+        "type": "quantitative"
+      },
+      "color": {
+        "value": "gray",
+        "condition": {
+          "param": "brush",
+          "field": "cyl"
+        }
+      }
+    },
+    "params": [
+      {
+        "name": "brush",
+        "select": {
+          "type": "interval"
+        }
+      }
+    ]
+  },
+  "embed_options": {
+    "renderer": "canvas",
+    "defaultStyle": true
+  }
+},"evals":[],"jsHooks":[]}</script><div class="section level5">
+<h5 id="binding-interval-to-scales">Binding interval to scales<a class="anchor" aria-label="anchor" href="#binding-interval-to-scales"></a>
+</h5>
+<p>Interval selections can be controlled via the scales, using <code>bind = 'scales'</code>. This enables using the view to pan and zoom on the data. An example – drag the plot panel to shift the area shown.</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/vl_add_interval_selection.html">vl_add_interval_selection</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">'grid'</span>, bind <span class="op">=</span> <span class="st">'scales'</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-1a3701ef361f0fdde74e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1a3701ef361f0fdde74e">{"x":{
+  "chart_spec": {
+    "data": {
+      "values": [
+        {
+          "mpg": 21,
+          "cyl": 6,
+          "disp": 160,
+          "hp": 110,
+          "drat": 3.9,
+          "wt": 2.62,
+          "qsec": 16.46,
+          "vs": 0,
+          "am": 1,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Mazda RX4"
+        },
+        {
+          "mpg": 21,
+          "cyl": 6,
+          "disp": 160,
+          "hp": 110,
+          "drat": 3.9,
+          "wt": 2.875,
+          "qsec": 17.02,
+          "vs": 0,
+          "am": 1,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Mazda RX4 Wag"
+        },
+        {
+          "mpg": 22.8,
+          "cyl": 4,
+          "disp": 108,
+          "hp": 93,
+          "drat": 3.85,
+          "wt": 2.32,
+          "qsec": 18.61,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Datsun 710"
+        },
+        {
+          "mpg": 21.4,
+          "cyl": 6,
+          "disp": 258,
+          "hp": 110,
+          "drat": 3.08,
+          "wt": 3.215,
+          "qsec": 19.44,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Hornet 4 Drive"
+        },
+        {
+          "mpg": 18.7,
+          "cyl": 8,
+          "disp": 360,
+          "hp": 175,
+          "drat": 3.15,
+          "wt": 3.44,
+          "qsec": 17.02,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Hornet Sportabout"
+        },
+        {
+          "mpg": 18.1,
+          "cyl": 6,
+          "disp": 225,
+          "hp": 105,
+          "drat": 2.76,
+          "wt": 3.46,
+          "qsec": 20.22,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Valiant"
+        },
+        {
+          "mpg": 14.3,
+          "cyl": 8,
+          "disp": 360,
+          "hp": 245,
+          "drat": 3.21,
+          "wt": 3.57,
+          "qsec": 15.84,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Duster 360"
+        },
+        {
+          "mpg": 24.4,
+          "cyl": 4,
+          "disp": 146.7,
+          "hp": 62,
+          "drat": 3.69,
+          "wt": 3.19,
+          "qsec": 20,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Merc 240D"
+        },
+        {
+          "mpg": 22.8,
+          "cyl": 4,
+          "disp": 140.8,
+          "hp": 95,
+          "drat": 3.92,
+          "wt": 3.15,
+          "qsec": 22.9,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Merc 230"
+        },
+        {
+          "mpg": 19.2,
+          "cyl": 6,
+          "disp": 167.6,
+          "hp": 123,
+          "drat": 3.92,
+          "wt": 3.44,
+          "qsec": 18.3,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Merc 280"
+        },
+        {
+          "mpg": 17.8,
+          "cyl": 6,
+          "disp": 167.6,
+          "hp": 123,
+          "drat": 3.92,
+          "wt": 3.44,
+          "qsec": 18.9,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Merc 280C"
+        },
+        {
+          "mpg": 16.4,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 4.07,
+          "qsec": 17.4,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SE"
+        },
+        {
+          "mpg": 17.3,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 3.73,
+          "qsec": 17.6,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SL"
+        },
+        {
+          "mpg": 15.2,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 3.78,
+          "qsec": 18,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SLC"
+        },
+        {
+          "mpg": 10.4,
+          "cyl": 8,
+          "disp": 472,
+          "hp": 205,
+          "drat": 2.93,
+          "wt": 5.25,
+          "qsec": 17.98,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Cadillac Fleetwood"
+        },
+        {
+          "mpg": 10.4,
+          "cyl": 8,
+          "disp": 460,
+          "hp": 215,
+          "drat": 3,
+          "wt": 5.424,
+          "qsec": 17.82,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Lincoln Continental"
+        },
+        {
+          "mpg": 14.7,
+          "cyl": 8,
+          "disp": 440,
+          "hp": 230,
+          "drat": 3.23,
+          "wt": 5.345,
+          "qsec": 17.42,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Chrysler Imperial"
+        },
+        {
+          "mpg": 32.4,
+          "cyl": 4,
+          "disp": 78.7,
+          "hp": 66,
+          "drat": 4.08,
+          "wt": 2.2,
+          "qsec": 19.47,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Fiat 128"
+        },
+        {
+          "mpg": 30.4,
+          "cyl": 4,
+          "disp": 75.7,
+          "hp": 52,
+          "drat": 4.93,
+          "wt": 1.615,
+          "qsec": 18.52,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Honda Civic"
+        },
+        {
+          "mpg": 33.9,
+          "cyl": 4,
+          "disp": 71.1,
+          "hp": 65,
+          "drat": 4.22,
+          "wt": 1.835,
+          "qsec": 19.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Toyota Corolla"
+        },
+        {
+          "mpg": 21.5,
+          "cyl": 4,
+          "disp": 120.1,
+          "hp": 97,
+          "drat": 3.7,
+          "wt": 2.465,
+          "qsec": 20.01,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Toyota Corona"
+        },
+        {
+          "mpg": 15.5,
+          "cyl": 8,
+          "disp": 318,
+          "hp": 150,
+          "drat": 2.76,
+          "wt": 3.52,
+          "qsec": 16.87,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Dodge Challenger"
+        },
+        {
+          "mpg": 15.2,
+          "cyl": 8,
+          "disp": 304,
+          "hp": 150,
+          "drat": 3.15,
+          "wt": 3.435,
+          "qsec": 17.3,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "AMC Javelin"
+        },
+        {
+          "mpg": 13.3,
+          "cyl": 8,
+          "disp": 350,
+          "hp": 245,
+          "drat": 3.73,
+          "wt": 3.84,
+          "qsec": 15.41,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Camaro Z28"
+        },
+        {
+          "mpg": 19.2,
+          "cyl": 8,
+          "disp": 400,
+          "hp": 175,
+          "drat": 3.08,
+          "wt": 3.845,
+          "qsec": 17.05,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Pontiac Firebird"
+        },
+        {
+          "mpg": 27.3,
+          "cyl": 4,
+          "disp": 79,
+          "hp": 66,
+          "drat": 4.08,
+          "wt": 1.935,
+          "qsec": 18.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Fiat X1-9"
+        },
+        {
+          "mpg": 26,
+          "cyl": 4,
+          "disp": 120.3,
+          "hp": 91,
+          "drat": 4.43,
+          "wt": 2.14,
+          "qsec": 16.7,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 2,
+          "_row": "Porsche 914-2"
+        },
+        {
+          "mpg": 30.4,
+          "cyl": 4,
+          "disp": 95.1,
+          "hp": 113,
+          "drat": 3.77,
+          "wt": 1.513,
+          "qsec": 16.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 5,
+          "carb": 2,
+          "_row": "Lotus Europa"
+        },
+        {
+          "mpg": 15.8,
+          "cyl": 8,
+          "disp": 351,
+          "hp": 264,
+          "drat": 4.22,
+          "wt": 3.17,
+          "qsec": 14.5,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 4,
+          "_row": "Ford Pantera L"
+        },
+        {
+          "mpg": 19.7,
+          "cyl": 6,
+          "disp": 145,
+          "hp": 175,
+          "drat": 3.62,
+          "wt": 2.77,
+          "qsec": 15.5,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 6,
+          "_row": "Ferrari Dino"
+        },
+        {
+          "mpg": 15,
+          "cyl": 8,
+          "disp": 301,
+          "hp": 335,
+          "drat": 3.54,
+          "wt": 3.57,
+          "qsec": 14.6,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 8,
+          "_row": "Maserati Bora"
+        },
+        {
+          "mpg": 21.4,
+          "cyl": 4,
+          "disp": 121,
+          "hp": 109,
+          "drat": 4.11,
+          "wt": 2.78,
+          "qsec": 18.6,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Volvo 142E"
+        }
+      ]
+    },
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "mark": {
+      "type": "point"
+    },
+    "encoding": {
+      "x": {
+        "field": "wt",
+        "type": "quantitative"
+      },
+      "y": {
+        "field": "mpg",
+        "type": "quantitative"
+      }
+    },
+    "params": [
+      {
+        "name": "grid",
+        "bind": "scales",
+        "select": {
+          "type": "interval"
+        }
+      }
+    ]
+  },
+  "embed_options": {
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="facet" class="section level2">
-<h2 class="hasAnchor">
-<a href="#facet" class="anchor"></a>Facet</h2>
-<p>Facetting splits up your data into different subplots based on a field in the data. This can be done across rows and/or columns. Facets can get added in two ways: via <code>vl_facet_</code> functions or as encodings, eg <code>vl_encode_row</code>.</p>
-<p>More to come here…</p>
-<div id="facets-as-encoding" class="section level3">
-<h3 class="hasAnchor">
-<a href="#facets-as-encoding" class="anchor"></a>Facets as encoding</h3>
+<div class="section level4">
+<h4 id="point-selections">Point Selections<a class="anchor" aria-label="anchor" href="#point-selections"></a>
+</h4>
+<p>A point selection enables directly interacting with points (or lines, areas) on the chart. In the below example, clicking on a point will cause it to change color to red.</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_circle.html">vl_mark_circle</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/vl_add_point_selection.html">vl_add_point_selection</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">'pt'</span>, value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_color.html">vl_encode_color</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">'gray'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/condition_encoding.html">vl_condition_color</a></span><span class="op">(</span>param <span class="op">=</span> <span class="st">'pt'</span>, value <span class="op">=</span> <span class="st">'red'</span>, empty <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-1483aa1f9c18c6891d38" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1483aa1f9c18c6891d38">{"x":{
+  "chart_spec": {
+    "data": {
+      "values": [
+        {
+          "mpg": 21,
+          "cyl": 6,
+          "disp": 160,
+          "hp": 110,
+          "drat": 3.9,
+          "wt": 2.62,
+          "qsec": 16.46,
+          "vs": 0,
+          "am": 1,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Mazda RX4"
+        },
+        {
+          "mpg": 21,
+          "cyl": 6,
+          "disp": 160,
+          "hp": 110,
+          "drat": 3.9,
+          "wt": 2.875,
+          "qsec": 17.02,
+          "vs": 0,
+          "am": 1,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Mazda RX4 Wag"
+        },
+        {
+          "mpg": 22.8,
+          "cyl": 4,
+          "disp": 108,
+          "hp": 93,
+          "drat": 3.85,
+          "wt": 2.32,
+          "qsec": 18.61,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Datsun 710"
+        },
+        {
+          "mpg": 21.4,
+          "cyl": 6,
+          "disp": 258,
+          "hp": 110,
+          "drat": 3.08,
+          "wt": 3.215,
+          "qsec": 19.44,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Hornet 4 Drive"
+        },
+        {
+          "mpg": 18.7,
+          "cyl": 8,
+          "disp": 360,
+          "hp": 175,
+          "drat": 3.15,
+          "wt": 3.44,
+          "qsec": 17.02,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Hornet Sportabout"
+        },
+        {
+          "mpg": 18.1,
+          "cyl": 6,
+          "disp": 225,
+          "hp": 105,
+          "drat": 2.76,
+          "wt": 3.46,
+          "qsec": 20.22,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Valiant"
+        },
+        {
+          "mpg": 14.3,
+          "cyl": 8,
+          "disp": 360,
+          "hp": 245,
+          "drat": 3.21,
+          "wt": 3.57,
+          "qsec": 15.84,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Duster 360"
+        },
+        {
+          "mpg": 24.4,
+          "cyl": 4,
+          "disp": 146.7,
+          "hp": 62,
+          "drat": 3.69,
+          "wt": 3.19,
+          "qsec": 20,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Merc 240D"
+        },
+        {
+          "mpg": 22.8,
+          "cyl": 4,
+          "disp": 140.8,
+          "hp": 95,
+          "drat": 3.92,
+          "wt": 3.15,
+          "qsec": 22.9,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Merc 230"
+        },
+        {
+          "mpg": 19.2,
+          "cyl": 6,
+          "disp": 167.6,
+          "hp": 123,
+          "drat": 3.92,
+          "wt": 3.44,
+          "qsec": 18.3,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Merc 280"
+        },
+        {
+          "mpg": 17.8,
+          "cyl": 6,
+          "disp": 167.6,
+          "hp": 123,
+          "drat": 3.92,
+          "wt": 3.44,
+          "qsec": 18.9,
+          "vs": 1,
+          "am": 0,
+          "gear": 4,
+          "carb": 4,
+          "_row": "Merc 280C"
+        },
+        {
+          "mpg": 16.4,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 4.07,
+          "qsec": 17.4,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SE"
+        },
+        {
+          "mpg": 17.3,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 3.73,
+          "qsec": 17.6,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SL"
+        },
+        {
+          "mpg": 15.2,
+          "cyl": 8,
+          "disp": 275.8,
+          "hp": 180,
+          "drat": 3.07,
+          "wt": 3.78,
+          "qsec": 18,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 3,
+          "_row": "Merc 450SLC"
+        },
+        {
+          "mpg": 10.4,
+          "cyl": 8,
+          "disp": 472,
+          "hp": 205,
+          "drat": 2.93,
+          "wt": 5.25,
+          "qsec": 17.98,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Cadillac Fleetwood"
+        },
+        {
+          "mpg": 10.4,
+          "cyl": 8,
+          "disp": 460,
+          "hp": 215,
+          "drat": 3,
+          "wt": 5.424,
+          "qsec": 17.82,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Lincoln Continental"
+        },
+        {
+          "mpg": 14.7,
+          "cyl": 8,
+          "disp": 440,
+          "hp": 230,
+          "drat": 3.23,
+          "wt": 5.345,
+          "qsec": 17.42,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Chrysler Imperial"
+        },
+        {
+          "mpg": 32.4,
+          "cyl": 4,
+          "disp": 78.7,
+          "hp": 66,
+          "drat": 4.08,
+          "wt": 2.2,
+          "qsec": 19.47,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Fiat 128"
+        },
+        {
+          "mpg": 30.4,
+          "cyl": 4,
+          "disp": 75.7,
+          "hp": 52,
+          "drat": 4.93,
+          "wt": 1.615,
+          "qsec": 18.52,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Honda Civic"
+        },
+        {
+          "mpg": 33.9,
+          "cyl": 4,
+          "disp": 71.1,
+          "hp": 65,
+          "drat": 4.22,
+          "wt": 1.835,
+          "qsec": 19.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Toyota Corolla"
+        },
+        {
+          "mpg": 21.5,
+          "cyl": 4,
+          "disp": 120.1,
+          "hp": 97,
+          "drat": 3.7,
+          "wt": 2.465,
+          "qsec": 20.01,
+          "vs": 1,
+          "am": 0,
+          "gear": 3,
+          "carb": 1,
+          "_row": "Toyota Corona"
+        },
+        {
+          "mpg": 15.5,
+          "cyl": 8,
+          "disp": 318,
+          "hp": 150,
+          "drat": 2.76,
+          "wt": 3.52,
+          "qsec": 16.87,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Dodge Challenger"
+        },
+        {
+          "mpg": 15.2,
+          "cyl": 8,
+          "disp": 304,
+          "hp": 150,
+          "drat": 3.15,
+          "wt": 3.435,
+          "qsec": 17.3,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "AMC Javelin"
+        },
+        {
+          "mpg": 13.3,
+          "cyl": 8,
+          "disp": 350,
+          "hp": 245,
+          "drat": 3.73,
+          "wt": 3.84,
+          "qsec": 15.41,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 4,
+          "_row": "Camaro Z28"
+        },
+        {
+          "mpg": 19.2,
+          "cyl": 8,
+          "disp": 400,
+          "hp": 175,
+          "drat": 3.08,
+          "wt": 3.845,
+          "qsec": 17.05,
+          "vs": 0,
+          "am": 0,
+          "gear": 3,
+          "carb": 2,
+          "_row": "Pontiac Firebird"
+        },
+        {
+          "mpg": 27.3,
+          "cyl": 4,
+          "disp": 79,
+          "hp": 66,
+          "drat": 4.08,
+          "wt": 1.935,
+          "qsec": 18.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 1,
+          "_row": "Fiat X1-9"
+        },
+        {
+          "mpg": 26,
+          "cyl": 4,
+          "disp": 120.3,
+          "hp": 91,
+          "drat": 4.43,
+          "wt": 2.14,
+          "qsec": 16.7,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 2,
+          "_row": "Porsche 914-2"
+        },
+        {
+          "mpg": 30.4,
+          "cyl": 4,
+          "disp": 95.1,
+          "hp": 113,
+          "drat": 3.77,
+          "wt": 1.513,
+          "qsec": 16.9,
+          "vs": 1,
+          "am": 1,
+          "gear": 5,
+          "carb": 2,
+          "_row": "Lotus Europa"
+        },
+        {
+          "mpg": 15.8,
+          "cyl": 8,
+          "disp": 351,
+          "hp": 264,
+          "drat": 4.22,
+          "wt": 3.17,
+          "qsec": 14.5,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 4,
+          "_row": "Ford Pantera L"
+        },
+        {
+          "mpg": 19.7,
+          "cyl": 6,
+          "disp": 145,
+          "hp": 175,
+          "drat": 3.62,
+          "wt": 2.77,
+          "qsec": 15.5,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 6,
+          "_row": "Ferrari Dino"
+        },
+        {
+          "mpg": 15,
+          "cyl": 8,
+          "disp": 301,
+          "hp": 335,
+          "drat": 3.54,
+          "wt": 3.57,
+          "qsec": 14.6,
+          "vs": 0,
+          "am": 1,
+          "gear": 5,
+          "carb": 8,
+          "_row": "Maserati Bora"
+        },
+        {
+          "mpg": 21.4,
+          "cyl": 4,
+          "disp": 121,
+          "hp": 109,
+          "drat": 4.11,
+          "wt": 2.78,
+          "qsec": 18.6,
+          "vs": 1,
+          "am": 1,
+          "gear": 4,
+          "carb": 2,
+          "_row": "Volvo 142E"
+        }
+      ]
+    },
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "mark": {
+      "size": 50,
+      "type": "circle"
+    },
+    "encoding": {
+      "x": {
+        "field": "wt",
+        "type": "quantitative"
+      },
+      "y": {
+        "field": "mpg",
+        "type": "quantitative"
+      },
+      "color": {
+        "value": "gray",
+        "condition": {
+          "value": "red",
+          "param": "pt",
+          "empty": false
+        }
+      }
+    },
+    "params": [
+      {
+        "name": "pt",
+        "value": [],
+        "select": {
+          "type": "point"
+        }
+      }
+    ]
+  },
+  "embed_options": {
+    "renderer": "canvas",
+    "defaultStyle": true
+  }
+},"evals":[],"jsHooks":[]}</script><p>These selections can be customized in wheter they respond to hover instead of click, whether they select the nearest point, how multiple items can be clicked, and how selections can be cleared. See (Vega-Lite documentation)[<a href="https://vega.github.io/vega-lite/docs/selection.html" class="external-link uri">https://vega.github.io/vega-lite/docs/selection.html</a>] for more that is possible with selections!</p>
+<div class="section level5">
+<h5 id="binding-legend-to-selection">Binding legend to selection<a class="anchor" aria-label="anchor" href="#binding-legend-to-selection"></a>
+</h5>
+<p>A point selection can be controlled via the legend, using <code>bind = 'legend'</code>. For example:</p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span>data <span class="op">=</span> <span class="st">'https://vega.github.io/vega-editor/app/data/unemployment-across-industries.json'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_mark_area.html">vl_mark_area</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">'date'</span>, timeUnit <span class="op">=</span> <span class="st">'yearmonth'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/axis_encoding.html">vl_axis_x</a></span><span class="op">(</span>domain <span class="op">=</span> <span class="cn">FALSE</span>, format <span class="op">=</span> <span class="st">'%Y'</span>, tickSize <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">'count'</span>, aggregate <span class="op">=</span> <span class="st">'sum'</span>, stack <span class="op">=</span> <span class="st">'center'</span>, axis <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_color.html">vl_encode_color</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">'series'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/scale_encoding.html">vl_scale_color</a></span><span class="op">(</span>scheme <span class="op">=</span> <span class="st">'category20b'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_encode_opacity.html">vl_encode_opacity</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/condition_encoding.html">vl_condition_opacity</a></span><span class="op">(</span>param <span class="op">=</span> <span class="st">'industry'</span>, value <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/vl_add_point_selection.html">vl_add_point_selection</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">'industry'</span>, fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">'series'</span><span class="op">)</span>, bind <span class="op">=</span> <span class="st">'legend'</span><span class="op">)</span> </code></pre></div>
+<div id="htmlwidget-a039070042e31d09a812" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a039070042e31d09a812">{"x":{
+  "chart_spec": {
+    "data": {
+      "url": "https://vega.github.io/vega-editor/app/data/unemployment-across-industries.json"
+    },
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "mark": {
+      "type": "area"
+    },
+    "encoding": {
+      "x": {
+        "field": "date",
+        "timeUnit": "yearmonth",
+        "axis": {
+          "domain": false,
+          "format": "%Y",
+          "tickSize": 0
+        }
+      },
+      "y": {
+        "field": "count",
+        "aggregate": "sum",
+        "stack": "center"
+      },
+      "color": {
+        "field": "series",
+        "scale": {
+          "scheme": "category20b"
+        }
+      },
+      "opacity": {
+        "value": 0.2,
+        "condition": {
+          "value": 1,
+          "param": "industry"
+        }
+      }
+    },
+    "params": [
+      {
+        "name": "industry",
+        "bind": "legend",
+        "select": {
+          "fields": [
+            "series"
+          ],
+          "type": "point"
+        }
+      }
+    ]
+  },
+  "embed_options": {
+    "renderer": "canvas",
+    "defaultStyle": true
+  }
+},"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="adding-facets-with-facet-functions" class="section level3">
-<h3 class="hasAnchor">
-<a href="#adding-facets-with-facet-functions" class="anchor"></a>Adding facets with facet functions</h3>
 </div>
 </div>
-<div id="repeating" class="section level2">
-<h2 class="hasAnchor">
-<a href="#repeating" class="anchor"></a>Repeating</h2>
-<p>More to come here…</p>
 </div>
-<div id="concatenation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#concatenation" class="anchor"></a>Concatenation</h2>
-<p>More to come here…</p>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
-</div>
-  </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
 
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li>
-<a href="#the-three-basic-components">The three basic components</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#data">data</a></li>
-      <li><a href="#mark">Mark</a></li>
-      <li><a href="#encoding">Encoding</a></li>
-      </ul>
-</li>
-      <li>
-<a href="#interactivity">Interactivity</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#tooltips">Tooltips</a></li>
-      <li><a href="#selections">Selections</a></li>
-      </ul>
-</li>
-      <li>
-<a href="#view-composition">View Composition</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#layering">Layering</a></li>
-      <li><a href="#facet">Facet</a></li>
-      <li><a href="#repeating">Repeating</a></li>
-      <li><a href="#concatenation">Concatenation</a></li>
-      </ul>
-</li>
-      </ul>
-</div>
-      </div>
 
+    <footer><div class="pkgdown-footer-left">
+  <p></p>
+<p>Developed by Alicia Schep, Vega-Lite Developers.</p>
 </div>
 
-
-
-      <footer><div class="copyright">
-  <p>Developed by Aicia Schep.</p>
+<div class="pkgdown-footer-right">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
-</div>
-
-      </footer>
+    </footer>
 </div>
 
   
 
+  
 
   </body>
 </html>
