@@ -6,3 +6,4 @@
 \description{
 See \code{vegawidget::\link[vegawidget]{vw_as_json}} for details.
 }
+\keyword{internal}

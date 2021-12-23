@@ -6,3 +6,4 @@
 \description{
 See \code{vegawidget::\link[vegawidget]{vega_embed}} for details.
 }
+\keyword{internal}

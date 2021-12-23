@@ -10,3 +10,4 @@
 \description{
 See \code{vegawidget::\link[vegawidget]{image}} for details.
 }
+\keyword{internal}

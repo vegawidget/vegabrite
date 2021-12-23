@@ -7,3 +7,4 @@
 See \code{vegawidget::\link[vegawidget]{knit_print.vegaspec}} for details,
 particularly on additional packages that may have to be installed.
 }
+\keyword{internal}

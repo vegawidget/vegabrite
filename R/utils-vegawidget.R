@@ -8,7 +8,7 @@
 #' @rdname as_vegaspec
 #' @importFrom vegawidget as_vegaspec
 #' @export
-#'
+#' @keywords internal
 NULL
 
 #' Coerce vegaspec to JSON
@@ -19,7 +19,7 @@ NULL
 #' @rdname vw_as_json
 #' @importFrom vegawidget vw_as_json
 #' @export
-#'
+#' @keywords internal
 NULL
 
 #### print functions ####
@@ -33,7 +33,7 @@ NULL
 #' @rdname knit_print.vegaspec
 #' @importFrom vegawidget knit_print.vegaspec
 #' @export
-#'
+#' @keywords internal
 NULL
 
 #### vegawidget functions ####
@@ -46,7 +46,7 @@ NULL
 #' @rdname vegawidget
 #' @importFrom vegawidget vegawidget
 #' @export
-#'
+#' @keywords internal
 NULL
 
 #' Vega embed options
@@ -57,7 +57,7 @@ NULL
 #' @rdname vega_embed
 #' @importFrom vegawidget vega_embed
 #' @export
-#'
+#' @keywords internal
 NULL
 
 #### image functions ####
@@ -71,7 +71,7 @@ NULL
 #'           vw_to_svg vw_to_bitmap vw_write_png vw_write_svg
 #' @aliases  vw_to_svg vw_to_bitmap vw_write_png vw_write_svg
 #' @export   vw_to_svg vw_to_bitmap vw_write_png vw_write_svg
-#'
+#' @keywords internal
 NULL
 
 #### shiny functions ####
@@ -84,7 +84,7 @@ NULL
 #' @rdname vegawidgetOutput
 #' @importFrom vegawidget vegawidgetOutput
 #' @export
-#'
+#' @keywords internal
 NULL
 
 #' Render shiny-output for vegawidget
@@ -95,5 +95,5 @@ NULL
 #' @rdname renderVegawidget
 #' @importFrom vegawidget renderVegawidget
 #' @export
-#'
+#' @keywords internal
 NULL

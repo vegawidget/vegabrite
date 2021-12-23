@@ -6,3 +6,4 @@
 \description{
 See \code{vegawidget::\link[vegawidget]{vegawidgetOutput}} for details.
 }
+\keyword{internal}
