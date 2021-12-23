@@ -6,7 +6,6 @@
 \usage{
 vl_mark_point(
   spec,
-  .object = NULL,
   align = NULL,
   angle = NULL,
   aria = NULL,
@@ -91,13 +90,12 @@ vl_mark_point(
   y = NULL,
   y2 = NULL,
   y2Offset = NULL,
-  yOffset = NULL
+  yOffset = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkDef}
 
 \item{align}{The horizontal alignment of the text or ranged marks (area, bar, image, rect,
 rule). One of \code{"left"}, \code{"right"}, \code{"center"}.
@@ -602,6 +600,8 @@ height of the plot.}
 \item{y2Offset}{Offset for y2-position.}
 
 \item{yOffset}{Offset for y-position.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: MarkDef}
 }
 \value{
 A modified Vega-Lite Spec

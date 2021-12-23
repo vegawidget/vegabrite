@@ -32,7 +32,7 @@ create_selection_function <- function(type, schema) {
     suffix,
     ".add_selection",
     glue("Add a parameter for a {short_type} selection to a spec"),
-    override_args = list('type' = short_type),
+    override_args = list("type" = short_type),
     sub_references = sub_reference
   )
   

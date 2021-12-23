@@ -37,6 +37,9 @@
 \alias{vl_aggregate_y2}
 \alias{vl_aggregate_yError}
 \alias{vl_aggregate_yError2}
+\alias{vl_aggregate_facet}
+\alias{vl_aggregate_row}
+\alias{vl_aggregate_column}
 \title{Add aggregate transform to encoding}
 \usage{
 vl_aggregate_angle(
@@ -278,6 +281,27 @@ vl_aggregate_yError(
 )
 
 vl_aggregate_yError2(
+  spec,
+  aggregate = c("argmax", "argmin", "average", "count", "distinct", "max", "mean",
+    "median", "min", "missing", "product", "q1", "q3", "ci0", "ci1", "stderr", "stdev",
+    "stdevp", "sum", "valid", "values", "variance", "variancep", NA)
+)
+
+vl_aggregate_facet(
+  spec,
+  aggregate = c("argmax", "argmin", "average", "count", "distinct", "max", "mean",
+    "median", "min", "missing", "product", "q1", "q3", "ci0", "ci1", "stderr", "stdev",
+    "stdevp", "sum", "valid", "values", "variance", "variancep", NA)
+)
+
+vl_aggregate_row(
+  spec,
+  aggregate = c("argmax", "argmin", "average", "count", "distinct", "max", "mean",
+    "median", "min", "missing", "product", "q1", "q3", "ci0", "ci1", "stderr", "stdev",
+    "stdevp", "sum", "valid", "values", "variance", "variancep", NA)
+)
+
+vl_aggregate_column(
   spec,
   aggregate = c("argmax", "argmin", "average", "count", "distinct", "max", "mean",
     "median", "min", "missing", "product", "q1", "q3", "ci0", "ci1", "stderr", "stdev",

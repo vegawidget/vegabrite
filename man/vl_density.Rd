@@ -6,7 +6,6 @@
 \usage{
 vl_density(
   spec,
-  .object = NULL,
   density = NULL,
   as = NULL,
   bandwidth = NULL,
@@ -16,13 +15,12 @@ vl_density(
   groupby = NULL,
   maxsteps = NULL,
   minsteps = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: DensityTransform}
 
 \item{density}{The data field for which to perform density estimation.}
 
@@ -65,6 +63,8 @@ density.
 density. If specified, overrides both minsteps and maxsteps to set an exact
 number of uniform samples. Potentially useful in conjunction with a fixed extent
 to ensure consistent sample points for stacked densities.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: DensityTransform}
 }
 \value{
 A modified Vega-Lite Spec

@@ -4,12 +4,10 @@
 \alias{vl_config_concat}
 \title{vl_config_concat}
 \usage{
-vl_config_concat(spec, .object = NULL, columns = NULL, spacing = NULL)
+vl_config_concat(spec, columns = NULL, spacing = NULL, .object = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: CompositionConfig}
 
 \item{columns}{The number of columns to include in the view composition layout.
 
@@ -34,6 +32,8 @@ using the \code{row} channel (for \code{facet} and \code{repeat}).
 \item{spacing}{The default spacing in pixels between composed sub-views.
 
 \strong{Default value}: \code{20}}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: CompositionConfig}
 }
 \value{
 A modified Vega-Lite Spec

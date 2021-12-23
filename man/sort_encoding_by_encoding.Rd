@@ -18,75 +18,84 @@
 \alias{vl_sort_theta_by_encoding}
 \alias{vl_sort_x_by_encoding}
 \alias{vl_sort_y_by_encoding}
+\alias{vl_sort_facet_by_encoding}
+\alias{vl_sort_row_by_encoding}
+\alias{vl_sort_column_by_encoding}
 \title{Add sort transform by encoding to encoding}
 \usage{
-vl_sort_angle_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
+vl_sort_angle_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 
-vl_sort_color_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
+vl_sort_color_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 
-vl_sort_fill_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
+vl_sort_fill_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 
 vl_sort_fillOpacity_by_encoding(
   spec,
-  .object = NULL,
   encoding = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
 vl_sort_opacity_by_encoding(
   spec,
-  .object = NULL,
   encoding = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
-vl_sort_order_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
+vl_sort_order_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 
-vl_sort_radius_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
+vl_sort_radius_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 
-vl_sort_shape_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
+vl_sort_shape_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 
-vl_sort_size_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
+vl_sort_size_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 
-vl_sort_stroke_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
+vl_sort_stroke_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 
 vl_sort_strokeDash_by_encoding(
   spec,
-  .object = NULL,
   encoding = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
 vl_sort_strokeOpacity_by_encoding(
   spec,
-  .object = NULL,
   encoding = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
 vl_sort_strokeWidth_by_encoding(
   spec,
-  .object = NULL,
   encoding = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
-vl_sort_theta_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
+vl_sort_theta_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 
-vl_sort_x_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
+vl_sort_x_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 
-vl_sort_y_by_encoding(spec, .object = NULL, encoding = NULL, order = NULL)
+vl_sort_y_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
+
+vl_sort_facet_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
+
+vl_sort_row_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
+
+vl_sort_column_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SortByEncoding}
 
 \item{encoding}{The \href{https://vega.github.io/vega-lite/docs/encoding.html#channels}{encoding channel} to sort
 by (e.g., \code{"x"}, \code{"y"})}
 
 \item{order}{The sort order. One of \code{"ascending"} (default), \code{"descending"}, or \code{null} (no
 not sort).}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: SortByEncoding}
 }
 \value{
 A modified Vega-Lite Spec

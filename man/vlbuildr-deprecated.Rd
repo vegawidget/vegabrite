@@ -2,7 +2,14 @@
 % Please edit documentation in R/deprecated.R
 \name{vlbuildr-deprecated}
 \alias{vlbuildr-deprecated}
+\alias{vl_facet_wrap}
+\alias{vl_encode_wrap}
 \title{Deprecated functions from vlbuildr}
+\usage{
+vl_facet_wrap(...)
+
+vl_encode_wrap(...)
+}
 \arguments{
 \item{...}{argument to pass to new function}
 }

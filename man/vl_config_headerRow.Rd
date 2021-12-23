@@ -6,7 +6,6 @@
 \usage{
 vl_config_headerRow(
   spec,
-  .object = NULL,
   format = NULL,
   formatType = NULL,
   labelAlign = NULL,
@@ -38,13 +37,12 @@ vl_config_headerRow(
   titleLimit = NULL,
   titleLineHeight = NULL,
   titleOrient = NULL,
-  titlePadding = NULL
+  titlePadding = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: HeaderConfig}
 
 \item{format}{When used with the default \code{"number"} and \code{"time"} format type, the text
 formatting pattern for labels of guides (axes, legends, headers) and text marks.
@@ -177,6 +175,8 @@ automatically truncated if the rendered size exceeds the limit.
 \item{titlePadding}{The padding, in pixel, between facet header's title and the label.
 
 \strong{Default value:} \code{10}}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: HeaderConfig}
 }
 \value{
 A modified Vega-Lite Spec

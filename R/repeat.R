@@ -7,6 +7,8 @@
     spec[["repeat"]][["row"]] <- obj
   } else if (.type == "col") {
     spec[["repeat"]][["column"]] <- obj
+  } else if (.type == "layer") {
+    spec[["repeat"]][["layer"]] <- obj
   } else {
     repeat_def <- obj
     repeat_def$columns <- NULL
@@ -30,6 +32,8 @@
     spec[["repeat"]][["row"]] <- obj
   } else if (.type == "col") {
     spec[["repeat"]][["column"]] <- obj
+  } else if (.type == "layer") {
+    spec[["repeat"]][["layer"]] <- obj
   } else {
     repeat_def <- obj
     repeat_def$columns <- NULL

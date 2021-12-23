@@ -6,17 +6,15 @@
 \usage{
 vl_lookup(
   spec,
-  .object = NULL,
   lookup = NULL,
   from = NULL,
   as = NULL,
-  default = NULL
+  default = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: LookupTransform}
 
 \item{lookup}{Key in primary data source.}
 
@@ -35,6 +33,8 @@ specified, it must correspond to \code{from.fields}.}
 \item{default}{The default value to use if lookup fails.
 
 \strong{Default value:} \code{null}}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: LookupTransform}
 }
 \value{
 A modified Vega-Lite Spec

@@ -6,7 +6,6 @@
 \usage{
 vl_encode_y(
   spec,
-  .object = NULL,
   field = NULL,
   type = NULL,
   value = NULL,
@@ -20,13 +19,12 @@ vl_encode_y(
   stack = NULL,
   timeUnit = NULL,
   title = NULL,
-  datum = NULL
+  datum = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: PositionFieldDef, PositionDatumDef or ValueDef<(number|"width"|"height"|ExprRef)>}
 
 \item{field}{\strong{Required.} A string defining the name of the field from which
 to pull a data value or an object defining iterated values from the
@@ -259,6 +257,8 @@ defined, axis/header/legend title will be used.
 }}
 
 \item{datum}{A constant value in data domain.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: PositionFieldDef, PositionDatumDef or ValueDef<(number|"width"|"height"|ExprRef)>}
 }
 \value{
 A modified Vega-Lite Spec

@@ -6,7 +6,6 @@
 \usage{
 vl_config_mark(
   spec,
-  .object = NULL,
   align = NULL,
   angle = NULL,
   aria = NULL,
@@ -75,13 +74,12 @@ vl_config_mark(
   x = NULL,
   x2 = NULL,
   y = NULL,
-  y2 = NULL
+  y2 = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: MarkConfig}
 
 \item{align}{The horizontal alignment of the text or ranged marks (area, bar, image, rect,
 rule). One of \code{"left"}, \code{"right"}, \code{"center"}.
@@ -511,6 +509,8 @@ height of the plot.}
 
 The \code{value} of this channel can be a number or a string \code{"height"} for the
 height of the plot.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: MarkConfig}
 }
 \value{
 A modified Vega-Lite Spec

@@ -6,7 +6,6 @@
 \usage{
 vl_encode_order(
   spec,
-  .object = NULL,
   field = NULL,
   type = NULL,
   value = NULL,
@@ -16,13 +15,12 @@ vl_encode_order(
   sort = NULL,
   timeUnit = NULL,
   title = NULL,
-  condition = NULL
+  condition = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: OrderFieldDef, array of OrderFieldDef or OrderValueDef}
 
 \item{field}{\strong{Required.} A string defining the name of the field from which
 to pull a data value or an object defining iterated values from the
@@ -171,6 +169,8 @@ defined, axis/header/legend title will be used.
 \strong{Note:} A field definition's \code{condition}
 property can only contain \href{https://vega.github.io/vega-lite/docs/condition.html#value}{conditional value definitions} since
 Vega-Lite only allows at most one encoded field per encoding channel.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: OrderFieldDef, array of OrderFieldDef or OrderValueDef}
 }
 \value{
 A modified Vega-Lite Spec

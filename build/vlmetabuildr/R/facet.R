@@ -4,7 +4,7 @@ create_facet_functions <- function(schema) {
     create_facet_type(schema, "column"),
     create_facet_encoding(schema, "row"),
     create_facet_encoding(schema, "column"),
-    create_facet_encoding(schema, "wrap"),
+    create_facet_encoding(schema, "facet"),
     create_facet_wrap(schema)
   )
 }
@@ -33,7 +33,7 @@ create_facet_encoding <- function(schema, type) {
 
 create_facet_wrap <- function(schema) {
   reference <- glue("#/definitions/FacetFieldDef")
-  suffix <- "facet_wrap"
+  suffix <- "facet"
 
   spec_doc <- glue("#' @param spec An input vega-lite spec")
   object_doc <- get_object_doc(schema, reference)
@@ -42,15 +42,20 @@ create_facet_wrap <- function(schema) {
 
   docs <- make_docs_helper(
     glue("vl_{suffix}"),
-    glue::glue("Add wrap facetting to a vega-lite spec."),
-    paste(spec_doc, object_doc, extra_doc, param_docs, sep = "\n")
+    glue::glue("Add wrapped facetting to a vega-lite spec."),
+    paste(
+      spec_doc, 
+      param_docs, 
+      extra_doc,
+      object_doc,
+      sep = "\n")
   )
 
   ## Make the inner function
   param_names <- get_params(schema, reference)
-  modifier <- "  obj <- .modify_args(NULL, 'columns')"
+  modifier <- "  obj <- .make_object(NULL, \"columns\")"
 
-  adder <- glue(".add_facet_wrap(spec, obj, '{reference}', columns = columns)")
+  adder <- glue(".add_facet_wrap(spec, obj, \"{reference}\", columns = columns)")
 
   inner_fn <- paste(
     modifier,
@@ -59,8 +64,15 @@ create_facet_wrap <- function(schema) {
   )
 
   ## Get args
+  param_names <- unique(c(c("field","type"), param_names))
+
   args <- paste(param_names, "NULL", sep = " = ")
-  arg_list <- paste(c("spec", ".object = NULL", "columns = 2", args), collapse = ", ")
+  arg_list <- paste(
+    c("spec", 
+      args,
+      "columns = 2",
+      ".object = NULL"), 
+    collapse = ", ")
 
   ## Make the outer function
   fn <- glue("vl_{suffix} <- function({arg_list}){{\n{inner_fn}\n}}")

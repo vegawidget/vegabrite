@@ -8,22 +8,20 @@ vl_bind_radio_input(
   spec,
   parameter_name,
   projection_name = NULL,
-  .object = NULL,
   debounce = NULL,
   element = NULL,
   labels = NULL,
   name = NULL,
-  options = NULL
+  options = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{parameter_name}{Name of selection to add binding to}
+\item{parameter_name}{Name of parameter to add binding to}
 
 \item{projection_name}{Name of projection (field or encoding) within selection}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRadioSelect}
 
 \item{debounce}{If defined, delays event handling until the specified milliseconds have elapsed
 since the last event was fired.}
@@ -39,6 +37,8 @@ parent container of the Vega view.}
 property can be used instead to specify a custom label for the bound signal.}
 
 \item{options}{An array of options to select from.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: BindRadioSelect}
 }
 \value{
 A modified Vega-Lite Spec

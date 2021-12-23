@@ -80,12 +80,13 @@ get_params <- function(schema, ref, exclude = NULL) {
 
 get_single_object_desc <- function(name, info) {
   if (name == "array") {
-    glue("array of {get_name_from_ref(info[['items']])}")
+    glue("array of {get_name_from_ref(info[[\"items\"]])}")
   } else {
     name
   }
 }
 
+### This has been removed.
 get_object_desc <- function(schema, ref) {
   object_types <- types(ref, schema)
 
@@ -93,7 +94,7 @@ get_object_desc <- function(schema, ref) {
 
   glue(
     "Directly input an object, rather than creating one via the other arguments. ",
-    "Should not be used in conjunction with the other arguments other than 'spec'. ",
+    "Should not be used in conjunction with the other arguments other than `spec`. ",
     "Objects can be of type: ",
     glue_collapse(object_descs, sep = ", ", last = " or ")
   )
@@ -110,11 +111,8 @@ get_param_docs <- function(schema, ref, exclude = NULL) {
     objs <- unique(names(properties[purrr::map_lgl(properties, ~ hasName(., param))]))
     d <- purrr::map_chr(objs, ~ get_description_plus(properties[[.]][[param]]))
     grps <- split(objs, d)
-    grp_descs <- names(grps)#purrr::map_chr(names(grps), ~paste(strwrap(., width = 120), collapse = "\n#' "))
-    #purrr::map_chr(
-      #names(grps),
-      #~ glue('(_{paste(grps[[.]], collapse = ", ")}_) {.}')
-    #)
+    grp_descs <- names(grps)
+    
     if (length(grp_descs) > 1) {
       return(paste(grp_descs, collapse = "\n#' \n#' Or: "))
     }

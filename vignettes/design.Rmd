@@ -1,6 +1,5 @@
 ---
 title: "Design"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Design}
@@ -23,11 +22,17 @@ vl_chart() %>%
    vl_encode_y("mpg")
 ```
 
-For a more thorough introduction to how to use the package, see [introduction vignette](https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html). For example charts see the [examples vignette](https://vegawidget.github.io/vlbuildr/articles/articles/examples.html).
+For a more thorough introduction to how to use the package, see [introduction vignette](https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html). For example charts see the [example gallery](https://vegawidget.github.io/vlbuildr/articles/articles/example_gallery.html).
+
+## Goals and non-goals
+
+A goal of this package is to enable building any chart that is possible to build with Vega-Lite using this package. However, it is not a goal to be able to build any possible spec that is valid in Vega-Lite -- there can be multiple ways to build the same chart in Vega-Lite, and this package might only enable building one of the possible specs that could encode a chart.
+
+It is a goal to make it possible to build common / simple plots without needing to provide nested arguments. However, more complex charts will require some amount of nested list inputs -- it is not a goal to enable all charts to be built without any nested arguments.
 
 ## Underlying objects
 
-At the moment, the various top-level specs are S3 classes that are basically treated as lists.  A few of the internal functions take advantage of the classes to help determine the right way to add a component.
+At the moment, the various top-level specs are S3 classes that are basically treated as lists. A few of the internal functions take advantage of the classes to help determine the right way to add a component.
 
 There currently are no classes for any sub-components of a spec, e.g. a class that might correspond to an "Axis" definition from the Vega-Lite spec. Rather, functions build those components as lists, and the validity is checked using the schema.
 

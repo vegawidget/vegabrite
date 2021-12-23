@@ -6,20 +6,18 @@
 \usage{
 vl_config_range(
   spec,
-  .object = NULL,
   category = NULL,
   diverging = NULL,
   heatmap = NULL,
   ordinal = NULL,
   ramp = NULL,
   symbol = NULL,
+  .object = NULL,
   ...
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: RangeConfig}
 
 \item{category}{Default \href{https://vega.github.io/vega/docs/schemes/}{color scheme} for
 categorical data.}
@@ -38,6 +36,8 @@ quantitative ramps.}
 
 \item{symbol}{Array of \href{https://vega.github.io/vega/docs/marks/symbol/}{symbol} names or paths
 for the default shape palette.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: RangeConfig}
 
 \item{...}{Additional elements for constructing object.}
 }

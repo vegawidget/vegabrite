@@ -6,7 +6,6 @@
 \usage{
 vl_config_view(
   spec,
-  .object = NULL,
   clip = NULL,
   continuousHeight = NULL,
   continuousWidth = NULL,
@@ -25,13 +24,12 @@ vl_config_view(
   strokeJoin = NULL,
   strokeMiterLimit = NULL,
   strokeOpacity = NULL,
-  strokeWidth = NULL
+  strokeWidth = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ViewConfig}
 
 \item{clip}{Whether the view should be clipped.}
 
@@ -121,6 +119,8 @@ Or: ExprRef}
 \item{strokeWidth}{The stroke width, in pixels.
 
 Or: ExprRef}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: ViewConfig}
 }
 \value{
 A modified Vega-Lite Spec

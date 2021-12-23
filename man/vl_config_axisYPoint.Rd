@@ -6,7 +6,6 @@
 \usage{
 vl_config_axisYPoint(
   spec,
-  .object = NULL,
   aria = NULL,
   bandPosition = NULL,
   description = NULL,
@@ -85,13 +84,12 @@ vl_config_axisYPoint(
   titleY = NULL,
   translate = NULL,
   values = NULL,
-  zindex = NULL
+  zindex = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AxisConfig}
 
 \item{aria}{A boolean flag indicating if \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA attributes}
 should be included (SVG output only). If \code{false}, the "aria-hidden" attribute
@@ -612,6 +610,8 @@ should be drawn behind all chart elements. To put them in front, set \code{zinde
 \code{1} or more.
 
 \strong{Default value:} \code{0} (behind the marks).}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: AxisConfig}
 }
 \value{
 A modified Vega-Lite Spec

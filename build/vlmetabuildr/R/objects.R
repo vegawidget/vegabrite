@@ -47,7 +47,7 @@ create_object <- function(obj, schema, reference = glue("#/definitions/{obj}")) 
 
   args <- paste(c(prop_args, additional_args), collapse = ", ")
 
-  inner_function <- glue("  .modify_args(NULL, NULL)")
+  inner_function <- "  obj <- .make_object(NULL, NULL)\n  obj"
 
   ## Make the outer function
   fn <- glue("vl$`{obj}` <- function({args}){{\n{inner_function}\n}}\n")

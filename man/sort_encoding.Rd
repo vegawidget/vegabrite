@@ -18,6 +18,9 @@
 \alias{vl_sort_theta}
 \alias{vl_sort_x}
 \alias{vl_sort_y}
+\alias{vl_sort_facet}
+\alias{vl_sort_row}
+\alias{vl_sort_column}
 \title{#' Add sorting to an encoding}
 \usage{
 vl_sort_angle(spec, value)
@@ -51,15 +54,21 @@ vl_sort_theta(spec, value)
 vl_sort_x(spec, value)
 
 vl_sort_y(spec, value)
+
+vl_sort_facet(spec, value)
+
+vl_sort_row(spec, value)
+
+vl_sort_column(spec, value)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{value}{One of 'ascending', 'descending', a list with a custom ordering, or NA to specify no sorting}
+\item{value}{One of "ascending", "descending", a list with a custom ordering, or NA to specify no sorting}
 }
 \value{
 A modified Vega-Lite Spec
 }
 \description{
-#' Sort an encoding in 'ascending' or 'descending' order, or by given array
+#' Sort an encoding in "ascending" or "descending" order, or by given array
 }

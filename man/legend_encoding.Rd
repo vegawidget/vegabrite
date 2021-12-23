@@ -17,7 +17,6 @@
 \usage{
 vl_legend_angle(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -83,12 +82,12 @@ vl_legend_angle(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL
+  zindex = NULL,
+  .object = NULL
 )
 
 vl_legend_color(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -154,12 +153,12 @@ vl_legend_color(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL
+  zindex = NULL,
+  .object = NULL
 )
 
 vl_legend_fill(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -225,12 +224,12 @@ vl_legend_fill(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL
+  zindex = NULL,
+  .object = NULL
 )
 
 vl_legend_fillOpacity(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -296,12 +295,12 @@ vl_legend_fillOpacity(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL
+  zindex = NULL,
+  .object = NULL
 )
 
 vl_legend_opacity(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -367,12 +366,12 @@ vl_legend_opacity(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL
+  zindex = NULL,
+  .object = NULL
 )
 
 vl_legend_shape(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -438,12 +437,12 @@ vl_legend_shape(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL
+  zindex = NULL,
+  .object = NULL
 )
 
 vl_legend_size(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -509,12 +508,12 @@ vl_legend_size(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL
+  zindex = NULL,
+  .object = NULL
 )
 
 vl_legend_stroke(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -580,12 +579,12 @@ vl_legend_stroke(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL
+  zindex = NULL,
+  .object = NULL
 )
 
 vl_legend_strokeDash(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -651,12 +650,12 @@ vl_legend_strokeDash(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL
+  zindex = NULL,
+  .object = NULL
 )
 
 vl_legend_strokeOpacity(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -722,12 +721,12 @@ vl_legend_strokeOpacity(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL
+  zindex = NULL,
+  .object = NULL
 )
 
 vl_legend_strokeWidth(
   spec,
-  .object = NULL,
   aria = NULL,
   clipHeight = NULL,
   columnPadding = NULL,
@@ -793,13 +792,12 @@ vl_legend_strokeWidth(
   titlePadding = NULL,
   type = NULL,
   values = NULL,
-  zindex = NULL
+  zindex = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Legend}
 
 \item{aria}{A boolean flag indicating if \href{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA}{ARIA attributes}
 should be included (SVG output only). If \code{false}, the "aria-hidden" attribute
@@ -1196,6 +1194,8 @@ fields; \code{"symbol"} otherwise.}
 \item{zindex}{A non-negative integer indicating the z-index of the legend. If zindex is 0,
 legend should be drawn behind all chart elements. To put them in front, use
 zindex = 1.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: Legend}
 }
 \value{
 A modified Vega-Lite Spec

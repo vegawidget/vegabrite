@@ -8,26 +8,24 @@
 \usage{
 vl_impute_x(
   spec,
-  .object = NULL,
   frame = NULL,
   keyvals = NULL,
   method = NULL,
-  value = NULL
+  value = NULL,
+  .object = NULL
 )
 
 vl_impute_y(
   spec,
-  .object = NULL,
   frame = NULL,
   keyvals = NULL,
   method = NULL,
-  value = NULL
+  value = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: ImputeParams}
 
 \item{frame}{A frame specification as a two-element array used to control the window over
 which the specified method is applied. The array entries should either be a
@@ -55,6 +53,8 @@ If there is no impute grouping, this property \emph{must} be specified.}
 \strong{Default value:} \code{"value"}}
 
 \item{value}{The field value to use when the imputation \code{method} is \code{"value"}.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: ImputeParams}
 }
 \value{
 A modified Vega-Lite Spec

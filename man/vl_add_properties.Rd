@@ -6,7 +6,6 @@
 \usage{
 vl_add_properties(
   spec,
-  .object = NULL,
   align = NULL,
   autosize = NULL,
   background = NULL,
@@ -24,13 +23,12 @@ vl_add_properties(
   usermeta = NULL,
   view = NULL,
   width = NULL,
-  columns = NULL
+  columns = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec or TopLevelHConcatSpec}
 
 \item{align}{The alignment to apply to grid rows and columns. The supported string values are
 \code{"all"}, \code{"each"}, and \code{"none"}.
@@ -189,6 +187,8 @@ will be assumed. This is equivalent to \code{hconcat} (for \code{concat}) and to
 \item Setting the \code{columns} to \code{1} is equivalent to \code{vconcat} (for \code{concat}) and to
 using the \code{row} channel (for \code{facet} and \code{repeat}).
 }}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: TopLevelUnitSpec, TopLevelFacetSpec, TopLevelLayerSpec, TopLevelRepeatSpec, TopLevelConcatSpec, TopLevelVConcatSpec or TopLevelHConcatSpec}
 }
 \value{
 A modified Vega-Lite Spec

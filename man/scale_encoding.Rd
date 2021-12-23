@@ -21,7 +21,6 @@
 \usage{
 vl_scale_angle(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -44,12 +43,12 @@ vl_scale_angle(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL
+  zero = NULL,
+  .object = NULL
 )
 
 vl_scale_color(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -72,12 +71,12 @@ vl_scale_color(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL
+  zero = NULL,
+  .object = NULL
 )
 
 vl_scale_fill(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -100,12 +99,12 @@ vl_scale_fill(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL
+  zero = NULL,
+  .object = NULL
 )
 
 vl_scale_fillOpacity(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -128,12 +127,12 @@ vl_scale_fillOpacity(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL
+  zero = NULL,
+  .object = NULL
 )
 
 vl_scale_opacity(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -156,12 +155,12 @@ vl_scale_opacity(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL
+  zero = NULL,
+  .object = NULL
 )
 
 vl_scale_radius(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -184,12 +183,12 @@ vl_scale_radius(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL
+  zero = NULL,
+  .object = NULL
 )
 
 vl_scale_shape(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -212,12 +211,12 @@ vl_scale_shape(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL
+  zero = NULL,
+  .object = NULL
 )
 
 vl_scale_size(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -240,12 +239,12 @@ vl_scale_size(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL
+  zero = NULL,
+  .object = NULL
 )
 
 vl_scale_stroke(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -268,12 +267,12 @@ vl_scale_stroke(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL
+  zero = NULL,
+  .object = NULL
 )
 
 vl_scale_strokeDash(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -296,12 +295,12 @@ vl_scale_strokeDash(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL
+  zero = NULL,
+  .object = NULL
 )
 
 vl_scale_strokeOpacity(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -324,12 +323,12 @@ vl_scale_strokeOpacity(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL
+  zero = NULL,
+  .object = NULL
 )
 
 vl_scale_strokeWidth(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -352,12 +351,12 @@ vl_scale_strokeWidth(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL
+  zero = NULL,
+  .object = NULL
 )
 
 vl_scale_theta(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -380,12 +379,12 @@ vl_scale_theta(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL
+  zero = NULL,
+  .object = NULL
 )
 
 vl_scale_x(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -408,12 +407,12 @@ vl_scale_x(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL
+  zero = NULL,
+  .object = NULL
 )
 
 vl_scale_y(
   spec,
-  .object = NULL,
   align = NULL,
   base = NULL,
   bins = NULL,
@@ -436,13 +435,12 @@ vl_scale_y(
   round = NULL,
   scheme = NULL,
   type = NULL,
-  zero = NULL
+  zero = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Scale}
 
 \item{align}{The alignment of the steps within the scale range.
 
@@ -676,6 +674,8 @@ ranges.
 binned and no custom \code{domain} is provided; \code{false} otherwise.
 
 \strong{Note:} Log, time, and utc scales do not support \code{zero}.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: Scale}
 }
 \value{
 A modified Vega-Lite Spec

@@ -6,18 +6,16 @@
 \usage{
 vl_window(
   spec,
-  .object = NULL,
   window = NULL,
   frame = NULL,
   groupby = NULL,
   ignorePeers = NULL,
-  sort = NULL
+  sort = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: WindowTransform}
 
 \item{window}{The definition of the fields in the window, and what calculations to use.}
 
@@ -55,6 +53,8 @@ objects are considered equal by the comparator, they are considered "peer"
 values of equal rank. If sort is not specified, the order is undefined: data
 objects are processed in the order they are observed and none are considered
 peers (the ignorePeers parameter is ignored and treated as if set to \code{true}).}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: WindowTransform}
 }
 \value{
 A modified Vega-Lite Spec

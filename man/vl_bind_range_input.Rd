@@ -8,23 +8,21 @@ vl_bind_range_input(
   spec,
   parameter_name,
   projection_name = NULL,
-  .object = NULL,
   debounce = NULL,
   element = NULL,
   max = NULL,
   min = NULL,
   name = NULL,
-  step = NULL
+  step = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{parameter_name}{Name of selection to add binding to}
+\item{parameter_name}{Name of parameter to add binding to}
 
 \item{projection_name}{Name of projection (field or encoding) within selection}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BindRange}
 
 \item{debounce}{If defined, delays event handling until the specified milliseconds have elapsed
 since the last event was fired.}
@@ -44,6 +42,8 @@ property can be used instead to specify a custom label for the bound signal.}
 
 \item{step}{Sets the minimum slider increment. If undefined, the step size will be
 automatically determined based on the \code{min} and \code{max} values.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: BindRange}
 }
 \value{
 A modified Vega-Lite Spec

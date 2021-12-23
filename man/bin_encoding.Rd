@@ -37,11 +37,13 @@
 \alias{vl_bin_y2}
 \alias{vl_bin_yError}
 \alias{vl_bin_yError2}
+\alias{vl_bin_facet}
+\alias{vl_bin_row}
+\alias{vl_bin_column}
 \title{Add bin to encoding}
 \usage{
 vl_bin_angle(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -51,12 +53,12 @@ vl_bin_angle(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_color(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -66,12 +68,12 @@ vl_bin_color(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_description(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -81,12 +83,12 @@ vl_bin_description(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_detail(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -96,12 +98,12 @@ vl_bin_detail(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_fill(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -111,12 +113,12 @@ vl_bin_fill(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_fillOpacity(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -126,12 +128,12 @@ vl_bin_fillOpacity(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_href(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -141,12 +143,12 @@ vl_bin_href(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_key(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -156,12 +158,12 @@ vl_bin_key(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_latitude(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -171,12 +173,12 @@ vl_bin_latitude(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_latitude2(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -186,12 +188,12 @@ vl_bin_latitude2(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_longitude(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -201,12 +203,12 @@ vl_bin_longitude(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_longitude2(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -216,12 +218,12 @@ vl_bin_longitude2(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_opacity(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -231,12 +233,12 @@ vl_bin_opacity(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_order(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -246,12 +248,12 @@ vl_bin_order(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_radius(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -261,12 +263,12 @@ vl_bin_radius(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_radius2(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -276,12 +278,12 @@ vl_bin_radius2(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_shape(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -291,12 +293,12 @@ vl_bin_shape(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_size(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -306,12 +308,12 @@ vl_bin_size(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_stroke(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -321,12 +323,12 @@ vl_bin_stroke(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_strokeDash(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -336,12 +338,12 @@ vl_bin_strokeDash(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_strokeOpacity(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -351,12 +353,12 @@ vl_bin_strokeOpacity(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_strokeWidth(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -366,12 +368,12 @@ vl_bin_strokeWidth(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_text(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -381,12 +383,12 @@ vl_bin_text(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_theta(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -396,12 +398,12 @@ vl_bin_theta(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_theta2(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -411,12 +413,12 @@ vl_bin_theta2(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_tooltip(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -426,12 +428,12 @@ vl_bin_tooltip(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_url(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -441,12 +443,12 @@ vl_bin_url(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_x(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -456,12 +458,12 @@ vl_bin_x(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_x2(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -471,12 +473,12 @@ vl_bin_x2(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_xError(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -486,12 +488,12 @@ vl_bin_xError(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_xError2(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -501,12 +503,12 @@ vl_bin_xError2(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_y(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -516,12 +518,12 @@ vl_bin_y(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_y2(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -531,12 +533,12 @@ vl_bin_y2(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_yError(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -546,12 +548,12 @@ vl_bin_yError(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
 )
 
 vl_bin_yError2(
   spec,
-  .object = NULL,
   anchor = NULL,
   base = NULL,
   binned = NULL,
@@ -561,13 +563,57 @@ vl_bin_yError2(
   minstep = NULL,
   nice = NULL,
   step = NULL,
-  steps = NULL
+  steps = NULL,
+  .object = NULL
+)
+
+vl_bin_facet(
+  spec,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL,
+  .object = NULL
+)
+
+vl_bin_row(
+  spec,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL,
+  .object = NULL
+)
+
+vl_bin_column(
+  spec,
+  anchor = NULL,
+  base = NULL,
+  binned = NULL,
+  divide = NULL,
+  extent = NULL,
+  maxbins = NULL,
+  minstep = NULL,
+  nice = NULL,
+  step = NULL,
+  steps = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BinParams}
 
 \item{anchor}{A value in the binned domain at which to anchor the bins, shifting the bin
 boundaries if necessary to ensure that a boundary aligns with the anchor value.
@@ -607,6 +653,8 @@ as multiples of ten.
 \strong{Note:} If provided, options such as maxbins will be ignored.}
 
 \item{steps}{An array of allowable step sizes to choose from.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: BinParams}
 }
 \value{
 A modified Vega-Lite Spec

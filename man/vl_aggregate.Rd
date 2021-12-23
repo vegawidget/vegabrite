@@ -4,17 +4,17 @@
 \alias{vl_aggregate}
 \title{vl_aggregate}
 \usage{
-vl_aggregate(spec, .object = NULL, aggregate = NULL, groupby = NULL)
+vl_aggregate(spec, aggregate = NULL, groupby = NULL, .object = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: AggregateTransform}
 
 \item{aggregate}{Array of objects that define fields to aggregate.}
 
 \item{groupby}{The data fields to group by. If not specified, a single group containing all
 data objects will be used.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: AggregateTransform}
 }
 \value{
 A modified Vega-Lite Spec

@@ -3,42 +3,31 @@ TOP_LEVEL_KEYS <- c(
   "padding", "usermeta"
 )
 
-.modify_args <- function(override, exclude) {
-  ## Capture inputs provided by user and make into an object
-  args_formal <- formals(fun = sys.function(sys.parent(1)))
-  args_syms <- lapply(names(args_formal), as.symbol)
-  names(args_syms) <- names(args_formal)
-  args_eval <- lapply(args_syms, eval, env = sys.parent(1))
-  args_nn <- args_eval[!vapply(args_eval, is.null, FALSE)]
-  args_nn <- c(args_nn, override)
-  is_obj <- !(names(args_nn) %in% c(exclude, ".object", "spec"))
-  ## If .object is provided, use that instead...
-  if (".object" %in% names(args_nn)) {
-    if (sum(is_obj) > 0) {
-      # Get the name of first arg...
-      first_obj_arg <- names(args_formal)[!(names(args_formal) %in% c(exclude, ".object", "spec"))][1]
-      if (!hasName(args_nn, first_obj_arg)) {
-        args_obj <- args_nn[is_obj]
-        args_obj[[first_obj_arg]] <- args_nn[[".object"]]
-      } else {
-        fn <- sys.calls()[[sys.nframe() - 1]][[1]]
-        stop("Error in arguments to ",
-          fn,
-          ".\n  When passing arguments to make a new object to add to the spec other than .object",
-          ", if .object is passed as well it is treated as the first other argument, which in this",
-          " case was already provided. See help('vlbuidlr').",
-          call. = FALSE
-        )
-      }
-    } else {
-      args_obj <- args_nn[[".object"]]
+
+.make_object <- function(override, exclude) {
+  # Get names from parent
+  env <- parent.frame()
+  inputs <- as.list(env, all.names = TRUE)
+  
+  # Remove nulls
+  inputs <- inputs[!vapply(inputs, is.null, FALSE)]
+  
+  if (".object" %in% names(inputs)) {
+    obj <- inputs[[".object"]]
+    if (any(!(names(inputs) %in% c(exclude,"spec",".object")))) {
+      warning("Ignoring some inputs as .object was passed in.")
     }
   } else {
-    args_obj <- args_nn[is_obj]
+    obj <- inputs[!(names(inputs) %in% c(exclude, "spec"))]    
   }
 
-  args_obj
+  if (!is.null(override)) {
+    obj <- utils::modifyList(obj, override)
+  }
+  
+  obj
 }
+
 
 .add_to_top_spec <- function(spec, x, name, ref,
                              how = c("replace", "append", "match")) {

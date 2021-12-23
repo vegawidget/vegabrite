@@ -6,7 +6,6 @@
 \usage{
 vl_add_point_selection(
   spec,
-  .object = NULL,
   name = NULL,
   select = NULL,
   bind = NULL,
@@ -17,13 +16,12 @@ vl_add_point_selection(
   nearest = NULL,
   on = NULL,
   resolve = NULL,
-  toggle = NULL
+  toggle = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: SelectionParameter}
 
 \item{name}{Required. A unique name for the selection parameter. Selection names should be
 valid JavaScript identifiers: they should contain only alphanumeric characters
@@ -137,6 +135,8 @@ will toggle data values without the user pressing the shift-key.
 
 \strong{See also:} \href{https://vega.github.io/vega-lite/docs/selection.html#toggle}{\code{toggle} examples} in the
 documentation.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: SelectionParameter}
 }
 \value{
 A modified Vega-Lite Spec

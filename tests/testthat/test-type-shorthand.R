@@ -39,7 +39,7 @@ test_that("can use shorthand type specification in type field", {
   expect_equivalent(chart$encoding$x$type, "nominal")
 })
 
-test_that("can use shorthand type with .object input", {
+test_that("can use shorthand type with unnamed first input", {
   chart <- vl_chart() %>%
     vl_encode_x("abba:O")
 
@@ -49,7 +49,7 @@ test_that("can use shorthand type with .object input", {
 
 test_that("can use shorthand type with a list of inputs", {
   chart <- vl_chart() %>%
-    vl_encode_tooltip(c("abba:O","baba:N"))
+    vl_encode_tooltip_array(c("abba:O","baba:N"))
   
   expect_equivalent(chart$encoding$tooltip[[1]]$field, "abba")
   expect_equivalent(chart$encoding$tooltip[[1]]$type, "ordinal")
@@ -59,7 +59,7 @@ test_that("can use shorthand type with a list of inputs", {
 
 test_that("can use shorthand type with a list of lists of inputs", {
   chart <- vl_chart() %>%
-    vl_encode_tooltip(list(list(field = "abba:O"),list(field = "baba:N")))
+    vl_encode_tooltip_array(list(list(field = "abba:O"),list(field = "baba:N")))
   
   expect_equivalent(chart$encoding$tooltip[[1]]$field, "abba")
   expect_equivalent(chart$encoding$tooltip[[1]]$type, "ordinal")

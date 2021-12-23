@@ -6,7 +6,6 @@
 \usage{
 vl_facet_row(
   spec,
-  .object = NULL,
   field = NULL,
   type = NULL,
   aggregate = NULL,
@@ -15,13 +14,12 @@ vl_facet_row(
   header = NULL,
   sort = NULL,
   timeUnit = NULL,
-  title = NULL
+  title = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FacetFieldDef}
 
 \item{field}{\strong{Required.} A string defining the name of the field from which
 to pull a data value or an object defining iterated values from the
@@ -186,6 +184,8 @@ or \href{https://vega.github.io/vega-lite/usage/compile.html#field-title}{\code{
 \item If both field definition's \code{title} and axis, header, or legend \code{title} are
 defined, axis/header/legend title will be used.
 }}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: FacetFieldDef}
 }
 \value{
 A modified Vega-Lite Spec

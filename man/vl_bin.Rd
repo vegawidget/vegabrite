@@ -4,12 +4,10 @@
 \alias{vl_bin}
 \title{vl_bin}
 \usage{
-vl_bin(spec, .object = NULL, bin = NULL, as = NULL, field = NULL)
+vl_bin(spec, bin = NULL, as = NULL, field = NULL, .object = NULL)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: BinTransform}
 
 \item{bin}{An object indicating bin properties, or simply \code{true} for using default bin
 parameters.}
@@ -20,6 +18,8 @@ the fields for bin start and bin end respectively. If a single string (e.g.,
 \code{"val"}) is provided, the end field will be \code{"val_end"}.}
 
 \item{field}{The data field to bin.}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: BinTransform}
 }
 \value{
 A modified Vega-Lite Spec

@@ -6,7 +6,6 @@
 \usage{
 vl_config_projection(
   spec,
-  .object = NULL,
   center = NULL,
   clipAngle = NULL,
   clipExtent = NULL,
@@ -30,13 +29,12 @@ vl_config_projection(
   spacing = NULL,
   tilt = NULL,
   translate = NULL,
-  type = NULL
+  type = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: Projection}
 
 \item{center}{The projection's center, a two-element array of longitude and latitude in
 degrees.
@@ -177,6 +175,8 @@ for example \code{"albers"} and \code{"Albers"} indicate the same
 projection type. You can find all valid projection types \href{https://vega.github.io/vega-lite/docs/projection.html#projection-types}{in the documentation}.
 
 \strong{Default value:} \code{equalEarth}}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: Projection}
 }
 \value{
 A modified Vega-Lite Spec

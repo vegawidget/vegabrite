@@ -6,7 +6,6 @@
 \usage{
 vl_encode_href(
   spec,
-  .object = NULL,
   field = NULL,
   type = NULL,
   aggregate = NULL,
@@ -17,13 +16,12 @@ vl_encode_href(
   formatType = NULL,
   timeUnit = NULL,
   title = NULL,
-  value = NULL
+  value = NULL,
+  .object = NULL
 )
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: FieldOrDatumDefWithCondition<StringFieldDef,string> or ValueDefWithCondition<MarkPropFieldOrDatumDef,(string|null)>}
 
 \item{field}{\strong{Required.} A string defining the name of the field from which
 to pull a data value or an object defining iterated values from the
@@ -204,6 +202,8 @@ defined, axis/header/legend title will be used.
 
 \item{value}{A constant value in visual domain (e.g., \code{"red"} / \code{"#0099ff"} / \href{https://vega.github.io/vega-lite/docs/types.html#gradient}{gradient definition} for
 color, values between \code{0} to \code{1} for opacity).}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: FieldOrDatumDefWithCondition<StringFieldDef,string> or ValueDefWithCondition<MarkPropFieldOrDatumDef,(string|null)>}
 }
 \value{
 A modified Vega-Lite Spec

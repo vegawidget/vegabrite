@@ -18,128 +18,153 @@
 \alias{vl_sort_theta_by_field}
 \alias{vl_sort_x_by_field}
 \alias{vl_sort_y_by_field}
+\alias{vl_sort_facet_by_field}
+\alias{vl_sort_row_by_field}
+\alias{vl_sort_column_by_field}
 \title{Add sort transform by field to encoding}
 \usage{
 vl_sort_angle_by_field(
   spec,
-  .object = NULL,
   field = NULL,
   op = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
 vl_sort_color_by_field(
   spec,
-  .object = NULL,
   field = NULL,
   op = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
 vl_sort_fill_by_field(
   spec,
-  .object = NULL,
   field = NULL,
   op = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
 vl_sort_fillOpacity_by_field(
   spec,
-  .object = NULL,
   field = NULL,
   op = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
 vl_sort_opacity_by_field(
   spec,
-  .object = NULL,
   field = NULL,
   op = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
 vl_sort_order_by_field(
   spec,
-  .object = NULL,
   field = NULL,
   op = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
 vl_sort_radius_by_field(
   spec,
-  .object = NULL,
   field = NULL,
   op = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
 vl_sort_shape_by_field(
   spec,
-  .object = NULL,
   field = NULL,
   op = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
 vl_sort_size_by_field(
   spec,
-  .object = NULL,
   field = NULL,
   op = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
 vl_sort_stroke_by_field(
   spec,
-  .object = NULL,
   field = NULL,
   op = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
 vl_sort_strokeDash_by_field(
   spec,
-  .object = NULL,
   field = NULL,
   op = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
 vl_sort_strokeOpacity_by_field(
   spec,
-  .object = NULL,
   field = NULL,
   op = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
 vl_sort_strokeWidth_by_field(
   spec,
-  .object = NULL,
   field = NULL,
   op = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
 vl_sort_theta_by_field(
   spec,
-  .object = NULL,
   field = NULL,
   op = NULL,
-  order = NULL
+  order = NULL,
+  .object = NULL
 )
 
-vl_sort_x_by_field(spec, .object = NULL, field = NULL, op = NULL, order = NULL)
+vl_sort_x_by_field(spec, field = NULL, op = NULL, order = NULL, .object = NULL)
 
-vl_sort_y_by_field(spec, .object = NULL, field = NULL, op = NULL, order = NULL)
+vl_sort_y_by_field(spec, field = NULL, op = NULL, order = NULL, .object = NULL)
+
+vl_sort_facet_by_field(
+  spec,
+  field = NULL,
+  op = NULL,
+  order = NULL,
+  .object = NULL
+)
+
+vl_sort_row_by_field(
+  spec,
+  field = NULL,
+  op = NULL,
+  order = NULL,
+  .object = NULL
+)
+
+vl_sort_column_by_field(
+  spec,
+  field = NULL,
+  op = NULL,
+  order = NULL,
+  .object = NULL
+)
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
-
-\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than 'spec'. Objects can be of type: EncodingSortField}
 
 \item{field}{The data \href{https://vega.github.io/vega-lite/docs/field.html}{field} to sort by.
 
@@ -159,6 +184,8 @@ For a full list of operations, please see the documentation for
 
 \item{order}{The sort order. One of \code{"ascending"} (default), \code{"descending"}, or \code{null} (no
 not sort).}
+
+\item{.object}{Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than \code{spec}. Objects can be of type: EncodingSortField}
 }
 \value{
 A modified Vega-Lite Spec

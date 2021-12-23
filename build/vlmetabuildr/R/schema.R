@@ -31,7 +31,7 @@ search <- function(schema, type, check, get, gather, base) {
   }
 }
 
-# A modified verision of 'search' helper that keeps track of the 'parent object' that lead to
+# A modified verision of "search" helper that keeps track of the "parent object" that lead to
 # the result.
 search2 <- function(schema, type, check, get, gather, base, parent) {
   if (is.null(type)) {
