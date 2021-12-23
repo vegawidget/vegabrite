@@ -18,8 +18,8 @@ navbar:
       href: articles/articles/introduction.html
     - text: "Design"
       href: articles/design.html 
-    - text: "Examples"
-      href: articles/articles/examples.html
+    - text: "Example Gallery"
+      href: articles/articles/example_gallery.html
     - text: "Reference"
       href: reference/index.html
   right:

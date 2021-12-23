@@ -27,7 +27,7 @@ The goal of vlbuildr is to provide an R api for building up vega-lite specs. For
 
 This package is still experimental, but much of the public facing API has been built (although still subject to changes). However, the internals of the package might change substantially to provide greater robustness, make it harder to make invalid specs, and/or provide better information when making invalid spec.
 
-The documentation is also still a work-in-progress, but there is a [getting started vignette](https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html). The parameter documentation for functions is fairly complete, however, as it relies on descriptions pulled directly from the Vega-Lite schema.  
+The documentation is also still a work-in-progress, but there is a [getting started vignette](https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html). The parameter documentation for functions is fairly complete, however, as it relies on descriptions pulled directly from the Vega-Lite schema. See also an [example gallery](https://vegawidget.github.io/vlbuildr/articles/articles/example_gallery.html) for examples of how to make different types of plots.
 
 ## Inspiration and related work
 
