@@ -36,6 +36,8 @@ reference:
     desc: "Add top level properties to a spec"
     contents:
     - vl_add_data
+    - vl_add_data_frame
+    - vl_add_data_url
     - vl_add_properties
   - title: "Mark"
     desc: "Add a mark to chart spec"
@@ -60,12 +62,17 @@ reference:
     - starts_with("vl_bin_")
     - vl_bin
     - vl_calculate
+    - vl_density
     - vl_filter
     - vl_flatten
     - vl_fold
     - starts_with("vl_impute")
     - vl_joinaggregate
     - vl_lookup
+    - vl_loess
+    - vl_pivot
+    - vl_quantile
+    - vl_regression
     - vl_sample
     - starts_with("vl_stack")
     - vl_timeunit
@@ -84,10 +91,11 @@ reference:
     desc: "Add configuration"
     contents:
     - starts_with("vl_config")
-  - title: "Selection"
-    desc: "Add selection to a spec"
+  - title: "Selection and paramaters"
+    desc: "Add selection or parameter to a spec"
     contents:
     - ends_with("_selection")
+    - vl_add_parameter
   - title: "Binding"
     desc: "Add a binding to a selection"
     contents:
@@ -103,4 +111,4 @@ reference:
       As opposed to other functions that modify / add to a spec, these make a 
       sub-component of a Vega-lite spec
     contents:
-    - starts_with("vl\\$")
+    - vl

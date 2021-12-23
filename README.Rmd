@@ -50,7 +50,7 @@ vl_chart() %>%
    vl_encode_y("mpg") 
 ```
 
-```{r example2}
+```{r example2, warning=FALSE}
 vl_chart() %>%
   vl_add_data(url = "https://vega.github.io/vega-editor/app/data/population.json") %>%
   vl_calculate(calculate = "datum.sex == 2 ? 'Female' : 'Male'", 
@@ -62,5 +62,4 @@ vl_chart() %>%
   vl_axis_y(title = "population") %>%
   vl_mark_bar() 
 ```
-
 

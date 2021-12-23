@@ -30,6 +30,9 @@ The documentation is also still a work-in-progress, but there is a
 vignette](https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html).
 The parameter documentation for functions is fairly complete, however,
 as it relies on descriptions pulled directly from the Vega-Lite schema.
+See also an [example
+gallery](https://vegawidget.github.io/vlbuildr/articles/articles/example_gallery.html)
+for examples of how to make different types of plots.
 
 ## Inspiration and related work
 
