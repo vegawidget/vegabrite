@@ -1,6 +1,6 @@
-Package: vlbuildr
+Package: vlr
 Title: Build Vega-Lite Specs in R
-Version: 0.4.0.9000
+Version: 0.5.0.9000
 Authors@R: c(
   person("Alicia", "Schep", email = "aschep@gmail.com", role = c("aut", "cre")),
   person("Vega-Lite Developers", role = c("aut"), comment = "The Vega-Lite schema is used to directly populate much of the documentation of this package.")

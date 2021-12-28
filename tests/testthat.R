@@ -1,4 +1,4 @@
 library(testthat)
-library(vlbuildr)
+library(vlr)
 
-test_check("vlbuildr")
+test_check("vlr")
