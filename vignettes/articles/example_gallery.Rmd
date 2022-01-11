@@ -190,6 +190,21 @@ vl_chart(width = 500, height = 300) %>%
   vl_encode_color(value = '#000')
 ```
 
+#### Jittered scatter plot
+
+```{r}
+vl_chart(height = list(step = 50)) %>%
+  vl_add_data(url = "https://vega.github.io/vega-editor/app/data/cars.json") %>%
+  vl_calculate("random()", as = "random") %>%
+  vl_mark_point() %>%
+  vl_encode_x("Horsepower:Q") %>%
+  vl_encode_y("Cylinders:O") %>%
+  vl_encode_yOffset("random:Q") %>%
+  vl_scale_yOffset(padding = 5) %>% 
+  vl_encode_color("Cylinders:N")
+```
+
+
 ### Line Charts {.tabset}
 
 #### Line Chart

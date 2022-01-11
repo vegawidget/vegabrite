@@ -17,7 +17,9 @@
 \alias{vl_sort_strokeWidth}
 \alias{vl_sort_theta}
 \alias{vl_sort_x}
+\alias{vl_sort_xOffset}
 \alias{vl_sort_y}
+\alias{vl_sort_yOffset}
 \alias{vl_sort_facet}
 \alias{vl_sort_row}
 \alias{vl_sort_column}
@@ -53,7 +55,11 @@ vl_sort_theta(spec, value)
 
 vl_sort_x(spec, value)
 
+vl_sort_xOffset(spec, value)
+
 vl_sort_y(spec, value)
+
+vl_sort_yOffset(spec, value)
 
 vl_sort_facet(spec, value)
 

@@ -12,7 +12,6 @@ vl_add_interval_selection(
   value = NULL,
   clear = NULL,
   encodings = NULL,
-  fields = NULL,
   mark = NULL,
   on = NULL,
   resolve = NULL,
@@ -69,12 +68,6 @@ documentation.}
 
 \item{encodings}{An array of encoding channels. The corresponding data field values must match
 for a data tuple to fall within the selection.
-
-\strong{See also:} The \href{https://vega.github.io/vega-lite/docs/selection.html#project}{projection with \code{encodings} and \code{fields} section} in the
-documentation.}
-
-\item{fields}{An array of field names whose values must match for a data tuple to fall within
-the selection.
 
 \strong{See also:} The \href{https://vega.github.io/vega-lite/docs/selection.html#project}{projection with \code{encodings} and \code{fields} section} in the
 documentation.}

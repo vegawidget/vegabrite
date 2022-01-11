@@ -16,7 +16,9 @@
 \alias{vl_scale_strokeWidth}
 \alias{vl_scale_theta}
 \alias{vl_scale_x}
+\alias{vl_scale_xOffset}
 \alias{vl_scale_y}
+\alias{vl_scale_yOffset}
 \title{Add scale to encoding}
 \usage{
 vl_scale_angle(
@@ -411,7 +413,63 @@ vl_scale_x(
   .object = NULL
 )
 
+vl_scale_xOffset(
+  spec,
+  align = NULL,
+  base = NULL,
+  bins = NULL,
+  clamp = NULL,
+  constant = NULL,
+  domain = NULL,
+  domainMax = NULL,
+  domainMid = NULL,
+  domainMin = NULL,
+  exponent = NULL,
+  interpolate = NULL,
+  nice = NULL,
+  padding = NULL,
+  paddingInner = NULL,
+  paddingOuter = NULL,
+  range = NULL,
+  rangeMax = NULL,
+  rangeMin = NULL,
+  reverse = NULL,
+  round = NULL,
+  scheme = NULL,
+  type = NULL,
+  zero = NULL,
+  .object = NULL
+)
+
 vl_scale_y(
+  spec,
+  align = NULL,
+  base = NULL,
+  bins = NULL,
+  clamp = NULL,
+  constant = NULL,
+  domain = NULL,
+  domainMax = NULL,
+  domainMid = NULL,
+  domainMin = NULL,
+  exponent = NULL,
+  interpolate = NULL,
+  nice = NULL,
+  padding = NULL,
+  paddingInner = NULL,
+  paddingOuter = NULL,
+  range = NULL,
+  rangeMax = NULL,
+  rangeMin = NULL,
+  reverse = NULL,
+  round = NULL,
+  scheme = NULL,
+  type = NULL,
+  zero = NULL,
+  .object = NULL
+)
+
+vl_scale_yOffset(
   spec,
   align = NULL,
   base = NULL,
@@ -554,7 +612,8 @@ specifier of the form \verb{\{"interval": "month", "step": 3\}}, which includes 
 desired number of interval steps. Here, the domain would snap to quarter (Jan,
 Apr, Jul, Oct) boundaries.
 
-\strong{Default value:} \code{true} for unbinned \emph{quantitative} fields; \code{false} otherwise.}
+\strong{Default value:} \code{true} for unbinned \emph{quantitative} fields without explicit
+domain bounds; \code{false} otherwise.}
 
 \item{padding}{For \emph{\href{https://vega.github.io/vega-lite/docs/scale.html#continuous}{continuous}}
 scales, expands the scale domain to accommodate the specified number of pixels
