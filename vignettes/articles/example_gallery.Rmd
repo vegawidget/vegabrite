@@ -602,7 +602,7 @@ vl_chart() %>%
   vl_condition_color(param = "brush", field = "Cylinders", type = "ordinal")
 ```
 
-#### Drop-down controlled parameter
+#### Slider controlled parameter
 
 ```{r}
 vl_chart() %>%
