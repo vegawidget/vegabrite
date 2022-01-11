@@ -11,10 +11,10 @@ knitr::opts_chunk$set(
 )
 ```
 
-Most of these examples are adapted from the [Vega-Lite example gallery](https://vega.github.io/vega-lite/examples/).See that example gallery for more examples of plots that can be made with Vega-Lite and thus likely can be built with `vlr`.
+Most of these examples are adapted from the [Vega-Lite example gallery](https://vega.github.io/vega-lite/examples/).See that example gallery for more examples of plots that can be made with Vega-Lite and thus likely can be built with `vegabrite`.
 
 ```{r}
-library(vlr)
+library(vegabrite)
 ```
 
 

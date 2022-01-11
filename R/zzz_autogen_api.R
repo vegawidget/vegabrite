@@ -16160,8 +16160,8 @@ vl_remove_axis_y <- function(spec) {
 #' vl_add_parameter
 #' 
 #' Add a variable parameter to a spec.  See
-#' [vlr::vl_add_point_selection()] and
-#' [vlr::vl_add_interval_selection()] for adding selection parameters.
+#' [vegabrite::vl_add_point_selection()] and
+#' [vegabrite::vl_add_interval_selection()] for adding selection parameters.
 #' @param spec An input vega-lite spec
 #' @param bind Binds the parameter to an external input element such as a slider, selection
 #' list or radio button group.

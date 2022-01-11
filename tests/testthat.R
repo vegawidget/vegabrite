@@ -1,4 +1,4 @@
 library(testthat)
-library(vlr)
+library(vegabrite)
 
-test_check("vlr")
+test_check("vegabrite")

@@ -1,4 +1,4 @@
-Package: vlr
+Package: vegabrite
 Title: Build Vega-Lite Specs in R
 Version: 0.5.0.9000
 Authors@R: c(

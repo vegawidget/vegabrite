@@ -7,10 +7,10 @@ template:
     border-radius: 0.5rem
     btn-border-radius: 0.25rem
     
-url: https://vegawidget.github.io/vlr/
+url: https://vegawidget.github.io/vegabrite/
 
 navbar:
-  title: "vlr"
+  title: "vegabrite"
   left:
     - icon: fa-home fa-lg
       href: index.html
@@ -24,7 +24,7 @@ navbar:
       href: reference/index.html
   right:
     - icon: fa-github fa-lg
-      href: https://github.com/vegawidget/vlr
+      href: https://github.com/vegawidget/vegabrite
 
 
 reference:
@@ -82,7 +82,7 @@ reference:
     contents:
     - concat
     - ends_with("layer")
-    - vlr_operators
+    - vegabrite_operators
   - title: "Faceting & repeating"
     desc: "Use faceting or repeating to make sub-plots"
     contents:
