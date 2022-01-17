@@ -10,14 +10,14 @@
     
     <a class="navbar-brand me-2" href="../index.html">vlbuildr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item">
   <a class="nav-link" href="../index.html">
     <span class="fa fa-home fa-lg"></span>
@@ -67,6 +67,8 @@
   <span class="va">spec</span>,
   bandPaddingInner <span class="op">=</span> <span class="cn">NULL</span>,
   bandPaddingOuter <span class="op">=</span> <span class="cn">NULL</span>,
+  bandWithNestedOffsetPaddingInner <span class="op">=</span> <span class="cn">NULL</span>,
+  bandWithNestedOffsetPaddingOuter <span class="op">=</span> <span class="cn">NULL</span>,
   barBandPaddingInner <span class="op">=</span> <span class="cn">NULL</span>,
   clamp <span class="op">=</span> <span class="cn">NULL</span>,
   continuousPadding <span class="op">=</span> <span class="cn">NULL</span>,
@@ -80,6 +82,8 @@
   minOpacity <span class="op">=</span> <span class="cn">NULL</span>,
   minSize <span class="op">=</span> <span class="cn">NULL</span>,
   minStrokeWidth <span class="op">=</span> <span class="cn">NULL</span>,
+  offsetBandPaddingInner <span class="op">=</span> <span class="cn">NULL</span>,
+  offsetBandPaddingOuter <span class="op">=</span> <span class="cn">NULL</span>,
   pointPadding <span class="op">=</span> <span class="cn">NULL</span>,
   quantileCount <span class="op">=</span> <span class="cn">NULL</span>,
   quantizeCount <span class="op">=</span> <span class="cn">NULL</span>,
@@ -96,14 +100,23 @@
     <dl><dt>spec</dt>
 <dd><p>An input vega-lite spec</p></dd>
 <dt>bandPaddingInner</dt>
-<dd><p>Default inner padding for <code>x</code> and <code>y</code> band-ordinal scales.</p>
-<p><strong>Default value:</strong></p><ul><li><p><code>barBandPaddingInner</code> for bar marks (<code>0.1</code> by default)</p></li>
+<dd><p>Default inner padding for <code>x</code> and <code>y</code> band scales.</p>
+<p><strong>Default value:</strong></p><ul><li><p><code>nestedOffsetPaddingInner</code> for x/y scales with nested x/y offset scales.</p></li>
+<li><p><code>barBandPaddingInner</code> for bar marks (<code>0.1</code> by default)</p></li>
 <li><p><code>rectBandPaddingInner</code> for rect and other marks (<code>0</code> by default)</p></li>
 </ul></dd>
 <dt>bandPaddingOuter</dt>
-<dd><p>Default outer padding for <code>x</code> and <code>y</code> band-ordinal scales.</p>
+<dd><p>Default outer padding for <code>x</code> and <code>y</code> band scales.</p>
 <p><strong>Default value:</strong> <code>paddingInner/2</code> (which makes <em>width/height = number of
 unique values * step</em>)</p></dd>
+<dt>bandWithNestedOffsetPaddingInner</dt>
+<dd><p>Default inner padding for <code>x</code> and <code>y</code> band scales with nested <code>xOffset</code> and
+<code>yOffset</code> encoding.</p>
+<p><strong>Default value:</strong> <code>0.2</code></p></dd>
+<dt>bandWithNestedOffsetPaddingOuter</dt>
+<dd><p>Default outer padding for <code>x</code> and <code>y</code> band scales with nested <code>xOffset</code> and
+<code>yOffset</code> encoding.</p>
+<p><strong>Default value:</strong> <code>0.2</code></p></dd>
 <dt>barBandPaddingInner</dt>
 <dd><p>Default inner padding for <code>x</code> and <code>y</code> band-ordinal scales of <code>"bar"</code> marks.</p>
 <p><strong>Default value:</strong> <code>0.1</code></p></dd>
@@ -111,9 +124,9 @@ unique values * step</em>)</p></dd>
 <dd><p>If true, values that exceed the data domain are clamped to either the minimum or
 maximum range value</p></dd>
 <dt>continuousPadding</dt>
-<dd><p>Default padding for continuous scales.</p>
-<p><strong>Default:</strong> <code>5</code> for continuous x-scale of a vertical bar and continuous y-scale
-of a horizontal bar.; <code>0</code> otherwise.</p></dd>
+<dd><p>Default padding for continuous x/y scales.</p>
+<p><strong>Default:</strong> The bar width for continuous x-scale of a vertical bar and
+continuous y-scale of a horizontal bar.; <code>0</code> otherwise.</p></dd>
 <dt>maxBandSize</dt>
 <dd><p>The default max value for mapping quantitative fields to bar's size/bandSize.</p>
 <p>If undefined (default), we will use the axis's size (width or height) - 1.</p></dd>
@@ -147,6 +160,12 @@ scale with zero=false</p>
 <dd><p>Default minimum strokeWidth for the scale of strokeWidth for rule and line marks
 and of size for trail marks with zero=false.</p>
 <p><strong>Default value:</strong> <code>1</code></p></dd>
+<dt>offsetBandPaddingInner</dt>
+<dd><p>Default padding inner for xOffset/yOffset's band scales.</p>
+<p><strong>Default Value:</strong> <code>0</code></p></dd>
+<dt>offsetBandPaddingOuter</dt>
+<dd><p>Default padding outer for xOffset/yOffset's band scales.</p>
+<p><strong>Default Value:</strong> <code>0</code></p></dd>
 <dt>pointPadding</dt>
 <dd><p>Default outer padding for <code>x</code> and <code>y</code> point-ordinal scales.</p>
 <p><strong>Default value:</strong> <code>0.5</code> (which makes <em>width/height = number of unique values *
@@ -194,7 +213,7 @@ domain (e.g. <code>"count"</code>, <code>"sum"</code>), this property is ignored
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer></div>

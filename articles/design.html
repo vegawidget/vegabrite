@@ -26,14 +26,14 @@
     
     <a class="navbar-brand me-2" href="../index.html">vlbuildr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
   <a class="nav-link" href="../index.html">
@@ -71,6 +71,9 @@
     
   </div>
 </nav><div class="container template-article">
+
+
+
 <script src="design_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <main id="main"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Design</h1>
@@ -82,9 +85,9 @@
 
     
     
-<div class="section level1">
-<h1 id="a-functional-approach-to-building-up-specs">A functional approach to building up specs<a class="anchor" aria-label="anchor" href="#a-functional-approach-to-building-up-specs"></a>
-</h1>
+<div class="section level2">
+<h2 id="a-functional-approach-to-building-up-specs">A functional approach to building up specs<a class="anchor" aria-label="anchor" href="#a-functional-approach-to-building-up-specs"></a>
+</h2>
 <p>This package seeks to build up a library of functions that can iteratively build up a Vega-Lite spec. There is an initializer function <code>vl_chart</code> that initializes the chart (and can optionally take in values for top-level spec attributes), and then subsequent functions can add various component to a spec – they take in a spec as input as well as arguments relating to the new component and return a modified spec with the new component.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://vegawidget.github.io/vlbuildr/index.html">vlbuildr</a></span><span class="op">)</span>
@@ -95,39 +98,39 @@
    <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">"wt"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
    <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">"mpg"</span><span class="op">)</span></code></pre></div>
 <p>For a more thorough introduction to how to use the package, see <a href="https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html">introduction vignette</a>. For example charts see the <a href="https://vegawidget.github.io/vlbuildr/articles/articles/example_gallery.html">example gallery</a>.</p>
-<div class="section level2">
-<h2 id="goals-and-non-goals">Goals and non-goals<a class="anchor" aria-label="anchor" href="#goals-and-non-goals"></a>
-</h2>
+<div class="section level3">
+<h3 id="goals-and-non-goals">Goals and non-goals<a class="anchor" aria-label="anchor" href="#goals-and-non-goals"></a>
+</h3>
 <p>A goal of this package is to enable building any chart that is possible to build with Vega-Lite using this package. However, it is not a goal to be able to build any possible spec that is valid in Vega-Lite – there can be multiple ways to build the same chart in Vega-Lite, and this package might only enable building one of the possible specs that could encode a chart.</p>
 <p>It is a goal to make it possible to build common / simple plots without needing to provide nested arguments. However, more complex charts will require some amount of nested list inputs – it is not a goal to enable all charts to be built without any nested arguments.</p>
 </div>
-<div class="section level2">
-<h2 id="underlying-objects">Underlying objects<a class="anchor" aria-label="anchor" href="#underlying-objects"></a>
-</h2>
+<div class="section level3">
+<h3 id="underlying-objects">Underlying objects<a class="anchor" aria-label="anchor" href="#underlying-objects"></a>
+</h3>
 <p>At the moment, the various top-level specs are S3 classes that are basically treated as lists. A few of the internal functions take advantage of the classes to help determine the right way to add a component.</p>
 <p>There currently are no classes for any sub-components of a spec, e.g. a class that might correspond to an “Axis” definition from the Vega-Lite spec. Rather, functions build those components as lists, and the validity is checked using the schema.</p>
 <p>Moving to an approach where actual classes are defined for each potential object is a possibility. The motivation for such an approach would be cleaner internal handing rather than a substantially different API, as this package would seek to primarily present to users a functional interface for building up specs. The user-facing aspect that would be most likely to change would be what is described in the following section</p>
-<div class="section level3">
-<h3 id="making-sub-components">Making sub-components<a class="anchor" aria-label="anchor" href="#making-sub-components"></a>
-</h3>
+<div class="section level4">
+<h4 id="making-sub-components">Making sub-components<a class="anchor" aria-label="anchor" href="#making-sub-components"></a>
+</h4>
 <p>The package currently offer a number of functions grouped in a list <code>vl</code> (e.g. <code>vl$BinParams</code>) which make a given sub-component of a Vega-Lite spec (what could map to an object if taking a more Object-oriented approach). These functions are intended to build sub-components that can be passed as arguments to functions that add to a spec.</p>
 <p>However, the intention is to make the functions that add to a spec granular enough that in general most won’t need complicated nested objects to be taken in as arguments, so that in most cases these <code>vl$</code> functions won’t be needed.</p>
 <p>This part of the API might change, especially if the internal components are reworked to make use of objects corresponding to these sub-components.</p>
 </div>
 </div>
-<div class="section level2">
-<h2 id="correctness-of-specs-being-built">Correctness of specs being built<a class="anchor" aria-label="anchor" href="#correctness-of-specs-being-built"></a>
-</h2>
+<div class="section level3">
+<h3 id="correctness-of-specs-being-built">Correctness of specs being built<a class="anchor" aria-label="anchor" href="#correctness-of-specs-being-built"></a>
+</h3>
 <p>This package may build incorrect specs if given improper inputs or if not all needed components are added to a spec. Some protection against this has been added by adding sub-schema validation. When a function adds a component to a spec, it checks that the component is correct. That checking will give a warning for an invalid spec; another area of improvement would be giving more detailed error messages. The validation may also still be imperfect. It also may be possible to add invalid combinations of individual components to a spec, and the overall spec is not currently validated.</p>
 <p>Potentially validation could also occur prior to printing (to check the validity of the entire spec), but that might be something to add to the vegawdiget package, which handles the printing.</p>
 </div>
 </div>
-<div class="section level1">
-<h1 id="construction-of-the-package">Construction of the package<a class="anchor" aria-label="anchor" href="#construction-of-the-package"></a>
-</h1>
 <div class="section level2">
-<h2 id="a-semi-automated-approach-to-building-an-api">A semi-automated approach to building an API<a class="anchor" aria-label="anchor" href="#a-semi-automated-approach-to-building-an-api"></a>
+<h2 id="construction-of-the-package">Construction of the package<a class="anchor" aria-label="anchor" href="#construction-of-the-package"></a>
 </h2>
+<div class="section level3">
+<h3 id="a-semi-automated-approach-to-building-an-api">A semi-automated approach to building an API<a class="anchor" aria-label="anchor" href="#a-semi-automated-approach-to-building-an-api"></a>
+</h3>
 <p>The functions in this package are build up using a semi-automated approach. A companion package <a href="https://github.com/vegawidget/vlbuildr/tree/master/build/vlmetabuildr" class="external-link">vlmetabuildr</a> located inside the ‘build’ directory is used to write the functions in the ‘zzz_autogen_api.R’ file.</p>
 <p>Note that this process is very much <strong>semi</strong>-automated and not fully automated. vlmetabuildr has been made specific for the Vega-lite api and this package and is not a general purpose JSON Schema –&gt; API package.</p>
 <p>Specific patterns for building up an API (e.g. groups of functions) are identified, such as adding an encoding via <code>vl_encode_&lt;channel&gt;</code> functions for each channel. A function for adding an encoding to a spec generally is hand-crafted and built within this package. The vlmetabuildr package will then make functions for (1) identifying all channels that need such a function, and (2) building up a function for each channel that has the appropriate arguments and documentations pulled from the Vega-lite schema.</p>
@@ -145,22 +148,22 @@
 </ul>
 <p>The parts that are automated would be extremely tedious to do manually. Potentially more of the API construction could be automated, however, the difficulty of the automation would increase substantially and/or the resulting API might be clunkier.</p>
 </div>
-<div class="section level2">
-<h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a>
-</h2>
 <div class="section level3">
-<h3 id="build-the-auto-generated-components">Build the auto-generated components<a class="anchor" aria-label="anchor" href="#build-the-auto-generated-components"></a>
+<h3 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a>
 </h3>
+<div class="section level4">
+<h4 id="build-the-auto-generated-components">Build the auto-generated components<a class="anchor" aria-label="anchor" href="#build-the-auto-generated-components"></a>
+</h4>
 <p>There is a script ‘build/build.R’ that builds the auto-generated components of the package.</p>
 </div>
-<div class="section level3">
-<h3 id="stucture-of-adder-functions">Stucture of ‘adder’ functions<a class="anchor" aria-label="anchor" href="#stucture-of-adder-functions"></a>
-</h3>
+<div class="section level4">
+<h4 id="stucture-of-adder-functions">Stucture of ‘adder’ functions<a class="anchor" aria-label="anchor" href="#stucture-of-adder-functions"></a>
+</h4>
 <p>Most of the auto-generated functions will call an internal function to add the specified component to the spec. Those functions generally take as argument at least three arguments: (1) the old spec, (2) the new object to add (a list), (3) a reference within the schema of what the object corresponds to. Additionally, more arguments needed to specify how the component should get added might also be included. The adder function will generally validate the object.</p>
 </div>
-<div class="section level3">
-<h3 id="pulling-bits-from-the-schema">Pulling bits from the schema<a class="anchor" aria-label="anchor" href="#pulling-bits-from-the-schema"></a>
-</h3>
+<div class="section level4">
+<h4 id="pulling-bits-from-the-schema">Pulling bits from the schema<a class="anchor" aria-label="anchor" href="#pulling-bits-from-the-schema"></a>
+</h4>
 <p>Functions for pulling out what properties are available for a particular part of the Vega-Lite schema are in the schema.R file in <code>vlmetabuildr</code>. These functions can recursively travel through the schema to pull out all the available enums, properties, or requirements for a particular component of a schema. These functions were adapted from similar functions in javascript from the vega-lite-api package.</p>
 </div>
 </div>
@@ -178,7 +181,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer>

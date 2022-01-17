@@ -26,14 +26,14 @@
     
     <a class="navbar-brand me-2" href="../index.html">vlbuildr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
   <a class="nav-link" href="../index.html">
@@ -71,8 +71,11 @@
     
   </div>
 </nav><div class="container template-article">
-<script src="introduction_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="introduction_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="introduction_files/vega-5.20.0/vega.min.js"></script><script src="introduction_files/vega-lite-5.1.0/vega-lite.min.js"></script><link href="introduction_files/vega-embed-6.17.0/vega-embed.css" rel="stylesheet">
-<script src="introduction_files/vega-embed-6.17.0/vega-embed.min.js"></script><script src="introduction_files/vegawidget-binding-0.3.3.9001/vegawidget.js"></script><div class="row">
+
+
+
+<script src="introduction_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="introduction_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="introduction_files/vega-5.21.0/vega@5.21.0.min.js"></script><script src="introduction_files/vega-lite-5.2.0/vega-lite@5.2.0.min.js"></script><link href="introduction_files/vega-embed-6.20.2/vega-embed.css" rel="stylesheet">
+<script src="introduction_files/vega-embed-6.20.2/vega-embed@6.20.2.min.js"></script><script src="introduction_files/vegawidget-vl5-binding-0.4.0.9002/vegawidget-vl5.js"></script><div class="row">
   <main id="main"><div class="page-header">
       <img src="" class="logo" alt=""><h1>How to make a plot using vlbuildr</h1>
             
@@ -91,8 +94,8 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://vegawidget.github.io/vlbuildr/index.html">vlbuildr</a></span><span class="op">)</span>
 <span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-37e2f4579f44905d9bcb" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-37e2f4579f44905d9bcb">{"x":{
+<div id="htmlwidget-168158722d4d27d15cfa" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-168158722d4d27d15cfa">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json"
   },
@@ -107,8 +110,8 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-f906d2c9874f97805290" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f906d2c9874f97805290">{"x":{
+<div id="htmlwidget-92516ff0d8d03417107d" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-92516ff0d8d03417107d">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
@@ -572,8 +575,8 @@
 <p>We could also have passed the data directly to <code>vl_chart</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> </code></pre></div>
-<div id="htmlwidget-362de4d656fdbb9ff8b2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-362de4d656fdbb9ff8b2">{"x":{
+<div id="htmlwidget-e21958f64ee0eb01f87b" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e21958f64ee0eb01f87b">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -1043,8 +1046,8 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-3df5d3cd2108e821c3d7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3df5d3cd2108e821c3d7">{"x":{
+<div id="htmlwidget-96a0418fe79cf7e10a7a" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-96a0418fe79cf7e10a7a">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
@@ -1513,8 +1516,8 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">'red'</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-03c21adfb21721ed2f2e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-03c21adfb21721ed2f2e">{"x":{
+<div id="htmlwidget-a0ca8eac469eb26f8a8a" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a0ca8eac469eb26f8a8a">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
@@ -1990,8 +1993,8 @@
   <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">'wt'</span>, type <span class="op">=</span> <span class="st">'quantitative'</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-caac3743f3d76ec3f698" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-caac3743f3d76ec3f698">{"x":{
+<div id="htmlwidget-68d826fa60cb4001e66b" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-68d826fa60cb4001e66b">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
@@ -2467,8 +2470,8 @@
   <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">'wt'</span>, type <span class="op">=</span> <span class="st">'quantitative'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">'mpg'</span>, type <span class="op">=</span> <span class="st">'quantitative'</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-5c1e1c9b0ad92bcffb0d" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5c1e1c9b0ad92bcffb0d">{"x":{
+<div id="htmlwidget-6395ebe6016984898508" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6395ebe6016984898508">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
@@ -2951,8 +2954,8 @@
   <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt:Q'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg:Q'</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-d22518eb74969bd44a31" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d22518eb74969bd44a31">{"x":{
+<div id="htmlwidget-e989e1eb4a820a5bfcca" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e989e1eb4a820a5bfcca">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
@@ -3437,8 +3440,8 @@
   <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-795948d42b1ac87ab6e5" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-795948d42b1ac87ab6e5">{"x":{
+<div id="htmlwidget-caa5035872c2185ede07" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-caa5035872c2185ede07">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
@@ -3923,8 +3926,8 @@
   <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode.html">vl_encode</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">'wt'</span>, y <span class="op">=</span> <span class="st">"mpg"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-b7021eb7d702021bfbbb" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b7021eb7d702021bfbbb">{"x":{
+<div id="htmlwidget-25d7a6895e01f0b3b6aa" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-25d7a6895e01f0b3b6aa">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
@@ -4407,8 +4410,8 @@
     x <span class="op">=</span> <span class="va">vl</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span>field <span class="op">=</span> <span class="st">'wt'</span>, title <span class="op">=</span> <span class="st">"weight"</span><span class="op">)</span>, 
      y <span class="op">=</span> <span class="st">"mpg"</span>
     <span class="op">)</span></code></pre></div>
-<div id="htmlwidget-619a38c82d424c47ea40" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-619a38c82d424c47ea40">{"x":{
+<div id="htmlwidget-943fe0a36a85332fa97e" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-943fe0a36a85332fa97e">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
@@ -4913,8 +4916,8 @@
 
 <span class="fu"><a href="../reference/layer.html">vl_layer</a></span><span class="op">(</span><span class="va">points_plot</span>, <span class="va">avg_plot</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_add_data_url.html">vl_add_data_url</a></span><span class="op">(</span><span class="st">"https://vega.github.io/vega-editor/app/data/movies.json"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-9c7152eb2ea872d381f3" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9c7152eb2ea872d381f3">{"x":{
+<div id="htmlwidget-fae0890501fb11a221d8" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fae0890501fb11a221d8">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "layer": [
@@ -4972,8 +4975,8 @@
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">points_plot</span> <span class="op">+</span> <span class="va">avg_plot</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_add_data_url.html">vl_add_data_url</a></span><span class="op">(</span><span class="st">"https://vega.github.io/vega-editor/app/data/movies.json"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-3f16163f2d66dd757db7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3f16163f2d66dd757db7">{"x":{
+<div id="htmlwidget-93a23b980ded5403f7ba" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-93a23b980ded5403f7ba">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "layer": [
@@ -5042,8 +5045,8 @@
   <span class="fu"><a href="../reference/bin_encoding.html">vl_bin_x</a></span><span class="op">(</span>maxbins <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span>aggregate <span class="op">=</span> <span class="st">"count"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_row.html">vl_encode_row</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Origin"</span>, type <span class="op">=</span> <span class="st">"nominal"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-02b6915d62a15eeb5a22" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-02b6915d62a15eeb5a22">{"x":{
+<div id="htmlwidget-fc7d24e3ce6f2fa941d1" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fc7d24e3ce6f2fa941d1">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
@@ -5089,8 +5092,8 @@
   <span class="fu"><a href="../reference/bin_encoding.html">vl_bin_x</a></span><span class="op">(</span>maxbins <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span>aggregate <span class="op">=</span> <span class="st">"count"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_facet_row.html">vl_facet_row</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Origin"</span>, type <span class="op">=</span> <span class="st">"nominal"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-96deec1837daec06a2fa" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-96deec1837daec06a2fa">{"x":{
+<div id="htmlwidget-a58b86c0d2f52061ab9b" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a58b86c0d2f52061ab9b">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
@@ -5140,8 +5143,8 @@
   <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span>aggregate <span class="op">=</span> <span class="st">"count"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_color.html">vl_encode_color</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Origin"</span>, type <span class="op">=</span> <span class="st">"nominal"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_repeat_wrap.html">vl_repeat_wrap</a></span><span class="op">(</span><span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Acceleration"</span>, <span class="st">"Displacement"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-22994db3f1651d871976" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-22994db3f1651d871976">{"x":{
+<div id="htmlwidget-7415d1226c34ad5ddaea" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7415d1226c34ad5ddaea">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
@@ -5190,8 +5193,8 @@
   <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span>aggregate <span class="op">=</span> <span class="st">"count"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_color.html">vl_encode_color</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Origin"</span>, type <span class="op">=</span> <span class="st">"nominal"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_repeat_wrap.html">vl_repeat_wrap</a></span><span class="op">(</span><span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Acceleration"</span>, <span class="st">"Displacement"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-8debf6aa0f33ceafced3" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8debf6aa0f33ceafced3">{"x":{
+<div id="htmlwidget-3ca68dbac3fd37259f1c" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3ca68dbac3fd37259f1c">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
@@ -5252,8 +5255,8 @@
 <span class="fu"><a href="../reference/concat.html">vl_hconcat</a></span><span class="op">(</span><span class="va">bar_chart</span>, <span class="va">point_chart</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://vega.github.io/vega-lite/data/weather.csv"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_filter.html">vl_filter</a></span><span class="op">(</span><span class="st">"datum.location === 'Seattle'"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-73910d0035dd1a6be0f2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-73910d0035dd1a6be0f2">{"x":{
+<div id="htmlwidget-4448cac870bcdc93cc14" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4448cac870bcdc93cc14">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "hconcat": [
@@ -5314,8 +5317,8 @@
 <code class="sourceCode R"><span class="op">(</span><span class="va">bar_chart</span> <span class="op">|</span> <span class="va">point_chart</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://vega.github.io/vega-lite/data/weather.csv"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_filter.html">vl_filter</a></span><span class="op">(</span><span class="st">"datum.location === 'Seattle'"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-94868cbdc1b9990d513b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-94868cbdc1b9990d513b">{"x":{
+<div id="htmlwidget-6eef9eb8a3f8ee556d50" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6eef9eb8a3f8ee556d50">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "hconcat": [
@@ -5375,8 +5378,8 @@
 <code class="sourceCode R"><span class="op">(</span><span class="va">bar_chart</span> <span class="op">&amp;</span> <span class="va">point_chart</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://vega.github.io/vega-lite/data/weather.csv"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_filter.html">vl_filter</a></span><span class="op">(</span><span class="st">"datum.location === 'Seattle'"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-d4d2f9d83e7efd92b9d0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d4d2f9d83e7efd92b9d0">{"x":{
+<div id="htmlwidget-548d5d332396e147e9d4" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-548d5d332396e147e9d4">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "vconcat": [
@@ -5451,8 +5454,8 @@
   <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span>tooltip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-8853642f9677e5467026" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8853642f9677e5467026">{"x":{
+<div id="htmlwidget-676182d08219d33dea06" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-676182d08219d33dea06">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -5937,8 +5940,8 @@
   <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span>tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>content <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-87946e01d4bc84d28d5c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-87946e01d4bc84d28d5c">{"x":{
+<div id="htmlwidget-f04fb8dd247e29a65a8d" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f04fb8dd247e29a65a8d">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -6420,8 +6423,8 @@
   <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span>tooltip <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-b6a83c0f7a3577ee424a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b6a83c0f7a3577ee424a">{"x":{
+<div id="htmlwidget-ad3f1881e9f346700b6c" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ad3f1881e9f346700b6c">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -6908,8 +6911,8 @@
   <span class="fu"><a href="../reference/vl_mark_point.html">vl_mark_point</a></span><span class="op">(</span>tooltip <span class="op">=</span> <span class="st">"Hi!"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-451976316812af412d8c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-451976316812af412d8c">{"x":{
+<div id="htmlwidget-1768cbc5eb5a3f4b2b78" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1768cbc5eb5a3f4b2b78">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -7395,8 +7398,8 @@
   <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/vl_encode_tooltip.html">vl_encode_tooltip</a></span><span class="op">(</span><span class="st">'_row'</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-84c35902f67dbdcf49f6" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-84c35902f67dbdcf49f6">{"x":{
+<div id="htmlwidget-3e9f5146fc071991e4b5" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3e9f5146fc071991e4b5">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -7880,8 +7883,8 @@
   <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/vl_encode_tooltip.html">vl_encode_tooltip_array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'_row'</span>,<span class="st">'wt'</span>,<span class="st">'mpg'</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-5ab68259e3d88faa5472" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5ab68259e3d88faa5472">{"x":{
+<div id="htmlwidget-fa64d082cb9c3967d628" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fa64d082cb9c3967d628">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -8383,8 +8386,8 @@ A parameter can be a simple value or expression that can be used in other parts 
   <span class="fu"><a href="../reference/vl_mark_bar.html">vl_mark_bar</a></span><span class="op">(</span>cornerRadius <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>expr <span class="op">=</span> <span class="st">'radius'</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span>, bin <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span> aggregate <span class="op">=</span> <span class="st">'count'</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-fe8c736fbeeed0d3a359" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-fe8c736fbeeed0d3a359">{"x":{
+<div id="htmlwidget-63711d41a6bad55f979e" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-63711d41a6bad55f979e">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -8876,8 +8879,8 @@ A parameter can be a simple value or expression that can be used in other parts 
   <span class="fu"><a href="../reference/vl_mark_bar.html">vl_mark_bar</a></span><span class="op">(</span>cornerRadius <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>expr <span class="op">=</span> <span class="st">'radius'</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span>, bin <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span> aggregate <span class="op">=</span> <span class="st">'count'</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-7705010bc1bafd5faf2c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7705010bc1bafd5faf2c">{"x":{
+<div id="htmlwidget-6a9eb18a977a663f5f73" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6a9eb18a977a663f5f73">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -9384,8 +9387,8 @@ A parameter can be a simple value or expression that can be used in other parts 
   <span class="fu"><a href="../reference/vl_add_interval_selection.html">vl_add_interval_selection</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">'brush'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_color.html">vl_encode_color</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">'gray'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/condition_encoding.html">vl_condition_color</a></span><span class="op">(</span>param <span class="op">=</span> <span class="st">'brush'</span>, field <span class="op">=</span> <span class="st">'cyl'</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-5e1e1e5938e2c849753b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5e1e1e5938e2c849753b">{"x":{
+<div id="htmlwidget-4e0a6ffcaa7f7df3e142" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4e0a6ffcaa7f7df3e142">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -9883,8 +9886,8 @@ A parameter can be a simple value or expression that can be used in other parts 
   <span class="fu"><a href="../reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">'wt'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">'mpg'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/vl_add_interval_selection.html">vl_add_interval_selection</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">'grid'</span>, bind <span class="op">=</span> <span class="st">'scales'</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-1a3701ef361f0fdde74e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1a3701ef361f0fdde74e">{"x":{
+<div id="htmlwidget-1b1233bdee01b5fa56ec" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1b1233bdee01b5fa56ec">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -10381,8 +10384,8 @@ A parameter can be a simple value or expression that can be used in other parts 
   <span class="fu"><a href="../reference/vl_add_point_selection.html">vl_add_point_selection</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">'pt'</span>, value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_encode_color.html">vl_encode_color</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">'gray'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/condition_encoding.html">vl_condition_color</a></span><span class="op">(</span>param <span class="op">=</span> <span class="st">'pt'</span>, value <span class="op">=</span> <span class="st">'red'</span>, empty <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-1483aa1f9c18c6891d38" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1483aa1f9c18c6891d38">{"x":{
+<div id="htmlwidget-672c2cdcde83dc513f01" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-672c2cdcde83dc513f01">{"x":{
   "chart_spec": {
     "data": {
       "values": [
@@ -10889,8 +10892,8 @@ A parameter can be a simple value or expression that can be used in other parts 
   <span class="fu"><a href="../reference/vl_encode_opacity.html">vl_encode_opacity</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/condition_encoding.html">vl_condition_opacity</a></span><span class="op">(</span>param <span class="op">=</span> <span class="st">'industry'</span>, value <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/vl_add_point_selection.html">vl_add_point_selection</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">'industry'</span>, fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">'series'</span><span class="op">)</span>, bind <span class="op">=</span> <span class="st">'legend'</span><span class="op">)</span> </code></pre></div>
-<div id="htmlwidget-a039070042e31d09a812" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a039070042e31d09a812">{"x":{
+<div id="htmlwidget-ff7311b8109ef589f2b7" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ff7311b8109ef589f2b7">{"x":{
   "chart_spec": {
     "data": {
       "url": "https://vega.github.io/vega-editor/app/data/unemployment-across-industries.json"
@@ -10963,7 +10966,7 @@ A parameter can be a simple value or expression that can be used in other parts 
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer>
