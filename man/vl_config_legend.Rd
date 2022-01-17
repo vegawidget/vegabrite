@@ -256,6 +256,8 @@ Or: ExprRef}
 
 \item{labelOffset}{The offset of the legend label.
 
+\strong{Default value:} \code{4}.
+
 Or: ExprRef}
 
 \item{labelOpacity}{Opacity of labels.

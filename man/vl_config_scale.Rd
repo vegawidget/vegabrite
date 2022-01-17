@@ -8,6 +8,8 @@ vl_config_scale(
   spec,
   bandPaddingInner = NULL,
   bandPaddingOuter = NULL,
+  bandWithNestedOffsetPaddingInner = NULL,
+  bandWithNestedOffsetPaddingOuter = NULL,
   barBandPaddingInner = NULL,
   clamp = NULL,
   continuousPadding = NULL,
@@ -21,6 +23,8 @@ vl_config_scale(
   minOpacity = NULL,
   minSize = NULL,
   minStrokeWidth = NULL,
+  offsetBandPaddingInner = NULL,
+  offsetBandPaddingOuter = NULL,
   pointPadding = NULL,
   quantileCount = NULL,
   quantizeCount = NULL,
@@ -34,18 +38,29 @@ vl_config_scale(
 \arguments{
 \item{spec}{An input vega-lite spec}
 
-\item{bandPaddingInner}{Default inner padding for \code{x} and \code{y} band-ordinal scales.
+\item{bandPaddingInner}{Default inner padding for \code{x} and \code{y} band scales.
 
 \strong{Default value:}
 \itemize{
+\item \code{nestedOffsetPaddingInner} for x/y scales with nested x/y offset scales.
 \item \code{barBandPaddingInner} for bar marks (\code{0.1} by default)
 \item \code{rectBandPaddingInner} for rect and other marks (\code{0} by default)
 }}
 
-\item{bandPaddingOuter}{Default outer padding for \code{x} and \code{y} band-ordinal scales.
+\item{bandPaddingOuter}{Default outer padding for \code{x} and \code{y} band scales.
 
 \strong{Default value:} \code{paddingInner/2} (which makes \emph{width/height = number of
 unique values * step})}
+
+\item{bandWithNestedOffsetPaddingInner}{Default inner padding for \code{x} and \code{y} band scales with nested \code{xOffset} and
+\code{yOffset} encoding.
+
+\strong{Default value:} \code{0.2}}
+
+\item{bandWithNestedOffsetPaddingOuter}{Default outer padding for \code{x} and \code{y} band scales with nested \code{xOffset} and
+\code{yOffset} encoding.
+
+\strong{Default value:} \code{0.2}}
 
 \item{barBandPaddingInner}{Default inner padding for \code{x} and \code{y} band-ordinal scales of \code{"bar"} marks.
 
@@ -54,10 +69,10 @@ unique values * step})}
 \item{clamp}{If true, values that exceed the data domain are clamped to either the minimum or
 maximum range value}
 
-\item{continuousPadding}{Default padding for continuous scales.
+\item{continuousPadding}{Default padding for continuous x/y scales.
 
-\strong{Default:} \code{5} for continuous x-scale of a vertical bar and continuous y-scale
-of a horizontal bar.; \code{0} otherwise.}
+\strong{Default:} The bar width for continuous x-scale of a vertical bar and
+continuous y-scale of a horizontal bar.; \code{0} otherwise.}
 
 \item{maxBandSize}{The default max value for mapping quantitative fields to bar's size/bandSize.
 
@@ -100,6 +115,14 @@ scale with zero=false
 and of size for trail marks with zero=false.
 
 \strong{Default value:} \code{1}}
+
+\item{offsetBandPaddingInner}{Default padding inner for xOffset/yOffset's band scales.
+
+\strong{Default Value:} \code{0}}
+
+\item{offsetBandPaddingOuter}{Default padding outer for xOffset/yOffset's band scales.
+
+\strong{Default Value:} \code{0}}
 
 \item{pointPadding}{Default outer padding for \code{x} and \code{y} point-ordinal scales.
 

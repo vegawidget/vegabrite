@@ -538,6 +538,8 @@ vl_add_data <- function(spec, values = NULL, format = NULL, name = NULL, url = N
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -604,6 +606,8 @@ vl_add_data <- function(spec, values = NULL, format = NULL, name = NULL, url = N
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -624,7 +628,11 @@ vl_add_data <- function(spec, values = NULL, format = NULL, name = NULL, url = N
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param radius2Offset Offset for radius2.
 #' @param radiusOffset Offset for radius.
 #' @param shape Shape of the point marks. Supported values include:
@@ -966,6 +974,8 @@ vl_mark_arc <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole 
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -1032,6 +1042,8 @@ vl_mark_arc <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole 
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -1052,7 +1064,11 @@ vl_mark_arc <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole 
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param radius2Offset Offset for radius2.
 #' @param radiusOffset Offset for radius.
 #' @param shape Shape of the point marks. Supported values include:
@@ -1394,6 +1410,8 @@ vl_mark_area <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -1460,6 +1478,8 @@ vl_mark_area <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -1480,7 +1500,11 @@ vl_mark_area <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param radius2Offset Offset for radius2.
 #' @param radiusOffset Offset for radius.
 #' @param shape Shape of the point marks. Supported values include:
@@ -1822,6 +1846,8 @@ vl_mark_bar <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole 
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -1888,6 +1914,8 @@ vl_mark_bar <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole 
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -1908,7 +1936,11 @@ vl_mark_bar <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole 
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param radius2Offset Offset for radius2.
 #' @param radiusOffset Offset for radius.
 #' @param shape Shape of the point marks. Supported values include:
@@ -2250,6 +2282,8 @@ vl_mark_image <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRol
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -2316,6 +2350,8 @@ vl_mark_image <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRol
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -2336,7 +2372,11 @@ vl_mark_image <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRol
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param radius2Offset Offset for radius2.
 #' @param radiusOffset Offset for radius.
 #' @param shape Shape of the point marks. Supported values include:
@@ -2678,6 +2718,8 @@ vl_mark_line <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -2744,6 +2786,8 @@ vl_mark_line <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -2764,7 +2808,11 @@ vl_mark_line <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param radius2Offset Offset for radius2.
 #' @param radiusOffset Offset for radius.
 #' @param shape Shape of the point marks. Supported values include:
@@ -3106,6 +3154,8 @@ vl_mark_point <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRol
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -3172,6 +3222,8 @@ vl_mark_point <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRol
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -3192,7 +3244,11 @@ vl_mark_point <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRol
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param radius2Offset Offset for radius2.
 #' @param radiusOffset Offset for radius.
 #' @param shape Shape of the point marks. Supported values include:
@@ -3534,6 +3590,8 @@ vl_mark_rect <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -3600,6 +3658,8 @@ vl_mark_rect <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -3620,7 +3680,11 @@ vl_mark_rect <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param radius2Offset Offset for radius2.
 #' @param radiusOffset Offset for radius.
 #' @param shape Shape of the point marks. Supported values include:
@@ -3962,6 +4026,8 @@ vl_mark_rule <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -4028,6 +4094,8 @@ vl_mark_rule <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -4048,7 +4116,11 @@ vl_mark_rule <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param radius2Offset Offset for radius2.
 #' @param radiusOffset Offset for radius.
 #' @param shape Shape of the point marks. Supported values include:
@@ -4390,6 +4462,8 @@ vl_mark_text <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -4456,6 +4530,8 @@ vl_mark_text <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -4476,7 +4552,11 @@ vl_mark_text <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param radius2Offset Offset for radius2.
 #' @param radiusOffset Offset for radius.
 #' @param shape Shape of the point marks. Supported values include:
@@ -4818,6 +4898,8 @@ vl_mark_tick <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -4884,6 +4966,8 @@ vl_mark_tick <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -4904,7 +4988,11 @@ vl_mark_tick <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRole
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param radius2Offset Offset for radius2.
 #' @param radiusOffset Offset for radius.
 #' @param shape Shape of the point marks. Supported values include:
@@ -5246,6 +5334,8 @@ vl_mark_trail <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRol
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -5312,6 +5402,8 @@ vl_mark_trail <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRol
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -5332,7 +5424,11 @@ vl_mark_trail <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRol
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param radius2Offset Offset for radius2.
 #' @param radiusOffset Offset for radius.
 #' @param shape Shape of the point marks. Supported values include:
@@ -5674,6 +5770,8 @@ vl_mark_circle <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -5740,6 +5838,8 @@ vl_mark_circle <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -5760,7 +5860,11 @@ vl_mark_circle <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param radius2Offset Offset for radius2.
 #' @param radiusOffset Offset for radius.
 #' @param shape Shape of the point marks. Supported values include:
@@ -6102,6 +6206,8 @@ vl_mark_square <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -6168,6 +6274,8 @@ vl_mark_square <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -6188,7 +6296,11 @@ vl_mark_square <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param radius2Offset Offset for radius2.
 #' @param radiusOffset Offset for radius.
 #' @param shape Shape of the point marks. Supported values include:
@@ -12161,6 +12273,203 @@ vl_encode_xError2 <- function(spec, field = NULL, value = NULL, aggregate = NULL
   .add_encoding(spec, obj, "#/definitions/Encoding/properties/xError2" , encoding = "xError2")
 }
 
+#' vl_encode_xOffset
+#' 
+#' Add encoding for xOffset to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param aggregate Aggregation function for the field (e.g., `"mean"`, `"sum"`, `"median"`,
+#' `"min"`, `"max"`, `"count"`).
+#' 
+#' __Default value:__ `undefined` (None)
+#' 
+#' __See also:__
+#' [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html)
+#' documentation.
+#' @param bandPosition Relative position on a band of a stacked, binned, time unit, or band scale. For
+#' example, the marks will be positioned at the beginning of the band if set to
+#' `0`, and at the middle of the band if set to `0.5`.
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning
+#' parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or
+#' indicating that the data for `x` or `y` channel are binned before they are
+#' imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning
+#' parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - If `"binned"`, this indicates that the data for the `x` (or `y`)
+#' channel are already binned. You can map the bin-start field to `x`
+#' (or `y`) and the bin-end field to `x2` (or `y2`). The scale and
+#' axis will be formatted similar to binning in Vega-Lite. To adjust
+#' the axis ticks based on the bin step, you can also set the axis's
+#' [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false`
+#' 
+#' __See also:__ [`bin`](https://vega.github.io/vega-lite/docs/bin.html)
+#' documentation.
+#' @param field __Required.__ A string defining the name of the field from which
+#' to pull a data value or an object defining iterated values from the
+#' [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __See also:__ [`field`](https://vega.github.io/vega-lite/docs/field.html)
+#' documentation.
+#' 
+#' __Notes:__ 1) Dots (`.`) and brackets (`[` and `]`) can be used to access nested
+#' objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`). If field names
+#' contain dots or brackets but are not nested, you can use `\\` to escape dots and
+#' brackets (e.g., `"a\\.b"` and `"a\\\[0\\\]"`). See more details about escaping in
+#' the [field documentation](https://vega.github.io/vega-lite/docs/field.html). 2)
+#' `field` is not required if `aggregate` is `count`.
+#' @param scale An object defining properties of the channel's scale, which is the function that
+#' transforms values in the data domain (numbers, dates, strings, etc) to visual
+#' values (pixels, colors, sizes) of the encoding channels.
+#' 
+#' If `null`, the scale will be [disabled and the data value will be directly
+#' encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
+#' 
+#' __Default value:__ If undefined, default [scale
+#' properties](https://vega.github.io/vega-lite/docs/scale.html) are applied.
+#' 
+#' __See also:__ [`scale`](https://vega.github.io/vega-lite/docs/scale.html)
+#' documentation.
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either
+#' `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in
+#' JavaScript.
+#' - [A string indicating an encoding channel name to sort
+#' by](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding)
+#' (e.g., `"x"` or `"y"`) with an optional minus prefix for
+#' descending sort (e.g., `"-x"` to sort by x-field, descending).
+#' This channel string is short-form of [a sort-by-encoding
+#' definition](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding).
+#' For example, `"sort": "-x"` is equivalent to `"sort": {"encoding": "x", "order":
+#' "descending"}`.
+#' - [A sort field
+#' definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for
+#' sorting by another field.
+#' - [An array specifying the field values in preferred
+#' order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this
+#' case, the sort order will obey the values in the array, followed by any
+#' unspecified values in their original order. For discrete time field, values
+#' in the sort array can be [date-time definition objects](types#datetime). In
+#' addition, for time units `"month"` and `"day"`, the values can be the month
+#' or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`,
+#' `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` and sorting by another channel is not supported for `row` and
+#' `column`.
+#' 
+#' __See also:__ [`sort`](https://vega.github.io/vega-lite/docs/sort.html)
+#' documentation.
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for
+#' a temporal field. or [a temporal field that gets casted as
+#' ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None)
+#' 
+#' __See also:__ [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html)
+#' documentation.
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__ derived from the field's name and transformation function
+#' (`aggregate`, `bin` and `timeUnit`). If the field has an aggregate function,
+#' the function is displayed as part of the title (e.g., `"Sum of Profit"`). If
+#' the field is binned or has a time unit applied, the applied function is shown
+#' in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).
+#' Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the
+#' [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config)
+#' property in the [config](https://vega.github.io/vega-lite/docs/config.html)
+#' or [`fieldTitle` function via the `compile` function's
+#' options](https://vega.github.io/vega-lite/usage/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are
+#' defined, axis/header/legend title will be used.
+#' @param type The type of measurement (`"quantitative"`, `"temporal"`,
+#' `"ordinal"`, or `"nominal"`) for the encoded field or constant
+#' value (`datum`). It can also be a `"geojson"` type for encoding
+#' ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' Vega-Lite automatically infers data types in many cases as discussed below.
+#' However, type is required for a field if: (1) the field is not nominal and the
+#' field encoding has no specified `aggregate` (except `argmin` and `argmax`),
+#' `bin`, scale type, custom `sort` order, nor `timeUnit` or (2) if you wish to use
+#' an ordinal scale for a field with `bin` or `timeUnit`.
+#' 
+#' __Default value:__
+#' 
+#' 1) For a data `field`, `"nominal"` is the default data type unless the field
+#' encoding has `aggregate`, `channel`, `bin`, scale type, `sort`, or `timeUnit`
+#' that satisfies the following criteria:
+#' - `"quantitative"` is the default type if (1) the encoded field contains `bin`
+#' or `aggregate` except `"argmin"` and `"argmax"`, (2) the encoding channel is
+#' `latitude` or `longitude` channel or (3) if the specified scale type is [a
+#' quantitative scale](https://vega.github.io/vega-lite/docs/scale.html#type).
+#' - `"temporal"` is the default type if (1) the encoded field contains `timeUnit`
+#' or (2) the specified scale type is a time or utc scale
+#' - `ordinal""` is the default type if (1)
+#' the encoded field contains a [custom `sort`
+#' order](https://vega.github.io/vega-lite/docs/sort.html#specifying-custom-sort-order),
+#' (2) the specified scale type is an ordinal/point/band scale, or (3) the encoding
+#' channel is `order`.
+#' 
+#' 2) For a constant value in data domain (`datum`):
+#' - `"quantitative"` if the datum is a number
+#' - `"nominal"` if the datum is a string
+#' - `"temporal"` if the datum is [a date time
+#' object](https://vega.github.io/vega-lite/docs/datetime.html)
+#' 
+#' __Note:__
+#' - Data `type` describes the semantics of the data rather than the primitive data
+#' types (number, string, etc.). The same primitive data type can have different
+#' types of measurement. For example, numeric data can represent quantitative,
+#' ordinal, or nominal data.
+#' - Data values for a temporal field can be either a date-time string (e.g.,
+#' `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp
+#' number (e.g., `1552199579097`).
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html),
+#' the `type` property can be either `"quantitative"` (for using
+#' a linear bin scale) or [`"ordinal"` (for using an ordinal bin
+#' scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with
+#' [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html),
+#' the `type` property can be either `"temporal"` (default, for
+#' using a temporal scale) or [`"ordinal"` (for using an ordinal
+#' scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with
+#' [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type`
+#' property refers to the post-aggregation data type. For example, we can calculate
+#' count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct",
+#' "field": "cat"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type`
+#' as they must have exactly the same type as their primary channels (e.g., `x`,
+#' `y`).
+#' 
+#' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html)
+#' documentation.
+#' @param datum A constant value in data domain.
+#' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
+#' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
+#' color, values between `0` to `1` for opacity).
+
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than `spec`. Objects can be of type: ScaleFieldDef, ScaleDatumDef or ValueDef<number>
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_encode_xOffset <- function(spec, field = NULL, type = NULL, value = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, datum = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_encoding(spec, obj, "#/definitions/Encoding/properties/xOffset" , encoding = "xOffset")
+}
+
 #' vl_encode_y
 #' 
 #' Add encoding for y to a vega-lite spec.
@@ -12720,6 +13029,203 @@ vl_encode_yError2 <- function(spec, field = NULL, value = NULL, aggregate = NULL
   obj <- .make_object(NULL, NULL)
   .add_encoding(spec, obj, "#/definitions/Encoding/properties/yError2" , encoding = "yError2")
 }
+
+#' vl_encode_yOffset
+#' 
+#' Add encoding for yOffset to a vega-lite spec.
+#' @param spec An input vega-lite spec
+#' @param aggregate Aggregation function for the field (e.g., `"mean"`, `"sum"`, `"median"`,
+#' `"min"`, `"max"`, `"count"`).
+#' 
+#' __Default value:__ `undefined` (None)
+#' 
+#' __See also:__
+#' [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html)
+#' documentation.
+#' @param bandPosition Relative position on a band of a stacked, binned, time unit, or band scale. For
+#' example, the marks will be positioned at the beginning of the band if set to
+#' `0`, and at the middle of the band if set to `0.5`.
+#' @param bin A flag for binning a `quantitative` field, [an object defining binning
+#' parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or
+#' indicating that the data for `x` or `y` channel are binned before they are
+#' imported into Vega-Lite (`"binned"`).
+#' 
+#' - If `true`, default [binning
+#' parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.
+#' 
+#' - If `"binned"`, this indicates that the data for the `x` (or `y`)
+#' channel are already binned. You can map the bin-start field to `x`
+#' (or `y`) and the bin-end field to `x2` (or `y2`). The scale and
+#' axis will be formatted similar to binning in Vega-Lite. To adjust
+#' the axis ticks based on the bin step, you can also set the axis's
+#' [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.
+#' 
+#' __Default value:__ `false`
+#' 
+#' __See also:__ [`bin`](https://vega.github.io/vega-lite/docs/bin.html)
+#' documentation.
+#' @param field __Required.__ A string defining the name of the field from which
+#' to pull a data value or an object defining iterated values from the
+#' [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.
+#' 
+#' __See also:__ [`field`](https://vega.github.io/vega-lite/docs/field.html)
+#' documentation.
+#' 
+#' __Notes:__ 1) Dots (`.`) and brackets (`[` and `]`) can be used to access nested
+#' objects (e.g., `"field": "foo.bar"` and `"field": "foo\['bar'\]"`). If field names
+#' contain dots or brackets but are not nested, you can use `\\` to escape dots and
+#' brackets (e.g., `"a\\.b"` and `"a\\\[0\\\]"`). See more details about escaping in
+#' the [field documentation](https://vega.github.io/vega-lite/docs/field.html). 2)
+#' `field` is not required if `aggregate` is `count`.
+#' @param scale An object defining properties of the channel's scale, which is the function that
+#' transforms values in the data domain (numbers, dates, strings, etc) to visual
+#' values (pixels, colors, sizes) of the encoding channels.
+#' 
+#' If `null`, the scale will be [disabled and the data value will be directly
+#' encoded](https://vega.github.io/vega-lite/docs/scale.html#disable).
+#' 
+#' __Default value:__ If undefined, default [scale
+#' properties](https://vega.github.io/vega-lite/docs/scale.html) are applied.
+#' 
+#' __See also:__ [`scale`](https://vega.github.io/vega-lite/docs/scale.html)
+#' documentation.
+#' @param sort Sort order for the encoded field.
+#' 
+#' For continuous fields (quantitative or temporal), `sort` can be either
+#' `"ascending"` or `"descending"`.
+#' 
+#' For discrete fields, `sort` can be one of the following:
+#' - `"ascending"` or `"descending"` -- for sorting by the values' natural order in
+#' JavaScript.
+#' - [A string indicating an encoding channel name to sort
+#' by](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding)
+#' (e.g., `"x"` or `"y"`) with an optional minus prefix for
+#' descending sort (e.g., `"-x"` to sort by x-field, descending).
+#' This channel string is short-form of [a sort-by-encoding
+#' definition](https://vega.github.io/vega-lite/docs/sort.html#sort-by-encoding).
+#' For example, `"sort": "-x"` is equivalent to `"sort": {"encoding": "x", "order":
+#' "descending"}`.
+#' - [A sort field
+#' definition](https://vega.github.io/vega-lite/docs/sort.html#sort-field) for
+#' sorting by another field.
+#' - [An array specifying the field values in preferred
+#' order](https://vega.github.io/vega-lite/docs/sort.html#sort-array). In this
+#' case, the sort order will obey the values in the array, followed by any
+#' unspecified values in their original order. For discrete time field, values
+#' in the sort array can be [date-time definition objects](types#datetime). In
+#' addition, for time units `"month"` and `"day"`, the values can be the month
+#' or day names (case insensitive) or their 3-letter initials (e.g., `"Mon"`,
+#' `"Tue"`).
+#' - `null` indicating no sort.
+#' 
+#' __Default value:__ `"ascending"`
+#' 
+#' __Note:__ `null` and sorting by another channel is not supported for `row` and
+#' `column`.
+#' 
+#' __See also:__ [`sort`](https://vega.github.io/vega-lite/docs/sort.html)
+#' documentation.
+#' @param timeUnit Time unit (e.g., `year`, `yearmonth`, `month`, `hours`) for
+#' a temporal field. or [a temporal field that gets casted as
+#' ordinal](https://vega.github.io/vega-lite/docs/type.html#cast).
+#' 
+#' __Default value:__ `undefined` (None)
+#' 
+#' __See also:__ [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html)
+#' documentation.
+#' @param title A title for the field. If `null`, the title will be removed.
+#' 
+#' __Default value:__ derived from the field's name and transformation function
+#' (`aggregate`, `bin` and `timeUnit`). If the field has an aggregate function,
+#' the function is displayed as part of the title (e.g., `"Sum of Profit"`). If
+#' the field is binned or has a time unit applied, the applied function is shown
+#' in parentheses (e.g., `"Profit (binned)"`, `"Transaction Date (year-month)"`).
+#' Otherwise, the title is simply the field name.
+#' 
+#' __Notes__:
+#' 
+#' 1) You can customize the default field title format by providing the
+#' [`fieldTitle`](https://vega.github.io/vega-lite/docs/config.html#top-level-config)
+#' property in the [config](https://vega.github.io/vega-lite/docs/config.html)
+#' or [`fieldTitle` function via the `compile` function's
+#' options](https://vega.github.io/vega-lite/usage/compile.html#field-title).
+#' 
+#' 2) If both field definition's `title` and axis, header, or legend `title` are
+#' defined, axis/header/legend title will be used.
+#' @param type The type of measurement (`"quantitative"`, `"temporal"`,
+#' `"ordinal"`, or `"nominal"`) for the encoded field or constant
+#' value (`datum`). It can also be a `"geojson"` type for encoding
+#' ['geoshape'](https://vega.github.io/vega-lite/docs/geoshape.html).
+#' 
+#' Vega-Lite automatically infers data types in many cases as discussed below.
+#' However, type is required for a field if: (1) the field is not nominal and the
+#' field encoding has no specified `aggregate` (except `argmin` and `argmax`),
+#' `bin`, scale type, custom `sort` order, nor `timeUnit` or (2) if you wish to use
+#' an ordinal scale for a field with `bin` or `timeUnit`.
+#' 
+#' __Default value:__
+#' 
+#' 1) For a data `field`, `"nominal"` is the default data type unless the field
+#' encoding has `aggregate`, `channel`, `bin`, scale type, `sort`, or `timeUnit`
+#' that satisfies the following criteria:
+#' - `"quantitative"` is the default type if (1) the encoded field contains `bin`
+#' or `aggregate` except `"argmin"` and `"argmax"`, (2) the encoding channel is
+#' `latitude` or `longitude` channel or (3) if the specified scale type is [a
+#' quantitative scale](https://vega.github.io/vega-lite/docs/scale.html#type).
+#' - `"temporal"` is the default type if (1) the encoded field contains `timeUnit`
+#' or (2) the specified scale type is a time or utc scale
+#' - `ordinal""` is the default type if (1)
+#' the encoded field contains a [custom `sort`
+#' order](https://vega.github.io/vega-lite/docs/sort.html#specifying-custom-sort-order),
+#' (2) the specified scale type is an ordinal/point/band scale, or (3) the encoding
+#' channel is `order`.
+#' 
+#' 2) For a constant value in data domain (`datum`):
+#' - `"quantitative"` if the datum is a number
+#' - `"nominal"` if the datum is a string
+#' - `"temporal"` if the datum is [a date time
+#' object](https://vega.github.io/vega-lite/docs/datetime.html)
+#' 
+#' __Note:__
+#' - Data `type` describes the semantics of the data rather than the primitive data
+#' types (number, string, etc.). The same primitive data type can have different
+#' types of measurement. For example, numeric data can represent quantitative,
+#' ordinal, or nominal data.
+#' - Data values for a temporal field can be either a date-time string (e.g.,
+#' `"2015-03-07 12:32:17"`, `"17:01"`, `"2015-03-16"`. `"2015"`) or a timestamp
+#' number (e.g., `1552199579097`).
+#' - When using with [`bin`](https://vega.github.io/vega-lite/docs/bin.html),
+#' the `type` property can be either `"quantitative"` (for using
+#' a linear bin scale) or [`"ordinal"` (for using an ordinal bin
+#' scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with
+#' [`timeUnit`](https://vega.github.io/vega-lite/docs/timeunit.html),
+#' the `type` property can be either `"temporal"` (default, for
+#' using a temporal scale) or [`"ordinal"` (for using an ordinal
+#' scale)](https://vega.github.io/vega-lite/docs/type.html#cast-bin).
+#' - When using with
+#' [`aggregate`](https://vega.github.io/vega-lite/docs/aggregate.html), the `type`
+#' property refers to the post-aggregation data type. For example, we can calculate
+#' count `distinct` of a categorical field `"cat"` using `{"aggregate": "distinct",
+#' "field": "cat"}`. The `"type"` of the aggregate output is `"quantitative"`.
+#' - Secondary channels (e.g., `x2`, `y2`, `xError`, `yError`) do not have `type`
+#' as they must have exactly the same type as their primary channels (e.g., `x`,
+#' `y`).
+#' 
+#' __See also:__ [`type`](https://vega.github.io/vega-lite/docs/type.html)
+#' documentation.
+#' @param datum A constant value in data domain.
+#' @param value A constant value in visual domain (e.g., `"red"` / `"#0099ff"` / [gradient
+#' definition](https://vega.github.io/vega-lite/docs/types.html#gradient) for
+#' color, values between `0` to `1` for opacity).
+
+#' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than `spec`. Objects can be of type: ScaleFieldDef, ScaleDatumDef or ValueDef<number>
+#' @return A modified Vega-Lite Spec
+#' @export
+vl_encode_yOffset <- function(spec, field = NULL, type = NULL, value = NULL, aggregate = NULL, bandPosition = NULL, bin = NULL, scale = NULL, sort = NULL, timeUnit = NULL, title = NULL, datum = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_encoding(spec, obj, "#/definitions/Encoding/properties/yOffset" , encoding = "yOffset")
+}
 #' @rdname vl_encode_tooltip
 #' @param array Array of inputs for tooltip
 #' @export
@@ -12850,6 +13356,10 @@ vl$`XError2` <- function(`aggregate` = NULL, `bandPosition` = NULL, `bin` = NULL
   obj <- .make_object(NULL, NULL)
   obj
 }
+vl$`XOffset` <- function(`aggregate` = NULL, `bandPosition` = NULL, `bin` = NULL, `field` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `datum` = NULL, `value` = NULL){
+  obj <- .make_object(NULL, NULL)
+  obj
+}
 vl$`Y` <- function(`aggregate` = NULL, `axis` = NULL, `bandPosition` = NULL, `bin` = NULL, `field` = NULL, `impute` = NULL, `scale` = NULL, `sort` = NULL, `stack` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `datum` = NULL, `value` = NULL){
   obj <- .make_object(NULL, NULL)
   obj
@@ -12863,6 +13373,10 @@ vl$`YError` <- function(`aggregate` = NULL, `bandPosition` = NULL, `bin` = NULL,
   obj
 }
 vl$`YError2` <- function(`aggregate` = NULL, `bandPosition` = NULL, `bin` = NULL, `field` = NULL, `timeUnit` = NULL, `title` = NULL, `value` = NULL){
+  obj <- .make_object(NULL, NULL)
+  obj
+}
+vl$`YOffset` <- function(`aggregate` = NULL, `bandPosition` = NULL, `bin` = NULL, `field` = NULL, `scale` = NULL, `sort` = NULL, `timeUnit` = NULL, `title` = NULL, `type` = NULL, `datum` = NULL, `value` = NULL){
   obj <- .make_object(NULL, NULL)
   obj
 }
@@ -13671,6 +14185,13 @@ vl_bin_xError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divi
 
 #' @name bin_encoding
 #' @export
+vl_bin_xOffset <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_bin_to_encoding(spec, obj, "#/definitions/BinParams" , encoding = "xOffset")
+}
+
+#' @name bin_encoding
+#' @export
 vl_bin_y <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL) {
   obj <- .make_object(NULL, NULL)
   .add_bin_to_encoding(spec, obj, "#/definitions/BinParams" , encoding = "y")
@@ -13695,6 +14216,13 @@ vl_bin_yError <- function(spec, anchor = NULL, base = NULL, binned = NULL, divid
 vl_bin_yError2 <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL) {
   obj <- .make_object(NULL, NULL)
   .add_bin_to_encoding(spec, obj, "#/definitions/BinParams" , encoding = "yError2")
+}
+
+#' @name bin_encoding
+#' @export
+vl_bin_yOffset <- function(spec, anchor = NULL, base = NULL, binned = NULL, divide = NULL, extent = NULL, maxbins = NULL, minstep = NULL, nice = NULL, step = NULL, steps = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_bin_to_encoding(spec, obj, "#/definitions/BinParams" , encoding = "yOffset")
 }
 
 #' @name bin_encoding
@@ -14345,7 +14873,8 @@ vl_axis_y <- function(spec, aria = NULL, bandPosition = NULL, description = NULL
 #' desired number of interval steps. Here, the domain would snap to quarter (Jan,
 #' Apr, Jul, Oct) boundaries.
 #' 
-#' __Default value:__ `true` for unbinned _quantitative_ fields; `false` otherwise.
+#' __Default value:__ `true` for unbinned _quantitative_ fields without explicit
+#' domain bounds; `false` otherwise.
 #' @param padding For _[continuous](https://vega.github.io/vega-lite/docs/scale.html#continuous)_
 #' scales, expands the scale domain to accommodate the specified number of pixels
 #' on each of the scale range. The scale range must represent pixels for this
@@ -14574,9 +15103,23 @@ vl_scale_x <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NUL
 
 #' @name scale_encoding
 #' @export
+vl_scale_xOffset <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, domainMax = NULL, domainMid = NULL, domainMin = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeMax = NULL, rangeMin = NULL, reverse = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_scale_to_encoding(spec, obj, "#/definitions/Scale" , encoding = "xOffset")
+}
+
+#' @name scale_encoding
+#' @export
 vl_scale_y <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, domainMax = NULL, domainMid = NULL, domainMin = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeMax = NULL, rangeMin = NULL, reverse = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL, .object = NULL) {
   obj <- .make_object(NULL, NULL)
   .add_scale_to_encoding(spec, obj, "#/definitions/Scale" , encoding = "y")
+}
+
+#' @name scale_encoding
+#' @export
+vl_scale_yOffset <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NULL, constant = NULL, domain = NULL, domainMax = NULL, domainMid = NULL, domainMin = NULL, exponent = NULL, interpolate = NULL, nice = NULL, padding = NULL, paddingInner = NULL, paddingOuter = NULL, range = NULL, rangeMax = NULL, rangeMin = NULL, reverse = NULL, round = NULL, scheme = NULL, type = NULL, zero = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_scale_to_encoding(spec, obj, "#/definitions/Scale" , encoding = "yOffset")
 }
 
 #' Add legend to encoding
@@ -14727,6 +15270,8 @@ vl_scale_y <- function(spec, align = NULL, base = NULL, bins = NULL, clamp = NUL
 #' 
 #' Or: ExprRef
 #' @param labelOffset The offset of the legend label.
+#' 
+#' __Default value:__ `4`.
 #' 
 #' Or: ExprRef
 #' @param labelOpacity Opacity of labels.
@@ -15666,6 +16211,13 @@ vl_aggregate_xError2 <- function(spec, aggregate = c('argmax', 'argmin', 'averag
 
 #' @name aggregate_encoding
 #' @export
+vl_aggregate_xOffset <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'product', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, "#/definitions/Aggregate" , encoding = "xOffset")
+}
+
+#' @name aggregate_encoding
+#' @export
 vl_aggregate_y <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'product', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   aggregate <- match.arg(aggregate)
   .add_aggregate_to_encoding(spec, aggregate, "#/definitions/Aggregate" , encoding = "y")
@@ -15690,6 +16242,13 @@ vl_aggregate_yError <- function(spec, aggregate = c('argmax', 'argmin', 'average
 vl_aggregate_yError2 <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'product', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
   aggregate <- match.arg(aggregate)
   .add_aggregate_to_encoding(spec, aggregate, "#/definitions/Aggregate" , encoding = "yError2")
+}
+
+#' @name aggregate_encoding
+#' @export
+vl_aggregate_yOffset <- function(spec, aggregate = c('argmax', 'argmin', 'average', 'count', 'distinct', 'max', 'mean', 'median', 'min', 'missing', 'product', 'q1', 'q3', 'ci0', 'ci1', 'stderr', 'stdev', 'stdevp', 'sum', 'valid', 'values', 'variance', 'variancep', NA)) {
+  aggregate <- match.arg(aggregate)
+  .add_aggregate_to_encoding(spec, aggregate, "#/definitions/Aggregate" , encoding = "yOffset")
 }
 
 #' @name aggregate_encoding
@@ -15815,8 +16374,20 @@ vl_sort_x <- function(spec, value) {
 
 #' @name sort_encoding
 #' @export
+vl_sort_xOffset <- function(spec, value) {
+  .add_sort_to_encoding(spec, value, "#/definitions/Sort", encoding = "xOffset")
+}
+
+#' @name sort_encoding
+#' @export
 vl_sort_y <- function(spec, value) {
   .add_sort_to_encoding(spec, value, "#/definitions/Sort", encoding = "y")
+}
+
+#' @name sort_encoding
+#' @export
+vl_sort_yOffset <- function(spec, value) {
+  .add_sort_to_encoding(spec, value, "#/definitions/Sort", encoding = "yOffset")
 }
 
 #' @name sort_encoding
@@ -15971,9 +16542,23 @@ vl_sort_x_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .obj
 
 #' @name sort_encoding_by_field
 #' @export
+vl_sort_xOffset_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_sort_to_encoding(spec, obj, "#/definitions/EncodingSortField" , encoding = "xOffset")
+}
+
+#' @name sort_encoding_by_field
+#' @export
 vl_sort_y_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL) {
   obj <- .make_object(NULL, NULL)
   .add_sort_to_encoding(spec, obj, "#/definitions/EncodingSortField" , encoding = "y")
+}
+
+#' @name sort_encoding_by_field
+#' @export
+vl_sort_yOffset_by_field <- function(spec, field = NULL, op = NULL, order = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_sort_to_encoding(spec, obj, "#/definitions/EncodingSortField" , encoding = "yOffset")
 }
 
 #' @name sort_encoding_by_field
@@ -16119,9 +16704,23 @@ vl_sort_x_by_encoding <- function(spec, encoding = NULL, order = NULL, .object =
 
 #' @name sort_encoding_by_encoding
 #' @export
+vl_sort_xOffset_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_sort_to_encoding(spec, obj, "#/definitions/SortByEncoding" , encoding = "xOffset")
+}
+
+#' @name sort_encoding_by_encoding
+#' @export
 vl_sort_y_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL) {
   obj <- .make_object(NULL, NULL)
   .add_sort_to_encoding(spec, obj, "#/definitions/SortByEncoding" , encoding = "y")
+}
+
+#' @name sort_encoding_by_encoding
+#' @export
+vl_sort_yOffset_by_encoding <- function(spec, encoding = NULL, order = NULL, .object = NULL) {
+  obj <- .make_object(NULL, NULL)
+  .add_sort_to_encoding(spec, obj, "#/definitions/SortByEncoding" , encoding = "yOffset")
 }
 
 #' @name sort_encoding_by_encoding
@@ -16356,12 +16955,6 @@ vl_add_point_selection <- function(spec, name = NULL, select = NULL, bind = NULL
 #' __See also:__ The [projection with `encodings` and `fields`
 #' section](https://vega.github.io/vega-lite/docs/selection.html#project) in the
 #' documentation.
-#' @param fields An array of field names whose values must match for a data tuple to fall within
-#' the selection.
-#' 
-#' __See also:__ The [projection with `encodings` and `fields`
-#' section](https://vega.github.io/vega-lite/docs/selection.html#project) in the
-#' documentation.
 #' @param mark An interval selection also adds a rectangle mark to depict the extents of the
 #' interval. The `mark` property can be used to customize the appearance of the
 #' mark.
@@ -16426,7 +17019,7 @@ vl_add_point_selection <- function(spec, name = NULL, select = NULL, bind = NULL
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than `spec`. Objects can be of type: SelectionParameter
 #' @return A modified Vega-Lite Spec
 #' @export
-vl_add_interval_selection <- function(spec, name = NULL, select = NULL, bind = NULL, value = NULL, clear = NULL, encodings = NULL, fields = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, zoom = NULL, .object = NULL) {
+vl_add_interval_selection <- function(spec, name = NULL, select = NULL, bind = NULL, value = NULL, clear = NULL, encodings = NULL, mark = NULL, on = NULL, resolve = NULL, translate = NULL, zoom = NULL, .object = NULL) {
   obj <- .make_object(list(type = "interval"), NULL)
   .add_selection(spec, obj, "#/definitions/SelectionParameter")
 }
@@ -16442,7 +17035,7 @@ vl$`PointSelectionConfig` <- function(`clear` = NULL, `encodings` = NULL, `field
   obj <- .make_object(NULL, NULL)
   obj
 }
-vl$`IntervalSelectionConfig` <- function(`clear` = NULL, `encodings` = NULL, `fields` = NULL, `mark` = NULL, `on` = NULL, `resolve` = NULL, `translate` = NULL, `type` = NULL, `zoom` = NULL){
+vl$`IntervalSelectionConfig` <- function(`clear` = NULL, `encodings` = NULL, `mark` = NULL, `on` = NULL, `resolve` = NULL, `translate` = NULL, `type` = NULL, `zoom` = NULL){
   obj <- .make_object(NULL, NULL)
   obj
 }
@@ -17955,9 +18548,23 @@ vl_resolve_legend_x <- function(spec, how = c('independent', 'shared')) {
 
 #' @name resolve
 #' @export
+vl_resolve_legend_xOffset <- function(spec, how = c('independent', 'shared')) {
+  how <- match.arg(how)
+  .add_resolve(spec, how, "#/definitions/ResolveMode" , encoding = "xOffset", type = "legend")
+}
+
+#' @name resolve
+#' @export
 vl_resolve_legend_y <- function(spec, how = c('independent', 'shared')) {
   how <- match.arg(how)
   .add_resolve(spec, how, "#/definitions/ResolveMode" , encoding = "y", type = "legend")
+}
+
+#' @name resolve
+#' @export
+vl_resolve_legend_yOffset <- function(spec, how = c('independent', 'shared')) {
+  how <- match.arg(how)
+  .add_resolve(spec, how, "#/definitions/ResolveMode" , encoding = "yOffset", type = "legend")
 }
 
 #' @name resolve
@@ -18060,9 +18667,23 @@ vl_resolve_scale_x <- function(spec, how = c('independent', 'shared')) {
 
 #' @name resolve
 #' @export
+vl_resolve_scale_xOffset <- function(spec, how = c('independent', 'shared')) {
+  how <- match.arg(how)
+  .add_resolve(spec, how, "#/definitions/ResolveMode" , encoding = "xOffset", type = "scale")
+}
+
+#' @name resolve
+#' @export
 vl_resolve_scale_y <- function(spec, how = c('independent', 'shared')) {
   how <- match.arg(how)
   .add_resolve(spec, how, "#/definitions/ResolveMode" , encoding = "y", type = "scale")
+}
+
+#' @name resolve
+#' @export
+vl_resolve_scale_yOffset <- function(spec, how = c('independent', 'shared')) {
+  how <- match.arg(how)
+  .add_resolve(spec, how, "#/definitions/ResolveMode" , encoding = "yOffset", type = "scale")
 }
 
 #' vl_config
@@ -18404,6 +19025,8 @@ vl_config <- function(spec, arc = NULL, area = NULL, aria = NULL, autosize = NUL
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -18461,6 +19084,8 @@ vl_config <- function(spec, arc = NULL, area = NULL, aria = NULL, autosize = NUL
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -18468,7 +19093,11 @@ vl_config <- function(spec, arc = NULL, area = NULL, aria = NULL, autosize = NUL
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param shape Shape of the point marks. Supported values include:
 #' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`,
 #' `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
@@ -18771,6 +19400,8 @@ vl_config_arc <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRol
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -18837,6 +19468,8 @@ vl_config_arc <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRol
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -18857,7 +19490,11 @@ vl_config_arc <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRol
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param shape Shape of the point marks. Supported values include:
 #' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`,
 #' `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
@@ -29358,6 +29995,8 @@ vl_config_axisYTemporal <- function(spec, aria = NULL, bandPosition = NULL, desc
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -29415,6 +30054,8 @@ vl_config_axisYTemporal <- function(spec, aria = NULL, bandPosition = NULL, desc
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -29422,7 +30063,11 @@ vl_config_axisYTemporal <- function(spec, aria = NULL, bandPosition = NULL, desc
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param shape Shape of the point marks. Supported values include:
 #' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`,
 #' `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
@@ -29763,6 +30408,8 @@ vl_config_boxplot <- function(spec, box = NULL, extent = NULL, median = NULL, ou
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -29820,6 +30467,8 @@ vl_config_boxplot <- function(spec, box = NULL, extent = NULL, median = NULL, ou
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -29827,7 +30476,11 @@ vl_config_boxplot <- function(spec, box = NULL, extent = NULL, median = NULL, ou
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param shape Shape of the point marks. Supported values include:
 #' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`,
 #' `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
@@ -30273,6 +30926,8 @@ vl_config_facet <- function(spec, columns = NULL, spacing = NULL, .object = NULL
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -30330,6 +30985,8 @@ vl_config_facet <- function(spec, columns = NULL, spacing = NULL, .object = NULL
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -30337,7 +30994,11 @@ vl_config_facet <- function(spec, columns = NULL, spacing = NULL, .object = NULL
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param shape Shape of the point marks. Supported values include:
 #' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`,
 #' `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
@@ -31105,6 +31766,8 @@ vl_config_headerRow <- function(spec, format = NULL, formatType = NULL, labelAli
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -31162,6 +31825,8 @@ vl_config_headerRow <- function(spec, format = NULL, formatType = NULL, labelAli
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -31169,7 +31834,11 @@ vl_config_headerRow <- function(spec, format = NULL, formatType = NULL, labelAli
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param shape Shape of the point marks. Supported values include:
 #' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`,
 #' `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
@@ -31451,6 +32120,8 @@ vl_config_image <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaR
 #' 
 #' Or: ExprRef
 #' @param labelOffset The offset of the legend label.
+#' 
+#' __Default value:__ `4`.
 #' 
 #' Or: ExprRef
 #' @param labelOpacity Opacity of labels.
@@ -31809,6 +32480,8 @@ vl_config_legend <- function(spec, aria = NULL, clipHeight = NULL, columnPadding
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -31866,6 +32539,8 @@ vl_config_legend <- function(spec, aria = NULL, clipHeight = NULL, columnPadding
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -31886,7 +32561,11 @@ vl_config_legend <- function(spec, aria = NULL, clipHeight = NULL, columnPadding
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param shape Shape of the point marks. Supported values include:
 #' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`,
 #' `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
@@ -32189,6 +32868,8 @@ vl_config_line <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -32246,6 +32927,8 @@ vl_config_line <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -32253,7 +32936,11 @@ vl_config_line <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param shape Shape of the point marks. Supported values include:
 #' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`,
 #' `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
@@ -32556,6 +33243,8 @@ vl_config_mark <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -32613,6 +33302,8 @@ vl_config_mark <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -32620,7 +33311,11 @@ vl_config_mark <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param shape Shape of the point marks. Supported values include:
 #' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`,
 #' `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
@@ -33091,6 +33786,8 @@ vl_config_range <- function(spec, category = NULL, diverging = NULL, heatmap = N
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -33148,6 +33845,8 @@ vl_config_range <- function(spec, category = NULL, diverging = NULL, heatmap = N
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -33155,7 +33854,11 @@ vl_config_range <- function(spec, category = NULL, diverging = NULL, heatmap = N
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param shape Shape of the point marks. Supported values include:
 #' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`,
 #' `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
@@ -33458,6 +34161,8 @@ vl_config_rect <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -33515,6 +34220,8 @@ vl_config_rect <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -33522,7 +34229,11 @@ vl_config_rect <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param shape Shape of the point marks. Supported values include:
 #' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`,
 #' `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
@@ -33665,24 +34376,33 @@ vl_config_rule <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' 
 #' Add scale config (ScaleConfig) to a vega-lite spec.
 #' @param spec An input vega-lite spec
-#' @param bandPaddingInner Default inner padding for `x` and `y` band-ordinal scales.
+#' @param bandPaddingInner Default inner padding for `x` and `y` band scales.
 #' 
 #' __Default value:__
+#' - `nestedOffsetPaddingInner` for x/y scales with nested x/y offset scales.
 #' - `barBandPaddingInner` for bar marks (`0.1` by default)
 #' - `rectBandPaddingInner` for rect and other marks (`0` by default)
-#' @param bandPaddingOuter Default outer padding for `x` and `y` band-ordinal scales.
+#' @param bandPaddingOuter Default outer padding for `x` and `y` band scales.
 #' 
 #' __Default value:__ `paddingInner/2` (which makes _width/height = number of
 #' unique values * step_)
+#' @param bandWithNestedOffsetPaddingInner Default inner padding for `x` and `y` band scales with nested `xOffset` and
+#' `yOffset` encoding.
+#' 
+#' __Default value:__ `0.2`
+#' @param bandWithNestedOffsetPaddingOuter Default outer padding for `x` and `y` band scales with nested `xOffset` and
+#' `yOffset` encoding.
+#' 
+#' __Default value:__ `0.2`
 #' @param barBandPaddingInner Default inner padding for `x` and `y` band-ordinal scales of `"bar"` marks.
 #' 
 #' __Default value:__ `0.1`
 #' @param clamp If true, values that exceed the data domain are clamped to either the minimum or
 #' maximum range value
-#' @param continuousPadding Default padding for continuous scales.
+#' @param continuousPadding Default padding for continuous x/y scales.
 #' 
-#' __Default:__ `5` for continuous x-scale of a vertical bar and continuous y-scale
-#' of a horizontal bar.; `0` otherwise.
+#' __Default:__ The bar width for continuous x-scale of a vertical bar and
+#' continuous y-scale of a horizontal bar.; `0` otherwise.
 #' @param maxBandSize The default max value for mapping quantitative fields to bar's size/bandSize.
 #' 
 #' If undefined (default), we will use the axis's size (width or height) - 1.
@@ -33715,6 +34435,12 @@ vl_config_rule <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' and of size for trail marks with zero=false.
 #' 
 #' __Default value:__ `1`
+#' @param offsetBandPaddingInner Default padding inner for xOffset/yOffset's band scales.
+#' 
+#' __Default Value:__ `0`
+#' @param offsetBandPaddingOuter Default padding outer for xOffset/yOffset's band scales.
+#' 
+#' __Default Value:__ `0`
 #' @param pointPadding Default outer padding for `x` and `y` point-ordinal scales.
 #' 
 #' __Default value:__ `0.5` (which makes _width/height = number of unique values *
@@ -33749,7 +34475,7 @@ vl_config_rule <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' @param .object Directly input an object, rather than creating one via the other arguments. Should not be used in conjunction with the other arguments other than `spec`. Objects can be of type: ScaleConfig
 #' @return A modified Vega-Lite Spec
 #' @export
-vl_config_scale <- function(spec, bandPaddingInner = NULL, bandPaddingOuter = NULL, barBandPaddingInner = NULL, clamp = NULL, continuousPadding = NULL, maxBandSize = NULL, maxFontSize = NULL, maxOpacity = NULL, maxSize = NULL, maxStrokeWidth = NULL, minBandSize = NULL, minFontSize = NULL, minOpacity = NULL, minSize = NULL, minStrokeWidth = NULL, pointPadding = NULL, quantileCount = NULL, quantizeCount = NULL, rectBandPaddingInner = NULL, round = NULL, useUnaggregatedDomain = NULL, xReverse = NULL, .object = NULL) {
+vl_config_scale <- function(spec, bandPaddingInner = NULL, bandPaddingOuter = NULL, bandWithNestedOffsetPaddingInner = NULL, bandWithNestedOffsetPaddingOuter = NULL, barBandPaddingInner = NULL, clamp = NULL, continuousPadding = NULL, maxBandSize = NULL, maxFontSize = NULL, maxOpacity = NULL, maxSize = NULL, maxStrokeWidth = NULL, minBandSize = NULL, minFontSize = NULL, minOpacity = NULL, minSize = NULL, minStrokeWidth = NULL, offsetBandPaddingInner = NULL, offsetBandPaddingOuter = NULL, pointPadding = NULL, quantileCount = NULL, quantizeCount = NULL, rectBandPaddingInner = NULL, round = NULL, useUnaggregatedDomain = NULL, xReverse = NULL, .object = NULL) {
   obj <- .make_object(NULL, NULL)
   .add_sub_config(spec, obj, "#/definitions/ScaleConfig" , .config = "scale")
 }
@@ -33945,6 +34671,8 @@ vl_config_selection <- function(spec, interval = NULL, point = NULL, .object = N
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -34002,6 +34730,8 @@ vl_config_selection <- function(spec, interval = NULL, point = NULL, .object = N
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -34009,7 +34739,11 @@ vl_config_selection <- function(spec, interval = NULL, point = NULL, .object = N
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param shape Shape of the point marks. Supported values include:
 #' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`,
 #' `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
@@ -34312,6 +35046,8 @@ vl_config_square <- function(spec, align = NULL, angle = NULL, aria = NULL, aria
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -34369,6 +35105,8 @@ vl_config_square <- function(spec, align = NULL, angle = NULL, aria = NULL, aria
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -34376,7 +35114,11 @@ vl_config_square <- function(spec, align = NULL, angle = NULL, aria = NULL, aria
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param shape Shape of the point marks. Supported values include:
 #' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`,
 #' `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
@@ -34683,6 +35425,8 @@ vl_config_text <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -34740,6 +35484,8 @@ vl_config_text <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -34747,7 +35493,11 @@ vl_config_text <- function(spec, align = NULL, angle = NULL, aria = NULL, ariaRo
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param shape Shape of the point marks. Supported values include:
 #' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`,
 #' `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
@@ -35161,6 +35911,8 @@ vl_config_title <- function(spec, align = NULL, anchor = NULL, angle = NULL, ari
 #' Or: ExprRef
 #' @param innerRadius The inner radius in pixels of arc marks. `innerRadius` is an alias for
 #' `radius2`.
+#' 
+#' __Default value:__ `0`
 #' @param interpolate The line interpolation method to use for line and area marks. One of the
 #' following:
 #' - `"linear"`: piecewise linear segments, as in a polyline.
@@ -35218,6 +35970,8 @@ vl_config_title <- function(spec, align = NULL, anchor = NULL, angle = NULL, ari
 #' this is always determined by the orientation of the stack; therefore explicitly
 #' specified value will be ignored.
 #' @param outerRadius The outer radius in pixels of arc marks. `outerRadius` is an alias for `radius`.
+#' 
+#' __Default value:__ `0`
 #' @param padAngle The angular padding applied to sides of the arc, in radians.
 #' 
 #' Or: ExprRef
@@ -35238,7 +35992,11 @@ vl_config_title <- function(spec, align = NULL, anchor = NULL, angle = NULL, ari
 #' 
 #' For text marks, polar coordinate radial offset, in pixels, of the text from the
 #' origin determined by the `x` and `y` properties.
+#' 
+#' __Default value:__ `min(plot_width, plot_height)/2`
 #' @param radius2 The secondary (inner) radius in pixels of arc marks.
+#' 
+#' __Default value:__ `0`
 #' @param shape Shape of the point marks. Supported values include:
 #' - plotting shapes: `"circle"`, `"square"`, `"cross"`, `"diamond"`,
 #' `"triangle-up"`, `"triangle-down"`, `"triangle-right"`, or `"triangle-left"`.
@@ -35504,7 +36262,7 @@ vl$`HeaderConfig` <- function(`format` = NULL, `formatType` = NULL, `labelAlign`
   obj <- .make_object(NULL, NULL)
   obj
 }
-vl$`IntervalSelectionConfig` <- function(`clear` = NULL, `encodings` = NULL, `fields` = NULL, `mark` = NULL, `on` = NULL, `resolve` = NULL, `translate` = NULL, `type` = NULL, `zoom` = NULL){
+vl$`IntervalSelectionConfig` <- function(`clear` = NULL, `encodings` = NULL, `mark` = NULL, `on` = NULL, `resolve` = NULL, `translate` = NULL, `type` = NULL, `zoom` = NULL){
   obj <- .make_object(NULL, NULL)
   obj
 }
@@ -35536,7 +36294,7 @@ vl$`RectConfig` <- function(`align` = NULL, `angle` = NULL, `aria` = NULL, `aria
   obj <- .make_object(NULL, NULL)
   obj
 }
-vl$`ScaleConfig` <- function(`bandPaddingInner` = NULL, `bandPaddingOuter` = NULL, `barBandPaddingInner` = NULL, `clamp` = NULL, `continuousPadding` = NULL, `maxBandSize` = NULL, `maxFontSize` = NULL, `maxOpacity` = NULL, `maxSize` = NULL, `maxStrokeWidth` = NULL, `minBandSize` = NULL, `minFontSize` = NULL, `minOpacity` = NULL, `minSize` = NULL, `minStrokeWidth` = NULL, `pointPadding` = NULL, `quantileCount` = NULL, `quantizeCount` = NULL, `rectBandPaddingInner` = NULL, `round` = NULL, `useUnaggregatedDomain` = NULL, `xReverse` = NULL){
+vl$`ScaleConfig` <- function(`bandPaddingInner` = NULL, `bandPaddingOuter` = NULL, `bandWithNestedOffsetPaddingInner` = NULL, `bandWithNestedOffsetPaddingOuter` = NULL, `barBandPaddingInner` = NULL, `clamp` = NULL, `continuousPadding` = NULL, `maxBandSize` = NULL, `maxFontSize` = NULL, `maxOpacity` = NULL, `maxSize` = NULL, `maxStrokeWidth` = NULL, `minBandSize` = NULL, `minFontSize` = NULL, `minOpacity` = NULL, `minSize` = NULL, `minStrokeWidth` = NULL, `offsetBandPaddingInner` = NULL, `offsetBandPaddingOuter` = NULL, `pointPadding` = NULL, `quantileCount` = NULL, `quantizeCount` = NULL, `rectBandPaddingInner` = NULL, `round` = NULL, `useUnaggregatedDomain` = NULL, `xReverse` = NULL){
   obj <- .make_object(NULL, NULL)
   obj
 }

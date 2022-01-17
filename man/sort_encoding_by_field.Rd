@@ -17,7 +17,9 @@
 \alias{vl_sort_strokeWidth_by_field}
 \alias{vl_sort_theta_by_field}
 \alias{vl_sort_x_by_field}
+\alias{vl_sort_xOffset_by_field}
 \alias{vl_sort_y_by_field}
+\alias{vl_sort_yOffset_by_field}
 \alias{vl_sort_facet_by_field}
 \alias{vl_sort_row_by_field}
 \alias{vl_sort_column_by_field}
@@ -137,7 +139,23 @@ vl_sort_theta_by_field(
 
 vl_sort_x_by_field(spec, field = NULL, op = NULL, order = NULL, .object = NULL)
 
+vl_sort_xOffset_by_field(
+  spec,
+  field = NULL,
+  op = NULL,
+  order = NULL,
+  .object = NULL
+)
+
 vl_sort_y_by_field(spec, field = NULL, op = NULL, order = NULL, .object = NULL)
+
+vl_sort_yOffset_by_field(
+  spec,
+  field = NULL,
+  op = NULL,
+  order = NULL,
+  .object = NULL
+)
 
 vl_sort_facet_by_field(
   spec,
