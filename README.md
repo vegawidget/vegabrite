@@ -6,11 +6,9 @@
 <!-- badges: start -->
 
 ![Lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
-[![R-CMD-check](https://github.com/vegawidget/vegabrite/workflows/R-CMD-check/badge.svg)](https://github.com/vegawidget/vegabrite/actions)
+[![R-CMD-check](https://github.com/vegawidget/vlbuildr/workflows/R-CMD-check/badge.svg)](https://github.com/vegawidget/vegabrite/actions)
 
 <!-- badges: end -->
-
-# vegabrite
 
 The goal of vegabrite is to provide an R api for building up vega-lite
 specs. For a guide on getting started using `vegabrite`, check out the
@@ -71,9 +69,9 @@ vl_chart() %>%
    vl_mark_point() %>%
    vl_encode_x("wt") %>%
    vl_encode_y("mpg") 
-#> [1] "Error printing vegawidget in non-HTML format:"
-#> [2] "unused argument (await = TRUE)"
 ```
+
+![](man/figures/README-example-1.svg)<!-- -->
 
 ``` r
 vl_chart() %>%
@@ -86,6 +84,6 @@ vl_chart() %>%
   vl_aggregate_y("sum") %>%
   vl_axis_y(title = "population") %>%
   vl_mark_bar() 
-#> [1] "Error printing vegawidget in non-HTML format:"
-#> [2] "unused argument (await = TRUE)"
 ```
+
+![](man/figures/README-example2-1.svg)<!-- -->
