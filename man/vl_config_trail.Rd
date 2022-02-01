@@ -264,7 +264,9 @@ Or: ExprRef}
 Or: ExprRef}
 
 \item{innerRadius}{The inner radius in pixels of arc marks. \code{innerRadius} is an alias for
-\code{radius2}.}
+\code{radius2}.
+
+\strong{Default value:} \code{0}}
 
 \item{interpolate}{The line interpolation method to use for line and area marks. One of the
 following:
@@ -336,7 +338,9 @@ this is always determined by the orientation of the stack; therefore explicitly
 specified value will be ignored.
 }}
 
-\item{outerRadius}{The outer radius in pixels of arc marks. \code{outerRadius} is an alias for \code{radius}.}
+\item{outerRadius}{The outer radius in pixels of arc marks. \code{outerRadius} is an alias for \code{radius}.
+
+\strong{Default value:} \code{0}}
 
 \item{padAngle}{The angular padding applied to sides of the arc, in radians.
 
@@ -358,9 +362,13 @@ area marks.
 \item{radius}{For arc mark, the primary (outer) radius in pixels.
 
 For text marks, polar coordinate radial offset, in pixels, of the text from the
-origin determined by the \code{x} and \code{y} properties.}
+origin determined by the \code{x} and \code{y} properties.
 
-\item{radius2}{The secondary (inner) radius in pixels of arc marks.}
+\strong{Default value:} \code{min(plot_width, plot_height)/2}}
+
+\item{radius2}{The secondary (inner) radius in pixels of arc marks.
+
+\strong{Default value:} \code{0}}
 
 \item{shape}{Shape of the point marks. Supported values include:
 \itemize{

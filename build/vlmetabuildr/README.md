@@ -2,7 +2,7 @@
 
 # vlmetabuildr
 
-The goal of vlmetabuildr is to provide functions that can be used to build up an api for vega-lite in R... it is not a package meant to be used to actually build visualizations themselves, just to help build the actual package one would use: [vlbuildr](https://github.com/AliciaSchep/vlbuildr)
+The goal of vlmetabuildr is to provide functions that can be used to build up an api for vega-lite in R... it is not a package meant to be used to actually build visualizations themselves, just to help build the actual package one would use: [vegabrite](https://github.com/AliciaSchep/vegabrite)
 
 The main function is `create_api` which takes in a Vega-Lite schema and creates an API. Note that this function is likely not robust to versions of the schema substantiallly different from the one currently being used...
 

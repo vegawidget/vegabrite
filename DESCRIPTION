@@ -6,7 +6,7 @@ Authors@R: c(
   person("Vega-Lite Developers", role = c("aut"), comment = "The Vega-Lite schema is used to directly populate much of the documentation of this package.")
   )
 Description: Build vegalite specs in R. Inspired by vegalite package as well as vega-lite-api and altair. Dependent on vegawidget for actually rendering specs!
-URL: https://vegawidget.github.io/vlbuildr/index.html
+URL: https://vegawidget.github.io/vegabrite/index.html
 Depends: R (>= 3.4.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -15,7 +15,7 @@ RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 Imports:
     magrittr,
-    vegawidget (>= 0.3.3),
+    vegawidget (>= 0.4.1),
     jsonlite
 Suggests: 
     knitr,
@@ -25,6 +25,4 @@ Suggests:
     V8,
     fs,
     testthat (>= 2.1.0)
-Remotes: 
-    vegawidget/vegawidget
 VignetteBuilder: knitr

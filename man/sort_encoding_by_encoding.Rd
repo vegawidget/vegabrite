@@ -17,7 +17,9 @@
 \alias{vl_sort_strokeWidth_by_encoding}
 \alias{vl_sort_theta_by_encoding}
 \alias{vl_sort_x_by_encoding}
+\alias{vl_sort_xOffset_by_encoding}
 \alias{vl_sort_y_by_encoding}
+\alias{vl_sort_yOffset_by_encoding}
 \alias{vl_sort_facet_by_encoding}
 \alias{vl_sort_row_by_encoding}
 \alias{vl_sort_column_by_encoding}
@@ -78,7 +80,21 @@ vl_sort_theta_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 
 vl_sort_x_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 
+vl_sort_xOffset_by_encoding(
+  spec,
+  encoding = NULL,
+  order = NULL,
+  .object = NULL
+)
+
 vl_sort_y_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
+
+vl_sort_yOffset_by_encoding(
+  spec,
+  encoding = NULL,
+  order = NULL,
+  .object = NULL
+)
 
 vl_sort_facet_by_encoding(spec, encoding = NULL, order = NULL, .object = NULL)
 

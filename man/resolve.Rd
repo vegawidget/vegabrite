@@ -18,7 +18,9 @@
 \alias{vl_resolve_legend_strokeWidth}
 \alias{vl_resolve_legend_theta}
 \alias{vl_resolve_legend_x}
+\alias{vl_resolve_legend_xOffset}
 \alias{vl_resolve_legend_y}
+\alias{vl_resolve_legend_yOffset}
 \alias{vl_resolve_scale_angle}
 \alias{vl_resolve_scale_color}
 \alias{vl_resolve_scale_fill}
@@ -33,7 +35,9 @@
 \alias{vl_resolve_scale_strokeWidth}
 \alias{vl_resolve_scale_theta}
 \alias{vl_resolve_scale_x}
+\alias{vl_resolve_scale_xOffset}
 \alias{vl_resolve_scale_y}
+\alias{vl_resolve_scale_yOffset}
 \title{Resolve axes, legends, or scales for composite charts}
 \usage{
 vl_resolve_axis_x(spec, how = c("independent", "shared"))
@@ -68,7 +72,11 @@ vl_resolve_legend_theta(spec, how = c("independent", "shared"))
 
 vl_resolve_legend_x(spec, how = c("independent", "shared"))
 
+vl_resolve_legend_xOffset(spec, how = c("independent", "shared"))
+
 vl_resolve_legend_y(spec, how = c("independent", "shared"))
+
+vl_resolve_legend_yOffset(spec, how = c("independent", "shared"))
 
 vl_resolve_scale_angle(spec, how = c("independent", "shared"))
 
@@ -98,7 +106,11 @@ vl_resolve_scale_theta(spec, how = c("independent", "shared"))
 
 vl_resolve_scale_x(spec, how = c("independent", "shared"))
 
+vl_resolve_scale_xOffset(spec, how = c("independent", "shared"))
+
 vl_resolve_scale_y(spec, how = c("independent", "shared"))
+
+vl_resolve_scale_yOffset(spec, how = c("independent", "shared"))
 }
 \arguments{
 \item{spec}{An input vega-lite spec}
