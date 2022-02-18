@@ -16,7 +16,8 @@ specs. For a guide on getting started using `vegabrite`, check out the
 vignette](https://vegawidget.github.io/vegabrite/articles/articles/introduction.html).
 The [example
 gallery](https://vegawidget.github.io/vegabrite/articles/articles/example_gallery.html)
-show-cases a wide variety of different plots that can be made.
+show-cases some of the many different types of plots that can be made
+using `vegabrite`.
 
 ### Current status
 

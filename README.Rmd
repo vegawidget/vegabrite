@@ -23,7 +23,7 @@ vegabrite: Iteratively build vega-lite specs in R <img src='man/figures/logo.png
 <!-- badges: end -->
 
 
-The goal of vegabrite is to provide an R api for building up vega-lite specs. For a guide on getting started using `vegabrite`, check out the [getting started vignette](https://vegawidget.github.io/vegabrite/articles/articles/introduction.html). The [example gallery](https://vegawidget.github.io/vegabrite/articles/articles/example_gallery.html) show-cases a wide variety of different plots that can be made. 
+The goal of vegabrite is to provide an R api for building up vega-lite specs. For a guide on getting started using `vegabrite`, check out the [getting started vignette](https://vegawidget.github.io/vegabrite/articles/articles/introduction.html). The [example gallery](https://vegawidget.github.io/vegabrite/articles/articles/example_gallery.html) show-cases some of the many different types of plots that can be made using `vegabrite`. 
 
 ### Current status
 
