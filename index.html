@@ -87,12 +87,17 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p>The goal of vegabrite is to provide an R api for building up vega-lite specs. For a guide on getting started using <code>vegabrite</code>, check out the <a href="https://vegawidget.github.io/vegabrite/articles/articles/introduction.html">getting started vignette</a>. For some background and context on the package (previously named vegabrite) you can check out <a href="https://docs.google.com/presentation/d/e/2PACX-1vRUDiM3DaPjYP5b1BafSraf8GWwJk_jy6YV_l9lZgeBVwKDSfqiHcTn8M-Qm-6U7frMX7SLqQthJxah/pub?start=false&amp;loop=false&amp;delayms=3000" class="external-link">slides</a> from a rstudio::conf talk in January 2020.</p>
+<p>The goal of vegabrite is to provide an R api for building up vega-lite specs. For a guide on getting started using <code>vegabrite</code>, check out the <a href="https://vegawidget.github.io/vegabrite/articles/articles/introduction.html">getting started vignette</a>. The <a href="https://vegawidget.github.io/vegabrite/articles/articles/example_gallery.html">example gallery</a> show-cases some of the many different types of plots that can be made using <code>vegabrite</code>.</p>
 <div class="section level3">
 <h3 id="current-status">Current status<a class="anchor" aria-label="anchor" href="#current-status"></a>
 </h3>
-<p>This package is still experimental, but much of the public facing API has been built (although still subject to changes). However, the internals of the package might change substantially to provide greater robustness, make it harder to make invalid specs, and/or provide better information when making invalid spec.</p>
-<p>The documentation is also still a work-in-progress, but there is a <a href="https://vegawidget.github.io/vegabrite/articles/articles/introduction.html">getting started vignette</a>. The parameter documentation for functions is fairly complete, however, as it relies on descriptions pulled directly from the Vega-Lite schema. See also an <a href="https://vegawidget.github.io/vegabrite/articles/articles/example_gallery.html">example gallery</a> for examples of how to make different types of plots.</p>
+<p>This package is still experimental but has a mostly complete interface for building out Vega-Lite specs and charts. There is still lots of room for improvement in terms of better error handling and warnings when making invalid specs.</p>
+</div>
+<div class="section level2">
+<h2 id="design--building">Design &amp; Building<a class="anchor" aria-label="anchor" href="#design--building"></a>
+</h2>
+<p>For some background and context on the package (previously named vegabrite) you can check out <a href="https://docs.google.com/presentation/d/e/2PACX-1vRUDiM3DaPjYP5b1BafSraf8GWwJk_jy6YV_l9lZgeBVwKDSfqiHcTn8M-Qm-6U7frMX7SLqQthJxah/pub?start=false&amp;loop=false&amp;delayms=3000" class="external-link">slides</a> from a rstudio::conf talk in January 2020. See also the <a href="https://vegawidget.github.io/vegabrite/articles/design.html">design vignette</a> for an overview of the design of the package.</p>
+<p>Much of the public API is auto-generated via the <code>build.R</code> script in the <code>build</code> directory. The script makes uses of another package, <a href="https://github.com/vegawidget/vegabrite/tree/master/build/vlmetabuildr" class="external-link">vlmetabuildr</a> located within the <code>build</code> directory.</p>
 </div>
 <div class="section level2">
 <h2 id="inspiration-and-related-work">Inspiration and related work<a class="anchor" aria-label="anchor" href="#inspiration-and-related-work"></a>
@@ -100,15 +105,17 @@
 <p>The API for this package is heavily inspired by the <a href="https://github.com/hrbrmstr/vegalite" class="external-link">vegalite R package</a>, but is rebuilt from scratch to (1) build up the API semi-automatically based on the Vega-lite schema (an approach inspired by <a href="https://github.com/altair-viz/altair" class="external-link">Altair</a> and <a href="https://github.com/vega/vega-lite-api" class="external-link">vega-lite-api</a>) and (2) take advantage of the htmlwidget infrastucture for vega specs provided by the <a href="https://github.com/vegawidget/vegawidget" class="external-link">vegawidget</a> package.</p>
 </div>
 <div class="section level2">
-<h2 id="building">Building<a class="anchor" aria-label="anchor" href="#building"></a>
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>Much of the public API is auto-generated via the <code>build.R</code> script in the <code>build</code> directory. The script makes uses of another package, <a href="https://github.com/vegawidget/vegabrite/tree/master/build/vlmetabuildr" class="external-link">vlmetabuildr</a> located within the <code>build</code> directory. For more about the design see the <a href="https://vegawidget.github.io/vegabrite/articles/design.html">design vignette</a>.</p>
+<p><code>vegabrite</code> is not yet on cran but can be installed from github:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">'vegawidget/vegabrite'</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
 <p>These are some examples showing current capabilities; see <a href="https://vegawidget.github.io/vegabrite/articles/articles/examples.html">examples vignette</a> for more examples, including interactive ones.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://vegawidget.github.io/vegabrite/index.html">vegabrite</a></span><span class="op">)</span>
 <span class="fu"><a href="reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
    <span class="fu"><a href="reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
@@ -116,7 +123,7 @@
    <span class="fu"><a href="reference/vl_encode_x.html">vl_encode_x</a></span><span class="op">(</span><span class="st">"wt"</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
    <span class="fu"><a href="reference/vl_encode_y.html">vl_encode_y</a></span><span class="op">(</span><span class="st">"mpg"</span><span class="op">)</span> </code></pre></div>
 <p><img src="reference/figures/README-example-1.svg"><!-- --></p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/vl_chart.html">vl_chart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="reference/vl_add_data.html">vl_add_data</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://vega.github.io/vega-editor/app/data/population.json"</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="reference/vl_calculate.html">vl_calculate</a></span><span class="op">(</span>calculate <span class="op">=</span> <span class="st">"datum.sex == 2 ? 'Female' : 'Male'"</span>, 
