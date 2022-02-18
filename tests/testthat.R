@@ -1,4 +1,4 @@
 library(testthat)
-library(vlbuildr)
+library(vegabrite)
 
-test_check("vlbuildr")
+test_check("vegabrite")

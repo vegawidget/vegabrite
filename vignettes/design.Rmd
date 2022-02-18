@@ -13,7 +13,7 @@ This package seeks to build up a library of functions that can iteratively build
 
 
 ```{r, eval=FALSE}
-library(vlbuildr)
+library(vegabrite)
 
 vl_chart() %>%
    vl_add_data(values = mtcars) %>%
@@ -22,7 +22,7 @@ vl_chart() %>%
    vl_encode_y("mpg")
 ```
 
-For a more thorough introduction to how to use the package, see [introduction vignette](https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html). For example charts see the [example gallery](https://vegawidget.github.io/vlbuildr/articles/articles/example_gallery.html).
+For a more thorough introduction to how to use the package, see [introduction vignette](https://vegawidget.github.io/vegabrite/articles/articles/introduction.html). For example charts see the [example gallery](https://vegawidget.github.io/vegabrite/articles/articles/example_gallery.html).
 
 ## Goals and non-goals
 
@@ -57,7 +57,7 @@ Potentially validation could also occur prior to printing (to check the validity
 
 ## A semi-automated approach to building an API
 
-The functions in this package are build up using a semi-automated approach. A companion package [vlmetabuildr](https://github.com/vegawidget/vlbuildr/tree/master/build/vlmetabuildr) located inside the 'build' directory is used to write the functions in the 'zzz_autogen_api.R' file.  
+The functions in this package are build up using a semi-automated approach. A companion package [vlmetabuildr](https://github.com/vegawidget/vegabrite/tree/master/build/vlmetabuildr) located inside the 'build' directory is used to write the functions in the 'zzz_autogen_api.R' file.  
 
 Note that this process is very much **semi**-automated and not fully automated. vlmetabuildr has been made specific for the Vega-lite api and this package and is not a general purpose JSON Schema --> API package.  
 

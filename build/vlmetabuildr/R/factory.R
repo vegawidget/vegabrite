@@ -250,7 +250,7 @@ make_option_arg_list <- function(option_name, options, na_option = FALSE) {
 create_deprecated <- function(old, new) {
   glue(
     "#' @export",
-    "#' @name vlbuildr-deprecated",
+    "#' @name vegabrite-deprecated",
     "{old} <- function(...) {{",
     "  .Deprecated('{new}', package = \"vlbuidlr\")",
     "  {new}(...)",

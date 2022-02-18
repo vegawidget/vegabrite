@@ -5,24 +5,24 @@
 #' @param e2 vegalite spec
 #' @return A new vegalite spec
 #' @seealso [vl_layer()], [vl_hconcat()], [vl_vconcat()]
-#' @name vlbuildr_operators
+#' @name vegabrite_operators
 NULL
 
-#' @rdname vlbuildr_operators
+#' @rdname vegabrite_operators
 #' @export
 #'
 "|.vegaspec_vega_lite" <- function(e1, e2) {
   vl_hconcat(e1, e2)
 }
 
-#' @rdname vlbuildr_operators
+#' @rdname vegabrite_operators
 #' @export
 #'
 "+.vegaspec_vega_lite" <- function(e1, e2) {
   vl_layer(e1, e2)
 }
 
-#' @rdname vlbuildr_operators
+#' @rdname vegabrite_operators
 #' @export
 #'
 "&.vegaspec_vega_lite" <- function(e1, e2) {

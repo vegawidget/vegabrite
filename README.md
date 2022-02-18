@@ -1,19 +1,21 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# vegabrite: Iteratively build vega-lite specs in R <img src='man/figures/logo.png' align="right" width="121" />
+
 <!-- badges: start -->
 
 ![Lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
-[![R-CMD-check](https://github.com/vegawidget/vlbuildr/workflows/R-CMD-check/badge.svg)](https://github.com/vegawidget/vlbuildr/actions)
+[![R-CMD-check](https://github.com/vegawidget/vlbuildr/workflows/R-CMD-check/badge.svg)](https://github.com/vegawidget/vegabrite/actions)
 
 <!-- badges: end -->
 
-# vlbuildr
-
-The goal of vlbuildr is to provide an R api for building up vega-lite
-specs. For a guide on getting started using `vlbuildr`, check out the
+The goal of vegabrite is to provide an R api for building up vega-lite
+specs. For a guide on getting started using `vegabrite`, check out the
 [getting started
-vignette](https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html).
-For some background and context on the package you can check out
+vignette](https://vegawidget.github.io/vegabrite/articles/articles/introduction.html).
+For some background and context on the package (previously named
+vegabrite) you can check out
 [slides](https://docs.google.com/presentation/d/e/2PACX-1vRUDiM3DaPjYP5b1BafSraf8GWwJk_jy6YV_l9lZgeBVwKDSfqiHcTn8M-Qm-6U7frMX7SLqQthJxah/pub?start=false&loop=false&delayms=3000)
 from a rstudio::conf talk in January 2020.
 
@@ -27,11 +29,11 @@ information when making invalid spec.
 
 The documentation is also still a work-in-progress, but there is a
 [getting started
-vignette](https://vegawidget.github.io/vlbuildr/articles/articles/introduction.html).
+vignette](https://vegawidget.github.io/vegabrite/articles/articles/introduction.html).
 The parameter documentation for functions is fairly complete, however,
 as it relies on descriptions pulled directly from the Vega-Lite schema.
 See also an [example
-gallery](https://vegawidget.github.io/vlbuildr/articles/articles/example_gallery.html)
+gallery](https://vegawidget.github.io/vegabrite/articles/articles/example_gallery.html)
 for examples of how to make different types of plots.
 
 ## Inspiration and related work
@@ -49,19 +51,19 @@ advantage of the htmlwidget infrastucture for vega specs provided by the
 
 Much of the public API is auto-generated via the `build.R` script in the
 `build` directory. The script makes uses of another package,
-[vlmetabuildr](https://github.com/vegawidget/vlbuildr/tree/master/build/vlmetabuildr)
+[vlmetabuildr](https://github.com/vegawidget/vegabrite/tree/master/build/vlmetabuildr)
 located within the `build` directory. For more about the design see the
 [design
-vignette](https://vegawidget.github.io/vlbuildr/articles/design.html).
+vignette](https://vegawidget.github.io/vegabrite/articles/design.html).
 
 ## Examples
 
 These are some examples showing current capabilities; see [examples
-vignette](https://vegawidget.github.io/vlbuildr/articles/articles/examples.html)
+vignette](https://vegawidget.github.io/vegabrite/articles/articles/examples.html)
 for more examples, including interactive ones.
 
 ``` r
-library(vlbuildr)
+library(vegabrite)
 vl_chart() %>%
    vl_add_data(values = mtcars) %>%
    vl_mark_point() %>%

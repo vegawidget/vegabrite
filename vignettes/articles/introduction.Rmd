@@ -1,5 +1,5 @@
 ---
-title: "How to make a plot using vlbuildr"
+title: "How to make a plot using vegabrite"
 output: rmarkdown::html_document
 ---
 
@@ -10,14 +10,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette covers the basics of how to make a chart using `vlbuildr`.For more about the design philosophy of the package, see the [design vignette](https://vegawidget.github.io/vlbuildr/articles/design.html). For example charts see the [examples vignette](https://vegawidget.github.io/vlbuildr/articles/articles/example_gallery.html).  For much more information about what is possible with Vega-Lite, see the [Vega-Lite documentation](https://vega.github.io/vega-lite/docs/).  
+This vignette covers the basics of how to make a chart using `vegabrite`.For more about the design philosophy of the package, see the [design vignette](https://vegawidget.github.io/vegabrite/articles/design.html). For example charts see the [examples vignette](https://vegawidget.github.io/vegabrite/articles/articles/example_gallery.html).  For much more information about what is possible with Vega-Lite, see the [Vega-Lite documentation](https://vega.github.io/vega-lite/docs/).  
 
 ## The basics: data + mark + encoding
 
 All plots require **data**, a **mark** and **encodings**. To intialize a chart you use
 
 ```{r}
-library(vlbuildr)
+library(vegabrite)
 vl_chart()
 ```
 
@@ -298,7 +298,7 @@ vl_chart(mtcars) %>%
   vl_encode_y('mpg')
 ```
 
-`vlbuildr` also has a shortcut, whereby if you pass "data" or "encoding" to the tooltip argument, it will transform it into the above list format in the spec. So the following will do the same thing:
+`vegabrite` also has a shortcut, whereby if you pass "data" or "encoding" to the tooltip argument, it will transform it into the above list format in the spec. So the following will do the same thing:
 
 ```{r}
 vl_chart(mtcars) %>%
