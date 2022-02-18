@@ -14,27 +14,30 @@ The goal of vegabrite is to provide an R api for building up vega-lite
 specs. For a guide on getting started using `vegabrite`, check out the
 [getting started
 vignette](https://vegawidget.github.io/vegabrite/articles/articles/introduction.html).
-For some background and context on the package (previously named
-vegabrite) you can check out
-[slides](https://docs.google.com/presentation/d/e/2PACX-1vRUDiM3DaPjYP5b1BafSraf8GWwJk_jy6YV_l9lZgeBVwKDSfqiHcTn8M-Qm-6U7frMX7SLqQthJxah/pub?start=false&loop=false&delayms=3000)
-from a rstudio::conf talk in January 2020.
+The [example
+gallery](https://vegawidget.github.io/vegabrite/articles/articles/example_gallery.html)
+show-cases a wide variety of different plots that can be made.
 
 ### Current status
 
-This package is still experimental, but much of the public facing API
-has been built (although still subject to changes). However, the
-internals of the package might change substantially to provide greater
-robustness, make it harder to make invalid specs, and/or provide better
-information when making invalid spec.
+This package is still experimental but has a mostly complete interface
+for building out Vega-Lite specs and charts. There is still lots of room
+for improvement in terms of better error handling and warnings when
+making invalid specs.
 
-The documentation is also still a work-in-progress, but there is a
-[getting started
-vignette](https://vegawidget.github.io/vegabrite/articles/articles/introduction.html).
-The parameter documentation for functions is fairly complete, however,
-as it relies on descriptions pulled directly from the Vega-Lite schema.
-See also an [example
-gallery](https://vegawidget.github.io/vegabrite/articles/articles/example_gallery.html)
-for examples of how to make different types of plots.
+## Design & Building
+
+For some background and context on the package (previously named
+vegabrite) you can check out
+[slides](https://docs.google.com/presentation/d/e/2PACX-1vRUDiM3DaPjYP5b1BafSraf8GWwJk_jy6YV_l9lZgeBVwKDSfqiHcTn8M-Qm-6U7frMX7SLqQthJxah/pub?start=false&loop=false&delayms=3000)
+from a rstudio::conf talk in January 2020. See also the [design
+vignette](https://vegawidget.github.io/vegabrite/articles/design.html)
+for an overview of the design of the package.
+
+Much of the public API is auto-generated via the `build.R` script in the
+`build` directory. The script makes uses of another package,
+[vlmetabuildr](https://github.com/vegawidget/vegabrite/tree/master/build/vlmetabuildr)
+located within the `build` directory.
 
 ## Inspiration and related work
 
@@ -47,14 +50,13 @@ Vega-lite schema (an approach inspired by
 advantage of the htmlwidget infrastucture for vega specs provided by the
 [vegawidget](https://github.com/vegawidget/vegawidget) package.
 
-## Building
+## Installation
 
-Much of the public API is auto-generated via the `build.R` script in the
-`build` directory. The script makes uses of another package,
-[vlmetabuildr](https://github.com/vegawidget/vegabrite/tree/master/build/vlmetabuildr)
-located within the `build` directory. For more about the design see the
-[design
-vignette](https://vegawidget.github.io/vegabrite/articles/design.html).
+`vegabrite` is not yet on cran but can be installed from github:
+
+``` r
+remotes::install_github('vegawidget/vegabrite')
+```
 
 ## Examples
 

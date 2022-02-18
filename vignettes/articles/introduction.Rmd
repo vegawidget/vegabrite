@@ -10,7 +10,15 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette covers the basics of how to make a chart using `vegabrite`.For more about the design philosophy of the package, see the [design vignette](https://vegawidget.github.io/vegabrite/articles/design.html). For example charts see the [examples vignette](https://vegawidget.github.io/vegabrite/articles/articles/example_gallery.html).  For much more information about what is possible with Vega-Lite, see the [Vega-Lite documentation](https://vega.github.io/vega-lite/docs/).  
+This vignette covers the basics of how to make a chart using `vegabrite`. For more about the design philosophy of the package, see the [design vignette](https://vegawidget.github.io/vegabrite/articles/design.html). For example charts see the [examples vignette](https://vegawidget.github.io/vegabrite/articles/articles/example_gallery.html).  For much more information about what is possible with Vega-Lite, see the [Vega-Lite documentation](https://vega.github.io/vega-lite/docs/).  
+
+## Installation
+
+`vegabrite` is not yet on cran but can be installed from github:
+
+```{r, eval=FALSE}
+remotes::install_github('vegawidget/vegabrite')
+```
 
 ## The basics: data + mark + encoding
 
