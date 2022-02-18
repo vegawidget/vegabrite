@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 ![Lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
-[![R-CMD-check](https://github.com/vegawidget/vlbuildr/workflows/R-CMD-check/badge.svg)](https://github.com/vegawidget/vegabrite/actions)
+[![R-CMD-check](https://github.com/vegawidget/vegabrite/workflows/R-CMD-check/badge.svg)](https://github.com/vegawidget/vegabrite/actions)
 
 <!-- badges: end -->
 
