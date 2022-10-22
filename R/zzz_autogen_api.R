@@ -33609,6 +33609,7 @@ vl_config_projection <- function(spec, center = NULL, clipAngle = NULL, clipExte
 #' @return A modified Vega-Lite Spec
 #' @export
 vl_config_range <- function(spec, category = NULL, diverging = NULL, heatmap = NULL, ordinal = NULL, ramp = NULL, symbol = NULL, .object = NULL, ...) {
+  .dots = list(...)
   obj <- .make_object(NULL, NULL)
   .add_sub_config(spec, obj, "#/definitions/RangeConfig" , .config = "range")
 }
@@ -36287,6 +36288,7 @@ vl$`ProjectionConfig` <- function(`center` = NULL, `clipAngle` = NULL, `clipExte
   obj
 }
 vl$`RangeConfig` <- function(`category` = NULL, `diverging` = NULL, `heatmap` = NULL, `ordinal` = NULL, `ramp` = NULL, `symbol` = NULL, ...){
+  .dots = list(...)
   obj <- .make_object(NULL, NULL)
   obj
 }

@@ -18,7 +18,11 @@ TOP_LEVEL_KEYS <- c(
       warning("Ignoring some inputs as .object was passed in.")
     }
   } else {
-    obj <- inputs[!(names(inputs) %in% c(exclude, "spec"))]    
+    obj <- inputs[!(names(inputs) %in% c(exclude, "spec", "...", ".dots"))]    
+  }
+  
+  if (hasName(inputs, ".dots")) {
+    obj <- utils::modifyList(obj, inputs[".dots"])
   }
 
   if (!is.null(override)) {
