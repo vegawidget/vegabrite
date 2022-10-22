@@ -52,13 +52,24 @@ make_function_innards <- function(reference, schema, override_args, adder_functi
     ""
   }
 
-  adder <- glue("{adder_function}(spec, obj, {deparse_c(as.character(reference))}{extras})")
+  adder <- glue("  {adder_function}(spec, obj, {deparse_c(as.character(reference))}{extras})")
 
-  paste(
-    modifier,
-    adder,
-    sep = "\n  "
-  )
+  if (additional_properties_allowed(reference, schema)) {
+    dots <- "  .dots = list(...)"
+    paste(
+      dots,
+      modifier,
+      adder,
+      sep = "\n"
+    )
+  } else {
+    paste(
+      modifier,
+      adder,
+      sep = "\n"
+    )
+  }
+  
 }
 
 make_arg_list <- function(reference, schema, exclude_args, priority_args, sub_references = NULL) {

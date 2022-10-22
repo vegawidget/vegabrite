@@ -1,7 +1,7 @@
 devtools::install("build/vlmetabuildr")
 library("vlmetabuildr")
 
-schema_file <- vega_schema("vega_lite", major = FALSE) 
+schema_file <- vegawidget::vega_schema("vega_lite", major = FALSE) 
 VL_SCHEMA <- jsonlite::read_json(schema_file)
 
 new_schema_path <- file.path(rprojroot::find_package_root_file(), "inst","schema", basename(schema_file))
