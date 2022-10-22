@@ -36288,6 +36288,7 @@ vl$`ProjectionConfig` <- function(`center` = NULL, `clipAngle` = NULL, `clipExte
   obj
 }
 vl$`RangeConfig` <- function(`category` = NULL, `diverging` = NULL, `heatmap` = NULL, `ordinal` = NULL, `ramp` = NULL, `symbol` = NULL, ...){
+  .dots = list(...)
   obj <- .make_object(NULL, NULL)
   obj
 }

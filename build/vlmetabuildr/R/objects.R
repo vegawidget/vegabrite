@@ -41,13 +41,17 @@ create_object <- function(obj, schema, reference = glue("#/definitions/{obj}")) 
 
   # If param is named repeat, need to change
   # param_names[param_names == "repeat"] <- "`repeat`"
-
-  additional_args <- if (additional_properties_allowed(reference, schema)) "..." else NULL
+  dots_allowed <- additional_properties_allowed(reference, schema)
+  additional_args <- if (dots_allowed) "..." else NULL
   prop_args <- if (length(param_names) > 1) paste(paste0("`", param_names, "`"), "NULL", sep = " = ", collapse = ", ") else NULL
 
   args <- paste(c(prop_args, additional_args), collapse = ", ")
 
   inner_function <- "  obj <- .make_object(NULL, NULL)\n  obj"
+  
+  if (dots_allowed) {
+    inner_function <- paste("  .dots = list(...)", inner_function, sep = "\n")
+  }
 
   ## Make the outer function
   fn <- glue("vl$`{obj}` <- function({args}){{\n{inner_function}\n}}\n")
