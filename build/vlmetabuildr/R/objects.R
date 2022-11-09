@@ -47,12 +47,13 @@ create_object <- function(obj, schema, reference = glue("#/definitions/{obj}")) 
 
   args <- paste(c(prop_args, additional_args), collapse = ", ")
 
-  inner_function <- "  obj <- .make_object(NULL, NULL)\n  obj"
-  
-  if (dots_allowed) {
-    inner_function <- paste("  .dots = list(...)", inner_function, sep = "\n")
+  inputs <- if (dots_allowed) {
+    "utils::modifyList(as.list(environment(), all.names = TRUE))"
+  } else {
+    "as.list(environment(), all.names = TRUE)"
   }
-
+  inner_function <- glue("  obj <- .make_object({inputs}, NULL, NULL)\n  obj")
+  
   ## Make the outer function
   fn <- glue("vl$`{obj}` <- function({args}){{\n{inner_function}\n}}\n")
 

@@ -55,7 +55,10 @@ vl_config(
   lineBreak = NULL,
   locale = NULL,
   mark = NULL,
+  normalizedNumberFormat = NULL,
+  normalizedNumberFormatType = NULL,
   numberFormat = NULL,
+  numberFormatType = NULL,
   padding = NULL,
   params = NULL,
   point = NULL,
@@ -70,6 +73,7 @@ vl_config(
   text = NULL,
   tick = NULL,
   timeFormat = NULL,
+  timeFormatType = NULL,
   title = NULL,
   trail = NULL,
   view = NULL,
@@ -228,8 +232,35 @@ option.}
 
 \item{mark}{Mark Config}
 
-\item{numberFormat}{D3 Number format for guide labels and text marks. For
-example \code{"s"} for SI units. Use \href{https://github.com/d3/d3-format#locale_format}{D3's number format pattern}.}
+\item{normalizedNumberFormat}{If normalizedNumberFormatType is not specified, D3 number format for axis
+labels, text marks, and tooltips of normalized stacked fields (fields with
+\code{stack: "normalize"}). For example \code{"s"} for SI units. Use \href{https://github.com/d3/d3-format#locale_format}{D3's number format pattern}.
+
+If \code{config.normalizedNumberFormatType} is specified and
+\code{config.customFormatTypes} is \code{true}, this value will be passed as \code{format}
+alongside \code{datum.value} to the \code{config.numberFormatType} function. \strong{Default
+value:} \verb{\%}}
+
+\item{normalizedNumberFormatType}{\href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{Custom format type} for
+\code{config.normalizedNumberFormat}.
+
+\strong{Default value:} \code{undefined} -- This is equilvalent
+to call D3-format, which is exposed as \href{https://vega.github.io/vega/docs/expressions/#format}{\code{format} in Vega-Expression}.
+\strong{Note:} You must also set \code{customFormatTypes} to \code{true} to use this feature.}
+
+\item{numberFormat}{If numberFormatType is not specified, D3 number format for guide labels,
+text marks, and tooltips of non-normalized fields (fields \emph{without} \code{stack: "normalize"}). For example \code{"s"} for SI units. Use \href{https://github.com/d3/d3-format#locale_format}{D3's number format pattern}.
+
+If \code{config.numberFormatType} is specified and \code{config.customFormatTypes} is
+\code{true}, this value will be passed as \code{format} alongside \code{datum.value} to the
+\code{config.numberFormatType} function.}
+
+\item{numberFormatType}{\href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{Custom format type} for
+\code{config.numberFormat}.
+
+\strong{Default value:} \code{undefined} -- This is equilvalent
+to call D3-format, which is exposed as \href{https://vega.github.io/vega/docs/expressions/#format}{\code{format} in Vega-Expression}.
+\strong{Note:} You must also set \code{customFormatTypes} to \code{true} to use this feature.}
 
 \item{padding}{The default visualization padding, in pixels, from the edge of the visualization
 canvas to the data rectangle. If a number, specifies padding for all sides. If
@@ -276,6 +307,14 @@ legend labels and header labels.
 
 \strong{Default value:} \code{"\%b \%d, \%Y"} \strong{Note:} Axes automatically determine the
 format for each label automatically so this config does not affect axes.}
+
+\item{timeFormatType}{\href{https://vega.github.io/vega-lite/docs/config.html#custom-format-type}{Custom format type} for
+\code{config.timeFormat}.
+
+\strong{Default value:} \code{undefined} -- This is equilvalent to
+call D3-time-format, which is exposed as \href{https://vega.github.io/vega/docs/expressions/#timeFormat}{\code{timeFormat} in Vega-Expression}.
+\strong{Note:} You must also set \code{customFormatTypes} to \code{true} and there must \emph{not}
+be a \code{timeUnit} defined to use this feature.}
 
 \item{title}{Title configuration, which determines default properties for all
 \href{https://vega.github.io/vega-lite/docs/title.html}{titles}. For a full list of
