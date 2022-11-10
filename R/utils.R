@@ -4,11 +4,7 @@ TOP_LEVEL_KEYS <- c(
 )
 
 
-.make_object <- function(override, exclude) {
-  # Get names from parent
-  env <- parent.frame()
-  inputs <- as.list(env, all.names = TRUE)
-  
+.make_object <- function(inputs, override, exclude) {
   # Remove nulls
   inputs <- inputs[!vapply(inputs, is.null, FALSE)]
   
@@ -18,11 +14,7 @@ TOP_LEVEL_KEYS <- c(
       warning("Ignoring some inputs as .object was passed in.")
     }
   } else {
-    obj <- inputs[!(names(inputs) %in% c(exclude, "spec", "...", ".dots"))]    
-  }
-  
-  if (hasName(inputs, ".dots")) {
-    obj <- utils::modifyList(obj, inputs[".dots"])
+    obj <- inputs[!(names(inputs) %in% c(exclude, "spec", "..."))]    
   }
 
   if (!is.null(override)) {

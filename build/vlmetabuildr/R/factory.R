@@ -42,8 +42,6 @@ make_function <- function(
 }
 
 make_function_innards <- function(reference, schema, override_args, adder_function, pass_to_adder) {
-  modifier <- glue("  obj <- .make_object({deparse_c(override_args)}, NULL)")
-
   extras <- if (!is.null(pass_to_adder)) {
     paste(c(" ", paste(names(pass_to_adder), purrr::map_chr(pass_to_adder, deparse_c), sep = " = ")),
       collapse = ", "
@@ -55,20 +53,18 @@ make_function_innards <- function(reference, schema, override_args, adder_functi
   adder <- glue("  {adder_function}(spec, obj, {deparse_c(as.character(reference))}{extras})")
 
   if (additional_properties_allowed(reference, schema)) {
-    dots <- "  .dots = list(...)"
-    paste(
-      dots,
-      modifier,
-      adder,
-      sep = "\n"
-    )
+    inputs <- "utils::modifyList(as.list(environment(), all.names = TRUE), list(...))"
   } else {
-    paste(
-      modifier,
-      adder,
-      sep = "\n"
-    )
+    inputs <- "as.list(environment(), all.names = TRUE)"
   }
+  
+  modifier <- glue("  obj <- .make_object({inputs}, {deparse_c(override_args)}, NULL)")
+  
+  paste(
+    modifier,
+    adder,
+    sep = "\n"
+  )
   
 }
 

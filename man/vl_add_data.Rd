@@ -26,7 +26,15 @@ format type.}
 
 \item{format}{An object that specifies the format for parsing the data.}
 
-\item{name}{Provide a placeholder name and bind data at runtime.}
+\item{name}{Provide a placeholder name and bind data at runtime.
+
+Or: Provide a placeholder name and bind data at runtime.
+
+New data may change the layout but Vega does not always resize
+the chart. To update the layout when the data updates, set
+\href{https://vega.github.io/vega-lite/docs/size.html#autosize}{autosize}
+or explicitly use
+\href{https://vega.github.io/vega/docs/api/view/#view_resize}{view.resize}.}
 
 \item{url}{An URL from which to load the data set. Use the \code{format.type} property to ensure
 the loaded data is correctly parsed.}
