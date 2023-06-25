@@ -50,7 +50,7 @@ remotes::install_github('vegawidget/vegabrite')
 
 ## Examples
 
-These are some examples showing current capabilities; see [examples vignette](https://vegawidget.github.io/vegabrite/articles/articles/examples.html) for more examples, including interactive ones.
+These are some examples showing current capabilities; see [example gallery](https://vegawidget.github.io/vegabrite/articles/example_gallery.html) for more examples, including interactive ones.
 
 ```{r example}
 library(vegabrite)
